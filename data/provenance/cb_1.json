@@ -1,0 +1,68 @@
+{
+  "id": "cb_1",
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": 1,
+    "title": "Death and Strawberry",
+    "mangaChapters": "001",
+    "sourceAnimeEpisodes": "001",
+    "exactEditRuntime": "00:18:15",
+    "normalizedExactRuntime": "18:15",
+    "timeSaved": "04m35s (20%)",
+    "releaseDate": "2024-04-11",
+    "lastUpdate": "2026-06-23",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 2,
+      "cells": "A2:H2"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "18",
+    "runtimeTransformation": "The exact 18:15 source runtime is presented as 18 minutes, matching the observed One Pace convention."
+  },
+  "torrentEvidence": {
+    "evidenceFile": "01 - Death and Strawberry.mkv.torrent",
+    "infoHash": "d0cb7e0c8bad014c055bf2becf2694dcfde2b8e8",
+    "fileIdx": 0,
+    "filename": "01 - Death and Strawberry.mkv",
+    "videoSize": 186522416,
+    "fileCount": 1,
+    "hasAnnounceTracker": false,
+    "hasAnnounceList": false,
+    "hasWebSeed": false,
+    "publicSwarmAvailability": "not verified",
+    "torBoxCacheAvailability": "not verified"
+  },
+  "status": {
+    "confirmed": [
+      "CB1 editorial metadata",
+      "infoHash",
+      "fileIdx",
+      "filename",
+      "videoSize",
+      "absence of torrent trackers",
+      "Stremio catalog/meta/stream structure"
+    ],
+    "provisional": [
+      "manifest/catalog/video identifier choices",
+      "display formatting",
+      "bingeGroup",
+      "runtime rounding to 18"
+    ],
+    "experiment": [
+      "whether TorBox has this infoHash cached",
+      "Nuvio playback",
+      "seek/resume",
+      "Continue Watching"
+    ],
+    "unresolved": [
+      "publicly reachable torrent swarm/source for CB1 if TorBox does not already cache this hash",
+      "artwork",
+      "subtitles",
+      "full-series ordering/model",
+      "every episode after CB1"
+    ]
+  }
+}

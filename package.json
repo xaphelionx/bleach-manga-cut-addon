@@ -1,0 +1,17 @@
+{
+  "name": "bleach-manga-cut-addon",
+  "version": "0.0.1",
+  "private": true,
+  "description": "One-episode Bleach Manga Cut proof of concept for Stremio and Nuvio testing.",
+  "main": "src/addon.js",
+  "scripts": {
+    "start": "node src/addon.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "stremio-addon-sdk": "1.6.10"
+  }
+}

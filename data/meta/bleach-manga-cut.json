@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "id": "bleach-manga-cut",
+    "type": "series",
+    "name": "Bleach Manga Cut",
+    "videos": [
+      {
+        "id": "cb_1",
+        "season": 1,
+        "episode": 1,
+        "title": "Death and Strawberry",
+        "runtime": "18"
+      }
+    ]
+  }
+}
