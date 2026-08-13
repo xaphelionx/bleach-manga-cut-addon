@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/projection/optional-content.schema.json",
+  "title": "Bleach Manga Cut optional-content projection",
+  "description": "Design-time optional relationships without a selected runtime Stremio representation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "collectionId",
+    "primarySeriesId",
+    "primarySeriesPublicationAllowed",
+    "navigationModel",
+    "entries"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "collectionId": { "const": "bleach-manga-cut-optional-content" },
+    "primarySeriesId": { "const": "bleach-manga-cut" },
+    "primarySeriesPublicationAllowed": { "const": false },
+    "navigationModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "candidatesForFutureExperiment", "selectedRuntimeRepresentation"],
+      "properties": {
+        "state": { "const": "unresolved" },
+        "candidatesForFutureExperiment": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "selectedRuntimeRepresentation": { "type": "null" }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/insertion" },
+          { "$ref": "#/$defs/variant" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "common": {
+      "type": "object",
+      "required": [
+        "entryType",
+        "recordId",
+        "projectId",
+        "sourceIdentifier",
+        "videoId",
+        "primarySeriesPlacement",
+        "defaultTimelineMembership",
+        "publicationEligibility"
+      ],
+      "properties": {
+        "entryType": { "enum": ["nested-mid-episode-insertion", "ex-variant"] },
+        "recordId": { "type": "string", "minLength": 1 },
+        "projectId": { "const": "hollowed" },
+        "videoId": { "type": "string", "pattern": "^hb_(?:[0-9]+p[0-9]+|ex_[0-9]+)$" },
+        "primarySeriesPlacement": { "type": "null" },
+        "defaultTimelineMembership": { "const": false },
+        "publicationEligibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "blockedBy"],
+          "properties": {
+            "state": { "const": "unresolved" },
+            "blockedBy": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "insertion": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "entryType",
+            "recordId",
+            "projectId",
+            "sourceIdentifier",
+            "videoId",
+            "title",
+            "primarySeriesPlacement",
+            "defaultTimelineMembership",
+            "publicationEligibility",
+            "instruction"
+          ],
+          "properties": {
+            "entryType": { "const": "nested-mid-episode-insertion" },
+            "recordId": { "const": "hollowed:11.5" },
+            "projectId": { "const": "hollowed" },
+            "sourceIdentifier": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["raw", "displayed"],
+              "properties": {
+                "raw": { "const": "11.5" },
+                "displayed": { "const": "11.5" }
+              }
+            },
+            "videoId": { "const": "hb_11p5" },
+            "title": { "type": "string", "minLength": 1 },
+            "primarySeriesPlacement": { "type": "null" },
+            "defaultTimelineMembership": { "const": false },
+            "publicationEligibility": { "type": "object" },
+            "instruction": { "type": "object" }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "allOf": [
+        { "$ref": "#/$defs/common" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "entryType",
+            "recordId",
+            "projectId",
+            "sourceIdentifier",
+            "videoId",
+            "sourceLabel",
+            "primarySeriesPlacement",
+            "defaultTimelineMembership",
+            "publicationEligibility",
+            "relationship",
+            "baseRecordIds",
+            "currentLegacyStatus",
+            "mediaAvailability",
+            "branch"
+          ],
+          "properties": {
+            "entryType": { "const": "ex-variant" },
+            "recordId": { "type": "string", "pattern": "^hollowed:ex:[0-9]+$" },
+            "projectId": { "const": "hollowed" },
+            "sourceIdentifier": { "type": "string", "pattern": "^EX [0-9]+$" },
+            "videoId": { "type": "string", "pattern": "^hb_ex_[0-9]+$" },
+            "sourceLabel": { "type": "string", "pattern": "^EX [0-9]+$" },
+            "primarySeriesPlacement": { "type": "null" },
+            "defaultTimelineMembership": { "const": false },
+            "publicationEligibility": { "type": "object" },
+            "relationship": { "type": "string" },
+            "baseRecordIds": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            "currentLegacyStatus": { "const": "unresolved" },
+            "mediaAvailability": { "const": "unresolved" },
+            "branch": { "type": ["object", "null"] }
+          }
+        }
+      ]
+    }
+  }
+}

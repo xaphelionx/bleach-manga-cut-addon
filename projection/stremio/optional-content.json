@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "collectionId": "bleach-manga-cut-optional-content",
+  "primarySeriesId": "bleach-manga-cut",
+  "primarySeriesPublicationAllowed": false,
+  "navigationModel": {
+    "state": "unresolved",
+    "candidatesForFutureExperiment": [
+      "dedicated-catalog-with-separate-non-episodic-meta-items",
+      "other-representation-outside-primary-series-next-episode-order"
+    ],
+    "selectedRuntimeRepresentation": null
+  },
+  "entries": [
+    {
+      "entryType": "nested-mid-episode-insertion",
+      "recordId": "hollowed:11.5",
+      "projectId": "hollowed",
+      "sourceIdentifier": {
+        "raw": "11.5",
+        "displayed": "11.5"
+      },
+      "videoId": "hb_11p5",
+      "title": "Forest of Menos",
+      "primarySeriesPlacement": null,
+      "defaultTimelineMembership": false,
+      "publicationEligibility": {
+        "state": "unresolved",
+        "blockedBy": [
+          "optional-navigation-model-unresolved"
+        ]
+      },
+      "instruction": {
+        "anchorRecordId": "concentrated:50",
+        "pause": {
+          "rawTimestamp": "16:15",
+          "seconds": 975
+        },
+        "insertedRecordId": "hollowed:11.5",
+        "resume": {
+          "recordId": "concentrated:50",
+          "fromRawTimestamp": "16:15",
+          "fromSeconds": 975
+        },
+        "ordinaryAdjacentEpisode": false
+      }
+    },
+    {
+      "entryType": "ex-variant",
+      "recordId": "hollowed:ex:01",
+      "projectId": "hollowed",
+      "sourceIdentifier": "EX 1",
+      "videoId": "hb_ex_1",
+      "sourceLabel": "EX 1",
+      "primarySeriesPlacement": null,
+      "defaultTimelineMembership": false,
+      "publicationEligibility": {
+        "state": "unresolved",
+        "blockedBy": [
+          "optional-navigation-model-unresolved",
+          "ex-current-legacy-and-media-status"
+        ]
+      },
+      "relationship": "optional-transition-variant",
+      "baseRecordIds": [
+        "hollowed:01"
+      ],
+      "currentLegacyStatus": "unresolved",
+      "mediaAvailability": "unresolved",
+      "branch": null
+    },
+    {
+      "entryType": "ex-variant",
+      "recordId": "hollowed:ex:27",
+      "projectId": "hollowed",
+      "sourceIdentifier": "EX 27",
+      "videoId": "hb_ex_27",
+      "sourceLabel": "EX 27",
+      "primarySeriesPlacement": null,
+      "defaultTimelineMembership": false,
+      "publicationEligibility": {
+        "state": "unresolved",
+        "blockedBy": [
+          "optional-navigation-model-unresolved",
+          "ex-current-legacy-and-media-status"
+        ]
+      },
+      "relationship": "optional-combined-replacement",
+      "baseRecordIds": [
+        "hollowed:27",
+        "hollowed:28",
+        "hollowed:29"
+      ],
+      "currentLegacyStatus": "unresolved",
+      "mediaAvailability": "unresolved",
+      "branch": {
+        "branchId": "hollowed-ex27-path",
+        "replacesRecordIds": [
+          "hollowed:27",
+          "hollowed:28",
+          "hollowed:29"
+        ],
+        "path": [
+          {
+            "sequenceIndex": 1,
+            "type": "record",
+            "recordId": "hollowed:26"
+          },
+          {
+            "sequenceIndex": 2,
+            "type": "variant",
+            "variantId": "hollowed:ex:27"
+          },
+          {
+            "sequenceIndex": 3,
+            "type": "record",
+            "recordId": "hollowed:0.8"
+          },
+          {
+            "sequenceIndex": 4,
+            "type": "record",
+            "recordId": "hollowed:30"
+          }
+        ]
+      }
+    },
+    {
+      "entryType": "ex-variant",
+      "recordId": "hollowed:ex:50",
+      "projectId": "hollowed",
+      "sourceIdentifier": "EX 50",
+      "videoId": "hb_ex_50",
+      "sourceLabel": "EX 50",
+      "primarySeriesPlacement": null,
+      "defaultTimelineMembership": false,
+      "publicationEligibility": {
+        "state": "unresolved",
+        "blockedBy": [
+          "optional-navigation-model-unresolved",
+          "ex-current-legacy-and-media-status"
+        ]
+      },
+      "relationship": "optional-transition-variant",
+      "baseRecordIds": [
+        "hollowed:50"
+      ],
+      "currentLegacyStatus": "unresolved",
+      "mediaAvailability": "unresolved",
+      "branch": null
+    }
+  ]
+}

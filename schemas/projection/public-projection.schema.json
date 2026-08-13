@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/projection/public-projection.schema.json",
+  "title": "Bleach Manga Cut primary-series projection",
+  "description": "Design-time season placement and independently gated Stremio publication state. Projection does not authorize publication.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "series",
+    "clientCompatibility",
+    "publicationPolicy",
+    "publicationGateSets",
+    "unresolvedDefaultEdge",
+    "entries"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "series": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "seasons"],
+      "properties": {
+        "id": { "const": "bleach-manga-cut" },
+        "type": { "const": "series" },
+        "seasons": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/season" }
+        }
+      }
+    },
+    "clientCompatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline",
+        "nextEpisodeOrdering",
+        "seasonBoundariesSuppressNextEpisode",
+        "seasonZeroIsolated"
+      ],
+      "properties": {
+        "baseline": { "const": "Nuvio 0.8.4-beta with native TorBox" },
+        "nextEpisodeOrdering": {
+          "const": ["season", "episode"]
+        },
+        "seasonBoundariesSuppressNextEpisode": { "const": false },
+        "seasonZeroIsolated": { "const": false }
+      }
+    },
+    "publicationPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primarySeriesPrefixClosed",
+        "projectionDoesNotAuthorizePublication",
+        "currentPublishedVideoIds",
+        "playableOnly"
+      ],
+      "properties": {
+        "primarySeriesPrefixClosed": { "const": true },
+        "projectionDoesNotAuthorizePublication": { "const": true },
+        "currentPublishedVideoIds": { "const": ["cb_1"] },
+        "playableOnly": { "const": true }
+      }
+    },
+    "publicationGateSets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locked-cb1",
+        "unpublished-pre-boundary",
+        "blocked-post-boundary"
+      ],
+      "properties": {
+        "locked-cb1": { "$ref": "#/$defs/gateSet" },
+        "unpublished-pre-boundary": { "$ref": "#/$defs/gateSet" },
+        "blocked-post-boundary": { "$ref": "#/$defs/gateSet" }
+      }
+    },
+    "unresolvedDefaultEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issueId",
+        "afterRecordId",
+        "rawEndpointIdentifier",
+        "endpointRecordId",
+        "independentRecord",
+        "equivalent",
+        "placeholderCreated",
+        "blocksPublicationAfterEdge"
+      ],
+      "properties": {
+        "issueId": { "const": "concentrated-35.5-vs-0.0" },
+        "afterRecordId": { "const": "concentrated:35" },
+        "rawEndpointIdentifier": { "const": "35.5" },
+        "endpointRecordId": { "type": "null" },
+        "independentRecord": { "$ref": "#/$defs/independentRecord" },
+        "equivalent": { "const": false },
+        "placeholderCreated": { "const": false },
+        "blocksPublicationAfterEdge": { "const": true }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "season": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["season", "name"],
+      "properties": {
+        "season": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sourceIdentifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw", "displayed"],
+      "properties": {
+        "raw": { "type": "string" },
+        "displayed": { "type": "string", "minLength": 1 }
+      }
+    },
+    "projectedPlacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seriesId", "season", "episode"],
+      "properties": {
+        "seriesId": { "const": "bleach-manga-cut" },
+        "season": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "episode": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "defaultTimelinePosition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "index"],
+          "properties": {
+            "state": { "const": "resolved" },
+            "index": { "type": "integer", "minimum": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "blockedBy"],
+          "properties": {
+            "state": { "const": "unresolved" },
+            "blockedBy": { "const": "concentrated-35.5-vs-0.0" }
+          }
+        }
+      ]
+    },
+    "eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "gateSet"],
+      "properties": {
+        "state": { "enum": ["eligible", "blocked", "excluded", "unresolved"] },
+        "gateSet": {
+          "enum": ["locked-cb1", "unpublished-pre-boundary", "blocked-post-boundary"]
+        }
+      }
+    },
+    "gateSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "editorialAvailability",
+        "resolvedPlacement",
+        "mediaEvidence",
+        "defaultTimelineContiguity",
+        "blockedBy"
+      ],
+      "properties": {
+        "editorialAvailability": { "$ref": "#/$defs/gateState" },
+        "resolvedPlacement": { "$ref": "#/$defs/gateState" },
+        "mediaEvidence": { "$ref": "#/$defs/gateState" },
+        "defaultTimelineContiguity": { "$ref": "#/$defs/gateState" },
+        "blockedBy": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "gateState": {
+      "enum": ["passed", "blocked", "unresolved", "not-applicable"]
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordId",
+        "projectId",
+        "sourceIdentifier",
+        "videoId",
+        "title",
+        "timelineMembership",
+        "projectedPlacement",
+        "defaultTimelinePosition",
+        "publicationEligibility"
+      ],
+      "properties": {
+        "recordId": { "type": "string", "minLength": 1 },
+        "projectId": { "enum": ["concentrated", "hollowed", "chipped"] },
+        "sourceIdentifier": { "$ref": "#/$defs/sourceIdentifier" },
+        "videoId": { "type": "string", "pattern": "^(cb|hb|ch)_[0-9]+(?:p[0-9]+)?$" },
+        "title": { "type": "string", "minLength": 1 },
+        "timelineMembership": { "const": "default" },
+        "projectedPlacement": { "$ref": "#/$defs/projectedPlacement" },
+        "defaultTimelinePosition": { "$ref": "#/$defs/defaultTimelinePosition" },
+        "publicationEligibility": { "$ref": "#/$defs/eligibility" }
+      }
+    },
+    "independentRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordId",
+        "projectId",
+        "sourceIdentifier",
+        "videoId",
+        "title",
+        "projectedPlacement",
+        "publicationEligibility"
+      ],
+      "properties": {
+        "recordId": { "const": "concentrated:0.0" },
+        "projectId": { "const": "concentrated" },
+        "sourceIdentifier": { "$ref": "#/$defs/sourceIdentifier" },
+        "videoId": { "const": "cb_0p0" },
+        "title": { "const": "the rotator / the sand" },
+        "projectedPlacement": { "type": "null" },
+        "publicationEligibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "blockedBy"],
+          "properties": {
+            "state": { "const": "unresolved" },
+            "blockedBy": {
+              "type": "array",
+              "contains": { "const": "concentrated-35.5-vs-0.0" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
