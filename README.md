@@ -1,17 +1,54 @@
 # Bleach Manga Cut CB1 POC
 
-This is a deliberately one-episode Stremio addon for testing **Concentrated Bleach 01 — Death and Strawberry** against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. It is not a full catalog, is not deployed, and is not yet verified playable.
+This is a deliberately one-episode Stremio addon that has completed real-device compatibility validation for **Concentrated Bleach 01 — Death and Strawberry** against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. It is a validated compatibility checkpoint, not a full catalog, and is not deployed.
 
 Source status for this POC:
 
-- **Confirmed:** the CB1 editorial metadata below; torrent `infoHash`, `fileIdx`, filename, video size, and absence of torrent trackers; Stremio catalog/meta/stream structure.
-- **Provisional:** the locked manifest/catalog/video identifiers, display formatting, `bingeGroup`, and the Stremio runtime presentation of `"18"`.
-- **Experiment:** TorBox cache availability, Nuvio playback, seeking/resume, and Continue Watching.
-- **Unresolved:** a publicly reachable CB1 torrent swarm/source if TorBox does not already cache the hash, artwork, subtitles, full-series ordering/model, and every episode after CB1.
+- **Validated:** CB1 catalog, meta, torrent stream discovery, native TorBox resolution and playback, Nuvio AUTO player selection, original-audio and subtitle selection, seeking, resume, Continue Watching, and natural completion behavior.
+- **Locked:** the stable identifiers, torrent identity, verified stream presentation, anime classification, Japanese original-language metadata, and runtime behavior documented below.
+- **Out of scope:** CB2, a full-catalog import, deployment, and changes to the established addon architecture.
+- **Still unresolved outside this POC:** public swarm availability independent of the validated TorBox-cached path, artwork, and the full-series ordering/import model.
 
 ## Architecture
 
 Deterministic wire-shaped content lives in `data/catalog`, `data/meta`, and `data/stream`, with evidence in `data/provenance`. `src/addon.js` is a thin `stremio-addon-sdk` adapter that loads those JSON files and defines the catalog, meta, and stream handlers. Unknown IDs return empty protocol responses.
+
+## Validated compatibility baseline
+
+The compatibility baseline is **Nuvio 0.8.4-beta with native TorBox**, using the user's normal unchanged Nuvio and TorBox configuration. Real-device validation completed this full path:
+
+```text
+catalog -> meta -> stream -> TorBox -> playback -> seek/resume -> Continue Watching -> completion
+```
+
+The validated behavior is:
+
+- Bleach Manga Cut loads in the catalog and Death and Strawberry loads as CB1.
+- The TorBox-cached torrent stream is visible, resolves through Nuvio's native TorBox integration, and plays.
+- Nuvio AUTO selects libmpv.
+- Original Audio selects the Japanese AAC track.
+- The user's existing subtitle preference selects the English Full Subtitles track.
+- Seeking works, progress persists, and reopening the episode resumes correctly.
+- Continue Watching displays CB1 and opens it at the saved position.
+- Natural completion marks CB1 watched and removes it from Continue Watching.
+
+## Locked CB1 compatibility contract
+
+The following fields produced the validated behavior and are locked. Changing any of them requires a separate controlled experiment and complete baseline retesting.
+
+- Stable IDs: series `bleach-manga-cut`; video `cb_1`.
+- Torrent identity: `infoHash` `d0cb7e0c8bad014c055bf2becf2694dcfde2b8e8`; `fileIdx` `0`; `sources` `[]`.
+- `behaviorHints`: `filename` `01 - Death and Strawberry.mkv`; `videoSize` `186522416`; `bingeGroup` `bleach-manga-cut|p2p|standard`.
+- Verified technical stream presentation: name `[P2P🧲] 576p`; title identifies Death and Strawberry, `[001]`, `18:15`, `186.52 MB`, `HEVC`, `AAC 2.0`, and `JPN + ENG`.
+- Series classification: `genres` contains both `Animation` and `Anime` in the catalog preview and full meta response.
+- Original-language metadata: full meta `language` is `Japanese`.
+- Existing episode structure and runtime behavior: season `1`, episode `1`, and Stremio runtime `"18"` remain unchanged.
+
+Verified local inspection evidence records 768x576 HEVC/H.265 Main video with `yuv420p`, Japanese and English AAC LC stereo/2.0 audio, and the embedded subtitle tracks. Embedded subtitles remain media tracks and are not converted into Stremio external subtitle URLs.
+
+## Security and integration boundary
+
+The addon exposes torrent identity metadata and relies on Nuvio's native TorBox integration for resolution. No TorBox API key, private TorBox URL, resolved playback URL, token, UUID, or private manifest URL belongs in this repository or in addon responses. Those values must not be added to fixtures, provenance, documentation, tests, or source code. The loopback manifest shown below is only a local development endpoint.
 
 ## Authoritative CB1 source and provenance
 
@@ -40,7 +77,7 @@ Verified values extracted from `01 - Death and Strawberry.mkv.torrent`:
 - Torrent file count: `1`
 - Announce tracker, announce list, and web seed: absent
 
-The evidence torrent itself is not committed. Public swarm availability and TorBox cache availability are not verified. The current torrent has no tracker sources. A hash-only torrent is sufficient structurally for Stremio/Nuvio. Nuvio's native TorBox path must still be tested for cache availability. If TorBox reports **Not Cached**, do not solve that by adding arbitrary trackers. That becomes a source/distribution investigation before proceeding.
+The evidence torrent itself is not committed. The hash is cached and playable through native TorBox in the validated baseline; public swarm availability independent of that path remains unverified. The current torrent has no tracker sources, and no arbitrary trackers should be added. Any future source/distribution work is separate from this locked compatibility checkpoint.
 
 ## Local install and run
 
@@ -59,17 +96,6 @@ curl http://127.0.0.1:7000/meta/series/bleach-manga-cut.json
 curl http://127.0.0.1:7000/stream/series/cb_1.json
 ```
 
-## Nuvio 0.8.4-beta test plan
+## Regression gate
 
-Automated tests and valid local responses do not complete the compatibility POC. The human gate is:
-
-1. Install this POC in Nuvio 0.8.4-beta.
-2. Confirm Bleach Manga Cut appears.
-3. Confirm only CB1 appears.
-4. Confirm the P2P stream appears.
-5. Select it using the user's normal native TorBox setup.
-6. Record whether TorBox resolves it or reports **Not Cached**.
-7. If resolved, verify correct file playback.
-8. Verify seeking.
-9. Verify resume.
-10. Verify Continue Watching.
+Automated tests protect the deterministic addon responses and locked fields. Any future intentionally authorized compatibility change must also repeat the complete real-device baseline: catalog and meta loading, stream discovery, native TorBox playback, libmpv AUTO selection, Japanese original audio, English Full Subtitles selection, seeking, resume, Continue Watching, and natural completion removal.
