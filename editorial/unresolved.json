@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "policy": "Conflicting or incomplete source claims remain explicit and block only the affected relationship or field; no document-date precedence is applied.",
+  "issues": [
+    {
+      "issueId": "concentrated-35.5-vs-0.0",
+      "status": "unresolved",
+      "kind": "watch-order-endpoint-conflict",
+      "claims": [
+        {
+          "sourceClaim": "Concentrated Bleach 10-35.5",
+          "value": "35.5",
+          "evidenceRefs": [
+            "watch-guide-pdf:page:6:watch-guide"
+          ]
+        },
+        {
+          "sourceClaim": "The corresponding primary spreadsheet record is numbered 0.0 and titled the rotator / the sand.",
+          "value": "0.0",
+          "evidenceRefs": [
+            "concentrated-xlsx:episode-list:A38",
+            "concentrated-xlsx:episode-list:B38"
+          ]
+        }
+      ],
+      "prohibitedResolution": "Do not equate 35.5 with 0.0 and do not expand or finalize the affected watch-order boundary.",
+      "blocks": [
+        "watch-orders/source-guide-v2:segments/1:end"
+      ]
+    },
+    {
+      "issueId": "hollowed-v3-membership",
+      "status": "unresolved",
+      "kind": "version-membership",
+      "claims": [
+        {
+          "sourceClaim": "Hollowed rows contain combined/reworked v3 notes but retain the raw source rows.",
+          "value": "active and obsolete row membership is not selected",
+          "evidenceRefs": [
+            "hollowed-xlsx:episode-list:I18",
+            "hollowed-xlsx:episode-list:I22",
+            "hollowed-xlsx:episode-list:I26",
+            "hollowed-xlsx:episode-list:I38"
+          ]
+        }
+      ],
+      "prohibitedResolution": "Do not mark source rows as aliases or obsolete until explicitly approved.",
+      "blocks": [
+        "hollowed version-specific sequence expansion"
+      ]
+    },
+    {
+      "issueId": "chipped-first-4.5-media-mapping",
+      "status": "unresolved",
+      "kind": "project-version-claim",
+      "claims": [
+        {
+          "sourceClaim": "Only the first 4.5 episodes are updated. The rest of them are older, so don’t report any issues to the creator as he’s retired from doing this",
+          "value": "4.5 is project-level wording, not an episode identifier",
+          "evidenceRefs": [
+            "watch-guide-pdf:page:5:chipped-bleach-breakdown"
+          ]
+        }
+      ],
+      "prohibitedResolution": "Do not map 4.5 to a source episode or media edition without authority.",
+      "blocks": [
+        "per-media Chipped version selection"
+      ]
+    },
+    {
+      "issueId": "ex-current-legacy-and-media-status",
+      "status": "unresolved",
+      "kind": "variant-gating",
+      "claims": [
+        {
+          "sourceClaim": "The EX source describes legacy EX episodes and the semantics of EX 1, EX 27, and EX 50.",
+          "value": "current/legacy status and media availability are not selected",
+          "evidenceRefs": [
+            "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+          ]
+        }
+      ],
+      "prohibitedResolution": "Do not make EX variants default-linear or claim media availability.",
+      "blocks": [
+        "EX generation",
+        "EX default watch-order membership"
+      ]
+    },
+    {
+      "issueId": "cross-project-0.8-relationship",
+      "status": "unresolved",
+      "kind": "cross-project-relationship",
+      "claims": [
+        {
+          "sourceClaim": "Concentrated has its own 0.8 record.",
+          "value": "concentrated:0.8",
+          "evidenceRefs": [
+            "concentrated-xlsx:episode-list:A68",
+            "concentrated-xlsx:episode-list:B68"
+          ]
+        },
+        {
+          "sourceClaim": "Hollowed has its own 0.8 record.",
+          "value": "hollowed:0.8",
+          "evidenceRefs": [
+            "hollowed-xlsx:episode-list:A32",
+            "hollowed-xlsx:episode-list:B32"
+          ]
+        }
+      ],
+      "prohibitedResolution": "Keep the records distinct; do not create equivalence or derivation relationships without authority.",
+      "blocks": [
+        "cross-project 0.8 canonicalization"
+      ]
+    },
+    {
+      "issueId": "chipped-03-04-time-saved",
+      "status": "unresolved",
+      "kind": "uncertain-statistic",
+      "claims": [
+        {
+          "sourceClaim": "The exact time saved for Chipped 03 and 04 is unknown because a scene was moved.",
+          "value": "source strings retained; exact seconds and percentages omitted",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:G4",
+            "chipped-xlsx:chipped-bleach-info:G5",
+            "chipped-xlsx:chipped-bleach-info:K9"
+          ]
+        }
+      ],
+      "prohibitedResolution": "Do not normalize the starred values as exact statistics.",
+      "blocks": [
+        "exact Chipped 03/04 time-saved aggregates"
+      ]
+    }
+  ]
+}

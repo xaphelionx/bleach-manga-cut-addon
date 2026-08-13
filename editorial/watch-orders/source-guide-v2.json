@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "watchOrderId": "source-guide-v2",
+  "authoritySourceId": "watch-guide-pdf",
+  "segments": [
+    {
+      "sequenceIndex": 1,
+      "type": "raw-range",
+      "arc": "Substitute Soul Reaper Arc",
+      "projectId": "concentrated",
+      "rawRange": "01-09",
+      "start": {
+        "rawIdentifier": "01",
+        "resolutionState": "resolved",
+        "recordId": "concentrated:01"
+      },
+      "end": {
+        "rawIdentifier": "09",
+        "resolutionState": "resolved",
+        "recordId": "concentrated:09"
+      },
+      "expanded": false
+    },
+    {
+      "sequenceIndex": 2,
+      "type": "raw-range",
+      "arc": "Soul Society Arc",
+      "projectId": "concentrated",
+      "rawRange": "10-35.5",
+      "start": {
+        "rawIdentifier": "10",
+        "resolutionState": "resolved",
+        "recordId": "concentrated:10"
+      },
+      "end": {
+        "rawIdentifier": "35.5",
+        "resolutionState": "unresolved",
+        "recordId": null,
+        "unresolvedReferenceId": "watch-endpoint:concentrated:35.5"
+      },
+      "expanded": false
+    },
+    {
+      "sequenceIndex": 3,
+      "type": "raw-range",
+      "arc": "Arrancar Arc",
+      "projectId": "concentrated",
+      "rawRange": "36-51",
+      "start": {
+        "rawIdentifier": "36",
+        "resolutionState": "resolved",
+        "recordId": "concentrated:36"
+      },
+      "end": {
+        "rawIdentifier": "51",
+        "resolutionState": "resolved",
+        "recordId": "concentrated:51"
+      },
+      "expanded": false
+    },
+    {
+      "sequenceIndex": 4,
+      "type": "raw-range",
+      "arc": "Arrancar Arc",
+      "projectId": "hollowed",
+      "rawRange": "14-50",
+      "start": {
+        "rawIdentifier": "14",
+        "resolutionState": "resolved",
+        "recordId": "hollowed:14"
+      },
+      "end": {
+        "rawIdentifier": "50",
+        "resolutionState": "resolved",
+        "recordId": "hollowed:50"
+      },
+      "expanded": false
+    },
+    {
+      "sequenceIndex": 5,
+      "type": "raw-range",
+      "arc": "The Lost Agent Arc",
+      "projectId": "chipped",
+      "rawRange": "01-12",
+      "start": {
+        "rawIdentifier": "01",
+        "resolutionState": "resolved",
+        "recordId": "chipped:#01"
+      },
+      "end": {
+        "rawIdentifier": "12",
+        "resolutionState": "resolved",
+        "recordId": "chipped:#12"
+      },
+      "expanded": false
+    },
+    {
+      "sequenceIndex": 6,
+      "type": "external-handoff",
+      "arc": "Thousand-Year Blood War Arc",
+      "rawInstruction": "TYBW Anime Episode 01-43; Read from Chapter 668 or wait for the next 7 episodes in Cour 4 to release",
+      "addonGeneration": false
+    }
+  ],
+  "optionalBranches": [
+    {
+      "branchId": "cb50-hb11.5-insertion",
+      "sequenceIndex": 1,
+      "type": "nested-mid-episode-insertion",
+      "optional": true,
+      "mainlineAnchor": {
+        "recordId": "concentrated:50",
+        "sourceIdentifier": "50"
+      },
+      "pause": {
+        "rawTimestamp": "16:15",
+        "seconds": 975
+      },
+      "insertedRecordId": "hollowed:11.5",
+      "resume": {
+        "recordId": "concentrated:50",
+        "fromRawTimestamp": "16:15",
+        "fromSeconds": 975
+      },
+      "ordinaryAdjacentEpisode": false
+    }
+  ],
+  "unresolvedEndpointReferences": [
+    {
+      "referenceId": "watch-endpoint:concentrated:35.5",
+      "projectId": "concentrated",
+      "rawIdentifier": "35.5",
+      "resolutionState": "unresolved",
+      "issueId": "concentrated-35.5-vs-0.0"
+    }
+  ],
+  "fieldEvidence": {
+    "/watchOrderId": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/authoritySourceId": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/segments/0": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/segments/1": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/segments/2": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/segments/3": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/segments/4": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/segments/5": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/optionalBranches/0": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/unresolvedEndpointReferences/0": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ]
+  }
+}

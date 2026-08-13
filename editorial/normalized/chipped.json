@@ -1,0 +1,1692 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "projectId": "chipped",
+    "displayName": "Chipped Bleach",
+    "authoritySourceId": "chipped-xlsx",
+    "claims": [
+      {
+        "claimId": "chipped-first-4.5-updated",
+        "kind": "version-update",
+        "raw": "Only the first 4.5 episodes are updated. The rest of them are older, so don’t report any issues to the creator as he’s retired from doing this",
+        "interpretationState": "unresolved",
+        "evidenceRefs": [
+          "watch-guide-pdf:page:5:chipped-bleach-breakdown"
+        ]
+      },
+      {
+        "claimId": "chipped-current-guide-coverage",
+        "kind": "coverage",
+        "raw": "This edit only covers The Lost Agent arc. (This is also called the Fullbringer Arc unofficially by fans)",
+        "interpretationState": "direct",
+        "evidenceRefs": [
+          "watch-guide-pdf:page:5:chipped-bleach-breakdown"
+        ]
+      }
+    ],
+    "fieldEvidence": {
+      "/projectId": [
+        "watch-guide-pdf:page:5:chipped-bleach-breakdown"
+      ],
+      "/displayName": [
+        "watch-guide-pdf:page:5:chipped-bleach-breakdown"
+      ],
+      "/authoritySourceId": [
+        "chipped-xlsx:chipped-bleach-info:A1"
+      ],
+      "/claims": [
+        "watch-guide-pdf:page:5:chipped-bleach-breakdown",
+        "watch-guide-pdf:page:5:chipped-bleach-breakdown"
+      ]
+    }
+  },
+  "records": [
+    {
+      "recordId": "chipped:#01",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#01",
+        "displayed": "#01"
+      },
+      "sourceRow": 2,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "The Lost Agent",
+      "mangaMapping": {
+        "raw": "424-428",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "424-428",
+            "start": "424",
+            "end": "428"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "343-344",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "343-344",
+            "start": "343",
+            "end": "344"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.022268518518518517",
+        "displayed": "32:04",
+        "seconds": 1924
+      },
+      "releaseDate": {
+        "raw": "45649.0",
+        "displayed": "12/23/2024",
+        "iso": "2024-12-23"
+      },
+      "lastUpdate": {
+        "raw": "45660.0",
+        "displayed": "1/3/2025",
+        "iso": "2025-01-03"
+      },
+      "timeSaved": {
+        "raw": "06m04s (16%)",
+        "seconds": 364,
+        "percent": 16,
+        "uncertain": false
+      },
+      "notes": [
+        {
+          "text": " BATCH QC CHECKLIST:",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:J2"
+          ]
+        }
+      ],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A2"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A2"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A2"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A2"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A2"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A2"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A2",
+          "chipped-xlsx:chipped-bleach-info:C2",
+          "chipped-xlsx:chipped-bleach-info:F2",
+          "chipped-xlsx:chipped-bleach-info:D2"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A2",
+          "chipped-xlsx:chipped-bleach-info:C2",
+          "chipped-xlsx:chipped-bleach-info:F2",
+          "chipped-xlsx:chipped-bleach-info:D2"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B2"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H2"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H2"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I2"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I2"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F2"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D2"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E2"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G2"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:J2"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#02",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#02",
+        "displayed": "#02"
+      },
+      "sourceRow": 3,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "Welcome to our EXECUTION",
+      "mangaMapping": {
+        "raw": "428-431",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "428-431",
+            "start": "428",
+            "end": "431"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "344-346",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "344-346",
+            "start": "344",
+            "end": "346"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.014953703703703703",
+        "displayed": "21:32",
+        "seconds": 1292
+      },
+      "releaseDate": {
+        "raw": "45654.0",
+        "displayed": "12/28/2024",
+        "iso": "2024-12-28"
+      },
+      "lastUpdate": {
+        "raw": "45660.0",
+        "displayed": "1/3/2025",
+        "iso": "2025-01-03"
+      },
+      "timeSaved": {
+        "raw": "12m35s (37%)",
+        "seconds": 755,
+        "percent": 37,
+        "uncertain": false
+      },
+      "notes": [
+        {
+          "text": "Finished: 3/12",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:J3"
+          ]
+        }
+      ],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A3"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A3"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A3"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A3"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A3"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A3"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A3",
+          "chipped-xlsx:chipped-bleach-info:C3",
+          "chipped-xlsx:chipped-bleach-info:F3",
+          "chipped-xlsx:chipped-bleach-info:D3"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A3",
+          "chipped-xlsx:chipped-bleach-info:C3",
+          "chipped-xlsx:chipped-bleach-info:F3",
+          "chipped-xlsx:chipped-bleach-info:D3"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B3"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H3"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H3"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I3"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I3"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F3"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D3"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E3"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G3"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:J3"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#03",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#03",
+        "displayed": "#03"
+      },
+      "sourceRow": 4,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "The Six Fullbringers",
+      "mangaMapping": {
+        "raw": "431-433",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "431-433",
+            "start": "431",
+            "end": "433"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "346-347",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "346-347",
+            "start": "346",
+            "end": "347"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.016979166666666667",
+        "displayed": "24:27",
+        "seconds": 1467
+      },
+      "releaseDate": {
+        "raw": "45654.0",
+        "displayed": "12/28/2024",
+        "iso": "2024-12-28"
+      },
+      "lastUpdate": {
+        "raw": "45660.0",
+        "displayed": "1/3/2025",
+        "iso": "2025-01-03"
+      },
+      "timeSaved": {
+        "raw": "20m25s (45%)*",
+        "seconds": null,
+        "percent": null,
+        "uncertain": true
+      },
+      "notes": [
+        {
+          "text": "Reedits: 12/12 done",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:J4"
+          ]
+        }
+      ],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A4"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A4"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A4"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A4"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A4"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A4"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A4",
+          "chipped-xlsx:chipped-bleach-info:C4",
+          "chipped-xlsx:chipped-bleach-info:F4",
+          "chipped-xlsx:chipped-bleach-info:D4"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A4",
+          "chipped-xlsx:chipped-bleach-info:C4",
+          "chipped-xlsx:chipped-bleach-info:F4",
+          "chipped-xlsx:chipped-bleach-info:D4"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B4"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H4"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H4"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I4"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I4"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F4"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D4"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E4"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G4"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:J4"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Preserve the starred source text and uncertainty; do not emit exact seconds or percent."
+      }
+    },
+    {
+      "recordId": "chipped:#04",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#04",
+        "displayed": "#04"
+      },
+      "sourceRow": 5,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "Berry in the Box",
+      "mangaMapping": {
+        "raw": "434-439",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "434-439",
+            "start": "434",
+            "end": "439"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "348-349",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "348-349",
+            "start": "348",
+            "end": "349"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.027685185185185184",
+        "displayed": "39:52",
+        "seconds": 2392
+      },
+      "releaseDate": {
+        "raw": "45660.0",
+        "displayed": "1/3/2025",
+        "iso": "2025-01-03"
+      },
+      "lastUpdate": {
+        "raw": "45660.0",
+        "displayed": "1/3/2025",
+        "iso": "2025-01-03"
+      },
+      "timeSaved": {
+        "raw": "08m18s (45%)*",
+        "seconds": null,
+        "percent": null,
+        "uncertain": true
+      },
+      "notes": [
+        {
+          "text": "Resubtitling: 3/12 done",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:J5"
+          ]
+        }
+      ],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A5"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A5"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A5"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A5"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A5"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A5"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A5",
+          "chipped-xlsx:chipped-bleach-info:C5",
+          "chipped-xlsx:chipped-bleach-info:F5",
+          "chipped-xlsx:chipped-bleach-info:D5"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A5",
+          "chipped-xlsx:chipped-bleach-info:C5",
+          "chipped-xlsx:chipped-bleach-info:F5",
+          "chipped-xlsx:chipped-bleach-info:D5"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B5"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H5"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H5"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I5"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I5"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F5"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D5"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E5"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G5"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:J5"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Preserve the starred source text and uncertainty; do not emit exact seconds or percent."
+      }
+    },
+    {
+      "recordId": "chipped:#05",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#05",
+        "displayed": "#05"
+      },
+      "sourceRow": 6,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "The Rising",
+      "mangaMapping": {
+        "raw": "440-444",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "440-444",
+            "start": "440",
+            "end": "444"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "350-352",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "350-352",
+            "start": "350",
+            "end": "352"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.02763888888888889",
+        "displayed": "39:48",
+        "seconds": 2388
+      },
+      "releaseDate": {
+        "raw": "45661.0",
+        "displayed": "1/4/2025",
+        "iso": "2025-01-04"
+      },
+      "lastUpdate": {
+        "raw": "45661.0",
+        "displayed": "1/4/2025",
+        "iso": "2025-01-04"
+      },
+      "timeSaved": {
+        "raw": "32m27s (45%)",
+        "seconds": 1947,
+        "percent": 45,
+        "uncertain": false
+      },
+      "notes": [
+        {
+          "text": "Songs Karaoke: 2/3 done",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:J6"
+          ]
+        }
+      ],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A6"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A6"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A6"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A6"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A6"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A6"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A6",
+          "chipped-xlsx:chipped-bleach-info:C6",
+          "chipped-xlsx:chipped-bleach-info:F6",
+          "chipped-xlsx:chipped-bleach-info:D6"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A6",
+          "chipped-xlsx:chipped-bleach-info:C6",
+          "chipped-xlsx:chipped-bleach-info:F6",
+          "chipped-xlsx:chipped-bleach-info:D6"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B6"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H6"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H6"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I6"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I6"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F6"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D6"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E6"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G6"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:J6"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#06",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#06",
+        "displayed": "#06"
+      },
+      "sourceRow": 7,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "The Dark Beat",
+      "mangaMapping": {
+        "raw": "445-447",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "445-447",
+            "start": "445",
+            "end": "447"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "353-354",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "353-354",
+            "start": "353",
+            "end": "354"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.01775462962962963",
+        "displayed": "25:34",
+        "seconds": 1534
+      },
+      "releaseDate": {
+        "raw": "45669.0",
+        "displayed": "1/12/2025",
+        "iso": "2025-01-12"
+      },
+      "lastUpdate": {
+        "raw": "45669.0",
+        "displayed": "1/12/2025",
+        "iso": "2025-01-12"
+      },
+      "timeSaved": {
+        "raw": "10m18s (29%)",
+        "seconds": 618,
+        "percent": 29,
+        "uncertain": false
+      },
+      "notes": [
+        {
+          "text": "Title Cards: 12/12 done",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:J7"
+          ]
+        }
+      ],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A7"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A7"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A7"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A7"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A7"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A7"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A7",
+          "chipped-xlsx:chipped-bleach-info:C7",
+          "chipped-xlsx:chipped-bleach-info:F7",
+          "chipped-xlsx:chipped-bleach-info:D7"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A7",
+          "chipped-xlsx:chipped-bleach-info:C7",
+          "chipped-xlsx:chipped-bleach-info:F7",
+          "chipped-xlsx:chipped-bleach-info:D7"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B7"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H7"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H7"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I7"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I7"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F7"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D7"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E7"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G7"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:J7"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#07",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#07",
+        "displayed": "#07"
+      },
+      "sourceRow": 8,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "Welcome to our EXECUTION 2",
+      "mangaMapping": {
+        "raw": "447-451",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "447-451",
+            "start": "447",
+            "end": "451"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "354, 356",
+        "tokens": [
+          {
+            "kind": "number",
+            "raw": "354",
+            "value": "354"
+          },
+          {
+            "kind": "number",
+            "raw": "356",
+            "value": "356"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.020717592592592593",
+        "displayed": "29:50",
+        "seconds": 1790
+      },
+      "releaseDate": {
+        "raw": "45681.0",
+        "displayed": "1/24/2025",
+        "iso": "2025-01-24"
+      },
+      "lastUpdate": {
+        "raw": "45682.0",
+        "displayed": "1/25/2025",
+        "iso": "2025-01-25"
+      },
+      "timeSaved": {
+        "raw": "06m32s (18%)",
+        "seconds": 392,
+        "percent": 18,
+        "uncertain": false
+      },
+      "notes": [
+        {
+          "text": "Volume Poems: 12/12 done",
+          "evidenceRefs": [
+            "chipped-xlsx:chipped-bleach-info:J8"
+          ]
+        }
+      ],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A8"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A8"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A8"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A8"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A8"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A8"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A8",
+          "chipped-xlsx:chipped-bleach-info:C8",
+          "chipped-xlsx:chipped-bleach-info:F8",
+          "chipped-xlsx:chipped-bleach-info:D8"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A8",
+          "chipped-xlsx:chipped-bleach-info:C8",
+          "chipped-xlsx:chipped-bleach-info:F8",
+          "chipped-xlsx:chipped-bleach-info:D8"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B8"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H8"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H8"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I8"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I8"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F8"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D8"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E8"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G8"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:J8"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#08",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#08",
+        "displayed": "#08"
+      },
+      "sourceRow": 9,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "erosion/implosion",
+      "mangaMapping": {
+        "raw": "452-453",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "452-453",
+            "start": "452",
+            "end": "453"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "357-358",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "357-358",
+            "start": "357",
+            "end": "358"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.012650462962962962",
+        "displayed": "18:13",
+        "seconds": 1093
+      },
+      "releaseDate": {
+        "raw": "45682.0",
+        "displayed": "1/25/2025",
+        "iso": "2025-01-25"
+      },
+      "lastUpdate": {
+        "raw": "45682.0",
+        "displayed": "1/25/2025",
+        "iso": "2025-01-25"
+      },
+      "timeSaved": {
+        "raw": "29m57s (62%)",
+        "seconds": 1797,
+        "percent": 62,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A9"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A9"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A9"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A9"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A9"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A9"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A9",
+          "chipped-xlsx:chipped-bleach-info:C9",
+          "chipped-xlsx:chipped-bleach-info:F9",
+          "chipped-xlsx:chipped-bleach-info:D9"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A9",
+          "chipped-xlsx:chipped-bleach-info:C9",
+          "chipped-xlsx:chipped-bleach-info:F9",
+          "chipped-xlsx:chipped-bleach-info:D9"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B9"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H9"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H9"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I9"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I9"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F9"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D9"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E9"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G9"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:A9",
+          "chipped-xlsx:chipped-bleach-info:B9"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#09",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#09",
+        "displayed": "#09"
+      },
+      "sourceRow": 10,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "End of All Bonds",
+      "mangaMapping": {
+        "raw": "454-458",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "454-458",
+            "start": "454",
+            "end": "458"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "359-360",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "359-360",
+            "start": "359",
+            "end": "360"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.023206018518518518",
+        "displayed": "33:25",
+        "seconds": 2005
+      },
+      "releaseDate": {
+        "raw": "45694.0",
+        "displayed": "2/6/2025",
+        "iso": "2025-02-06"
+      },
+      "lastUpdate": {
+        "raw": "45694.0",
+        "displayed": "2/6/2025",
+        "iso": "2025-02-06"
+      },
+      "timeSaved": {
+        "raw": "14m45s (31%)",
+        "seconds": 885,
+        "percent": 31,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A10"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A10"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A10"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A10"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A10"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A10"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A10",
+          "chipped-xlsx:chipped-bleach-info:C10",
+          "chipped-xlsx:chipped-bleach-info:F10",
+          "chipped-xlsx:chipped-bleach-info:D10"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A10",
+          "chipped-xlsx:chipped-bleach-info:C10",
+          "chipped-xlsx:chipped-bleach-info:F10",
+          "chipped-xlsx:chipped-bleach-info:D10"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B10"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H10"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H10"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I10"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I10"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F10"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D10"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E10"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G10"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:A10",
+          "chipped-xlsx:chipped-bleach-info:B10"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#10",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#10",
+        "displayed": "#10"
+      },
+      "sourceRow": 11,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "The Deathberry Returns 2",
+      "mangaMapping": {
+        "raw": "459-463",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "459-463",
+            "start": "459",
+            "end": "463"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "361-362",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "361-362",
+            "start": "361",
+            "end": "362"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.024502314814814814",
+        "displayed": "35:17",
+        "seconds": 2117
+      },
+      "releaseDate": {
+        "raw": "45704.0",
+        "displayed": "2/16/2025",
+        "iso": "2025-02-16"
+      },
+      "lastUpdate": {
+        "raw": "45704.0",
+        "displayed": "2/16/2025",
+        "iso": "2025-02-16"
+      },
+      "timeSaved": {
+        "raw": "12m53s (27%)",
+        "seconds": 773,
+        "percent": 27,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A11"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A11"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A11"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A11"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A11"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A11"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A11",
+          "chipped-xlsx:chipped-bleach-info:C11",
+          "chipped-xlsx:chipped-bleach-info:F11",
+          "chipped-xlsx:chipped-bleach-info:D11"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A11",
+          "chipped-xlsx:chipped-bleach-info:C11",
+          "chipped-xlsx:chipped-bleach-info:F11",
+          "chipped-xlsx:chipped-bleach-info:D11"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B11"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H11"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H11"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I11"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I11"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F11"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D11"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E11"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G11"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:A11",
+          "chipped-xlsx:chipped-bleach-info:B11"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#11",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#11",
+        "displayed": "#11"
+      },
+      "sourceRow": 12,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "Raid as a Blade",
+      "mangaMapping": {
+        "raw": "464-472",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "464-472",
+            "start": "464",
+            "end": "472"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "363-364",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "363-364",
+            "start": "363",
+            "end": "364"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.029560185185185186",
+        "displayed": "42:34",
+        "seconds": 2554
+      },
+      "releaseDate": {
+        "raw": "45710.0",
+        "displayed": "2/22/2025",
+        "iso": "2025-02-22"
+      },
+      "lastUpdate": {
+        "raw": "45710.0",
+        "displayed": "2/22/2025",
+        "iso": "2025-02-22"
+      },
+      "timeSaved": {
+        "raw": "05m36s (12%)",
+        "seconds": 336,
+        "percent": 12,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A12"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A12"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A12"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A12"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A12"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A12"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A12",
+          "chipped-xlsx:chipped-bleach-info:C12",
+          "chipped-xlsx:chipped-bleach-info:F12",
+          "chipped-xlsx:chipped-bleach-info:D12"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A12",
+          "chipped-xlsx:chipped-bleach-info:C12",
+          "chipped-xlsx:chipped-bleach-info:F12",
+          "chipped-xlsx:chipped-bleach-info:D12"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B12"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H12"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H12"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I12"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I12"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F12"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D12"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E12"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G12"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:A12",
+          "chipped-xlsx:chipped-bleach-info:B12"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "chipped:#12",
+      "projectId": "chipped",
+      "sourceIdentifier": {
+        "raw": "#12",
+        "displayed": "#12"
+      },
+      "sourceRow": 13,
+      "kind": "base",
+      "availability": "released",
+      "generatable": true,
+      "title": "Goodbye to our XCution",
+      "mangaMapping": {
+        "raw": "470, 473-479",
+        "tokens": [
+          {
+            "kind": "number",
+            "raw": "470",
+            "value": "470"
+          },
+          {
+            "kind": "range",
+            "raw": "473-479",
+            "start": "473",
+            "end": "479"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "365-366",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "365-366",
+            "start": "365",
+            "end": "366"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.028796296296296296",
+        "displayed": "41:28",
+        "seconds": 2488
+      },
+      "releaseDate": {
+        "raw": "45721.0",
+        "displayed": "3/5/2025",
+        "iso": "2025-03-05"
+      },
+      "lastUpdate": {
+        "raw": "45721.0",
+        "displayed": "3/5/2025",
+        "iso": "2025-03-05"
+      },
+      "timeSaved": {
+        "raw": "06m42s (14%)",
+        "seconds": 402,
+        "percent": 14,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "chipped-xlsx:chipped-bleach-info:A13"
+        ],
+        "/projectId": [
+          "chipped-xlsx:chipped-bleach-info:A13"
+        ],
+        "/sourceIdentifier/raw": [
+          "chipped-xlsx:chipped-bleach-info:A13"
+        ],
+        "/sourceIdentifier/displayed": [
+          "chipped-xlsx:chipped-bleach-info:A13"
+        ],
+        "/sourceRow": [
+          "chipped-xlsx:chipped-bleach-info:A13"
+        ],
+        "/kind": [
+          "chipped-xlsx:chipped-bleach-info:A13"
+        ],
+        "/availability": [
+          "chipped-xlsx:chipped-bleach-info:A13",
+          "chipped-xlsx:chipped-bleach-info:C13",
+          "chipped-xlsx:chipped-bleach-info:F13",
+          "chipped-xlsx:chipped-bleach-info:D13"
+        ],
+        "/generatable": [
+          "chipped-xlsx:chipped-bleach-info:A13",
+          "chipped-xlsx:chipped-bleach-info:C13",
+          "chipped-xlsx:chipped-bleach-info:F13",
+          "chipped-xlsx:chipped-bleach-info:D13"
+        ],
+        "/title": [
+          "chipped-xlsx:chipped-bleach-info:B13"
+        ],
+        "/mangaMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:H13"
+        ],
+        "/mangaMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:H13"
+        ],
+        "/animeMapping/raw": [
+          "chipped-xlsx:chipped-bleach-info:I13"
+        ],
+        "/animeMapping/tokens": [
+          "chipped-xlsx:chipped-bleach-info:I13"
+        ],
+        "/runtime": [
+          "chipped-xlsx:chipped-bleach-info:F13"
+        ],
+        "/releaseDate": [
+          "chipped-xlsx:chipped-bleach-info:D13"
+        ],
+        "/lastUpdate": [
+          "chipped-xlsx:chipped-bleach-info:E13"
+        ],
+        "/timeSaved": [
+          "chipped-xlsx:chipped-bleach-info:G13"
+        ],
+        "/notes": [
+          "chipped-xlsx:chipped-bleach-info:A13",
+          "chipped-xlsx:chipped-bleach-info:B13"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    }
+  ]
+}

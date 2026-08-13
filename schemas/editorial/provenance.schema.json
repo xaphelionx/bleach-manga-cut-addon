@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/editorial/provenance.schema.json",
+  "title": "Bleach editorial source evidence",
+  "description": "One item in the lossless extracted evidence layer. Extracted collections may retain every substantive/non-empty source item, including helper, statistical, and formula cells; formatting-only and empty cells are excluded. Selected normalized evidence is expressed separately by exact evidenceId references in downstream fieldEvidence and evidenceRefs collections. An extracted item may remain unreferenced without error.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidenceId",
+    "authorityDomain",
+    "source",
+    "locator",
+    "rawValue",
+    "displayedValue"
+  ],
+  "properties": {
+    "evidenceId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable evidence identifier. Whether this item is selected downstream is deterministically derived by matching this exact value in normalized fieldEvidence or evidenceRefs collections; no mutable referenced flag is required."
+    },
+    "authorityDomain": {
+      "const": "editorial"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "sha256"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "locator": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/spreadsheetLocator"
+        },
+        {
+          "$ref": "#/$defs/pdfLocator"
+        }
+      ]
+    },
+    "rawValue": {},
+    "displayedValue": {},
+    "formula": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cachedValue": {},
+    "numberFormat": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "transformation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "operation"
+      ],
+      "properties": {
+        "operation": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "spreadsheetLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "sheet",
+        "row",
+        "cell",
+        "range"
+      ],
+      "properties": {
+        "kind": {
+          "const": "xlsx"
+        },
+        "sheet": {
+          "type": "string"
+        },
+        "row": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "cell": {
+          "type": "string"
+        },
+        "range": {
+          "type": "string"
+        }
+      }
+    },
+    "pdfLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "page",
+        "section"
+      ],
+      "properties": {
+        "kind": {
+          "const": "pdf"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "section": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

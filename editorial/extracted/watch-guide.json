@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "editorial",
+  "source": {
+    "sourceId": "watch-guide-pdf",
+    "filename": "Bleach Watch Guide V2.pdf",
+    "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351",
+    "kind": "pdf"
+  },
+  "pageCount": 6,
+  "linkAnnotationCount": 3,
+  "links": [
+    {
+      "page": 3,
+      "type": "Annotation",
+      "target": "https://docs.google.com/spreadsheets/d/1bz-Ye4yAXmX31K_abAV7kNUq3lwOBg6aiOxAHaFDRl8/edit?gid=0#gid=0",
+      "openedDuringExtraction": false,
+      "authorityUse": "inventory-only"
+    },
+    {
+      "page": 4,
+      "type": "Annotation",
+      "target": "https://docs.google.com/spreadsheets/d/1-ipC6DpZw4GlmMnUw4fOsIWXCbK0s0St2vbsMPr6WfI/edit?usp=sharing",
+      "openedDuringExtraction": false,
+      "authorityUse": "inventory-only"
+    },
+    {
+      "page": 5,
+      "type": "Annotation",
+      "target": "https://docs.google.com/spreadsheets/d/1_mWoBFl2kmhKYDwkO4zM6O4YQscehVpGdzJ79Ro5YgU/edit?gid=463466426#gid=463466426",
+      "openedDuringExtraction": false,
+      "authorityUse": "inventory-only"
+    }
+  ],
+  "pages": [
+    {
+      "evidenceId": "watch-guide-pdf:page:1:title-and-contact",
+      "authorityDomain": "editorial",
+      "source": {
+        "filename": "Bleach Watch Guide V2.pdf",
+        "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351"
+      },
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "section": "Title and contact"
+      },
+      "rawValue": "Bleach Edit Breakdown\n  & Watch Guide V2\n\nFor any inquiries/updates please\ncontact @hy6rus on Discord (Credits\nto the original creator of this Watch\nGuide notcookie)",
+      "displayedValue": "Bleach Edit Breakdown\n  & Watch Guide V2\n\nFor any inquiries/updates please\ncontact @hy6rus on Discord (Credits\nto the original creator of this Watch\nGuide notcookie)",
+      "formula": null,
+      "cachedValue": null,
+      "numberFormat": null,
+      "transformation": {
+        "operation": "pdftotext-layout",
+        "detail": "Removed form-feed characters and trailing line whitespace; retained page-local ordering and wording"
+      }
+    },
+    {
+      "evidenceId": "watch-guide-pdf:page:2:edit-breakdown",
+      "authorityDomain": "editorial",
+      "source": {
+        "filename": "Bleach Watch Guide V2.pdf",
+        "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351"
+      },
+      "locator": {
+        "kind": "pdf",
+        "page": 2,
+        "section": "Edit Breakdown"
+      },
+      "rawValue": "Edit Breakdown\nThere are 3 main edits for the Bleach anime at current that focus on cutting padding while retaining all\nmanga content.\n\n1 - Concentrated Bleach\n2 - Hollowed Bleach\n3 - Chipped Bleach\n\nDISCLAIMER: Only edits that retain as much manga accuracy as possible and\nhave a high quality standard will be added to this list. (Bleach Kai, Project\nHogyoku, chjk’s project, or any variations of the aforementioned edits will\ntherefore NOT be added to this list. Chjk is also a well known bigot online and has\nbeen banned in several fan edit related servers. He is not to be trusted at all and\nconsistently lies. If you see him do not engage, block, and move on with your day)\n\nPLEASE READ THIS WHOLE GUIDE BEFORE ASKING ANY QUESTIONS!\n\n  Confidential   Copyright ©",
+      "displayedValue": "Edit Breakdown\nThere are 3 main edits for the Bleach anime at current that focus on cutting padding while retaining all\nmanga content.\n\n1 - Concentrated Bleach\n2 - Hollowed Bleach\n3 - Chipped Bleach\n\nDISCLAIMER: Only edits that retain as much manga accuracy as possible and\nhave a high quality standard will be added to this list. (Bleach Kai, Project\nHogyoku, chjk’s project, or any variations of the aforementioned edits will\ntherefore NOT be added to this list. Chjk is also a well known bigot online and has\nbeen banned in several fan edit related servers. He is not to be trusted at all and\nconsistently lies. If you see him do not engage, block, and move on with your day)\n\nPLEASE READ THIS WHOLE GUIDE BEFORE ASKING ANY QUESTIONS!\n\n  Confidential   Copyright ©",
+      "formula": null,
+      "cachedValue": null,
+      "numberFormat": null,
+      "transformation": {
+        "operation": "pdftotext-layout",
+        "detail": "Removed form-feed characters and trailing line whitespace; retained page-local ordering and wording"
+      }
+    },
+    {
+      "evidenceId": "watch-guide-pdf:page:3:concentrated-bleach-breakdown",
+      "authorityDomain": "editorial",
+      "source": {
+        "filename": "Bleach Watch Guide V2.pdf",
+        "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351"
+      },
+      "locator": {
+        "kind": "pdf",
+        "page": 3,
+        "section": "Concentrated Bleach Breakdown"
+      },
+      "rawValue": "Concentrated Bleach\nBreakdown\nConcentrated Bleach is an edit of the Bleach anime that removes filler/padding to make it closer to the\nmanga. Some filler is occasionally kept in as well.\n\nIt is a work in progress, currently covering the first quarter of the Arrancar arc, but will eventually\ncover the whole series.\n\nIt features dual audio, as well as EN subs and custom typesetting. It also features retimed and\nrewritten subtitles for an enhanced watching experience. Episodes typically range from 20-40 minutes,\nwith some outliers.\n\nConcentrated Bleach is currently the best option for every single arc. But you’ll need to wait for more\nepisodes as they are released.\n\nInfo spreadsheet here\nCreated by gab\n\n  Confidential    Copyright ©",
+      "displayedValue": "Concentrated Bleach\nBreakdown\nConcentrated Bleach is an edit of the Bleach anime that removes filler/padding to make it closer to the\nmanga. Some filler is occasionally kept in as well.\n\nIt is a work in progress, currently covering the first quarter of the Arrancar arc, but will eventually\ncover the whole series.\n\nIt features dual audio, as well as EN subs and custom typesetting. It also features retimed and\nrewritten subtitles for an enhanced watching experience. Episodes typically range from 20-40 minutes,\nwith some outliers.\n\nConcentrated Bleach is currently the best option for every single arc. But you’ll need to wait for more\nepisodes as they are released.\n\nInfo spreadsheet here\nCreated by gab\n\n  Confidential    Copyright ©",
+      "formula": null,
+      "cachedValue": null,
+      "numberFormat": null,
+      "transformation": {
+        "operation": "pdftotext-layout",
+        "detail": "Removed form-feed characters and trailing line whitespace; retained page-local ordering and wording"
+      }
+    },
+    {
+      "evidenceId": "watch-guide-pdf:page:4:hollowed-bleach-breakdown",
+      "authorityDomain": "editorial",
+      "source": {
+        "filename": "Bleach Watch Guide V2.pdf",
+        "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351"
+      },
+      "locator": {
+        "kind": "pdf",
+        "page": 4,
+        "section": "Hollowed Bleach Breakdown"
+      },
+      "rawValue": "Hollowed Bleach\nBreakdown\nHollowed Bleach follows the same relative structure as Concentrated Bleach, but with lower quality\nediting. Some filler is occasionally kept in as well.\n\nThis edit only covers the Arrancar arc.\n\nThe edit is in both sub and dub. (They are in separate video files though instead of being dual audio in\nthe same video file) There is also English subs but they are unchanged from the source. So keep in\nmind there may be errors occasionally. (There is typesetting with the title cards but not in the episodes\nthemselves for the most part) Finally, a few variant episodes labelled as \"EX\" were created. An info doc\nfor the EX episodes can be found on the spreadsheet. Episodes typically range from 20-45 minutes,\nwith some outliers.\n\nHollowed Bleach is currently the best option for the Arrancar arc.\n\nInfo spreadsheet here\nCreated by Knight\n  Confidential   Copyright ©",
+      "displayedValue": "Hollowed Bleach\nBreakdown\nHollowed Bleach follows the same relative structure as Concentrated Bleach, but with lower quality\nediting. Some filler is occasionally kept in as well.\n\nThis edit only covers the Arrancar arc.\n\nThe edit is in both sub and dub. (They are in separate video files though instead of being dual audio in\nthe same video file) There is also English subs but they are unchanged from the source. So keep in\nmind there may be errors occasionally. (There is typesetting with the title cards but not in the episodes\nthemselves for the most part) Finally, a few variant episodes labelled as \"EX\" were created. An info doc\nfor the EX episodes can be found on the spreadsheet. Episodes typically range from 20-45 minutes,\nwith some outliers.\n\nHollowed Bleach is currently the best option for the Arrancar arc.\n\nInfo spreadsheet here\nCreated by Knight\n  Confidential   Copyright ©",
+      "formula": null,
+      "cachedValue": null,
+      "numberFormat": null,
+      "transformation": {
+        "operation": "pdftotext-layout",
+        "detail": "Removed form-feed characters and trailing line whitespace; retained page-local ordering and wording"
+      }
+    },
+    {
+      "evidenceId": "watch-guide-pdf:page:5:chipped-bleach-breakdown",
+      "authorityDomain": "editorial",
+      "source": {
+        "filename": "Bleach Watch Guide V2.pdf",
+        "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351"
+      },
+      "locator": {
+        "kind": "pdf",
+        "page": 5,
+        "section": "Chipped Bleach Breakdown"
+      },
+      "rawValue": "Chipped Bleach\nBreakdown\nChipped Bleach follows the same relative structure as Concentrated Bleach, but with\nlower quality editing. It is unknown if filler was kept in occasionally. (NOTE: Only the first\n4.5 episodes are updated. The rest of them are older, so don’t report any issues to the\ncreator as he’s retired from doing this)\n\nThis edit only covers The Lost Agent arc. (This is also called the Fullbringer Arc\nunofficially by fans)\n\nIt features dual audio, as well as EN subs and rudimentary typesetting. It also features\nretimed and rewritten subtitles for an enhanced watching experience. Episodes typically\nrange from 20-40 minutes, with some outliers.\n\nChipped Bleach is currently the best option for The Lost Agent arc.\n\nInfo spreadsheet here\nCreated by notcookie\n  Confidential    Copyright ©",
+      "displayedValue": "Chipped Bleach\nBreakdown\nChipped Bleach follows the same relative structure as Concentrated Bleach, but with\nlower quality editing. It is unknown if filler was kept in occasionally. (NOTE: Only the first\n4.5 episodes are updated. The rest of them are older, so don’t report any issues to the\ncreator as he’s retired from doing this)\n\nThis edit only covers The Lost Agent arc. (This is also called the Fullbringer Arc\nunofficially by fans)\n\nIt features dual audio, as well as EN subs and rudimentary typesetting. It also features\nretimed and rewritten subtitles for an enhanced watching experience. Episodes typically\nrange from 20-40 minutes, with some outliers.\n\nChipped Bleach is currently the best option for The Lost Agent arc.\n\nInfo spreadsheet here\nCreated by notcookie\n  Confidential    Copyright ©",
+      "formula": null,
+      "cachedValue": null,
+      "numberFormat": null,
+      "transformation": {
+        "operation": "pdftotext-layout",
+        "detail": "Removed form-feed characters and trailing line whitespace; retained page-local ordering and wording"
+      }
+    },
+    {
+      "evidenceId": "watch-guide-pdf:page:6:watch-guide",
+      "authorityDomain": "editorial",
+      "source": {
+        "filename": "Bleach Watch Guide V2.pdf",
+        "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351"
+      },
+      "locator": {
+        "kind": "pdf",
+        "page": 6,
+        "section": "Watch Guide"
+      },
+      "rawValue": "              Substitute Soul Reaper Arc:\n              - Concentrated Bleach 01-09\n\n              Soul Society Arc:\n              - Concentrated Bleach 10-35.5\n\n              Arrancar Arc:\nWatch Guide   - Concentrated Bleach 36-51 (Optional: Pause CB 50 at\n              16:15, watch HB 11.5, then resume CB 50. HB 11.5 is filler\n              from the anime which references cut manga content)\n\n(Sub+Dub)     - Hollowed Bleach 14-50\n\n              The Lost Agent Arc:\n              - Chipped Bleach 01-12\n\n              Thousand-Year Blood War Arc:\n              - TYBW Anime Episode 01-43\n              - Read from Chapter 668 or wait for the next 7 episodes in\n              Cour 4 to release",
+      "displayedValue": "              Substitute Soul Reaper Arc:\n              - Concentrated Bleach 01-09\n\n              Soul Society Arc:\n              - Concentrated Bleach 10-35.5\n\n              Arrancar Arc:\nWatch Guide   - Concentrated Bleach 36-51 (Optional: Pause CB 50 at\n              16:15, watch HB 11.5, then resume CB 50. HB 11.5 is filler\n              from the anime which references cut manga content)\n\n(Sub+Dub)     - Hollowed Bleach 14-50\n\n              The Lost Agent Arc:\n              - Chipped Bleach 01-12\n\n              Thousand-Year Blood War Arc:\n              - TYBW Anime Episode 01-43\n              - Read from Chapter 668 or wait for the next 7 episodes in\n              Cour 4 to release",
+      "formula": null,
+      "cachedValue": null,
+      "numberFormat": null,
+      "transformation": {
+        "operation": "pdftotext-layout",
+        "detail": "Removed form-feed characters and trailing line whitespace; retained page-local ordering and wording"
+      }
+    }
+  ]
+}

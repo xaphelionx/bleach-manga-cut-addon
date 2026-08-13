@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "authorityScope": "Bleach editorial metadata only; never torrent or media technical evidence",
+  "sources": [
+    {
+      "sourceId": "watch-guide-pdf",
+      "filename": "Bleach Watch Guide V2.pdf",
+      "relativePath": "sources/Bleach Watch Guide V2.pdf",
+      "sha256": "d5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351",
+      "byteSize": 55358,
+      "kind": "pdf",
+      "role": "watch-order-authority",
+      "pageCount": 6,
+      "linkAnnotationCount": 3
+    },
+    {
+      "sourceId": "concentrated-xlsx",
+      "filename": "!Concentrated Bleach Info.xlsx",
+      "relativePath": "sources/!Concentrated Bleach Info.xlsx",
+      "sha256": "f3eb61d7415800dcd105a3aea029b8cdd28c25e489874e6001f46106844660e2",
+      "byteSize": 56458,
+      "kind": "xlsx",
+      "role": "project-editorial-authority",
+      "sheets": [
+        {
+          "name": "Episode List",
+          "state": "visible",
+          "role": "episode-data",
+          "primaryDataRange": "A1:H91",
+          "substantiveRange": "A1:AE116",
+          "substantiveCellCount": 1003,
+          "formattedOnlyCellCount": 13443,
+          "formulaCount": 53,
+          "hyperlinkCount": 6,
+          "hiddenRows": [],
+          "hiddenColumns": [],
+          "commentsPresent": false,
+          "notesPresent": false
+        },
+        {
+          "name": "Arc List",
+          "state": "visible",
+          "role": "project-summary",
+          "primaryDataRange": "A1:M10",
+          "substantiveRange": "A1:M10",
+          "substantiveCellCount": 79,
+          "formattedOnlyCellCount": 15,
+          "formulaCount": 10,
+          "hyperlinkCount": 0,
+          "hiddenRows": [],
+          "hiddenColumns": [],
+          "commentsPresent": false,
+          "notesPresent": false
+        }
+      ]
+    },
+    {
+      "sourceId": "hollowed-xlsx",
+      "filename": "Hollowed Bleach Info.xlsx",
+      "relativePath": "sources/Hollowed Bleach Info.xlsx",
+      "sha256": "58cdbe6ab95d1d28dc724eb114865cb1999050f545462a2b496128d7dde404ce",
+      "byteSize": 48340,
+      "kind": "xlsx",
+      "role": "project-editorial-authority",
+      "sheets": [
+        {
+          "name": "Episode List",
+          "state": "visible",
+          "role": "episode-data",
+          "primaryDataRange": "A1:I65",
+          "substantiveRange": "A1:M65",
+          "substantiveCellCount": 468,
+          "formattedOnlyCellCount": 14047,
+          "formulaCount": 0,
+          "hyperlinkCount": 5,
+          "hiddenRows": [],
+          "hiddenColumns": [
+            "27:31"
+          ],
+          "commentsPresent": false,
+          "notesPresent": false
+        }
+      ]
+    },
+    {
+      "sourceId": "chipped-xlsx",
+      "filename": "Chipped Bleach Info.xlsx",
+      "relativePath": "sources/Chipped Bleach Info.xlsx",
+      "sha256": "a13495e4ebb2b731b9e033c489136eb2bf2e9ae1ad26e84fa47f4cc155ea13f6",
+      "byteSize": 11842,
+      "kind": "xlsx",
+      "role": "project-editorial-authority",
+      "sheets": [
+        {
+          "name": "Chipped Bleach Info",
+          "state": "visible",
+          "role": "episode-data",
+          "primaryDataRange": "A1:J13",
+          "substantiveRange": "A1:Y30",
+          "substantiveCellCount": 226,
+          "formattedOnlyCellCount": 188,
+          "formulaCount": 7,
+          "hyperlinkCount": 3,
+          "hiddenRows": [],
+          "hiddenColumns": [],
+          "commentsPresent": false,
+          "notesPresent": false
+        },
+        {
+          "name": "Sheet2",
+          "state": "visible",
+          "role": "empty-helper",
+          "primaryDataRange": null,
+          "substantiveRange": null,
+          "substantiveCellCount": 0,
+          "formattedOnlyCellCount": 0,
+          "formulaCount": 0,
+          "hyperlinkCount": 0,
+          "hiddenRows": [],
+          "hiddenColumns": [],
+          "commentsPresent": false,
+          "notesPresent": false
+        }
+      ]
+    },
+    {
+      "sourceId": "ex-episodes-pdf",
+      "filename": "EX Episodes Info.pdf",
+      "relativePath": "sources/EX Episodes Info.pdf",
+      "sha256": "bbffbfcc0e8ee175530be3692175cc0674dfa34df33992f07a71a89931dc9f81",
+      "byteSize": 33228,
+      "kind": "pdf",
+      "role": "variant-semantics-authority",
+      "pageCount": 1,
+      "linkAnnotationCount": 0
+    }
+  ]
+}

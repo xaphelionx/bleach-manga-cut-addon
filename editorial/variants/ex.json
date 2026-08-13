@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "collectionId": "hollowed-ex",
+  "defaultLinearMembership": false,
+  "variants": [
+    {
+      "variantId": "hollowed:ex:01",
+      "sourceLabel": "EX 1",
+      "relationship": "optional-transition-variant",
+      "baseRecordIds": [
+        "hollowed:01"
+      ],
+      "optional": true,
+      "defaultLinearMembership": false,
+      "semantics": {
+        "raw": "Changes the start of the episode so you can watch the filler Bount arc before it (idk why you would but its an option).",
+        "externalTransition": "Bount arc"
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.10869212962962962",
+        "displayed": "36:31",
+        "seconds": 2191
+      },
+      "currentLegacyStatus": "unresolved",
+      "mediaAvailability": "unresolved",
+      "branch": null,
+      "fieldEvidence": {
+        "/variantId": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/sourceLabel": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/relationship": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/baseRecordIds": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/optional": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/defaultLinearMembership": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/semantics": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/runtime": [
+          "hollowed-xlsx:episode-list:F2"
+        ],
+        "/currentLegacyStatus": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/mediaAvailability": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/branch": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ]
+      }
+    },
+    {
+      "variantId": "hollowed:ex:27",
+      "sourceLabel": "EX 27",
+      "relationship": "optional-combined-replacement",
+      "baseRecordIds": [
+        "hollowed:27",
+        "hollowed:28",
+        "hollowed:29"
+      ],
+      "optional": true,
+      "defaultLinearMembership": false,
+      "semantics": {
+        "raw": "Combines episodes 27-29 into a movie length episode. That’s all it does there aren’t any added scene or anything. Order goes 26 -> 27 EX -> 0.8 -> 30",
+        "externalTransition": null
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "1:32:55",
+        "displayed": "1:32:55",
+        "seconds": 5575
+      },
+      "currentLegacyStatus": "unresolved",
+      "mediaAvailability": "unresolved",
+      "branch": {
+        "branchId": "hollowed-ex27-path",
+        "replacesRecordIds": [
+          "hollowed:27",
+          "hollowed:28",
+          "hollowed:29"
+        ],
+        "path": [
+          {
+            "sequenceIndex": 1,
+            "type": "record",
+            "recordId": "hollowed:26"
+          },
+          {
+            "sequenceIndex": 2,
+            "type": "variant",
+            "variantId": "hollowed:ex:27"
+          },
+          {
+            "sequenceIndex": 3,
+            "type": "record",
+            "recordId": "hollowed:0.8"
+          },
+          {
+            "sequenceIndex": 4,
+            "type": "record",
+            "recordId": "hollowed:30"
+          }
+        ]
+      },
+      "fieldEvidence": {
+        "/variantId": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/sourceLabel": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/relationship": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/baseRecordIds": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/optional": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/defaultLinearMembership": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/semantics": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/runtime": [
+          "hollowed-xlsx:episode-list:F29"
+        ],
+        "/currentLegacyStatus": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/mediaAvailability": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/branch": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ]
+      }
+    },
+    {
+      "variantId": "hollowed:ex:50",
+      "sourceLabel": "EX 50",
+      "relationship": "optional-transition-variant",
+      "baseRecordIds": [
+        "hollowed:50"
+      ],
+      "optional": true,
+      "defaultLinearMembership": false,
+      "semantics": {
+        "raw": "Changes the ending to allow you to watch the filler Gotei 13 invading army arc after.",
+        "externalTransition": "Gotei 13 invading army arc"
+      },
+      "runtime": {
+        "state": "known",
+        "raw": "0.014282407407407407",
+        "displayed": "20:34",
+        "seconds": 1234
+      },
+      "currentLegacyStatus": "unresolved",
+      "mediaAvailability": "unresolved",
+      "branch": null,
+      "fieldEvidence": {
+        "/variantId": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/sourceLabel": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/relationship": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/baseRecordIds": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/optional": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/defaultLinearMembership": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/semantics": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/runtime": [
+          "hollowed-xlsx:episode-list:F53"
+        ],
+        "/currentLegacyStatus": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/mediaAvailability": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ],
+        "/branch": [
+          "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics"
+        ]
+      }
+    }
+  ]
+}

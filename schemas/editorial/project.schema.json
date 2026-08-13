@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/editorial/project.schema.json",
+  "title": "Normalized Bleach editorial project",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "project",
+    "records"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectId",
+        "displayName",
+        "authoritySourceId",
+        "claims",
+        "fieldEvidence"
+      ],
+      "properties": {
+        "projectId": {
+          "enum": [
+            "concentrated",
+            "hollowed",
+            "chipped"
+          ]
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "authoritySourceId": {
+          "type": "string"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claimId",
+              "kind",
+              "raw",
+              "interpretationState",
+              "evidenceRefs"
+            ],
+            "properties": {
+              "claimId": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "raw": {
+                "type": "string"
+              },
+              "interpretationState": {
+                "enum": [
+                  "direct",
+                  "unresolved"
+                ]
+              },
+              "evidenceRefs": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "fieldEvidence": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "episode.schema.json"
+      }
+    }
+  }
+}

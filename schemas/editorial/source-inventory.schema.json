@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/editorial/source-inventory.schema.json",
+  "title": "Bleach editorial source inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "authorityScope",
+    "sources"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "authorityScope": {
+      "const": "Bleach editorial metadata only; never torrent or media technical evidence"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "filename",
+        "relativePath",
+        "sha256",
+        "byteSize",
+        "kind",
+        "role"
+      ],
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relativePath": {
+          "type": "string",
+          "pattern": "^sources/"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "byteSize": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "enum": [
+            "xlsx",
+            "pdf"
+          ]
+        },
+        "role": {
+          "enum": [
+            "watch-order-authority",
+            "project-editorial-authority",
+            "variant-semantics-authority"
+          ]
+        },
+        "sheets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sheet"
+          }
+        },
+        "pageCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "linkAnnotationCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "sheet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "state",
+        "role",
+        "substantiveCellCount",
+        "formattedOnlyCellCount",
+        "formulaCount",
+        "hyperlinkCount",
+        "hiddenRows",
+        "hiddenColumns",
+        "commentsPresent",
+        "notesPresent"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "visible",
+            "hidden",
+            "veryHidden"
+          ]
+        },
+        "role": {
+          "enum": [
+            "episode-data",
+            "project-summary",
+            "empty-helper"
+          ]
+        },
+        "primaryDataRange": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "substantiveRange": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "substantiveCellCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "formattedOnlyCellCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "formulaCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hyperlinkCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hiddenRows": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "hiddenColumns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "commentsPresent": {
+          "type": "boolean"
+        },
+        "notesPresent": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

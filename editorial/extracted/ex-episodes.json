@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "editorial",
+  "source": {
+    "sourceId": "ex-episodes-pdf",
+    "filename": "EX Episodes Info.pdf",
+    "sha256": "bbffbfcc0e8ee175530be3692175cc0674dfa34df33992f07a71a89931dc9f81",
+    "kind": "pdf"
+  },
+  "pageCount": 1,
+  "linkAnnotationCount": 0,
+  "links": [],
+  "pages": [
+    {
+      "evidenceId": "ex-episodes-pdf:page:1:ex-overview-legacy-status-and-ex-1-27-50-semantics",
+      "authorityDomain": "editorial",
+      "source": {
+        "filename": "EX Episodes Info.pdf",
+        "sha256": "bbffbfcc0e8ee175530be3692175cc0674dfa34df33992f07a71a89931dc9f81"
+      },
+      "locator": {
+        "kind": "pdf",
+        "page": 1,
+        "section": "EX overview, legacy status, and EX 1/27/50 semantics"
+      },
+      "rawValue": "EX Episodes serve as variants to the base episodes. Some leading from or into other, filler\nepisodes or just combining base episodes to be a movie. The list below explains each one,\nspoiler-free.\n\n\n\n\nLegacy EX Episodes\nOld EX episodes from the first 3 batches. Poor edits and dub only but they still exist if you\nwanna watch those for whatever reason.\n\n\n\n\nEX 1\nChanges the start of the episode so you can watch the filler Bount arc before it (idk why you\nwould but its an option).\n\n\n\n\nEX 27\nCombines episodes 27-29 into a movie length episode. That’s all it does there aren’t any added\nscene or anything.\nOrder goes 26 -> 27 EX -> 0.8 -> 30\n\n\n\n\nEX 50\nChanges the ending to allow you to watch the filler Gotei 13 invading army arc after.",
+      "displayedValue": "EX Episodes serve as variants to the base episodes. Some leading from or into other, filler\nepisodes or just combining base episodes to be a movie. The list below explains each one,\nspoiler-free.\n\n\n\n\nLegacy EX Episodes\nOld EX episodes from the first 3 batches. Poor edits and dub only but they still exist if you\nwanna watch those for whatever reason.\n\n\n\n\nEX 1\nChanges the start of the episode so you can watch the filler Bount arc before it (idk why you\nwould but its an option).\n\n\n\n\nEX 27\nCombines episodes 27-29 into a movie length episode. That’s all it does there aren’t any added\nscene or anything.\nOrder goes 26 -> 27 EX -> 0.8 -> 30\n\n\n\n\nEX 50\nChanges the ending to allow you to watch the filler Gotei 13 invading army arc after.",
+      "formula": null,
+      "cachedValue": null,
+      "numberFormat": null,
+      "transformation": {
+        "operation": "pdftotext-layout",
+        "detail": "Removed form-feed characters and trailing line whitespace; retained page-local ordering and wording"
+      }
+    }
+  ]
+}

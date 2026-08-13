@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/editorial/episode.schema.json",
+  "title": "Normalized Bleach editorial episode",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "recordId",
+    "projectId",
+    "sourceIdentifier",
+    "sourceRow",
+    "kind",
+    "availability",
+    "generatable",
+    "title",
+    "mangaMapping",
+    "animeMapping",
+    "runtime",
+    "releaseDate",
+    "lastUpdate",
+    "timeSaved",
+    "notes",
+    "fieldEvidence",
+    "fieldTransformations"
+  ],
+  "properties": {
+    "recordId": {
+      "type": "string"
+    },
+    "projectId": {
+      "enum": [
+        "concentrated",
+        "hollowed",
+        "chipped"
+      ]
+    },
+    "sourceIdentifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw",
+        "displayed"
+      ],
+      "properties": {
+        "raw": {
+          "type": "string"
+        },
+        "displayed": {
+          "type": "string"
+        }
+      }
+    },
+    "sourceRow": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "kind": {
+      "enum": [
+        "base",
+        "special"
+      ]
+    },
+    "availability": {
+      "enum": [
+        "released",
+        "planned",
+        "deferred",
+        "explicitly-not-planned",
+        "unresolved"
+      ]
+    },
+    "generatable": {
+      "type": "boolean"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mangaMapping": {
+      "$ref": "#/$defs/mapping"
+    },
+    "animeMapping": {
+      "$ref": "#/$defs/mapping"
+    },
+    "runtime": {
+      "$ref": "#/$defs/runtime"
+    },
+    "releaseDate": {
+      "$ref": "#/$defs/dateValue"
+    },
+    "lastUpdate": {
+      "$ref": "#/$defs/dateValue"
+    },
+    "timeSaved": {
+      "$ref": "#/$defs/timeSaved"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "evidenceRefs"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "evidenceRefs": {
+            "$ref": "#/$defs/evidenceRefs"
+          }
+        }
+      }
+    },
+    "fieldEvidence": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/evidenceRefs"
+      }
+    },
+    "fieldTransformations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "evidenceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw",
+        "tokens"
+      ],
+      "properties": {
+        "raw": {
+          "type": "string"
+        },
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "raw"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "number",
+                  "range",
+                  "literal"
+                ]
+              },
+              "raw": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "start": {
+                "type": "string"
+              },
+              "end": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "raw",
+        "displayed",
+        "seconds"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "known",
+            "missing",
+            "non-runtime-directive"
+          ]
+        },
+        "raw": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "displayed": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seconds": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      }
+    },
+    "dateValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw",
+        "displayed",
+        "iso"
+      ],
+      "properties": {
+        "raw": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "displayed": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "iso": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "timeSaved": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw",
+        "seconds",
+        "percent",
+        "uncertain"
+      ],
+      "properties": {
+        "raw": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seconds": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "percent": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "uncertain": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

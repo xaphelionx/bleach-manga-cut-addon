@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/editorial/variant.schema.json",
+  "title": "Bleach editorial variant collection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "collectionId",
+    "defaultLinearMembership",
+    "variants"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "collectionId": {
+      "const": "hollowed-ex"
+    },
+    "defaultLinearMembership": {
+      "const": false
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "variantId",
+          "sourceLabel",
+          "relationship",
+          "baseRecordIds",
+          "optional",
+          "defaultLinearMembership",
+          "semantics",
+          "runtime",
+          "currentLegacyStatus",
+          "mediaAvailability",
+          "branch",
+          "fieldEvidence"
+        ],
+        "properties": {
+          "variantId": {
+            "type": "string"
+          },
+          "sourceLabel": {
+            "type": "string"
+          },
+          "relationship": {
+            "enum": [
+              "optional-transition-variant",
+              "optional-combined-replacement"
+            ]
+          },
+          "baseRecordIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "optional": {
+            "const": true
+          },
+          "defaultLinearMembership": {
+            "const": false
+          },
+          "semantics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "raw",
+              "externalTransition"
+            ],
+            "properties": {
+              "raw": {
+                "type": "string"
+              },
+              "externalTransition": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "runtime": {
+            "type": "object"
+          },
+          "currentLegacyStatus": {
+            "const": "unresolved"
+          },
+          "mediaAvailability": {
+            "const": "unresolved"
+          },
+          "branch": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "fieldEvidence": {
+            "type": "object",
+            "minProperties": 1
+          }
+        }
+      }
+    }
+  }
+}

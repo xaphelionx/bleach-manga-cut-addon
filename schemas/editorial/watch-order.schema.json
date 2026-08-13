@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/editorial/watch-order.schema.json",
+  "title": "Bleach source watch order",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "watchOrderId",
+    "authoritySourceId",
+    "segments",
+    "optionalBranches",
+    "unresolvedEndpointReferences",
+    "fieldEvidence"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "watchOrderId": {
+      "const": "source-guide-v2"
+    },
+    "authoritySourceId": {
+      "const": "watch-guide-pdf"
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/rangeSegment"
+          },
+          {
+            "$ref": "#/$defs/externalHandoff"
+          }
+        ]
+      }
+    },
+    "optionalBranches": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/insertion"
+      }
+    },
+    "unresolvedEndpointReferences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "referenceId",
+          "projectId",
+          "rawIdentifier",
+          "resolutionState",
+          "issueId"
+        ],
+        "properties": {
+          "referenceId": {
+            "type": "string"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "rawIdentifier": {
+            "type": "string"
+          },
+          "resolutionState": {
+            "const": "unresolved"
+          },
+          "issueId": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fieldEvidence": {
+      "type": "object",
+      "minProperties": 1
+    }
+  },
+  "$defs": {
+    "endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rawIdentifier",
+        "resolutionState",
+        "recordId"
+      ],
+      "properties": {
+        "rawIdentifier": {
+          "type": "string"
+        },
+        "resolutionState": {
+          "enum": [
+            "resolved",
+            "unresolved"
+          ]
+        },
+        "recordId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unresolvedReferenceId": {
+          "type": "string"
+        }
+      }
+    },
+    "rangeSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequenceIndex",
+        "type",
+        "arc",
+        "projectId",
+        "rawRange",
+        "start",
+        "end",
+        "expanded"
+      ],
+      "properties": {
+        "sequenceIndex": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "type": {
+          "const": "raw-range"
+        },
+        "arc": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "rawRange": {
+          "type": "string"
+        },
+        "start": {
+          "$ref": "#/$defs/endpoint"
+        },
+        "end": {
+          "$ref": "#/$defs/endpoint"
+        },
+        "expanded": {
+          "const": false
+        }
+      }
+    },
+    "externalHandoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequenceIndex",
+        "type",
+        "arc",
+        "rawInstruction",
+        "addonGeneration"
+      ],
+      "properties": {
+        "sequenceIndex": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "type": {
+          "const": "external-handoff"
+        },
+        "arc": {
+          "type": "string"
+        },
+        "rawInstruction": {
+          "type": "string"
+        },
+        "addonGeneration": {
+          "const": false
+        }
+      }
+    },
+    "insertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "branchId",
+        "sequenceIndex",
+        "type",
+        "optional",
+        "mainlineAnchor",
+        "pause",
+        "insertedRecordId",
+        "resume",
+        "ordinaryAdjacentEpisode"
+      ],
+      "properties": {
+        "branchId": {
+          "type": "string"
+        },
+        "sequenceIndex": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "type": {
+          "const": "nested-mid-episode-insertion"
+        },
+        "optional": {
+          "const": true
+        },
+        "mainlineAnchor": {
+          "type": "object"
+        },
+        "pause": {
+          "type": "object"
+        },
+        "insertedRecordId": {
+          "type": "string"
+        },
+        "resume": {
+          "type": "object"
+        },
+        "ordinaryAdjacentEpisode": {
+          "const": false
+        }
+      }
+    }
+  }
+}
