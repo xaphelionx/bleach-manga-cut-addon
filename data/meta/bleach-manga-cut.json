@@ -3,6 +3,11 @@
     "id": "bleach-manga-cut",
     "type": "series",
     "name": "Bleach Manga Cut",
+    "genres": [
+      "Animation",
+      "Anime"
+    ],
+    "language": "Japanese",
     "videos": [
       {
         "id": "cb_1",

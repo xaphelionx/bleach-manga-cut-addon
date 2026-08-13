@@ -22,6 +22,23 @@
     "stremioVideoRuntime": "18",
     "runtimeTransformation": "The exact 18:15 source runtime is presented as 18 minutes, matching the observed One Pace convention."
   },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
   "torrentEvidence": {
     "evidenceFile": "01 - Death and Strawberry.mkv.torrent",
     "infoHash": "d0cb7e0c8bad014c055bf2becf2694dcfde2b8e8",
@@ -35,6 +52,46 @@
     "publicSwarmAvailability": "not verified",
     "torBoxCacheAvailability": "not verified"
   },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "01 - Death and Strawberry.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      },
+      {
+        "language": "Spanish",
+        "title": "Spanish [Vex]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs."
+  },
   "status": {
     "confirmed": [
       "CB1 editorial metadata",
@@ -43,6 +100,8 @@
       "filename",
       "videoSize",
       "absence of torrent trackers",
+      "local media video and audio metadata from ffprobe",
+      "embedded subtitle metadata from ffprobe",
       "Stremio catalog/meta/stream structure"
     ],
     "provisional": [
@@ -60,7 +119,6 @@
     "unresolved": [
       "publicly reachable torrent swarm/source for CB1 if TorBox does not already cache this hash",
       "artwork",
-      "subtitles",
       "full-series ordering/model",
       "every episode after CB1"
     ]
