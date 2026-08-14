@@ -8,6 +8,7 @@ const os = require('node:os')
 const path = require('node:path')
 
 const { validate: validateEditorial } = require('./validate-editorial')
+const { validatePublicationPrefix } = require('./validate-publication-prefix')
 
 const root = path.resolve(__dirname, '..')
 
@@ -40,10 +41,6 @@ const SERIES_POLICY = Object.freeze({
   })
 })
 
-// This is the only episode-specific restriction in ordinary generation. It is a
-// deliberate first-run orchestration gate, not an input to candidate construction.
-const INITIAL_ELIGIBLE_VIDEO_IDS = Object.freeze(['cb_1', 'cb_2'])
-
 const PROJECT_INPUTS = Object.freeze({
   concentrated: Object.freeze({
     normalized: 'editorial/normalized/concentrated.json',
@@ -67,8 +64,14 @@ const CB1_REGRESSION_FILES = Object.freeze({
   stream: 'data/stream/cb_1.json',
   provenance: 'data/provenance/cb_1.json'
 })
-const CB1_BYTE_IDENTICAL_FILES = Object.freeze([
-  CB1_REGRESSION_FILES.stream
+const CB2_REGRESSION_FILES = Object.freeze({
+  stream: 'data/stream/cb_2.json',
+  provenance: 'data/provenance/cb_2.json'
+})
+const BYTE_IDENTICAL_REGRESSION_FILES = Object.freeze([
+  CB1_REGRESSION_FILES.stream,
+  CB2_REGRESSION_FILES.stream,
+  CB2_REGRESSION_FILES.provenance
 ])
 
 const missing = () => ({ state: 'missing' })
@@ -426,47 +429,15 @@ function loadEvidenceRecords() {
   return records
 }
 
-function validateProjectionInputs(projection, registry, optional) {
+function validateProjectionInputs(projection, registry, optional, evidenceRecords) {
   assert.equal(projection.series.id, SERIES_POLICY.seriesId)
   assert.equal(projection.series.type, SERIES_POLICY.type)
-  assert.equal(projection.publicationPolicy.primarySeriesPrefixClosed, true)
-  assert.equal(projection.publicationPolicy.playableOnly, true)
-
-  const recordIds = registry.entries.map((entry) => entry.recordId)
-  const videoIds = registry.entries.map((entry) => entry.videoId)
-  assert.equal(new Set(recordIds).size, recordIds.length, 'duplicate registry record mappings')
-  assert.equal(new Set(videoIds).size, videoIds.length, 'duplicate registry video IDs')
-
-  const eligible = projection.entries
-    .filter((entry) => entry.publicationEligibility.state === 'eligible')
-    .sort(compareProjectedEntries)
-  const sorted = [...projection.entries].sort(compareProjectedEntries)
-  const firstIneligible = sorted.findIndex((entry) => entry.publicationEligibility.state !== 'eligible')
-  assert.equal(firstIneligible, eligible.length, 'eligible primary records must form the first sorted prefix')
-  assert.ok(sorted.slice(firstIneligible).every(
-    (entry) => entry.publicationEligibility.state !== 'eligible'
-  ), 'primary publication prefix invariant failed')
-  assert.deepEqual(
-    projection.publicationPolicy.currentPublishedVideoIds,
-    eligible.map((entry) => entry.videoId)
-  )
-
-  const optionalIds = new Set(optional.entries.map((entry) => entry.videoId))
-  assert.equal(optional.primarySeriesPublicationAllowed, false)
-  for (const entry of optional.entries) {
-    assert.equal(entry.primarySeriesPlacement, null, `optional entry ${entry.videoId} leaked a placement`)
-    assert.notEqual(entry.publicationEligibility.state, 'eligible', `optional entry ${entry.videoId} leaked into publication`)
-  }
-  for (const entry of eligible) {
-    assert.ok(!optionalIds.has(entry.videoId), `optional ID ${entry.videoId} leaked into primary publication`)
-  }
-  return eligible
-}
-
-function compareProjectedEntries(left, right) {
-  return left.projectedPlacement.season - right.projectedPlacement.season ||
-    left.projectedPlacement.episode - right.projectedPlacement.episode ||
-    left.videoId.localeCompare(right.videoId)
+  return validatePublicationPrefix({
+    projection,
+    registry,
+    optional,
+    evidenceRecords
+  }).eligibleEntries
 }
 
 function selectedEditorialEvidence(record, evidenceById) {
@@ -553,9 +524,9 @@ function loadAndValidateSourceInputs() {
   const projection = loadJson('projection/stremio/public-projection.json')
   const registry = loadJson('projection/stremio/video-id-registry.json')
   const optional = loadJson('projection/stremio/optional-content.json')
-  const eligibleEntries = validateProjectionInputs(projection, registry, optional)
   const projects = loadProjectInputs()
   const evidenceRecords = loadEvidenceRecords()
+  const eligibleEntries = validateProjectionInputs(projection, registry, optional, evidenceRecords)
   const resolvedRecords = resolveEligibleRecords({
     eligibleEntries,
     registry,
@@ -999,14 +970,14 @@ function assertExpectedProvenanceDiff(locked, candidate) {
   return actual
 }
 
-function compareCb1Regression(candidates, outputRoot) {
+function compareRegressionFixtures(candidates, outputRoot) {
   // This is the first point at which locked generated data is read. Candidate
   // objects have already been built and every candidate file has been written.
   for (const relativePath of Object.keys(candidates)) {
     assert.ok(fs.existsSync(path.join(outputRoot, relativePath)), `candidate was not written: ${relativePath}`)
   }
   const comparisons = {}
-  for (const relativePath of CB1_BYTE_IDENTICAL_FILES) {
+  for (const relativePath of BYTE_IDENTICAL_REGRESSION_FILES) {
     const candidateBytes = fs.readFileSync(path.join(outputRoot, relativePath))
     const lockedBytes = fs.readFileSync(path.join(root, relativePath))
     assert.ok(candidateBytes.equals(lockedBytes), `${relativePath} is not byte-identical to the locked fixture`)
@@ -1027,11 +998,10 @@ function compareCb1Regression(candidates, outputRoot) {
 function runDryRun(options = {}) {
   const inputs = loadAndValidateSourceInputs()
   const eligibleVideoIds = inputs.resolvedRecords.map((resolved) => resolved.projectionEntry.videoId)
-  assert.deepEqual(eligibleVideoIds, INITIAL_ELIGIBLE_VIDEO_IDS, 'initial dry-run eligible set changed')
   const candidates = generateCandidates(inputs.resolvedRecords)
   const outputRoot = options.outputRoot || fs.mkdtempSync(path.join(os.tmpdir(), 'bleach-manga-cut-generation-'))
   writeCandidates(candidates, outputRoot)
-  const comparisons = compareCb1Regression(candidates, outputRoot)
+  const comparisons = compareRegressionFixtures(candidates, outputRoot)
   return {
     outputRoot,
     processedVideoIds: eligibleVideoIds,
@@ -1044,7 +1014,7 @@ function runDryRun(options = {}) {
 function main() {
   const result = runDryRun()
   process.stdout.write(`dry-run output: ${result.outputRoot}\n`)
-  for (const relativePath of CB1_BYTE_IDENTICAL_FILES) {
+  for (const relativePath of BYTE_IDENTICAL_REGRESSION_FILES) {
     const comparison = result.comparisons[relativePath]
     process.stdout.write(`${relativePath}: byte-identical PASS (${comparison.sha256})\n`)
   }
@@ -1060,10 +1030,10 @@ function main() {
 if (require.main === module) main()
 
 module.exports = {
-  CB1_BYTE_IDENTICAL_FILES,
+  BYTE_IDENTICAL_REGRESSION_FILES,
   CB1_REGRESSION_FILES,
+  CB2_REGRESSION_FILES,
   EXPECTED_PROVENANCE_DIFF_CONTRACT,
-  INITIAL_ELIGIBLE_VIDEO_IDS,
   PROJECT_INPUTS,
   SERIES_POLICY,
   assertExpectedProvenanceDiff,
@@ -1081,5 +1051,6 @@ module.exports = {
   runDryRun,
   selectedEditorialEvidence,
   summarizeCellRange,
+  validateProjectionInputs,
   validateVerifiedMedia
 }

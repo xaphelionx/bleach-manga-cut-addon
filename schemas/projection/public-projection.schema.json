@@ -63,7 +63,19 @@
       "properties": {
         "primarySeriesPrefixClosed": { "const": true },
         "projectionDoesNotAuthorizePublication": { "const": true },
-        "currentPublishedVideoIds": { "const": ["cb_1", "cb_2"] },
+        "currentPublishedVideoIds": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "prefixItems": [
+            { "const": "cb_1" },
+            { "const": "cb_2" }
+          ],
+          "items": {
+            "type": "string",
+            "pattern": "^cb_[0-9]+(?:p[0-9]+)?$"
+          }
+        },
         "playableOnly": { "const": true }
       }
     },
@@ -114,7 +126,12 @@
         { "$ref": "#/$defs/cb1PublishedEntry" },
         { "$ref": "#/$defs/cb2PublishedEntry" }
       ],
-      "items": { "$ref": "#/$defs/blockedEntry" }
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/verifiedPrimaryPublishedEntry" },
+          { "$ref": "#/$defs/blockedEntry" }
+        ]
+      }
     }
   },
   "$defs": {
@@ -242,9 +259,12 @@
             "mediaEvidence": { "const": "unresolved" },
             "defaultTimelineContiguity": { "const": "blocked" },
             "blockedBy": {
-              "const": [
-                "media-evidence-not-approved",
-                "primary-publication-prefix-after-cb_2"
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                { "const": "media-evidence-not-approved" },
+                { "pattern": "^primary-publication-prefix-after-cb_[0-9]+(?:p[0-9]+)?$" }
               ]
             }
           }
@@ -261,10 +281,13 @@
             "mediaEvidence": { "const": "unresolved" },
             "defaultTimelineContiguity": { "const": "blocked" },
             "blockedBy": {
-              "const": [
-                "media-evidence-not-approved",
-                "primary-publication-prefix-after-cb_2",
-                "concentrated-35.5-vs-0.0"
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                { "const": "media-evidence-not-approved" },
+                { "pattern": "^primary-publication-prefix-after-cb_[0-9]+(?:p[0-9]+)?$" },
+                { "const": "concentrated-35.5-vs-0.0" }
               ]
             }
           }
@@ -325,14 +348,32 @@
         }
       ]
     },
+    "verifiedPrimaryPublishedEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/entry" },
+        {
+          "properties": {
+            "publicationEligibility": {
+              "const": { "state": "eligible", "gateSet": "verified-primary" }
+            }
+          }
+        }
+      ]
+    },
     "blockedEntry": {
       "allOf": [
         { "$ref": "#/$defs/entry" },
         {
           "properties": {
             "publicationEligibility": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["state", "gateSet"],
               "properties": {
-                "state": { "const": "blocked" }
+                "state": { "const": "blocked" },
+                "gateSet": {
+                  "enum": ["unpublished-pre-boundary", "blocked-post-boundary"]
+                }
               }
             }
           }

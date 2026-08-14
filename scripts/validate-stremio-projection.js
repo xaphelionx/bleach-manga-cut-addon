@@ -5,15 +5,18 @@ const crypto = require('node:crypto')
 const fs = require('node:fs')
 const path = require('node:path')
 
+const { validatePublicationPrefix } = require('./validate-publication-prefix')
+const { validateVerifiedMedia } = require('./generate-stremio-data')
+
 const root = path.resolve(__dirname, '..')
 
 const LOCKED_HASHES = Object.freeze({
-  'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '62457501d66303d043fa9f2ae8bf4ffb8275b86bd078892ce33b66f1cc9a026e',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
   'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
+  'evidence/media/cb_1.json': '7b84d24d4186163f39e3622a496c244dc3c5f5d5144d9513d6fb41e3be60f80f',
+  'evidence/media/cb_2.json': 'ef4a42b0cd6378ae2d56e65ab080285f96b0341b54b60c973091db934e91129a',
   'editorial/unresolved.json': '95a8343690054e7808af829b125753235b5f58fb559602ffc32872c4684518d8'
 })
 
@@ -155,6 +158,14 @@ function validate() {
   const projection = load('projection/stremio/public-projection.json')
   const registry = load('projection/stremio/video-id-registry.json')
   const optional = load('projection/stremio/optional-content.json')
+  const evidenceRecords = fs.readdirSync(path.join(root, 'evidence', 'media'))
+    .filter((name) => name.endsWith('.json'))
+    .sort()
+    .map((name) => ({
+      relativePath: `evidence/media/${name}`,
+      value: load(`evidence/media/${name}`)
+    }))
+  for (const record of evidenceRecords) validateVerifiedMedia(record.value)
   const unresolved = load('editorial/unresolved.json')
   const watchOrder = load('editorial/watch-orders/source-guide-v2.json')
   const variants = load('editorial/variants/ex.json')
@@ -180,44 +191,6 @@ function validate() {
   assert.equal(projection.clientCompatibility.seasonZeroIsolated, false)
   assert.equal(projection.publicationPolicy.primarySeriesPrefixClosed, true)
   assert.equal(projection.publicationPolicy.projectionDoesNotAuthorizePublication, true)
-  assert.deepEqual(projection.publicationPolicy.currentPublishedVideoIds, ['cb_1', 'cb_2'])
-  assert.deepEqual(projection.publicationGateSets, {
-    'locked-cb1': {
-      editorialAvailability: 'passed',
-      resolvedPlacement: 'passed',
-      mediaEvidence: 'passed',
-      defaultTimelineContiguity: 'passed',
-      blockedBy: []
-    },
-    'verified-primary': {
-      editorialAvailability: 'passed',
-      resolvedPlacement: 'passed',
-      mediaEvidence: 'passed',
-      defaultTimelineContiguity: 'passed',
-      blockedBy: []
-    },
-    'unpublished-pre-boundary': {
-      editorialAvailability: 'passed',
-      resolvedPlacement: 'passed',
-      mediaEvidence: 'unresolved',
-      defaultTimelineContiguity: 'blocked',
-      blockedBy: [
-        'media-evidence-not-approved',
-        'primary-publication-prefix-after-cb_2'
-      ]
-    },
-    'blocked-post-boundary': {
-      editorialAvailability: 'passed',
-      resolvedPlacement: 'passed',
-      mediaEvidence: 'unresolved',
-      defaultTimelineContiguity: 'blocked',
-      blockedBy: [
-        'media-evidence-not-approved',
-        'primary-publication-prefix-after-cb_2',
-        'concentrated-35.5-vs-0.0'
-      ]
-    }
-  })
 
   assert.equal(unresolved.issues.length, 6)
   const boundaryIssue = unresolved.issues.find(
@@ -296,8 +269,6 @@ function validate() {
         state: 'eligible',
         gateSet: 'verified-primary'
       })
-    } else {
-      assert.equal(entry.publicationEligibility.state, 'blocked')
     }
   }
 
@@ -306,11 +277,6 @@ function validate() {
     left.projectedPlacement.episode - right.projectedPlacement.episode
   )
   assert.deepEqual(globallySorted.map((entry) => entry.recordId), expectedIds)
-  const eligibility = globallySorted.map((entry) => entry.publicationEligibility.state === 'eligible')
-  const firstIneligible = eligibility.indexOf(false)
-  assert.equal(firstIneligible, 2)
-  assert.ok(eligibility.slice(firstIneligible).every((state) => state === false))
-
   const cb1 = projection.entries[0]
   assert.equal(cb1.recordId, 'concentrated:01')
   assert.equal(cb1.videoId, 'cb_1')
@@ -387,8 +353,7 @@ function validate() {
     }
   }
 
-  const publishedRegistryEntries = registry.entries.filter((entry) => entry.status === 'published')
-  assert.deepEqual(publishedRegistryEntries, [
+  for (const expected of [
     {
       recordType: 'normalized-record',
       recordId: 'concentrated:01',
@@ -407,19 +372,9 @@ function validate() {
       status: 'published',
       locked: true
     }
-  ])
-  assert.deepEqual(
-    registry.entries.find((entry) => entry.videoId === 'cb_3'),
-    {
-      recordType: 'normalized-record',
-      recordId: 'concentrated:03',
-      projectId: 'concentrated',
-      sourceIdentifier: '03',
-      videoId: 'cb_3',
-      status: 'reserved',
-      locked: false
-    }
-  )
+  ]) {
+    assert.deepEqual(registry.entries.find((entry) => entry.videoId === expected.videoId), expected)
+  }
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').length > 0)
 
   for (const record of normalizedRecords) {
@@ -480,6 +435,13 @@ function validate() {
 
   assertNoMediaClaims([projection, registry, optional])
 
+  const publication = validatePublicationPrefix({
+    projection,
+    registry,
+    optional,
+    evidenceRecords
+  })
+
   const projectCounts = projection.entries.reduce((counts, entry) => {
     counts[entry.projectId] = (counts[entry.projectId] || 0) + 1
     return counts
@@ -494,6 +456,8 @@ function validate() {
     projectedEntries: projection.entries.length,
     projectCounts,
     eligibilityCounts,
+    eligibleVideoIds: publication.eligibleIds,
+    publishedVideoIds: publication.publishedIds,
     registryEntries: registry.entries.length,
     optionalEntries: optional.entries.length,
     unresolvedIssues: unresolved.issues.length
@@ -505,7 +469,9 @@ if (require.main === module) {
   process.stdout.write(
     `validated ${result.projectedEntries} projected entries, ` +
     `${result.registryEntries} registered IDs, ${result.optionalEntries} optional entries, ` +
-    `and ${result.unresolvedIssues} unresolved editorial issues\n`
+    `and ${result.unresolvedIssues} unresolved editorial issues\n` +
+    `eligible primary IDs: ${JSON.stringify(result.eligibleVideoIds)}\n` +
+    `published registry IDs: ${JSON.stringify(result.publishedVideoIds)}\n`
   )
 }
 
@@ -514,5 +480,6 @@ module.exports = {
   encodeNormalizedId,
   encodeVariantId,
   expectedDefaultProjection,
+  validatePublicationPrefix,
   validate
 }
