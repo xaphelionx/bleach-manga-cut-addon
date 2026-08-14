@@ -7,6 +7,7 @@ const { after, before, test } = require('node:test')
 const { serveHTTP } = require('stremio-addon-sdk')
 
 const addon = require('../src/addon')
+const { isSafeStreamFileVideoId } = require('../src/video-id')
 const catalog = require('../data/catalog/bleach-manga-cut.json')
 const meta = require('../data/meta/bleach-manga-cut.json')
 const cb1Stream = require('../data/stream/cb_1.json')
@@ -57,6 +58,40 @@ test('manifest declares only the POC series resources and identifiers', () => {
   ])
   assert.equal('config' in addon.manifest, false)
   assert.equal('behaviorHints' in addon.manifest, false)
+})
+
+test('stream fixture ID safety accepts Concentrated lexical IDs only', () => {
+  for (const videoId of [
+    'cb_1',
+    'cb_2',
+    'cb_27',
+    'cb_27p5',
+    'cb_0p0',
+    'cb_0p8',
+    'cb_70p5'
+  ]) {
+    assert.equal(isSafeStreamFileVideoId(videoId), true, videoId)
+  }
+
+  for (const videoId of [
+    'cb_',
+    'cb_p5',
+    'cb_27p',
+    'cb_27.5',
+    'cb_-1',
+    'cb_27p5x',
+    '../data/stream/cb_1',
+    'cb_1/../../cb_2',
+    'hb_ex_27'
+  ]) {
+    assert.equal(isSafeStreamFileVideoId(videoId), false, videoId)
+  }
+})
+
+test('safe stream fixture syntax does not grant publication permission', async () => {
+  assert.equal(isSafeStreamFileVideoId('cb_27p5'), true)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'cb_27p5'), false)
+  assert.deepEqual(await addon.get('stream', 'series', 'cb_27p5'), { streams: [] })
 })
 
 test('catalog and meta contain exactly the ordered two-episode POC', () => {
@@ -232,7 +267,7 @@ test('handlers return empty protocol responses for unknown IDs', async () => {
     await addon.get('stream', 'series', 'cb_999'),
     { streams: [] }
   )
-  for (const videoId of ['cb_3', 'hb_ex_27', '../data/stream/cb_1', 'cb_1/../../cb_2']) {
+  for (const videoId of ['cb_3', 'cb_27p5', 'hb_ex_27', '../data/stream/cb_1', 'cb_1/../../cb_2']) {
     assert.deepEqual(await addon.get('stream', 'series', videoId), { streams: [] }, videoId)
   }
   assert.deepEqual(await addon.get('stream', 'movie', 'cb_1'), { streams: [] })
@@ -246,6 +281,7 @@ test('normal Stremio HTTP endpoints return the deterministic JSON', async () => 
     ['/stream/series/cb_1.json', cb1Stream],
     ['/stream/series/cb_2.json', cb2Stream],
     ['/stream/series/cb_3.json', { streams: [] }],
+    ['/stream/series/cb_27p5.json', { streams: [] }],
     ['/stream/series/hb_ex_27.json', { streams: [] }],
     ['/meta/series/unknown-series.json', { meta: {} }],
     ['/stream/series/cb_999.json', { streams: [] }]

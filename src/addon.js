@@ -2,15 +2,15 @@
 
 const path = require('node:path')
 const { addonBuilder, serveHTTP } = require('stremio-addon-sdk')
+const { isSafeStreamFileVideoId } = require('./video-id')
 
 const catalog = require(path.join('..', 'data', 'catalog', 'bleach-manga-cut.json'))
 const meta = require(path.join('..', 'data', 'meta', 'bleach-manga-cut.json'))
 
-const SAFE_PUBLISHED_VIDEO_ID = /^cb_[1-9][0-9]*$/
 const publishedVideoIds = meta.meta.videos.map((video) => video.id)
 if (
   new Set(publishedVideoIds).size !== publishedVideoIds.length ||
-  publishedVideoIds.some((videoId) => !SAFE_PUBLISHED_VIDEO_ID.test(videoId))
+  publishedVideoIds.some((videoId) => !isSafeStreamFileVideoId(videoId))
 ) {
   throw new Error('Generated meta contains an unsafe or duplicate published video ID')
 }
