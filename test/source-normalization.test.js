@@ -37,7 +37,7 @@ const lockedRepositoryHashes = {
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
   'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
   'src/addon.js': 'b46b74d8b3d557c4cc25796aa963fb77f8cda6bf7539e352d605fb64f157a7e5',
-  'package.json': '2c4fd51521062e0bf10bbc3aea051f4817b423709195723726e362f696d0076f',
+  'package.json': 'fafb31cdfca781af226a2fa99def0b52c5dbbbc2d187118c1271cf334e104c23',
   'package-lock.json': 'a1e290dec14dd2257ae8f6cb0d5d04a384c1acf0605aeb756ae85483027c8ec9'
 }
 
