@@ -284,10 +284,27 @@ test('optional IDs cannot enter the primary default timeline', () => {
 test('registry reservation never implies publication', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   assert.deepEqual(
-    registry.entries.filter((entry) => entry.status === 'published').map((entry) => entry.videoId),
-    ['cb_1', 'cb_2']
+    registry.entries.filter((entry) => entry.status === 'published').map(({ videoId, locked }) => ({
+      videoId,
+      locked
+    })),
+    [
+      { videoId: 'cb_1', locked: true },
+      { videoId: 'cb_2', locked: true }
+    ]
   )
-  assert.equal(registry.entries.find((entry) => entry.videoId === 'cb_3').status, 'reserved')
+  assert.deepEqual(
+    registry.entries.find((entry) => entry.videoId === 'cb_3'),
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:03',
+      projectId: 'concentrated',
+      sourceIdentifier: '03',
+      videoId: 'cb_3',
+      status: 'reserved',
+      locked: false
+    }
+  )
   assert.ok(registry.entries.some((entry) => entry.status === 'reserved' && projectedById.has(entry.recordId)))
 })
 

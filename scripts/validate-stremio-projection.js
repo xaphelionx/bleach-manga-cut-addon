@@ -405,10 +405,21 @@ function validate() {
       sourceIdentifier: '02',
       videoId: 'cb_2',
       status: 'published',
-      locked: false
+      locked: true
     }
   ])
-  assert.equal(registry.entries.find((entry) => entry.videoId === 'cb_3').status, 'reserved')
+  assert.deepEqual(
+    registry.entries.find((entry) => entry.videoId === 'cb_3'),
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:03',
+      projectId: 'concentrated',
+      sourceIdentifier: '03',
+      videoId: 'cb_3',
+      status: 'reserved',
+      locked: false
+    }
+  )
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').length > 0)
 
   for (const record of normalizedRecords) {
