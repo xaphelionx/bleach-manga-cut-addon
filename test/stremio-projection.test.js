@@ -20,6 +20,7 @@ const hash = (relativePath) => crypto.createHash('sha256')
   .digest('hex')
 
 const projection = read('projection/stremio/public-projection.json')
+const projectionSchema = read('schemas/projection/public-projection.schema.json')
 const registry = read('projection/stremio/video-id-registry.json')
 const optional = read('projection/stremio/optional-content.json')
 const unresolved = read('editorial/unresolved.json')
@@ -39,6 +40,61 @@ test('primary projection keeps the locked Bleach Manga Cut series ID', () => {
   assert.equal(optional.primarySeriesId, 'bleach-manga-cut')
 })
 
+test('projection schema locks the exact two-episode publication POC', () => {
+  assert.deepEqual(
+    projectionSchema.properties.publicationPolicy.properties.currentPublishedVideoIds.const,
+    ['cb_1', 'cb_2']
+  )
+  assert.ok(projectionSchema.properties.publicationGateSets.required.includes('verified-primary'))
+  assert.deepEqual(projectionSchema.properties.publicationGateSets.properties, {
+    'locked-cb1': { $ref: '#/$defs/lockedCb1GateSet' },
+    'verified-primary': { $ref: '#/$defs/verifiedPrimaryGateSet' },
+    'unpublished-pre-boundary': { $ref: '#/$defs/unpublishedPreBoundaryGateSet' },
+    'blocked-post-boundary': { $ref: '#/$defs/blockedPostBoundaryGateSet' }
+  })
+  assert.deepEqual(
+    projectionSchema.$defs.eligibility.properties.gateSet.enum,
+    ['locked-cb1', 'verified-primary', 'unpublished-pre-boundary', 'blocked-post-boundary']
+  )
+  assert.deepEqual(
+    projectionSchema.$defs.verifiedPrimaryGateSet.allOf[1].properties,
+    {
+      editorialAvailability: { const: 'passed' },
+      resolvedPlacement: { const: 'passed' },
+      mediaEvidence: { const: 'passed' },
+      defaultTimelineContiguity: { const: 'passed' },
+      blockedBy: { const: [] }
+    }
+  )
+  assert.deepEqual(projectionSchema.properties.entries.prefixItems, [
+    { $ref: '#/$defs/cb1PublishedEntry' },
+    { $ref: '#/$defs/cb2PublishedEntry' }
+  ])
+  assert.deepEqual(
+    projectionSchema.$defs.cb2PublishedEntry.allOf[1].properties.publicationEligibility.const,
+    { state: 'eligible', gateSet: 'verified-primary' }
+  )
+  assert.deepEqual(
+    projectionSchema.$defs.blockedEntry.allOf[1].properties.publicationEligibility.properties.state,
+    { const: 'blocked' }
+  )
+  assert.deepEqual(
+    projectionSchema.$defs.unpublishedPreBoundaryGateSet.allOf[1].properties.blockedBy.const,
+    ['media-evidence-not-approved', 'primary-publication-prefix-after-cb_2']
+  )
+  assert.deepEqual(
+    projectionSchema.$defs.blockedPostBoundaryGateSet.allOf[1].properties.blockedBy.const,
+    [
+      'media-evidence-not-approved',
+      'primary-publication-prefix-after-cb_2',
+      'concentrated-35.5-vs-0.0'
+    ]
+  )
+  assert.equal(projectionSchema.properties.publicationGateSets.additionalProperties, false)
+  assert.equal(projectionSchema.$defs.gateSet.additionalProperties, false)
+  assert.doesNotMatch(JSON.stringify(projectionSchema), /primary-publication-prefix-after-cb_1/)
+})
+
 test('CB1 remains cb_1, S1E1, and Death and Strawberry', () => {
   const cb1 = projectedById.get('concentrated:01')
   assert.equal(cb1.videoId, 'cb_1')
@@ -51,12 +107,33 @@ test('CB1 remains cb_1, S1E1, and Death and Strawberry', () => {
   assert.deepEqual(cb1.publicationEligibility, { state: 'eligible', gateSet: 'locked-cb1' })
 })
 
-test('all locked CB1 artifacts remain byte-identical', () => {
+test('CB2 is cb_2, S1E2, Starter, and independently publication-gated', () => {
+  const cb2 = projectedById.get('concentrated:02')
+  assert.equal(cb2.videoId, 'cb_2')
+  assert.deepEqual(cb2.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 1,
+    episode: 2
+  })
+  assert.equal(cb2.title, 'Starter')
+  assert.deepEqual(cb2.publicationEligibility, { state: 'eligible', gateSet: 'verified-primary' })
+  assert.deepEqual(projection.publicationGateSets['verified-primary'], {
+    editorialAvailability: 'passed',
+    resolvedPlacement: 'passed',
+    mediaEvidence: 'passed',
+    defaultTimelineContiguity: 'passed',
+    blockedBy: []
+  })
+})
+
+test('locked and generated POC artifacts match their exact hashes', () => {
   for (const relativePath of [
     'data/catalog/bleach-manga-cut.json',
     'data/meta/bleach-manga-cut.json',
     'data/provenance/cb_1.json',
-    'data/stream/cb_1.json'
+    'data/provenance/cb_2.json',
+    'data/stream/cb_1.json',
+    'data/stream/cb_2.json'
   ]) {
     assert.equal(hash(relativePath), LOCKED_HASHES[relativePath], relativePath)
   }
@@ -157,9 +234,11 @@ test('primary publication is a globally sorted contiguous prefix', () => {
     left.projectedPlacement.episode - right.projectedPlacement.episode
   )
   const eligibility = sorted.map((entry) => entry.publicationEligibility.state === 'eligible')
-  assert.deepEqual(sorted.filter((entry) => entry.publicationEligibility.state === 'eligible').map((entry) => entry.videoId), ['cb_1'])
-  assert.equal(eligibility.indexOf(false), 1)
-  assert.ok(eligibility.slice(1).every((state) => state === false))
+  assert.deepEqual(sorted.filter((entry) => entry.publicationEligibility.state === 'eligible').map((entry) => entry.videoId), ['cb_1', 'cb_2'])
+  assert.equal(eligibility.indexOf(false), 2)
+  assert.ok(eligibility.slice(2).every((state) => state === false))
+  assert.equal(sorted[2].videoId, 'cb_3')
+  assert.equal(sorted[2].publicationEligibility.state, 'blocked')
 })
 
 test('optional and EX entries have no primary-series placement', () => {
@@ -206,8 +285,9 @@ test('registry reservation never implies publication', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   assert.deepEqual(
     registry.entries.filter((entry) => entry.status === 'published').map((entry) => entry.videoId),
-    ['cb_1']
+    ['cb_1', 'cb_2']
   )
+  assert.equal(registry.entries.find((entry) => entry.videoId === 'cb_3').status, 'reserved')
   assert.ok(registry.entries.some((entry) => entry.status === 'reserved' && projectedById.has(entry.recordId)))
 })
 
@@ -237,7 +317,7 @@ test('complete projection validator accepts the artifacts', () => {
   assert.deepEqual(validate(), {
     projectedEntries: 102,
     projectCounts: { concentrated: 52, hollowed: 38, chipped: 12 },
-    eligibilityCounts: { eligible: 1, blocked: 101 },
+    eligibilityCounts: { eligible: 2, blocked: 100 },
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 6

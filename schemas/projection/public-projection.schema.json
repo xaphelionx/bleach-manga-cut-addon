@@ -63,7 +63,7 @@
       "properties": {
         "primarySeriesPrefixClosed": { "const": true },
         "projectionDoesNotAuthorizePublication": { "const": true },
-        "currentPublishedVideoIds": { "const": ["cb_1"] },
+        "currentPublishedVideoIds": { "const": ["cb_1", "cb_2"] },
         "playableOnly": { "const": true }
       }
     },
@@ -72,13 +72,15 @@
       "additionalProperties": false,
       "required": [
         "locked-cb1",
+        "verified-primary",
         "unpublished-pre-boundary",
         "blocked-post-boundary"
       ],
       "properties": {
-        "locked-cb1": { "$ref": "#/$defs/gateSet" },
-        "unpublished-pre-boundary": { "$ref": "#/$defs/gateSet" },
-        "blocked-post-boundary": { "$ref": "#/$defs/gateSet" }
+        "locked-cb1": { "$ref": "#/$defs/lockedCb1GateSet" },
+        "verified-primary": { "$ref": "#/$defs/verifiedPrimaryGateSet" },
+        "unpublished-pre-boundary": { "$ref": "#/$defs/unpublishedPreBoundaryGateSet" },
+        "blocked-post-boundary": { "$ref": "#/$defs/blockedPostBoundaryGateSet" }
       }
     },
     "unresolvedDefaultEdge": {
@@ -107,8 +109,12 @@
     },
     "entries": {
       "type": "array",
-      "minItems": 1,
-      "items": { "$ref": "#/$defs/entry" }
+      "minItems": 3,
+      "prefixItems": [
+        { "$ref": "#/$defs/cb1PublishedEntry" },
+        { "$ref": "#/$defs/cb2PublishedEntry" }
+      ],
+      "items": { "$ref": "#/$defs/blockedEntry" }
     }
   },
   "$defs": {
@@ -169,7 +175,7 @@
       "properties": {
         "state": { "enum": ["eligible", "blocked", "excluded", "unresolved"] },
         "gateSet": {
-          "enum": ["locked-cb1", "unpublished-pre-boundary", "blocked-post-boundary"]
+          "enum": ["locked-cb1", "verified-primary", "unpublished-pre-boundary", "blocked-post-boundary"]
         }
       }
     },
@@ -198,6 +204,73 @@
     "gateState": {
       "enum": ["passed", "blocked", "unresolved", "not-applicable"]
     },
+    "lockedCb1GateSet": {
+      "allOf": [
+        { "$ref": "#/$defs/gateSet" },
+        {
+          "properties": {
+            "editorialAvailability": { "const": "passed" },
+            "resolvedPlacement": { "const": "passed" },
+            "mediaEvidence": { "const": "passed" },
+            "defaultTimelineContiguity": { "const": "passed" },
+            "blockedBy": { "const": [] }
+          }
+        }
+      ]
+    },
+    "verifiedPrimaryGateSet": {
+      "allOf": [
+        { "$ref": "#/$defs/gateSet" },
+        {
+          "properties": {
+            "editorialAvailability": { "const": "passed" },
+            "resolvedPlacement": { "const": "passed" },
+            "mediaEvidence": { "const": "passed" },
+            "defaultTimelineContiguity": { "const": "passed" },
+            "blockedBy": { "const": [] }
+          }
+        }
+      ]
+    },
+    "unpublishedPreBoundaryGateSet": {
+      "allOf": [
+        { "$ref": "#/$defs/gateSet" },
+        {
+          "properties": {
+            "editorialAvailability": { "const": "passed" },
+            "resolvedPlacement": { "const": "passed" },
+            "mediaEvidence": { "const": "unresolved" },
+            "defaultTimelineContiguity": { "const": "blocked" },
+            "blockedBy": {
+              "const": [
+                "media-evidence-not-approved",
+                "primary-publication-prefix-after-cb_2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "blockedPostBoundaryGateSet": {
+      "allOf": [
+        { "$ref": "#/$defs/gateSet" },
+        {
+          "properties": {
+            "editorialAvailability": { "const": "passed" },
+            "resolvedPlacement": { "const": "passed" },
+            "mediaEvidence": { "const": "unresolved" },
+            "defaultTimelineContiguity": { "const": "blocked" },
+            "blockedBy": {
+              "const": [
+                "media-evidence-not-approved",
+                "primary-publication-prefix-after-cb_2",
+                "concentrated-35.5-vs-0.0"
+              ]
+            }
+          }
+        }
+      ]
+    },
     "entry": {
       "type": "object",
       "additionalProperties": false,
@@ -223,6 +296,48 @@
         "defaultTimelinePosition": { "$ref": "#/$defs/defaultTimelinePosition" },
         "publicationEligibility": { "$ref": "#/$defs/eligibility" }
       }
+    },
+    "cb1PublishedEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/entry" },
+        {
+          "properties": {
+            "recordId": { "const": "concentrated:01" },
+            "videoId": { "const": "cb_1" },
+            "publicationEligibility": {
+              "const": { "state": "eligible", "gateSet": "locked-cb1" }
+            }
+          }
+        }
+      ]
+    },
+    "cb2PublishedEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/entry" },
+        {
+          "properties": {
+            "recordId": { "const": "concentrated:02" },
+            "videoId": { "const": "cb_2" },
+            "publicationEligibility": {
+              "const": { "state": "eligible", "gateSet": "verified-primary" }
+            }
+          }
+        }
+      ]
+    },
+    "blockedEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/entry" },
+        {
+          "properties": {
+            "publicationEligibility": {
+              "properties": {
+                "state": { "const": "blocked" }
+              }
+            }
+          }
+        }
+      ]
     },
     "independentRecord": {
       "type": "object",

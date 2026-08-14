@@ -31,10 +31,12 @@ const expectedSourceHashes = {
 
 const lockedRepositoryHashes = {
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': 'b313f997f19e1cf7003991c379122e174ad4442883b029b6e93c068b47589203',
+  'data/meta/bleach-manga-cut.json': '62457501d66303d043fa9f2ae8bf4ffb8275b86bd078892ce33b66f1cc9a026e',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
+  'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
-  'src/addon.js': 'f22073d277b6dcf617c17201379b552c3640b1f48ac34c51f5dad15bf208168b',
+  'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
+  'src/addon.js': 'b46b74d8b3d557c4cc25796aa963fb77f8cda6bf7539e352d605fb64f157a7e5',
   'package.json': '2c4fd51521062e0bf10bbc3aea051f4817b423709195723726e362f696d0076f',
   'package-lock.json': 'a1e290dec14dd2257ae8f6cb0d5d04a384c1acf0605aeb756ae85483027c8ec9'
 }
@@ -300,7 +302,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('CB1 output, behavior, dependencies, and locked compatibility hashes are unchanged', () => {
+test('two-episode POC output preserves CB1 behavior and locked compatibility hashes', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }
@@ -311,14 +313,22 @@ test('CB1 output, behavior, dependencies, and locked compatibility hashes are un
   const torrent = stream.streams[0]
   assert.equal(catalog.metas[0].id, 'bleach-manga-cut')
   assert.equal(meta.meta.id, 'bleach-manga-cut')
-  assert.equal(meta.meta.videos.length, 1)
-  assert.deepEqual(meta.meta.videos[0], {
-    id: 'cb_1',
-    season: 1,
-    episode: 1,
-    title: 'Death and Strawberry',
-    runtime: '18'
-  })
+  assert.deepEqual(meta.meta.videos, [
+    {
+      id: 'cb_1',
+      season: 1,
+      episode: 1,
+      title: 'Death and Strawberry',
+      runtime: '18'
+    },
+    {
+      id: 'cb_2',
+      season: 1,
+      episode: 2,
+      title: 'Starter',
+      runtime: '32'
+    }
+  ])
   assert.equal(torrent.name, '[P2P🧲] 576p')
   assert.equal(torrent.title, '🎬 Death and Strawberry\n📖 [001] 🕒 18:15\n💾 186.52 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG')
   assert.equal(torrent.infoHash, 'd0cb7e0c8bad014c055bf2becf2694dcfde2b8e8')

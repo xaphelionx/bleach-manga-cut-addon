@@ -1,0 +1,144 @@
+{
+  "id": "cb_2",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:02",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A3",
+        "concentrated-xlsx:episode-list:B3",
+        "concentrated-xlsx:episode-list:C3",
+        "concentrated-xlsx:episode-list:D3",
+        "concentrated-xlsx:episode-list:E3",
+        "concentrated-xlsx:episode-list:F3",
+        "concentrated-xlsx:episode-list:G3",
+        "concentrated-xlsx:episode-list:H3"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_2",
+      "projectedPlacement": {
+        "season": 1,
+        "episode": 2
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_2.json",
+      "videoId": "cb_2",
+      "recordId": "concentrated:02",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb2-local-torrent-verification",
+        "cb2-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "02",
+    "title": "Starter",
+    "mangaChapters": "002-006",
+    "sourceAnimeEpisodes": "002-003",
+    "exactEditRuntime": "00:32:47",
+    "normalizedExactRuntime": "32:47",
+    "timeSaved": "12m53s (28%)",
+    "releaseDate": "2024-04-12",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 3,
+      "cells": "A3:H3"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "32",
+    "runtimeTransformation": "The exact 32:47 source runtime is presented as 32 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "786f4a6765d6e34d19d0cefd2f45616633386e84",
+    "fileIdx": 0,
+    "filename": "02 - Starter.mkv",
+    "videoSize": 333401478,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "02 - Starter.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1966.785
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "32:47 (1967 seconds) -> floor whole minutes -> 32",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "333401478 bytes / 1000000, fixed to two decimals -> 333.40 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

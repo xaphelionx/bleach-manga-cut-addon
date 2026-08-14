@@ -5,13 +5,25 @@ const { addonBuilder, serveHTTP } = require('stremio-addon-sdk')
 
 const catalog = require(path.join('..', 'data', 'catalog', 'bleach-manga-cut.json'))
 const meta = require(path.join('..', 'data', 'meta', 'bleach-manga-cut.json'))
-const stream = require(path.join('..', 'data', 'stream', 'cb_1.json'))
+
+const SAFE_PUBLISHED_VIDEO_ID = /^cb_[1-9][0-9]*$/
+const publishedVideoIds = meta.meta.videos.map((video) => video.id)
+if (
+  new Set(publishedVideoIds).size !== publishedVideoIds.length ||
+  publishedVideoIds.some((videoId) => !SAFE_PUBLISHED_VIDEO_ID.test(videoId))
+) {
+  throw new Error('Generated meta contains an unsafe or duplicate published video ID')
+}
+const streamsByVideoId = new Map(publishedVideoIds.map((videoId) => [
+  videoId,
+  require(path.join('..', 'data', 'stream', `${videoId}.json`))
+]))
 
 const manifest = {
   id: 'community.xaphelionx.bleach-manga-cut',
   version: '0.0.1',
   name: 'Bleach Manga Cut',
-  description: 'One-episode Bleach Manga Cut proof of concept.',
+  description: 'Two-episode Bleach Manga Cut proof of concept.',
   resources: [
     'catalog',
     {
@@ -54,11 +66,11 @@ const metaHandler = (args) => {
 }
 
 const streamHandler = (args) => {
-  if (args.type !== 'series' || args.id !== 'cb_1') {
+  if (args.type !== 'series' || !streamsByVideoId.has(args.id)) {
     return Promise.resolve({ streams: [] })
   }
 
-  return Promise.resolve(stream)
+  return Promise.resolve(streamsByVideoId.get(args.id))
 }
 
 builder.defineCatalogHandler(catalogHandler)

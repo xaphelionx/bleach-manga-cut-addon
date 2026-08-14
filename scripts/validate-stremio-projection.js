@@ -9,9 +9,11 @@ const root = path.resolve(__dirname, '..')
 
 const LOCKED_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': 'b313f997f19e1cf7003991c379122e174ad4442883b029b6e93c068b47589203',
+  'data/meta/bleach-manga-cut.json': '62457501d66303d043fa9f2ae8bf4ffb8275b86bd078892ce33b66f1cc9a026e',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
+  'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
+  'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
   'editorial/unresolved.json': '95a8343690054e7808af829b125753235b5f58fb559602ffc32872c4684518d8'
 })
 
@@ -178,7 +180,44 @@ function validate() {
   assert.equal(projection.clientCompatibility.seasonZeroIsolated, false)
   assert.equal(projection.publicationPolicy.primarySeriesPrefixClosed, true)
   assert.equal(projection.publicationPolicy.projectionDoesNotAuthorizePublication, true)
-  assert.deepEqual(projection.publicationPolicy.currentPublishedVideoIds, ['cb_1'])
+  assert.deepEqual(projection.publicationPolicy.currentPublishedVideoIds, ['cb_1', 'cb_2'])
+  assert.deepEqual(projection.publicationGateSets, {
+    'locked-cb1': {
+      editorialAvailability: 'passed',
+      resolvedPlacement: 'passed',
+      mediaEvidence: 'passed',
+      defaultTimelineContiguity: 'passed',
+      blockedBy: []
+    },
+    'verified-primary': {
+      editorialAvailability: 'passed',
+      resolvedPlacement: 'passed',
+      mediaEvidence: 'passed',
+      defaultTimelineContiguity: 'passed',
+      blockedBy: []
+    },
+    'unpublished-pre-boundary': {
+      editorialAvailability: 'passed',
+      resolvedPlacement: 'passed',
+      mediaEvidence: 'unresolved',
+      defaultTimelineContiguity: 'blocked',
+      blockedBy: [
+        'media-evidence-not-approved',
+        'primary-publication-prefix-after-cb_2'
+      ]
+    },
+    'blocked-post-boundary': {
+      editorialAvailability: 'passed',
+      resolvedPlacement: 'passed',
+      mediaEvidence: 'unresolved',
+      defaultTimelineContiguity: 'blocked',
+      blockedBy: [
+        'media-evidence-not-approved',
+        'primary-publication-prefix-after-cb_2',
+        'concentrated-35.5-vs-0.0'
+      ]
+    }
+  })
 
   assert.equal(unresolved.issues.length, 6)
   const boundaryIssue = unresolved.issues.find(
@@ -252,6 +291,11 @@ function validate() {
         state: 'eligible',
         gateSet: 'locked-cb1'
       })
+    } else if (entry.recordId === 'concentrated:02') {
+      assert.deepEqual(entry.publicationEligibility, {
+        state: 'eligible',
+        gateSet: 'verified-primary'
+      })
     } else {
       assert.equal(entry.publicationEligibility.state, 'blocked')
     }
@@ -264,7 +308,7 @@ function validate() {
   assert.deepEqual(globallySorted.map((entry) => entry.recordId), expectedIds)
   const eligibility = globallySorted.map((entry) => entry.publicationEligibility.state === 'eligible')
   const firstIneligible = eligibility.indexOf(false)
-  assert.equal(firstIneligible, 1)
+  assert.equal(firstIneligible, 2)
   assert.ok(eligibility.slice(firstIneligible).every((state) => state === false))
 
   const cb1 = projection.entries[0]
@@ -276,6 +320,21 @@ function validate() {
     season: 1,
     episode: 1
   })
+
+  const cb2 = projection.entries[1]
+  assert.equal(cb2.recordId, 'concentrated:02')
+  assert.equal(cb2.videoId, 'cb_2')
+  assert.equal(cb2.title, 'Starter')
+  assert.deepEqual(cb2.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 1,
+    episode: 2
+  })
+
+  const cb3 = projection.entries[2]
+  assert.equal(cb3.recordId, 'concentrated:03')
+  assert.equal(cb3.videoId, 'cb_3')
+  assert.equal(cb3.publicationEligibility.state, 'blocked')
 
   const cb36 = projection.entries.find((entry) => entry.recordId === 'concentrated:36')
   assert.ok(cb36)
@@ -329,15 +388,27 @@ function validate() {
   }
 
   const publishedRegistryEntries = registry.entries.filter((entry) => entry.status === 'published')
-  assert.deepEqual(publishedRegistryEntries, [{
-    recordType: 'normalized-record',
-    recordId: 'concentrated:01',
-    projectId: 'concentrated',
-    sourceIdentifier: '01',
-    videoId: 'cb_1',
-    status: 'published',
-    locked: true
-  }])
+  assert.deepEqual(publishedRegistryEntries, [
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:01',
+      projectId: 'concentrated',
+      sourceIdentifier: '01',
+      videoId: 'cb_1',
+      status: 'published',
+      locked: true
+    },
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:02',
+      projectId: 'concentrated',
+      sourceIdentifier: '02',
+      videoId: 'cb_2',
+      status: 'published',
+      locked: false
+    }
+  ])
+  assert.equal(registry.entries.find((entry) => entry.videoId === 'cb_3').status, 'reserved')
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').length > 0)
 
   for (const record of normalizedRecords) {

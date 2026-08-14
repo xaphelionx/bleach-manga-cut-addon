@@ -42,7 +42,7 @@ const SERIES_POLICY = Object.freeze({
 
 // This is the only episode-specific restriction in ordinary generation. It is a
 // deliberate first-run orchestration gate, not an input to candidate construction.
-const INITIAL_ELIGIBLE_VIDEO_IDS = Object.freeze(['cb_1'])
+const INITIAL_ELIGIBLE_VIDEO_IDS = Object.freeze(['cb_1', 'cb_2'])
 
 const PROJECT_INPUTS = Object.freeze({
   concentrated: Object.freeze({
@@ -68,8 +68,6 @@ const CB1_REGRESSION_FILES = Object.freeze({
   provenance: 'data/provenance/cb_1.json'
 })
 const CB1_BYTE_IDENTICAL_FILES = Object.freeze([
-  CB1_REGRESSION_FILES.catalog,
-  CB1_REGRESSION_FILES.meta,
   CB1_REGRESSION_FILES.stream
 ])
 
@@ -1008,15 +1006,7 @@ function compareCb1Regression(candidates, outputRoot) {
     assert.ok(fs.existsSync(path.join(outputRoot, relativePath)), `candidate was not written: ${relativePath}`)
   }
   const comparisons = {}
-  const candidateMeta = candidates[CB1_REGRESSION_FILES.meta]
-  const regressionVideoId = path.basename(CB1_REGRESSION_FILES.stream, '.json')
-  const isOneRecordCb1SeriesFixture = candidateMeta &&
-    candidateMeta.meta.videos.length === 1 &&
-    candidateMeta.meta.videos[0].id === regressionVideoId
-  const byteIdenticalTargets = isOneRecordCb1SeriesFixture
-    ? CB1_BYTE_IDENTICAL_FILES
-    : [CB1_REGRESSION_FILES.stream]
-  for (const relativePath of byteIdenticalTargets) {
+  for (const relativePath of CB1_BYTE_IDENTICAL_FILES) {
     const candidateBytes = fs.readFileSync(path.join(outputRoot, relativePath))
     const lockedBytes = fs.readFileSync(path.join(root, relativePath))
     assert.ok(candidateBytes.equals(lockedBytes), `${relativePath} is not byte-identical to the locked fixture`)
@@ -1056,11 +1046,7 @@ function main() {
   process.stdout.write(`dry-run output: ${result.outputRoot}\n`)
   for (const relativePath of CB1_BYTE_IDENTICAL_FILES) {
     const comparison = result.comparisons[relativePath]
-    if (comparison) {
-      process.stdout.write(`${relativePath}: byte-identical PASS (${comparison.sha256})\n`)
-    } else {
-      process.stdout.write(`${relativePath}: one-record fixture comparison not applicable to expanded output\n`)
-    }
+    process.stdout.write(`${relativePath}: byte-identical PASS (${comparison.sha256})\n`)
   }
   process.stdout.write(`${CB1_REGRESSION_FILES.provenance}: exact operation/value migration PASS\n`)
   process.stdout.write(`approved provenance differences (${result.provenanceDiff.length} exact operations):\n`)

@@ -62,8 +62,8 @@ after(() => {
   if (outputRoot) fs.rmSync(outputRoot, { recursive: true, force: true })
 })
 
-test('only the initial orchestration guard restricts eligible IDs to cb_1', () => {
-  assert.deepEqual(INITIAL_ELIGIBLE_VIDEO_IDS, ['cb_1'])
+test('the initial orchestration guard restricts eligible IDs to exactly cb_1 and cb_2', () => {
+  assert.deepEqual(INITIAL_ELIGIBLE_VIDEO_IDS, ['cb_1', 'cb_2'])
   assert.deepEqual(inputs.evidenceRecords.map(({ value }) => value.videoId), ['cb_1', 'cb_2'])
   assert.deepEqual(result.processedVideoIds, INITIAL_ELIGIBLE_VIDEO_IDS)
   assert.equal(
@@ -73,7 +73,7 @@ test('only the initial orchestration guard restricts eligible IDs to cb_1', () =
   )
 })
 
-test('ordinary candidate construction contains no CB1 editorial or media constants', () => {
+test('ordinary candidate construction contains no CB1 or CB2 editorial or media constants', () => {
   const ordinaryStart = generatorSource.indexOf('function validateVerificationBasis')
   const ordinaryEnd = generatorSource.indexOf('function compareCb1Regression')
   assert.ok(ordinaryStart > 0 && ordinaryEnd > ordinaryStart)
@@ -87,7 +87,17 @@ test('ordinary candidate construction contains no CB1 editorial or media constan
     "'HEVC'",
     "'Main'",
     '768',
-    '576'
+    '576',
+    'concentrated:02',
+    'Starter',
+    '32:47',
+    '1966.785',
+    '333401478',
+    '786f4a6765d6e34d19d0cefd2f45616633386e84',
+    '02 - Starter.mkv',
+    '318',
+    '1048576',
+    '3a39b4b14770247bea77e740fb6764ca8a24190e3f289e8bb32b11fe36c57a3e'
   ]) {
     assert.equal(ordinarySource.includes(literal), false, `ordinary generation contains ${literal}`)
   }
@@ -110,6 +120,17 @@ test('candidate paths derive from seriesId and videoId', () => {
   const candidates = generateCandidates([synthetic])
   assert.ok('data/stream/cb_999.json' in candidates)
   assert.ok('data/provenance/cb_999.json' in candidates)
+})
+
+test('two-episode candidate paths are exact and closed', () => {
+  assert.deepEqual(Object.keys(result.candidates), [
+    'data/catalog/bleach-manga-cut.json',
+    'data/meta/bleach-manga-cut.json',
+    'data/stream/cb_1.json',
+    'data/provenance/cb_1.json',
+    'data/stream/cb_2.json',
+    'data/provenance/cb_2.json'
+  ])
 })
 
 test('normalized projects resolve generically by projectId and recordId', () => {
@@ -211,11 +232,14 @@ test('runtime parsing handles normalized mm:ss and h:mm:ss generically', () => {
   })
 })
 
-test('current editorial runtime naturally produces locked Stremio runtime', () => {
-  const resolved = inputs.resolvedRecords[0]
-  const presentation = derivePresentation(resolved.editorialRecord, resolved.mediaEvidence)
-  assert.equal(presentation.runtime.stremioWholeMinutes, '18')
-  assert.equal(result.candidates[CB1_REGRESSION_FILES.meta].meta.videos[0].runtime, '18')
+test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
+  const [cb1, cb2] = inputs.resolvedRecords
+  assert.equal(derivePresentation(cb1.editorialRecord, cb1.mediaEvidence).runtime.stremioWholeMinutes, '18')
+  assert.equal(derivePresentation(cb2.editorialRecord, cb2.mediaEvidence).runtime.stremioWholeMinutes, '32')
+  assert.deepEqual(result.candidates[CB1_REGRESSION_FILES.meta].meta.videos, [
+    { id: 'cb_1', season: 1, episode: 1, title: 'Death and Strawberry', runtime: '18' },
+    { id: 'cb_2', season: 1, episode: 2, title: 'Starter', runtime: '32' }
+  ])
 })
 
 for (const relativePath of CB1_BYTE_IDENTICAL_FILES) {
@@ -226,8 +250,12 @@ for (const relativePath of CB1_BYTE_IDENTICAL_FILES) {
   })
 }
 
-test('production catalog, meta, stream, and provenance fixtures remain untouched', () => {
-  for (const relativePath of Object.values(CB1_REGRESSION_FILES)) {
+test('production POC fixtures match exact regression hashes', () => {
+  for (const relativePath of [
+    ...Object.values(CB1_REGRESSION_FILES),
+    'data/stream/cb_2.json',
+    'data/provenance/cb_2.json'
+  ]) {
     assert.equal(hash(relativePath), LOCKED_HASHES[relativePath], relativePath)
   }
 })
@@ -237,6 +265,7 @@ test('stream sources is series policy and is absent from verified evidence', () 
   assert.equal('sources' in evidence.torrent, false)
   assert.deepEqual(SERIES_POLICY.presentation.streamSources, [])
   assert.deepEqual(result.candidates[CB1_REGRESSION_FILES.stream].streams[0].sources, [])
+  assert.deepEqual(result.candidates['data/stream/cb_2.json'].streams[0].sources, [])
   assert.match(
     result.candidates[CB1_REGRESSION_FILES.provenance].transformations.streamSources,
     /series presentation policy.*not a torrent tracker\/announce\/web-seed evidence claim/
@@ -322,6 +351,76 @@ test('CB2 verified-media evidence contains the exact locked torrent and core med
     webSeeds: { state: 'unresolved' }
   })
   validateVerifiedMedia(cb2Evidence)
+})
+
+test('CB2 stream derives exactly from repository editorial and media evidence', () => {
+  assert.deepEqual(result.candidates['data/stream/cb_2.json'], {
+    streams: [{
+      name: '[P2P🧲] 576p',
+      title: '🎬 Starter\n📖 [002-006] 🕒 32:47\n💾 333.40 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG',
+      infoHash: '786f4a6765d6e34d19d0cefd2f45616633386e84',
+      sources: [],
+      fileIdx: 0,
+      behaviorHints: {
+        bingeGroup: 'bleach-manga-cut|p2p|standard',
+        videoSize: 333401478,
+        filename: '02 - Starter.mkv'
+      }
+    }]
+  })
+  assert.equal('subtitles' in result.candidates['data/stream/cb_2.json'].streams[0], false)
+})
+
+test('CB2 provenance separates editorial, projection, torrent, and local-media authority', () => {
+  const provenance = result.candidates['data/provenance/cb_2.json']
+  assert.deepEqual(provenance.sourceInputs.projection, {
+    seriesId: 'bleach-manga-cut',
+    videoId: 'cb_2',
+    projectedPlacement: { season: 1, episode: 2 },
+    publicationEligibility: { state: 'eligible', gateSet: 'verified-primary' }
+  })
+  assert.equal(provenance.sourceInputs.editorial.recordId, 'concentrated:02')
+  assert.deepEqual(provenance.editorial, {
+    edit: 'Concentrated Bleach',
+    episode: '02',
+    title: 'Starter',
+    mangaChapters: '002-006',
+    sourceAnimeEpisodes: '002-003',
+    exactEditRuntime: '00:32:47',
+    normalizedExactRuntime: '32:47',
+    timeSaved: '12m53s (28%)',
+    releaseDate: '2024-04-12',
+    lastUpdate: '2026-04-01',
+    source: {
+      document: '!Concentrated Bleach Info.xlsx',
+      sheet: 'Episode List',
+      row: 3,
+      cells: 'A3:H3'
+    }
+  })
+  assert.deepEqual(provenance.torrentEvidence, {
+    infoHash: '786f4a6765d6e34d19d0cefd2f45616633386e84',
+    fileIdx: 0,
+    filename: '02 - Starter.mkv',
+    videoSize: 333401478,
+    trackerEvidence: { state: 'unresolved' },
+    announceEvidence: { state: 'unresolved' },
+    webSeedEvidence: { state: 'unresolved' }
+  })
+  assert.deepEqual(provenance.localMediaInspection.duration, {
+    state: 'verified',
+    measurement: 'container',
+    seconds: 1966.785
+  })
+  assert.deepEqual(provenance.localMediaInspection.embeddedSubtitles, [
+    { language: 'English', title: 'Full Subtitles [Edited ParanDark]' },
+    { language: 'English', title: 'Signs and Songs [Edited ParanDark]' }
+  ])
+  assert.equal(provenance.presentation.stremioVideoRuntime, '32')
+  assert.equal(
+    provenance.transformations.stremioRuntime,
+    '32:47 (1967 seconds) -> floor whole minutes -> 32'
+  )
 })
 
 test('CB2 verification bases retain local artifact summaries and exact field traceability', () => {

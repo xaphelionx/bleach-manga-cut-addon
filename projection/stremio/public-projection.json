@@ -35,12 +35,20 @@
     "primarySeriesPrefixClosed": true,
     "projectionDoesNotAuthorizePublication": true,
     "currentPublishedVideoIds": [
-      "cb_1"
+      "cb_1",
+      "cb_2"
     ],
     "playableOnly": true
   },
   "publicationGateSets": {
     "locked-cb1": {
+      "editorialAvailability": "passed",
+      "resolvedPlacement": "passed",
+      "mediaEvidence": "passed",
+      "defaultTimelineContiguity": "passed",
+      "blockedBy": []
+    },
+    "verified-primary": {
       "editorialAvailability": "passed",
       "resolvedPlacement": "passed",
       "mediaEvidence": "passed",
@@ -54,7 +62,7 @@
       "defaultTimelineContiguity": "blocked",
       "blockedBy": [
         "media-evidence-not-approved",
-        "primary-publication-prefix-after-cb_1"
+        "primary-publication-prefix-after-cb_2"
       ]
     },
     "blocked-post-boundary": {
@@ -64,7 +72,7 @@
       "defaultTimelineContiguity": "blocked",
       "blockedBy": [
         "media-evidence-not-approved",
-        "primary-publication-prefix-after-cb_1",
+        "primary-publication-prefix-after-cb_2",
         "concentrated-35.5-vs-0.0"
       ]
     }
@@ -98,7 +106,7 @@
   },
   "entries": [
     {"recordId":"concentrated:01","projectId":"concentrated","sourceIdentifier":{"raw":"1.0","displayed":"01"},"videoId":"cb_1","title":"Death and Strawberry","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":1,"episode":1},"defaultTimelinePosition":{"state":"resolved","index":1},"publicationEligibility":{"state":"eligible","gateSet":"locked-cb1"}},
-    {"recordId":"concentrated:02","projectId":"concentrated","sourceIdentifier":{"raw":"2","displayed":"02"},"videoId":"cb_2","title":"Starter","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":1,"episode":2},"defaultTimelinePosition":{"state":"resolved","index":2},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-pre-boundary"}},
+    {"recordId":"concentrated:02","projectId":"concentrated","sourceIdentifier":{"raw":"2","displayed":"02"},"videoId":"cb_2","title":"Starter","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":1,"episode":2},"defaultTimelinePosition":{"state":"resolved","index":2},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"concentrated:03","projectId":"concentrated","sourceIdentifier":{"raw":"3","displayed":"03"},"videoId":"cb_3","title":"The Pink-Cheeked Cockatiel","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":1,"episode":3},"defaultTimelinePosition":{"state":"resolved","index":3},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-pre-boundary"}},
     {"recordId":"concentrated:04","projectId":"concentrated","sourceIdentifier":{"raw":"4","displayed":"04"},"videoId":"cb_4","title":"Bad Standard","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":1,"episode":4},"defaultTimelinePosition":{"state":"resolved","index":4},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-pre-boundary"}},
     {"recordId":"concentrated:05","projectId":"concentrated","sourceIdentifier":{"raw":"5","displayed":"05"},"videoId":"cb_5","title":"June 17th -memories in the rain-","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":1,"episode":5},"defaultTimelinePosition":{"state":"resolved","index":5},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-pre-boundary"}},

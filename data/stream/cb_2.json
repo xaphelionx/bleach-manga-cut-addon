@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Starter\n📖 [002-006] 🕒 32:47\n💾 333.40 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "786f4a6765d6e34d19d0cefd2f45616633386e84",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 333401478,
+        "filename": "02 - Starter.mkv"
+      }
+    }
+  ]
+}
