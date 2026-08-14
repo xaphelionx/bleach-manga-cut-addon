@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_1",
+  "recordId": "concentrated:01",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "d0cb7e0c8bad014c055bf2becf2694dcfde2b8e8",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "01 - Death and Strawberry.mkv",
+      "byteSize": 186522416
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "unresolved"
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "Spanish",
+        "title": "Spanish [Vex]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb1-torrent-metadata-inspection",
+      "kind": "manually-verified-existing-torrent-evidence",
+      "verificationState": "verified",
+      "attestation": {
+        "scope": "Claims linked to this evidence ID in fieldEvidence were manually verified from existing torrent evidence.",
+        "retainedOriginalArtifact": "not-present-in-repository",
+        "repositoryOnlyReproduction": "unavailable"
+      }
+    },
+    {
+      "evidenceId": "cb1-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified"
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb1-torrent-metadata-inspection"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb1-torrent-metadata-inspection"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb1-torrent-metadata-inspection"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb1-torrent-metadata-inspection"
+    ],
+    "/media/video/codec": [
+      "cb1-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb1-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb1-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb1-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb1-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb1-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb1-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb1-local-media-ffprobe-inspection"
+    ]
+  }
+}
