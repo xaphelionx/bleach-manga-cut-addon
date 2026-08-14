@@ -77,6 +77,44 @@
         }
       }
     },
+    "verifiedContainerDuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "measurement",
+        "seconds"
+      ],
+      "properties": {
+        "state": {
+          "const": "verified"
+        },
+        "measurement": {
+          "const": "container"
+        },
+        "seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "artifactRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "anyOf": [
+          {
+            "pattern": "^/"
+          },
+          {
+            "pattern": "^\\\\"
+          },
+          {
+            "pattern": "^[A-Za-z]:[\\\\/]"
+          }
+        ]
+      }
+    },
     "torrent": {
       "type": "object",
       "additionalProperties": false,
@@ -146,7 +184,14 @@
       ],
       "properties": {
         "duration": {
-          "$ref": "#/$defs/unresolved"
+          "oneOf": [
+            {
+              "$ref": "#/$defs/unresolved"
+            },
+            {
+              "$ref": "#/$defs/verifiedContainerDuration"
+            }
+          ]
         },
         "video": {
           "type": "object",
@@ -256,6 +301,87 @@
         }
       }
     },
+    "localTorrentArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relativePath",
+        "retention",
+        "sha256"
+      ],
+      "properties": {
+        "relativePath": {
+          "$ref": "#/$defs/artifactRelativePath"
+        },
+        "retention": {
+          "const": "ignored-local-workspace"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "localTorrentVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pieceLength",
+        "pieceCount",
+        "verifiedPieces",
+        "mismatches",
+        "rawInfoMatchesCanonicalEncoding",
+        "payloadFilenameMatchesLocalMedia",
+        "payloadByteSizeMatchesLocalMedia"
+      ],
+      "properties": {
+        "pieceLength": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pieceCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "verifiedPieces": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mismatches": {
+          "const": 0
+        },
+        "rawInfoMatchesCanonicalEncoding": {
+          "const": true
+        },
+        "payloadFilenameMatchesLocalMedia": {
+          "const": true
+        },
+        "payloadByteSizeMatchesLocalMedia": {
+          "const": true
+        }
+      }
+    },
+    "localMediaArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relativePath",
+        "retention",
+        "byteSize"
+      ],
+      "properties": {
+        "relativePath": {
+          "$ref": "#/$defs/artifactRelativePath"
+        },
+        "retention": {
+          "const": "ignored-local-workspace"
+        },
+        "byteSize": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
     "verificationBasis": {
       "oneOf": [
         {
@@ -307,6 +433,40 @@
           "required": [
             "evidenceId",
             "kind",
+            "verificationState",
+            "method",
+            "artifact",
+            "verification"
+          ],
+          "properties": {
+            "evidenceId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "const": "local-torrent-verification"
+            },
+            "verificationState": {
+              "const": "verified"
+            },
+            "method": {
+              "type": "string",
+              "minLength": 1
+            },
+            "artifact": {
+              "$ref": "#/$defs/localTorrentArtifact"
+            },
+            "verification": {
+              "$ref": "#/$defs/localTorrentVerification"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "evidenceId",
+            "kind",
             "method",
             "verificationState"
           ],
@@ -324,6 +484,9 @@
             },
             "verificationState": {
               "const": "verified"
+            },
+            "artifact": {
+              "$ref": "#/$defs/localMediaArtifact"
             }
           }
         }

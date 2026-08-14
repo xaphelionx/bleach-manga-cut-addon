@@ -33,7 +33,10 @@ const { LOCKED_HASHES } = require('../scripts/validate-stremio-projection')
 
 const root = path.resolve(__dirname, '..')
 const evidence = require('../evidence/media/cb_1.json')
+const cb2Evidence = require('../evidence/media/cb_2.json')
+const verifiedMediaSchema = require('../schemas/media/verified-media.schema.json')
 const generatorSource = fs.readFileSync(path.join(root, 'scripts/generate-stremio-data.js'), 'utf8')
+const CB1_EVIDENCE_SHA256 = '7b84d24d4186163f39e3622a496c244dc3c5f5d5144d9513d6fb41e3be60f80f'
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
 const readJson = (relativePath, base = root) => JSON.parse(read(relativePath, base).toString('utf8'))
@@ -61,6 +64,7 @@ after(() => {
 
 test('only the initial orchestration guard restricts eligible IDs to cb_1', () => {
   assert.deepEqual(INITIAL_ELIGIBLE_VIDEO_IDS, ['cb_1'])
+  assert.deepEqual(inputs.evidenceRecords.map(({ value }) => value.videoId), ['cb_1', 'cb_2'])
   assert.deepEqual(result.processedVideoIds, INITIAL_ELIGIBLE_VIDEO_IDS)
   assert.equal(
     [...generatorSource.matchAll(/INITIAL_ELIGIBLE_VIDEO_IDS/g)].length,
@@ -240,6 +244,7 @@ test('stream sources is series policy and is absent from verified evidence', () 
 })
 
 test('verified-media record contains only evidence and technical state', () => {
+  assert.equal(hash('evidence/media/cb_1.json'), CB1_EVIDENCE_SHA256)
   assert.deepEqual(Object.keys(evidence).sort(), [
     'authorityDomain',
     'fieldEvidence',
@@ -260,6 +265,163 @@ test('verified-media record contains only evidence and technical state', () => {
     repositoryOnlyReproduction: 'unavailable'
   })
   validateVerifiedMedia(evidence)
+})
+
+test('schema version 1 accepts unresolved or verified container duration and all basis kinds', () => {
+  assert.equal(verifiedMediaSchema.properties.schemaVersion.const, 1)
+  assert.deepEqual(verifiedMediaSchema.$defs.media.properties.duration.oneOf, [
+    { $ref: '#/$defs/unresolved' },
+    { $ref: '#/$defs/verifiedContainerDuration' }
+  ])
+  assert.deepEqual(
+    verifiedMediaSchema.$defs.verificationBasis.oneOf.map((definition) => definition.properties.kind.const),
+    [
+      'manually-verified-existing-torrent-evidence',
+      'local-torrent-verification',
+      'local-media-inspection'
+    ]
+  )
+  validateVerifiedMedia(evidence)
+  validateVerifiedMedia(cb2Evidence)
+})
+
+test('CB2 verified-media evidence contains the exact locked torrent and core media facts', () => {
+  assert.equal(cb2Evidence.schemaVersion, 1)
+  assert.equal(cb2Evidence.videoId, 'cb_2')
+  assert.equal(cb2Evidence.recordId, 'concentrated:02')
+  assert.deepEqual(cb2Evidence.torrent.fileSelection, {
+    fileIdx: 0,
+    filename: '02 - Starter.mkv',
+    byteSize: 333401478
+  })
+  assert.equal(cb2Evidence.torrent.infoHash, '786f4a6765d6e34d19d0cefd2f45616633386e84')
+  assert.deepEqual(cb2Evidence.media.duration, {
+    state: 'verified',
+    measurement: 'container',
+    seconds: 1966.785
+  })
+  assert.deepEqual(cb2Evidence.media.video, {
+    codec: 'HEVC',
+    standard: 'H.265',
+    profile: 'Main',
+    width: 768,
+    height: 576,
+    pixelFormat: 'yuv420p'
+  })
+  assert.deepEqual(cb2Evidence.media.audioTracks, [
+    { language: 'Japanese', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' },
+    { language: 'English', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' }
+  ])
+  assert.deepEqual(cb2Evidence.media.subtitleTracks, [
+    { kind: 'embedded', language: 'English', title: 'Full Subtitles [Edited ParanDark]' },
+    { kind: 'embedded', language: 'English', title: 'Signs and Songs [Edited ParanDark]' }
+  ])
+  assert.deepEqual(cb2Evidence.torrent.networkEvidence, {
+    trackers: { state: 'unresolved' },
+    announceUrls: { state: 'unresolved' },
+    webSeeds: { state: 'unresolved' }
+  })
+  validateVerifiedMedia(cb2Evidence)
+})
+
+test('CB2 verification bases retain local artifact summaries and exact field traceability', () => {
+  const torrentBasis = cb2Evidence.verificationBases.find(
+    (basis) => basis.kind === 'local-torrent-verification'
+  )
+  const mediaBasis = cb2Evidence.verificationBases.find(
+    (basis) => basis.kind === 'local-media-inspection'
+  )
+  assert.deepEqual(torrentBasis.artifact, {
+    relativePath: 'sources/02 - Starter.mkv.torrent',
+    retention: 'ignored-local-workspace',
+    sha256: '3a39b4b14770247bea77e740fb6764ca8a24190e3f289e8bb32b11fe36c57a3e'
+  })
+  assert.deepEqual(torrentBasis.verification, {
+    pieceLength: 1048576,
+    pieceCount: 318,
+    verifiedPieces: 318,
+    mismatches: 0,
+    rawInfoMatchesCanonicalEncoding: true,
+    payloadFilenameMatchesLocalMedia: true,
+    payloadByteSizeMatchesLocalMedia: true
+  })
+  assert.deepEqual(mediaBasis.artifact, {
+    relativePath: 'sources/02 - Starter.mkv',
+    retention: 'ignored-local-workspace',
+    byteSize: 333401478
+  })
+  for (const pointer of [
+    '/torrent/infoHash',
+    '/torrent/fileSelection/fileIdx',
+    '/torrent/fileSelection/filename',
+    '/torrent/fileSelection/byteSize'
+  ]) {
+    assert.deepEqual(cb2Evidence.fieldEvidence[pointer], [torrentBasis.evidenceId])
+  }
+  for (const pointer of [
+    '/media/duration',
+    '/media/video/codec',
+    '/media/video/standard',
+    '/media/video/profile',
+    '/media/video/width',
+    '/media/video/height',
+    '/media/video/pixelFormat',
+    '/media/audioTracks',
+    '/media/subtitleTracks'
+  ]) {
+    assert.deepEqual(cb2Evidence.fieldEvidence[pointer], [mediaBasis.evidenceId])
+  }
+})
+
+test('verified duration requires positive finite container seconds and local-media field evidence', () => {
+  for (const seconds of [0, -1, Number.POSITIVE_INFINITY, Number.NaN]) {
+    const changed = structuredClone(cb2Evidence)
+    changed.media.duration.seconds = seconds
+    assert.throws(() => validateVerifiedMedia(changed), /duration seconds must be finite and positive/)
+  }
+
+  const missingEvidence = structuredClone(cb2Evidence)
+  delete missingEvidence.fieldEvidence['/media/duration']
+  assert.throws(() => validateVerifiedMedia(missingEvidence), /fieldEvidence/)
+
+  const wrongBasis = structuredClone(cb2Evidence)
+  wrongBasis.fieldEvidence['/media/duration'] = ['cb2-local-torrent-verification']
+  assert.throws(() => validateVerifiedMedia(wrongBasis), /must cite local-media inspection evidence/)
+})
+
+test('local torrent verification fails closed for malformed summaries and absolute artifact paths', () => {
+  for (const mutate of [
+    (basis) => { basis.verification.verifiedPieces = 317 },
+    (basis) => { basis.verification.mismatches = 1 },
+    (basis) => { basis.verification.rawInfoMatchesCanonicalEncoding = false },
+    (basis) => { basis.verification.payloadFilenameMatchesLocalMedia = false },
+    (basis) => { basis.verification.payloadByteSizeMatchesLocalMedia = false }
+  ]) {
+    const changed = structuredClone(cb2Evidence)
+    const basis = changed.verificationBases.find((item) => item.kind === 'local-torrent-verification')
+    mutate(basis)
+    assert.throws(() => validateVerifiedMedia(changed))
+  }
+
+  const absoluteTorrent = structuredClone(cb2Evidence)
+  absoluteTorrent.verificationBases.find(
+    (basis) => basis.kind === 'local-torrent-verification'
+  ).artifact.relativePath = '/tmp/cb_2.torrent'
+  assert.throws(() => validateVerifiedMedia(absoluteTorrent), /must be relative/)
+
+  const absoluteMedia = structuredClone(cb2Evidence)
+  absoluteMedia.verificationBases.find(
+    (basis) => basis.kind === 'local-media-inspection'
+  ).artifact.relativePath = 'C:\\Users\\example\\cb_2.mkv'
+  assert.throws(() => validateVerifiedMedia(absoluteMedia), /must be relative/)
+})
+
+test('CB2 evidence excludes payload material, secrets, private URLs, and absolute local paths', () => {
+  const serialized = JSON.stringify(cb2Evidence)
+  assertNoPrivateOrNetworkMaterial([cb2Evidence])
+  assert.doesNotMatch(serialized, /"(?:pieces|pieceHashes|rawTorrent|mkvContents)":/i)
+  assert.doesNotMatch(serialized, /(?:https?:\/\/|torbox|bearer\s|api.?key|access.?token)/i)
+  assert.doesNotMatch(serialized, /(?:\/home\/|[A-Za-z]:\\\\)/)
 })
 
 test('unresolved network evidence produces no tracker, announce, or web-seed URLs', () => {
@@ -285,6 +447,30 @@ test('unresolved media duration never becomes a measured duration claim', () => 
   const candidate = result.candidates[CB1_REGRESSION_FILES.provenance]
   assert.equal('duration' in candidate.localMediaInspection, false)
   assert.doesNotMatch(JSON.stringify(candidate), /measuredMediaDuration|measured media duration/i)
+})
+
+test('verified media duration stays in local provenance and never drives Stremio runtime', () => {
+  const synthetic = structuredClone(inputs.resolvedRecords[0])
+  synthetic.mediaEvidence.media.duration = {
+    state: 'verified',
+    measurement: 'container',
+    seconds: 1966.785
+  }
+  synthetic.mediaEvidence.fieldEvidence['/media/duration'] = ['cb1-local-media-ffprobe-inspection']
+  validateVerifiedMedia(synthetic.mediaEvidence)
+
+  const candidates = generateCandidates([synthetic])
+  const provenance = candidates[CB1_REGRESSION_FILES.provenance]
+  assert.deepEqual(provenance.localMediaInspection.duration, {
+    state: 'verified',
+    measurement: 'container',
+    seconds: 1966.785
+  })
+  assert.equal(candidates[CB1_REGRESSION_FILES.meta].meta.videos[0].runtime, '18')
+  assert.equal(provenance.editorial.exactEditRuntime, '00:18:15')
+  assert.equal(provenance.editorial.normalizedExactRuntime, '18:15')
+  assert.equal(provenance.presentation.stremioVideoRuntime, '18')
+  assert.equal(provenance.transformations.stremioRuntime, '18:15 (1095 seconds) -> floor whole minutes -> 18')
 })
 
 test('generic presentation derives the locked CB1 labels from verified facts', () => {

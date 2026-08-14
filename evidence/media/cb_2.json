@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_2",
+  "recordId": "concentrated:02",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "786f4a6765d6e34d19d0cefd2f45616633386e84",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "02 - Starter.mkv",
+      "byteSize": 333401478
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1966.785
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb2-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/02 - Starter.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "3a39b4b14770247bea77e740fb6764ca8a24190e3f289e8bb32b11fe36c57a3e"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 318,
+        "verifiedPieces": 318,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb2-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Starter.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 333401478
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb2-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb2-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb2-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb2-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb2-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb2-local-media-ffprobe-inspection"
+    ]
+  }
+}

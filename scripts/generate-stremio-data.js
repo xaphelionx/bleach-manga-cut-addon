@@ -179,6 +179,24 @@ function assertUnresolved(value, label) {
   assert.equal(value.state, 'unresolved', `${label} must remain unresolved`)
 }
 
+function validateMediaDuration(duration) {
+  assert.ok(duration && typeof duration === 'object' && !Array.isArray(duration), 'media duration must be an object')
+  if (duration.state === 'unresolved') {
+    assertUnresolved(duration, 'media duration')
+    return
+  }
+  assertExactKeys(duration, ['state', 'measurement', 'seconds'], 'media duration')
+  assert.equal(duration.state, 'verified', 'media duration state is unsupported')
+  assert.equal(duration.measurement, 'container', 'verified media duration must be a container measurement')
+  assert.ok(Number.isFinite(duration.seconds) && duration.seconds > 0, 'verified media duration seconds must be finite and positive')
+}
+
+function assertRelativeArtifactPath(value, label) {
+  assertNonEmptyString(value, label)
+  assert.equal(path.posix.isAbsolute(value), false, `${label} must be relative`)
+  assert.equal(path.win32.isAbsolute(value), false, `${label} must be relative`)
+}
+
 function validateVerificationBasis(basis, label) {
   assertNonEmptyString(basis.evidenceId, `${label}.evidenceId`)
   assert.equal(basis.verificationState, 'verified')
@@ -194,9 +212,52 @@ function validateVerificationBasis(basis, label) {
     assert.equal(basis.attestation.repositoryOnlyReproduction, 'unavailable')
     return
   }
+  if (basis.kind === 'local-torrent-verification') {
+    assertExactKeys(basis, [
+      'evidenceId',
+      'kind',
+      'verificationState',
+      'method',
+      'artifact',
+      'verification'
+    ], label)
+    assertNonEmptyString(basis.method, `${label}.method`)
+
+    assertExactKeys(basis.artifact, ['relativePath', 'retention', 'sha256'], `${label}.artifact`)
+    assertRelativeArtifactPath(basis.artifact.relativePath, `${label}.artifact.relativePath`)
+    assert.equal(basis.artifact.retention, 'ignored-local-workspace')
+    assert.match(basis.artifact.sha256, /^[0-9a-f]{64}$/, `${label}.artifact.sha256 must be lowercase SHA-256`)
+
+    const verificationKeys = [
+      'pieceLength',
+      'pieceCount',
+      'verifiedPieces',
+      'mismatches',
+      'rawInfoMatchesCanonicalEncoding',
+      'payloadFilenameMatchesLocalMedia',
+      'payloadByteSizeMatchesLocalMedia'
+    ]
+    assertExactKeys(basis.verification, verificationKeys, `${label}.verification`)
+    assert.ok(Number.isSafeInteger(basis.verification.pieceLength) && basis.verification.pieceLength > 0, `${label}.verification.pieceLength must be positive`)
+    assert.ok(Number.isSafeInteger(basis.verification.pieceCount) && basis.verification.pieceCount > 0, `${label}.verification.pieceCount must be positive`)
+    assert.equal(basis.verification.verifiedPieces, basis.verification.pieceCount, `${label}.verification must verify every piece`)
+    assert.equal(basis.verification.mismatches, 0, `${label}.verification must have zero mismatches`)
+    assert.equal(basis.verification.rawInfoMatchesCanonicalEncoding, true)
+    assert.equal(basis.verification.payloadFilenameMatchesLocalMedia, true)
+    assert.equal(basis.verification.payloadByteSizeMatchesLocalMedia, true)
+    return
+  }
   assert.equal(basis.kind, 'local-media-inspection', `${label}.kind is unsupported`)
-  assertExactKeys(basis, ['evidenceId', 'kind', 'method', 'verificationState'], label)
+  const keys = ['evidenceId', 'kind', 'method', 'verificationState']
+  if ('artifact' in basis) keys.push('artifact')
+  assertExactKeys(basis, keys, label)
   assertNonEmptyString(basis.method, `${label}.method`)
+  if ('artifact' in basis) {
+    assertExactKeys(basis.artifact, ['relativePath', 'retention', 'byteSize'], `${label}.artifact`)
+    assertRelativeArtifactPath(basis.artifact.relativePath, `${label}.artifact.relativePath`)
+    assert.equal(basis.artifact.retention, 'ignored-local-workspace')
+    assert.ok(Number.isSafeInteger(basis.artifact.byteSize) && basis.artifact.byteSize > 0, `${label}.artifact.byteSize must be positive`)
+  }
 }
 
 function validateVerifiedMedia(evidence) {
@@ -233,7 +294,7 @@ function validateVerifiedMedia(evidence) {
   assertUnresolved(evidence.torrent.networkEvidence.webSeeds, 'web-seed evidence')
 
   assertExactKeys(evidence.media, ['duration', 'video', 'audioTracks', 'subtitleTracks'], 'media')
-  assertUnresolved(evidence.media.duration, 'media duration')
+  validateMediaDuration(evidence.media.duration)
   assertExactKeys(evidence.media.video, [
     'codec',
     'standard',
@@ -266,11 +327,11 @@ function validateVerifiedMedia(evidence) {
   }
 
   assert.ok(Array.isArray(evidence.verificationBases) && evidence.verificationBases.length > 0)
-  const basisIds = new Set()
+  const basisById = new Map()
   for (const [index, basis] of evidence.verificationBases.entries()) {
     validateVerificationBasis(basis, `verificationBases[${index}]`)
-    assert.ok(!basisIds.has(basis.evidenceId), `duplicate verification basis ${basis.evidenceId}`)
-    basisIds.add(basis.evidenceId)
+    assert.ok(!basisById.has(basis.evidenceId), `duplicate verification basis ${basis.evidenceId}`)
+    basisById.set(basis.evidenceId, basis)
   }
 
   const requiredEvidencePointers = [
@@ -287,11 +348,21 @@ function validateVerifiedMedia(evidence) {
     '/media/audioTracks',
     '/media/subtitleTracks'
   ]
+  if (evidence.media.duration.state === 'verified') requiredEvidencePointers.push('/media/duration')
   assertExactKeys(evidence.fieldEvidence, requiredEvidencePointers, 'fieldEvidence')
   for (const [pointer, refs] of Object.entries(evidence.fieldEvidence)) {
     assert.ok(Array.isArray(refs) && refs.length > 0, `${pointer} requires technical provenance`)
     assert.equal(new Set(refs).size, refs.length, `${pointer} repeats an evidence reference`)
-    for (const ref of refs) assert.ok(basisIds.has(ref), `${pointer} references unknown evidence ${ref}`)
+    for (const ref of refs) assert.ok(basisById.has(ref), `${pointer} references unknown evidence ${ref}`)
+  }
+  if (evidence.media.duration.state === 'verified') {
+    for (const ref of evidence.fieldEvidence['/media/duration']) {
+      assert.equal(
+        basisById.get(ref).kind,
+        'local-media-inspection',
+        '/media/duration must cite local-media inspection evidence'
+      )
+    }
   }
 }
 
@@ -677,6 +748,36 @@ function buildProvenance(resolved, presentation) {
   const evidenceRefs = resolved.editorialEvidence.map((item) => item.evidenceId)
   const sourceSummary = deriveEditorialSourceSummary(record, resolved.editorialEvidence)
   const verificationBases = media.verificationBases.map((basis) => basis.evidenceId)
+  const localMediaInspection = {
+    classification: 'verified local media inspection',
+    method: inspection.method,
+    inspectedFile: selection.filename,
+    video: {
+      width: media.media.video.width,
+      height: media.media.video.height,
+      resolutionLabel: presentation.resolutionLabel,
+      codec: presentation.codecInspectionPresentation,
+      profile: media.media.video.profile,
+      pixelFormat: media.media.video.pixelFormat
+    },
+    audio: media.media.audioTracks.map((track) => ({
+      language: track.language,
+      codec: `${track.codec} ${track.profile}`,
+      channels: `${track.channelLayout} / ${track.channels.toFixed(1)}`
+    })),
+    embeddedSubtitles: media.media.subtitleTracks.map((track) => ({
+      language: track.language,
+      title: track.title
+    })),
+    subtitlePresentation: 'Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.'
+  }
+  if (media.media.duration.state === 'verified') {
+    localMediaInspection.duration = {
+      state: media.media.duration.state,
+      measurement: media.media.duration.measurement,
+      seconds: media.media.duration.seconds
+    }
+  }
 
   return {
     id: entry.videoId,
@@ -750,29 +851,7 @@ function buildProvenance(resolved, presentation) {
         state: media.torrent.networkEvidence.webSeeds.state
       }
     },
-    localMediaInspection: {
-      classification: 'verified local media inspection',
-      method: inspection.method,
-      inspectedFile: selection.filename,
-      video: {
-        width: media.media.video.width,
-        height: media.media.video.height,
-        resolutionLabel: presentation.resolutionLabel,
-        codec: presentation.codecInspectionPresentation,
-        profile: media.media.video.profile,
-        pixelFormat: media.media.video.pixelFormat
-      },
-      audio: media.media.audioTracks.map((track) => ({
-        language: track.language,
-        codec: `${track.codec} ${track.profile}`,
-        channels: `${track.channelLayout} / ${track.channels.toFixed(1)}`
-      })),
-      embeddedSubtitles: media.media.subtitleTracks.map((track) => ({
-        language: track.language,
-        title: track.title
-      })),
-      subtitlePresentation: 'Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.'
-    },
+    localMediaInspection,
     transformations: {
       stremioRuntime: `${presentation.runtime.displayed} (${presentation.runtime.seconds} seconds) -> floor whole minutes -> ${presentation.runtime.stremioWholeMinutes}`,
       resolutionLabel: `verified height ${media.media.video.height} -> ${presentation.resolutionLabel}`,
