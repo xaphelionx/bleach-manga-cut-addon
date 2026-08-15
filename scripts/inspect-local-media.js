@@ -199,6 +199,12 @@ function runFfprobe(filePath, spawnSync = childProcess.spawnSync) {
   return parseFfprobeOutput(result.stdout)
 }
 
+function createDefaultInspectFile(spawnSync = childProcess.spawnSync) {
+  return function defaultInspectFile(filePath, _assignment) {
+    return runFfprobe(filePath, spawnSync)
+  }
+}
+
 function observed(value) {
   return value === undefined ? null : value
 }
@@ -396,12 +402,16 @@ function createInspectionReport({
   concentrated,
   registry,
   rootDir = repositoryRoot,
-  inspectFile = runFfprobe
+  inspectFile,
+  spawnSync = childProcess.spawnSync
 }) {
   const assignments = validateAssignments({ mapping, concentrated, registry, rootDir })
+  const batchInspectFile = inspectFile === undefined
+    ? createDefaultInspectFile(spawnSync)
+    : inspectFile
   const reports = assignments.map((inspection) => {
     try {
-      const ffprobe = inspectFile(inspection.resolvedPath, inspection.assignment)
+      const ffprobe = batchInspectFile(inspection.resolvedPath, inspection.assignment)
       validateFfprobeStructure(ffprobe)
       return transformFfprobe(inspection, ffprobe)
     } catch (error) {

@@ -421,6 +421,97 @@ test('keeps measured duration separate from normalized editorial runtime', () =>
   assert.equal(item.durationDeltaSeconds, 0.25);
 });
 
+test('uses the default inspector with an injected ffprobe process runner', () => {
+  let invocation;
+  const report = createInspectionReport({
+    mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/three.mkv')),
+    concentrated,
+    registry,
+    rootDir: temporaryRepositoryRoot,
+    spawnSync(command, args, options) {
+      invocation = { command, args, options };
+      return {
+        status: 0,
+        stdout: JSON.stringify(standardProbe()),
+        stderr: '',
+      };
+    },
+  });
+
+  assert.deepEqual(invocation, {
+    command: 'ffprobe',
+    args: [...FFPROBE_ARGUMENTS, path.join(temporaryRepositoryRoot, 'sources', 'three.mkv')],
+    options: {
+      encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
+      shell: false,
+    },
+  });
+  assert.deepEqual(report.assignments[0].inspection, { state: 'success' });
+  assert.deepEqual(report.assignments[0].assignment, {
+    recordId: 'concentrated:03',
+    videoId: 'cb_3',
+    relativePath: 'sources/three.mkv',
+  });
+  assert.deepEqual(report.assignments[0].container, { format_name: 'matroska,webm' });
+  assert.equal(report.assignments[0].measuredContainerDurationSeconds, 300.25);
+  assert.equal(report.assignments[0].streams.video[0].codec_name, 'hevc');
+  assert.equal(report.assignments[0].streams.audio[0].tags.language, 'jpn');
+  assert.equal(report.assignments[0].streams.subtitles[0].tags.language, 'eng');
+});
+
+test('preserves a default-inspector ffprobe failure without leaking private paths', () => {
+  const report = createInspectionReport({
+    mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/three.mkv')),
+    concentrated,
+    registry,
+    rootDir: temporaryRepositoryRoot,
+    spawnSync: () => ({
+      status: 23,
+      stdout: '',
+      stderr: `${temporaryRepositoryRoot}/private ffprobe diagnostic`,
+    }),
+  });
+
+  assert.deepEqual(report.assignments[0].assignment, {
+    recordId: 'concentrated:03',
+    videoId: 'cb_3',
+    relativePath: 'sources/three.mkv',
+  });
+  assert.deepEqual(report.assignments[0].inspection, {
+    state: 'failed',
+    error: {
+      code: 'ffprobe-nonzero-exit',
+      message: 'ffprobe exited with status 23',
+    },
+  });
+  assert.notEqual(report.assignments[0].inspection.error.code, 'inspection-failed');
+  assert.equal(JSON.stringify(report).includes(temporaryRepositoryRoot), false);
+});
+
+test('passes the assignment as the custom inspector second argument', () => {
+  let callbackArguments;
+  const report = createInspectionReport({
+    mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/three.mkv')),
+    concentrated,
+    registry,
+    rootDir: temporaryRepositoryRoot,
+    inspectFile(...args) {
+      callbackArguments = args;
+      return standardProbe();
+    },
+  });
+
+  assert.equal(callbackArguments.length, 2);
+  assert.equal(callbackArguments[0], path.join(temporaryRepositoryRoot, 'sources', 'three.mkv'));
+  assert.deepEqual(callbackArguments[1], {
+    recordId: 'concentrated:03',
+    videoId: 'cb_3',
+    relativePath: 'sources/three.mkv',
+  });
+  assert.deepEqual(report.assignments[0].inspection, { state: 'success' });
+});
+
 test('retains successes and continues after a failed assignment', () => {
   const localMapping = mapping(
     assignment('concentrated:05', 'cb_5', 'sources/five.mkv'),
