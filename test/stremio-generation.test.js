@@ -450,7 +450,7 @@ test('CB2 verification bases retain local artifact summaries and exact field tra
     payloadByteSizeMatchesLocalMedia: true
   })
   assert.deepEqual(mediaBasis.artifact, {
-    relativePath: 'sources/02 - Starter.mkv',
+    relativePath: 'sources/01 - Substitute Soul Reaper/02 - Starter.mkv',
     retention: 'ignored-local-workspace',
     byteSize: 333401478
   })

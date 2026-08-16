@@ -93,7 +93,7 @@
       "method": "ffprobe",
       "verificationState": "verified",
       "artifact": {
-        "relativePath": "sources/02 - Starter.mkv",
+        "relativePath": "sources/01 - Substitute Soul Reaper/02 - Starter.mkv",
         "retention": "ignored-local-workspace",
         "byteSize": 333401478
       }
