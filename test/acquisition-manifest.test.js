@@ -1,6 +1,7 @@
 'use strict'
 
 const assert = require('node:assert/strict')
+const crypto = require('node:crypto')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
@@ -14,6 +15,12 @@ const {
   validateAcquisitionManifest,
   writeAcquisitionManifest
 } = require('../scripts/generate-acquisition-manifest')
+
+const repositoryRoot = path.resolve(__dirname, '..')
+const PRODUCTION_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/concentrated-preboundary.json'
+const PRODUCTION_MANIFEST_PATH = path.join(repositoryRoot, PRODUCTION_MANIFEST_RELATIVE_PATH)
+const LOCKED_PRODUCTION_MANIFEST_SHA256 = '63ad4e09183e19ba1a4c36601cb2f5ee5181e6973c056b385579b5a13b0567fd'
+const LOCKED_PRODUCTION_MANIFEST_BYTE_SIZE = 94826
 
 const PAIRS = [
   ['concentrated:03', 'cb_3', '03 - Three.mkv'],
@@ -672,4 +679,183 @@ test('generator source does not invoke child processes, ffprobe, torrent hashing
   const source = fs.readFileSync(path.join(__dirname, '..', 'scripts', 'generate-acquisition-manifest.js'), 'utf8')
   assert.doesNotMatch(source, /child_process|spawn|execFile|ffprobe|verifyPieces|create-local-torrent/u)
   assert.doesNotMatch(source, /https?\.|fetch\s*\(|net\.|dns\./u)
+})
+
+function readProductionManifestBytes() {
+  return fs.readFileSync(PRODUCTION_MANIFEST_PATH)
+}
+
+function readProductionManifest() {
+  return JSON.parse(readProductionManifestBytes().toString('utf8'))
+}
+
+test('durable production acquisition manifest has the exact locked bytes', () => {
+  assert.equal(fs.existsSync(PRODUCTION_MANIFEST_PATH), true)
+  const bytes = readProductionManifestBytes()
+  assert.equal(bytes.length, LOCKED_PRODUCTION_MANIFEST_BYTE_SIZE)
+  assert.equal(
+    crypto.createHash('sha256').update(bytes).digest('hex'),
+    LOCKED_PRODUCTION_MANIFEST_SHA256
+  )
+})
+
+test('durable production acquisition manifest satisfies the runtime contract', () => {
+  const manifest = readProductionManifest()
+  assert.equal(validateAcquisitionManifest(manifest), manifest)
+  assert.equal(manifest.schemaVersion, 1)
+  assert.equal(manifest.authorityDomain, 'technical-acquisition')
+  assert.equal(manifest.entries.length, 34)
+})
+
+test('durable production entries retain permanent registry order and exact scope', () => {
+  const manifest = readProductionManifest()
+  const registry = require('../projection/stremio/video-id-registry.json')
+  const registryIndex = new Map(registry.entries.map((entry, index) => [entry.videoId, index]))
+  const videoIds = manifest.entries.map(({ videoId }) => videoId)
+
+  assert.equal(videoIds[0], 'cb_3')
+  assert.equal(videoIds.at(-1), 'cb_35')
+  assert.equal(videoIds.includes('cb_27p5'), true)
+  assert.equal(videoIds.includes('cb_1'), false)
+  assert.equal(videoIds.includes('cb_2'), false)
+  assert.equal(videoIds.includes('cb_0p0'), false)
+  assert.equal(videoIds.some((videoId) => {
+    const match = /^cb_(\d+)$/u.exec(videoId)
+    return match && Number(match[1]) >= 36
+  }), false)
+  assert.equal(manifest.entries.some((entry) => (
+    entry.recordId.includes('35.5') || entry.media.relativePath.includes('35.5 (0)')
+  )), false)
+  for (let index = 1; index < videoIds.length; index += 1) {
+    assert.ok(registryIndex.get(videoIds[index - 1]) < registryIndex.get(videoIds[index]))
+  }
+})
+
+test('durable production identities and verified torrent totals remain exact', () => {
+  const entries = readProductionManifest().entries
+  assert.equal(new Set(entries.map(({ videoId }) => videoId)).size, 34)
+  assert.equal(new Set(entries.map(({ recordId }) => recordId)).size, 34)
+  assert.equal(new Set(entries.map(({ media }) => media.relativePath)).size, 34)
+  assert.equal(new Set(entries.map(({ torrent }) => torrent.relativePath)).size, 34)
+  assert.equal(new Set(entries.map(({ torrent }) => torrent.infoHash)).size, 34)
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.verifiedPieces, 0), 10891)
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.mismatchedPieces, 0), 0)
+
+  for (const { torrent } of entries) {
+    assert.equal(torrent.verifiedPieces, torrent.pieceCount)
+    assert.equal(torrent.mismatchedPieces, 0)
+    assert.deepEqual(torrent.mismatchPieceIndexes, [])
+    assert.equal(torrent.rawInfoMatchesCanonicalEncoding, true)
+    assert.equal(torrent.payloadFilenameMatchesLocalMedia, true)
+    assert.equal(torrent.payloadByteSizeMatchesLocalMedia, true)
+  }
+})
+
+test('durable production raw media vocabulary and stream totals remain exact', () => {
+  const entries = readProductionManifest().entries
+  const distinct = (values) => [...new Set(values)]
+
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.videoStreams.map(({ codecName }) => codecName))), ['hevc', 'png'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.videoStreams.map(({ profile }) => profile))), ['Main', null])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.videoStreams.map(({ pixelFormat }) => pixelFormat))), ['yuv420p', 'rgb24'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.audioStreams.map(({ codecName }) => codecName))), ['aac'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.audioStreams.map(({ profile }) => profile))), ['LC'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.audioStreams.map(({ language }) => language))), ['jpn', 'eng'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.subtitleStreams.map(({ codecName }) => codecName))), ['ass'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.subtitleStreams.map(({ language }) => language))), ['eng', null])
+  assert.equal(entries.reduce((total, entry) => total + entry.media.attachmentCount, 0), 175)
+  assert.equal(entries.filter((entry) => entry.media.videoStreams.some(({ attachedPic }) => attachedPic === 1)).length, 23)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.otherStreamCount, 0), 0)
+})
+
+test('durable production manifest preserves the sole CB32 null language and warning', () => {
+  const entries = readProductionManifest().entries
+  const nullLanguages = entries.flatMap((entry) => entry.media.subtitleStreams
+    .filter(({ language }) => language === null)
+    .map((stream) => ({
+      videoId: entry.videoId,
+      recordId: entry.recordId,
+      streamIndex: stream.index,
+      language: stream.language
+    })))
+  const warnings = entries.flatMap((entry) => entry.media.warnings.map((warning) => ({
+    videoId: entry.videoId,
+    ...warning
+  })))
+
+  assert.deepEqual(nullLanguages, [{
+    videoId: 'cb_32',
+    recordId: 'concentrated:32',
+    streamIndex: 4,
+    language: null
+  }])
+  assert.deepEqual(warnings, [{
+    videoId: 'cb_32',
+    code: 'missing-subtitle-language-tag',
+    streamIndex: 4
+  }])
+})
+
+test('durable production CB3 acquisition identity remains locked', () => {
+  const cb3 = readProductionManifest().entries.find(({ videoId }) => videoId === 'cb_3')
+  assert.ok(cb3)
+  assert.deepEqual({
+    videoId: cb3.videoId,
+    recordId: cb3.recordId,
+    mediaRelativePath: cb3.media.relativePath,
+    mediaByteSize: cb3.media.byteSize,
+    durationSeconds: cb3.media.container.durationSeconds,
+    torrentRelativePath: cb3.torrent.relativePath,
+    torrentSha256: cb3.torrent.torrentSha256,
+    infoHash: cb3.torrent.infoHash,
+    pieceLength: cb3.torrent.pieceLength,
+    pieceCount: cb3.torrent.pieceCount,
+    verifiedPieces: cb3.torrent.verifiedPieces,
+    mismatchedPieces: cb3.torrent.mismatchedPieces
+  }, {
+    videoId: 'cb_3',
+    recordId: 'concentrated:03',
+    mediaRelativePath: 'sources/01 - Substitute Soul Reaper/03 - The Pink-Cheeked Cockatiel.mkv',
+    mediaByteSize: 348128661,
+    durationSeconds: 2173.845,
+    torrentRelativePath: 'sources/torrents/concentrated-preboundary/03 - The Pink-Cheeked Cockatiel.mkv.torrent',
+    torrentSha256: '867eea7e14a69b0ec9a1df87ce0d849e3f7390936a5f3ff398359dccbf5b438e',
+    infoHash: '52094de720ccaa6d4eb3ce82eef8516f726cbf63',
+    pieceLength: 1048576,
+    pieceCount: 333,
+    verifiedPieces: 333,
+    mismatchedPieces: 0
+  })
+})
+
+test('durable production CB32 acquisition and torrent identity remain locked', () => {
+  const cb32 = readProductionManifest().entries.find(({ videoId }) => videoId === 'cb_32')
+  assert.ok(cb32)
+  assert.deepEqual({
+    videoId: cb32.videoId,
+    recordId: cb32.recordId,
+    mediaRelativePath: cb32.media.relativePath,
+    mediaByteSize: cb32.media.byteSize,
+    durationSeconds: cb32.media.container.durationSeconds,
+    torrentRelativePath: cb32.torrent.relativePath,
+    torrentSha256: cb32.torrent.torrentSha256,
+    infoHash: cb32.torrent.infoHash,
+    pieceLength: cb32.torrent.pieceLength,
+    pieceCount: cb32.torrent.pieceCount,
+    verifiedPieces: cb32.torrent.verifiedPieces,
+    mismatchedPieces: cb32.torrent.mismatchedPieces
+  }, {
+    videoId: 'cb_32',
+    recordId: 'concentrated:32',
+    mediaRelativePath: 'sources/02 - Soul Society/32 - Cat and Hornet.mkv',
+    mediaByteSize: 323345566,
+    durationSeconds: 1547.159,
+    torrentRelativePath: 'sources/torrents/concentrated-preboundary/32 - Cat and Hornet.mkv.torrent',
+    torrentSha256: '30aa21b0bc57e24750be9ee1da0c119bbba87cde23e0e9913c3b213ef9339338',
+    infoHash: '42892d7b2071a411bba2869a1177e265b2d33d93',
+    pieceLength: 1048576,
+    pieceCount: 309,
+    verifiedPieces: 309,
+    mismatchedPieces: 0
+  })
 })

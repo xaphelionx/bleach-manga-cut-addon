@@ -1,0 +1,3222 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "technical-acquisition",
+  "entries": [
+    {
+      "recordId": "concentrated:03",
+      "videoId": "cb_3",
+      "media": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/03 - The Pink-Cheeked Cockatiel.mkv",
+        "byteSize": 348128661,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2173.845
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 7,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/03 - The Pink-Cheeked Cockatiel.mkv.torrent",
+        "torrentByteSize": 6770,
+        "torrentSha256": "867eea7e14a69b0ec9a1df87ce0d849e3f7390936a5f3ff398359dccbf5b438e",
+        "infoHash": "52094de720ccaa6d4eb3ce82eef8516f726cbf63",
+        "fileIdx": 0,
+        "payloadFilename": "03 - The Pink-Cheeked Cockatiel.mkv",
+        "payloadByteSize": 348128661,
+        "pieceLength": 1048576,
+        "pieceCount": 333,
+        "verifiedPieces": 333,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:04",
+      "videoId": "cb_4",
+      "media": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/04 - Bad Standard.mkv",
+        "byteSize": 317623607,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2112.042
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 13,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 8,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/04 - Bad Standard.mkv.torrent",
+        "torrentByteSize": 6156,
+        "torrentSha256": "49412a37f7e68e555938c064e7c2f1c4fd82db22f20433f78af9c0e2f95ef282",
+        "infoHash": "2cb33912731bf7c8171d2d40ea821aa9ce5cf51e",
+        "fileIdx": 0,
+        "payloadFilename": "04 - Bad Standard.mkv",
+        "payloadByteSize": 317623607,
+        "pieceLength": 1048576,
+        "pieceCount": 303,
+        "verifiedPieces": 303,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:05",
+      "videoId": "cb_5",
+      "media": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/05 - June 17th -memories in the rain-.mkv",
+        "byteSize": 301679894,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1695.04
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/05 - June 17th -memories in the rain-.mkv.torrent",
+        "torrentByteSize": 5876,
+        "torrentSha256": "b21a0a789c35a5402b6363cce821a043e1d8573be33c81e9f3709bcc43d3c3c6",
+        "infoHash": "094222baff3068ffe4c012e7ad886828a18a6a6b",
+        "fileIdx": 0,
+        "payloadFilename": "05 - June 17th -memories in the rain-.mkv",
+        "payloadByteSize": 301679894,
+        "pieceLength": 1048576,
+        "pieceCount": 288,
+        "verifiedPieces": 288,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:06",
+      "videoId": "cb_6",
+      "media": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/06 - Spirits AREN_T Always With Us.mkv",
+        "byteSize": 240822115,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1338.113
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 7,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/06 - Spirits AREN_T Always With Us.mkv.torrent",
+        "torrentByteSize": 4713,
+        "torrentSha256": "fb73f48d1854b5078e3194b063afeabcfb5e9e4b74b4371f450d093fe5fe8c66",
+        "infoHash": "88ea7401443a0423b9d2da011eff7d4993472381",
+        "fileIdx": 0,
+        "payloadFilename": "06 - Spirits AREN_T Always With Us.mkv",
+        "payloadByteSize": 240822115,
+        "pieceLength": 1048576,
+        "pieceCount": 230,
+        "verifiedPieces": 230,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:07",
+      "videoId": "cb_7",
+      "media": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/07 - Quincy Archer Hates You.mkv",
+        "byteSize": 229803750,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1268.972
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/07 - Quincy Archer Hates You.mkv.torrent",
+        "torrentByteSize": 4507,
+        "torrentSha256": "8a8f5796ee27d0bd41cdafb5abc187cb88f4a4a54b6ea2bb2d70262b7301ab9f",
+        "infoHash": "619fa5255043cfc13f71e023abef357efc1e7470",
+        "fileIdx": 0,
+        "payloadFilename": "07 - Quincy Archer Hates You.mkv",
+        "payloadByteSize": 229803750,
+        "pieceLength": 1048576,
+        "pieceCount": 220,
+        "verifiedPieces": 220,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:08",
+      "videoId": "cb_8",
+      "media": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/08 - Crossing the Rubicon.mkv",
+        "byteSize": 319418175,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1925.973
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/08 - Crossing the Rubicon.mkv.torrent",
+        "torrentByteSize": 6204,
+        "torrentSha256": "1eeb0b70bd349d985aaf845e1e70871c43e1d8a3e69c98be0f9d8a21a58767d2",
+        "infoHash": "74a80202e9c0a620d851c959dd21caa9c3608b7b",
+        "fileIdx": 0,
+        "payloadFilename": "08 - Crossing the Rubicon.mkv",
+        "payloadByteSize": 319418175,
+        "pieceLength": 1048576,
+        "pieceCount": 305,
+        "verifiedPieces": 305,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:09",
+      "videoId": "cb_9",
+      "media": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/09 - Menos Grande.mkv",
+        "byteSize": 248391800,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1627.669
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/09 - Menos Grande.mkv.torrent",
+        "torrentByteSize": 4836,
+        "torrentSha256": "63ad5b477828f5914850993ad6c071c83277b0c8f878172b7f00b7ed6ada91d4",
+        "infoHash": "f3d675cd68f524fb12f7ddaf506f23ca854b4272",
+        "fileIdx": 0,
+        "payloadFilename": "09 - Menos Grande.mkv",
+        "payloadByteSize": 248391800,
+        "pieceLength": 1048576,
+        "pieceCount": 237,
+        "verifiedPieces": 237,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:10",
+      "videoId": "cb_10",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/10 - The Death Trilogy Overture.mkv",
+        "byteSize": 408351511,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2640.405
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 12,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 7,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/10 - The Death Trilogy Overture.mkv.torrent",
+        "torrentByteSize": 7910,
+        "torrentSha256": "dc7a11e4d1499236c611c2c87370478401e04385530f8ccc5626effa87436075",
+        "infoHash": "a00bce6c5ac15841c7ea549f22f03bd270ed7441",
+        "fileIdx": 0,
+        "payloadFilename": "10 - The Death Trilogy Overture.mkv",
+        "payloadByteSize": 408351511,
+        "pieceLength": 1048576,
+        "pieceCount": 390,
+        "verifiedPieces": 390,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:11",
+      "videoId": "cb_11",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/11 - blank.mkv",
+        "byteSize": 252089830,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1602.924
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/11 - blank.mkv.torrent",
+        "torrentByteSize": 4909,
+        "torrentSha256": "df80cd0b044ea9d96e1ac9cae36bb90ae83daddd499f763fd297b898cafc5af6",
+        "infoHash": "5d695b88fdbc3783412bc0cfa6503f96b41a035d",
+        "fileIdx": 0,
+        "payloadFilename": "11 - blank.mkv",
+        "payloadByteSize": 252089830,
+        "pieceLength": 1048576,
+        "pieceCount": 241,
+        "verifiedPieces": 241,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:12",
+      "videoId": "cb_12",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/12 - The Blade and Me.mkv",
+        "byteSize": 325084602,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1708.78
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/12 - The Blade and Me.mkv.torrent",
+        "torrentByteSize": 6320,
+        "torrentSha256": "e3cccfb47015a8dfe5fe9a9cd89720b0be76e1122de4c6c9db36a59a45308a07",
+        "infoHash": "43fa97c34e004d8dfea539927e98de658fda4fce",
+        "fileIdx": 0,
+        "payloadFilename": "12 - The Blade and Me.mkv",
+        "payloadByteSize": 325084602,
+        "pieceLength": 1048576,
+        "pieceCount": 311,
+        "verifiedPieces": 311,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:13",
+      "videoId": "cb_13",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/13 - Our Last Summer Vacation.mkv",
+        "byteSize": 369651632,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2081.985
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 7,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/13 - Our Last Summer Vacation.mkv.torrent",
+        "torrentByteSize": 7168,
+        "torrentSha256": "1026ea31d98898da52141836208e5e7baa07f94dd89b0ea82012de722bf1af25",
+        "infoHash": "fac95a08d81438d8c61c0918c92e969181db0e98",
+        "fileIdx": 0,
+        "payloadFilename": "13 - Our Last Summer Vacation.mkv",
+        "payloadByteSize": 369651632,
+        "pieceLength": 1048576,
+        "pieceCount": 353,
+        "verifiedPieces": 353,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:14",
+      "videoId": "cb_14",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/14 - The Shooting Star Project.mkv",
+        "byteSize": 302195202,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1760.62
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/14 - The Shooting Star Project.mkv.torrent",
+        "torrentByteSize": 5889,
+        "torrentSha256": "0da594e7dd56e6227879a67a64041ed7bc346bed58364cbdfd0c7cdc0f86972b",
+        "infoHash": "915bd24de301ec9acf612ef96e6f081fb4322a1a",
+        "fileIdx": 0,
+        "payloadFilename": "14 - The Shooting Star Project.mkv",
+        "payloadByteSize": 302195202,
+        "pieceLength": 1048576,
+        "pieceCount": 289,
+        "verifiedPieces": 289,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:15",
+      "videoId": "cb_15",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/15 - INTRUDERZ.mkv",
+        "byteSize": 404054328,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2301.548
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 11,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 6,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/15 - INTRUDERZ.mkv.torrent",
+        "torrentByteSize": 7813,
+        "torrentSha256": "a96853ed4b22b768ff3fb217c9e7c8ded1e6078aaf7f14492bf1a928ee0fa0dc",
+        "infoHash": "fc06a4507d5aa490a9a6fdc475bc55b1d49c8736",
+        "fileIdx": 0,
+        "payloadFilename": "15 - INTRUDERZ.mkv",
+        "payloadByteSize": 404054328,
+        "pieceLength": 1048576,
+        "pieceCount": 386,
+        "verifiedPieces": 386,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:16",
+      "videoId": "cb_16",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/16 - So Unlucky We Are.mkv",
+        "byteSize": 368116920,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1979.969
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/16 - So Unlucky We Are.mkv.torrent",
+        "torrentByteSize": 7141,
+        "torrentSha256": "b9aac728e74899d7a7383977ed13b54e5672b7b5e9ff321bf61b28e47fdd63a0",
+        "infoHash": "b6a64b86bf1b6226f10fe25f9b11475cb683f9c3",
+        "fileIdx": 0,
+        "payloadFilename": "16 - So Unlucky We Are.mkv",
+        "payloadByteSize": 368116920,
+        "pieceLength": 1048576,
+        "pieceCount": 352,
+        "verifiedPieces": 352,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:17",
+      "videoId": "cb_17",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/17 - Steer for the Star.mkv",
+        "byteSize": 286578295,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1674.858
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/17 - Steer for the Star.mkv.torrent",
+        "torrentByteSize": 5582,
+        "torrentSha256": "cce5748f1792351e202d0b469dc0d0e34608746148578e00022eaf97ba99a8aa",
+        "infoHash": "1923e3b3bc5359ecdcd35e56f2c18b954c5db338",
+        "fileIdx": 0,
+        "payloadFilename": "17 - Steer for the Star.mkv",
+        "payloadByteSize": 286578295,
+        "pieceLength": 1048576,
+        "pieceCount": 274,
+        "verifiedPieces": 274,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:18",
+      "videoId": "cb_18",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/18 - A Star and a Stray Dog.mkv",
+        "byteSize": 423713306,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2204.353
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/18 - A Star and a Stray Dog.mkv.torrent",
+        "torrentByteSize": 8206,
+        "torrentSha256": "118e17e7e8f2bd7636f77f4f18ebfaebeab8e79e939edaa202e56e333895b229",
+        "infoHash": "ac7c82416ed7aeacd9133fcce21a58988af9206c",
+        "fileIdx": 0,
+        "payloadFilename": "18 - A Star and a Stray Dog.mkv",
+        "payloadByteSize": 423713306,
+        "pieceLength": 1048576,
+        "pieceCount": 405,
+        "verifiedPieces": 405,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:19",
+      "videoId": "cb_19",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/19 - Flower on the Precipice.mkv",
+        "byteSize": 214713500,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1319.19
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/19 - Flower on the Precipice.mkv.torrent",
+        "torrentByteSize": 4207,
+        "torrentSha256": "2ae76cae161a33f384ca9b0e059d8e9bd15e9013a8a960940cf22cd8a35c4281",
+        "infoHash": "3a8bbc48fac6e013616eb2408ff5855694d796f0",
+        "fileIdx": 0,
+        "payloadFilename": "19 - Flower on the Precipice.mkv",
+        "payloadByteSize": 214713500,
+        "pieceLength": 1048576,
+        "pieceCount": 205,
+        "verifiedPieces": 205,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:20",
+      "videoId": "cb_20",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/20 - Spring, Spring, Meets the Tiger.mkv",
+        "byteSize": 386463907,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2094.124
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/20 - Spring, Spring, Meets the Tiger.mkv.torrent",
+        "torrentByteSize": 7495,
+        "torrentSha256": "c8d79ebb7d2a1d902c22aaea66a5e8f7c7de1804b234b3593385571d0427a6ed",
+        "infoHash": "a32ccf0caf6f50a25d041ba01fa87112e47cbd80",
+        "fileIdx": 0,
+        "payloadFilename": "20 - Spring, Spring, Meets the Tiger.mkv",
+        "payloadByteSize": 386463907,
+        "pieceLength": 1048576,
+        "pieceCount": 369,
+        "verifiedPieces": 369,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:21",
+      "videoId": "cb_21",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/21 - The Undead.mkv",
+        "byteSize": 297100400,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1389.505
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/21 - The Undead.mkv.torrent",
+        "torrentByteSize": 5774,
+        "torrentSha256": "7f362e512817968c5f9e30a8bc3739dbdcc7ee7196e717ccbbe48f1091928ddd",
+        "infoHash": "241df4f98cf03aa7a55fa01771d9eb83088b3dc5",
+        "fileIdx": 0,
+        "payloadFilename": "21 - The Undead.mkv",
+        "payloadByteSize": 297100400,
+        "pieceLength": 1048576,
+        "pieceCount": 284,
+        "verifiedPieces": 284,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:22",
+      "videoId": "cb_22",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/22 - Black and White.mkv",
+        "byteSize": 389497259,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1669.184
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/22 - Black and White.mkv.torrent",
+        "torrentByteSize": 7539,
+        "torrentSha256": "0eeb97dcce9df556f1f6452bad4ae5e4d90acb0aa802e98cd004889828b2c426",
+        "infoHash": "101ba212b3b965c1c701f23deb7904e39725b907",
+        "fileIdx": 0,
+        "payloadFilename": "22 - Black and White.mkv",
+        "payloadByteSize": 389497259,
+        "pieceLength": 1048576,
+        "pieceCount": 372,
+        "verifiedPieces": 372,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:23",
+      "videoId": "cb_23",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/23 - Remnant.mkv",
+        "byteSize": 411509706,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2215.788
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/23 - Remnant.mkv.torrent",
+        "torrentByteSize": 7951,
+        "torrentSha256": "675d1c9cc69d628bb528bcd58f314b96ed346bc78916be8a63548b39238c1e59",
+        "infoHash": "03e2dbf027988ae771e3194e8ebc9d61c9b06247",
+        "fileIdx": 0,
+        "payloadFilename": "23 - Remnant.mkv",
+        "payloadByteSize": 411509706,
+        "pieceLength": 1048576,
+        "pieceCount": 393,
+        "verifiedPieces": 393,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:24",
+      "videoId": "cb_24",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/24 - In Sane We Trust.mkv",
+        "byteSize": 226367069,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1325.398
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/24 - In Sane We Trust.mkv.torrent",
+        "torrentByteSize": 4420,
+        "torrentSha256": "a7a2e84ef387b75b08100ff27e918ad7fdd36822677606036c4ccb42b8aaa566",
+        "infoHash": "02552187dae5ca32987f31165974aa0eb8c22fbb",
+        "fileIdx": 0,
+        "payloadFilename": "24 - In Sane We Trust.mkv",
+        "payloadByteSize": 226367069,
+        "pieceLength": 1048576,
+        "pieceCount": 216,
+        "verifiedPieces": 216,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:25",
+      "videoId": "cb_25",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/25 - Insanity and Genius.mkv",
+        "byteSize": 384157993,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2012.502
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/25 - Insanity and Genius.mkv.torrent",
+        "torrentByteSize": 7443,
+        "torrentSha256": "112f64525780c572ebe6e60d9ab438d97acf33e72c909677f9b23c0d97472602",
+        "infoHash": "84d6342a95e08d612bbcd28660c2c9fd24aa1774",
+        "fileIdx": 0,
+        "payloadFilename": "25 - Insanity and Genius.mkv",
+        "payloadByteSize": 384157993,
+        "pieceLength": 1048576,
+        "pieceCount": 367,
+        "verifiedPieces": 367,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:26",
+      "videoId": "cb_26",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/26 - The Straying Stars.mkv",
+        "byteSize": 443389246,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2379.628
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/26 - The Straying Stars.mkv.torrent",
+        "torrentByteSize": 8562,
+        "torrentSha256": "409a0a885a1f6cc56e374dbd2feaa9b3d586f695ff836efff1ba8da364621f3b",
+        "infoHash": "417f13cec5f270d677ee6af0065afa5b7220a821",
+        "fileIdx": 0,
+        "payloadFilename": "26 - The Straying Stars.mkv",
+        "payloadByteSize": 443389246,
+        "pieceLength": 1048576,
+        "pieceCount": 423,
+        "verifiedPieces": 423,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:27",
+      "videoId": "cb_27",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/27 - memories in the rain2.mkv",
+        "byteSize": 330517255,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1886.593
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 11,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 6,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/27 - memories in the rain2.mkv.torrent",
+        "torrentByteSize": 6425,
+        "torrentSha256": "9db2983ffbbaf698f8d55ef55e207cd928ce2b19d60df09bc738b7abfe7ef675",
+        "infoHash": "9054e185c9d61ad0d9e8795e45029d83b7ebd4ab",
+        "fileIdx": 0,
+        "payloadFilename": "27 - memories in the rain2.mkv",
+        "payloadByteSize": 330517255,
+        "pieceLength": 1048576,
+        "pieceCount": 316,
+        "verifiedPieces": 316,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:27.5",
+      "videoId": "cb_27p5",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/27.5 - Meanwhile, in the Living World.mkv",
+        "byteSize": 67589464,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 266.796
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 13,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 8,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/27.5 - Meanwhile, in the Living World.mkv.torrent",
+        "torrentByteSize": 1415,
+        "torrentSha256": "11fc2a4841ae18cdb15f07558dfee42d78f6ac7088aa987f27a33f2a88b911b7",
+        "infoHash": "f59171d9e1fc76c8fc991beb2096e68cacb3dda3",
+        "fileIdx": 0,
+        "payloadFilename": "27.5 - Meanwhile, in the Living World.mkv",
+        "payloadByteSize": 67589464,
+        "pieceLength": 1048576,
+        "pieceCount": 65,
+        "verifiedPieces": 65,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:28",
+      "videoId": "cb_28",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/28 - Surrounding Clutch.mkv",
+        "byteSize": 246935688,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1318.188
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/28 - Surrounding Clutch.mkv.torrent",
+        "torrentByteSize": 4822,
+        "torrentSha256": "bc3470f51e28077341fe44f4da1a189e9fe85fa7a9e6fe8164158024a3b67130",
+        "infoHash": "3702d492d2a675b103878c380c4d12c2cde99468",
+        "fileIdx": 0,
+        "payloadFilename": "28 - Surrounding Clutch.mkv",
+        "payloadByteSize": 246935688,
+        "pieceLength": 1048576,
+        "pieceCount": 236,
+        "verifiedPieces": 236,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:29",
+      "videoId": "cb_29",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/29 - Bite at the Moon.mkv",
+        "byteSize": 296667202,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1507.03
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/29 - Bite at the Moon.mkv.torrent",
+        "torrentByteSize": 5760,
+        "torrentSha256": "b432453c27bd08f30e639f691c7cce8ff2ab7390821cbf7fb8760f702189ad47",
+        "infoHash": "70421253d48424e42c584d84eb0732c310ad855a",
+        "fileIdx": 0,
+        "payloadFilename": "29 - Bite at the Moon.mkv",
+        "payloadByteSize": 296667202,
+        "pieceLength": 1048576,
+        "pieceCount": 283,
+        "verifiedPieces": 283,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:30",
+      "videoId": "cb_30",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/30 - Countdown to the End.mkv",
+        "byteSize": 325135401,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1651.521
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/30 - Countdown to the End.mkv.torrent",
+        "torrentByteSize": 6324,
+        "torrentSha256": "f9b851f98633cf0806d4ec86f88ea9631b623ee70d0f5cd265a96ef38f357ca3",
+        "infoHash": "edab050ec909b4d81761612882e99811263a4e80",
+        "fileIdx": 0,
+        "payloadFilename": "30 - Countdown to the End.mkv",
+        "payloadByteSize": 325135401,
+        "pieceLength": 1048576,
+        "pieceCount": 311,
+        "verifiedPieces": 311,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:31",
+      "videoId": "cb_31",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/31 - The Deathberry Returns.mkv",
+        "byteSize": 462117962,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1986.945
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/31 - The Deathberry Returns.mkv.torrent",
+        "torrentByteSize": 8926,
+        "torrentSha256": "a6284903f4f24cd92f6aa28d86c1555fee3546d3ce55600b487b22aa283d4b5c",
+        "infoHash": "adc96230c6d6a526453e8d2ae85ea0ee098587ae",
+        "fileIdx": 0,
+        "payloadFilename": "31 - The Deathberry Returns.mkv",
+        "payloadByteSize": 462117962,
+        "pieceLength": 1048576,
+        "pieceCount": 441,
+        "verifiedPieces": 441,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:32",
+      "videoId": "cb_32",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/32 - Cat and Hornet.mkv",
+        "byteSize": 323345566,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1547.159
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": null,
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": [
+          {
+            "code": "missing-subtitle-language-tag",
+            "streamIndex": 4
+          }
+        ]
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/32 - Cat and Hornet.mkv.torrent",
+        "torrentByteSize": 6278,
+        "torrentSha256": "30aa21b0bc57e24750be9ee1da0c119bbba87cde23e0e9913c3b213ef9339338",
+        "infoHash": "42892d7b2071a411bba2869a1177e265b2d33d93",
+        "fileIdx": 0,
+        "payloadFilename": "32 - Cat and Hornet.mkv",
+        "payloadByteSize": 323345566,
+        "pieceLength": 1048576,
+        "pieceCount": 309,
+        "verifiedPieces": 309,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:33",
+      "videoId": "cb_33",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/33 - Battle on Guillotine Hill.mkv",
+        "byteSize": 498070003,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2313.644
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/33 - Battle on Guillotine Hill.mkv.torrent",
+        "torrentByteSize": 9609,
+        "torrentSha256": "39a1386873f204049df3b2ad17e3555fa0baf63a13701cc6985edff461fee4de",
+        "infoHash": "c5d078cd4526e9554c906372bdfa0e77f7e2eda9",
+        "fileIdx": 0,
+        "payloadFilename": "33 - Battle on Guillotine Hill.mkv",
+        "payloadByteSize": 498070003,
+        "pieceLength": 1048576,
+        "pieceCount": 475,
+        "verifiedPieces": 475,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:34",
+      "videoId": "cb_34",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/34 - end of hypnosis.mkv",
+        "byteSize": 666212185,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 3356.225
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/34 - end of hypnosis.mkv.torrent",
+        "torrentByteSize": 12820,
+        "torrentSha256": "67a4c6da0d6fc6d2a4afc7212662a9245184ab830017cc4d307b65f0cb68da9f",
+        "infoHash": "beec5816bb21dffa045c642797d441669b5e0f7a",
+        "fileIdx": 0,
+        "payloadFilename": "34 - end of hypnosis.mkv",
+        "payloadByteSize": 666212185,
+        "pieceLength": 1048576,
+        "pieceCount": 636,
+        "verifiedPieces": 636,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:35",
+      "videoId": "cb_35",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/35 - AND THE RAIN LEFT OFF.mkv",
+        "byteSize": 285877265,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1706.732
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/35 - AND THE RAIN LEFT OFF.mkv.torrent",
+        "torrentByteSize": 5565,
+        "torrentSha256": "21ca17c9db40cd754a08cf448ce1d05bc1502ba86901cd3eb8bbfb0abbc39d11",
+        "infoHash": "65ca15c3cd1b97558ea85d26d0ce6632c0ede263",
+        "fileIdx": 0,
+        "payloadFilename": "35 - AND THE RAIN LEFT OFF.mkv",
+        "payloadByteSize": 285877265,
+        "pieceLength": 1048576,
+        "pieceCount": 273,
+        "verifiedPieces": 273,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    }
+  ]
+}
