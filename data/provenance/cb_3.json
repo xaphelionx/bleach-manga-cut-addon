@@ -1,0 +1,144 @@
+{
+  "id": "cb_3",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:03",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A4",
+        "concentrated-xlsx:episode-list:B4",
+        "concentrated-xlsx:episode-list:C4",
+        "concentrated-xlsx:episode-list:D4",
+        "concentrated-xlsx:episode-list:E4",
+        "concentrated-xlsx:episode-list:F4",
+        "concentrated-xlsx:episode-list:G4",
+        "concentrated-xlsx:episode-list:H4"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_3",
+      "projectedPlacement": {
+        "season": 1,
+        "episode": 3
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_3.json",
+      "videoId": "cb_3",
+      "recordId": "concentrated:03",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb3-local-torrent-verification",
+        "cb3-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "03",
+    "title": "The Pink-Cheeked Cockatiel",
+    "mangaChapters": "007-012",
+    "sourceAnimeEpisodes": "004-005",
+    "exactEditRuntime": "00:36:14",
+    "normalizedExactRuntime": "36:14",
+    "timeSaved": "09m26s (21%)",
+    "releaseDate": "2024-04-19",
+    "lastUpdate": "2025-02-27",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 4,
+      "cells": "A4:H4"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "36",
+    "runtimeTransformation": "The exact 36:14 source runtime is presented as 36 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "52094de720ccaa6d4eb3ce82eef8516f726cbf63",
+    "fileIdx": 0,
+    "filename": "03 - The Pink-Cheeked Cockatiel.mkv",
+    "videoSize": 348128661,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "03 - The Pink-Cheeked Cockatiel.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2173.845
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "36:14 (2174 seconds) -> floor whole minutes -> 36",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "348128661 bytes / 1000000, fixed to two decimals -> 348.13 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

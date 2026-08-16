@@ -37,10 +37,10 @@ const evidence = require('../evidence/media/cb_1.json')
 const cb2Evidence = require('../evidence/media/cb_2.json')
 const verifiedMediaSchema = require('../schemas/media/verified-media.schema.json')
 const generatorSource = fs.readFileSync(path.join(root, 'scripts/generate-stremio-data.js'), 'utf8')
-const EXPECTED_PUBLISHED_PREFIX = Object.freeze(['cb_1', 'cb_2'])
+const EXPECTED_PUBLISHED_PREFIX = Object.freeze(['cb_1', 'cb_2', 'cb_3'])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '62457501d66303d043fa9f2ae8bf4ffb8275b86bd078892ce33b66f1cc9a026e'
+  'data/meta/bleach-manga-cut.json': '731a6a09c5565734117b52f6ed79d560e2c4e507ae34fbcac09a50d24f6a22d1'
 })
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
@@ -67,7 +67,7 @@ after(() => {
   if (outputRoot) fs.rmSync(outputRoot, { recursive: true, force: true })
 })
 
-test('publication remains exactly cb_1 and cb_2 despite additional verified-media evidence', () => {
+test('publication remains exactly cb_1, cb_2, and cb_3 despite additional verified-media evidence', () => {
   const evidenceVideoIds = inputs.evidenceRecords.map(({ value }) => value.videoId)
   assert.deepEqual(inputs.projection.publicationPolicy.currentPublishedVideoIds, EXPECTED_PUBLISHED_PREFIX)
   assert.ok(
@@ -75,10 +75,10 @@ test('publication remains exactly cb_1 and cb_2 despite additional verified-medi
     'test requires evidence beyond the published prefix'
   )
   for (const videoId of EXPECTED_PUBLISHED_PREFIX) assert.ok(evidenceVideoIds.includes(videoId))
-  assert.ok(evidenceVideoIds.includes('cb_3'), 'CB3 evidence should be loaded without making CB3 published')
-  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_3'), false)
+  assert.ok(evidenceVideoIds.includes('cb_4'), 'CB4 evidence should be loaded without making CB4 published')
+  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_4'), false)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.equal(result.processedVideoIds.includes('cb_3'), false)
+  assert.equal(result.processedVideoIds.includes('cb_4'), false)
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 
@@ -138,7 +138,9 @@ test('current checkpoint candidate paths are exact and closed', () => {
     'data/stream/cb_1.json',
     'data/provenance/cb_1.json',
     'data/stream/cb_2.json',
-    'data/provenance/cb_2.json'
+    'data/provenance/cb_2.json',
+    'data/stream/cb_3.json',
+    'data/provenance/cb_3.json'
   ])
 })
 
@@ -242,12 +244,14 @@ test('runtime parsing handles normalized mm:ss and h:mm:ss generically', () => {
 })
 
 test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
-  const [cb1, cb2] = inputs.resolvedRecords
+  const [cb1, cb2, cb3] = inputs.resolvedRecords
   assert.equal(derivePresentation(cb1.editorialRecord, cb1.mediaEvidence).runtime.stremioWholeMinutes, '18')
   assert.equal(derivePresentation(cb2.editorialRecord, cb2.mediaEvidence).runtime.stremioWholeMinutes, '32')
+  assert.equal(derivePresentation(cb3.editorialRecord, cb3.mediaEvidence).runtime.stremioWholeMinutes, '36')
   assert.deepEqual(result.candidates[CB1_REGRESSION_FILES.meta].meta.videos, [
     { id: 'cb_1', season: 1, episode: 1, title: 'Death and Strawberry', runtime: '18' },
-    { id: 'cb_2', season: 1, episode: 2, title: 'Starter', runtime: '32' }
+    { id: 'cb_2', season: 1, episode: 2, title: 'Starter', runtime: '32' },
+    { id: 'cb_3', season: 1, episode: 3, title: 'The Pink-Cheeked Cockatiel', runtime: '36' }
   ])
 })
 
@@ -279,6 +283,7 @@ test('stream sources is series policy and is absent from verified evidence', () 
   assert.deepEqual(SERIES_POLICY.presentation.streamSources, [])
   assert.deepEqual(result.candidates[CB1_REGRESSION_FILES.stream].streams[0].sources, [])
   assert.deepEqual(result.candidates['data/stream/cb_2.json'].streams[0].sources, [])
+  assert.deepEqual(result.candidates['data/stream/cb_3.json'].streams[0].sources, [])
   assert.match(
     result.candidates[CB1_REGRESSION_FILES.provenance].transformations.streamSources,
     /series presentation policy.*not a torrent tracker\/announce\/web-seed evidence claim/

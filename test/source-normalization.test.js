@@ -31,7 +31,7 @@ const expectedSourceHashes = {
 
 const lockedRepositoryHashes = {
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '62457501d66303d043fa9f2ae8bf4ffb8275b86bd078892ce33b66f1cc9a026e',
+  'data/meta/bleach-manga-cut.json': '731a6a09c5565734117b52f6ed79d560e2c4e507ae34fbcac09a50d24f6a22d1',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
@@ -303,7 +303,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('two-episode POC output preserves CB1 behavior and locked compatibility hashes', () => {
+test('current three-episode compatibility output preserves CB1 behavior and locked compatibility hashes', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }
@@ -328,6 +328,13 @@ test('two-episode POC output preserves CB1 behavior and locked compatibility has
       episode: 2,
       title: 'Starter',
       runtime: '32'
+    },
+    {
+      id: 'cb_3',
+      season: 1,
+      episode: 3,
+      title: 'The Pink-Cheeked Cockatiel',
+      runtime: '36'
     }
   ])
   assert.equal(torrent.name, '[P2P🧲] 576p')

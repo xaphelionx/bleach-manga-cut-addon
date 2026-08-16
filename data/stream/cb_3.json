@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Pink-Cheeked Cockatiel\n📖 [007-012] 🕒 36:14\n💾 348.13 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "52094de720ccaa6d4eb3ce82eef8516f726cbf63",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 348128661,
+        "filename": "03 - The Pink-Cheeked Cockatiel.mkv"
+      }
+    }
+  ]
+}

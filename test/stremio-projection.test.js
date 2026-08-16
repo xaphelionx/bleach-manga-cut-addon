@@ -37,9 +37,10 @@ const projectedById = new Map(projection.entries.map((entry) => [entry.recordId,
 const optionalById = new Map(optional.entries.map((entry) => [entry.recordId, entry]))
 const evidenceRecords = [
   { relativePath: 'evidence/media/cb_1.json', value: read('evidence/media/cb_1.json') },
-  { relativePath: 'evidence/media/cb_2.json', value: read('evidence/media/cb_2.json') }
+  { relativePath: 'evidence/media/cb_2.json', value: read('evidence/media/cb_2.json') },
+  { relativePath: 'evidence/media/cb_3.json', value: read('evidence/media/cb_3.json') }
 ]
-const EXPECTED_PUBLISHED_PREFIX = Object.freeze(['cb_1', 'cb_2'])
+const EXPECTED_PUBLISHED_PREFIX = Object.freeze(['cb_1', 'cb_2', 'cb_3'])
 
 function publicationInputs() {
   return {
@@ -181,6 +182,19 @@ test('CB2 is cb_2, S1E2, Starter, and independently publication-gated', () => {
   })
 })
 
+test('CB3 is cb_3, S1E3, eligible, and remains unlocked for compatibility testing', () => {
+  const cb3 = projectedById.get('concentrated:03')
+  assert.equal(cb3.videoId, 'cb_3')
+  assert.deepEqual(cb3.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 1,
+    episode: 3
+  })
+  assert.equal(cb3.title, 'The Pink-Cheeked Cockatiel')
+  assert.deepEqual(cb3.publicationEligibility, { state: 'eligible', gateSet: 'verified-primary' })
+  assert.equal(registry.entries.find((entry) => entry.videoId === 'cb_3').locked, false)
+})
+
 test('permanent CB1/CB2 and unresolved-boundary artifacts match their exact hashes', () => {
   for (const [relativePath, expectedHash] of Object.entries(LOCKED_HASHES)) {
     assert.equal(hash(relativePath), expectedHash, relativePath)
@@ -276,7 +290,7 @@ test('no S3 or S4 record is publication-eligible', () => {
   assert.ok(later.every((entry) => entry.publicationEligibility.gateSet === 'blocked-post-boundary'))
 })
 
-test('current publication checkpoint is exactly the first two primary entries', () => {
+test('current publication checkpoint is exactly the first three primary entries', () => {
   const sorted = [...projection.entries].sort((left, right) =>
     left.projectedPlacement.season - right.projectedPlacement.season ||
     left.projectedPlacement.episode - right.projectedPlacement.episode
@@ -287,10 +301,10 @@ test('current publication checkpoint is exactly the first two primary entries', 
     sorted.filter((entry) => entry.publicationEligibility.state === 'eligible').map((entry) => entry.videoId),
     EXPECTED_PUBLISHED_PREFIX
   )
-  assert.equal(eligibility.indexOf(false), 2)
-  assert.ok(eligibility.slice(2).every((state) => state === false))
-  assert.equal(sorted[2].videoId, 'cb_3')
-  assert.equal(sorted[2].publicationEligibility.state, 'blocked')
+  assert.equal(eligibility.indexOf(false), 3)
+  assert.ok(eligibility.slice(3).every((state) => state === false))
+  assert.equal(sorted[3].videoId, 'cb_4')
+  assert.equal(sorted[3].publicationEligibility.state, 'blocked')
 })
 
 test('cross-file publication contract accepts the current approved prefix', () => {
@@ -302,7 +316,7 @@ test('cross-file publication contract accepts the current approved prefix', () =
 
 test('cross-file publication contract rejects an extra registry publication', () => {
   const input = publicationInputs()
-  input.registry.entries.find((entry) => entry.videoId === 'cb_3').status = 'published'
+  input.registry.entries.find((entry) => entry.videoId === 'cb_4').status = 'published'
   assert.throws(
     () => validatePublicationPrefix(input),
     /registry published IDs must exactly match the approved prefix/
@@ -311,23 +325,23 @@ test('cross-file publication contract rejects an extra registry publication', ()
 
 test('cross-file publication contract rejects an approved ID whose projection remains blocked', () => {
   const input = publicationInputs()
-  input.projection.publicationPolicy.currentPublishedVideoIds.push('cb_3')
-  setPrefixBlocker(input, 'cb_3')
+  input.projection.publicationPolicy.currentPublishedVideoIds.push('cb_4')
+  setPrefixBlocker(input, 'cb_4')
   assert.throws(() => validatePublicationPrefix(input))
 })
 
-test('cross-file publication contract rejects an eligible CB3 without verified media', () => {
+test('cross-file publication contract rejects an eligible CB4 without verified media', () => {
   const input = publicationInputs()
-  publishSynthetic(input, 'cb_3', { withEvidence: false })
+  publishSynthetic(input, 'cb_4', { withEvidence: false })
   assert.throws(
     () => validatePublicationPrefix(input),
-    /cb_3 must have exactly one matching verified-media record/
+    /cb_4 must have exactly one matching verified-media record/
   )
 })
 
-test('cross-file publication contract rejects a cb_1, cb_2, cb_4 publication gap', () => {
+test('cross-file publication contract rejects a cb_1, cb_2, cb_3, cb_5 publication gap', () => {
   const input = publicationInputs()
-  publishSynthetic(input, 'cb_4')
+  publishSynthetic(input, 'cb_5')
   assert.throws(
     () => validatePublicationPrefix(input),
     /approved IDs must follow canonical primary timeline order/
@@ -336,7 +350,7 @@ test('cross-file publication contract rejects a cb_1, cb_2, cb_4 publication gap
 
 test('cross-file publication contract rejects eligibility after a blocked entry', () => {
   const input = publicationInputs()
-  input.projection.entries.find((entry) => entry.videoId === 'cb_4').publicationEligibility = {
+  input.projection.entries.find((entry) => entry.videoId === 'cb_5').publicationEligibility = {
     state: 'eligible',
     gateSet: 'verified-primary'
   }
@@ -348,7 +362,7 @@ test('cross-file publication contract rejects eligibility after a blocked entry'
 
 test('additional evidence alone does not advance publication', () => {
   const input = publicationInputs()
-  input.evidenceRecords.push(syntheticEvidence('cb_3', 'concentrated:03'))
+  input.evidenceRecords.push(syntheticEvidence('cb_4', 'concentrated:04'))
   const result = validatePublicationPrefix(input)
   assert.deepEqual(result.approvedIds, EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(result.eligibleIds, EXPECTED_PUBLISHED_PREFIX)
@@ -373,14 +387,14 @@ test('cross-file publication contract rejects crossing the unresolved 35.5 bound
   )
 })
 
-test('cross-file publication contract accepts a fully related synthetic three-entry prefix', () => {
+test('cross-file publication contract accepts a fully related synthetic four-entry prefix', () => {
   const input = publicationInputs()
-  publishSynthetic(input, 'cb_3')
+  publishSynthetic(input, 'cb_4')
   const result = validatePublicationPrefix(input)
-  assert.deepEqual(result.approvedIds, ['cb_1', 'cb_2', 'cb_3'])
-  assert.deepEqual(result.eligibleIds, ['cb_1', 'cb_2', 'cb_3'])
-  assert.deepEqual(result.publishedIds, ['cb_1', 'cb_2', 'cb_3'])
-  assert.deepEqual(result.eligibleEntries.map((entry) => entry.videoId), ['cb_1', 'cb_2', 'cb_3'])
+  assert.deepEqual(result.approvedIds, ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
+  assert.deepEqual(result.eligibleIds, ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
+  assert.deepEqual(result.publishedIds, ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
+  assert.deepEqual(result.eligibleEntries.map((entry) => entry.videoId), ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
 })
 
 test('optional and EX entries have no primary-series placement', () => {
@@ -432,17 +446,18 @@ test('registry reservation never implies publication', () => {
     })),
     [
       { videoId: 'cb_1', locked: true },
-      { videoId: 'cb_2', locked: true }
+      { videoId: 'cb_2', locked: true },
+      { videoId: 'cb_3', locked: false }
     ]
   )
   assert.deepEqual(
-    registry.entries.find((entry) => entry.videoId === 'cb_3'),
+    registry.entries.find((entry) => entry.videoId === 'cb_4'),
     {
       recordType: 'normalized-record',
-      recordId: 'concentrated:03',
+      recordId: 'concentrated:04',
       projectId: 'concentrated',
-      sourceIdentifier: '03',
-      videoId: 'cb_3',
+      sourceIdentifier: '04',
+      videoId: 'cb_4',
       status: 'reserved',
       locked: false
     }
@@ -476,9 +491,9 @@ test('complete projection validator accepts the artifacts', () => {
   assert.deepEqual(validate(), {
     projectedEntries: 102,
     projectCounts: { concentrated: 52, hollowed: 38, chipped: 12 },
-    eligibilityCounts: { eligible: 2, blocked: 100 },
-    eligibleVideoIds: ['cb_1', 'cb_2'],
-    publishedVideoIds: ['cb_1', 'cb_2'],
+    eligibilityCounts: { eligible: 3, blocked: 99 },
+    eligibleVideoIds: ['cb_1', 'cb_2', 'cb_3'],
+    publishedVideoIds: ['cb_1', 'cb_2', 'cb_3'],
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 6

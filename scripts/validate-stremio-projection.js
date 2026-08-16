@@ -269,6 +269,11 @@ function validate() {
         state: 'eligible',
         gateSet: 'verified-primary'
       })
+    } else if (entry.recordId === 'concentrated:03') {
+      assert.deepEqual(entry.publicationEligibility, {
+        state: 'eligible',
+        gateSet: 'verified-primary'
+      })
     }
   }
 
@@ -300,7 +305,10 @@ function validate() {
   const cb3 = projection.entries[2]
   assert.equal(cb3.recordId, 'concentrated:03')
   assert.equal(cb3.videoId, 'cb_3')
-  assert.equal(cb3.publicationEligibility.state, 'blocked')
+  assert.deepEqual(cb3.publicationEligibility, {
+    state: 'eligible',
+    gateSet: 'verified-primary'
+  })
 
   const cb36 = projection.entries.find((entry) => entry.recordId === 'concentrated:36')
   assert.ok(cb36)
@@ -371,6 +379,15 @@ function validate() {
       videoId: 'cb_2',
       status: 'published',
       locked: true
+    },
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:03',
+      projectId: 'concentrated',
+      sourceIdentifier: '03',
+      videoId: 'cb_3',
+      status: 'published',
+      locked: false
     }
   ]) {
     assert.deepEqual(registry.entries.find((entry) => entry.videoId === expected.videoId), expected)
