@@ -1,0 +1,416 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bleach-manga-cut.local/schemas/media/acquisition-manifest.schema.json",
+  "title": "Technical acquisition manifest",
+  "description": "Compact raw technical provenance derived from approved local-media inspection and torrent-verification reports.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "authorityDomain",
+    "entries"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "authorityDomain": {
+      "const": "technical-acquisition"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "$defs": {
+    "relativeArtifactPath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "anyOf": [
+          {
+            "pattern": "^/"
+          },
+          {
+            "pattern": "^\\\\"
+          },
+          {
+            "pattern": "^[A-Za-z]:[\\\\/]"
+          },
+          {
+            "pattern": "(^|[\\\\/])\\.\\.([\\\\/]|$)"
+          },
+          {
+            "pattern": "\\u0000"
+          }
+        ]
+      }
+    },
+    "nullableString": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nullableIndex": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullablePositiveInteger": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullableFlag": {
+      "enum": [
+        0,
+        1,
+        null
+      ]
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recordId",
+        "videoId",
+        "media",
+        "torrent"
+      ],
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "videoId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "media": {
+          "$ref": "#/$defs/media"
+        },
+        "torrent": {
+          "$ref": "#/$defs/torrent"
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relativePath",
+        "byteSize",
+        "container",
+        "videoStreams",
+        "audioStreams",
+        "subtitleStreams",
+        "attachmentCount",
+        "otherStreamCount",
+        "warnings"
+      ],
+      "properties": {
+        "relativePath": {
+          "$ref": "#/$defs/relativeArtifactPath"
+        },
+        "byteSize": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "container": {
+          "$ref": "#/$defs/container"
+        },
+        "videoStreams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/videoStream"
+          }
+        },
+        "audioStreams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/audioStream"
+          }
+        },
+        "subtitleStreams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/subtitleStream"
+          }
+        },
+        "attachmentCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "otherStreamCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warning"
+          }
+        }
+      }
+    },
+    "container": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formatName",
+        "durationSeconds"
+      ],
+      "properties": {
+        "formatName": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "durationSeconds": {
+          "oneOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "videoStream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "codecName",
+        "profile",
+        "width",
+        "height",
+        "pixelFormat",
+        "attachedPic",
+        "default",
+        "forced"
+      ],
+      "properties": {
+        "index": {
+          "$ref": "#/$defs/nullableIndex"
+        },
+        "codecName": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "profile": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "width": {
+          "$ref": "#/$defs/nullablePositiveInteger"
+        },
+        "height": {
+          "$ref": "#/$defs/nullablePositiveInteger"
+        },
+        "pixelFormat": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "attachedPic": {
+          "$ref": "#/$defs/nullableFlag"
+        },
+        "default": {
+          "$ref": "#/$defs/nullableFlag"
+        },
+        "forced": {
+          "$ref": "#/$defs/nullableFlag"
+        }
+      }
+    },
+    "audioStream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "codecName",
+        "profile",
+        "channels",
+        "channelLayout",
+        "language",
+        "title",
+        "default",
+        "forced"
+      ],
+      "properties": {
+        "index": {
+          "$ref": "#/$defs/nullableIndex"
+        },
+        "codecName": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "profile": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "channels": {
+          "$ref": "#/$defs/nullablePositiveInteger"
+        },
+        "channelLayout": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "language": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "title": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "default": {
+          "$ref": "#/$defs/nullableFlag"
+        },
+        "forced": {
+          "$ref": "#/$defs/nullableFlag"
+        }
+      }
+    },
+    "subtitleStream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "codecName",
+        "language",
+        "title",
+        "default",
+        "forced"
+      ],
+      "properties": {
+        "index": {
+          "$ref": "#/$defs/nullableIndex"
+        },
+        "codecName": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "language": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "title": {
+          "$ref": "#/$defs/nullableString"
+        },
+        "default": {
+          "$ref": "#/$defs/nullableFlag"
+        },
+        "forced": {
+          "$ref": "#/$defs/nullableFlag"
+        }
+      }
+    },
+    "warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "streamIndex": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "torrent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relativePath",
+        "torrentByteSize",
+        "torrentSha256",
+        "infoHash",
+        "fileIdx",
+        "payloadFilename",
+        "payloadByteSize",
+        "pieceLength",
+        "pieceCount",
+        "verifiedPieces",
+        "mismatchedPieces",
+        "mismatchPieceIndexes",
+        "rawInfoMatchesCanonicalEncoding",
+        "payloadFilenameMatchesLocalMedia",
+        "payloadByteSizeMatchesLocalMedia"
+      ],
+      "properties": {
+        "relativePath": {
+          "$ref": "#/$defs/relativeArtifactPath"
+        },
+        "torrentByteSize": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "torrentSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "infoHash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "fileIdx": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payloadFilename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payloadByteSize": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pieceLength": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pieceCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "verifiedPieces": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mismatchedPieces": {
+          "const": 0
+        },
+        "mismatchPieceIndexes": {
+          "type": "array",
+          "maxItems": 0,
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "rawInfoMatchesCanonicalEncoding": {
+          "const": true
+        },
+        "payloadFilenameMatchesLocalMedia": {
+          "const": true
+        },
+        "payloadByteSizeMatchesLocalMedia": {
+          "const": true
+        }
+      }
+    }
+  }
+}
