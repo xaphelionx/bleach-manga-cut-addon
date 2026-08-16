@@ -1,12 +1,12 @@
-# Bleach Manga Cut Two-Episode POC
+# Bleach Manga Cut Three-Episode Validated Compatibility Checkpoint
 
-This is a deliberately two-episode Stremio addon that has completed user-confirmed real-device compatibility validation for **Concentrated Bleach 01 — Death and Strawberry** and **Concentrated Bleach 02 — Starter** against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. It is a validated compatibility checkpoint, not a full catalog, and is not deployed.
+This is a deliberately three-episode Stremio addon that has completed user-confirmed real-device compatibility validation for **Concentrated Bleach 01 — Death and Strawberry**, **Concentrated Bleach 02 — Starter**, and **Concentrated Bleach 03 — The Pink-Cheeked Cockatiel** against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. It is a validated compatibility checkpoint, not a full catalog, and is not deployed.
 
 Source status for this POC:
 
-- **Validated:** exact CB1/CB2 catalog and meta ordering; CB1 regression playback; CB2 native TorBox resolution and playback; Nuvio AUTO player selection; original-audio and subtitle selection; seeking, resume, Continue Watching, and CB1-to-CB2 next-episode behavior.
+- **Validated:** exact CB1/CB2/CB3 catalog and meta ordering; CB1 regression playback; CB2 and CB3 native TorBox resolution and playback; Nuvio AUTO player selection; original-audio and subtitle selection; seeking, resume, Continue Watching, completion, and CB1-to-CB2-to-CB3 next-episode behavior.
 - **Locked:** the stable identifiers, torrent identity, verified stream presentation, anime classification, Japanese original-language metadata, and runtime behavior documented below.
-- **Out of scope:** CB3 and later episodes, a full-catalog import, deployment, and changes to the established addon architecture.
+- **Out of scope:** CB4 and later episodes, a full-catalog import, deployment, and changes to the established addon architecture.
 - **Still unresolved outside this POC:** public swarm availability independent of the validated native TorBox paths, artwork, the full-series ordering/import model, and exact Nuvio stream-presentation UI parity.
 
 ## Architecture
@@ -24,36 +24,51 @@ Downstream reference state is deterministically derivable rather than stored as 
 
 ## Manual experiment / user-confirmed Nuvio validation
 
-The compatibility baseline is **Nuvio 0.8.4-beta with native TorBox**, using the user's normal unchanged Nuvio and TorBox configuration previously validated with CB1. These results are a manual experiment confirmed by the user; they are not automatically reproducible unit-test facts and are separate from repository/static validation and verified-media technical evidence.
+The compatibility baseline is **Nuvio 0.8.4-beta with native TorBox**, using the user's normal existing configuration. These results were manually confirmed by the user on **2026-08-16**; they are not automatically reproducible unit-test facts and are separate from repository/static validation and verified-media technical evidence.
 
-Real-device validation completed this two-episode path:
+Real-device validation completed this three-episode path:
 
 ```text
 catalog -> meta -> stream -> TorBox -> playback -> seek/resume -> Continue Watching -> completion -> next episode
 ```
 
-The validated behavior is:
+The validated sequence is:
 
-- Bleach Manga Cut shows exactly CB1 as S1E1, Death and Strawberry, followed by CB2 as S1E2, Starter.
+- CB1 — S1E1 — Death and Strawberry
+- CB2 — S1E2 — Starter
+- CB3 — S1E3 — The Pink-Cheeked Cockatiel
+
+The user-confirmed behavior is:
+
+- Bleach Manga Cut shows exactly CB1, CB2, and CB3 in the sequence above.
 - CB1 still exposes its stream and resolves and plays as before.
 - CB2 resolves through Nuvio's native TorBox integration and plays successfully.
 - Nuvio AUTO selects libmpv normally for CB2.
 - Original Audio selects the Japanese track, and the intended English Full Subtitles track is selected.
 - CB2 seeking and resume work, and CB2 appears appropriately in Continue Watching.
 - Natural completion of CB1 identifies Starter as the next episode; navigation/autoplay into CB2 succeeds, after which CB2 resolves and plays.
+- CB3 is visible as S1E3, exposes its stream, and starts playback through native TorBox resolution.
+- CB3 works with the expected libmpv/AUTO behavior, Japanese audio, embedded subtitle tracks, seeking, resume, Continue Watching, and completion behavior.
+- CB2-to-CB3 next-episode/autoplay behavior succeeds, and CB3 does not expose CB4 as the next published episode.
 - Nuvio's current UI does not visibly expose the literal raw stream name `[P2P🧲] 576p`. This is not considered a compatibility failure because the correct CB2 torrent resolves and plays; exact presentation formatting remains a possible later UI/parity audit.
 
-## Locked two-episode compatibility contract
+The CB3 experiment used the exact trackerless torrent identity `52094de720ccaa6d4eb3ce82eef8516f726cbf63`, file index `0`, and payload `03 - The Pink-Cheeked Cockatiel.mkv`. The torrent was seeded from the user's qBittorrent environment and was successfully acquired/cached by TorBox; Nuvio then resolved and played it through the native TorBox integration. This proves that exact locally seeded payload worked in the user's real environment. It does not prove permanent public swarm availability, availability while that seed is offline, arbitrary third-party peer discovery, or remote availability of every future generated torrent. Verified-media network evidence therefore remains unresolved.
+
+Before testing, the TV temporarily lost access to the locally hosted addon because the host computer's LAN IP address had changed. Updating the installed manifest URL to the current reachable LAN IP restored access. This was a local-network operational issue, not an addon compatibility, TorBox, torrent, or Nuvio stream-contract failure.
+
+## Locked three-episode compatibility contract
 
 The following fields produced the validated behavior and are locked. Changing any of them requires a separate controlled experiment and complete baseline retesting.
 
-- Stable IDs: series `bleach-manga-cut`; videos `cb_1` and `cb_2`.
-- Torrent identity: `infoHash` `d0cb7e0c8bad014c055bf2becf2694dcfde2b8e8`; `fileIdx` `0`; `sources` `[]`.
-- `behaviorHints`: `filename` `01 - Death and Strawberry.mkv`; `videoSize` `186522416`; `bingeGroup` `bleach-manga-cut|p2p|standard`.
+- Stable IDs: series `bleach-manga-cut`; videos `cb_1`, `cb_2`, and `cb_3`.
+- CB1 torrent identity: `infoHash` `d0cb7e0c8bad014c055bf2becf2694dcfde2b8e8`; `fileIdx` `0`; `sources` `[]`.
+- CB1 `behaviorHints`: `filename` `01 - Death and Strawberry.mkv`; `videoSize` `186522416`; `bingeGroup` `bleach-manga-cut|p2p|standard`.
+- CB3 torrent identity: `infoHash` `52094de720ccaa6d4eb3ce82eef8516f726cbf63`; `fileIdx` `0`; `sources` `[]`.
+- CB3 `behaviorHints`: `filename` `03 - The Pink-Cheeked Cockatiel.mkv`; `videoSize` `348128661`; `bingeGroup` `bleach-manga-cut|p2p|standard`.
 - Verified technical stream presentation: name `[P2P🧲] 576p`; title identifies Death and Strawberry, `[001]`, `18:15`, `186.52 MB`, `HEVC`, `AAC 2.0`, and `JPN + ENG`.
 - Series classification: `genres` contains both `Animation` and `Anime` in the catalog preview and full meta response.
 - Original-language metadata: full meta `language` is `Japanese`.
-- Episode structure and runtime behavior: CB1 remains S1E1 with Stremio runtime `"18"`; CB2 remains S1E2 with Stremio runtime `"32"`.
+- Episode structure and runtime behavior: CB1 remains S1E1 with Stremio runtime `"18"`; CB2 remains S1E2 with Stremio runtime `"32"`; CB3 remains S1E3 with Stremio runtime `"36"`.
 
 Detailed per-episode torrent and local-media facts remain in `evidence/media` and generated provenance. Embedded subtitles remain media tracks and are not converted into Stremio external subtitle URLs.
 
@@ -106,7 +121,10 @@ curl http://127.0.0.1:7000/catalog/series/bleach-manga-cut.json
 curl http://127.0.0.1:7000/meta/series/bleach-manga-cut.json
 curl http://127.0.0.1:7000/stream/series/cb_1.json
 curl http://127.0.0.1:7000/stream/series/cb_2.json
+curl http://127.0.0.1:7000/stream/series/cb_3.json
 ```
+
+`127.0.0.1` and `localhost` always refer to the device making the request. A TV must use a manifest URL it can reach, normally using the host computer's LAN IP address. DHCP changes or reboots may change that address and require updating the installed manifest URL; the repository must not record the private LAN IP itself.
 
 ## Regression gate
 

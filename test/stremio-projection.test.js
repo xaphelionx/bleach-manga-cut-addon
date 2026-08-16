@@ -182,7 +182,7 @@ test('CB2 is cb_2, S1E2, Starter, and independently publication-gated', () => {
   })
 })
 
-test('CB3 is cb_3, S1E3, eligible, and remains unlocked for compatibility testing', () => {
+test('CB3 is cb_3, S1E3, eligible, published, and locked after compatibility validation', () => {
   const cb3 = projectedById.get('concentrated:03')
   assert.equal(cb3.videoId, 'cb_3')
   assert.deepEqual(cb3.projectedPlacement, {
@@ -192,10 +192,21 @@ test('CB3 is cb_3, S1E3, eligible, and remains unlocked for compatibility testin
   })
   assert.equal(cb3.title, 'The Pink-Cheeked Cockatiel')
   assert.deepEqual(cb3.publicationEligibility, { state: 'eligible', gateSet: 'verified-primary' })
-  assert.equal(registry.entries.find((entry) => entry.videoId === 'cb_3').locked, false)
+  assert.deepEqual(
+    registry.entries.find((entry) => entry.videoId === 'cb_3'),
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:03',
+      projectId: 'concentrated',
+      sourceIdentifier: '03',
+      videoId: 'cb_3',
+      status: 'published',
+      locked: true
+    }
+  )
 })
 
-test('permanent CB1/CB2 and unresolved-boundary artifacts match their exact hashes', () => {
+test('permanent CB1/CB2/CB3 and unresolved-boundary artifacts match their exact hashes', () => {
   for (const [relativePath, expectedHash] of Object.entries(LOCKED_HASHES)) {
     assert.equal(hash(relativePath), expectedHash, relativePath)
   }
@@ -447,7 +458,7 @@ test('registry reservation never implies publication', () => {
     [
       { videoId: 'cb_1', locked: true },
       { videoId: 'cb_2', locked: true },
-      { videoId: 'cb_3', locked: false }
+      { videoId: 'cb_3', locked: true }
     ]
   )
   assert.deepEqual(

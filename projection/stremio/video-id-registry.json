@@ -13,7 +13,7 @@
   "entries": [
     {"recordType":"normalized-record","recordId":"concentrated:01","projectId":"concentrated","sourceIdentifier":"01","videoId":"cb_1","status":"published","locked":true},
     {"recordType":"normalized-record","recordId":"concentrated:02","projectId":"concentrated","sourceIdentifier":"02","videoId":"cb_2","status":"published","locked":true},
-    {"recordType":"normalized-record","recordId":"concentrated:03","projectId":"concentrated","sourceIdentifier":"03","videoId":"cb_3","status":"published","locked":false},
+    {"recordType":"normalized-record","recordId":"concentrated:03","projectId":"concentrated","sourceIdentifier":"03","videoId":"cb_3","status":"published","locked":true},
     {"recordType":"normalized-record","recordId":"concentrated:04","projectId":"concentrated","sourceIdentifier":"04","videoId":"cb_4","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"concentrated:05","projectId":"concentrated","sourceIdentifier":"05","videoId":"cb_5","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"concentrated:06","projectId":"concentrated","sourceIdentifier":"06","videoId":"cb_6","status":"reserved","locked":false},

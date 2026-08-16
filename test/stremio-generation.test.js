@@ -11,6 +11,7 @@ const {
   BYTE_IDENTICAL_REGRESSION_FILES,
   CB1_REGRESSION_FILES,
   CB2_REGRESSION_FILES,
+  CB3_REGRESSION_FILES,
   EXPECTED_PROVENANCE_DIFF_CONTRACT,
   PROJECT_INPUTS,
   SERIES_POLICY,
@@ -271,9 +272,32 @@ test('current aggregate fixtures and permanent per-video fixtures match their ch
     CB1_REGRESSION_FILES.stream,
     CB1_REGRESSION_FILES.provenance,
     CB2_REGRESSION_FILES.stream,
-    CB2_REGRESSION_FILES.provenance
+    CB2_REGRESSION_FILES.provenance,
+    CB3_REGRESSION_FILES.stream,
+    CB3_REGRESSION_FILES.provenance
   ]) {
     assert.equal(hash(relativePath), LOCKED_HASHES[relativePath], relativePath)
+  }
+})
+
+test('validated CB3 stream and provenance are permanent byte-identical regression fixtures', () => {
+  assert.deepEqual(CB3_REGRESSION_FILES, {
+    stream: 'data/stream/cb_3.json',
+    provenance: 'data/provenance/cb_3.json'
+  })
+  assert.equal(
+    hash(CB3_REGRESSION_FILES.stream),
+    'ff1003ee7661fa3e601fac8f083b878334528ec0498f6b4403442061f56b7b8d'
+  )
+  assert.equal(
+    hash(CB3_REGRESSION_FILES.provenance),
+    '2ca7db7f246fef357afc252a40ab51fcdc2ba2ca4cf0c8e3212b7ebada7fd242'
+  )
+  for (const relativePath of Object.values(CB3_REGRESSION_FILES)) {
+    assert.deepEqual(result.comparisons[relativePath], {
+      byteIdentical: true,
+      sha256: LOCKED_HASHES[relativePath]
+    })
   }
 })
 

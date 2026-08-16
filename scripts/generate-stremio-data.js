@@ -68,10 +68,16 @@ const CB2_REGRESSION_FILES = Object.freeze({
   stream: 'data/stream/cb_2.json',
   provenance: 'data/provenance/cb_2.json'
 })
+const CB3_REGRESSION_FILES = Object.freeze({
+  stream: 'data/stream/cb_3.json',
+  provenance: 'data/provenance/cb_3.json'
+})
 const BYTE_IDENTICAL_REGRESSION_FILES = Object.freeze([
   CB1_REGRESSION_FILES.stream,
   CB2_REGRESSION_FILES.stream,
-  CB2_REGRESSION_FILES.provenance
+  CB2_REGRESSION_FILES.provenance,
+  CB3_REGRESSION_FILES.stream,
+  CB3_REGRESSION_FILES.provenance
 ])
 
 const missing = () => ({ state: 'missing' })
@@ -1037,6 +1043,7 @@ module.exports = {
   BYTE_IDENTICAL_REGRESSION_FILES,
   CB1_REGRESSION_FILES,
   CB2_REGRESSION_FILES,
+  CB3_REGRESSION_FILES,
   EXPECTED_PROVENANCE_DIFF_CONTRACT,
   PROJECT_INPUTS,
   SERIES_POLICY,
