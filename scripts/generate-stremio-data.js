@@ -323,7 +323,11 @@ function validateVerifiedMedia(evidence) {
   for (const [index, track] of evidence.media.subtitleTracks.entries()) {
     assertExactKeys(track, ['kind', 'language', 'title'], `subtitleTracks[${index}]`)
     assert.equal(track.kind, 'embedded')
-    assertNonEmptyString(track.language, `subtitleTracks[${index}].language`)
+    if (typeof track.language === 'string') {
+      assertNonEmptyString(track.language, `subtitleTracks[${index}].language`)
+    } else {
+      assertUnresolved(track.language, `subtitleTracks[${index}].language`)
+    }
     assertNonEmptyString(track.title, `subtitleTracks[${index}].title`)
   }
 

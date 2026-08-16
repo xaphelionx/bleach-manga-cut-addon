@@ -292,8 +292,15 @@
           "const": "embedded"
         },
         "language": {
-          "type": "string",
-          "minLength": 1
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "$ref": "#/$defs/unresolved"
+            }
+          ]
         },
         "title": {
           "type": "string",

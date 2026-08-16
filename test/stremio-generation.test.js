@@ -16,6 +16,7 @@ const {
   SERIES_POLICY,
   assertExpectedProvenanceDiff,
   assertNoPrivateOrNetworkMaterial,
+  buildProvenance,
   candidatePaths,
   derivePresentation,
   generateCandidates,
@@ -316,6 +317,85 @@ test('schema version 1 accepts unresolved or verified container duration and all
   )
   validateVerifiedMedia(evidence)
   validateVerifiedMedia(cb2Evidence)
+})
+
+test('subtitle language schema permits only non-empty strings or the exact unresolved state', () => {
+  assert.deepEqual(verifiedMediaSchema.$defs.subtitleTrack.properties.language, {
+    oneOf: [
+      { type: 'string', minLength: 1 },
+      { $ref: '#/$defs/unresolved' }
+    ]
+  })
+  assert.deepEqual(verifiedMediaSchema.$defs.audioTrack.properties.language, {
+    type: 'string',
+    minLength: 1
+  })
+
+  const known = structuredClone(cb2Evidence)
+  known.media.subtitleTracks[1].language = 'English'
+  validateVerifiedMedia(known)
+
+  const unresolved = structuredClone(cb2Evidence)
+  unresolved.media.subtitleTracks[1].language = { state: 'unresolved' }
+  validateVerifiedMedia(unresolved)
+
+  for (const invalidLanguage of [
+    null,
+    '',
+    { arbitrary: true },
+    { state: 'unknown' },
+    { state: 'unresolved', extra: true }
+  ]) {
+    const invalid = structuredClone(cb2Evidence)
+    invalid.media.subtitleTracks[1].language = invalidLanguage
+    assert.throws(() => validateVerifiedMedia(invalid))
+  }
+
+  const missing = structuredClone(cb2Evidence)
+  delete missing.media.subtitleTracks[1].language
+  assert.throws(() => validateVerifiedMedia(missing), /missing or unknown fields/)
+
+  const unresolvedAudio = structuredClone(cb2Evidence)
+  unresolvedAudio.media.audioTracks[0].language = { state: 'unresolved' }
+  assert.throws(() => validateVerifiedMedia(unresolvedAudio), /audioTracks\[0\]\.language must be a string/)
+})
+
+test('CB32-like unresolved subtitle language validates and is preserved in provenance only', () => {
+  const subtitleTracks = [
+    {
+      kind: 'embedded',
+      language: 'English',
+      title: 'Full Subtitles [Edited ParanDark]'
+    },
+    {
+      kind: 'embedded',
+      language: { state: 'unresolved' },
+      title: 'Signs and Songs [Edited ParanDark]'
+    }
+  ]
+  const synthetic = structuredClone(inputs.resolvedRecords[1])
+  synthetic.mediaEvidence.media.subtitleTracks = subtitleTracks
+
+  validateVerifiedMedia(synthetic.mediaEvidence)
+  const presentation = derivePresentation(synthetic.editorialRecord, synthetic.mediaEvidence)
+  const provenance = buildProvenance(synthetic, presentation)
+  assert.deepEqual(provenance.localMediaInspection.embeddedSubtitles, [
+    {
+      language: 'English',
+      title: 'Full Subtitles [Edited ParanDark]'
+    },
+    {
+      language: { state: 'unresolved' },
+      title: 'Signs and Songs [Edited ParanDark]'
+    }
+  ])
+  assert.deepEqual(
+    provenance.localMediaInspection.embeddedSubtitles[1].language,
+    { state: 'unresolved' }
+  )
+
+  const candidates = generateCandidates([synthetic])
+  assert.equal('subtitles' in candidates['data/stream/cb_2.json'].streams[0], false)
 })
 
 test('CB2 verified-media evidence contains the exact locked torrent and core media facts', () => {
