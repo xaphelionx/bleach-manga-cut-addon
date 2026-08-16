@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_7",
+  "recordId": "concentrated:07",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "619fa5255043cfc13f71e023abef357efc1e7470",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "07 - Quincy Archer Hates You.mkv",
+      "byteSize": 229803750
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1268.972
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb7-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/07 - Quincy Archer Hates You.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "8a8f5796ee27d0bd41cdafb5abc187cb88f4a4a54b6ea2bb2d70262b7301ab9f"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 220,
+        "verifiedPieces": 220,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb7-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/07 - Quincy Archer Hates You.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 229803750
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb7-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb7-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb7-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb7-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb7-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb7-local-media-ffprobe-inspection"
+    ]
+  }
+}

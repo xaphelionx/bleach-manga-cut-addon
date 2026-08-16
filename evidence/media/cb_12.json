@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_12",
+  "recordId": "concentrated:12",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "43fa97c34e004d8dfea539927e98de658fda4fce",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "12 - The Blade and Me.mkv",
+      "byteSize": 325084602
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1708.78
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb12-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/12 - The Blade and Me.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "e3cccfb47015a8dfe5fe9a9cd89720b0be76e1122de4c6c9db36a59a45308a07"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 311,
+        "verifiedPieces": 311,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb12-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/12 - The Blade and Me.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 325084602
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb12-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb12-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb12-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb12-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb12-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb12-local-media-ffprobe-inspection"
+    ]
+  }
+}

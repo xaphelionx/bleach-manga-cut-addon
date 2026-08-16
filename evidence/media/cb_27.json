@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_27",
+  "recordId": "concentrated:27",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "9054e185c9d61ad0d9e8795e45029d83b7ebd4ab",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "27 - memories in the rain2.mkv",
+      "byteSize": 330517255
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1886.593
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb27-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/27 - memories in the rain2.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "9db2983ffbbaf698f8d55ef55e207cd928ce2b19d60df09bc738b7abfe7ef675"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 316,
+        "verifiedPieces": 316,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb27-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/27 - memories in the rain2.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 330517255
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb27-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb27-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb27-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb27-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb27-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb27-local-media-ffprobe-inspection"
+    ]
+  }
+}

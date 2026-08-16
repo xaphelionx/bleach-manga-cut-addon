@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_24",
+  "recordId": "concentrated:24",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "02552187dae5ca32987f31165974aa0eb8c22fbb",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "24 - In Sane We Trust.mkv",
+      "byteSize": 226367069
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1325.398
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb24-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/24 - In Sane We Trust.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "a7a2e84ef387b75b08100ff27e918ad7fdd36822677606036c4ccb42b8aaa566"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 216,
+        "verifiedPieces": 216,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb24-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/24 - In Sane We Trust.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 226367069
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb24-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb24-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb24-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb24-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb24-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb24-local-media-ffprobe-inspection"
+    ]
+  }
+}

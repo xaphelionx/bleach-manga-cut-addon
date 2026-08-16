@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_17",
+  "recordId": "concentrated:17",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "1923e3b3bc5359ecdcd35e56f2c18b954c5db338",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "17 - Steer for the Star.mkv",
+      "byteSize": 286578295
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1674.858
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb17-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/17 - Steer for the Star.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "cce5748f1792351e202d0b469dc0d0e34608746148578e00022eaf97ba99a8aa"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 274,
+        "verifiedPieces": 274,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb17-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/17 - Steer for the Star.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 286578295
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb17-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb17-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb17-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb17-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb17-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb17-local-media-ffprobe-inspection"
+    ]
+  }
+}

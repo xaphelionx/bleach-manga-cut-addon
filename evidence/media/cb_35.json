@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_35",
+  "recordId": "concentrated:35",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "65ca15c3cd1b97558ea85d26d0ce6632c0ede263",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "35 - AND THE RAIN LEFT OFF.mkv",
+      "byteSize": 285877265
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1706.732
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb35-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/35 - AND THE RAIN LEFT OFF.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "21ca17c9db40cd754a08cf448ce1d05bc1502ba86901cd3eb8bbfb0abbc39d11"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 273,
+        "verifiedPieces": 273,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb35-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/35 - AND THE RAIN LEFT OFF.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 285877265
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb35-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb35-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb35-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb35-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb35-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb35-local-media-ffprobe-inspection"
+    ]
+  }
+}

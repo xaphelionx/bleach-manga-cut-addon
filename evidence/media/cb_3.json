@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_3",
+  "recordId": "concentrated:03",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "52094de720ccaa6d4eb3ce82eef8516f726cbf63",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "03 - The Pink-Cheeked Cockatiel.mkv",
+      "byteSize": 348128661
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2173.845
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb3-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/03 - The Pink-Cheeked Cockatiel.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "867eea7e14a69b0ec9a1df87ce0d849e3f7390936a5f3ff398359dccbf5b438e"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 333,
+        "verifiedPieces": 333,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb3-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/03 - The Pink-Cheeked Cockatiel.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 348128661
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb3-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb3-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb3-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb3-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb3-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb3-local-media-ffprobe-inspection"
+    ]
+  }
+}

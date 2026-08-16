@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_15",
+  "recordId": "concentrated:15",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "fc06a4507d5aa490a9a6fdc475bc55b1d49c8736",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "15 - INTRUDERZ.mkv",
+      "byteSize": 404054328
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2301.548
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb15-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/15 - INTRUDERZ.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "a96853ed4b22b768ff3fb217c9e7c8ded1e6078aaf7f14492bf1a928ee0fa0dc"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 386,
+        "verifiedPieces": 386,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb15-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/15 - INTRUDERZ.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 404054328
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb15-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb15-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb15-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb15-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb15-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb15-local-media-ffprobe-inspection"
+    ]
+  }
+}

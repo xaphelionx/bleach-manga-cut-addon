@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_4",
+  "recordId": "concentrated:04",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "2cb33912731bf7c8171d2d40ea821aa9ce5cf51e",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "04 - Bad Standard.mkv",
+      "byteSize": 317623607
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2112.042
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb4-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/04 - Bad Standard.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "49412a37f7e68e555938c064e7c2f1c4fd82db22f20433f78af9c0e2f95ef282"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 303,
+        "verifiedPieces": 303,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb4-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/04 - Bad Standard.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 317623607
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb4-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb4-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb4-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb4-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb4-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb4-local-media-ffprobe-inspection"
+    ]
+  }
+}

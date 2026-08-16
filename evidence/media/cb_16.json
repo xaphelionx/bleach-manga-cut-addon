@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_16",
+  "recordId": "concentrated:16",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "b6a64b86bf1b6226f10fe25f9b11475cb683f9c3",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "16 - So Unlucky We Are.mkv",
+      "byteSize": 368116920
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1979.969
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb16-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/16 - So Unlucky We Are.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "b9aac728e74899d7a7383977ed13b54e5672b7b5e9ff321bf61b28e47fdd63a0"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 352,
+        "verifiedPieces": 352,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb16-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/16 - So Unlucky We Are.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 368116920
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb16-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb16-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb16-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb16-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb16-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb16-local-media-ffprobe-inspection"
+    ]
+  }
+}

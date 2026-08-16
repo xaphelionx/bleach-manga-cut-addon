@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_26",
+  "recordId": "concentrated:26",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "417f13cec5f270d677ee6af0065afa5b7220a821",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "26 - The Straying Stars.mkv",
+      "byteSize": 443389246
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2379.628
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb26-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/26 - The Straying Stars.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "409a0a885a1f6cc56e374dbd2feaa9b3d586f695ff836efff1ba8da364621f3b"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 423,
+        "verifiedPieces": 423,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb26-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/26 - The Straying Stars.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 443389246
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb26-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb26-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb26-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb26-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb26-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb26-local-media-ffprobe-inspection"
+    ]
+  }
+}

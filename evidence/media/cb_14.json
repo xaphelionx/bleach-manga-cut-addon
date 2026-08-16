@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_14",
+  "recordId": "concentrated:14",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "915bd24de301ec9acf612ef96e6f081fb4322a1a",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "14 - The Shooting Star Project.mkv",
+      "byteSize": 302195202
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1760.62
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb14-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/14 - The Shooting Star Project.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "0da594e7dd56e6227879a67a64041ed7bc346bed58364cbdfd0c7cdc0f86972b"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 289,
+        "verifiedPieces": 289,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb14-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/14 - The Shooting Star Project.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 302195202
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb14-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb14-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb14-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb14-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb14-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb14-local-media-ffprobe-inspection"
+    ]
+  }
+}

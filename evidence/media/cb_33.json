@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_33",
+  "recordId": "concentrated:33",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "c5d078cd4526e9554c906372bdfa0e77f7e2eda9",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "33 - Battle on Guillotine Hill.mkv",
+      "byteSize": 498070003
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2313.644
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb33-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/33 - Battle on Guillotine Hill.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "39a1386873f204049df3b2ad17e3555fa0baf63a13701cc6985edff461fee4de"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 475,
+        "verifiedPieces": 475,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb33-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/33 - Battle on Guillotine Hill.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 498070003
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb33-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb33-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb33-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb33-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb33-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb33-local-media-ffprobe-inspection"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_29",
+  "recordId": "concentrated:29",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "70421253d48424e42c584d84eb0732c310ad855a",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "29 - Bite at the Moon.mkv",
+      "byteSize": 296667202
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1507.03
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb29-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/29 - Bite at the Moon.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "b432453c27bd08f30e639f691c7cce8ff2ab7390821cbf7fb8760f702189ad47"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 283,
+        "verifiedPieces": 283,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb29-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/29 - Bite at the Moon.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 296667202
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb29-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb29-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb29-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb29-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb29-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb29-local-media-ffprobe-inspection"
+    ]
+  }
+}

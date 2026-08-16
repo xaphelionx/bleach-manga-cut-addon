@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_8",
+  "recordId": "concentrated:08",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "74a80202e9c0a620d851c959dd21caa9c3608b7b",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "08 - Crossing the Rubicon.mkv",
+      "byteSize": 319418175
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1925.973
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb8-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/08 - Crossing the Rubicon.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "1eeb0b70bd349d985aaf845e1e70871c43e1d8a3e69c98be0f9d8a21a58767d2"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 305,
+        "verifiedPieces": 305,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb8-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/08 - Crossing the Rubicon.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 319418175
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb8-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb8-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb8-local-media-ffprobe-inspection"
+    ]
+  }
+}

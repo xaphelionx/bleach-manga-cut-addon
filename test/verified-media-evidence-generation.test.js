@@ -1,6 +1,7 @@
 'use strict'
 
 const assert = require('node:assert/strict')
+const crypto = require('node:crypto')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
@@ -22,6 +23,55 @@ const PAIRS = [
   ['concentrated:02', 'cb_2'],
   ['concentrated:27.5', 'cb_27p5']
 ]
+
+const REPOSITORY_ROOT = path.resolve(__dirname, '..')
+const PRODUCTION_ACQUISITION_PATH = path.join(
+  REPOSITORY_ROOT,
+  'evidence',
+  'acquisition',
+  'concentrated-preboundary.json'
+)
+const PRODUCTION_EVIDENCE_DIRECTORY = path.join(REPOSITORY_ROOT, 'evidence', 'media')
+const PRODUCTION_SELECTION_ENTRIES = [
+  { recordId: 'concentrated:03', videoId: 'cb_3' },
+  { recordId: 'concentrated:04', videoId: 'cb_4' },
+  { recordId: 'concentrated:05', videoId: 'cb_5' },
+  { recordId: 'concentrated:06', videoId: 'cb_6' },
+  { recordId: 'concentrated:07', videoId: 'cb_7' },
+  { recordId: 'concentrated:08', videoId: 'cb_8' },
+  { recordId: 'concentrated:09', videoId: 'cb_9' },
+  { recordId: 'concentrated:10', videoId: 'cb_10' },
+  { recordId: 'concentrated:11', videoId: 'cb_11' },
+  { recordId: 'concentrated:12', videoId: 'cb_12' },
+  { recordId: 'concentrated:13', videoId: 'cb_13' },
+  { recordId: 'concentrated:14', videoId: 'cb_14' },
+  { recordId: 'concentrated:15', videoId: 'cb_15' },
+  { recordId: 'concentrated:16', videoId: 'cb_16' },
+  { recordId: 'concentrated:17', videoId: 'cb_17' },
+  { recordId: 'concentrated:18', videoId: 'cb_18' },
+  { recordId: 'concentrated:19', videoId: 'cb_19' },
+  { recordId: 'concentrated:20', videoId: 'cb_20' },
+  { recordId: 'concentrated:21', videoId: 'cb_21' },
+  { recordId: 'concentrated:22', videoId: 'cb_22' },
+  { recordId: 'concentrated:23', videoId: 'cb_23' },
+  { recordId: 'concentrated:24', videoId: 'cb_24' },
+  { recordId: 'concentrated:25', videoId: 'cb_25' },
+  { recordId: 'concentrated:26', videoId: 'cb_26' },
+  { recordId: 'concentrated:27', videoId: 'cb_27' },
+  { recordId: 'concentrated:27.5', videoId: 'cb_27p5' },
+  { recordId: 'concentrated:28', videoId: 'cb_28' },
+  { recordId: 'concentrated:29', videoId: 'cb_29' },
+  { recordId: 'concentrated:30', videoId: 'cb_30' },
+  { recordId: 'concentrated:31', videoId: 'cb_31' },
+  { recordId: 'concentrated:32', videoId: 'cb_32' },
+  { recordId: 'concentrated:33', videoId: 'cb_33' },
+  { recordId: 'concentrated:34', videoId: 'cb_34' },
+  { recordId: 'concentrated:35', videoId: 'cb_35' }
+]
+const LOCKED_PRODUCTION_EVIDENCE_INDEX_SHA256 =
+  '4773820e6d90af5a9a36c6224f5027ca21c4f7302ef58f183e28e46c9910f72b'
+const LOCKED_PRODUCTION_EVIDENCE_INDEX_BYTE_SIZE = 6829
+const LOCKED_PRODUCTION_EVIDENCE_TOTAL_BYTE_SIZE = 128371
 
 function identity(pairs = PAIRS) {
   return {
@@ -193,6 +243,24 @@ function temporaryDirectory(t, prefix = 'verified-media-evidence-') {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), prefix))
   t.after(() => fs.rmSync(directory, { recursive: true, force: true }))
   return directory
+}
+
+function readJsonFile(filename) {
+  return JSON.parse(fs.readFileSync(filename, 'utf8'))
+}
+
+function productionCandidates() {
+  const acquisitionManifest = readJsonFile(PRODUCTION_ACQUISITION_PATH)
+  const candidates = generateEvidenceCandidates({
+    acquisitionManifest,
+    selection: {
+      schemaVersion: 1,
+      entries: PRODUCTION_SELECTION_ENTRIES.map((entry) => ({ ...entry }))
+    },
+    concentrated: readJsonFile(path.join(REPOSITORY_ROOT, 'editorial', 'normalized', 'concentrated.json')),
+    registry: readJsonFile(path.join(REPOSITORY_ROOT, 'projection', 'stremio', 'video-id-registry.json'))
+  })
+  return { acquisitionManifest, candidates }
 }
 
 test('valid one-entry generation succeeds', () => {
@@ -580,4 +648,55 @@ test('acquisition raw values are not modified in memory', () => {
   const before = JSON.stringify(inputs.acquisitionManifest)
   generate(inputs)
   assert.equal(JSON.stringify(inputs.acquisitionManifest), before)
+})
+
+test('committed preboundary evidence is byte-identical to the approved production generation batch', () => {
+  const { acquisitionManifest, candidates } = productionCandidates()
+  const expectedVideoIds = PRODUCTION_SELECTION_ENTRIES.map(({ videoId }) => videoId)
+  assert.equal(candidates.length, 34)
+  assert.deepEqual(candidates.map(({ videoId }) => videoId), expectedVideoIds)
+  assert.equal(expectedVideoIds.includes('cb_1'), false)
+  assert.equal(expectedVideoIds.includes('cb_2'), false)
+
+  for (const candidate of candidates) {
+    const acquisitionEntry = acquisitionManifest.entries.find(({ videoId }) => videoId === candidate.videoId)
+    assert.ok(acquisitionEntry)
+    assert.equal(acquisitionEntry.recordId, candidate.recordId)
+    const filename = path.join(PRODUCTION_EVIDENCE_DIRECTORY, candidate.filename)
+    assert.equal(fs.existsSync(filename), true)
+    const committedBytes = fs.readFileSync(filename)
+    assert.ok(committedBytes.equals(candidate.bytes))
+    assert.equal(crypto.createHash('sha256').update(committedBytes).digest('hex'), candidate.sha256)
+    assert.equal(committedBytes.length, candidate.byteSize)
+    const committed = JSON.parse(committedBytes)
+    assert.doesNotThrow(() => validateVerifiedMedia(committed))
+    assert.equal(committed.recordId, acquisitionEntry.recordId)
+    assert.equal(committed.videoId, acquisitionEntry.videoId)
+  }
+})
+
+test('committed preboundary evidence set matches the aggregate index lock', () => {
+  let totalByteSize = 0
+  const index = PRODUCTION_SELECTION_ENTRIES.map(({ recordId, videoId }) => {
+    const filename = `${videoId}.json`
+    const bytes = fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, filename))
+    const committed = JSON.parse(bytes)
+    assert.equal(committed.recordId, recordId)
+    assert.equal(committed.videoId, videoId)
+    totalByteSize += bytes.length
+    return {
+      recordId: committed.recordId,
+      videoId: committed.videoId,
+      filename,
+      sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+      byteSize: bytes.length
+    }
+  })
+  const indexBytes = Buffer.from(`${JSON.stringify(index, null, 2)}\n`)
+  assert.equal(indexBytes.length, LOCKED_PRODUCTION_EVIDENCE_INDEX_BYTE_SIZE)
+  assert.equal(totalByteSize, LOCKED_PRODUCTION_EVIDENCE_TOTAL_BYTE_SIZE)
+  assert.equal(
+    crypto.createHash('sha256').update(indexBytes).digest('hex'),
+    LOCKED_PRODUCTION_EVIDENCE_INDEX_SHA256
+  )
 })

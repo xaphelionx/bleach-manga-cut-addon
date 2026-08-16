@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_34",
+  "recordId": "concentrated:34",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "beec5816bb21dffa045c642797d441669b5e0f7a",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "34 - end of hypnosis.mkv",
+      "byteSize": 666212185
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 3356.225
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb34-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/34 - end of hypnosis.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "67a4c6da0d6fc6d2a4afc7212662a9245184ab830017cc4d307b65f0cb68da9f"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 636,
+        "verifiedPieces": 636,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb34-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/34 - end of hypnosis.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 666212185
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb34-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb34-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb34-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb34-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb34-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb34-local-media-ffprobe-inspection"
+    ]
+  }
+}

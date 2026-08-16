@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_23",
+  "recordId": "concentrated:23",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "03e2dbf027988ae771e3194e8ebc9d61c9b06247",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "23 - Remnant.mkv",
+      "byteSize": 411509706
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2215.788
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb23-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/23 - Remnant.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "675d1c9cc69d628bb528bcd58f314b96ed346bc78916be8a63548b39238c1e59"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 393,
+        "verifiedPieces": 393,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb23-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/23 - Remnant.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 411509706
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb23-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb23-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb23-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb23-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb23-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb23-local-media-ffprobe-inspection"
+    ]
+  }
+}

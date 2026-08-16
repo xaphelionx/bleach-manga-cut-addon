@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_28",
+  "recordId": "concentrated:28",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "3702d492d2a675b103878c380c4d12c2cde99468",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "28 - Surrounding Clutch.mkv",
+      "byteSize": 246935688
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1318.188
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb28-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/28 - Surrounding Clutch.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "bc3470f51e28077341fe44f4da1a189e9fe85fa7a9e6fe8164158024a3b67130"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 236,
+        "verifiedPieces": 236,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb28-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/28 - Surrounding Clutch.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 246935688
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb28-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb28-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb28-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb28-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb28-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb28-local-media-ffprobe-inspection"
+    ]
+  }
+}

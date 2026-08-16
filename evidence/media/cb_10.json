@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_10",
+  "recordId": "concentrated:10",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "a00bce6c5ac15841c7ea549f22f03bd270ed7441",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "10 - The Death Trilogy Overture.mkv",
+      "byteSize": 408351511
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2640.405
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb10-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/10 - The Death Trilogy Overture.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "dc7a11e4d1499236c611c2c87370478401e04385530f8ccc5626effa87436075"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 390,
+        "verifiedPieces": 390,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb10-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/10 - The Death Trilogy Overture.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 408351511
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb10-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb10-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb10-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb10-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb10-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb10-local-media-ffprobe-inspection"
+    ]
+  }
+}

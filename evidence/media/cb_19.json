@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_19",
+  "recordId": "concentrated:19",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "3a8bbc48fac6e013616eb2408ff5855694d796f0",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "19 - Flower on the Precipice.mkv",
+      "byteSize": 214713500
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1319.19
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb19-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/19 - Flower on the Precipice.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "2ae76cae161a33f384ca9b0e059d8e9bd15e9013a8a960940cf22cd8a35c4281"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 205,
+        "verifiedPieces": 205,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb19-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/19 - Flower on the Precipice.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 214713500
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb19-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb19-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb19-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb19-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb19-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb19-local-media-ffprobe-inspection"
+    ]
+  }
+}

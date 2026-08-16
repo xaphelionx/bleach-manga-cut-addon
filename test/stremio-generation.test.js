@@ -67,10 +67,18 @@ after(() => {
   if (outputRoot) fs.rmSync(outputRoot, { recursive: true, force: true })
 })
 
-test('the test-only publication checkpoint remains exactly cb_1 and cb_2', () => {
+test('publication remains exactly cb_1 and cb_2 despite additional verified-media evidence', () => {
+  const evidenceVideoIds = inputs.evidenceRecords.map(({ value }) => value.videoId)
   assert.deepEqual(inputs.projection.publicationPolicy.currentPublishedVideoIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.deepEqual(inputs.evidenceRecords.map(({ value }) => value.videoId), ['cb_1', 'cb_2'])
+  assert.ok(
+    evidenceVideoIds.length > EXPECTED_PUBLISHED_PREFIX.length,
+    'test requires evidence beyond the published prefix'
+  )
+  for (const videoId of EXPECTED_PUBLISHED_PREFIX) assert.ok(evidenceVideoIds.includes(videoId))
+  assert.ok(evidenceVideoIds.includes('cb_3'), 'CB3 evidence should be loaded without making CB3 published')
+  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_3'), false)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
+  assert.equal(result.processedVideoIds.includes('cb_3'), false)
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 

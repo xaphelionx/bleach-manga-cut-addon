@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_30",
+  "recordId": "concentrated:30",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "edab050ec909b4d81761612882e99811263a4e80",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "30 - Countdown to the End.mkv",
+      "byteSize": 325135401
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1651.521
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb30-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/30 - Countdown to the End.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "f9b851f98633cf0806d4ec86f88ea9631b623ee70d0f5cd265a96ef38f357ca3"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 311,
+        "verifiedPieces": 311,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb30-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/30 - Countdown to the End.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 325135401
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb30-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb30-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb30-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb30-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb30-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb30-local-media-ffprobe-inspection"
+    ]
+  }
+}

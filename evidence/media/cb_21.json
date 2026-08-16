@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_21",
+  "recordId": "concentrated:21",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "241df4f98cf03aa7a55fa01771d9eb83088b3dc5",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "21 - The Undead.mkv",
+      "byteSize": 297100400
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1389.505
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb21-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/21 - The Undead.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "7f362e512817968c5f9e30a8bc3739dbdcc7ee7196e717ccbbe48f1091928ddd"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 284,
+        "verifiedPieces": 284,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb21-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/21 - The Undead.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 297100400
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb21-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb21-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb21-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb21-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb21-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb21-local-media-ffprobe-inspection"
+    ]
+  }
+}

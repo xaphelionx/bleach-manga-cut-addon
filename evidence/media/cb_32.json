@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_32",
+  "recordId": "concentrated:32",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "42892d7b2071a411bba2869a1177e265b2d33d93",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "32 - Cat and Hornet.mkv",
+      "byteSize": 323345566
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1547.159
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": {
+          "state": "unresolved"
+        },
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb32-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/32 - Cat and Hornet.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "30aa21b0bc57e24750be9ee1da0c119bbba87cde23e0e9913c3b213ef9339338"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 309,
+        "verifiedPieces": 309,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb32-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/32 - Cat and Hornet.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 323345566
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb32-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb32-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb32-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb32-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb32-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb32-local-media-ffprobe-inspection"
+    ]
+  }
+}

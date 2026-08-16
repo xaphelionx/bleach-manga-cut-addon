@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_11",
+  "recordId": "concentrated:11",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "5d695b88fdbc3783412bc0cfa6503f96b41a035d",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "11 - blank.mkv",
+      "byteSize": 252089830
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1602.924
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb11-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/11 - blank.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "df80cd0b044ea9d96e1ac9cae36bb90ae83daddd499f763fd297b898cafc5af6"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 241,
+        "verifiedPieces": 241,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb11-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/11 - blank.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 252089830
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb11-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb11-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb11-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb11-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb11-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb11-local-media-ffprobe-inspection"
+    ]
+  }
+}

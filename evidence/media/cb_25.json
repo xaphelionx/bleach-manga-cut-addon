@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_25",
+  "recordId": "concentrated:25",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "84d6342a95e08d612bbcd28660c2c9fd24aa1774",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "25 - Insanity and Genius.mkv",
+      "byteSize": 384157993
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2012.502
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb25-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/25 - Insanity and Genius.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "112f64525780c572ebe6e60d9ab438d97acf33e72c909677f9b23c0d97472602"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 367,
+        "verifiedPieces": 367,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb25-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/25 - Insanity and Genius.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 384157993
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb25-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb25-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb25-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb25-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb25-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb25-local-media-ffprobe-inspection"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_5",
+  "recordId": "concentrated:05",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "094222baff3068ffe4c012e7ad886828a18a6a6b",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "05 - June 17th -memories in the rain-.mkv",
+      "byteSize": 301679894
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1695.04
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb5-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/05 - June 17th -memories in the rain-.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "b21a0a789c35a5402b6363cce821a043e1d8573be33c81e9f3709bcc43d3c3c6"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 288,
+        "verifiedPieces": 288,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb5-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/01 - Substitute Soul Reaper/05 - June 17th -memories in the rain-.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 301679894
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb5-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb5-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb5-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb5-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb5-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb5-local-media-ffprobe-inspection"
+    ]
+  }
+}

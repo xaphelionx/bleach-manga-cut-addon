@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_13",
+  "recordId": "concentrated:13",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "fac95a08d81438d8c61c0918c92e969181db0e98",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "13 - Our Last Summer Vacation.mkv",
+      "byteSize": 369651632
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2081.985
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb13-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/13 - Our Last Summer Vacation.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "1026ea31d98898da52141836208e5e7baa07f94dd89b0ea82012de722bf1af25"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 353,
+        "verifiedPieces": 353,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb13-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/13 - Our Last Summer Vacation.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 369651632
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb13-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb13-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb13-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb13-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb13-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb13-local-media-ffprobe-inspection"
+    ]
+  }
+}

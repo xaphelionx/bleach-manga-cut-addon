@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_20",
+  "recordId": "concentrated:20",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "a32ccf0caf6f50a25d041ba01fa87112e47cbd80",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "20 - Spring, Spring, Meets the Tiger.mkv",
+      "byteSize": 386463907
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2094.124
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb20-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/20 - Spring, Spring, Meets the Tiger.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "c8d79ebb7d2a1d902c22aaea66a5e8f7c7de1804b234b3593385571d0427a6ed"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 369,
+        "verifiedPieces": 369,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb20-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/20 - Spring, Spring, Meets the Tiger.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 386463907
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb20-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb20-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb20-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb20-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb20-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb20-local-media-ffprobe-inspection"
+    ]
+  }
+}

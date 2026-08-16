@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_31",
+  "recordId": "concentrated:31",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "adc96230c6d6a526453e8d2ae85ea0ee098587ae",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "31 - The Deathberry Returns.mkv",
+      "byteSize": 462117962
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1986.945
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb31-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/31 - The Deathberry Returns.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "a6284903f4f24cd92f6aa28d86c1555fee3546d3ce55600b487b22aa283d4b5c"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 441,
+        "verifiedPieces": 441,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb31-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/31 - The Deathberry Returns.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 462117962
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb31-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb31-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb31-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb31-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb31-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb31-local-media-ffprobe-inspection"
+    ]
+  }
+}
