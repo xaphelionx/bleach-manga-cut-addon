@@ -1,0 +1,144 @@
+{
+  "id": "cb_29",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:29",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A31",
+        "concentrated-xlsx:episode-list:B31",
+        "concentrated-xlsx:episode-list:C31",
+        "concentrated-xlsx:episode-list:D31",
+        "concentrated-xlsx:episode-list:E31",
+        "concentrated-xlsx:episode-list:F31",
+        "concentrated-xlsx:episode-list:G31",
+        "concentrated-xlsx:episode-list:H31"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_29",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 21
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_29.json",
+      "videoId": "cb_29",
+      "recordId": "concentrated:29",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb29-local-torrent-verification",
+        "cb29-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "29",
+    "title": "Bite at the Moon",
+    "mangaChapters": "140-145",
+    "sourceAnimeEpisodes": "052-053",
+    "exactEditRuntime": "00:25:07",
+    "normalizedExactRuntime": "25:07",
+    "timeSaved": "06m35s (21%)",
+    "releaseDate": "2024-11-23",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 31,
+      "cells": "A31:H31"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "25",
+    "runtimeTransformation": "The exact 25:07 source runtime is presented as 25 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "70421253d48424e42c584d84eb0732c310ad855a",
+    "fileIdx": 0,
+    "filename": "29 - Bite at the Moon.mkv",
+    "videoSize": 296667202,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "29 - Bite at the Moon.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1507.03
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "25:07 (1507 seconds) -> floor whole minutes -> 25",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "296667202 bytes / 1000000, fixed to two decimals -> 296.67 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

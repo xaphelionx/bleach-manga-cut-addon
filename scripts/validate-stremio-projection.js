@@ -22,6 +22,7 @@ const LOCKED_HASHES = Object.freeze({
   'evidence/media/cb_3.json': 'b3604ed951e34e211003da1adc08acaefe7082b70ad0c972fb76a6ef78438526',
   'editorial/unresolved.json': '95a8343690054e7808af829b125753235b5f58fb559602ffc32872c4684518d8'
 })
+const LOCKED_VALIDATED_VIDEO_IDS = new Set(['cb_1', 'cb_2', 'cb_3'])
 
 function load(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), 'utf8'))
@@ -161,6 +162,7 @@ function validate() {
   const projection = load('projection/stremio/public-projection.json')
   const registry = load('projection/stremio/video-id-registry.json')
   const optional = load('projection/stremio/optional-content.json')
+  const approvedVideoIds = new Set(projection.publicationPolicy.currentPublishedVideoIds)
   const evidenceRecords = fs.readdirSync(path.join(root, 'evidence', 'media'))
     .filter((name) => name.endsWith('.json'))
     .sort()
@@ -267,12 +269,7 @@ function validate() {
         state: 'eligible',
         gateSet: 'locked-cb1'
       })
-    } else if (entry.recordId === 'concentrated:02') {
-      assert.deepEqual(entry.publicationEligibility, {
-        state: 'eligible',
-        gateSet: 'verified-primary'
-      })
-    } else if (entry.recordId === 'concentrated:03') {
+    } else if (approvedVideoIds.has(entry.videoId)) {
       assert.deepEqual(entry.publicationEligibility, {
         state: 'eligible',
         gateSet: 'verified-primary'
@@ -320,8 +317,14 @@ function validate() {
     season: 3,
     episode: 1
   })
-  assert.equal(cb36.defaultTimelinePosition.state, 'unresolved')
-  assert.equal('index' in cb36.defaultTimelinePosition, false)
+  assert.deepEqual(cb36.defaultTimelinePosition, {
+    state: 'unresolved',
+    blockedBy: 'concentrated-35.5-vs-0.0'
+  })
+  assert.deepEqual(cb36.publicationEligibility, {
+    state: 'blocked',
+    gateSet: 'blocked-post-boundary'
+  })
 
   for (const entry of projection.entries) {
     if (entry.projectedPlacement.season >= 3) {
@@ -364,37 +367,27 @@ function validate() {
     }
   }
 
-  for (const expected of [
-    {
-      recordType: 'normalized-record',
-      recordId: 'concentrated:01',
-      projectId: 'concentrated',
-      sourceIdentifier: '01',
-      videoId: 'cb_1',
-      status: 'published',
-      locked: true
-    },
-    {
-      recordType: 'normalized-record',
-      recordId: 'concentrated:02',
-      projectId: 'concentrated',
-      sourceIdentifier: '02',
-      videoId: 'cb_2',
-      status: 'published',
-      locked: true
-    },
-    {
-      recordType: 'normalized-record',
-      recordId: 'concentrated:03',
-      projectId: 'concentrated',
-      sourceIdentifier: '03',
-      videoId: 'cb_3',
-      status: 'published',
-      locked: true
-    }
-  ]) {
-    assert.deepEqual(registry.entries.find((entry) => entry.videoId === expected.videoId), expected)
+  const registryByVideoId = new Map(registry.entries.map((entry) => [entry.videoId, entry]))
+  for (const videoId of approvedVideoIds) {
+    const registered = registryByVideoId.get(videoId)
+    assert.ok(registered, `Approved video ${videoId} is missing from the registry`)
+    assert.equal(registered.status, 'published', `${videoId} must be published in the registry`)
+    assert.equal(
+      registered.locked,
+      LOCKED_VALIDATED_VIDEO_IDS.has(videoId),
+      `${videoId} compatibility lock does not match its validated state`
+    )
   }
+  for (const videoId of LOCKED_VALIDATED_VIDEO_IDS) assert.ok(approvedVideoIds.has(videoId))
+  assert.deepEqual(registryByVideoId.get('cb_36'), {
+    recordType: 'normalized-record',
+    recordId: 'concentrated:36',
+    projectId: 'concentrated',
+    sourceIdentifier: '36',
+    videoId: 'cb_36',
+    status: 'reserved',
+    locked: false
+  })
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').length > 0)
 
   for (const record of normalizedRecords) {

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Meanwhile, in the Living World\n📖 [088.5, 124-158] 🕒 04:27\n💾 67.59 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "f59171d9e1fc76c8fc991beb2096e68cacb3dda3",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 67589464,
+        "filename": "27.5 - Meanwhile, in the Living World.mkv"
+      }
+    }
+  ]
+}

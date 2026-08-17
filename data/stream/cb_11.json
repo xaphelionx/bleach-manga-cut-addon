@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 blank\n📖 [057-062] 🕒 26:43\n💾 252.09 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "5d695b88fdbc3783412bc0cfa6503f96b41a035d",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 252089830,
+        "filename": "11 - blank.mkv"
+      }
+    }
+  ]
+}

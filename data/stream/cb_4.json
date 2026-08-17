@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Bad Standard\n📖 [013-017] 🕒 35:12\n💾 317.62 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "2cb33912731bf7c8171d2d40ea821aa9ce5cf51e",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 317623607,
+        "filename": "04 - Bad Standard.mkv"
+      }
+    }
+  ]
+}

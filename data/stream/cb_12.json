@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Blade and Me\n📖 [062-067] 🕒 28:28\n💾 325.08 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "43fa97c34e004d8dfea539927e98de658fda4fce",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 325084602,
+        "filename": "12 - The Blade and Me.mkv"
+      }
+    }
+  ]
+}

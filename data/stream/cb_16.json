@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 So Unlucky We Are\n📖 [086-090] 🕒 33:00\n💾 368.12 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "b6a64b86bf1b6226f10fe25f9b11475cb683f9c3",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 368116920,
+        "filename": "16 - So Unlucky We Are.mkv"
+      }
+    }
+  ]
+}

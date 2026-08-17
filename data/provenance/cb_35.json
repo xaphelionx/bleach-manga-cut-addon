@@ -1,0 +1,144 @@
+{
+  "id": "cb_35",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:35",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A37",
+        "concentrated-xlsx:episode-list:B37",
+        "concentrated-xlsx:episode-list:C37",
+        "concentrated-xlsx:episode-list:D37",
+        "concentrated-xlsx:episode-list:E37",
+        "concentrated-xlsx:episode-list:F37",
+        "concentrated-xlsx:episode-list:G37",
+        "concentrated-xlsx:episode-list:H37"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_35",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 27
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_35.json",
+      "videoId": "cb_35",
+      "recordId": "concentrated:35",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb35-local-torrent-verification",
+        "cb35-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "35",
+    "title": "AND THE RAIN LEFT OFF",
+    "mangaChapters": "179-182",
+    "sourceAnimeEpisodes": "062-063",
+    "exactEditRuntime": "00:28:27",
+    "normalizedExactRuntime": "28:27",
+    "timeSaved": "05m49s (17%)",
+    "releaseDate": "2025-02-27",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 37,
+      "cells": "A37:H37"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "28",
+    "runtimeTransformation": "The exact 28:27 source runtime is presented as 28 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "65ca15c3cd1b97558ea85d26d0ce6632c0ede263",
+    "fileIdx": 0,
+    "filename": "35 - AND THE RAIN LEFT OFF.mkv",
+    "videoSize": 285877265,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "35 - AND THE RAIN LEFT OFF.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1706.732
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "28:27 (1707 seconds) -> floor whole minutes -> 28",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "285877265 bytes / 1000000, fixed to two decimals -> 285.88 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

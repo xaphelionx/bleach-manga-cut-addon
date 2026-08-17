@@ -1,0 +1,144 @@
+{
+  "id": "cb_27p5",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:27.5",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A29",
+        "concentrated-xlsx:episode-list:B29",
+        "concentrated-xlsx:episode-list:C29",
+        "concentrated-xlsx:episode-list:D29",
+        "concentrated-xlsx:episode-list:E29",
+        "concentrated-xlsx:episode-list:F29",
+        "concentrated-xlsx:episode-list:G29",
+        "concentrated-xlsx:episode-list:H29"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_27p5",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 19
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_27p5.json",
+      "videoId": "cb_27p5",
+      "recordId": "concentrated:27.5",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb27p5-local-torrent-verification",
+        "cb27p5-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "27.5",
+    "title": "Meanwhile, in the Living World",
+    "mangaChapters": "088.5, 124-158",
+    "sourceAnimeEpisodes": "033, 054-062",
+    "exactEditRuntime": "00:04:27",
+    "normalizedExactRuntime": "04:27",
+    "timeSaved": "00m41s (13%)",
+    "releaseDate": "2024-10-24",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 29,
+      "cells": "A29:H29"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "4",
+    "runtimeTransformation": "The exact 04:27 source runtime is presented as 4 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "f59171d9e1fc76c8fc991beb2096e68cacb3dda3",
+    "fileIdx": 0,
+    "filename": "27.5 - Meanwhile, in the Living World.mkv",
+    "videoSize": 67589464,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "27.5 - Meanwhile, in the Living World.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 266.796
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "04:27 (267 seconds) -> floor whole minutes -> 4",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "67589464 bytes / 1000000, fixed to two decimals -> 67.59 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "id": "cb_14",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:14",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A15",
+        "concentrated-xlsx:episode-list:B15",
+        "concentrated-xlsx:episode-list:C15",
+        "concentrated-xlsx:episode-list:D15",
+        "concentrated-xlsx:episode-list:E15",
+        "concentrated-xlsx:episode-list:F15",
+        "concentrated-xlsx:episode-list:G15",
+        "concentrated-xlsx:episode-list:H15"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_14",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 5
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_14.json",
+      "videoId": "cb_14",
+      "recordId": "concentrated:14",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb14-local-torrent-verification",
+        "cb14-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "14",
+    "title": "The Shooting Star Project",
+    "mangaChapters": "076-079",
+    "sourceAnimeEpisodes": "022-023",
+    "exactEditRuntime": "00:29:21",
+    "normalizedExactRuntime": "29:21",
+    "timeSaved": "11m01s (27%)",
+    "releaseDate": "2024-06-08",
+    "lastUpdate": "2025-02-27",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 15,
+      "cells": "A15:H15"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "29",
+    "runtimeTransformation": "The exact 29:21 source runtime is presented as 29 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "915bd24de301ec9acf612ef96e6f081fb4322a1a",
+    "fileIdx": 0,
+    "filename": "14 - The Shooting Star Project.mkv",
+    "videoSize": 302195202,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "14 - The Shooting Star Project.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1760.62
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "29:21 (1761 seconds) -> floor whole minutes -> 29",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "302195202 bytes / 1000000, fixed to two decimals -> 302.20 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

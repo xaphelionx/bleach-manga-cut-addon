@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Deathberry Returns\n📖 [151-156] 🕒 33:07\n💾 462.12 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "adc96230c6d6a526453e8d2ae85ea0ee098587ae",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 462117962,
+        "filename": "31 - The Deathberry Returns.mkv"
+      }
+    }
+  ]
+}

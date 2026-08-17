@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Cat and Hornet\n📖 [154, 157-159] 🕒 25:47\n💾 323.35 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "42892d7b2071a411bba2869a1177e265b2d33d93",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 323345566,
+        "filename": "32 - Cat and Hornet.mkv"
+      }
+    }
+  ]
+}

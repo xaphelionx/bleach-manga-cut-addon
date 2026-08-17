@@ -1,0 +1,144 @@
+{
+  "id": "cb_5",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:05",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A6",
+        "concentrated-xlsx:episode-list:B6",
+        "concentrated-xlsx:episode-list:C6",
+        "concentrated-xlsx:episode-list:D6",
+        "concentrated-xlsx:episode-list:E6",
+        "concentrated-xlsx:episode-list:F6",
+        "concentrated-xlsx:episode-list:G6",
+        "concentrated-xlsx:episode-list:H6"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_5",
+      "projectedPlacement": {
+        "season": 1,
+        "episode": 5
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_5.json",
+      "videoId": "cb_5",
+      "recordId": "concentrated:05",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb5-local-torrent-verification",
+        "cb5-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "05",
+    "title": "June 17th -memories in the rain-",
+    "mangaChapters": "018-025",
+    "sourceAnimeEpisodes": "008-009",
+    "exactEditRuntime": "00:28:15",
+    "normalizedExactRuntime": "28:15",
+    "timeSaved": "17m25s (38%)",
+    "releaseDate": "2024-04-29",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 6,
+      "cells": "A6:H6"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "28",
+    "runtimeTransformation": "The exact 28:15 source runtime is presented as 28 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "094222baff3068ffe4c012e7ad886828a18a6a6b",
+    "fileIdx": 0,
+    "filename": "05 - June 17th -memories in the rain-.mkv",
+    "videoSize": 301679894,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "05 - June 17th -memories in the rain-.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1695.04
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "28:15 (1695 seconds) -> floor whole minutes -> 28",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "301679894 bytes / 1000000, fixed to two decimals -> 301.68 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

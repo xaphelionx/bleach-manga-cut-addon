@@ -1,0 +1,144 @@
+{
+  "id": "cb_10",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:10",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A11",
+        "concentrated-xlsx:episode-list:B11",
+        "concentrated-xlsx:episode-list:C11",
+        "concentrated-xlsx:episode-list:D11",
+        "concentrated-xlsx:episode-list:E11",
+        "concentrated-xlsx:episode-list:F11",
+        "concentrated-xlsx:episode-list:G11",
+        "concentrated-xlsx:episode-list:H11"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_10",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 1
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_10.json",
+      "videoId": "cb_10",
+      "recordId": "concentrated:10",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb10-local-torrent-verification",
+        "cb10-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "10",
+    "title": "The Death Trilogy Overture",
+    "mangaChapters": "026, 051-057",
+    "sourceAnimeEpisodes": "015-017",
+    "exactEditRuntime": "00:44:00",
+    "normalizedExactRuntime": "44:00",
+    "timeSaved": "16m47s (28%)",
+    "releaseDate": "2024-04-07",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 11,
+      "cells": "A11:H11"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "44",
+    "runtimeTransformation": "The exact 44:00 source runtime is presented as 44 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "a00bce6c5ac15841c7ea549f22f03bd270ed7441",
+    "fileIdx": 0,
+    "filename": "10 - The Death Trilogy Overture.mkv",
+    "videoSize": 408351511,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "10 - The Death Trilogy Overture.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2640.405
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "44:00 (2640 seconds) -> floor whole minutes -> 44",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "408351511 bytes / 1000000, fixed to two decimals -> 408.35 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

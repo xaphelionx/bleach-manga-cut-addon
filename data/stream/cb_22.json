@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Black and White\n📖 [110-115] 🕒 27:49\n💾 389.50 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "101ba212b3b965c1c701f23deb7904e39725b907",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 389497259,
+        "filename": "22 - Black and White.mkv"
+      }
+    }
+  ]
+}

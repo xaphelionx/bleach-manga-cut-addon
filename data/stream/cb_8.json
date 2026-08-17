@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Crossing the Rubicon\n📖 [036-043] 🕒 32:06\n💾 319.42 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "74a80202e9c0a620d851c959dd21caa9c3608b7b",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 319418175,
+        "filename": "08 - Crossing the Rubicon.mkv"
+      }
+    }
+  ]
+}

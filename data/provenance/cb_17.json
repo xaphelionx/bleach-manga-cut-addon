@@ -1,0 +1,144 @@
+{
+  "id": "cb_17",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:17",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A18",
+        "concentrated-xlsx:episode-list:B18",
+        "concentrated-xlsx:episode-list:C18",
+        "concentrated-xlsx:episode-list:D18",
+        "concentrated-xlsx:episode-list:E18",
+        "concentrated-xlsx:episode-list:F18",
+        "concentrated-xlsx:episode-list:G18",
+        "concentrated-xlsx:episode-list:H18"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_17",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 8
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_17.json",
+      "videoId": "cb_17",
+      "recordId": "concentrated:17",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb17-local-torrent-verification",
+        "cb17-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "17",
+    "title": "Steer for the Star",
+    "mangaChapters": "091-094",
+    "sourceAnimeEpisodes": "028-030",
+    "exactEditRuntime": "00:27:55",
+    "normalizedExactRuntime": "27:55",
+    "timeSaved": "20m00s (42%)",
+    "releaseDate": "2024-07-01",
+    "lastUpdate": "2025-02-27",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 18,
+      "cells": "A18:H18"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "27",
+    "runtimeTransformation": "The exact 27:55 source runtime is presented as 27 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "1923e3b3bc5359ecdcd35e56f2c18b954c5db338",
+    "fileIdx": 0,
+    "filename": "17 - Steer for the Star.mkv",
+    "videoSize": 286578295,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "17 - Steer for the Star.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1674.858
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "27:55 (1675 seconds) -> floor whole minutes -> 27",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "286578295 bytes / 1000000, fixed to two decimals -> 286.58 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

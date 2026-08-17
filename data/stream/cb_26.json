@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Straying Stars\n📖 [127-132, -17] 🕒 39:39\n💾 443.39 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "417f13cec5f270d677ee6af0065afa5b7220a821",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 443389246,
+        "filename": "26 - The Straying Stars.mkv"
+      }
+    }
+  ]
+}

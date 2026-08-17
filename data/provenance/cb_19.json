@@ -1,0 +1,144 @@
+{
+  "id": "cb_19",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:19",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A20",
+        "concentrated-xlsx:episode-list:B20",
+        "concentrated-xlsx:episode-list:C20",
+        "concentrated-xlsx:episode-list:D20",
+        "concentrated-xlsx:episode-list:E20",
+        "concentrated-xlsx:episode-list:F20",
+        "concentrated-xlsx:episode-list:G20",
+        "concentrated-xlsx:episode-list:H20"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_19",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 10
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_19.json",
+      "videoId": "cb_19",
+      "recordId": "concentrated:19",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb19-local-torrent-verification",
+        "cb19-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "19",
+    "title": "Flower on the Precipice",
+    "mangaChapters": "099-101",
+    "sourceAnimeEpisodes": "034-035",
+    "exactEditRuntime": "00:21:59",
+    "normalizedExactRuntime": "21:59",
+    "timeSaved": "11m16s (34%)",
+    "releaseDate": "2024-07-03",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 20,
+      "cells": "A20:H20"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "21",
+    "runtimeTransformation": "The exact 21:59 source runtime is presented as 21 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "3a8bbc48fac6e013616eb2408ff5855694d796f0",
+    "fileIdx": 0,
+    "filename": "19 - Flower on the Precipice.mkv",
+    "videoSize": 214713500,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "19 - Flower on the Precipice.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1319.19
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "21:59 (1319 seconds) -> floor whole minutes -> 21",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "214713500 bytes / 1000000, fixed to two decimals -> 214.71 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

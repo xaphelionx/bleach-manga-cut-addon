@@ -1,13 +1,15 @@
-# Bleach Manga Cut Three-Episode Validated Compatibility Checkpoint
+# Bleach Manga Cut Preboundary Publication Checkpoint
 
-This is a deliberately three-episode Stremio addon that has completed user-confirmed real-device compatibility validation for **Concentrated Bleach 01 — Death and Strawberry**, **Concentrated Bleach 02 — Starter**, and **Concentrated Bleach 03 — The Pink-Cheeked Cockatiel** against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. It is a validated compatibility checkpoint, not a full catalog, and is not deployed.
+This Stremio addon publishes the complete safe 36-entry Concentrated Bleach prefix from CB1 through CB35, including CB27.5. Only **Concentrated Bleach 01 — Death and Strawberry**, **Concentrated Bleach 02 — Starter**, and **Concentrated Bleach 03 — The Pink-Cheeked Cockatiel** have completed the locked, user-confirmed real-device compatibility path against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. CB4–CB35 are published for representative compatibility sampling and remain unlocked. This is not a full catalog and is not deployed.
 
-Source status for this POC:
+Current publication and validation state:
 
-- **Validated:** exact CB1/CB2/CB3 catalog and meta ordering; CB1 regression playback; CB2 and CB3 native TorBox resolution and playback; Nuvio AUTO player selection; original-audio and subtitle selection; seeking, resume, Continue Watching, completion, and CB1-to-CB2-to-CB3 next-episode behavior.
-- **Locked:** the stable identifiers, torrent identity, verified stream presentation, anime classification, Japanese original-language metadata, and runtime behavior documented below.
-- **Out of scope:** CB4 and later episodes, a full-catalog import, deployment, and changes to the established addon architecture.
-- **Still unresolved outside this POC:** public swarm availability independent of the validated native TorBox paths, artwork, the full-series ordering/import model, and exact Nuvio stream-presentation UI parity.
+- **Published:** 36 preboundary Concentrated entries: CB1–CB35, including CB27.5.
+- **Real-device validated and locked:** CB1, CB2, and CB3, including native TorBox resolution/playback, Nuvio AUTO behavior, original-audio and subtitle selection, seeking, resume, Continue Watching, completion, and next-episode behavior.
+- **Published but unlocked:** CB4–CB35. Before publication, the user confirmed all 33 exact deterministic torrent artifacts were loaded/seeding against their verified payloads, added to TorBox, and cached/available there. These entries still await representative Nuvio compatibility sampling.
+- **Hard stop:** CB35 is the last safely published record before the unresolved Watch Guide endpoint 35.5. CB36 and later remain blocked pending resolution of `concentrated-35.5-vs-0.0`.
+- **Out of scope:** resolving 35.5, publishing CB36 or later, a full-catalog import, deployment, and changes to the established addon architecture.
+- **Still unresolved:** permanent public swarm availability, availability after all seeds disappear, arbitrary third-party discovery, future cache persistence, artwork, and exact Nuvio stream-presentation UI parity.
 
 ## Architecture
 
@@ -49,14 +51,22 @@ The user-confirmed behavior is:
 - Natural completion of CB1 identifies Starter as the next episode; navigation/autoplay into CB2 succeeds, after which CB2 resolves and plays.
 - CB3 is visible as S1E3, exposes its stream, and starts playback through native TorBox resolution.
 - CB3 works with the expected libmpv/AUTO behavior, Japanese audio, embedded subtitle tracks, seeking, resume, Continue Watching, and completion behavior.
-- CB2-to-CB3 next-episode/autoplay behavior succeeds, and CB3 does not expose CB4 as the next published episode.
+- CB2-to-CB3 next-episode/autoplay behavior succeeds. At the three-entry validation checkpoint, CB3 did not expose CB4 as a next published episode.
 - Nuvio's current UI does not visibly expose the literal raw stream name `[P2P🧲] 576p`. This is not considered a compatibility failure because the correct CB2 torrent resolves and plays; exact presentation formatting remains a possible later UI/parity audit.
 
 The CB3 experiment used the exact trackerless torrent identity `52094de720ccaa6d4eb3ce82eef8516f726cbf63`, file index `0`, and payload `03 - The Pink-Cheeked Cockatiel.mkv`. The torrent was seeded from the user's qBittorrent environment and was successfully acquired/cached by TorBox; Nuvio then resolved and played it through the native TorBox integration. This proves that exact locally seeded payload worked in the user's real environment. It does not prove permanent public swarm availability, availability while that seed is offline, arbitrary third-party peer discovery, or remote availability of every future generated torrent. Verified-media network evidence therefore remains unresolved.
 
 Before testing, the TV temporarily lost access to the locally hosted addon because the host computer's LAN IP address had changed. Updating the installed manifest URL to the current reachable LAN IP restored access. This was a local-network operational issue, not an addon compatibility, TorBox, torrent, or Nuvio stream-contract failure.
 
-## Locked three-episode compatibility contract
+## Preboundary availability checkpoint
+
+On 2026-08-16, before the 33-entry publication expansion, the user confirmed that every remaining exact deterministic preboundary torrent for CB4–CB35, including CB27.5, was loaded and seeding against its verified payload, added to TorBox, and successfully cached/available in the user's environment. No TorBox identifier, account data, private URL, or credential is recorded here.
+
+That operational precondition supports controlled publication for compatibility sampling. It does not establish permanent public swarm availability, availability with all seeds offline, arbitrary third-party discovery, future TorBox cache persistence, or successful Nuvio playback for all 33 newly published entries. Those entries therefore remain `locked:false`; only representative real-device testing can advance their compatibility status.
+
+The publication boundary remains exact: CB35 is S2E27 and the final resolved default-timeline entry before the unresolved 35.5 endpoint. CB36 is projected as S3E1 but has an unresolved default-timeline position and remains unpublished. The 35.5 endpoint is not treated as Concentrated 0.0.
+
+## Locked CB1–CB3 compatibility contract
 
 The following fields produced the validated behavior and are locked. Changing any of them requires a separate controlled experiment and complete baseline retesting.
 
@@ -128,4 +138,4 @@ curl http://127.0.0.1:7000/stream/series/cb_3.json
 
 ## Regression gate
 
-Automated tests protect the deterministic addon responses and locked fields; they do not reproduce the manual Nuvio/TorBox experiment. Any future intentionally authorized compatibility change must also repeat the complete real-device baseline: exact catalog/meta ordering, stream discovery, native TorBox playback, libmpv AUTO selection, Japanese original audio, English Full Subtitles selection, seeking, resume, Continue Watching, natural completion, and next-episode navigation.
+Automated tests protect the 36-entry deterministic publication output and the locked CB1–CB3 fields; they do not reproduce either the user-confirmed TorBox cache precondition or the manual Nuvio/TorBox playback experiment. Compatibility locking for the published-but-unlocked CB4–CB35 batch requires representative real-device sampling of stream discovery, native TorBox playback, libmpv AUTO selection, Japanese original audio, embedded subtitles, seeking, resume, Continue Watching, completion, and next-episode navigation.

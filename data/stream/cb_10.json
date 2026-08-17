@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Death Trilogy Overture\n📖 [026, 051-057] 🕒 44:00\n💾 408.35 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "a00bce6c5ac15841c7ea549f22f03bd270ed7441",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 408351511,
+        "filename": "10 - The Death Trilogy Overture.mkv"
+      }
+    }
+  ]
+}

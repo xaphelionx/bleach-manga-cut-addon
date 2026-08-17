@@ -1,0 +1,144 @@
+{
+  "id": "cb_7",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:07",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A8",
+        "concentrated-xlsx:episode-list:B8",
+        "concentrated-xlsx:episode-list:C8",
+        "concentrated-xlsx:episode-list:D8",
+        "concentrated-xlsx:episode-list:E8",
+        "concentrated-xlsx:episode-list:F8",
+        "concentrated-xlsx:episode-list:G8",
+        "concentrated-xlsx:episode-list:H8"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_7",
+      "projectedPlacement": {
+        "season": 1,
+        "episode": 7
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_7.json",
+      "videoId": "cb_7",
+      "recordId": "concentrated:07",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb7-local-torrent-verification",
+        "cb7-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "07",
+    "title": "Quincy Archer Hates You",
+    "mangaChapters": "033-036",
+    "sourceAnimeEpisodes": "011",
+    "exactEditRuntime": "00:21:09",
+    "normalizedExactRuntime": "21:09",
+    "timeSaved": "01m41s (07%)",
+    "releaseDate": "2024-05-05",
+    "lastUpdate": "2025-02-27",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 8,
+      "cells": "A8:H8"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "21",
+    "runtimeTransformation": "The exact 21:09 source runtime is presented as 21 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "619fa5255043cfc13f71e023abef357efc1e7470",
+    "fileIdx": 0,
+    "filename": "07 - Quincy Archer Hates You.mkv",
+    "videoSize": 229803750,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "07 - Quincy Archer Hates You.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1268.972
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "21:09 (1269 seconds) -> floor whole minutes -> 21",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "229803750 bytes / 1000000, fixed to two decimals -> 229.80 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

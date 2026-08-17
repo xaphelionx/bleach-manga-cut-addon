@@ -1,0 +1,144 @@
+{
+  "id": "cb_24",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:24",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A25",
+        "concentrated-xlsx:episode-list:B25",
+        "concentrated-xlsx:episode-list:C25",
+        "concentrated-xlsx:episode-list:D25",
+        "concentrated-xlsx:episode-list:E25",
+        "concentrated-xlsx:episode-list:F25",
+        "concentrated-xlsx:episode-list:G25",
+        "concentrated-xlsx:episode-list:H25"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_24",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 15
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_24.json",
+      "videoId": "cb_24",
+      "recordId": "concentrated:24",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb24-local-torrent-verification",
+        "cb24-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "24",
+    "title": "In Sane We Trust",
+    "mangaChapters": "118-121",
+    "sourceAnimeEpisodes": "042-043",
+    "exactEditRuntime": "00:22:05",
+    "normalizedExactRuntime": "22:05",
+    "timeSaved": "03m36s (14%)",
+    "releaseDate": "2024-09-05",
+    "lastUpdate": "2026-01-20",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 25,
+      "cells": "A25:H25"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "22",
+    "runtimeTransformation": "The exact 22:05 source runtime is presented as 22 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "02552187dae5ca32987f31165974aa0eb8c22fbb",
+    "fileIdx": 0,
+    "filename": "24 - In Sane We Trust.mkv",
+    "videoSize": 226367069,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "24 - In Sane We Trust.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1325.398
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "22:05 (1325 seconds) -> floor whole minutes -> 22",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "226367069 bytes / 1000000, fixed to two decimals -> 226.37 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

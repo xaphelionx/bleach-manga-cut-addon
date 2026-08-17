@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Undead\n📖 [104-105, 108-110] 🕒 23:10\n💾 297.10 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "241df4f98cf03aa7a55fa01771d9eb83088b3dc5",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 297100400,
+        "filename": "21 - The Undead.mkv"
+      }
+    }
+  ]
+}

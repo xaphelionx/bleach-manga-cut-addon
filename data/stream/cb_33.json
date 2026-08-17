@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Battle on Guillotine Hill\n📖 [160-167] 🕒 38:34\n💾 498.07 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "c5d078cd4526e9554c906372bdfa0e77f7e2eda9",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 498070003,
+        "filename": "33 - Battle on Guillotine Hill.mkv"
+      }
+    }
+  ]
+}

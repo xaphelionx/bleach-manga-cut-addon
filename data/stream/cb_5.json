@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 June 17th -memories in the rain-\n📖 [018-025] 🕒 28:15\n💾 301.68 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "094222baff3068ffe4c012e7ad886828a18a6a6b",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 301679894,
+        "filename": "05 - June 17th -memories in the rain-.mkv"
+      }
+    }
+  ]
+}

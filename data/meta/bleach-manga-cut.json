@@ -29,6 +29,237 @@
         "episode": 3,
         "title": "The Pink-Cheeked Cockatiel",
         "runtime": "36"
+      },
+      {
+        "id": "cb_4",
+        "season": 1,
+        "episode": 4,
+        "title": "Bad Standard",
+        "runtime": "35"
+      },
+      {
+        "id": "cb_5",
+        "season": 1,
+        "episode": 5,
+        "title": "June 17th -memories in the rain-",
+        "runtime": "28"
+      },
+      {
+        "id": "cb_6",
+        "season": 1,
+        "episode": 6,
+        "title": "Spirits AREN'T Always With Us",
+        "runtime": "22"
+      },
+      {
+        "id": "cb_7",
+        "season": 1,
+        "episode": 7,
+        "title": "Quincy Archer Hates You",
+        "runtime": "21"
+      },
+      {
+        "id": "cb_8",
+        "season": 1,
+        "episode": 8,
+        "title": "Crossing the Rubicon",
+        "runtime": "32"
+      },
+      {
+        "id": "cb_9",
+        "season": 1,
+        "episode": 9,
+        "title": "Menos Grande",
+        "runtime": "27"
+      },
+      {
+        "id": "cb_10",
+        "season": 2,
+        "episode": 1,
+        "title": "The Death Trilogy Overture",
+        "runtime": "44"
+      },
+      {
+        "id": "cb_11",
+        "season": 2,
+        "episode": 2,
+        "title": "blank",
+        "runtime": "26"
+      },
+      {
+        "id": "cb_12",
+        "season": 2,
+        "episode": 3,
+        "title": "The Blade and Me",
+        "runtime": "28"
+      },
+      {
+        "id": "cb_13",
+        "season": 2,
+        "episode": 4,
+        "title": "Our Last Summer Vacation",
+        "runtime": "34"
+      },
+      {
+        "id": "cb_14",
+        "season": 2,
+        "episode": 5,
+        "title": "The Shooting Star Project",
+        "runtime": "29"
+      },
+      {
+        "id": "cb_15",
+        "season": 2,
+        "episode": 6,
+        "title": "INTRUDERZ",
+        "runtime": "38"
+      },
+      {
+        "id": "cb_16",
+        "season": 2,
+        "episode": 7,
+        "title": "So Unlucky We Are",
+        "runtime": "33"
+      },
+      {
+        "id": "cb_17",
+        "season": 2,
+        "episode": 8,
+        "title": "Steer for the Star",
+        "runtime": "27"
+      },
+      {
+        "id": "cb_18",
+        "season": 2,
+        "episode": 9,
+        "title": "A Star and a Stray Dog",
+        "runtime": "36"
+      },
+      {
+        "id": "cb_19",
+        "season": 2,
+        "episode": 10,
+        "title": "Flower on the Precipice",
+        "runtime": "21"
+      },
+      {
+        "id": "cb_20",
+        "season": 2,
+        "episode": 11,
+        "title": "Spring, Spring, Meets the Tiger",
+        "runtime": "34"
+      },
+      {
+        "id": "cb_21",
+        "season": 2,
+        "episode": 12,
+        "title": "The Undead",
+        "runtime": "23"
+      },
+      {
+        "id": "cb_22",
+        "season": 2,
+        "episode": 13,
+        "title": "Black and White",
+        "runtime": "27"
+      },
+      {
+        "id": "cb_23",
+        "season": 2,
+        "episode": 14,
+        "title": "Remnant",
+        "runtime": "36"
+      },
+      {
+        "id": "cb_24",
+        "season": 2,
+        "episode": 15,
+        "title": "In Sane We Trust",
+        "runtime": "22"
+      },
+      {
+        "id": "cb_25",
+        "season": 2,
+        "episode": 16,
+        "title": "Insanity and Genius",
+        "runtime": "33"
+      },
+      {
+        "id": "cb_26",
+        "season": 2,
+        "episode": 17,
+        "title": "The Straying Stars",
+        "runtime": "39"
+      },
+      {
+        "id": "cb_27",
+        "season": 2,
+        "episode": 18,
+        "title": "memories in the rain2",
+        "runtime": "31"
+      },
+      {
+        "id": "cb_27p5",
+        "season": 2,
+        "episode": 19,
+        "title": "Meanwhile, in the Living World",
+        "runtime": "4"
+      },
+      {
+        "id": "cb_28",
+        "season": 2,
+        "episode": 20,
+        "title": "Surrounding Clutch",
+        "runtime": "21"
+      },
+      {
+        "id": "cb_29",
+        "season": 2,
+        "episode": 21,
+        "title": "Bite at the Moon",
+        "runtime": "25"
+      },
+      {
+        "id": "cb_30",
+        "season": 2,
+        "episode": 22,
+        "title": "Countdown to the End",
+        "runtime": "27"
+      },
+      {
+        "id": "cb_31",
+        "season": 2,
+        "episode": 23,
+        "title": "The Deathberry Returns",
+        "runtime": "33"
+      },
+      {
+        "id": "cb_32",
+        "season": 2,
+        "episode": 24,
+        "title": "Cat and Hornet",
+        "runtime": "25"
+      },
+      {
+        "id": "cb_33",
+        "season": 2,
+        "episode": 25,
+        "title": "Battle on Guillotine Hill",
+        "runtime": "38"
+      },
+      {
+        "id": "cb_34",
+        "season": 2,
+        "episode": 26,
+        "title": "end of hypnosis",
+        "runtime": "55"
+      },
+      {
+        "id": "cb_35",
+        "season": 2,
+        "episode": 27,
+        "title": "AND THE RAIN LEFT OFF",
+        "runtime": "28"
       }
     ]
   }

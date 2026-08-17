@@ -19,6 +19,7 @@ const chipped = require('../editorial/normalized/chipped.json')
 const watchOrder = require('../editorial/watch-orders/source-guide-v2.json')
 const variants = require('../editorial/variants/ex.json')
 const unresolved = require('../editorial/unresolved.json')
+const projection = require('../projection/stremio/public-projection.json')
 const { validate } = require('../scripts/validate-editorial')
 
 const expectedSourceHashes = {
@@ -31,7 +32,7 @@ const expectedSourceHashes = {
 
 const lockedRepositoryHashes = {
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '731a6a09c5565734117b52f6ed79d560e2c4e507ae34fbcac09a50d24f6a22d1',
+  'data/meta/bleach-manga-cut.json': '2f44301e0acd608ecab9ecfc47478c09bd6c786d20b8dfe2f630b1c331167dcb',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
@@ -303,7 +304,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('current three-episode compatibility output preserves CB1 behavior and locked compatibility hashes', () => {
+test('current published preboundary output preserves CB1 behavior and locked compatibility hashes', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }
@@ -314,29 +315,71 @@ test('current three-episode compatibility output preserves CB1 behavior and lock
   const torrent = stream.streams[0]
   assert.equal(catalog.metas[0].id, 'bleach-manga-cut')
   assert.equal(meta.meta.id, 'bleach-manga-cut')
-  assert.deepEqual(meta.meta.videos, [
-    {
-      id: 'cb_1',
-      season: 1,
-      episode: 1,
-      title: 'Death and Strawberry',
-      runtime: '18'
-    },
-    {
-      id: 'cb_2',
-      season: 1,
-      episode: 2,
-      title: 'Starter',
-      runtime: '32'
-    },
-    {
-      id: 'cb_3',
-      season: 1,
-      episode: 3,
-      title: 'The Pink-Cheeked Cockatiel',
-      runtime: '36'
-    }
-  ])
+  assert.equal(meta.meta.videos.length, 36)
+  assert.deepEqual(
+    meta.meta.videos.map((video) => video.id),
+    projection.publicationPolicy.currentPublishedVideoIds
+  )
+  assert.equal(meta.meta.videos.filter((video) => video.season === 1).length, 9)
+  assert.equal(meta.meta.videos.filter((video) => video.season === 2).length, 27)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'cb_36' || video.season === 3), false)
+  const video = (videoId) => meta.meta.videos.find((candidate) => candidate.id === videoId)
+  assert.deepEqual(video('cb_1'), {
+    id: 'cb_1',
+    season: 1,
+    episode: 1,
+    title: 'Death and Strawberry',
+    runtime: '18'
+  })
+  assert.deepEqual(video('cb_9'), {
+    id: 'cb_9',
+    season: 1,
+    episode: 9,
+    title: 'Menos Grande',
+    runtime: '27'
+  })
+  assert.deepEqual(video('cb_10'), {
+    id: 'cb_10',
+    season: 2,
+    episode: 1,
+    title: 'The Death Trilogy Overture',
+    runtime: '44'
+  })
+  assert.deepEqual(video('cb_27'), {
+    id: 'cb_27',
+    season: 2,
+    episode: 18,
+    title: 'memories in the rain2',
+    runtime: '31'
+  })
+  assert.deepEqual(video('cb_27p5'), {
+    id: 'cb_27p5',
+    season: 2,
+    episode: 19,
+    title: 'Meanwhile, in the Living World',
+    runtime: '4'
+  })
+  assert.deepEqual(video('cb_28'), {
+    id: 'cb_28',
+    season: 2,
+    episode: 20,
+    title: 'Surrounding Clutch',
+    runtime: '21'
+  })
+  assert.deepEqual(video('cb_32'), {
+    id: 'cb_32',
+    season: 2,
+    episode: 24,
+    title: 'Cat and Hornet',
+    runtime: '25'
+  })
+  assert.deepEqual(video('cb_35'), {
+    id: 'cb_35',
+    season: 2,
+    episode: 27,
+    title: 'AND THE RAIN LEFT OFF',
+    runtime: '28'
+  })
   assert.equal(torrent.name, '[P2P🧲] 576p')
   assert.equal(torrent.title, '🎬 Death and Strawberry\n📖 [001] 🕒 18:15\n💾 186.52 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG')
   assert.equal(torrent.infoHash, 'd0cb7e0c8bad014c055bf2becf2694dcfde2b8e8')

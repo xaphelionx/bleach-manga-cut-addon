@@ -35,12 +35,17 @@ const variants = read('editorial/variants/ex.json').variants
 const normalizedById = new Map(normalized.map((record) => [record.recordId, record]))
 const projectedById = new Map(projection.entries.map((entry) => [entry.recordId, entry]))
 const optionalById = new Map(optional.entries.map((entry) => [entry.recordId, entry]))
-const evidenceRecords = [
-  { relativePath: 'evidence/media/cb_1.json', value: read('evidence/media/cb_1.json') },
-  { relativePath: 'evidence/media/cb_2.json', value: read('evidence/media/cb_2.json') },
-  { relativePath: 'evidence/media/cb_3.json', value: read('evidence/media/cb_3.json') }
-]
-const EXPECTED_PUBLISHED_PREFIX = Object.freeze(['cb_1', 'cb_2', 'cb_3'])
+const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
+  'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
+  'cb_10', 'cb_11', 'cb_12', 'cb_13', 'cb_14', 'cb_15', 'cb_16', 'cb_17',
+  'cb_18', 'cb_19', 'cb_20', 'cb_21', 'cb_22', 'cb_23', 'cb_24', 'cb_25',
+  'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
+  'cb_33', 'cb_34', 'cb_35'
+])
+const evidenceRecords = EXPECTED_PUBLISHED_PREFIX.map((videoId) => ({
+  relativePath: `evidence/media/${videoId}.json`,
+  value: read(`evidence/media/${videoId}.json`)
+}))
 
 function publicationInputs() {
   return {
@@ -262,12 +267,15 @@ test('projected public titles equal authoritative normalized titles exactly', ()
 
 test('Watch Guide 35.5 and concentrated 0.0 remain separate', () => {
   const edge = projection.unresolvedDefaultEdge
+  assert.equal(edge.issueId, 'concentrated-35.5-vs-0.0')
+  assert.equal(edge.afterRecordId, 'concentrated:35')
   assert.equal(edge.rawEndpointIdentifier, '35.5')
   assert.equal(edge.endpointRecordId, null)
   assert.equal(edge.independentRecord.recordId, 'concentrated:0.0')
   assert.equal(edge.independentRecord.sourceIdentifier.displayed, '0.0')
   assert.equal(edge.equivalent, false)
   assert.equal(edge.placeholderCreated, false)
+  assert.equal(edge.blocksPublicationAfterEdge, true)
 })
 
 test('no global timeline position is asserted after the unresolved edge', () => {
@@ -290,8 +298,26 @@ test('CB36 retains projected placement S3E1 without a global index', () => {
     season: 3,
     episode: 1
   })
-  assert.equal(cb36.defaultTimelinePosition.state, 'unresolved')
-  assert.equal('index' in cb36.defaultTimelinePosition, false)
+  assert.deepEqual(cb36.defaultTimelinePosition, {
+    state: 'unresolved',
+    blockedBy: 'concentrated-35.5-vs-0.0'
+  })
+  assert.deepEqual(cb36.publicationEligibility, {
+    state: 'blocked',
+    gateSet: 'blocked-post-boundary'
+  })
+})
+
+test('CB35 is the resolved S2E27 endpoint immediately before the unresolved boundary', () => {
+  const cb35 = projectedById.get('concentrated:35')
+  assert.equal(cb35.videoId, 'cb_35')
+  assert.deepEqual(cb35.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 2,
+    episode: 27
+  })
+  assert.deepEqual(cb35.defaultTimelinePosition, { state: 'resolved', index: 36 })
+  assert.deepEqual(cb35.publicationEligibility, { state: 'eligible', gateSet: 'verified-primary' })
 })
 
 test('no S3 or S4 record is publication-eligible', () => {
@@ -301,7 +327,7 @@ test('no S3 or S4 record is publication-eligible', () => {
   assert.ok(later.every((entry) => entry.publicationEligibility.gateSet === 'blocked-post-boundary'))
 })
 
-test('current publication checkpoint is exactly the first three primary entries', () => {
+test('current publication checkpoint is exactly the 36-entry safe preboundary prefix', () => {
   const sorted = [...projection.entries].sort((left, right) =>
     left.projectedPlacement.season - right.projectedPlacement.season ||
     left.projectedPlacement.episode - right.projectedPlacement.episode
@@ -312,10 +338,13 @@ test('current publication checkpoint is exactly the first three primary entries'
     sorted.filter((entry) => entry.publicationEligibility.state === 'eligible').map((entry) => entry.videoId),
     EXPECTED_PUBLISHED_PREFIX
   )
-  assert.equal(eligibility.indexOf(false), 3)
-  assert.ok(eligibility.slice(3).every((state) => state === false))
-  assert.equal(sorted[3].videoId, 'cb_4')
-  assert.equal(sorted[3].publicationEligibility.state, 'blocked')
+  assert.equal(eligibility.indexOf(false), 36)
+  assert.ok(eligibility.slice(36).every((state) => state === false))
+  assert.equal(sorted[36].videoId, 'cb_36')
+  assert.deepEqual(sorted[36].publicationEligibility, {
+    state: 'blocked',
+    gateSet: 'blocked-post-boundary'
+  })
 })
 
 test('cross-file publication contract accepts the current approved prefix', () => {
@@ -327,7 +356,7 @@ test('cross-file publication contract accepts the current approved prefix', () =
 
 test('cross-file publication contract rejects an extra registry publication', () => {
   const input = publicationInputs()
-  input.registry.entries.find((entry) => entry.videoId === 'cb_4').status = 'published'
+  input.registry.entries.find((entry) => entry.videoId === 'cb_36').status = 'published'
   assert.throws(
     () => validatePublicationPrefix(input),
     /registry published IDs must exactly match the approved prefix/
@@ -336,23 +365,26 @@ test('cross-file publication contract rejects an extra registry publication', ()
 
 test('cross-file publication contract rejects an approved ID whose projection remains blocked', () => {
   const input = publicationInputs()
-  input.projection.publicationPolicy.currentPublishedVideoIds.push('cb_4')
-  setPrefixBlocker(input, 'cb_4')
+  input.projection.entries.find((entry) => entry.videoId === 'cb_35').publicationEligibility = {
+    state: 'blocked',
+    gateSet: 'unpublished-pre-boundary'
+  }
   assert.throws(() => validatePublicationPrefix(input))
 })
 
-test('cross-file publication contract rejects an eligible CB4 without verified media', () => {
+test('cross-file publication contract rejects an approved CB35 without verified media', () => {
   const input = publicationInputs()
-  publishSynthetic(input, 'cb_4', { withEvidence: false })
+  input.evidenceRecords = input.evidenceRecords.filter(({ value }) => value.videoId !== 'cb_35')
   assert.throws(
     () => validatePublicationPrefix(input),
-    /cb_4 must have exactly one matching verified-media record/
+    /cb_35 must have exactly one matching verified-media record/
   )
 })
 
-test('cross-file publication contract rejects a cb_1, cb_2, cb_3, cb_5 publication gap', () => {
+test('cross-file publication contract rejects a gap within the current approved prefix', () => {
   const input = publicationInputs()
-  publishSynthetic(input, 'cb_5')
+  input.projection.publicationPolicy.currentPublishedVideoIds =
+    input.projection.publicationPolicy.currentPublishedVideoIds.filter((videoId) => videoId !== 'cb_34')
   assert.throws(
     () => validatePublicationPrefix(input),
     /approved IDs must follow canonical primary timeline order/
@@ -361,19 +393,16 @@ test('cross-file publication contract rejects a cb_1, cb_2, cb_3, cb_5 publicati
 
 test('cross-file publication contract rejects eligibility after a blocked entry', () => {
   const input = publicationInputs()
-  input.projection.entries.find((entry) => entry.videoId === 'cb_5').publicationEligibility = {
-    state: 'eligible',
-    gateSet: 'verified-primary'
+  input.projection.entries.find((entry) => entry.videoId === 'cb_34').publicationEligibility = {
+    state: 'blocked',
+    gateSet: 'unpublished-pre-boundary'
   }
-  assert.throws(
-    () => validatePublicationPrefix(input),
-    /eligible primary entries must form one contiguous prefix/
-  )
+  assert.throws(() => validatePublicationPrefix(input))
 })
 
 test('additional evidence alone does not advance publication', () => {
   const input = publicationInputs()
-  input.evidenceRecords.push(syntheticEvidence('cb_4', 'concentrated:04'))
+  input.evidenceRecords.push(syntheticEvidence('cb_36', 'concentrated:36'))
   const result = validatePublicationPrefix(input)
   assert.deepEqual(result.approvedIds, EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(result.eligibleIds, EXPECTED_PUBLISHED_PREFIX)
@@ -398,14 +427,21 @@ test('cross-file publication contract rejects crossing the unresolved 35.5 bound
   )
 })
 
-test('cross-file publication contract accepts a fully related synthetic four-entry prefix', () => {
+test('cross-file publication contract accepts a fully related synthetic extension to CB35', () => {
   const input = publicationInputs()
-  publishSynthetic(input, 'cb_4')
+  input.projection.publicationPolicy.currentPublishedVideoIds.pop()
+  input.projection.entries.find((entry) => entry.videoId === 'cb_35').publicationEligibility = {
+    state: 'blocked',
+    gateSet: 'unpublished-pre-boundary'
+  }
+  input.registry.entries.find((entry) => entry.videoId === 'cb_35').status = 'reserved'
+  setPrefixBlocker(input, 'cb_34')
+  publishSynthetic(input, 'cb_35', { withEvidence: false })
   const result = validatePublicationPrefix(input)
-  assert.deepEqual(result.approvedIds, ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
-  assert.deepEqual(result.eligibleIds, ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
-  assert.deepEqual(result.publishedIds, ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
-  assert.deepEqual(result.eligibleEntries.map((entry) => entry.videoId), ['cb_1', 'cb_2', 'cb_3', 'cb_4'])
+  assert.deepEqual(result.approvedIds, EXPECTED_PUBLISHED_PREFIX)
+  assert.deepEqual(result.eligibleIds, EXPECTED_PUBLISHED_PREFIX)
+  assert.deepEqual(result.publishedIds, EXPECTED_PUBLISHED_PREFIX)
+  assert.deepEqual(result.eligibleEntries.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
 })
 
 test('optional and EX entries have no primary-series placement', () => {
@@ -450,25 +486,22 @@ test('optional IDs cannot enter the primary default timeline', () => {
 
 test('registry reservation never implies publication', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
+  const published = registry.entries.filter((entry) => entry.status === 'published')
+  assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
+  assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), [
+    'cb_1',
+    'cb_2',
+    'cb_3'
+  ])
+  assert.ok(published.slice(3).every((entry) => entry.locked === false))
   assert.deepEqual(
-    registry.entries.filter((entry) => entry.status === 'published').map(({ videoId, locked }) => ({
-      videoId,
-      locked
-    })),
-    [
-      { videoId: 'cb_1', locked: true },
-      { videoId: 'cb_2', locked: true },
-      { videoId: 'cb_3', locked: true }
-    ]
-  )
-  assert.deepEqual(
-    registry.entries.find((entry) => entry.videoId === 'cb_4'),
+    registry.entries.find((entry) => entry.videoId === 'cb_36'),
     {
       recordType: 'normalized-record',
-      recordId: 'concentrated:04',
+      recordId: 'concentrated:36',
       projectId: 'concentrated',
-      sourceIdentifier: '04',
-      videoId: 'cb_4',
+      sourceIdentifier: '36',
+      videoId: 'cb_36',
       status: 'reserved',
       locked: false
     }
@@ -502,9 +535,9 @@ test('complete projection validator accepts the artifacts', () => {
   assert.deepEqual(validate(), {
     projectedEntries: 102,
     projectCounts: { concentrated: 52, hollowed: 38, chipped: 12 },
-    eligibilityCounts: { eligible: 3, blocked: 99 },
-    eligibleVideoIds: ['cb_1', 'cb_2', 'cb_3'],
-    publishedVideoIds: ['cb_1', 'cb_2', 'cb_3'],
+    eligibilityCounts: { eligible: 36, blocked: 66 },
+    eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
+    publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 6

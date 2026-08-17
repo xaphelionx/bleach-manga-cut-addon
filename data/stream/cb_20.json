@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Spring, Spring, Meets the Tiger\n📖 [102-103, 105-108] 🕒 34:54\n💾 386.46 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "a32ccf0caf6f50a25d041ba01fa87112e47cbd80",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 386463907,
+        "filename": "20 - Spring, Spring, Meets the Tiger.mkv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Remnant\n📖 [115-119] 🕒 36:56\n💾 411.51 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "03e2dbf027988ae771e3194e8ebc9d61c9b06247",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 411509706,
+        "filename": "23 - Remnant.mkv"
+      }
+    }
+  ]
+}

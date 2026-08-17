@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 In Sane We Trust\n📖 [118-121] 🕒 22:05\n💾 226.37 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "02552187dae5ca32987f31165974aa0eb8c22fbb",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 226367069,
+        "filename": "24 - In Sane We Trust.mkv"
+      }
+    }
+  ]
+}

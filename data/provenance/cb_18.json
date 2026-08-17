@@ -1,0 +1,144 @@
+{
+  "id": "cb_18",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:18",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A19",
+        "concentrated-xlsx:episode-list:B19",
+        "concentrated-xlsx:episode-list:C19",
+        "concentrated-xlsx:episode-list:D19",
+        "concentrated-xlsx:episode-list:E19",
+        "concentrated-xlsx:episode-list:F19",
+        "concentrated-xlsx:episode-list:G19",
+        "concentrated-xlsx:episode-list:H19"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_18",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 9
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_18.json",
+      "videoId": "cb_18",
+      "recordId": "concentrated:18",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb18-local-torrent-verification",
+        "cb18-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "18",
+    "title": "A Star and a Stray Dog",
+    "mangaChapters": "095-098",
+    "sourceAnimeEpisodes": "030-032",
+    "exactEditRuntime": "00:36:44",
+    "normalizedExactRuntime": "36:44",
+    "timeSaved": "19m04s (34%)",
+    "releaseDate": "2024-07-02",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 19,
+      "cells": "A19:H19"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "36",
+    "runtimeTransformation": "The exact 36:44 source runtime is presented as 36 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "ac7c82416ed7aeacd9133fcce21a58988af9206c",
+    "fileIdx": 0,
+    "filename": "18 - A Star and a Stray Dog.mkv",
+    "videoSize": 423713306,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "18 - A Star and a Stray Dog.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2204.353
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "36:44 (2204 seconds) -> floor whole minutes -> 36",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "423713306 bytes / 1000000, fixed to two decimals -> 423.71 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

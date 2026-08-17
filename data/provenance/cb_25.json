@@ -1,0 +1,144 @@
+{
+  "id": "cb_25",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:25",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A26",
+        "concentrated-xlsx:episode-list:B26",
+        "concentrated-xlsx:episode-list:C26",
+        "concentrated-xlsx:episode-list:D26",
+        "concentrated-xlsx:episode-list:E26",
+        "concentrated-xlsx:episode-list:F26",
+        "concentrated-xlsx:episode-list:G26",
+        "concentrated-xlsx:episode-list:H26"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_25",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 16
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_25.json",
+      "videoId": "cb_25",
+      "recordId": "concentrated:25",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb25-local-torrent-verification",
+        "cb25-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "25",
+    "title": "Insanity and Genius",
+    "mangaChapters": "122-127",
+    "sourceAnimeEpisodes": "043-045",
+    "exactEditRuntime": "00:33:33",
+    "normalizedExactRuntime": "33:33",
+    "timeSaved": "08m48s (21%)",
+    "releaseDate": "2024-09-13",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 26,
+      "cells": "A26:H26"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "33",
+    "runtimeTransformation": "The exact 33:33 source runtime is presented as 33 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "84d6342a95e08d612bbcd28660c2c9fd24aa1774",
+    "fileIdx": 0,
+    "filename": "25 - Insanity and Genius.mkv",
+    "videoSize": 384157993,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "25 - Insanity and Genius.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2012.502
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "33:33 (2013 seconds) -> floor whole minutes -> 33",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "384157993 bytes / 1000000, fixed to two decimals -> 384.16 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

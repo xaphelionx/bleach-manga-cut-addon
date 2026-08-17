@@ -1,0 +1,144 @@
+{
+  "id": "cb_34",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:34",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A36",
+        "concentrated-xlsx:episode-list:B36",
+        "concentrated-xlsx:episode-list:C36",
+        "concentrated-xlsx:episode-list:D36",
+        "concentrated-xlsx:episode-list:E36",
+        "concentrated-xlsx:episode-list:F36",
+        "concentrated-xlsx:episode-list:G36",
+        "concentrated-xlsx:episode-list:H36"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_34",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 26
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_34.json",
+      "videoId": "cb_34",
+      "recordId": "concentrated:34",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb34-local-torrent-verification",
+        "cb34-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "34",
+    "title": "end of hypnosis",
+    "mangaChapters": "167-178",
+    "sourceAnimeEpisodes": "060-062",
+    "exactEditRuntime": "00:55:56",
+    "normalizedExactRuntime": "55:56",
+    "timeSaved": "07m54s (12%)",
+    "releaseDate": "2024-12-27",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 36,
+      "cells": "A36:H36"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "55",
+    "runtimeTransformation": "The exact 55:56 source runtime is presented as 55 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "beec5816bb21dffa045c642797d441669b5e0f7a",
+    "fileIdx": 0,
+    "filename": "34 - end of hypnosis.mkv",
+    "videoSize": 666212185,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "34 - end of hypnosis.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 3356.225
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "55:56 (3356 seconds) -> floor whole minutes -> 55",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "666212185 bytes / 1000000, fixed to two decimals -> 666.21 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

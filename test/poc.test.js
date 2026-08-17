@@ -16,8 +16,21 @@ const cb2Stream = require('../data/stream/cb_2.json')
 const cb2Provenance = require('../data/provenance/cb_2.json')
 const cb3Stream = require('../data/stream/cb_3.json')
 const cb3Provenance = require('../data/provenance/cb_3.json')
+const projection = require('../projection/stremio/public-projection.json')
 
 const root = path.resolve(__dirname, '..')
+const publishedVideoIds = projection.publicationPolicy.currentPublishedVideoIds
+const readGenerated = (kind, videoId) => JSON.parse(
+  fs.readFileSync(path.join(root, 'data', kind, `${videoId}.json`), 'utf8')
+)
+const publishedStreams = new Map(publishedVideoIds.map((videoId) => [
+  videoId,
+  readGenerated('stream', videoId)
+]))
+const publishedProvenance = new Map(publishedVideoIds.map((videoId) => [
+  videoId,
+  readGenerated('provenance', videoId)
+]))
 let baseUrl
 let server
 
@@ -35,7 +48,7 @@ after(async () => {
   }
 })
 
-test('manifest declares only the POC series resources and identifiers', () => {
+test('manifest declares only the current series resources and identifiers', () => {
   assert.equal(addon.manifest.id, 'community.xaphelionx.bleach-manga-cut')
   assert.deepEqual(addon.manifest.types, ['series'])
   assert.deepEqual(addon.manifest.catalogs, [
@@ -91,14 +104,14 @@ test('stream fixture ID safety accepts Concentrated lexical IDs only', () => {
 })
 
 test('safe stream fixture syntax does not grant publication permission', async () => {
-  assert.equal(isSafeStreamFileVideoId('cb_27p5'), true)
-  assert.equal(meta.meta.videos.some((video) => video.id === 'cb_27p5'), false)
-  assert.deepEqual(await addon.get('stream', 'series', 'cb_27p5'), { streams: [] })
+  assert.equal(isSafeStreamFileVideoId('cb_36'), true)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'cb_36'), false)
+  assert.deepEqual(await addon.get('stream', 'series', 'cb_36'), { streams: [] })
 })
 
-test('catalog and meta contain exactly the ordered three-episode compatibility output', () => {
+test('catalog and meta contain the exact ordered 36-entry preboundary output', () => {
   assert.equal(catalog.metas.length, 1)
-  assert.equal(meta.meta.videos.length, 3)
+  assert.equal(meta.meta.videos.length, 36)
 
   const catalogItem = catalog.metas[0]
   const series = meta.meta
@@ -107,11 +120,22 @@ test('catalog and meta contain exactly the ordered three-episode compatibility o
   assert.equal(catalogItem.id, series.id)
   assert.equal(catalogItem.type, series.type)
   assert.equal(catalogItem.name, series.name)
-  assert.deepEqual(series.videos, [
-    { id: 'cb_1', season: 1, episode: 1, title: 'Death and Strawberry', runtime: '18' },
-    { id: 'cb_2', season: 1, episode: 2, title: 'Starter', runtime: '32' },
-    { id: 'cb_3', season: 1, episode: 3, title: 'The Pink-Cheeked Cockatiel', runtime: '36' }
-  ])
+  assert.deepEqual(series.videos.map((video) => video.id), publishedVideoIds)
+  assert.equal(series.videos.filter((video) => video.season === 1).length, 9)
+  assert.equal(series.videos.filter((video) => video.season === 2).length, 27)
+  assert.equal(series.videos.some((video) => video.season === 3 || video.id === 'cb_36'), false)
+  const placement = (videoId) => {
+    const { season, episode } = series.videos.find((video) => video.id === videoId)
+    return { season, episode }
+  }
+  assert.deepEqual(placement('cb_1'), { season: 1, episode: 1 })
+  assert.deepEqual(placement('cb_9'), { season: 1, episode: 9 })
+  assert.deepEqual(placement('cb_10'), { season: 2, episode: 1 })
+  assert.deepEqual(placement('cb_27'), { season: 2, episode: 18 })
+  assert.deepEqual(placement('cb_27p5'), { season: 2, episode: 19 })
+  assert.deepEqual(placement('cb_28'), { season: 2, episode: 20 })
+  assert.deepEqual(placement('cb_32'), { season: 2, episode: 24 })
+  assert.deepEqual(placement('cb_35'), { season: 2, episode: 27 })
   assert.equal(cb1Provenance.id, series.videos[0].id)
   assert.equal(cb1Provenance.editorial.exactEditRuntime, '00:18:15')
   assert.equal(cb1Provenance.editorial.normalizedExactRuntime, '18:15')
@@ -133,15 +157,19 @@ test('catalog and full meta classify the series as anime in Japanese', () => {
   assert.equal('country' in catalog.metas[0], false)
 })
 
-test('all three streams present their verified local media metadata', () => {
-  for (const stream of [cb1Stream, cb2Stream, cb3Stream]) {
+test('all published streams present their verified local media metadata', () => {
+  for (const [videoId, stream] of publishedStreams) {
     assert.equal(stream.streams.length, 1)
     const torrent = stream.streams[0]
-    assert.match(torrent.name, /576p/)
-    assert.match(torrent.title, /HEVC/)
-    assert.match(torrent.title, /AAC 2\.0/)
-    assert.match(torrent.title, /JPN/)
-    assert.match(torrent.title, /ENG/)
+    assert.match(torrent.name, /576p/, videoId)
+    assert.match(torrent.title, /HEVC/, videoId)
+    assert.match(torrent.title, /AAC 2\.0/, videoId)
+    assert.match(torrent.title, /JPN/, videoId)
+    assert.match(torrent.title, /ENG/, videoId)
+    assert.match(torrent.infoHash, /^[0-9a-f]{40}$/, videoId)
+    assert.equal(torrent.fileIdx, 0, videoId)
+    assert.deepEqual(torrent.sources, [], videoId)
+    assert.equal(torrent.behaviorHints.bingeGroup, 'bleach-manga-cut|p2p|standard', videoId)
   }
 })
 
@@ -212,7 +240,7 @@ test('CB1 provenance records intentional anime and original-language compatibili
   })
 })
 
-test('generated content contains exactly cb_1, cb_2, and cb_3', () => {
+test('generated content contains exactly the 36 published stream and provenance pairs', () => {
   const generatedFiles = [
     ...fs.readdirSync(path.join(root, 'data', 'catalog')).map((name) => `catalog/${name}`),
     ...fs.readdirSync(path.join(root, 'data', 'meta')).map((name) => `meta/${name}`),
@@ -220,28 +248,23 @@ test('generated content contains exactly cb_1, cb_2, and cb_3', () => {
     ...fs.readdirSync(path.join(root, 'data', 'provenance')).map((name) => `provenance/${name}`)
   ].sort()
 
-  assert.deepEqual(generatedFiles, [
+  const expectedFiles = [
     'catalog/bleach-manga-cut.json',
     'meta/bleach-manga-cut.json',
-    'provenance/cb_1.json',
-    'provenance/cb_2.json',
-    'provenance/cb_3.json',
-    'stream/cb_1.json',
-    'stream/cb_2.json',
-    'stream/cb_3.json'
-  ])
+    ...publishedVideoIds.map((videoId) => `provenance/${videoId}.json`),
+    ...publishedVideoIds.map((videoId) => `stream/${videoId}.json`)
+  ].sort()
+  assert.equal(expectedFiles.length, 74)
+  assert.deepEqual(generatedFiles, expectedFiles)
 
-  const episodeIds = JSON.stringify([
+  const generatedDocuments = [
     catalog,
     meta,
-    cb1Stream,
-    cb1Provenance,
-    cb2Stream,
-    cb2Provenance,
-    cb3Stream,
-    cb3Provenance
-  ]).match(/cb_\d+/g) || []
-  assert.deepEqual([...new Set(episodeIds)], ['cb_1', 'cb_2', 'cb_3'])
+    ...publishedStreams.values(),
+    ...publishedProvenance.values()
+  ]
+  const episodeIds = JSON.stringify(generatedDocuments).match(/cb_\d+(?:p\d+)?/g) || []
+  assert.deepEqual([...new Set(episodeIds)], publishedVideoIds)
 })
 
 test('content has no credential or resolved playback fields', () => {
@@ -261,9 +284,15 @@ test('content has no credential or resolved playback fields', () => {
     }
   }
 
-  inspect([catalog, meta, cb1Stream, cb1Provenance, cb2Stream, cb2Provenance, cb3Stream, cb3Provenance])
+  const generatedDocuments = [
+    catalog,
+    meta,
+    ...publishedStreams.values(),
+    ...publishedProvenance.values()
+  ]
+  inspect(generatedDocuments)
   assert.doesNotMatch(
-    JSON.stringify([catalog, meta, cb1Stream, cb1Provenance, cb2Stream, cb2Provenance, cb3Stream, cb3Provenance]),
+    JSON.stringify(generatedDocuments),
     /\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b/i
   )
 })
@@ -277,7 +306,7 @@ test('handlers return empty protocol responses for unknown IDs', async () => {
     await addon.get('stream', 'series', 'cb_999'),
     { streams: [] }
   )
-  for (const videoId of ['cb_4', 'cb_27p5', 'hb_ex_27', '../data/stream/cb_1', 'cb_1/../../cb_2']) {
+  for (const videoId of ['cb_36', 'hb_ex_27', '../data/stream/cb_1', 'cb_1/../../cb_2']) {
     assert.deepEqual(await addon.get('stream', 'series', videoId), { streams: [] }, videoId)
   }
   assert.deepEqual(await addon.get('stream', 'movie', 'cb_1'), { streams: [] })
@@ -291,8 +320,13 @@ test('normal Stremio HTTP endpoints return the deterministic JSON', async () => 
     ['/stream/series/cb_1.json', cb1Stream],
     ['/stream/series/cb_2.json', cb2Stream],
     ['/stream/series/cb_3.json', cb3Stream],
-    ['/stream/series/cb_4.json', { streams: [] }],
-    ['/stream/series/cb_27p5.json', { streams: [] }],
+    ['/stream/series/cb_4.json', publishedStreams.get('cb_4')],
+    ['/stream/series/cb_9.json', publishedStreams.get('cb_9')],
+    ['/stream/series/cb_10.json', publishedStreams.get('cb_10')],
+    ['/stream/series/cb_27p5.json', publishedStreams.get('cb_27p5')],
+    ['/stream/series/cb_32.json', publishedStreams.get('cb_32')],
+    ['/stream/series/cb_35.json', publishedStreams.get('cb_35')],
+    ['/stream/series/cb_36.json', { streams: [] }],
     ['/stream/series/hb_ex_27.json', { streams: [] }],
     ['/meta/series/unknown-series.json', { meta: {} }],
     ['/stream/series/cb_999.json', { streams: [] }]
