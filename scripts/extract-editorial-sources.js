@@ -1049,7 +1049,7 @@ function extractedEpisodeRows(config, workbook) {
   return rows
 }
 
-function buildWatchOrder(watchGuide) {
+function buildWatchOrder(watchGuide, resolution) {
   const page = watchGuide.pages.find((candidate) => candidate.locator.page === 6)
   assert.ok(page, 'Watch Guide page 6 is missing')
   const rawPage = page.displayedValue.replace(/\s+/g, ' ')
@@ -1088,10 +1088,10 @@ function buildWatchOrder(watchGuide) {
         rawRange: '10-35.5',
         start: { rawIdentifier: '10', resolutionState: 'resolved', recordId: 'concentrated:10' },
         end: {
-          rawIdentifier: '35.5',
-          resolutionState: 'unresolved',
-          recordId: null,
-          unresolvedReferenceId: 'watch-endpoint:concentrated:35.5'
+          rawIdentifier: resolution.guidedIdentity.rawIdentifier,
+          resolutionState: resolution.resolutionState,
+          recordId: resolution.resolvedTarget.recordId,
+          resolutionRef: resolution.resolutionId
         },
         expanded: false
       },
@@ -1156,26 +1156,18 @@ function buildWatchOrder(watchGuide) {
         ordinaryAdjacentEpisode: false
       }
     ],
-    unresolvedEndpointReferences: [
-      {
-        referenceId: 'watch-endpoint:concentrated:35.5',
-        projectId: 'concentrated',
-        rawIdentifier: '35.5',
-        resolutionState: 'unresolved',
-        issueId: 'concentrated-35.5-vs-0.0'
-      }
-    ],
+    unresolvedEndpointReferences: [],
     fieldEvidence: {
       '/watchOrderId': evidence,
       '/authoritySourceId': evidence,
       '/segments/0': evidence,
-      '/segments/1': evidence,
+      '/segments/1/rawRange': evidence,
+      '/segments/1/end/rawIdentifier': evidence,
       '/segments/2': evidence,
       '/segments/3': evidence,
       '/segments/4': evidence,
       '/segments/5': evidence,
-      '/optionalBranches/0': evidence,
-      '/unresolvedEndpointReferences/0': evidence
+      '/optionalBranches/0': evidence
     }
   }
 }
@@ -1309,37 +1301,25 @@ function buildVariants(exInfo, hollowedWorkbook) {
   }
 }
 
-function buildUnresolved(watchGuide, exInfo, workbooks) {
+function buildUnresolved(watchGuide, exInfo, workbooks, resolutionDocument) {
   const concentratedCells = cellMap(workbooks.concentrated, 'Episode List')
   const hollowedCells = cellMap(workbooks.hollowed, 'Episode List')
   const chippedCells = cellMap(workbooks.chipped, 'Chipped Bleach Info')
-  const watchPage6 = watchGuide.pages.find((page) => page.locator.page === 6)
   const watchPage5 = watchGuide.pages.find((page) => page.locator.page === 5)
   const exPage = exInfo.pages[0]
+  const resolvedIssueIds = new Set(resolutionDocument.resolutions.map((resolution) => resolution.originalIssueId))
+  const issueOrder = [
+    'concentrated-35.5-vs-0.0',
+    'hollowed-v3-membership',
+    'chipped-first-4.5-media-mapping',
+    'ex-current-legacy-and-media-status',
+    'cross-project-0.8-relationship',
+    'chipped-03-04-time-saved'
+  ]
 
-  return {
-    schemaVersion: 1,
-    policy: 'Conflicting or incomplete source claims remain explicit and block only the affected relationship or field; no document-date precedence is applied.',
-    issues: [
-      {
-        issueId: 'concentrated-35.5-vs-0.0',
-        status: 'unresolved',
-        kind: 'watch-order-endpoint-conflict',
-        claims: [
-          {
-            sourceClaim: 'Concentrated Bleach 10-35.5',
-            value: '35.5',
-            evidenceRefs: [watchPage6.evidenceId]
-          },
-          {
-            sourceClaim: 'The corresponding primary spreadsheet record is numbered 0.0 and titled the rotator / the sand.',
-            value: '0.0',
-            evidenceRefs: evidenceRefs(getCell(concentratedCells, 'A', 38), getCell(concentratedCells, 'B', 38))
-          }
-        ],
-        prohibitedResolution: 'Do not equate 35.5 with 0.0 and do not expand or finalize the affected watch-order boundary.',
-        blocks: ['watch-orders/source-guide-v2:segments/1:end']
-      },
+  const issueById = new Map([
+    [
+      'hollowed-v3-membership',
       {
         issueId: 'hollowed-v3-membership',
         status: 'unresolved',
@@ -1358,7 +1338,10 @@ function buildUnresolved(watchGuide, exInfo, workbooks) {
         ],
         prohibitedResolution: 'Do not mark source rows as aliases or obsolete until explicitly approved.',
         blocks: ['hollowed version-specific sequence expansion']
-      },
+      }
+    ],
+    [
+      'chipped-first-4.5-media-mapping',
       {
         issueId: 'chipped-first-4.5-media-mapping',
         status: 'unresolved',
@@ -1372,7 +1355,10 @@ function buildUnresolved(watchGuide, exInfo, workbooks) {
         ],
         prohibitedResolution: 'Do not map 4.5 to a source episode or media edition without authority.',
         blocks: ['per-media Chipped version selection']
-      },
+      }
+    ],
+    [
+      'ex-current-legacy-and-media-status',
       {
         issueId: 'ex-current-legacy-and-media-status',
         status: 'unresolved',
@@ -1386,7 +1372,10 @@ function buildUnresolved(watchGuide, exInfo, workbooks) {
         ],
         prohibitedResolution: 'Do not make EX variants default-linear or claim media availability.',
         blocks: ['EX generation', 'EX default watch-order membership']
-      },
+      }
+    ],
+    [
+      'cross-project-0.8-relationship',
       {
         issueId: 'cross-project-0.8-relationship',
         status: 'unresolved',
@@ -1405,7 +1394,10 @@ function buildUnresolved(watchGuide, exInfo, workbooks) {
         ],
         prohibitedResolution: 'Keep the records distinct; do not create equivalence or derivation relationships without authority.',
         blocks: ['cross-project 0.8 canonicalization']
-      },
+      }
+    ],
+    [
+      'chipped-03-04-time-saved',
       {
         issueId: 'chipped-03-04-time-saved',
         status: 'unresolved',
@@ -1421,6 +1413,19 @@ function buildUnresolved(watchGuide, exInfo, workbooks) {
         blocks: ['exact Chipped 03/04 time-saved aggregates']
       }
     ]
+  ])
+
+  const issues = issueOrder
+    .filter((issueId) => !resolvedIssueIds.has(issueId))
+    .map((issueId) => {
+      assert.ok(issueById.has(issueId), `Known issue disappeared without a resolution: ${issueId}`)
+      return issueById.get(issueId)
+    })
+
+  return {
+    schemaVersion: 1,
+    policy: 'Conflicting or incomplete source claims remain explicit and block only the affected relationship or field; no document-date precedence is applied.',
+    issues
   }
 }
 
@@ -1466,6 +1471,10 @@ function sourceInventoryEntry(config, sourceBuffer, extracted) {
 function buildOutputs() {
   const buffers = new Map()
   const extracted = new Map()
+  const resolutionDocument = JSON.parse(fs.readFileSync(path.join(root, 'editorial', 'resolutions.json'), 'utf8'))
+  assert.equal(resolutionDocument.artifactType, 'editorial-resolutions')
+  assert.equal(resolutionDocument.resolutions.length, 1, 'Expected exactly one editorial resolution')
+  const resolution = resolutionDocument.resolutions[0]
 
   for (const config of SOURCES) {
     const filename = path.join(sourceRoot, config.filename)
@@ -1507,8 +1516,8 @@ function buildOutputs() {
   outputs.set('editorial/normalized/hollowed.json', normalizedProjects.get('hollowed'))
   outputs.set('editorial/normalized/chipped.json', normalizedProjects.get('chipped'))
   outputs.set('editorial/variants/ex.json', buildVariants(exInfo, workbooks.hollowed))
-  outputs.set('editorial/watch-orders/source-guide-v2.json', buildWatchOrder(watchGuide))
-  outputs.set('editorial/unresolved.json', buildUnresolved(watchGuide, exInfo, workbooks))
+  outputs.set('editorial/watch-orders/source-guide-v2.json', buildWatchOrder(watchGuide, resolution))
+  outputs.set('editorial/unresolved.json', buildUnresolved(watchGuide, exInfo, workbooks, resolutionDocument))
   return outputs
 }
 

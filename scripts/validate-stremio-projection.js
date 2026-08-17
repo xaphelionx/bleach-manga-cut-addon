@@ -20,7 +20,7 @@ const LOCKED_HASHES = Object.freeze({
   'evidence/media/cb_1.json': '7b84d24d4186163f39e3622a496c244dc3c5f5d5144d9513d6fb41e3be60f80f',
   'evidence/media/cb_2.json': '4a68bbc82f83e845c2e8ec02d36061796d1876ff95e4eb4a2fe7e6707bba30f2',
   'evidence/media/cb_3.json': 'b3604ed951e34e211003da1adc08acaefe7082b70ad0c972fb76a6ef78438526',
-  'editorial/unresolved.json': '95a8343690054e7808af829b125753235b5f58fb559602ffc32872c4684518d8'
+  'editorial/unresolved.json': '7697d76e1fc3c54d04d3ebb19c7ff8f827132f96df09769bce80f339bda6085e'
 })
 const LOCKED_VALIDATED_VIDEO_IDS = new Set(['cb_1', 'cb_2', 'cb_3'])
 
@@ -61,7 +61,7 @@ function encodeVariantId(variant) {
   return `hb_ex_${Number(identifier[1])}`
 }
 
-function expectedDefaultProjection(recordsByProject) {
+function expectedDefaultProjection(recordsByProject, resolution) {
   const recordById = new Map(
     Object.values(recordsByProject).flat().map((record) => [record.recordId, record])
   )
@@ -92,6 +92,11 @@ function expectedDefaultProjection(recordsByProject) {
       .map((record) => record.recordId),
     2,
     1
+  )
+  add(
+    [resolution.resolvedTarget.recordId],
+    resolution.guidedPlacement.season,
+    resolution.guidedPlacement.episode
   )
   add(
     Array.from({ length: 16 }, (_, index) => `concentrated:${index + 36}`),
@@ -172,6 +177,7 @@ function validate() {
     }))
   for (const record of evidenceRecords) validateVerifiedMedia(record.value)
   const unresolved = load('editorial/unresolved.json')
+  const resolutionDocument = load('editorial/resolutions.json')
   const watchOrder = load('editorial/watch-orders/source-guide-v2.json')
   const variants = load('editorial/variants/ex.json')
   const recordsByProject = {
@@ -196,46 +202,43 @@ function validate() {
   assert.equal(projection.clientCompatibility.seasonZeroIsolated, false)
   assert.equal(projection.publicationPolicy.primarySeriesPrefixClosed, true)
   assert.equal(projection.publicationPolicy.projectionDoesNotAuthorizePublication, true)
+  assert.equal('unresolvedDefaultEdge' in projection, false)
 
-  assert.equal(unresolved.issues.length, 6)
-  const boundaryIssue = unresolved.issues.find(
-    (issue) => issue.issueId === 'concentrated-35.5-vs-0.0'
-  )
-  assert.ok(boundaryIssue)
-  assert.equal(boundaryIssue.status, 'unresolved')
-  assert.deepEqual(boundaryIssue.claims.map((claim) => claim.value), ['35.5', '0.0'])
-
-  const endpoint = watchOrder.unresolvedEndpointReferences.find(
-    (reference) => reference.issueId === boundaryIssue.issueId
-  )
-  assert.ok(endpoint)
-  assert.equal(endpoint.rawIdentifier, '35.5')
-  assert.equal(endpoint.resolutionState, 'unresolved')
-  assert.equal('recordId' in endpoint, false)
-
-  const edge = projection.unresolvedDefaultEdge
-  assert.equal(edge.issueId, boundaryIssue.issueId)
-  assert.equal(edge.afterRecordId, 'concentrated:35')
-  assert.equal(edge.rawEndpointIdentifier, '35.5')
-  assert.equal(edge.endpointRecordId, null)
-  assert.equal(edge.independentRecord.recordId, 'concentrated:0.0')
-  assert.equal(edge.independentRecord.videoId, 'cb_0p0')
-  assert.equal(edge.independentRecord.projectedPlacement, null)
-  assert.equal(edge.equivalent, false)
-  assert.equal(edge.placeholderCreated, false)
-  assert.equal(edge.blocksPublicationAfterEdge, true)
+  assert.equal(unresolved.issues.length, 5)
+  assert.equal(unresolved.issues.some((issue) => issue.issueId === 'concentrated-35.5-vs-0.0'), false)
+  assert.equal(resolutionDocument.resolutions.length, 1, 'Expected exactly one editorial resolution')
+  const resolution = resolutionDocument.resolutions[0]
+  assert.equal(resolution.resolutionId, 'editorial-resolution:concentrated-35.5-to-0.0')
+  assert.equal(resolution.resolvedTarget.recordId, 'concentrated:0.0')
+  assert.equal(resolution.resolvedTarget.sourceIdentifier, '0.0')
+  assert.deepEqual(resolution.guidedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 2,
+    episode: 28
+  })
+  assert.deepEqual(watchOrder.unresolvedEndpointReferences, [])
+  const endpoint = watchOrder.segments.find((segment) => segment.rawRange === '10-35.5').end
+  assert.deepEqual(endpoint, {
+    rawIdentifier: '35.5',
+    resolutionState: 'resolved',
+    recordId: resolution.resolvedTarget.recordId,
+    resolutionRef: resolution.resolutionId
+  })
 
   const zero = normalizedById.get('concentrated:0.0')
   assert.ok(zero)
-  assert.deepEqual(edge.independentRecord.sourceIdentifier, zero.sourceIdentifier)
-  assert.equal(edge.independentRecord.title, zero.title)
+  assert.deepEqual(zero.sourceIdentifier, { raw: '0.0', displayed: '0.0' })
+  assert.equal(zero.title, 'the rotator / the sand')
 
-  const expected = expectedDefaultProjection(recordsByProject)
-  assert.equal(expected.length, 102)
+  const expected = expectedDefaultProjection(recordsByProject, resolution)
+  assert.equal(expected.length, 103)
   assert.equal(projection.entries.length, expected.length)
   const expectedIds = expected.map((entry) => entry.recordId)
   const projectedIds = projection.entries.map((entry) => entry.recordId)
   assert.deepEqual(projectedIds, expectedIds)
+  const resolvedTargetIndex = projectedIds.indexOf(resolution.resolvedTarget.recordId)
+  assert.equal(projectedIds[resolvedTargetIndex - 1], resolution.relativePlacement.afterRecordId)
+  assert.equal(projectedIds[resolvedTargetIndex + 1], resolution.relativePlacement.beforeRecordId)
 
   const videoIds = new Set()
   const placements = new Set()
@@ -254,15 +257,7 @@ function validate() {
     assert.ok(!placements.has(placementKey), `Duplicate projected placement ${placementKey}`)
     placements.add(placementKey)
 
-    if (index < 36) {
-      assert.deepEqual(entry.defaultTimelinePosition, { state: 'resolved', index: index + 1 })
-    } else {
-      assert.deepEqual(entry.defaultTimelinePosition, {
-        state: 'unresolved',
-        blockedBy: boundaryIssue.issueId
-      })
-      assert.equal('index' in entry.defaultTimelinePosition, false)
-    }
+    assert.deepEqual(entry.defaultTimelinePosition, { state: 'resolved', index: index + 1 })
 
     if (entry.recordId === 'concentrated:01') {
       assert.deepEqual(entry.publicationEligibility, {
@@ -274,8 +269,27 @@ function validate() {
         state: 'eligible',
         gateSet: 'verified-primary'
       })
+    } else {
+      assert.deepEqual(entry.publicationEligibility, {
+        state: 'blocked',
+        gateSet: 'unpublished-primary'
+      })
     }
   }
+
+  const resolutionEntries = projection.entries.filter((entry) => entry.resolutionRef !== undefined)
+  assert.equal(resolutionEntries.length, 1, 'Exactly one projection entry must reference an editorial resolution')
+  const resolvedEntry = resolutionEntries[0]
+  assert.equal(resolvedEntry.resolutionRef, resolution.resolutionId)
+  assert.equal(resolvedEntry.recordId, resolution.resolvedTarget.recordId)
+  assert.equal(resolvedEntry.videoId, 'cb_0p0')
+  assert.deepEqual(resolvedEntry.sourceIdentifier, zero.sourceIdentifier)
+  assert.deepEqual(resolvedEntry.projectedPlacement, resolution.guidedPlacement)
+  assert.deepEqual(resolvedEntry.defaultTimelinePosition, { state: 'resolved', index: 37 })
+  assert.deepEqual(resolvedEntry.publicationEligibility, {
+    state: 'blocked',
+    gateSet: 'unpublished-primary'
+  })
 
   const globallySorted = [...projection.entries].sort((left, right) =>
     left.projectedPlacement.season - right.projectedPlacement.season ||
@@ -318,22 +332,13 @@ function validate() {
     episode: 1
   })
   assert.deepEqual(cb36.defaultTimelinePosition, {
-    state: 'unresolved',
-    blockedBy: 'concentrated-35.5-vs-0.0'
+    state: 'resolved',
+    index: 38
   })
   assert.deepEqual(cb36.publicationEligibility, {
     state: 'blocked',
-    gateSet: 'blocked-post-boundary'
+    gateSet: 'unpublished-primary'
   })
-
-  for (const entry of projection.entries) {
-    if (entry.projectedPlacement.season >= 3) {
-      assert.equal(entry.publicationEligibility.state, 'blocked')
-      assert.equal(entry.publicationEligibility.gateSet, 'blocked-post-boundary')
-      assert.equal(entry.defaultTimelinePosition.state, 'unresolved')
-      assert.equal('index' in entry.defaultTimelinePosition, false)
-    }
-  }
 
   assert.equal(registry.schemaVersion, 1)
   assert.equal(registry.seriesId, projection.series.id)
@@ -379,6 +384,15 @@ function validate() {
     )
   }
   for (const videoId of LOCKED_VALIDATED_VIDEO_IDS) assert.ok(approvedVideoIds.has(videoId))
+  assert.deepEqual(registryByVideoId.get('cb_0p0'), {
+    recordType: 'normalized-record',
+    recordId: 'concentrated:0.0',
+    projectId: 'concentrated',
+    sourceIdentifier: '0.0',
+    videoId: 'cb_0p0',
+    status: 'reserved',
+    locked: false
+  })
   assert.deepEqual(registryByVideoId.get('cb_36'), {
     recordType: 'normalized-record',
     recordId: 'concentrated:36',
@@ -464,10 +478,19 @@ function validate() {
     counts[state] = (counts[state] || 0) + 1
     return counts
   }, {})
+  const seasonCounts = projection.entries.reduce((counts, entry) => {
+    const season = entry.projectedPlacement.season
+    counts[season] = (counts[season] || 0) + 1
+    return counts
+  }, {})
+  assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
+  assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
+  assert.deepEqual(eligibilityCounts, { eligible: 36, blocked: 67 })
 
   return {
     projectedEntries: projection.entries.length,
     projectCounts,
+    seasonCounts,
     eligibilityCounts,
     eligibleVideoIds: publication.eligibleIds,
     publishedVideoIds: publication.publishedIds,
@@ -483,6 +506,9 @@ if (require.main === module) {
     `validated ${result.projectedEntries} projected entries, ` +
     `${result.registryEntries} registered IDs, ${result.optionalEntries} optional entries, ` +
     `and ${result.unresolvedIssues} unresolved editorial issues\n` +
+    `project counts: ${JSON.stringify(result.projectCounts)}\n` +
+    `season counts: ${JSON.stringify(result.seasonCounts)}\n` +
+    `eligibility counts: ${JSON.stringify(result.eligibilityCounts)}\n` +
     `eligible primary IDs: ${JSON.stringify(result.eligibleVideoIds)}\n` +
     `published registry IDs: ${JSON.stringify(result.publishedVideoIds)}\n`
   )

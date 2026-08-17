@@ -11,7 +11,6 @@
     "clientCompatibility",
     "publicationPolicy",
     "publicationGateSets",
-    "unresolvedDefaultEdge",
     "entries"
   ],
   "properties": {
@@ -85,38 +84,12 @@
       "required": [
         "locked-cb1",
         "verified-primary",
-        "unpublished-pre-boundary",
-        "blocked-post-boundary"
+        "unpublished-primary"
       ],
       "properties": {
         "locked-cb1": { "$ref": "#/$defs/lockedCb1GateSet" },
         "verified-primary": { "$ref": "#/$defs/verifiedPrimaryGateSet" },
-        "unpublished-pre-boundary": { "$ref": "#/$defs/unpublishedPreBoundaryGateSet" },
-        "blocked-post-boundary": { "$ref": "#/$defs/blockedPostBoundaryGateSet" }
-      }
-    },
-    "unresolvedDefaultEdge": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "issueId",
-        "afterRecordId",
-        "rawEndpointIdentifier",
-        "endpointRecordId",
-        "independentRecord",
-        "equivalent",
-        "placeholderCreated",
-        "blocksPublicationAfterEdge"
-      ],
-      "properties": {
-        "issueId": { "const": "concentrated-35.5-vs-0.0" },
-        "afterRecordId": { "const": "concentrated:35" },
-        "rawEndpointIdentifier": { "const": "35.5" },
-        "endpointRecordId": { "type": "null" },
-        "independentRecord": { "$ref": "#/$defs/independentRecord" },
-        "equivalent": { "const": false },
-        "placeholderCreated": { "const": false },
-        "blocksPublicationAfterEdge": { "const": true }
+        "unpublished-primary": { "$ref": "#/$defs/unpublishedPrimaryGateSet" }
       }
     },
     "entries": {
@@ -164,26 +137,13 @@
       }
     },
     "defaultTimelinePosition": {
-      "oneOf": [
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["state", "index"],
-          "properties": {
-            "state": { "const": "resolved" },
-            "index": { "type": "integer", "minimum": 1 }
-          }
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["state", "blockedBy"],
-          "properties": {
-            "state": { "const": "unresolved" },
-            "blockedBy": { "const": "concentrated-35.5-vs-0.0" }
-          }
-        }
-      ]
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "index"],
+      "properties": {
+        "state": { "const": "resolved" },
+        "index": { "type": "integer", "minimum": 1 }
+      }
     },
     "eligibility": {
       "type": "object",
@@ -192,7 +152,7 @@
       "properties": {
         "state": { "enum": ["eligible", "blocked", "excluded", "unresolved"] },
         "gateSet": {
-          "enum": ["locked-cb1", "verified-primary", "unpublished-pre-boundary", "blocked-post-boundary"]
+          "enum": ["locked-cb1", "verified-primary", "unpublished-primary"]
         }
       }
     },
@@ -249,7 +209,7 @@
         }
       ]
     },
-    "unpublishedPreBoundaryGateSet": {
+    "unpublishedPrimaryGateSet": {
       "allOf": [
         { "$ref": "#/$defs/gateSet" },
         {
@@ -265,29 +225,6 @@
               "prefixItems": [
                 { "const": "media-evidence-not-approved" },
                 { "pattern": "^primary-publication-prefix-after-cb_[0-9]+(?:p[0-9]+)?$" }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    "blockedPostBoundaryGateSet": {
-      "allOf": [
-        { "$ref": "#/$defs/gateSet" },
-        {
-          "properties": {
-            "editorialAvailability": { "const": "passed" },
-            "resolvedPlacement": { "const": "passed" },
-            "mediaEvidence": { "const": "unresolved" },
-            "defaultTimelineContiguity": { "const": "blocked" },
-            "blockedBy": {
-              "type": "array",
-              "minItems": 3,
-              "maxItems": 3,
-              "prefixItems": [
-                { "const": "media-evidence-not-approved" },
-                { "pattern": "^primary-publication-prefix-after-cb_[0-9]+(?:p[0-9]+)?$" },
-                { "const": "concentrated-35.5-vs-0.0" }
               ]
             }
           }
@@ -317,7 +254,11 @@
         "timelineMembership": { "const": "default" },
         "projectedPlacement": { "$ref": "#/$defs/projectedPlacement" },
         "defaultTimelinePosition": { "$ref": "#/$defs/defaultTimelinePosition" },
-        "publicationEligibility": { "$ref": "#/$defs/eligibility" }
+        "publicationEligibility": { "$ref": "#/$defs/eligibility" },
+        "resolutionRef": {
+          "type": "string",
+          "pattern": "^editorial-resolution:"
+        }
       }
     },
     "cb1PublishedEntry": {
@@ -371,47 +312,12 @@
               "required": ["state", "gateSet"],
               "properties": {
                 "state": { "const": "blocked" },
-                "gateSet": {
-                  "enum": ["unpublished-pre-boundary", "blocked-post-boundary"]
-                }
+                "gateSet": { "const": "unpublished-primary" }
               }
             }
           }
         }
       ]
-    },
-    "independentRecord": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "recordId",
-        "projectId",
-        "sourceIdentifier",
-        "videoId",
-        "title",
-        "projectedPlacement",
-        "publicationEligibility"
-      ],
-      "properties": {
-        "recordId": { "const": "concentrated:0.0" },
-        "projectId": { "const": "concentrated" },
-        "sourceIdentifier": { "$ref": "#/$defs/sourceIdentifier" },
-        "videoId": { "const": "cb_0p0" },
-        "title": { "const": "the rotator / the sand" },
-        "projectedPlacement": { "type": "null" },
-        "publicationEligibility": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["state", "blockedBy"],
-          "properties": {
-            "state": { "const": "unresolved" },
-            "blockedBy": {
-              "type": "array",
-              "contains": { "const": "concentrated-35.5-vs-0.0" }
-            }
-          }
-        }
-      }
     }
   }
 }

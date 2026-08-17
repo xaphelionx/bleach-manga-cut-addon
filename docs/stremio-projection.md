@@ -28,27 +28,29 @@ Nuvio 0.8.4-beta determines a series' next episode by globally sorting all video
 
 Publication gates cover `editorialAvailability`, `resolvedPlacement`, `mediaEvidence`, and `defaultTimelineContiguity`. Projection never constitutes evidence that media or a stream exists.
 
-Only the already-validated CB1 entry is currently eligible. Other projected default entries lack approved media evidence. The unresolved Watch Guide boundary additionally blocks every default entry after CB35.
+The current eligible and published prefix contains 36 entries through CB35, including CB27.5. Every remaining primary entry uses the generic `unpublished-primary` gate until media evidence is approved and the contiguous prefix advances.
 
-## Unresolved 35.5 boundary
+## Resolved guided 35.5 relationship
 
-The source claims remain separate:
-
-```text
-CB35
-→ unresolved Watch Guide endpoint 35.5
-→ CB36
-```
+The source identities remain distinct:
 
 ```text
-concentrated:0.0 — the rotator / the sand
+Spreadsheet source identity: concentrated:0.0 / 0.0
+Watch Guide identity: Concentrated Bleach 35.5
+Permanent internal ID: cb_0p0
 ```
 
-The Watch Guide endpoint has no resolved record ID. `concentrated:0.0` has reserved ID `cb_0p0`, no primary placement, and no asserted equivalence to `35.5`. No placeholder or fake episode is created.
+The project-owner decision `editorial-resolution:concentrated-35.5-to-0.0`, dated 2026-08-17, resolves the guided identifier to the spreadsheet record. The direct Watch Guide evidence remains attached to raw range `10-35.5` and raw endpoint `35.5`; the mapping to `concentrated:0.0` is traced through the resolution record rather than attributed to either source document.
 
-CB36 can safely have projected placement S3E1. It and all later default records have an unresolved `defaultTimelinePosition`; no global index is assigned after CB35 because doing so would assume whether `35.5` adds a timeline item.
+The canonical sequence is:
 
-Because Nuvio crosses season boundaries, every S3 and S4 default entry remains publication-blocked while `concentrated-35.5-vs-0.0` is unresolved. This is a publication constraint caused by client navigation behavior, not uncertainty about the later normalized records or their season-local placements.
+```text
+CB35       → S2E27 → global index 36
+guided 35.5 / cb_0p0 → S2E28 → global index 37
+CB36       → S3E1  → global index 38
+```
+
+All 103 projected entries now have resolved global indexes. `cb_0p0` remains reserved, blocked, and unpublished; no media, torrent, stream, or playback claim is implied by its projection.
 
 ## Stable video IDs
 
@@ -65,7 +67,7 @@ IDs encode only source project and exact displayed identifier syntax:
 
 Decimals are encoded lexically and never parsed as floating-point positions. Decimal syntax does not imply any editorial `kind`. Unknown identifier syntax is a validation error. IDs do not depend on title, season, episode, array order, or watch-order position.
 
-The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. CB1 is the sole published and locked assignment; all other normalized and EX assignments are reserved.
+The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The 36 current prefix IDs through `cb_35` are published; CB1–CB3 are locked and CB4–CB35 remain unlocked. `cb_0p0`, CB36+, and all other unpublished assignments remain reserved.
 
 ## Titles
 
@@ -76,11 +78,13 @@ Projected titles equal their normalized authoritative project titles exactly. Pr
 The projection contains the Watch Guide's currently selected default ranges:
 
 - S1: Concentrated 01–09.
-- S2: the safely resolved Concentrated prefix from 10 through CB35, including the source record 27.5 in its normalized source order.
+- S2: Concentrated 10 through CB35, including source record 27.5 in normalized source order, followed by source record `concentrated:0.0` as guided 35.5 at S2E28.
 - S3: Concentrated 36–51 followed by Hollowed 14–50; Hollowed 0.8 remains between Hollowed 29 and 30 as established by the normalized source order and EX27 relationship.
 - S4: Chipped #01–#12.
 
-The S1/S2 prefix has deterministic global positions 1–36. S3/S4 retain only season-local projected placements and explicitly unresolved global positions.
+The projection has 103 entries: 9 in S1, 28 in S2, 54 in S3, and 12 in S4. Global positions are resolved monotonically from 1 through 103.
+
+Current publication remains the first 36 canonical entries through CB35. Prefix closure—not a special unresolved boundary—prevents CB36 from being published before `cb_0p0`. Skipping `cb_0p0` would make the approved video IDs differ from the canonical first-N entries.
 
 ## Optional content
 
@@ -113,17 +117,17 @@ The projection validator enforces:
 - CB1 remains `cb_1`, S1E1, and `Death and Strawberry`; all locked CB1 files retain their checkpoint hashes.
 - Identifier encoding is lexical, unique, append-only, and independent of presentation.
 - Projected titles equal normalized titles exactly.
-- `35.5` and `concentrated:0.0` remain separate with no placeholder or equivalence.
-- No global timeline index exists after CB35.
-- CB36 retains projected placement S3E1.
-- S3/S4 remain blocked by the unresolved boundary.
+- Source identifier `0.0`, guided identifier `35.5`, and permanent ID `cb_0p0` remain distinct and traceable through the owner resolution.
+- `cb_0p0` is the only projection entry with `resolutionRef`; it is S2E28/global index 37 and remains blocked.
+- CB36 is S3E1/global index 38, and every one of the 103 global indexes is resolved.
+- Every unpublished primary entry uses the one generic `unpublished-primary` suffix gate.
 - Globally sorted eligible primary videos form exactly the approved contiguous prefix.
 - Optional and EX IDs cannot enter the primary default timeline.
 - HB11.5 and EX27 relationships remain exact.
 - Registry reservation does not imply publication.
 - Planned, deferred, explicitly-not-planned, or non-generatable records cannot become eligible.
 - Editorial projection cannot create torrent, stream, or technical-media claims.
-- All six committed unresolved editorial issues remain unchanged.
+- The resolved 35.5/0.0 issue is absent from the unresolved ledger; the five remaining issue IDs remain exact.
 
 ## Artifact boundaries
 

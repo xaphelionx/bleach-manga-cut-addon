@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "artifactType": "editorial-resolutions",
+  "authorityDomain": "project-owner-editorial-decision",
+  "resolutions": [
+    {
+      "resolutionId": "editorial-resolution:concentrated-35.5-to-0.0",
+      "originalIssueId": "concentrated-35.5-vs-0.0",
+      "resolutionState": "resolved",
+      "decisionAuthority": "project-owner",
+      "decisionDate": "2026-08-17",
+      "guidedIdentity": {
+        "projectId": "concentrated",
+        "rawIdentifier": "35.5"
+      },
+      "resolvedTarget": {
+        "recordId": "concentrated:0.0",
+        "sourceIdentifier": "0.0"
+      },
+      "relativePlacement": {
+        "afterRecordId": "concentrated:35",
+        "beforeRecordId": "concentrated:36"
+      },
+      "guidedPlacement": {
+        "seriesId": "bleach-manga-cut",
+        "season": 2,
+        "episode": 28
+      },
+      "sourceClaims": {
+        "guidedIdentifier": {
+          "evidenceRefs": [
+            "watch-guide-pdf:page:6:watch-guide"
+          ]
+        },
+        "resolvedRecord": {
+          "evidenceRefs": [
+            "concentrated-xlsx:episode-list:A38",
+            "concentrated-xlsx:episode-list:B38"
+          ]
+        }
+      },
+      "rationale": {
+        "classification": "project-owner-decision",
+        "text": "The Concentrated spreadsheet identifies this record as 0.0. The project owner resolves it as the Watch Guide's guided 35.5 endpoint and places it after Concentrated 35 and before Concentrated 36."
+      }
+    }
+  ]
+}

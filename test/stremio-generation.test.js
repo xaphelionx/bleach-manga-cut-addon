@@ -74,9 +74,12 @@ after(() => {
   if (outputRoot) fs.rmSync(outputRoot, { recursive: true, force: true })
 })
 
-test('processing remains exactly projection-controlled at the safe preboundary prefix', () => {
+test('processing remains exactly projection-controlled at the current canonical prefix', () => {
   assert.deepEqual(inputs.projection.publicationPolicy.currentPublishedVideoIds, EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
+  assert.equal(result.processedVideoIds.includes('cb_0p0'), false)
+  assert.equal('data/stream/cb_0p0.json' in result.candidates, false)
+  assert.equal('data/provenance/cb_0p0.json' in result.candidates, false)
   assert.equal(result.processedVideoIds.includes('cb_36'), false)
   assert.equal('data/stream/cb_36.json' in result.candidates, false)
   assert.equal('data/provenance/cb_36.json' in result.candidates, false)

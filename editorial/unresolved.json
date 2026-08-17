@@ -3,32 +3,6 @@
   "policy": "Conflicting or incomplete source claims remain explicit and block only the affected relationship or field; no document-date precedence is applied.",
   "issues": [
     {
-      "issueId": "concentrated-35.5-vs-0.0",
-      "status": "unresolved",
-      "kind": "watch-order-endpoint-conflict",
-      "claims": [
-        {
-          "sourceClaim": "Concentrated Bleach 10-35.5",
-          "value": "35.5",
-          "evidenceRefs": [
-            "watch-guide-pdf:page:6:watch-guide"
-          ]
-        },
-        {
-          "sourceClaim": "The corresponding primary spreadsheet record is numbered 0.0 and titled the rotator / the sand.",
-          "value": "0.0",
-          "evidenceRefs": [
-            "concentrated-xlsx:episode-list:A38",
-            "concentrated-xlsx:episode-list:B38"
-          ]
-        }
-      ],
-      "prohibitedResolution": "Do not equate 35.5 with 0.0 and do not expand or finalize the affected watch-order boundary.",
-      "blocks": [
-        "watch-orders/source-guide-v2:segments/1:end"
-      ]
-    },
-    {
       "issueId": "hollowed-v3-membership",
       "status": "unresolved",
       "kind": "version-membership",

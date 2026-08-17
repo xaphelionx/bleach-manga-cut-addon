@@ -105,8 +105,47 @@
         },
         "unresolvedReferenceId": {
           "type": "string"
+        },
+        "resolutionRef": {
+          "type": "string",
+          "pattern": "^editorial-resolution:"
         }
-      }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "resolutionState": {
+              "const": "resolved"
+            },
+            "recordId": {
+              "type": "string"
+            }
+          },
+          "not": {
+            "required": [
+              "unresolvedReferenceId"
+            ]
+          }
+        },
+        {
+          "properties": {
+            "resolutionState": {
+              "const": "unresolved"
+            },
+            "recordId": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "unresolvedReferenceId"
+          ],
+          "not": {
+            "required": [
+              "resolutionRef"
+            ]
+          }
+        }
+      ]
     },
     "rangeSegment": {
       "type": "object",

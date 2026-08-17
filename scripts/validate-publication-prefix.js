@@ -57,41 +57,21 @@ function validatePublicationPrefix({ projection, registry, optional, evidenceRec
     projectionByVideoId.set(entry.videoId, entry)
   }
 
-  const boundaryIndex = sorted.findIndex(
-    (entry) => entry.recordId === projection.unresolvedDefaultEdge.afterRecordId
-  )
-  assert.ok(boundaryIndex >= 0, 'unresolved default edge does not follow a projected record')
-  const approvedPositions = approvedIds.map((videoId) => {
-    const entry = projectionByVideoId.get(videoId)
-    assert.ok(entry, `approved primary video ID is not projected: ${videoId}`)
-    return sorted.indexOf(entry)
-  })
-  assert.ok(
-    approvedPositions.every((position) => position <= boundaryIndex),
-    `approved primary prefix cannot cross unresolved boundary ${projection.unresolvedDefaultEdge.issueId}`
-  )
-
   const lastApprovedId = approvedIds.at(-1)
   const prefixBlocker = `primary-publication-prefix-after-${lastApprovedId}`
+  assert.deepEqual(
+    Object.keys(projection.publicationGateSets),
+    ['locked-cb1', 'verified-primary', 'unpublished-primary'],
+    'publication gate-set inventory changed'
+  )
   assert.deepEqual(projection.publicationGateSets['locked-cb1'], VERIFIED_GATE)
   assert.deepEqual(projection.publicationGateSets['verified-primary'], VERIFIED_GATE)
-  assert.deepEqual(projection.publicationGateSets['unpublished-pre-boundary'], {
+  assert.deepEqual(projection.publicationGateSets['unpublished-primary'], {
     editorialAvailability: 'passed',
     resolvedPlacement: 'passed',
     mediaEvidence: 'unresolved',
     defaultTimelineContiguity: 'blocked',
     blockedBy: ['media-evidence-not-approved', prefixBlocker]
-  })
-  assert.deepEqual(projection.publicationGateSets['blocked-post-boundary'], {
-    editorialAvailability: 'passed',
-    resolvedPlacement: 'passed',
-    mediaEvidence: 'unresolved',
-    defaultTimelineContiguity: 'blocked',
-    blockedBy: [
-      'media-evidence-not-approved',
-      prefixBlocker,
-      projection.unresolvedDefaultEdge.issueId
-    ]
   })
 
   for (const [index, entry] of sorted.entries()) {
@@ -101,15 +81,24 @@ function validatePublicationPrefix({ projection, registry, optional, evidenceRec
         state: 'eligible',
         gateSet: index === 0 ? 'locked-cb1' : 'verified-primary'
       })
-      assert.equal(entry.defaultTimelinePosition.state, 'resolved', `${entry.videoId} lacks a resolved default position`)
+      assert.deepEqual(
+        entry.defaultTimelinePosition,
+        { state: 'resolved', index: index + 1 },
+        `${entry.videoId} lacks the canonical resolved default position`
+      )
       continue
     }
 
     assert.equal(entry.publicationEligibility.state, 'blocked', 'eligible primary entries must form one contiguous prefix')
     assert.equal(
       entry.publicationEligibility.gateSet,
-      index <= boundaryIndex ? 'unpublished-pre-boundary' : 'blocked-post-boundary',
+      'unpublished-primary',
       `${entry.videoId} uses the wrong blocked publication gate`
+    )
+    assert.deepEqual(
+      entry.defaultTimelinePosition,
+      { state: 'resolved', index: index + 1 },
+      `${entry.videoId} lacks the canonical resolved default position`
     )
   }
 

@@ -18,9 +18,11 @@ const hollowed = require('../editorial/normalized/hollowed.json')
 const chipped = require('../editorial/normalized/chipped.json')
 const watchOrder = require('../editorial/watch-orders/source-guide-v2.json')
 const variants = require('../editorial/variants/ex.json')
+const resolutionDocument = require('../editorial/resolutions.json')
 const unresolved = require('../editorial/unresolved.json')
 const projection = require('../projection/stremio/public-projection.json')
 const { validate } = require('../scripts/validate-editorial')
+const { buildOutputs } = require('../scripts/extract-editorial-sources')
 
 const expectedSourceHashes = {
   '!Concentrated Bleach Info.xlsx': 'f3eb61d7415800dcd105a3aea029b8cdd28c25e489874e6001f46106844660e2',
@@ -45,6 +47,14 @@ const lockedRepositoryHashes = {
 
 function hashFile(relativePath) {
   return crypto.createHash('sha256').update(fs.readFileSync(path.join(root, relativePath))).digest('hex')
+}
+
+function jsonFilesUnder(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const absolutePath = path.join(directory, entry.name)
+    if (entry.isDirectory()) return jsonFilesUnder(absolutePath)
+    return entry.isFile() && entry.name.endsWith('.json') ? [path.relative(root, absolutePath)] : []
+  })
 }
 
 function findRecord(project, identifier) {
@@ -235,19 +245,46 @@ test('EX27 is an optional branch replacing Hollowed 27-29', () => {
   })
 })
 
-test('35.5 and 0.0 remain separate unresolved source claims', () => {
+test('the owner resolution links guided 35.5 to source record 0.0 without altering either source claim', () => {
   const segment = watchOrder.segments.find((candidate) => candidate.rawRange === '10-35.5')
   assert.deepEqual(segment.end, {
     rawIdentifier: '35.5',
-    resolutionState: 'unresolved',
-    recordId: null,
-    unresolvedReferenceId: 'watch-endpoint:concentrated:35.5'
+    resolutionState: 'resolved',
+    recordId: 'concentrated:0.0',
+    resolutionRef: 'editorial-resolution:concentrated-35.5-to-0.0'
   })
   assert.equal(segment.expanded, false)
+  assert.equal(segment.rawRange, '10-35.5')
+  assert.deepEqual(watchOrder.unresolvedEndpointReferences, [])
   assert.equal(concentrated.records.some((record) => record.sourceIdentifier.displayed === '35.5'), false)
-  assert.equal(findRecord(concentrated, '0.0').recordId, 'concentrated:0.0')
-  const issue = unresolved.issues.find((candidate) => candidate.issueId === 'concentrated-35.5-vs-0.0')
-  assert.deepEqual(issue.claims.map((claim) => claim.value), ['35.5', '0.0'])
+  const sourceRecord = findRecord(concentrated, '0.0')
+  assert.equal(sourceRecord.recordId, 'concentrated:0.0')
+  assert.deepEqual(sourceRecord.sourceIdentifier, { raw: '0.0', displayed: '0.0' })
+  assert.equal(sourceRecord.title, 'the rotator / the sand')
+
+  const resolution = resolutionDocument.resolutions[0]
+  assert.equal(resolutionDocument.authorityDomain, 'project-owner-editorial-decision')
+  assert.equal(resolution.decisionAuthority, 'project-owner')
+  assert.equal(resolution.decisionDate, '2026-08-17')
+  assert.equal(resolution.originalIssueId, 'concentrated-35.5-vs-0.0')
+  assert.deepEqual(resolution.sourceClaims, {
+    guidedIdentifier: {
+      evidenceRefs: ['watch-guide-pdf:page:6:watch-guide']
+    },
+    resolvedRecord: {
+      evidenceRefs: [
+        'concentrated-xlsx:episode-list:A38',
+        'concentrated-xlsx:episode-list:B38'
+      ]
+    }
+  })
+  assert.deepEqual(unresolved.issues.map((issue) => issue.issueId), [
+    'hollowed-v3-membership',
+    'chipped-first-4.5-media-mapping',
+    'ex-current-legacy-and-media-status',
+    'cross-project-0.8-relationship',
+    'chipped-03-04-time-saved'
+  ])
 })
 
 test('Chipped uncertainty and raw first-4.5 update claim are preserved', () => {
@@ -275,7 +312,8 @@ test('editorial records and relationships satisfy the local schemas and invarian
     projects: 3,
     records: 166,
     variants: 3,
-    unresolvedIssues: 6
+    resolutions: 1,
+    unresolvedIssues: 5
   })
 })
 
@@ -287,12 +325,13 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
       [path.join(root, 'scripts', 'extract-editorial-sources.js'), '--output-root', temporaryRoot],
       { cwd: root, stdio: 'pipe' }
     )
-    const committedFiles = childProcess.execFileSync(
-      'find',
-      [path.join(root, 'editorial'), '-type', 'f', '-name', '*.json'],
-      { encoding: 'utf8' }
-    ).trim().split('\n').map((filename) => path.relative(root, filename)).sort()
-    for (const relativePath of committedFiles) {
+    const extractorOwnedFiles = [...buildOutputs().keys()].sort()
+    assert.equal(extractorOwnedFiles.length, 12)
+    assert.deepEqual(
+      jsonFilesUnder(path.join(root, 'editorial')).sort(),
+      [...extractorOwnedFiles, 'editorial/resolutions.json'].sort()
+    )
+    for (const relativePath of extractorOwnedFiles) {
       assert.equal(
         fs.readFileSync(path.join(temporaryRoot, relativePath), 'utf8'),
         fs.readFileSync(path.join(root, relativePath), 'utf8'),
@@ -304,7 +343,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('current published preboundary output preserves CB1 behavior and locked compatibility hashes', () => {
+test('current published prefix preserves CB1 behavior and locked compatibility hashes', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }

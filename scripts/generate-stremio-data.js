@@ -525,7 +525,8 @@ function loadAndValidateSourceInputs() {
     projects: 3,
     records: 166,
     variants: 3,
-    unresolvedIssues: 6
+    resolutions: 1,
+    unresolvedIssues: 5
   })
   const schema = loadJson('schemas/media/verified-media.schema.json')
   assert.equal(schema.$schema, 'https://json-schema.org/draft/2020-12/schema')

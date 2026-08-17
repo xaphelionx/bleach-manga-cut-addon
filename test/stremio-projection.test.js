@@ -26,6 +26,7 @@ const projectionSchema = read('schemas/projection/public-projection.schema.json'
 const registry = read('projection/stremio/video-id-registry.json')
 const optional = read('projection/stremio/optional-content.json')
 const unresolved = read('editorial/unresolved.json')
+const resolutionDocument = read('editorial/resolutions.json')
 const normalized = [
   ...read('editorial/normalized/concentrated.json').records,
   ...read('editorial/normalized/hollowed.json').records,
@@ -58,8 +59,7 @@ function publicationInputs() {
 
 function setPrefixBlocker(input, lastVideoId) {
   const blocker = `primary-publication-prefix-after-${lastVideoId}`
-  input.projection.publicationGateSets['unpublished-pre-boundary'].blockedBy[1] = blocker
-  input.projection.publicationGateSets['blocked-post-boundary'].blockedBy[1] = blocker
+  input.projection.publicationGateSets['unpublished-primary'].blockedBy[1] = blocker
 }
 
 function syntheticEvidence(videoId, recordId) {
@@ -102,12 +102,11 @@ test('projection schema preserves CB1/CB2 while allowing a longer approved prefi
   assert.deepEqual(projectionSchema.properties.publicationGateSets.properties, {
     'locked-cb1': { $ref: '#/$defs/lockedCb1GateSet' },
     'verified-primary': { $ref: '#/$defs/verifiedPrimaryGateSet' },
-    'unpublished-pre-boundary': { $ref: '#/$defs/unpublishedPreBoundaryGateSet' },
-    'blocked-post-boundary': { $ref: '#/$defs/blockedPostBoundaryGateSet' }
+    'unpublished-primary': { $ref: '#/$defs/unpublishedPrimaryGateSet' }
   })
   assert.deepEqual(
     projectionSchema.$defs.eligibility.properties.gateSet.enum,
-    ['locked-cb1', 'verified-primary', 'unpublished-pre-boundary', 'blocked-post-boundary']
+    ['locked-cb1', 'verified-primary', 'unpublished-primary']
   )
   assert.deepEqual(
     projectionSchema.$defs.verifiedPrimaryGateSet.allOf[1].properties,
@@ -135,22 +134,30 @@ test('projection schema preserves CB1/CB2 while allowing a longer approved prefi
     projectionSchema.$defs.blockedEntry.allOf[1].properties.publicationEligibility.properties,
     {
       state: { const: 'blocked' },
-      gateSet: { enum: ['unpublished-pre-boundary', 'blocked-post-boundary'] }
+      gateSet: { const: 'unpublished-primary' }
     }
   )
-  const preBoundaryBlockers = projectionSchema.$defs.unpublishedPreBoundaryGateSet
+  const unpublishedBlockers = projectionSchema.$defs.unpublishedPrimaryGateSet
     .allOf[1].properties.blockedBy
-  const postBoundaryBlockers = projectionSchema.$defs.blockedPostBoundaryGateSet
-    .allOf[1].properties.blockedBy
-  assert.deepEqual(preBoundaryBlockers.prefixItems, [
+  assert.deepEqual(unpublishedBlockers.prefixItems, [
     { const: 'media-evidence-not-approved' },
     { pattern: '^primary-publication-prefix-after-cb_[0-9]+(?:p[0-9]+)?$' }
   ])
-  assert.deepEqual(postBoundaryBlockers.prefixItems, [
-    { const: 'media-evidence-not-approved' },
-    { pattern: '^primary-publication-prefix-after-cb_[0-9]+(?:p[0-9]+)?$' },
-    { const: 'concentrated-35.5-vs-0.0' }
-  ])
+  assert.deepEqual(projectionSchema.$defs.defaultTimelinePosition, {
+    type: 'object',
+    additionalProperties: false,
+    required: ['state', 'index'],
+    properties: {
+      state: { const: 'resolved' },
+      index: { type: 'integer', minimum: 1 }
+    }
+  })
+  assert.deepEqual(projectionSchema.$defs.entry.properties.resolutionRef, {
+    type: 'string',
+    pattern: '^editorial-resolution:'
+  })
+  assert.equal(projectionSchema.properties.unresolvedDefaultEdge, undefined)
+  assert.equal(projectionSchema.$defs.independentRecord, undefined)
   assert.equal(projectionSchema.properties.publicationGateSets.additionalProperties, false)
   assert.equal(projectionSchema.$defs.gateSet.additionalProperties, false)
   assert.doesNotMatch(JSON.stringify(projectionSchema), /primary-publication-prefix-after-cb_[0-9]+"/)
@@ -211,7 +218,7 @@ test('CB3 is cb_3, S1E3, eligible, published, and locked after compatibility val
   )
 })
 
-test('permanent CB1/CB2/CB3 and unresolved-boundary artifacts match their exact hashes', () => {
+test('permanent CB1/CB2/CB3 artifacts and the current unresolved ledger match exact hashes', () => {
   for (const [relativePath, expectedHash] of Object.entries(LOCKED_HASHES)) {
     assert.equal(hash(relativePath), expectedHash, relativePath)
   }
@@ -265,50 +272,58 @@ test('projected public titles equal authoritative normalized titles exactly', ()
   assert.equal(hb115.title, normalizedById.get('hollowed:11.5').title)
 })
 
-test('Watch Guide 35.5 and concentrated 0.0 remain separate', () => {
-  const edge = projection.unresolvedDefaultEdge
-  assert.equal(edge.issueId, 'concentrated-35.5-vs-0.0')
-  assert.equal(edge.afterRecordId, 'concentrated:35')
-  assert.equal(edge.rawEndpointIdentifier, '35.5')
-  assert.equal(edge.endpointRecordId, null)
-  assert.equal(edge.independentRecord.recordId, 'concentrated:0.0')
-  assert.equal(edge.independentRecord.sourceIdentifier.displayed, '0.0')
-  assert.equal(edge.equivalent, false)
-  assert.equal(edge.placeholderCreated, false)
-  assert.equal(edge.blocksPublicationAfterEdge, true)
+test('owner resolution maps guided 35.5 to source record 0.0 with one projection reference', () => {
+  const resolution = resolutionDocument.resolutions[0]
+  const cb0 = projectedById.get('concentrated:0.0')
+  assert.equal(resolution.resolutionId, 'editorial-resolution:concentrated-35.5-to-0.0')
+  assert.equal(resolution.guidedIdentity.rawIdentifier, '35.5')
+  assert.equal(resolution.resolvedTarget.recordId, 'concentrated:0.0')
+  assert.deepEqual(cb0.sourceIdentifier, { raw: '0.0', displayed: '0.0' })
+  assert.equal(cb0.videoId, 'cb_0p0')
+  assert.equal(cb0.resolutionRef, resolution.resolutionId)
+  assert.deepEqual(
+    projection.entries.filter((entry) => entry.resolutionRef).map((entry) => entry.videoId),
+    ['cb_0p0']
+  )
 })
 
-test('no global timeline position is asserted after the unresolved edge', () => {
-  const cb35 = projectedById.get('concentrated:35')
-  const cb35Index = projection.entries.indexOf(cb35)
-  assert.deepEqual(cb35.defaultTimelinePosition, { state: 'resolved', index: 36 })
-  for (const entry of projection.entries.slice(cb35Index + 1)) {
-    assert.deepEqual(entry.defaultTimelinePosition, {
-      state: 'unresolved',
-      blockedBy: 'concentrated-35.5-vs-0.0'
-    })
-    assert.equal('index' in entry.defaultTimelinePosition, false)
+test('all 103 default timeline positions are resolved and monotonic', () => {
+  assert.equal(projection.entries.length, 103)
+  for (const [index, entry] of projection.entries.entries()) {
+    assert.deepEqual(entry.defaultTimelinePosition, { state: 'resolved', index: index + 1 })
   }
 })
 
-test('CB36 retains projected placement S3E1 without a global index', () => {
+test('the resolved CB34, CB35, guided 35.5, and CB36 sequence has exact placements', () => {
+  const cb34 = projectedById.get('concentrated:34')
+  const cb35 = projectedById.get('concentrated:35')
+  const cb0 = projectedById.get('concentrated:0.0')
   const cb36 = projectedById.get('concentrated:36')
-  assert.deepEqual(cb36.projectedPlacement, {
-    seriesId: 'bleach-manga-cut',
-    season: 3,
-    episode: 1
-  })
-  assert.deepEqual(cb36.defaultTimelinePosition, {
-    state: 'unresolved',
-    blockedBy: 'concentrated-35.5-vs-0.0'
+  assert.deepEqual(
+    [cb34, cb35, cb0, cb36].map((entry) => ({
+      videoId: entry.videoId,
+      season: entry.projectedPlacement.season,
+      episode: entry.projectedPlacement.episode,
+      index: entry.defaultTimelinePosition.index
+    })),
+    [
+      { videoId: 'cb_34', season: 2, episode: 26, index: 35 },
+      { videoId: 'cb_35', season: 2, episode: 27, index: 36 },
+      { videoId: 'cb_0p0', season: 2, episode: 28, index: 37 },
+      { videoId: 'cb_36', season: 3, episode: 1, index: 38 }
+    ]
+  )
+  assert.deepEqual(cb0.publicationEligibility, {
+    state: 'blocked',
+    gateSet: 'unpublished-primary'
   })
   assert.deepEqual(cb36.publicationEligibility, {
     state: 'blocked',
-    gateSet: 'blocked-post-boundary'
+    gateSet: 'unpublished-primary'
   })
 })
 
-test('CB35 is the resolved S2E27 endpoint immediately before the unresolved boundary', () => {
+test('CB35 remains the published S2E27 entry immediately before guided 35.5', () => {
   const cb35 = projectedById.get('concentrated:35')
   assert.equal(cb35.videoId, 'cb_35')
   assert.deepEqual(cb35.projectedPlacement, {
@@ -324,10 +339,10 @@ test('no S3 or S4 record is publication-eligible', () => {
   const later = projection.entries.filter((entry) => entry.projectedPlacement.season >= 3)
   assert.ok(later.length > 0)
   assert.ok(later.every((entry) => entry.publicationEligibility.state === 'blocked'))
-  assert.ok(later.every((entry) => entry.publicationEligibility.gateSet === 'blocked-post-boundary'))
+  assert.ok(later.every((entry) => entry.publicationEligibility.gateSet === 'unpublished-primary'))
 })
 
-test('current publication checkpoint is exactly the 36-entry safe preboundary prefix', () => {
+test('current publication checkpoint is exactly the 36-entry prefix through CB35', () => {
   const sorted = [...projection.entries].sort((left, right) =>
     left.projectedPlacement.season - right.projectedPlacement.season ||
     left.projectedPlacement.episode - right.projectedPlacement.episode
@@ -340,10 +355,10 @@ test('current publication checkpoint is exactly the 36-entry safe preboundary pr
   )
   assert.equal(eligibility.indexOf(false), 36)
   assert.ok(eligibility.slice(36).every((state) => state === false))
-  assert.equal(sorted[36].videoId, 'cb_36')
+  assert.equal(sorted[36].videoId, 'cb_0p0')
   assert.deepEqual(sorted[36].publicationEligibility, {
     state: 'blocked',
-    gateSet: 'blocked-post-boundary'
+    gateSet: 'unpublished-primary'
   })
 })
 
@@ -367,7 +382,7 @@ test('cross-file publication contract rejects an approved ID whose projection re
   const input = publicationInputs()
   input.projection.entries.find((entry) => entry.videoId === 'cb_35').publicationEligibility = {
     state: 'blocked',
-    gateSet: 'unpublished-pre-boundary'
+    gateSet: 'unpublished-primary'
   }
   assert.throws(() => validatePublicationPrefix(input))
 })
@@ -395,14 +410,14 @@ test('cross-file publication contract rejects eligibility after a blocked entry'
   const input = publicationInputs()
   input.projection.entries.find((entry) => entry.videoId === 'cb_34').publicationEligibility = {
     state: 'blocked',
-    gateSet: 'unpublished-pre-boundary'
+    gateSet: 'unpublished-primary'
   }
   assert.throws(() => validatePublicationPrefix(input))
 })
 
 test('additional evidence alone does not advance publication', () => {
   const input = publicationInputs()
-  input.evidenceRecords.push(syntheticEvidence('cb_36', 'concentrated:36'))
+  input.evidenceRecords.push(syntheticEvidence('cb_0p0', 'concentrated:0.0'))
   const result = validatePublicationPrefix(input)
   assert.deepEqual(result.approvedIds, EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(result.eligibleIds, EXPECTED_PUBLISHED_PREFIX)
@@ -418,30 +433,31 @@ test('cross-file publication contract rejects optional or EX IDs in the primary 
   )
 })
 
-test('cross-file publication contract rejects crossing the unresolved 35.5 boundary', () => {
+test('cross-file publication contract rejects skipping cb_0p0 to publish cb_36', () => {
   const input = publicationInputs()
   input.projection.publicationPolicy.currentPublishedVideoIds.push('cb_36')
+  input.projection.entries.find((entry) => entry.videoId === 'cb_36').publicationEligibility = {
+    state: 'eligible',
+    gateSet: 'verified-primary'
+  }
+  input.registry.entries.find((entry) => entry.videoId === 'cb_36').status = 'published'
+  input.evidenceRecords.push(syntheticEvidence('cb_36', 'concentrated:36'))
+  setPrefixBlocker(input, 'cb_36')
   assert.throws(
     () => validatePublicationPrefix(input),
-    /approved primary prefix cannot cross unresolved boundary concentrated-35.5-vs-0.0/
+    /approved IDs must follow canonical primary timeline order/
   )
 })
 
-test('cross-file publication contract accepts a fully related synthetic extension to CB35', () => {
+test('cross-file publication contract accepts a fully evidenced synthetic extension through cb_0p0', () => {
   const input = publicationInputs()
-  input.projection.publicationPolicy.currentPublishedVideoIds.pop()
-  input.projection.entries.find((entry) => entry.videoId === 'cb_35').publicationEligibility = {
-    state: 'blocked',
-    gateSet: 'unpublished-pre-boundary'
-  }
-  input.registry.entries.find((entry) => entry.videoId === 'cb_35').status = 'reserved'
-  setPrefixBlocker(input, 'cb_34')
-  publishSynthetic(input, 'cb_35', { withEvidence: false })
+  const expectedExtendedPrefix = [...EXPECTED_PUBLISHED_PREFIX, 'cb_0p0']
+  publishSynthetic(input, 'cb_0p0')
   const result = validatePublicationPrefix(input)
-  assert.deepEqual(result.approvedIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.deepEqual(result.eligibleIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.deepEqual(result.publishedIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.deepEqual(result.eligibleEntries.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
+  assert.deepEqual(result.approvedIds, expectedExtendedPrefix)
+  assert.deepEqual(result.eligibleIds, expectedExtendedPrefix)
+  assert.deepEqual(result.publishedIds, expectedExtendedPrefix)
+  assert.deepEqual(result.eligibleEntries.map((entry) => entry.videoId), expectedExtendedPrefix)
 })
 
 test('optional and EX entries have no primary-series placement', () => {
@@ -495,6 +511,18 @@ test('registry reservation never implies publication', () => {
   ])
   assert.ok(published.slice(3).every((entry) => entry.locked === false))
   assert.deepEqual(
+    registry.entries.find((entry) => entry.videoId === 'cb_0p0'),
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:0.0',
+      projectId: 'concentrated',
+      sourceIdentifier: '0.0',
+      videoId: 'cb_0p0',
+      status: 'reserved',
+      locked: false
+    }
+  )
+  assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_36'),
     {
       recordType: 'normalized-record',
@@ -526,20 +554,27 @@ test('projection artifacts contain no stream or media claims', () => {
   )
 })
 
-test('all six unresolved editorial issues remain byte-identical', () => {
-  assert.equal(unresolved.issues.length, 6)
+test('the five remaining unresolved editorial issues match the locked lifecycle', () => {
+  assert.deepEqual(unresolved.issues.map((issue) => issue.issueId), [
+    'hollowed-v3-membership',
+    'chipped-first-4.5-media-mapping',
+    'ex-current-legacy-and-media-status',
+    'cross-project-0.8-relationship',
+    'chipped-03-04-time-saved'
+  ])
   assert.equal(hash('editorial/unresolved.json'), LOCKED_HASHES['editorial/unresolved.json'])
 })
 
 test('complete projection validator accepts the artifacts', () => {
   assert.deepEqual(validate(), {
-    projectedEntries: 102,
-    projectCounts: { concentrated: 52, hollowed: 38, chipped: 12 },
-    eligibilityCounts: { eligible: 36, blocked: 66 },
+    projectedEntries: 103,
+    projectCounts: { concentrated: 53, hollowed: 38, chipped: 12 },
+    seasonCounts: { 1: 9, 2: 28, 3: 54, 4: 12 },
+    eligibilityCounts: { eligible: 36, blocked: 67 },
     eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     registryEntries: 169,
     optionalEntries: 4,
-    unresolvedIssues: 6
+    unresolvedIssues: 5
   })
 })

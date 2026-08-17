@@ -34,9 +34,9 @@
       },
       "end": {
         "rawIdentifier": "35.5",
-        "resolutionState": "unresolved",
-        "recordId": null,
-        "unresolvedReferenceId": "watch-endpoint:concentrated:35.5"
+        "resolutionState": "resolved",
+        "recordId": "concentrated:0.0",
+        "resolutionRef": "editorial-resolution:concentrated-35.5-to-0.0"
       },
       "expanded": false
     },
@@ -125,15 +125,7 @@
       "ordinaryAdjacentEpisode": false
     }
   ],
-  "unresolvedEndpointReferences": [
-    {
-      "referenceId": "watch-endpoint:concentrated:35.5",
-      "projectId": "concentrated",
-      "rawIdentifier": "35.5",
-      "resolutionState": "unresolved",
-      "issueId": "concentrated-35.5-vs-0.0"
-    }
-  ],
+  "unresolvedEndpointReferences": [],
   "fieldEvidence": {
     "/watchOrderId": [
       "watch-guide-pdf:page:6:watch-guide"
@@ -144,7 +136,10 @@
     "/segments/0": [
       "watch-guide-pdf:page:6:watch-guide"
     ],
-    "/segments/1": [
+    "/segments/1/rawRange": [
+      "watch-guide-pdf:page:6:watch-guide"
+    ],
+    "/segments/1/end/rawIdentifier": [
       "watch-guide-pdf:page:6:watch-guide"
     ],
     "/segments/2": [
@@ -160,9 +155,6 @@
       "watch-guide-pdf:page:6:watch-guide"
     ],
     "/optionalBranches/0": [
-      "watch-guide-pdf:page:6:watch-guide"
-    ],
-    "/unresolvedEndpointReferences/0": [
       "watch-guide-pdf:page:6:watch-guide"
     ]
   }

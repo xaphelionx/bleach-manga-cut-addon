@@ -1,14 +1,16 @@
-# Bleach Manga Cut Preboundary Publication Checkpoint
+# Bleach Manga Cut Resolved 35.5 Projection Checkpoint
 
-This Stremio addon publishes the complete safe 36-entry Concentrated Bleach prefix from CB1 through CB35, including CB27.5. Only **Concentrated Bleach 01 — Death and Strawberry**, **Concentrated Bleach 02 — Starter**, and **Concentrated Bleach 03 — The Pink-Cheeked Cockatiel** have completed the locked, user-confirmed real-device compatibility path against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. CB4–CB35 are published for representative compatibility sampling and remain unlocked. This is not a full catalog and is not deployed.
+This Stremio addon publishes the current 36-entry Concentrated Bleach prefix from CB1 through CB35, including CB27.5. Only **Concentrated Bleach 01 — Death and Strawberry**, **Concentrated Bleach 02 — Starter**, and **Concentrated Bleach 03 — The Pink-Cheeked Cockatiel** have completed the locked, user-confirmed real-device compatibility path against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. Representative CB4–CB35 sampling passed, but those entries remain unlocked while a provisional Details-screen focus issue is investigated. This is not a full catalog and is not deployed.
 
 Current publication and validation state:
 
-- **Published:** 36 preboundary Concentrated entries: CB1–CB35, including CB27.5.
+- **Published:** 36 Concentrated entries: CB1–CB35, including CB27.5.
 - **Real-device validated and locked:** CB1, CB2, and CB3, including native TorBox resolution/playback, Nuvio AUTO behavior, original-audio and subtitle selection, seeking, resume, Continue Watching, completion, and next-episode behavior.
-- **Published but unlocked:** CB4–CB35. Before publication, the user confirmed all 33 exact deterministic torrent artifacts were loaded/seeding against their verified payloads, added to TorBox, and cached/available there. These entries still await representative Nuvio compatibility sampling.
-- **Hard stop:** CB35 is the last safely published record before the unresolved Watch Guide endpoint 35.5. CB36 and later remain blocked pending resolution of `concentrated-35.5-vs-0.0`.
-- **Out of scope:** resolving 35.5, publishing CB36 or later, a full-catalog import, deployment, and changes to the established addon architecture.
+- **Published but unlocked:** CB4–CB35. Their deterministic torrent/cache precondition and representative Nuvio playback sampling passed, but the batch is not compatibility-locked because the Details-screen focus observation remains provisional.
+- **Resolved next entry:** the project owner resolved the Watch Guide's guided CB35.5 to spreadsheet record `concentrated:0.0` (`the rotator / the sand`). Its permanent internal ID remains `cb_0p0`; its canonical placement is S2E28 after CB35, but it is not published.
+- **Pending before publication:** the 35.5 local media passed read-only inspection. Deterministic torrent creation, verified-media evidence, cache/seeding confirmation, and playback/navigation testing are still pending.
+- **Canonical prefix stop:** CB36+ remain unpublished because the primary prefix must publish `cb_0p0` before CB36, not because the 35.5 identity remains unresolved.
+- **Out of scope:** publishing 35.5, publishing CB36 or later, media/torrent/evidence creation, a full-catalog import, deployment, and changes to the established addon architecture.
 - **Still unresolved:** permanent public swarm availability, availability after all seeds disappear, arbitrary third-party discovery, future cache persistence, artwork, and exact Nuvio stream-presentation UI parity.
 
 ## Architecture
@@ -21,6 +23,7 @@ The source-normalization workspace separates lossless extracted evidence from se
 
 - `editorial/extracted/*` is the lossless audit layer. It may retain every substantive/non-empty source cell, including helper, statistical, and formula cells, so the committed extraction remains faithful to the five authoritative source files. Formatting-only and empty cells are excluded. Extracted evidence may remain unreferenced downstream; that is not an error.
 - `editorial/normalized/*`, `editorial/variants/*`, `editorial/watch-orders/*`, and `editorial/unresolved.json` contain selected editorial interpretations. A helper, statistical, or formula cell may influence one of these outputs only when that output explicitly cites the cell's `evidenceId` through `fieldEvidence` or `evidenceRefs`.
+- `editorial/resolutions.json` is a separately maintained project-owner decision artifact. It keeps the direct Watch Guide claim (`35.5`), the direct spreadsheet claim (`concentrated:0.0` / `0.0`), and the owner-resolved relationship distinct.
 
 Downstream reference state is deterministically derivable rather than stored as a mutable flag: an extracted evidence record is selected when its exact `evidenceId` appears in a downstream `fieldEvidence` or `evidenceRefs` collection. The editorial validator requires every such downstream reference to resolve to extracted evidence. The absence of a downstream reference means only that the evidence remains available in the lossless audit layer; it does not invalidate the extraction.
 
@@ -58,13 +61,17 @@ The CB3 experiment used the exact trackerless torrent identity `52094de720ccaa6d
 
 Before testing, the TV temporarily lost access to the locally hosted addon because the host computer's LAN IP address had changed. Updating the installed manifest URL to the current reachable LAN IP restored access. This was a local-network operational issue, not an addon compatibility, TorBox, torrent, or Nuvio stream-contract failure.
 
-## Preboundary availability checkpoint
+Representative batch testing subsequently passed CB4 playback/progress, the CB9→CB10 season transition, CB27→CB27.5→CB28, CB32 playback/subtitles, CB35 playback, and the expected absence of CB35→CB36 under the former boundary state. An intermittent Details-screen D-pad focus trap was observed after backing out of playback and once after CB35 completed. A same-environment One Pace Premium control did not reproduce it, so it is neither classified as a proven generic Nuvio bug nor as a proven Bleach-addon bug. It remains provisional, and CB4–CB35 remain unlocked. Once guided 35.5 is published, manual coverage must include CB35→35.5, backing out of both episodes, natural completion of 35.5, and Details-screen focus after those actions.
+
+## Current publication and resolved next entry
 
 On 2026-08-16, before the 33-entry publication expansion, the user confirmed that every remaining exact deterministic preboundary torrent for CB4–CB35, including CB27.5, was loaded and seeding against its verified payload, added to TorBox, and successfully cached/available in the user's environment. No TorBox identifier, account data, private URL, or credential is recorded here.
 
-That operational precondition supports controlled publication for compatibility sampling. It does not establish permanent public swarm availability, availability with all seeds offline, arbitrary third-party discovery, future TorBox cache persistence, or successful Nuvio playback for all 33 newly published entries. Those entries therefore remain `locked:false`; only representative real-device testing can advance their compatibility status.
+That operational precondition supported controlled publication for compatibility sampling. It does not establish permanent public swarm availability, availability with all seeds offline, arbitrary third-party discovery, or future TorBox cache persistence. The representative playback sample passed, but CB4–CB35 remain `locked:false` because the focus-trap result is still provisional.
 
-The publication boundary remains exact: CB35 is S2E27 and the final resolved default-timeline entry before the unresolved 35.5 endpoint. CB36 is projected as S3E1 but has an unresolved default-timeline position and remains unpublished. The 35.5 endpoint is not treated as Concentrated 0.0.
+The source spreadsheet identity remains `concentrated:0.0`, displayed identifier `0.0`, title `the rotator / the sand`. The separate Watch Guide identity remains guided `35.5`. The project-owner resolution `editorial-resolution:concentrated-35.5-to-0.0` links those facts for the default watch order without rewriting either source. The record keeps permanent ID `cb_0p0`, is projected as S2E28/global index 37, and remains blocked and unpublished. CB36 is S3E1/global index 38 and remains unpublished because prefix closure requires `cb_0p0` first.
+
+Read-only inspection found the local 35.5 media suitable for this unambiguous mapping. No 35.5 torrent or verified-media evidence exists yet, no cache or playback claim has been made, and no production stream or provenance for `cb_0p0` is generated in this checkpoint.
 
 ## Locked CB1–CB3 compatibility contract
 
@@ -138,4 +145,4 @@ curl http://127.0.0.1:7000/stream/series/cb_3.json
 
 ## Regression gate
 
-Automated tests protect the 36-entry deterministic publication output and the locked CB1–CB3 fields; they do not reproduce either the user-confirmed TorBox cache precondition or the manual Nuvio/TorBox playback experiment. Compatibility locking for the published-but-unlocked CB4–CB35 batch requires representative real-device sampling of stream discovery, native TorBox playback, libmpv AUTO selection, Japanese original audio, embedded subtitles, seeking, resume, Continue Watching, completion, and next-episode navigation.
+Automated tests protect the 36-entry deterministic publication output and the locked CB1–CB3 fields; they do not reproduce either the user-confirmed TorBox cache precondition or the manual Nuvio/TorBox playback experiments. CB4–CB35 remain unlocked after representative sampling because the intermittent Details-screen focus trap is still provisional. The next manual checkpoint must test CB35→guided 35.5 navigation, backing out of CB35 and 35.5, natural completion of 35.5, and Details-screen D-pad focus afterward before any broader compatibility-lock decision.

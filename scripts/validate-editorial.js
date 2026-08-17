@@ -22,6 +22,16 @@ const VALID_RUNTIME_STATES = new Set([
   'non-runtime-directive'
 ])
 const VALID_KINDS = new Set(['base', 'special'])
+const KNOWN_RESOLVED_ISSUE_IDS = [
+  'concentrated-35.5-vs-0.0'
+]
+const EXPECTED_STILL_UNRESOLVED_ISSUE_IDS = [
+  'hollowed-v3-membership',
+  'chipped-first-4.5-media-mapping',
+  'ex-current-legacy-and-media-status',
+  'cross-project-0.8-relationship',
+  'chipped-03-04-time-saved'
+]
 
 function load(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), 'utf8'))
@@ -52,6 +62,7 @@ function assertSchemaDocuments() {
     'episode.schema.json',
     'project.schema.json',
     'provenance.schema.json',
+    'resolutions.schema.json',
     'variant.schema.json',
     'watch-order.schema.json'
   ]
@@ -256,6 +267,87 @@ function validateUnresolved(unresolved, evidenceIds) {
     assert.ok(Array.isArray(issue.blocks) && issue.blocks.length > 0)
     assertEvidenceRefsResolve(issue, evidenceIds, issue.issueId)
   }
+
+  assert.deepEqual([...issueIds], EXPECTED_STILL_UNRESOLVED_ISSUE_IDS)
+  for (const issueId of KNOWN_RESOLVED_ISSUE_IDS) {
+    assert.ok(!issueIds.has(issueId), `Resolved issue remains unresolved: ${issueId}`)
+  }
+}
+
+function validateResolutions(resolutionDocument, recordsById, evidenceIds, watchOrder) {
+  assert.equal(resolutionDocument.schemaVersion, 1)
+  assert.equal(resolutionDocument.artifactType, 'editorial-resolutions')
+  assert.equal(resolutionDocument.authorityDomain, 'project-owner-editorial-decision')
+  assert.equal(resolutionDocument.resolutions.length, 1, 'Expected exactly one current editorial resolution')
+
+  const resolution = resolutionDocument.resolutions[0]
+  assert.deepEqual(resolution, {
+    resolutionId: 'editorial-resolution:concentrated-35.5-to-0.0',
+    originalIssueId: 'concentrated-35.5-vs-0.0',
+    resolutionState: 'resolved',
+    decisionAuthority: 'project-owner',
+    decisionDate: '2026-08-17',
+    guidedIdentity: {
+      projectId: 'concentrated',
+      rawIdentifier: '35.5'
+    },
+    resolvedTarget: {
+      recordId: 'concentrated:0.0',
+      sourceIdentifier: '0.0'
+    },
+    relativePlacement: {
+      afterRecordId: 'concentrated:35',
+      beforeRecordId: 'concentrated:36'
+    },
+    guidedPlacement: {
+      seriesId: 'bleach-manga-cut',
+      season: 2,
+      episode: 28
+    },
+    sourceClaims: {
+      guidedIdentifier: {
+        evidenceRefs: ['watch-guide-pdf:page:6:watch-guide']
+      },
+      resolvedRecord: {
+        evidenceRefs: [
+          'concentrated-xlsx:episode-list:A38',
+          'concentrated-xlsx:episode-list:B38'
+        ]
+      }
+    },
+    rationale: {
+      classification: 'project-owner-decision',
+      text: "The Concentrated spreadsheet identifies this record as 0.0. The project owner resolves it as the Watch Guide's guided 35.5 endpoint and places it after Concentrated 35 and before Concentrated 36."
+    }
+  })
+  assert.deepEqual(resolutionDocument.resolutions.map((item) => item.originalIssueId), KNOWN_RESOLVED_ISSUE_IDS)
+  assertEvidenceRefsResolve(resolution, evidenceIds, resolution.resolutionId)
+
+  const target = recordsById.get(resolution.resolvedTarget.recordId)
+  assert.ok(target, `Resolution target does not exist: ${resolution.resolvedTarget.recordId}`)
+  assert.equal(target.recordId, 'concentrated:0.0')
+  assert.equal(target.sourceIdentifier.raw, '0.0')
+  assert.equal(target.sourceIdentifier.displayed, '0.0')
+  assert.equal(target.title, 'the rotator / the sand')
+
+  const soulSociety = watchOrder.segments.find((segment) => segment.arc === 'Soul Society Arc')
+  assert.ok(soulSociety, 'Soul Society watch-order segment is missing')
+  assert.equal(soulSociety.rawRange, '10-35.5')
+  assert.deepEqual(soulSociety.end, {
+    rawIdentifier: '35.5',
+    resolutionState: 'resolved',
+    recordId: 'concentrated:0.0',
+    resolutionRef: 'editorial-resolution:concentrated-35.5-to-0.0'
+  })
+  assert.deepEqual(watchOrder.unresolvedEndpointReferences, [])
+  assert.deepEqual(watchOrder.fieldEvidence['/segments/1/rawRange'], ['watch-guide-pdf:page:6:watch-guide'])
+  assert.deepEqual(watchOrder.fieldEvidence['/segments/1/end/rawIdentifier'], ['watch-guide-pdf:page:6:watch-guide'])
+  assert.equal(watchOrder.fieldEvidence['/segments/1'], undefined)
+  assert.equal(watchOrder.fieldEvidence['/segments/1/end/recordId'], undefined)
+  assert.equal(watchOrder.fieldEvidence['/segments/1/end/resolutionRef'], undefined)
+  assert.equal(watchOrder.fieldEvidence['/unresolvedEndpointReferences/0'], undefined)
+  assert.equal(Object.hasOwn(resolution, 'fieldEvidence'), false)
+  assert.equal(Object.hasOwn(resolution.rationale, 'evidenceRefs'), false)
 }
 
 function assertEvidenceRefsResolve(value, evidenceIds, label) {
@@ -329,6 +421,7 @@ function validate() {
   ]
   const watchOrder = load('editorial/watch-orders/source-guide-v2.json')
   const variants = load('editorial/variants/ex.json')
+  const resolutionDocument = load('editorial/resolutions.json')
   const unresolved = load('editorial/unresolved.json')
   const extractedDocuments = [
     load('editorial/extracted/concentrated.json'),
@@ -341,7 +434,9 @@ function validate() {
   const evidenceIds = extractedEvidenceIds(extractedDocuments)
   const recordIds = new Set()
   for (const project of projects) validateProject(project, recordIds, evidenceIds)
+  const recordsById = new Map(projects.flatMap((project) => project.records).map((record) => [record.recordId, record]))
   validateWatchOrder(watchOrder, recordIds, evidenceIds)
+  validateResolutions(resolutionDocument, recordsById, evidenceIds, watchOrder)
   validateVariants(variants, recordIds, evidenceIds)
   validateUnresolved(unresolved, evidenceIds)
 
@@ -350,13 +445,14 @@ function validate() {
     projects: projects.length,
     records: recordIds.size,
     variants: variants.variants.length,
+    resolutions: resolutionDocument.resolutions.length,
     unresolvedIssues: unresolved.issues.length
   }
 }
 
 function main() {
   const summary = validate()
-  process.stdout.write(`validated ${summary.sources} sources, ${summary.projects} projects, ${summary.records} records, ${summary.variants} variants, and ${summary.unresolvedIssues} unresolved issues\n`)
+  process.stdout.write(`validated ${summary.sources} sources, ${summary.projects} projects, ${summary.records} records, ${summary.variants} variants, ${summary.resolutions} resolution, and ${summary.unresolvedIssues} unresolved issues\n`)
 }
 
 if (require.main === module) main()
