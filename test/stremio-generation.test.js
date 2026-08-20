@@ -38,17 +38,24 @@ const evidence = require('../evidence/media/cb_1.json')
 const cb2Evidence = require('../evidence/media/cb_2.json')
 const verifiedMediaSchema = require('../schemas/media/verified-media.schema.json')
 const generatorSource = fs.readFileSync(path.join(root, 'scripts/generate-stremio-data.js'), 'utf8')
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
+const EXPECTED_PREBOUNDARY_PREFIX = Object.freeze([
   'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
   'cb_10', 'cb_11', 'cb_12', 'cb_13', 'cb_14', 'cb_15', 'cb_16', 'cb_17',
   'cb_18', 'cb_19', 'cb_20', 'cb_21', 'cb_22', 'cb_23', 'cb_24', 'cb_25',
   'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
   'cb_33', 'cb_34', 'cb_35', 'cb_0p0'
 ])
-const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
+const EXPECTED_ARRANCAR_BATCH = Object.freeze([
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
+])
+const EXPECTED_LOCKED_PREFIX = Object.freeze([
+  ...EXPECTED_PREBOUNDARY_PREFIX,
+  ...EXPECTED_ARRANCAR_BATCH
+])
+const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
+  ...EXPECTED_PREBOUNDARY_PREFIX,
+  ...EXPECTED_ARRANCAR_BATCH
 ])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
@@ -424,7 +431,7 @@ test('every current generated production candidate satisfies its exact derivatio
   assert.equal(exactResults, 108)
 })
 
-test('the pre-existing 37 stream and provenance artifacts retain their regression contracts', () => {
+test('the current 53 locked stream and provenance artifacts retain their regression contracts', () => {
   for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
@@ -446,7 +453,7 @@ test('CB36-CB51 candidates derive exact verified evidence without invented resol
   const resolvedByVideoId = new Map(
     inputs.resolvedRecords.map((resolved) => [resolved.projectionEntry.videoId, resolved])
   )
-  for (const videoId of EXPECTED_PUBLISHED_PREFIX.slice(EXPECTED_LOCKED_PREFIX.length)) {
+  for (const videoId of EXPECTED_ARRANCAR_BATCH) {
     const resolved = resolvedByVideoId.get(videoId)
     const stream = result.candidates[`data/stream/${videoId}.json`].streams[0]
     const provenance = result.candidates[`data/provenance/${videoId}.json`]

@@ -27,7 +27,9 @@ const LOCKED_VALIDATED_VIDEO_IDS = new Set([
   'cb_10', 'cb_11', 'cb_12', 'cb_13', 'cb_14', 'cb_15', 'cb_16', 'cb_17',
   'cb_18', 'cb_19', 'cb_20', 'cb_21', 'cb_22', 'cb_23', 'cb_24', 'cb_25',
   'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
-  'cb_33', 'cb_34', 'cb_35', 'cb_0p0'
+  'cb_33', 'cb_34', 'cb_35', 'cb_0p0',
+  'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
+  'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
 ])
 
 function load(relativePath) {
@@ -161,6 +163,50 @@ function assertSchemaHeaders() {
     const schema = load(`schemas/projection/${name}`)
     assert.equal(schema.$schema, 'https://json-schema.org/draft/2020-12/schema')
     assert.equal(schema.type, 'object')
+  }
+}
+
+function validateCompatibilityLockPrefix({ publishedVideoIds, registryEntries, lockedValidatedVideoIds }) {
+  const explicitLockedIds = [...lockedValidatedVideoIds]
+  const explicitLockedIdSet = new Set(explicitLockedIds)
+  const publishedIdSet = new Set(publishedVideoIds)
+  const registryByVideoId = new Map(registryEntries.map((entry) => [entry.videoId, entry]))
+
+  assert.deepEqual(
+    publishedVideoIds.slice(0, explicitLockedIds.length),
+    explicitLockedIds,
+    'Compatibility-locked IDs must remain an ordered prefix of current publication'
+  )
+  for (const videoId of explicitLockedIds) {
+    assert.ok(publishedIdSet.has(videoId), `${videoId} is compatibility-locked but not published`)
+  }
+  for (const videoId of publishedVideoIds) {
+    const registered = registryByVideoId.get(videoId)
+    assert.ok(registered, `Approved video ${videoId} is missing from the registry`)
+    assert.equal(registered.status, 'published', `${videoId} must be published in the registry`)
+    assert.equal(
+      registered.locked,
+      explicitLockedIdSet.has(videoId),
+      `${videoId} compatibility lock does not match its validated state`
+    )
+  }
+  assert.deepEqual(
+    registryEntries.filter((entry) => entry.status === 'published').map((entry) => entry.videoId),
+    publishedVideoIds,
+    'Registry published IDs must exactly match current publication'
+  )
+  assert.deepEqual(
+    registryEntries.filter((entry) => entry.status === 'published' && entry.locked).map((entry) => entry.videoId),
+    explicitLockedIds,
+    'Registry published/locked IDs must exactly match the validated compatibility baseline'
+  )
+  for (const entry of registryEntries.filter((candidate) => candidate.status === 'reserved')) {
+    assert.equal(entry.locked, false, `${entry.videoId} is reserved and must remain unlocked`)
+  }
+
+  return {
+    lockedValidatedVideoIds: explicitLockedIds,
+    publishedUnlockedVideoIds: publishedVideoIds.filter((videoId) => !explicitLockedIdSet.has(videoId))
   }
 }
 
@@ -411,33 +457,11 @@ function validate() {
   }
 
   const registryByVideoId = new Map(registry.entries.map((entry) => [entry.videoId, entry]))
-  const lockedValidatedVideoIds = [...LOCKED_VALIDATED_VIDEO_IDS]
-  assert.deepEqual(
-    projection.publicationPolicy.currentPublishedVideoIds.slice(0, lockedValidatedVideoIds.length),
-    lockedValidatedVideoIds,
-    'Compatibility-locked IDs must remain an ordered prefix of current publication'
-  )
-  for (const videoId of lockedValidatedVideoIds) {
-    assert.ok(approvedVideoIds.has(videoId), `${videoId} is compatibility-locked but not published`)
-  }
-  for (const videoId of approvedVideoIds) {
-    const registered = registryByVideoId.get(videoId)
-    assert.ok(registered, `Approved video ${videoId} is missing from the registry`)
-    assert.equal(registered.status, 'published', `${videoId} must be published in the registry`)
-    assert.equal(
-      registered.locked,
-      LOCKED_VALIDATED_VIDEO_IDS.has(videoId),
-      `${videoId} compatibility lock does not match its validated state`
-    )
-  }
-  assert.deepEqual(
-    registry.entries.filter((entry) => entry.status === 'published' && entry.locked).map((entry) => entry.videoId),
-    lockedValidatedVideoIds,
-    'Registry published/locked IDs must exactly match the validated compatibility baseline'
-  )
-  for (const entry of registry.entries.filter((candidate) => candidate.status === 'reserved')) {
-    assert.equal(entry.locked, false, `${entry.videoId} is reserved and must remain unlocked`)
-  }
+  const { lockedValidatedVideoIds } = validateCompatibilityLockPrefix({
+    publishedVideoIds: projection.publicationPolicy.currentPublishedVideoIds,
+    registryEntries: registry.entries,
+    lockedValidatedVideoIds: LOCKED_VALIDATED_VIDEO_IDS
+  })
   assert.deepEqual(registryByVideoId.get('cb_0p0'), {
     recordType: 'normalized-record',
     recordId: 'concentrated:0.0',
@@ -454,7 +478,7 @@ function validate() {
     sourceIdentifier: '36',
     videoId: 'cb_36',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.deepEqual(registryByVideoId.get('cb_51'), {
     recordType: 'normalized-record',
@@ -463,7 +487,7 @@ function validate() {
     sourceIdentifier: '51',
     videoId: 'cb_51',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.deepEqual(registryByVideoId.get('hb_14'), {
     recordType: 'normalized-record',
@@ -593,6 +617,7 @@ module.exports = {
   encodeNormalizedId,
   encodeVariantId,
   expectedDefaultProjection,
+  validateCompatibilityLockPrefix,
   validatePublicationPrefix,
   validate
 }

@@ -10,6 +10,7 @@ const {
   LOCKED_HASHES,
   encodeNormalizedId,
   encodeVariantId,
+  validateCompatibilityLockPrefix,
   validatePublicationPrefix,
   validate
 } = require('../scripts/validate-stremio-projection')
@@ -36,17 +37,24 @@ const variants = read('editorial/variants/ex.json').variants
 const normalizedById = new Map(normalized.map((record) => [record.recordId, record]))
 const projectedById = new Map(projection.entries.map((entry) => [entry.recordId, entry]))
 const optionalById = new Map(optional.entries.map((entry) => [entry.recordId, entry]))
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
+const EXPECTED_PREBOUNDARY_PREFIX = Object.freeze([
   'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
   'cb_10', 'cb_11', 'cb_12', 'cb_13', 'cb_14', 'cb_15', 'cb_16', 'cb_17',
   'cb_18', 'cb_19', 'cb_20', 'cb_21', 'cb_22', 'cb_23', 'cb_24', 'cb_25',
   'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
   'cb_33', 'cb_34', 'cb_35', 'cb_0p0'
 ])
-const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
+const EXPECTED_ARRANCAR_BATCH = Object.freeze([
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
+])
+const EXPECTED_LOCKED_PREFIX = Object.freeze([
+  ...EXPECTED_PREBOUNDARY_PREFIX,
+  ...EXPECTED_ARRANCAR_BATCH
+])
+const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
+  ...EXPECTED_PREBOUNDARY_PREFIX,
+  ...EXPECTED_ARRANCAR_BATCH
 ])
 const evidenceRecords = EXPECTED_PUBLISHED_PREFIX.map((videoId) => ({
   relativePath: `evidence/media/${videoId}.json`,
@@ -493,12 +501,13 @@ test('optional IDs cannot enter the primary default timeline', () => {
   assert.equal(optional.primarySeriesPublicationAllowed, false)
 })
 
-test('published prefix extends beyond the explicit compatibility-locked prefix without auto-locking', () => {
+test('current published and compatibility-locked prefixes are explicit equal 53-entry concepts', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   const published = registry.entries.filter((entry) => entry.status === 'published')
   assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), EXPECTED_LOCKED_PREFIX)
-  assert.equal(published.filter((entry) => !entry.locked).length, 16)
+  assert.equal(published.length, 53)
+  assert.equal(published.filter((entry) => !entry.locked).length, 0)
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_4'),
     {
@@ -544,7 +553,7 @@ test('published prefix extends beyond the explicit compatibility-locked prefix w
       sourceIdentifier: '36',
       videoId: 'cb_36',
       status: 'published',
-      locked: false
+      locked: true
     }
   )
   assert.deepEqual(
@@ -556,7 +565,7 @@ test('published prefix extends beyond the explicit compatibility-locked prefix w
       sourceIdentifier: '51',
       videoId: 'cb_51',
       status: 'published',
-      locked: false
+      locked: true
     }
   )
   assert.deepEqual(
@@ -573,6 +582,30 @@ test('published prefix extends beyond the explicit compatibility-locked prefix w
   )
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').every((entry) => entry.locked === false))
   assert.ok(registry.entries.some((entry) => entry.status === 'reserved' && projectedById.has(entry.recordId)))
+})
+
+test('a synthetic future publication extension remains unlocked until explicitly validated', () => {
+  const registryEntries = structuredClone(registry.entries)
+  const cb52 = registryEntries.find((entry) => entry.videoId === 'cb_52')
+  cb52.status = 'published'
+  const publishedVideoIds = [...EXPECTED_PUBLISHED_PREFIX, 'cb_52']
+  const result = validateCompatibilityLockPrefix({
+    publishedVideoIds,
+    registryEntries,
+    lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
+  })
+  assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
+  assert.deepEqual(result.publishedUnlockedVideoIds, ['cb_52'])
+
+  cb52.locked = true
+  assert.throws(
+    () => validateCompatibilityLockPrefix({
+      publishedVideoIds,
+      registryEntries,
+      lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
+    }),
+    /cb_52 compatibility lock does not match its validated state/
+  )
 })
 
 test('planned, deferred, and non-generatable records cannot become eligible', () => {
