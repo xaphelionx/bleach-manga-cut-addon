@@ -287,8 +287,8 @@ function validate() {
   assert.deepEqual(resolvedEntry.projectedPlacement, resolution.guidedPlacement)
   assert.deepEqual(resolvedEntry.defaultTimelinePosition, { state: 'resolved', index: 37 })
   assert.deepEqual(resolvedEntry.publicationEligibility, {
-    state: 'blocked',
-    gateSet: 'unpublished-primary'
+    state: 'eligible',
+    gateSet: 'verified-primary'
   })
 
   const globallySorted = [...projection.entries].sort((left, right) =>
@@ -390,7 +390,7 @@ function validate() {
     projectId: 'concentrated',
     sourceIdentifier: '0.0',
     videoId: 'cb_0p0',
-    status: 'reserved',
+    status: 'published',
     locked: false
   })
   assert.deepEqual(registryByVideoId.get('cb_36'), {
@@ -485,7 +485,7 @@ function validate() {
   }, {})
   assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
   assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
-  assert.deepEqual(eligibilityCounts, { eligible: 36, blocked: 67 })
+  assert.deepEqual(eligibilityCounts, { eligible: 37, blocked: 66 })
 
   return {
     projectedEntries: projection.entries.length,

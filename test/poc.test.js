@@ -109,9 +109,9 @@ test('safe stream fixture syntax does not grant publication permission', async (
   assert.deepEqual(await addon.get('stream', 'series', 'cb_36'), { streams: [] })
 })
 
-test('catalog and meta contain the exact ordered 36-entry preboundary output', () => {
+test('catalog and meta contain the exact ordered 37-entry prefix through guided 35.5', () => {
   assert.equal(catalog.metas.length, 1)
-  assert.equal(meta.meta.videos.length, 36)
+  assert.equal(meta.meta.videos.length, 37)
 
   const catalogItem = catalog.metas[0]
   const series = meta.meta
@@ -122,7 +122,7 @@ test('catalog and meta contain the exact ordered 36-entry preboundary output', (
   assert.equal(catalogItem.name, series.name)
   assert.deepEqual(series.videos.map((video) => video.id), publishedVideoIds)
   assert.equal(series.videos.filter((video) => video.season === 1).length, 9)
-  assert.equal(series.videos.filter((video) => video.season === 2).length, 27)
+  assert.equal(series.videos.filter((video) => video.season === 2).length, 28)
   assert.equal(series.videos.some((video) => video.season === 3 || video.id === 'cb_36'), false)
   const placement = (videoId) => {
     const { season, episode } = series.videos.find((video) => video.id === videoId)
@@ -136,6 +136,7 @@ test('catalog and meta contain the exact ordered 36-entry preboundary output', (
   assert.deepEqual(placement('cb_28'), { season: 2, episode: 20 })
   assert.deepEqual(placement('cb_32'), { season: 2, episode: 24 })
   assert.deepEqual(placement('cb_35'), { season: 2, episode: 27 })
+  assert.deepEqual(placement('cb_0p0'), { season: 2, episode: 28 })
   assert.equal(cb1Provenance.id, series.videos[0].id)
   assert.equal(cb1Provenance.editorial.exactEditRuntime, '00:18:15')
   assert.equal(cb1Provenance.editorial.normalizedExactRuntime, '18:15')
@@ -240,7 +241,7 @@ test('CB1 provenance records intentional anime and original-language compatibili
   })
 })
 
-test('generated content contains exactly the 36 published stream and provenance pairs', () => {
+test('generated content contains exactly the 37 published stream and provenance pairs', () => {
   const generatedFiles = [
     ...fs.readdirSync(path.join(root, 'data', 'catalog')).map((name) => `catalog/${name}`),
     ...fs.readdirSync(path.join(root, 'data', 'meta')).map((name) => `meta/${name}`),
@@ -254,7 +255,7 @@ test('generated content contains exactly the 36 published stream and provenance 
     ...publishedVideoIds.map((videoId) => `provenance/${videoId}.json`),
     ...publishedVideoIds.map((videoId) => `stream/${videoId}.json`)
   ].sort()
-  assert.equal(expectedFiles.length, 74)
+  assert.equal(expectedFiles.length, 76)
   assert.deepEqual(generatedFiles, expectedFiles)
 
   const generatedDocuments = [
@@ -326,6 +327,7 @@ test('normal Stremio HTTP endpoints return the deterministic JSON', async () => 
     ['/stream/series/cb_27p5.json', publishedStreams.get('cb_27p5')],
     ['/stream/series/cb_32.json', publishedStreams.get('cb_32')],
     ['/stream/series/cb_35.json', publishedStreams.get('cb_35')],
+    ['/stream/series/cb_0p0.json', publishedStreams.get('cb_0p0')],
     ['/stream/series/cb_36.json', { streams: [] }],
     ['/stream/series/hb_ex_27.json', { streams: [] }],
     ['/meta/series/unknown-series.json', { meta: {} }],

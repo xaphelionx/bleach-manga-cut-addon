@@ -759,6 +759,25 @@ function buildProvenance(resolved, presentation) {
     }
   }
 
+  const projectionSource = {
+    seriesId: entry.projectedPlacement.seriesId,
+    videoId: entry.videoId,
+    projectedPlacement: {
+      season: entry.projectedPlacement.season,
+      episode: entry.projectedPlacement.episode
+    },
+    publicationEligibility: {
+      state: entry.publicationEligibility.state,
+      gateSet: entry.publicationEligibility.gateSet
+    }
+  }
+  if (entry.resolutionRef !== undefined) {
+    assert.equal(typeof entry.resolutionRef, 'string', 'projection resolutionRef must be a string')
+    assert.ok(entry.resolutionRef.length > 0, 'projection resolutionRef must be non-empty')
+    assert.match(entry.resolutionRef, /^editorial-resolution:/u, 'projection resolutionRef has invalid syntax')
+    projectionSource.resolutionRef = entry.resolutionRef
+  }
+
   return {
     id: entry.videoId,
     sourceInputs: {
@@ -766,18 +785,7 @@ function buildProvenance(resolved, presentation) {
         recordId: record.recordId,
         evidenceRefs
       },
-      projection: {
-        seriesId: entry.projectedPlacement.seriesId,
-        videoId: entry.videoId,
-        projectedPlacement: {
-          season: entry.projectedPlacement.season,
-          episode: entry.projectedPlacement.episode
-        },
-        publicationEligibility: {
-          state: entry.publicationEligibility.state,
-          gateSet: entry.publicationEligibility.gateSet
-        }
-      },
+      projection: projectionSource,
       verifiedMedia: {
         evidenceRecord: resolved.mediaEvidenceRelativePath,
         videoId: media.videoId,

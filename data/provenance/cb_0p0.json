@@ -1,0 +1,145 @@
+{
+  "id": "cb_0p0",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:0.0",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A38",
+        "concentrated-xlsx:episode-list:B38",
+        "concentrated-xlsx:episode-list:C38",
+        "concentrated-xlsx:episode-list:D38",
+        "concentrated-xlsx:episode-list:E38",
+        "concentrated-xlsx:episode-list:F38",
+        "concentrated-xlsx:episode-list:G38",
+        "concentrated-xlsx:episode-list:H38"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_0p0",
+      "projectedPlacement": {
+        "season": 2,
+        "episode": 28
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      },
+      "resolutionRef": "editorial-resolution:concentrated-35.5-to-0.0"
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_0p0.json",
+      "videoId": "cb_0p0",
+      "recordId": "concentrated:0.0",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb0p0-local-torrent-verification",
+        "cb0p0-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "0.0",
+    "title": "the rotator / the sand",
+    "mangaChapters": "0 side A + side B",
+    "sourceAnimeEpisodes": "109",
+    "exactEditRuntime": "00:07:32",
+    "normalizedExactRuntime": "07:32",
+    "timeSaved": "16m33s (69%)",
+    "releaseDate": "2025-01-27",
+    "lastUpdate": "2025-02-27",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 38,
+      "cells": "A38:H38"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "7",
+    "runtimeTransformation": "The exact 07:32 source runtime is presented as 7 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "cbdfdf3949a8f8c2d470dfc4f1d1a21571dca7bc",
+    "fileIdx": 0,
+    "filename": "35.5 (0) - the rotator_ the sand.mkv",
+    "videoSize": 53091320,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "35.5 (0) - the rotator_ the sand.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 452.181
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "07:32 (452 seconds) -> floor whole minutes -> 7",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "53091320 bytes / 1000000, fixed to two decimals -> 53.09 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

@@ -70,7 +70,8 @@
       "cb_32",
       "cb_33",
       "cb_34",
-      "cb_35"
+      "cb_35",
+      "cb_0p0"
     ],
     "playableOnly": true
   },
@@ -96,7 +97,7 @@
       "defaultTimelineContiguity": "blocked",
       "blockedBy": [
         "media-evidence-not-approved",
-        "primary-publication-prefix-after-cb_35"
+        "primary-publication-prefix-after-cb_0p0"
       ]
     }
   },
@@ -137,7 +138,7 @@
     {"recordId":"concentrated:33","projectId":"concentrated","sourceIdentifier":{"raw":"33","displayed":"33"},"videoId":"cb_33","title":"Battle on Guillotine Hill","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":2,"episode":25},"defaultTimelinePosition":{"state":"resolved","index":34},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"concentrated:34","projectId":"concentrated","sourceIdentifier":{"raw":"34","displayed":"34"},"videoId":"cb_34","title":"end of hypnosis","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":2,"episode":26},"defaultTimelinePosition":{"state":"resolved","index":35},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"concentrated:35","projectId":"concentrated","sourceIdentifier":{"raw":"35","displayed":"35"},"videoId":"cb_35","title":"AND THE RAIN LEFT OFF","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":2,"episode":27},"defaultTimelinePosition":{"state":"resolved","index":36},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
-    {"recordId":"concentrated:0.0","projectId":"concentrated","sourceIdentifier":{"raw":"0.0","displayed":"0.0"},"videoId":"cb_0p0","title":"the rotator / the sand","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":2,"episode":28},"defaultTimelinePosition":{"state":"resolved","index":37},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"},"resolutionRef":"editorial-resolution:concentrated-35.5-to-0.0"},
+    {"recordId":"concentrated:0.0","projectId":"concentrated","sourceIdentifier":{"raw":"0.0","displayed":"0.0"},"videoId":"cb_0p0","title":"the rotator / the sand","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":2,"episode":28},"defaultTimelinePosition":{"state":"resolved","index":37},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"},"resolutionRef":"editorial-resolution:concentrated-35.5-to-0.0"},
     {"recordId":"concentrated:36","projectId":"concentrated","sourceIdentifier":{"raw":"36","displayed":"36"},"videoId":"cb_36","title":"Hush","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":3,"episode":1},"defaultTimelinePosition":{"state":"resolved","index":38},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
     {"recordId":"concentrated:37","projectId":"concentrated","sourceIdentifier":{"raw":"37","displayed":"37"},"videoId":"cb_37","title":"Conquistadores","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":3,"episode":2},"defaultTimelinePosition":{"state":"resolved","index":39},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
     {"recordId":"concentrated:38","projectId":"concentrated","sourceIdentifier":{"raw":"38","displayed":"38"},"videoId":"cb_38","title":"Death and Strawberry (Reprise)","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":3,"episode":3},"defaultTimelinePosition":{"state":"resolved","index":40},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},

@@ -28,7 +28,7 @@ Nuvio 0.8.4-beta determines a series' next episode by globally sorting all video
 
 Publication gates cover `editorialAvailability`, `resolvedPlacement`, `mediaEvidence`, and `defaultTimelineContiguity`. Projection never constitutes evidence that media or a stream exists.
 
-The current eligible and published prefix contains 36 entries through CB35, including CB27.5. Every remaining primary entry uses the generic `unpublished-primary` gate until media evidence is approved and the contiguous prefix advances.
+The current eligible and published prefix contains 37 entries through guided 35.5 / `cb_0p0`, including CB27.5. The projection has 37 eligible and 66 blocked entries. Every remaining primary entry, beginning with CB36, uses the generic `unpublished-primary` gate until media evidence is approved and the contiguous prefix advances.
 
 ## Resolved guided 35.5 relationship
 
@@ -50,7 +50,7 @@ guided 35.5 / cb_0p0 → S2E28 → global index 37
 CB36       → S3E1  → global index 38
 ```
 
-All 103 projected entries now have resolved global indexes. `cb_0p0` remains reserved, blocked, and unpublished; no media, torrent, stream, or playback claim is implied by its projection.
+All 103 projected entries have resolved global indexes. `cb_0p0` is published at S2E28/global index 37 and remains `locked:false`. Verified-media evidence exists, and the project owner confirmed the exact torrent is seeded and acquired/cached in the user's TorBox environment. Nuvio playback validation remains pending; this does not establish permanent public availability or future cache persistence.
 
 ## Stable video IDs
 
@@ -67,7 +67,7 @@ IDs encode only source project and exact displayed identifier syntax:
 
 Decimals are encoded lexically and never parsed as floating-point positions. Decimal syntax does not imply any editorial `kind`. Unknown identifier syntax is a validation error. IDs do not depend on title, season, episode, array order, or watch-order position.
 
-The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The 36 current prefix IDs through `cb_35` are published; CB1–CB3 are locked and CB4–CB35 remain unlocked. `cb_0p0`, CB36+, and all other unpublished assignments remain reserved.
+The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The 37 current prefix IDs through `cb_0p0` are published; CB1–CB3 are locked, while CB4–CB35 and `cb_0p0` remain unlocked. CB36+ and all other unpublished assignments remain reserved.
 
 ## Titles
 
@@ -84,7 +84,7 @@ The projection contains the Watch Guide's currently selected default ranges:
 
 The projection has 103 entries: 9 in S1, 28 in S2, 54 in S3, and 12 in S4. Global positions are resolved monotonically from 1 through 103.
 
-Current publication remains the first 36 canonical entries through CB35. Prefix closure—not a special unresolved boundary—prevents CB36 from being published before `cb_0p0`. Skipping `cb_0p0` would make the approved video IDs differ from the canonical first-N entries.
+Current publication is the first 37 canonical entries through guided 35.5 / `cb_0p0`. CB36 is the first unpublished canonical suffix entry. The generic suffix blocker is now `primary-publication-prefix-after-cb_0p0`; prefix closure continues to prevent gaps without a special CB36 barrier.
 
 ## Optional content
 
@@ -118,9 +118,9 @@ The projection validator enforces:
 - Identifier encoding is lexical, unique, append-only, and independent of presentation.
 - Projected titles equal normalized titles exactly.
 - Source identifier `0.0`, guided identifier `35.5`, and permanent ID `cb_0p0` remain distinct and traceable through the owner resolution.
-- `cb_0p0` is the only projection entry with `resolutionRef`; it is S2E28/global index 37 and remains blocked.
+- `cb_0p0` is the only projection entry with `resolutionRef`; it is published at S2E28/global index 37 and remains `locked:false`.
 - CB36 is S3E1/global index 38, and every one of the 103 global indexes is resolved.
-- Every unpublished primary entry uses the one generic `unpublished-primary` suffix gate.
+- The projection contains 37 eligible and 66 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at CB36.
 - Globally sorted eligible primary videos form exactly the approved contiguous prefix.
 - Optional and EX IDs cannot enter the primary default timeline.
 - HB11.5 and EX27 relationships remain exact.
@@ -131,4 +131,4 @@ The projection validator enforces:
 
 ## Artifact boundaries
 
-The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, are design artifacts only. They do not modify Stremio output or runtime behavior. A future generator, media acquisition, optional-content runtime experiment, or publication decision requires separate approval.
+The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. Future media acquisition, optional-content runtime experiments, or publication beyond CB35.5 require separate approval.

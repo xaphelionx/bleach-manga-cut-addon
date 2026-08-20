@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 the rotator / the sand\n📖 [0 side A + side B] 🕒 07:32\n💾 53.09 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "cbdfdf3949a8f8c2d470dfc4f1d1a21571dca7bc",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 53091320,
+        "filename": "35.5 (0) - the rotator_ the sand.mkv"
+      }
+    }
+  ]
+}
