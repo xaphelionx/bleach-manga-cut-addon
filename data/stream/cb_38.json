@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Death and Strawberry (Reprise)\n📖 [195-199] 🕒 39:07\n💾 375.23 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "147f92600bc2f0b0200b2880f6d88dc418f471af",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 375226172,
+        "filename": "38 - Death and Strawberry (Reprise).mkv"
+      }
+    }
+  ]
+}

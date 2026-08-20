@@ -1,0 +1,144 @@
+{
+  "id": "cb_47",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:47",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A51",
+        "concentrated-xlsx:episode-list:B51",
+        "concentrated-xlsx:episode-list:C51",
+        "concentrated-xlsx:episode-list:D51",
+        "concentrated-xlsx:episode-list:E51",
+        "concentrated-xlsx:episode-list:F51",
+        "concentrated-xlsx:episode-list:G51",
+        "concentrated-xlsx:episode-list:H51"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_47",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 12
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_47.json",
+      "videoId": "cb_47",
+      "recordId": "concentrated:47",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb47-local-torrent-verification",
+        "cb47-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "47",
+    "title": "goodbye, halcyon days.",
+    "mangaChapters": "234-237",
+    "sourceAnimeEpisodes": "140-141",
+    "exactEditRuntime": "00:29:32",
+    "normalizedExactRuntime": "29:32",
+    "timeSaved": "18m38s (39%)",
+    "releaseDate": "2026-02-28",
+    "lastUpdate": "2026-02-28",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 51,
+      "cells": "A51:H51"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "29",
+    "runtimeTransformation": "The exact 29:32 source runtime is presented as 29 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "a613ebdb53207dacf1a7fd1c8f6940c02b5d9781",
+    "fileIdx": 0,
+    "filename": "47 - goodbye, halcyon days. .mkv",
+    "videoSize": 302069593,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "47 - goodbye, halcyon days. .mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1771.69
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "29:32 (1772 seconds) -> floor whole minutes -> 29",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "302069593 bytes / 1000000, fixed to two decimals -> 302.07 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

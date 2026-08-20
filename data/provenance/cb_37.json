@@ -1,0 +1,144 @@
+{
+  "id": "cb_37",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:37",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A40",
+        "concentrated-xlsx:episode-list:B40",
+        "concentrated-xlsx:episode-list:C40",
+        "concentrated-xlsx:episode-list:D40",
+        "concentrated-xlsx:episode-list:E40",
+        "concentrated-xlsx:episode-list:F40",
+        "concentrated-xlsx:episode-list:G40",
+        "concentrated-xlsx:episode-list:H40"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_37",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 2
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_37.json",
+      "videoId": "cb_37",
+      "recordId": "concentrated:37",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb37-local-torrent-verification",
+        "cb37-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "37",
+    "title": "Conquistadores",
+    "mangaChapters": "189-194",
+    "sourceAnimeEpisodes": "112-114",
+    "exactEditRuntime": "00:37:37",
+    "normalizedExactRuntime": "37:37",
+    "timeSaved": "12m54s (26%)",
+    "releaseDate": "2025-09-19",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 40,
+      "cells": "A40:H40"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "37",
+    "runtimeTransformation": "The exact 37:37 source runtime is presented as 37 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "32de6728ec0721bff8a2f6e36826cb49a65a9a90",
+    "fileIdx": 0,
+    "filename": "37 - Conquistadores.mkv",
+    "videoSize": 397830885,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "37 - Conquistadores.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2257.685
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "37:37 (2257 seconds) -> floor whole minutes -> 37",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "397830885 bytes / 1000000, fixed to two decimals -> 397.83 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Mascaron Drive\n📖 [229-234] 🕒 33:43\n💾 348.13 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "f980ea10d4a34d8614e07e3618f6c592eee8d18c",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 348129126,
+        "filename": "46 - The Mascaron Drive.mkv"
+      }
+    }
+  ]
+}

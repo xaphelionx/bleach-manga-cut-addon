@@ -1,0 +1,144 @@
+{
+  "id": "cb_49",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:49",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A53",
+        "concentrated-xlsx:episode-list:B53",
+        "concentrated-xlsx:episode-list:C53",
+        "concentrated-xlsx:episode-list:D53",
+        "concentrated-xlsx:episode-list:E53",
+        "concentrated-xlsx:episode-list:F53",
+        "concentrated-xlsx:episode-list:G53",
+        "concentrated-xlsx:episode-list:H53"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_49",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 14
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_49.json",
+      "videoId": "cb_49",
+      "recordId": "concentrated:49",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb49-local-torrent-verification",
+        "cb49-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "49",
+    "title": "Winged Eagles",
+    "mangaChapters": "241-245",
+    "sourceAnimeEpisodes": "144-145",
+    "exactEditRuntime": "00:23:36",
+    "normalizedExactRuntime": "23:36",
+    "timeSaved": "18m45s (44%)",
+    "releaseDate": "2026-06-17",
+    "lastUpdate": "2026-06-17",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 53,
+      "cells": "A53:H53"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "23",
+    "runtimeTransformation": "The exact 23:36 source runtime is presented as 23 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "9486b96ffb0a9aad6b147d6c17395bbcbc0e9fe4",
+    "fileIdx": 0,
+    "filename": "49 - Winged Eagles.mkv",
+    "videoSize": 227194024,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "49 - Winged Eagles.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1415.957
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "23:36 (1416 seconds) -> floor whole minutes -> 23",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "227194024 bytes / 1000000, fixed to two decimals -> 227.19 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

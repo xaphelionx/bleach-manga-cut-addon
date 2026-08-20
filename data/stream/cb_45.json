@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Swordless Soldier\n📖 [227-229] 🕒 20:58\n💾 183.34 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "1e1e7b8a1a3fb91c457f442c38ebbb4e7e4887e1",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 183336863,
+        "filename": "45 - The Swordless Soldier.mkv"
+      }
+    }
+  ]
+}

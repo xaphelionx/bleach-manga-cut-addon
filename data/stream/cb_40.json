@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 ¡Mala Suerte!\n📖 [203-206] 🕒 22:52\n💾 277.38 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "3a41f20e24f1c4bfa412c0eff584b7b839bd3660",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 277376618,
+        "filename": "40 - ¡Mala Suerte!.mkv"
+      }
+    }
+  ]
+}

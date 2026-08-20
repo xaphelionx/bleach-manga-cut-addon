@@ -1,0 +1,144 @@
+{
+  "id": "cb_50",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:50",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A54",
+        "concentrated-xlsx:episode-list:B54",
+        "concentrated-xlsx:episode-list:C54",
+        "concentrated-xlsx:episode-list:D54",
+        "concentrated-xlsx:episode-list:E54",
+        "concentrated-xlsx:episode-list:F54",
+        "concentrated-xlsx:episode-list:G54",
+        "concentrated-xlsx:episode-list:H54"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_50",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 15
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_50.json",
+      "videoId": "cb_50",
+      "recordId": "concentrated:50",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb50-local-torrent-verification",
+        "cb50-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "50",
+    "title": "United on the Desert",
+    "mangaChapters": "245-250",
+    "sourceAnimeEpisodes": "145-146, 149-151",
+    "exactEditRuntime": "00:40:16",
+    "normalizedExactRuntime": "40:16",
+    "timeSaved": "31m39s (44%)",
+    "releaseDate": "2026-06-20",
+    "lastUpdate": "2026-06-20",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 54,
+      "cells": "A54:H54"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "40",
+    "runtimeTransformation": "The exact 40:16 source runtime is presented as 40 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "a50d20b941beff8456dcae3faae276ce14a18b18",
+    "fileIdx": 0,
+    "filename": "50 - United on the Desert.mkv",
+    "videoSize": 447335139,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "50 - United on the Desert.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2416.535
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "40:16 (2416 seconds) -> floor whole minutes -> 40",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "447335139 bytes / 1000000, fixed to two decimals -> 447.34 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

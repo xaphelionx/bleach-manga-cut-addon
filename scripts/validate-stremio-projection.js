@@ -342,6 +342,38 @@ function validate() {
     index: 38
   })
   assert.deepEqual(cb36.publicationEligibility, {
+    state: 'eligible',
+    gateSet: 'verified-primary'
+  })
+
+  const cb51 = projection.entries.find((entry) => entry.recordId === 'concentrated:51')
+  assert.ok(cb51)
+  assert.deepEqual(cb51.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 3,
+    episode: 16
+  })
+  assert.deepEqual(cb51.defaultTimelinePosition, {
+    state: 'resolved',
+    index: 53
+  })
+  assert.deepEqual(cb51.publicationEligibility, {
+    state: 'eligible',
+    gateSet: 'verified-primary'
+  })
+
+  const hb14 = projection.entries.find((entry) => entry.recordId === 'hollowed:14')
+  assert.ok(hb14)
+  assert.deepEqual(hb14.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 3,
+    episode: 17
+  })
+  assert.deepEqual(hb14.defaultTimelinePosition, {
+    state: 'resolved',
+    index: 54
+  })
+  assert.deepEqual(hb14.publicationEligibility, {
     state: 'blocked',
     gateSet: 'unpublished-primary'
   })
@@ -381,10 +413,13 @@ function validate() {
   const registryByVideoId = new Map(registry.entries.map((entry) => [entry.videoId, entry]))
   const lockedValidatedVideoIds = [...LOCKED_VALIDATED_VIDEO_IDS]
   assert.deepEqual(
+    projection.publicationPolicy.currentPublishedVideoIds.slice(0, lockedValidatedVideoIds.length),
     lockedValidatedVideoIds,
-    projection.publicationPolicy.currentPublishedVideoIds,
-    'Compatibility-locked IDs must remain the exact explicitly approved 37-entry baseline'
+    'Compatibility-locked IDs must remain an ordered prefix of current publication'
   )
+  for (const videoId of lockedValidatedVideoIds) {
+    assert.ok(approvedVideoIds.has(videoId), `${videoId} is compatibility-locked but not published`)
+  }
   for (const videoId of approvedVideoIds) {
     const registered = registryByVideoId.get(videoId)
     assert.ok(registered, `Approved video ${videoId} is missing from the registry`)
@@ -418,6 +453,24 @@ function validate() {
     projectId: 'concentrated',
     sourceIdentifier: '36',
     videoId: 'cb_36',
+    status: 'published',
+    locked: false
+  })
+  assert.deepEqual(registryByVideoId.get('cb_51'), {
+    recordType: 'normalized-record',
+    recordId: 'concentrated:51',
+    projectId: 'concentrated',
+    sourceIdentifier: '51',
+    videoId: 'cb_51',
+    status: 'published',
+    locked: false
+  })
+  assert.deepEqual(registryByVideoId.get('hb_14'), {
+    recordType: 'normalized-record',
+    recordId: 'hollowed:14',
+    projectId: 'hollowed',
+    sourceIdentifier: '14',
+    videoId: 'hb_14',
     status: 'reserved',
     locked: false
   })
@@ -504,7 +557,7 @@ function validate() {
   }, {})
   assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
   assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
-  assert.deepEqual(eligibilityCounts, { eligible: 37, blocked: 66 })
+  assert.deepEqual(eligibilityCounts, { eligible: 53, blocked: 50 })
 
   return {
     projectedEntries: projection.entries.length,

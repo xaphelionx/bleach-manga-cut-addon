@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Hush\n📖 [183-188] 🕒 40:32\n💾 360.78 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "b7a4aa0ef143816cfdd34063f69b7e3a1ba30073",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 360782365,
+        "filename": "36 - Hush.mkv"
+      }
+    }
+  ]
+}

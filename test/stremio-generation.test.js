@@ -38,16 +38,21 @@ const evidence = require('../evidence/media/cb_1.json')
 const cb2Evidence = require('../evidence/media/cb_2.json')
 const verifiedMediaSchema = require('../schemas/media/verified-media.schema.json')
 const generatorSource = fs.readFileSync(path.join(root, 'scripts/generate-stremio-data.js'), 'utf8')
-const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
+const EXPECTED_LOCKED_PREFIX = Object.freeze([
   'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
   'cb_10', 'cb_11', 'cb_12', 'cb_13', 'cb_14', 'cb_15', 'cb_16', 'cb_17',
   'cb_18', 'cb_19', 'cb_20', 'cb_21', 'cb_22', 'cb_23', 'cb_24', 'cb_25',
   'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
   'cb_33', 'cb_34', 'cb_35', 'cb_0p0'
 ])
+const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
+  ...EXPECTED_LOCKED_PREFIX,
+  'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
+  'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
+])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '9321d6a895eecd7546895e004afa06b432f8b8977ddd1e0ba82011d775df8aa1'
+  'data/meta/bleach-manga-cut.json': '22f1d839f5a7682098d893a3452956ac66e2f8774e3fa76932c6930a5287148b'
 })
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
@@ -82,12 +87,19 @@ test('processing remains exactly projection-controlled at the current canonical 
   )), true)
   assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_0p0'), true)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.equal(result.processedVideoIds.at(-1), 'cb_0p0')
+  assert.equal(result.processedVideoIds.at(-1), 'cb_51')
   assert.equal('data/stream/cb_0p0.json' in result.candidates, true)
   assert.equal('data/provenance/cb_0p0.json' in result.candidates, true)
   assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_0p0'), true)
   for (const videoId of ['cb_36', 'cb_51']) {
     assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
+    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), true)
+    assert.equal(result.processedVideoIds.includes(videoId), true)
+    assert.equal(`data/stream/${videoId}.json` in result.candidates, true)
+    assert.equal(`data/provenance/${videoId}.json` in result.candidates, true)
+    assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), true)
+  }
+  for (const videoId of ['hb_14', 'cb_52']) {
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), false)
     assert.equal(result.processedVideoIds.includes(videoId), false)
     assert.equal(`data/stream/${videoId}.json` in result.candidates, false)
@@ -230,7 +242,7 @@ test('current checkpoint candidate paths are exact and closed', () => {
       `data/provenance/${videoId}.json`
     ])
   ]
-  assert.equal(expectedPaths.length, 76)
+  assert.equal(expectedPaths.length, 108)
   assert.deepEqual(Object.keys(result.candidates), expectedPaths)
 })
 
@@ -360,14 +372,14 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   )
 
   const videos = result.candidates[CB1_REGRESSION_FILES.meta].meta.videos
-  assert.equal(videos.length, 37)
+  assert.equal(videos.length, 53)
   assert.deepEqual(videos.map((video) => video.id), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(
     videos.reduce((counts, video) => {
       counts[video.season] = (counts[video.season] || 0) + 1
       return counts
     }, {}),
-    { 1: 9, 2: 28 }
+    { 1: 9, 2: 28, 3: 16 }
   )
   const placement = (videoId) => {
     const { season, episode } = videos.find((video) => video.id === videoId)
@@ -382,7 +394,9 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   assert.deepEqual(placement('cb_32'), { season: 2, episode: 24 })
   assert.deepEqual(placement('cb_35'), { season: 2, episode: 27 })
   assert.deepEqual(placement('cb_0p0'), { season: 2, episode: 28 })
-  assert.equal(videos.some((video) => video.id === 'cb_36' || video.season === 3), false)
+  assert.deepEqual(placement('cb_36'), { season: 3, episode: 1 })
+  assert.deepEqual(placement('cb_51'), { season: 3, episode: 16 })
+  assert.equal(videos.some((video) => video.id === 'hb_14' || video.id === 'cb_52'), false)
   for (const resolved of inputs.resolvedRecords) {
     const video = videos.find((item) => item.id === resolved.projectionEntry.videoId)
     assert.equal(
@@ -395,7 +409,7 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
 
 test('every current generated production candidate satisfies its exact derivation contract', () => {
   const relativePaths = Object.keys(result.candidates)
-  assert.equal(relativePaths.length, 76)
+  assert.equal(relativePaths.length, 108)
   let exactResults = 0
   for (const relativePath of relativePaths) {
     assert.ok(read(relativePath, outputRoot).equals(jsonBytes(result.candidates[relativePath])), relativePath)
@@ -407,11 +421,11 @@ test('every current generated production candidate satisfies its exact derivatio
     }
     exactResults += 1
   }
-  assert.equal(exactResults, 76)
+  assert.equal(exactResults, 108)
 })
 
-test('the current 37 stream and provenance artifacts retain their regression contracts', () => {
-  for (const videoId of EXPECTED_PUBLISHED_PREFIX) {
+test('the pre-existing 37 stream and provenance artifacts retain their regression contracts', () => {
+  for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
     assert.ok(read(streamPath, outputRoot).equals(read(streamPath)), streamPath)
@@ -425,6 +439,23 @@ test('the current 37 stream and provenance artifacts retain their regression con
     } else {
       assert.ok(read(provenancePath, outputRoot).equals(read(provenancePath)), provenancePath)
     }
+  }
+})
+
+test('CB36-CB51 candidates derive exact verified evidence without invented resolution references', () => {
+  const resolvedByVideoId = new Map(
+    inputs.resolvedRecords.map((resolved) => [resolved.projectionEntry.videoId, resolved])
+  )
+  for (const videoId of EXPECTED_PUBLISHED_PREFIX.slice(EXPECTED_LOCKED_PREFIX.length)) {
+    const resolved = resolvedByVideoId.get(videoId)
+    const stream = result.candidates[`data/stream/${videoId}.json`].streams[0]
+    const provenance = result.candidates[`data/provenance/${videoId}.json`]
+    assert.equal(stream.infoHash, resolved.mediaEvidence.torrent.infoHash, videoId)
+    assert.equal(stream.fileIdx, resolved.mediaEvidence.torrent.fileSelection.fileIdx, videoId)
+    assert.equal(stream.behaviorHints.filename, resolved.mediaEvidence.torrent.fileSelection.filename, videoId)
+    assert.equal(stream.behaviorHints.videoSize, resolved.mediaEvidence.torrent.fileSelection.byteSize, videoId)
+    assert.equal(provenance.sourceInputs.verifiedMedia.evidenceRecord, `evidence/media/${videoId}.json`)
+    assert.equal(Object.hasOwn(provenance.sourceInputs.projection, 'resolutionRef'), false, videoId)
   }
 })
 

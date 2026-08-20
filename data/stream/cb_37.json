@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Conquistadores\n📖 [189-194] 🕒 37:37\n💾 397.83 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "32de6728ec0721bff8a2f6e36826cb49a65a9a90",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 397830885,
+        "filename": "37 - Conquistadores.mkv"
+      }
+    }
+  ]
+}

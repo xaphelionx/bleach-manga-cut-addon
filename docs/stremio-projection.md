@@ -28,7 +28,7 @@ Nuvio 0.8.4-beta determines a series' next episode by globally sorting all video
 
 Publication gates cover `editorialAvailability`, `resolvedPlacement`, `mediaEvidence`, and `defaultTimelineContiguity`. Projection never constitutes evidence that media or a stream exists.
 
-The current eligible and published prefix contains 37 entries through guided 35.5 / `cb_0p0`, including CB27.5. The projection has 37 eligible and 66 blocked entries. Every remaining primary entry, beginning with CB36, uses the generic `unpublished-primary` gate until publication is explicitly approved and the contiguous prefix advances. CB36–CB51 now have durable local technical-acquisition evidence, but evidence alone does not change their projection eligibility.
+The current eligible and published prefix contains all 53 default Concentrated entries through CB51, including CB27.5 and guided 35.5 / `cb_0p0`. The projection has 53 eligible and 50 blocked entries. Every remaining primary entry, beginning with Hollowed 14, uses the generic `unpublished-primary` gate until publication is explicitly approved and the contiguous prefix advances. CB36–CB51 were advanced only after durable technical-acquisition evidence and project-owner confirmation that the exact torrents were seeded and acquired/cached; Nuvio compatibility testing is still pending.
 
 ## Resolved guided 35.5 relationship
 
@@ -67,11 +67,11 @@ IDs encode only source project and exact displayed identifier syntax:
 
 Decimals are encoded lexically and never parsed as floating-point positions. Decimal syntax does not imply any editorial `kind`. Unknown identifier syntax is a validation error. IDs do not depend on title, season, episode, array order, or watch-order position.
 
-The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The 37 current prefix IDs through `cb_0p0` are both published and compatibility-locked. CB36+ and all other unpublished assignments remain reserved and unlocked.
+The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The first 37 published IDs through `cb_0p0` are compatibility-locked; CB36–CB51 are published but `locked:false`. Hollowed 14 and all other unpublished assignments remain reserved and unlocked.
 
 ## Compatibility-lock baseline
 
-The current published prefix and current compatibility-locked prefix are the same explicit 37 IDs: CB1 through CB35 including CB27.5, followed by guided 35.5 / `cb_0p0`. This is a batch lock, not a claim of per-entry direct playback. CB1–CB3 retain stronger individually established historical fixtures. CB4–CB35 are supported by deterministic technical evidence plus representative real-device sampling: CB4 playback/progress, CB9→CB10 season transition, CB27→CB27.5→CB28 ordering/playback, CB32 playback/subtitles, and CB35 playback. The corrected CB35→CB35.5 terminal sequence received the complete functional test.
+The compatibility-locked prefix remains the explicit first 37 IDs: CB1 through CB35 including CB27.5, followed by guided 35.5 / `cb_0p0`. The published prefix now extends through CB51 without automatically expanding that lock set. This is a batch lock, not a claim of per-entry direct playback. CB1–CB3 retain stronger individually established historical fixtures. CB4–CB35 are supported by deterministic technical evidence plus representative real-device sampling: CB4 playback/progress, CB9→CB10 season transition, CB27→CB27.5→CB28 ordering/playback, CB32 playback/subtitles, and CB35 playback. The corrected CB35→CB35.5 terminal sequence received the complete functional test. CB36–CB51 remain unlocked pending their compatibility testing.
 
 Here, `locked:true` means the addon-facing identity, order, torrent, and stream compatibility contract is accepted as the stable baseline and any future change requires deliberate revalidation. It does not mean every episode was manually played, every client behavior is bug-free, permanent public availability is proven, or future cache persistence is guaranteed.
 
@@ -92,9 +92,9 @@ The projection contains the Watch Guide's currently selected default ranges:
 
 The projection has 103 entries: 9 in S1, 28 in S2, 54 in S3, and 12 in S4. Global positions are resolved monotonically from 1 through 103.
 
-Current publication is the first 37 canonical entries through guided 35.5 / `cb_0p0`. CB36 is the first unpublished canonical suffix entry. The generic suffix blocker is now `primary-publication-prefix-after-cb_0p0`; prefix closure continues to prevent gaps without a special CB36 barrier.
+Current publication is the first 53 canonical entries through CB51. Hollowed 14 is the first unpublished canonical suffix entry at S3E17/global index 54; Concentrated CB52+ are not the next selected default Watch Guide entries. The generic suffix blocker is now `primary-publication-prefix-after-cb_51`; prefix closure continues to prevent gaps without a special Hollowed barrier.
 
-The default Concentrated Arrancar span CB36–CB51 has a separate 16-entry technical-acquisition manifest and verified-media evidence. Its trackerless local torrents were independently recreated byte-for-byte and all 4,771 pieces were verified against the unchanged payloads. Those torrent artifacts remain in the ignored local workspace. CB36–CB51 are still unpublished, reserved, and `locked:false`; no user-side seeding, TorBox acquisition, Nuvio playback validation, or permanent availability claim has been recorded for this batch.
+The default Concentrated Arrancar span CB36–CB51 has a separate 16-entry technical-acquisition manifest and verified-media evidence. Its trackerless local torrents were independently recreated byte-for-byte and all 4,771 pieces were verified against the unchanged payloads. Those torrent artifacts remain in the ignored local workspace. The project owner confirmed the exact 16 torrents are user-seeded and acquired/cached in the user's TorBox environment. CB36–CB51 are now published for compatibility testing but remain `locked:false`; Nuvio playback has not yet been validated, and no permanent availability or future-cache claim is made.
 
 ## Optional content
 
@@ -130,7 +130,8 @@ The projection validator enforces:
 - Source identifier `0.0`, guided identifier `35.5`, and permanent ID `cb_0p0` remain distinct and traceable through the owner resolution.
 - `cb_0p0` is the only projection entry with `resolutionRef`; it is published and compatibility-locked at S2E28/global index 37.
 - CB36 is S3E1/global index 38, and every one of the 103 global indexes is resolved.
-- The projection contains 37 eligible and 66 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at CB36.
+- The projection contains 53 eligible and 50 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at Hollowed 14.
+- The 53-entry published prefix contains an explicit 37-entry compatibility-locked prefix plus 16 published-but-unlocked CB36–CB51 entries; publication never grants a lock automatically.
 - Globally sorted eligible primary videos form exactly the approved contiguous prefix.
 - Optional and EX IDs cannot enter the primary default timeline.
 - HB11.5 and EX27 relationships remain exact.
@@ -141,4 +142,4 @@ The projection validator enforces:
 
 ## Artifact boundaries
 
-The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted focus observation is documentation of client/UI behavior, not torrent or network evidence. The CB36–CB51 evidence likewise cannot bypass projection approval or prefix closure. User-side seed/cache work, optional-content runtime experiments, and publication beyond CB35.5 each require separate approval.
+The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted focus observation is documentation of client/UI behavior, not torrent or network evidence. CB36–CB51 production artifacts trace their ordinary normalized records, projection entries, and verified-media records without inventing resolution references. Optional-content runtime experiments and publication beyond CB51 each require separate approval.

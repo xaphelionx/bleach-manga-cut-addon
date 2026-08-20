@@ -267,6 +267,118 @@
         "episode": 28,
         "title": "the rotator / the sand",
         "runtime": "7"
+      },
+      {
+        "id": "cb_36",
+        "season": 3,
+        "episode": 1,
+        "title": "Hush",
+        "runtime": "40"
+      },
+      {
+        "id": "cb_37",
+        "season": 3,
+        "episode": 2,
+        "title": "Conquistadores",
+        "runtime": "37"
+      },
+      {
+        "id": "cb_38",
+        "season": 3,
+        "episode": 3,
+        "title": "Death and Strawberry (Reprise)",
+        "runtime": "39"
+      },
+      {
+        "id": "cb_39",
+        "season": 3,
+        "episode": 4,
+        "title": "Night of Sledgehammer",
+        "runtime": "24"
+      },
+      {
+        "id": "cb_40",
+        "season": 3,
+        "episode": 5,
+        "title": "¡Mala Suerte!",
+        "runtime": "22"
+      },
+      {
+        "id": "cb_41",
+        "season": 3,
+        "episode": 6,
+        "title": "Turn the True Power On",
+        "runtime": "33"
+      },
+      {
+        "id": "cb_42",
+        "season": 3,
+        "episode": 7,
+        "title": "Immanent God Blues",
+        "runtime": "27"
+      },
+      {
+        "id": "cb_43",
+        "season": 3,
+        "episode": 8,
+        "title": "No Shaking Throne",
+        "runtime": "26"
+      },
+      {
+        "id": "cb_44",
+        "season": 3,
+        "episode": 9,
+        "title": "Slip Into My Barrier",
+        "runtime": "30"
+      },
+      {
+        "id": "cb_45",
+        "season": 3,
+        "episode": 10,
+        "title": "The Swordless Soldier",
+        "runtime": "20"
+      },
+      {
+        "id": "cb_46",
+        "season": 3,
+        "episode": 11,
+        "title": "The Mascaron Drive",
+        "runtime": "33"
+      },
+      {
+        "id": "cb_47",
+        "season": 3,
+        "episode": 12,
+        "title": "goodbye, halcyon days.",
+        "runtime": "29"
+      },
+      {
+        "id": "cb_48",
+        "season": 3,
+        "episode": 13,
+        "title": "Eagle Without Wings",
+        "runtime": "31"
+      },
+      {
+        "id": "cb_49",
+        "season": 3,
+        "episode": 14,
+        "title": "Winged Eagles",
+        "runtime": "23"
+      },
+      {
+        "id": "cb_50",
+        "season": 3,
+        "episode": 15,
+        "title": "United on the Desert",
+        "runtime": "40"
+      },
+      {
+        "id": "cb_51",
+        "season": 3,
+        "episode": 16,
+        "title": "Baron's Lecture Full-Course",
+        "runtime": "24"
       }
     ]
   }

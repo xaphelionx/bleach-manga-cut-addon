@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Eagle Without Wings\n📖 [238-241] 🕒 31:07\n💾 254.67 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "dc7d1109a5cfe2b929c1ee6b8a2f667b29401936",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 254673782,
+        "filename": "48 - Eagle Without Wings.mkv"
+      }
+    }
+  ]
+}

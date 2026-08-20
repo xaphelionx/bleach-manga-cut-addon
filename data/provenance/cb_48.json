@@ -1,0 +1,144 @@
+{
+  "id": "cb_48",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:48",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A52",
+        "concentrated-xlsx:episode-list:B52",
+        "concentrated-xlsx:episode-list:C52",
+        "concentrated-xlsx:episode-list:D52",
+        "concentrated-xlsx:episode-list:E52",
+        "concentrated-xlsx:episode-list:F52",
+        "concentrated-xlsx:episode-list:G52",
+        "concentrated-xlsx:episode-list:H52"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_48",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 13
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_48.json",
+      "videoId": "cb_48",
+      "recordId": "concentrated:48",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb48-local-torrent-verification",
+        "cb48-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "48",
+    "title": "Eagle Without Wings",
+    "mangaChapters": "238-241",
+    "sourceAnimeEpisodes": "142-143",
+    "exactEditRuntime": "00:31:07",
+    "normalizedExactRuntime": "31:07",
+    "timeSaved": "17m03s (35%)",
+    "releaseDate": "2026-04-07",
+    "lastUpdate": "2026-04-07",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 52,
+      "cells": "A52:H52"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "31",
+    "runtimeTransformation": "The exact 31:07 source runtime is presented as 31 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "dc7d1109a5cfe2b929c1ee6b8a2f667b29401936",
+    "fileIdx": 0,
+    "filename": "48 - Eagle Without Wings.mkv",
+    "videoSize": 254673782,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "48 - Eagle Without Wings.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1866.752
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "31:07 (1867 seconds) -> floor whole minutes -> 31",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "254673782 bytes / 1000000, fixed to two decimals -> 254.67 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

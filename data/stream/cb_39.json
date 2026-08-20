@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 Night of Sledgehammer\n📖 [200-203] 🕒 24:52\n💾 238.04 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "0a4ee7446eb28b2b51ea050f2a4a866effb5d50e",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 238038621,
+        "filename": "39 - Night of Sledgehammer.mkv"
+      }
+    }
+  ]
+}

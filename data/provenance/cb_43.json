@@ -1,0 +1,144 @@
+{
+  "id": "cb_43",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:43",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A46",
+        "concentrated-xlsx:episode-list:B46",
+        "concentrated-xlsx:episode-list:C46",
+        "concentrated-xlsx:episode-list:D46",
+        "concentrated-xlsx:episode-list:E46",
+        "concentrated-xlsx:episode-list:F46",
+        "concentrated-xlsx:episode-list:G46",
+        "concentrated-xlsx:episode-list:H46"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_43",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 8
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_43.json",
+      "videoId": "cb_43",
+      "recordId": "concentrated:43",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb43-local-torrent-verification",
+        "cb43-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "43",
+    "title": "No Shaking Throne",
+    "mangaChapters": "217-222",
+    "sourceAnimeEpisodes": "123-125",
+    "exactEditRuntime": "00:26:14",
+    "normalizedExactRuntime": "26:14",
+    "timeSaved": "18m38s (42%)",
+    "releaseDate": "2026-02-21",
+    "lastUpdate": "2026-04-01",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 46,
+      "cells": "A46:H46"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "26",
+    "runtimeTransformation": "The exact 26:14 source runtime is presented as 26 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "f4dddc42f74197c874dc4313c17af553f7d2bc19",
+    "fileIdx": 0,
+    "filename": "43 - No Shaking Throne.mkv",
+    "videoSize": 322559103,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "43 - No Shaking Throne.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1574.657
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "26:14 (1574 seconds) -> floor whole minutes -> 26",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "322559103 bytes / 1000000, fixed to two decimals -> 322.56 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

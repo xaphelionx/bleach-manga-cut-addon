@@ -1,0 +1,144 @@
+{
+  "id": "cb_39",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "concentrated:39",
+      "evidenceRefs": [
+        "concentrated-xlsx:episode-list:A42",
+        "concentrated-xlsx:episode-list:B42",
+        "concentrated-xlsx:episode-list:C42",
+        "concentrated-xlsx:episode-list:D42",
+        "concentrated-xlsx:episode-list:E42",
+        "concentrated-xlsx:episode-list:F42",
+        "concentrated-xlsx:episode-list:G42",
+        "concentrated-xlsx:episode-list:H42"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "cb_39",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 4
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/cb_39.json",
+      "videoId": "cb_39",
+      "recordId": "concentrated:39",
+      "verificationState": "verified",
+      "verificationBases": [
+        "cb39-local-torrent-verification",
+        "cb39-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Concentrated Bleach",
+    "episode": "39",
+    "title": "Night of Sledgehammer",
+    "mangaChapters": "200-203",
+    "sourceAnimeEpisodes": "116-118",
+    "exactEditRuntime": "00:24:52",
+    "normalizedExactRuntime": "24:52",
+    "timeSaved": "11m18s (31%)",
+    "releaseDate": "2025-12-25",
+    "lastUpdate": "2026-01-20",
+    "source": {
+      "document": "!Concentrated Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 42,
+      "cells": "A42:H42"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "24",
+    "runtimeTransformation": "The exact 24:52 source runtime is presented as 24 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "0a4ee7446eb28b2b51ea050f2a4a866effb5d50e",
+    "fileIdx": 0,
+    "filename": "39 - Night of Sledgehammer.mkv",
+    "videoSize": 238038621,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "39 - Night of Sledgehammer.mkv",
+    "video": {
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1492.586
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "24:52 (1492 seconds) -> floor whole minutes -> 24",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "238038621 bytes / 1000000, fixed to two decimals -> 238.04 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}
