@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_43",
+  "recordId": "concentrated:43",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "f4dddc42f74197c874dc4313c17af553f7d2bc19",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "43 - No Shaking Throne.mkv",
+      "byteSize": 322559103
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1574.657
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb43-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/43 - No Shaking Throne.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "e0b5daaaa76892dc11fc3e284699f824c872ff0e208fc0877b08781ca4759bf9"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 308,
+        "verifiedPieces": 308,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb43-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/43 - No Shaking Throne.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 322559103
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb43-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb43-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb43-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb43-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb43-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb43-local-media-ffprobe-inspection"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_44",
+  "recordId": "concentrated:44",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "6fd455e1061d94f40448aa5300dce8786ff93f7d",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "44 - Slip Into My Barrier.mkv",
+      "byteSize": 335532518
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1828.268
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb44-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/44 - Slip Into My Barrier.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "62f06ede47f09bef6e392f2bfc73cde92a2fb09f0a09ee259bd663b9e8711dba"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 320,
+        "verifiedPieces": 320,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb44-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/44 - Slip Into My Barrier.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 335532518
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb44-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb44-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb44-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb44-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb44-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb44-local-media-ffprobe-inspection"
+    ]
+  }
+}

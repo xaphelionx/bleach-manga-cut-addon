@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_40",
+  "recordId": "concentrated:40",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "3a41f20e24f1c4bfa412c0eff584b7b839bd3660",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "40 - ¡Mala Suerte!.mkv",
+      "byteSize": 277376618
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1372.076
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb40-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/40 - ¡Mala Suerte!.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "9917cd6debc3aa61969db522a79f78e8575ea7184edf8b6ecda4f61bd06ccb43"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 265,
+        "verifiedPieces": 265,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb40-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/40 - ¡Mala Suerte!.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 277376618
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb40-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb40-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb40-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb40-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb40-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb40-local-media-ffprobe-inspection"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_37",
+  "recordId": "concentrated:37",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "32de6728ec0721bff8a2f6e36826cb49a65a9a90",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "37 - Conquistadores.mkv",
+      "byteSize": 397830885
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2257.685
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb37-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/37 - Conquistadores.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "e2314780401b0bb519c1e7d48017dc40ac2d5477782b1ba98fb41d46ef361c9d"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 380,
+        "verifiedPieces": 380,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb37-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/37 - Conquistadores.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 397830885
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb37-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb37-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb37-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb37-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb37-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb37-local-media-ffprobe-inspection"
+    ]
+  }
+}

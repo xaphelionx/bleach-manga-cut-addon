@@ -31,6 +31,12 @@ const PRODUCTION_ACQUISITION_PATH = path.join(
   'acquisition',
   'concentrated-preboundary.json'
 )
+const ARRANCAR_ACQUISITION_PATH = path.join(
+  REPOSITORY_ROOT,
+  'evidence',
+  'acquisition',
+  'concentrated-arrancar.json'
+)
 const PRODUCTION_EVIDENCE_DIRECTORY = path.join(REPOSITORY_ROOT, 'evidence', 'media')
 const PRODUCTION_SELECTION_ENTRIES = [
   { recordId: 'concentrated:03', videoId: 'cb_3' },
@@ -73,6 +79,14 @@ const LOCKED_PRODUCTION_EVIDENCE_INDEX_SHA256 =
   '071d4059c9711768f95ef14da8c3a558bb69ae99fa682ecc7aab01d05e6a1841'
 const LOCKED_PRODUCTION_EVIDENCE_INDEX_BYTE_SIZE = 7033
 const LOCKED_PRODUCTION_EVIDENCE_TOTAL_BYTE_SIZE = 132181
+const ARRANCAR_SELECTION_ENTRIES = Array.from({ length: 16 }, (_, index) => ({
+  recordId: `concentrated:${index + 36}`,
+  videoId: `cb_${index + 36}`
+}))
+const LOCKED_ARRANCAR_EVIDENCE_INDEX_SHA256 =
+  'deb13c1351260e6a8f125d8adacb56c1963885a95b601d0ed3f0763d0c2eea2c'
+const LOCKED_ARRANCAR_EVIDENCE_INDEX_BYTE_SIZE = 3219
+const LOCKED_ARRANCAR_EVIDENCE_TOTAL_BYTE_SIZE = 60357
 
 function identity(pairs = PAIRS) {
   return {
@@ -250,18 +264,26 @@ function readJsonFile(filename) {
   return JSON.parse(fs.readFileSync(filename, 'utf8'))
 }
 
-function productionCandidates() {
-  const acquisitionManifest = readJsonFile(PRODUCTION_ACQUISITION_PATH)
+function productionCandidatesFor(acquisitionPath, selectionEntries) {
+  const acquisitionManifest = readJsonFile(acquisitionPath)
   const candidates = generateEvidenceCandidates({
     acquisitionManifest,
     selection: {
       schemaVersion: 1,
-      entries: PRODUCTION_SELECTION_ENTRIES.map((entry) => ({ ...entry }))
+      entries: selectionEntries.map((entry) => ({ ...entry }))
     },
     concentrated: readJsonFile(path.join(REPOSITORY_ROOT, 'editorial', 'normalized', 'concentrated.json')),
     registry: readJsonFile(path.join(REPOSITORY_ROOT, 'projection', 'stremio', 'video-id-registry.json'))
   })
   return { acquisitionManifest, candidates }
+}
+
+function productionCandidates() {
+  return productionCandidatesFor(PRODUCTION_ACQUISITION_PATH, PRODUCTION_SELECTION_ENTRIES)
+}
+
+function arrancarProductionCandidates() {
+  return productionCandidatesFor(ARRANCAR_ACQUISITION_PATH, ARRANCAR_SELECTION_ENTRIES)
 }
 
 test('valid one-entry generation succeeds', () => {
@@ -703,5 +725,56 @@ test('committed preboundary evidence set matches the aggregate index lock', () =
   assert.equal(
     crypto.createHash('sha256').update(indexBytes).digest('hex'),
     LOCKED_PRODUCTION_EVIDENCE_INDEX_SHA256
+  )
+})
+
+test('committed Arrancar evidence is byte-identical to its separate production generation batch', () => {
+  const { acquisitionManifest, candidates } = arrancarProductionCandidates()
+  const expectedVideoIds = ARRANCAR_SELECTION_ENTRIES.map(({ videoId }) => videoId)
+  assert.equal(candidates.length, 16)
+  assert.deepEqual(candidates.map(({ videoId }) => videoId), expectedVideoIds)
+  assert.deepEqual(ARRANCAR_SELECTION_ENTRIES[0], { recordId: 'concentrated:36', videoId: 'cb_36' })
+  assert.deepEqual(ARRANCAR_SELECTION_ENTRIES.at(-1), { recordId: 'concentrated:51', videoId: 'cb_51' })
+
+  for (const candidate of candidates) {
+    const acquisitionEntry = acquisitionManifest.entries.find(({ videoId }) => videoId === candidate.videoId)
+    assert.ok(acquisitionEntry)
+    assert.equal(acquisitionEntry.recordId, candidate.recordId)
+    const filename = path.join(PRODUCTION_EVIDENCE_DIRECTORY, candidate.filename)
+    assert.equal(fs.existsSync(filename), true)
+    const committedBytes = fs.readFileSync(filename)
+    assert.ok(committedBytes.equals(candidate.bytes))
+    assert.equal(crypto.createHash('sha256').update(committedBytes).digest('hex'), candidate.sha256)
+    assert.equal(committedBytes.length, candidate.byteSize)
+    const committed = JSON.parse(committedBytes)
+    assert.doesNotThrow(() => validateVerifiedMedia(committed))
+    assert.deepEqual(committed.media.subtitleTracks.map(({ language }) => language), ['English', 'English'])
+  }
+})
+
+test('committed Arrancar evidence set matches its separate aggregate index lock', () => {
+  let totalByteSize = 0
+  const index = ARRANCAR_SELECTION_ENTRIES.map(({ recordId, videoId }) => {
+    const filename = `${videoId}.json`
+    const bytes = fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, filename))
+    const committed = JSON.parse(bytes)
+    assert.equal(committed.recordId, recordId)
+    assert.equal(committed.videoId, videoId)
+    assert.deepEqual(committed.media.subtitleTracks.map(({ language }) => language), ['English', 'English'])
+    totalByteSize += bytes.length
+    return {
+      recordId: committed.recordId,
+      videoId: committed.videoId,
+      filename,
+      sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+      byteSize: bytes.length
+    }
+  })
+  const indexBytes = Buffer.from(`${JSON.stringify(index, null, 2)}\n`)
+  assert.equal(indexBytes.length, LOCKED_ARRANCAR_EVIDENCE_INDEX_BYTE_SIZE)
+  assert.equal(totalByteSize, LOCKED_ARRANCAR_EVIDENCE_TOTAL_BYTE_SIZE)
+  assert.equal(
+    crypto.createHash('sha256').update(indexBytes).digest('hex'),
+    LOCKED_ARRANCAR_EVIDENCE_INDEX_SHA256
   )
 })

@@ -86,11 +86,14 @@ test('processing remains exactly projection-controlled at the current canonical 
   assert.equal('data/stream/cb_0p0.json' in result.candidates, true)
   assert.equal('data/provenance/cb_0p0.json' in result.candidates, true)
   assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_0p0'), true)
-  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_36'), false)
-  assert.equal(result.processedVideoIds.includes('cb_36'), false)
-  assert.equal('data/stream/cb_36.json' in result.candidates, false)
-  assert.equal('data/provenance/cb_36.json' in result.candidates, false)
-  assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_36'), false)
+  for (const videoId of ['cb_36', 'cb_51']) {
+    assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
+    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), false)
+    assert.equal(result.processedVideoIds.includes(videoId), false)
+    assert.equal(`data/stream/${videoId}.json` in result.candidates, false)
+    assert.equal(`data/provenance/${videoId}.json` in result.candidates, false)
+    assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), false)
+  }
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 

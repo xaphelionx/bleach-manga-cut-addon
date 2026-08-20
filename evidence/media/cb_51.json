@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_51",
+  "recordId": "concentrated:51",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "531732cf8b71f269ca529887c9cf21d6e2cbf054",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "51 - Baron_s Lecture Full-Course.mkv",
+      "byteSize": 258629582
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1462.976
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb51-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/51 - Baron_s Lecture Full-Course.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "56fa31db29746ecf08b80dbd405d431d63eb685781cf5035f617532a8f5e5315"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 247,
+        "verifiedPieces": 247,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb51-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/51 - Baron_s Lecture Full-Course.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 258629582
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb51-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb51-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb51-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb51-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb51-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb51-local-media-ffprobe-inspection"
+    ]
+  }
+}

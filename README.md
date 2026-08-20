@@ -12,6 +12,8 @@ Current publication and validation state:
 - **Technical and availability precondition:** the exact deterministic trackerless torrent verified 51/51 pieces. The project owner confirmed it at 100% and seeding, confirmed info hash `cbdfdf3949a8f8c2d470dfc4f1d1a21571dca7bc`, and confirmed that exact torrent was acquired/cached in the user's TorBox environment. No private TorBox details are recorded.
 - **Accepted client limitation:** the Details-screen focus trap reproduced after CB35.5 natural completion. Backing out to Nuvio Home and re-entering Bleach Details restores normal navigation. The limitation is non-blocking and its attribution remains unresolved.
 - **Canonical prefix stop:** CB36+ remain unpublished; CB36 is now the first unpublished canonical suffix entry.
+- **Arrancar technical acquisition:** CB36–CB51 now have separate verified local acquisition and media evidence. All 16 trackerless torrents were independently recreated byte-for-byte and verified across all 4,771 pieces. The torrent files remain only in the ignored local workspace; CB36–CB51 remain `reserved`, `locked:false`, and unpublished.
+- **Arrancar availability/testing still pending:** the project owner has not yet performed user-side seeding or TorBox acquisition for this batch, and no CB36–CB51 Nuvio playback test has occurred. No permanent public availability claim is made.
 - **Out of scope:** publishing CB36 or later, TorBox access, a full-catalog import, deployment, and changes beyond the accepted preboundary baseline.
 - **Still unresolved:** permanent public swarm availability, availability after all seeds disappear, arbitrary third-party discovery, future cache persistence, artwork, and exact Nuvio stream-presentation UI parity.
 
@@ -96,6 +98,14 @@ Inspection found the local 35.5 media suitable for this unambiguous mapping. Its
 For the current 37-entry prefix, `locked:true` means the addon-facing identity, order, torrent, and stream compatibility contract is accepted as the stable baseline; future changes require deliberate revalidation. The lock is supported by deterministic editorial/projection derivation, verified-media evidence, exact deterministic torrents and piece verification, the user-side seed/cache precondition, representative real-device sampling, season-boundary and decimal-insertion tests, the subtitle sample, and the complete CB35→CB35.5 terminal sequence.
 
 The batch lock does **not** mean every episode was manually played, every Nuvio UI behavior is bug-free, the terminal-completion focus trap is resolved, permanent public swarm availability is proven, or future TorBox cache persistence is guaranteed. CB1–CB3 retain their stronger individually established historical fixtures; the remainder is an explicitly documented batch validation.
+
+## Arrancar technical-acquisition state
+
+The default Concentrated Arrancar span CB36–CB51 now has a separate deterministic technical-acquisition artifact at `evidence/acquisition/concentrated-arrancar.json` and verified-media evidence at `evidence/media/cb_36.json` through `evidence/media/cb_51.json`. Each exact single-file BitTorrent v1 artifact was created without trackers or web seeds, independently recreated to confirm byte determinism, and verified piece-by-piece against its unchanged local payload. The 16 torrents total 4,771 verified pieces with zero mismatches.
+
+This technical evidence does not advance publication. The current public and compatibility-locked prefix remains exactly 37 entries through guided CB35.5 / `cb_0p0`; CB36–CB51 remain reserved, unlocked, and absent from production meta, streams, and provenance. The torrent artifacts live only under the ignored local `sources/torrents/concentrated-arrancar/` workspace. User-side seeding and TorBox acquisition have not yet been performed for this batch, Nuvio playback has not been tested, and no permanent availability claim is made.
+
+The Watch Guide's optional CB50 instruction remains separate from the default timeline: pause CB50 at 16:15, play Hollowed 11.5, then resume CB50. This checkpoint does not create Hollowed 11.5 evidence or add it to the primary series.
 
 ## Locked CB1–CB3 compatibility contract
 

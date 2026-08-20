@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_45",
+  "recordId": "concentrated:45",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "1e1e7b8a1a3fb91c457f442c38ebbb4e7e4887e1",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "45 - The Swordless Soldier.mkv",
+      "byteSize": 183336863
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1257.984
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb45-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/45 - The Swordless Soldier.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "aa9eacbee54d8e2046ee47d700a4c3e37f97d98a9da69dda1fed193474b499d9"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 175,
+        "verifiedPieces": 175,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb45-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/45 - The Swordless Soldier.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 183336863
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb45-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb45-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb45-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb45-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb45-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb45-local-media-ffprobe-inspection"
+    ]
+  }
+}

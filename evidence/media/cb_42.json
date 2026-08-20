@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_42",
+  "recordId": "concentrated:42",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "f12743e94c5116eb6621d4b8206c5db6cd528428",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "42 - Immanent God Blues.mkv",
+      "byteSize": 304900775
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1668.033
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb42-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/42 - Immanent God Blues.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "699533ae1a7905115671a7c44bb27847781da53269f7cc8033ea16f922967f75"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 291,
+        "verifiedPieces": 291,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb42-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/42 - Immanent God Blues.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 304900775
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb42-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb42-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb42-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb42-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb42-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb42-local-media-ffprobe-inspection"
+    ]
+  }
+}

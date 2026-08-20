@@ -21,6 +21,10 @@ const PRODUCTION_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/concentrated-pre
 const PRODUCTION_MANIFEST_PATH = path.join(repositoryRoot, PRODUCTION_MANIFEST_RELATIVE_PATH)
 const LOCKED_PRODUCTION_MANIFEST_SHA256 = '9b7a8c1009998862ed412554db3ff372994189fd255509ff767356d96b4803db'
 const LOCKED_PRODUCTION_MANIFEST_BYTE_SIZE = 97436
+const ARRANCAR_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/concentrated-arrancar.json'
+const ARRANCAR_MANIFEST_PATH = path.join(repositoryRoot, ARRANCAR_MANIFEST_RELATIVE_PATH)
+const LOCKED_ARRANCAR_MANIFEST_SHA256 = '7db2e19dca971507686132091faac781abf42da35a8868044dc0fc12b3deef4a'
+const LOCKED_ARRANCAR_MANIFEST_BYTE_SIZE = 46013
 
 const PAIRS = [
   ['concentrated:03', 'cb_3', '03 - Three.mkv'],
@@ -689,6 +693,14 @@ function readProductionManifest() {
   return JSON.parse(readProductionManifestBytes().toString('utf8'))
 }
 
+function readArrancarManifestBytes() {
+  return fs.readFileSync(ARRANCAR_MANIFEST_PATH)
+}
+
+function readArrancarManifest() {
+  return JSON.parse(readArrancarManifestBytes().toString('utf8'))
+}
+
 test('durable production acquisition manifest has the exact locked bytes', () => {
   assert.equal(fs.existsSync(PRODUCTION_MANIFEST_PATH), true)
   const bytes = readProductionManifestBytes()
@@ -974,4 +986,74 @@ test('durable production cb_0p0 acquisition and torrent identity remain locked',
     payloadFilenameMatchesLocalMedia: true,
     payloadByteSizeMatchesLocalMedia: true
   })
+})
+
+test('durable Arrancar acquisition manifest has the exact locked bytes', () => {
+  assert.equal(fs.existsSync(ARRANCAR_MANIFEST_PATH), true)
+  const bytes = readArrancarManifestBytes()
+  assert.equal(bytes.length, LOCKED_ARRANCAR_MANIFEST_BYTE_SIZE)
+  assert.equal(
+    crypto.createHash('sha256').update(bytes).digest('hex'),
+    LOCKED_ARRANCAR_MANIFEST_SHA256
+  )
+})
+
+test('durable Arrancar acquisition manifest preserves exact scope and registry order', () => {
+  const manifest = readArrancarManifest()
+  const registry = require('../projection/stremio/video-id-registry.json')
+  const registryIndex = new Map(registry.entries.map((entry, index) => [entry.videoId, index]))
+  const expectedVideoIds = Array.from({ length: 16 }, (_, index) => `cb_${index + 36}`)
+  const expectedRecordIds = Array.from({ length: 16 }, (_, index) => `concentrated:${index + 36}`)
+
+  assert.equal(validateAcquisitionManifest(manifest), manifest)
+  assert.equal(manifest.schemaVersion, 1)
+  assert.equal(manifest.authorityDomain, 'technical-acquisition')
+  assert.equal(manifest.entries.length, 16)
+  assert.deepEqual(manifest.entries.map(({ videoId }) => videoId), expectedVideoIds)
+  assert.deepEqual(manifest.entries.map(({ recordId }) => recordId), expectedRecordIds)
+  for (const excluded of ['cb_35', 'cb_0p0', 'cb_45p5', 'cb_50p5', 'cb_0p8']) {
+    assert.equal(expectedVideoIds.includes(excluded), false)
+  }
+  for (let index = 1; index < expectedVideoIds.length; index += 1) {
+    assert.ok(registryIndex.get(expectedVideoIds[index - 1]) < registryIndex.get(expectedVideoIds[index]))
+  }
+
+  for (const selector of [
+    ({ recordId }) => recordId,
+    ({ videoId }) => videoId,
+    ({ media }) => media.relativePath,
+    ({ torrent }) => torrent.relativePath,
+    ({ torrent }) => torrent.infoHash
+  ]) {
+    assert.equal(new Set(manifest.entries.map(selector)).size, 16)
+  }
+})
+
+test('durable Arrancar acquisition torrent and media aggregates remain exact', () => {
+  const entries = readArrancarManifest().entries
+  const distinct = (values) => [...new Set(values)]
+
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.verifiedPieces, 0), 4771)
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.mismatchedPieces, 0), 0)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.audioStreams.length, 0), 32)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.subtitleStreams.length, 0), 32)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.attachmentCount, 0), 84)
+  assert.equal(entries.filter((entry) => entry.media.videoStreams.some(({ attachedPic }) => attachedPic === 1)).length, 16)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.otherStreamCount, 0), 0)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.warnings.length, 0), 0)
+
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.videoStreams.map(({ codecName }) => codecName))), ['hevc', 'png'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.audioStreams.map(({ codecName }) => codecName))), ['aac'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.audioStreams.map(({ language }) => language))), ['jpn', 'eng'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.subtitleStreams.map(({ codecName }) => codecName))), ['ass'])
+  assert.deepEqual(distinct(entries.flatMap(({ media }) => media.subtitleStreams.map(({ language }) => language))), ['eng'])
+
+  for (const { torrent } of entries) {
+    assert.equal(torrent.verifiedPieces, torrent.pieceCount)
+    assert.equal(torrent.mismatchedPieces, 0)
+    assert.deepEqual(torrent.mismatchPieceIndexes, [])
+    assert.equal(torrent.rawInfoMatchesCanonicalEncoding, true)
+    assert.equal(torrent.payloadFilenameMatchesLocalMedia, true)
+    assert.equal(torrent.payloadByteSizeMatchesLocalMedia, true)
+  }
 })

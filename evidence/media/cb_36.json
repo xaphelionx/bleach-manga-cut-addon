@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_36",
+  "recordId": "concentrated:36",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "b7a4aa0ef143816cfdd34063f69b7e3a1ba30073",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "36 - Hush.mkv",
+      "byteSize": 360782365
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2432.234
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb36-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/36 - Hush.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "4c770ea56d176454558e4f4922edcbf9a4b904dee3030718644595abea356b5c"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 345,
+        "verifiedPieces": 345,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb36-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/36 - Hush.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 360782365
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb36-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb36-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb36-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb36-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb36-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb36-local-media-ffprobe-inspection"
+    ]
+  }
+}

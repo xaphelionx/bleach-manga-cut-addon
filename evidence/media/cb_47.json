@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_47",
+  "recordId": "concentrated:47",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "a613ebdb53207dacf1a7fd1c8f6940c02b5d9781",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "47 - goodbye, halcyon days. .mkv",
+      "byteSize": 302069593
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1771.69
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb47-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/47 - goodbye, halcyon days. .mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "fb9db30e302ef457db7d9186efbfe0b7a6f50c4e4fff71a7144960adb4f3c44a"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 289,
+        "verifiedPieces": 289,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb47-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/47 - goodbye, halcyon days. .mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 302069593
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb47-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb47-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb47-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb47-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb47-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb47-local-media-ffprobe-inspection"
+    ]
+  }
+}

@@ -28,7 +28,7 @@ Nuvio 0.8.4-beta determines a series' next episode by globally sorting all video
 
 Publication gates cover `editorialAvailability`, `resolvedPlacement`, `mediaEvidence`, and `defaultTimelineContiguity`. Projection never constitutes evidence that media or a stream exists.
 
-The current eligible and published prefix contains 37 entries through guided 35.5 / `cb_0p0`, including CB27.5. The projection has 37 eligible and 66 blocked entries. Every remaining primary entry, beginning with CB36, uses the generic `unpublished-primary` gate until media evidence is approved and the contiguous prefix advances.
+The current eligible and published prefix contains 37 entries through guided 35.5 / `cb_0p0`, including CB27.5. The projection has 37 eligible and 66 blocked entries. Every remaining primary entry, beginning with CB36, uses the generic `unpublished-primary` gate until publication is explicitly approved and the contiguous prefix advances. CB36–CB51 now have durable local technical-acquisition evidence, but evidence alone does not change their projection eligibility.
 
 ## Resolved guided 35.5 relationship
 
@@ -94,6 +94,8 @@ The projection has 103 entries: 9 in S1, 28 in S2, 54 in S3, and 12 in S4. Globa
 
 Current publication is the first 37 canonical entries through guided 35.5 / `cb_0p0`. CB36 is the first unpublished canonical suffix entry. The generic suffix blocker is now `primary-publication-prefix-after-cb_0p0`; prefix closure continues to prevent gaps without a special CB36 barrier.
 
+The default Concentrated Arrancar span CB36–CB51 has a separate 16-entry technical-acquisition manifest and verified-media evidence. Its trackerless local torrents were independently recreated byte-for-byte and all 4,771 pieces were verified against the unchanged payloads. Those torrent artifacts remain in the ignored local workspace. CB36–CB51 are still unpublished, reserved, and `locked:false`; no user-side seeding, TorBox acquisition, Nuvio playback validation, or permanent availability claim has been recorded for this batch.
+
 ## Optional content
 
 HB11.5, EX1, EX27, and EX50 have no primary-series season or episode placement. They cannot enter primary `meta.videos` under the current design, and no runtime representation is selected.
@@ -139,4 +141,4 @@ The projection validator enforces:
 
 ## Artifact boundaries
 
-The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted focus observation is documentation of client/UI behavior, not torrent or network evidence. Future media acquisition, optional-content runtime experiments, or publication beyond CB35.5 require separate approval.
+The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted focus observation is documentation of client/UI behavior, not torrent or network evidence. The CB36–CB51 evidence likewise cannot bypass projection approval or prefix closure. User-side seed/cache work, optional-content runtime experiments, and publication beyond CB35.5 each require separate approval.

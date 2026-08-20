@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_41",
+  "recordId": "concentrated:41",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "d6f6805624f3563806ea9ab05b7397c06a1c75f8",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "41 - Turn the True Power On.mkv",
+      "byteSize": 361405135
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1991.233
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb41-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/41 - Turn the True Power On.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "278d63f97444c51597311201375e1bf48bf9caa728a48b5d046cef65b4987d6c"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 345,
+        "verifiedPieces": 345,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb41-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/41 - Turn the True Power On.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 361405135
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb41-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb41-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb41-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb41-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb41-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb41-local-media-ffprobe-inspection"
+    ]
+  }
+}

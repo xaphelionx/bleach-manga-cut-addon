@@ -1,0 +1,1574 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "technical-acquisition",
+  "entries": [
+    {
+      "recordId": "concentrated:36",
+      "videoId": "cb_36",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/36 - Hush.mkv",
+        "byteSize": 360782365,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2432.234
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/36 - Hush.mkv.torrent",
+        "torrentByteSize": 6988,
+        "torrentSha256": "4c770ea56d176454558e4f4922edcbf9a4b904dee3030718644595abea356b5c",
+        "infoHash": "b7a4aa0ef143816cfdd34063f69b7e3a1ba30073",
+        "fileIdx": 0,
+        "payloadFilename": "36 - Hush.mkv",
+        "payloadByteSize": 360782365,
+        "pieceLength": 1048576,
+        "pieceCount": 345,
+        "verifiedPieces": 345,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:37",
+      "videoId": "cb_37",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/37 - Conquistadores.mkv",
+        "byteSize": 397830885,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2257.685
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/37 - Conquistadores.mkv.torrent",
+        "torrentByteSize": 7698,
+        "torrentSha256": "e2314780401b0bb519c1e7d48017dc40ac2d5477782b1ba98fb41d46ef361c9d",
+        "infoHash": "32de6728ec0721bff8a2f6e36826cb49a65a9a90",
+        "fileIdx": 0,
+        "payloadFilename": "37 - Conquistadores.mkv",
+        "payloadByteSize": 397830885,
+        "pieceLength": 1048576,
+        "pieceCount": 380,
+        "verifiedPieces": 380,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:38",
+      "videoId": "cb_38",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/38 - Death and Strawberry (Reprise).mkv",
+        "byteSize": 375226172,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2347.648
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/38 - Death and Strawberry (Reprise).mkv.torrent",
+        "torrentByteSize": 7274,
+        "torrentSha256": "0eac1c1a54be010b7d13255a17eb45b1643a88c16d959dd7111c8e8c9e2a3aa3",
+        "infoHash": "147f92600bc2f0b0200b2880f6d88dc418f471af",
+        "fileIdx": 0,
+        "payloadFilename": "38 - Death and Strawberry (Reprise).mkv",
+        "payloadByteSize": 375226172,
+        "pieceLength": 1048576,
+        "pieceCount": 358,
+        "verifiedPieces": 358,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:39",
+      "videoId": "cb_39",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/39 - Night of Sledgehammer.mkv",
+        "byteSize": 238038621,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1492.586
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 11,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgba64be",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 6,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/39 - Night of Sledgehammer.mkv.torrent",
+        "torrentByteSize": 4665,
+        "torrentSha256": "6936952eb453c7eb4ce0c16c71083f1a20aa96d88b6d539da82d9b63617aa6e5",
+        "infoHash": "0a4ee7446eb28b2b51ea050f2a4a866effb5d50e",
+        "fileIdx": 0,
+        "payloadFilename": "39 - Night of Sledgehammer.mkv",
+        "payloadByteSize": 238038621,
+        "pieceLength": 1048576,
+        "pieceCount": 228,
+        "verifiedPieces": 228,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:40",
+      "videoId": "cb_40",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/40 - ¡Mala Suerte!.mkv",
+        "byteSize": 277376618,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1372.076
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/40 - ¡Mala Suerte!.mkv.torrent",
+        "torrentByteSize": 5398,
+        "torrentSha256": "9917cd6debc3aa61969db522a79f78e8575ea7184edf8b6ecda4f61bd06ccb43",
+        "infoHash": "3a41f20e24f1c4bfa412c0eff584b7b839bd3660",
+        "fileIdx": 0,
+        "payloadFilename": "40 - ¡Mala Suerte!.mkv",
+        "payloadByteSize": 277376618,
+        "pieceLength": 1048576,
+        "pieceCount": 265,
+        "verifiedPieces": 265,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:41",
+      "videoId": "cb_41",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/41 - Turn the True Power On.mkv",
+        "byteSize": 361405135,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1991.233
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/41 - Turn the True Power On.mkv.torrent",
+        "torrentByteSize": 7006,
+        "torrentSha256": "278d63f97444c51597311201375e1bf48bf9caa728a48b5d046cef65b4987d6c",
+        "infoHash": "d6f6805624f3563806ea9ab05b7397c06a1c75f8",
+        "fileIdx": 0,
+        "payloadFilename": "41 - Turn the True Power On.mkv",
+        "payloadByteSize": 361405135,
+        "pieceLength": 1048576,
+        "pieceCount": 345,
+        "verifiedPieces": 345,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:42",
+      "videoId": "cb_42",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/42 - Immanent God Blues.mkv",
+        "byteSize": 304900775,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1668.033
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/42 - Immanent God Blues.mkv.torrent",
+        "torrentByteSize": 5922,
+        "torrentSha256": "699533ae1a7905115671a7c44bb27847781da53269f7cc8033ea16f922967f75",
+        "infoHash": "f12743e94c5116eb6621d4b8206c5db6cd528428",
+        "fileIdx": 0,
+        "payloadFilename": "42 - Immanent God Blues.mkv",
+        "payloadByteSize": 304900775,
+        "pieceLength": 1048576,
+        "pieceCount": 291,
+        "verifiedPieces": 291,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:43",
+      "videoId": "cb_43",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/43 - No Shaking Throne.mkv",
+        "byteSize": 322559103,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1574.657
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 12,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 7,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/43 - No Shaking Throne.mkv.torrent",
+        "torrentByteSize": 6261,
+        "torrentSha256": "e0b5daaaa76892dc11fc3e284699f824c872ff0e208fc0877b08781ca4759bf9",
+        "infoHash": "f4dddc42f74197c874dc4313c17af553f7d2bc19",
+        "fileIdx": 0,
+        "payloadFilename": "43 - No Shaking Throne.mkv",
+        "payloadByteSize": 322559103,
+        "pieceLength": 1048576,
+        "pieceCount": 308,
+        "verifiedPieces": 308,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:44",
+      "videoId": "cb_44",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/44 - Slip Into My Barrier.mkv",
+        "byteSize": 335532518,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1828.268
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/44 - Slip Into My Barrier.mkv.torrent",
+        "torrentByteSize": 6504,
+        "torrentSha256": "62f06ede47f09bef6e392f2bfc73cde92a2fb09f0a09ee259bd663b9e8711dba",
+        "infoHash": "6fd455e1061d94f40448aa5300dce8786ff93f7d",
+        "fileIdx": 0,
+        "payloadFilename": "44 - Slip Into My Barrier.mkv",
+        "payloadByteSize": 335532518,
+        "pieceLength": 1048576,
+        "pieceCount": 320,
+        "verifiedPieces": 320,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:45",
+      "videoId": "cb_45",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/45 - The Swordless Soldier.mkv",
+        "byteSize": 183336863,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1257.984
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/45 - The Swordless Soldier.mkv.torrent",
+        "torrentByteSize": 3605,
+        "torrentSha256": "aa9eacbee54d8e2046ee47d700a4c3e37f97d98a9da69dda1fed193474b499d9",
+        "infoHash": "1e1e7b8a1a3fb91c457f442c38ebbb4e7e4887e1",
+        "fileIdx": 0,
+        "payloadFilename": "45 - The Swordless Soldier.mkv",
+        "payloadByteSize": 183336863,
+        "pieceLength": 1048576,
+        "pieceCount": 175,
+        "verifiedPieces": 175,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:46",
+      "videoId": "cb_46",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/46 - The Mascaron Drive.mkv",
+        "byteSize": 348129126,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2023.04
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 13,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 8,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/46 - The Mascaron Drive.mkv.torrent",
+        "torrentByteSize": 6762,
+        "torrentSha256": "b7222f1087e199b81221f62282d22023901b13058bf48fe3b59ce1e4c1511daa",
+        "infoHash": "f980ea10d4a34d8614e07e3618f6c592eee8d18c",
+        "fileIdx": 0,
+        "payloadFilename": "46 - The Mascaron Drive.mkv",
+        "payloadByteSize": 348129126,
+        "pieceLength": 1048576,
+        "pieceCount": 333,
+        "verifiedPieces": 333,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:47",
+      "videoId": "cb_47",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/47 - goodbye, halcyon days. .mkv",
+        "byteSize": 302069593,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1771.69
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/47 - goodbye, halcyon days. .mkv.torrent",
+        "torrentByteSize": 5887,
+        "torrentSha256": "fb9db30e302ef457db7d9186efbfe0b7a6f50c4e4fff71a7144960adb4f3c44a",
+        "infoHash": "a613ebdb53207dacf1a7fd1c8f6940c02b5d9781",
+        "fileIdx": 0,
+        "payloadFilename": "47 - goodbye, halcyon days. .mkv",
+        "payloadByteSize": 302069593,
+        "pieceLength": 1048576,
+        "pieceCount": 289,
+        "verifiedPieces": 289,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:48",
+      "videoId": "cb_48",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/48 - Eagle Without Wings.mkv",
+        "byteSize": 254673782,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1866.752
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 13,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 8,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/48 - Eagle Without Wings.mkv.torrent",
+        "torrentByteSize": 4963,
+        "torrentSha256": "0e5684c482265a65b4bd42acd1e851fffa5adcfdac7024d57b0c59acc00ed9e6",
+        "infoHash": "dc7d1109a5cfe2b929c1ee6b8a2f667b29401936",
+        "fileIdx": 0,
+        "payloadFilename": "48 - Eagle Without Wings.mkv",
+        "payloadByteSize": 254673782,
+        "pieceLength": 1048576,
+        "pieceCount": 243,
+        "verifiedPieces": 243,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:49",
+      "videoId": "cb_49",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/49 - Winged Eagles.mkv",
+        "byteSize": 227194024,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1415.957
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/49 - Winged Eagles.mkv.torrent",
+        "torrentByteSize": 4437,
+        "torrentSha256": "6aa15871b01cde80d47bc0a0f26146c3b4ce0af9a82b31e3a07eb225239a9e48",
+        "infoHash": "9486b96ffb0a9aad6b147d6c17395bbcbc0e9fe4",
+        "fileIdx": 0,
+        "payloadFilename": "49 - Winged Eagles.mkv",
+        "payloadByteSize": 227194024,
+        "pieceLength": 1048576,
+        "pieceCount": 217,
+        "verifiedPieces": 217,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:50",
+      "videoId": "cb_50",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/50 - United on the Desert.mkv",
+        "byteSize": 447335139,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2416.535
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/50 - United on the Desert.mkv.torrent",
+        "torrentByteSize": 8644,
+        "torrentSha256": "0dacf3cfaf94c5ce141029361786de98ccb099715cdaf6a24a6935b6d196d9d7",
+        "infoHash": "a50d20b941beff8456dcae3faae276ce14a18b18",
+        "fileIdx": 0,
+        "payloadFilename": "50 - United on the Desert.mkv",
+        "payloadByteSize": 447335139,
+        "pieceLength": 1048576,
+        "pieceCount": 427,
+        "verifiedPieces": 427,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:51",
+      "videoId": "cb_51",
+      "media": {
+        "relativePath": "sources/03 - Arrancar [WIP]/51 - Baron_s Lecture Full-Course.mkv",
+        "byteSize": 258629582,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1462.976
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-arrancar/51 - Baron_s Lecture Full-Course.mkv.torrent",
+        "torrentByteSize": 5051,
+        "torrentSha256": "56fa31db29746ecf08b80dbd405d431d63eb685781cf5035f617532a8f5e5315",
+        "infoHash": "531732cf8b71f269ca529887c9cf21d6e2cbf054",
+        "fileIdx": 0,
+        "payloadFilename": "51 - Baron_s Lecture Full-Course.mkv",
+        "payloadByteSize": 258629582,
+        "pieceLength": 1048576,
+        "pieceCount": 247,
+        "verifiedPieces": 247,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_39",
+  "recordId": "concentrated:39",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "0a4ee7446eb28b2b51ea050f2a4a866effb5d50e",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "39 - Night of Sledgehammer.mkv",
+      "byteSize": 238038621
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1492.586
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb39-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/39 - Night of Sledgehammer.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "6936952eb453c7eb4ce0c16c71083f1a20aa96d88b6d539da82d9b63617aa6e5"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 228,
+        "verifiedPieces": 228,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb39-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/39 - Night of Sledgehammer.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 238038621
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb39-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb39-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb39-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb39-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb39-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb39-local-media-ffprobe-inspection"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_50",
+  "recordId": "concentrated:50",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "a50d20b941beff8456dcae3faae276ce14a18b18",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "50 - United on the Desert.mkv",
+      "byteSize": 447335139
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2416.535
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb50-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/50 - United on the Desert.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "0dacf3cfaf94c5ce141029361786de98ccb099715cdaf6a24a6935b6d196d9d7"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 427,
+        "verifiedPieces": 427,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb50-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/50 - United on the Desert.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 447335139
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb50-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb50-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb50-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb50-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb50-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb50-local-media-ffprobe-inspection"
+    ]
+  }
+}

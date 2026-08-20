@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_46",
+  "recordId": "concentrated:46",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "f980ea10d4a34d8614e07e3618f6c592eee8d18c",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "46 - The Mascaron Drive.mkv",
+      "byteSize": 348129126
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2023.04
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb46-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/46 - The Mascaron Drive.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "b7222f1087e199b81221f62282d22023901b13058bf48fe3b59ce1e4c1511daa"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 333,
+        "verifiedPieces": 333,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb46-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/46 - The Mascaron Drive.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 348129126
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb46-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb46-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb46-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb46-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb46-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb46-local-media-ffprobe-inspection"
+    ]
+  }
+}

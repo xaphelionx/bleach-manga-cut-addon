@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_49",
+  "recordId": "concentrated:49",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "9486b96ffb0a9aad6b147d6c17395bbcbc0e9fe4",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "49 - Winged Eagles.mkv",
+      "byteSize": 227194024
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1415.957
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb49-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-arrancar/49 - Winged Eagles.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "6aa15871b01cde80d47bc0a0f26146c3b4ce0af9a82b31e3a07eb225239a9e48"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 217,
+        "verifiedPieces": 217,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb49-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/03 - Arrancar [WIP]/49 - Winged Eagles.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 227194024
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb49-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb49-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb49-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb49-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb49-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb49-local-media-ffprobe-inspection"
+    ]
+  }
+}
