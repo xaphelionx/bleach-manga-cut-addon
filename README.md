@@ -1,4 +1,4 @@
-# Bleach Manga Cut Resolved 35.5 Projection Checkpoint
+# Bleach Manga Cut 35.5 Media Evidence Checkpoint
 
 This Stremio addon publishes the current 36-entry Concentrated Bleach prefix from CB1 through CB35, including CB27.5. Only **Concentrated Bleach 01 — Death and Strawberry**, **Concentrated Bleach 02 — Starter**, and **Concentrated Bleach 03 — The Pink-Cheeked Cockatiel** have completed the locked, user-confirmed real-device compatibility path against Nuvio 0.8.4-beta and Nuvio's existing native TorBox integration. Representative CB4–CB35 sampling passed, but those entries remain unlocked while a provisional Details-screen focus issue is investigated. This is not a full catalog and is not deployed.
 
@@ -7,10 +7,11 @@ Current publication and validation state:
 - **Published:** 36 Concentrated entries: CB1–CB35, including CB27.5.
 - **Real-device validated and locked:** CB1, CB2, and CB3, including native TorBox resolution/playback, Nuvio AUTO behavior, original-audio and subtitle selection, seeking, resume, Continue Watching, completion, and next-episode behavior.
 - **Published but unlocked:** CB4–CB35. Their deterministic torrent/cache precondition and representative Nuvio playback sampling passed, but the batch is not compatibility-locked because the Details-screen focus observation remains provisional.
-- **Resolved next entry:** the project owner resolved the Watch Guide's guided CB35.5 to spreadsheet record `concentrated:0.0` (`the rotator / the sand`). Its permanent internal ID remains `cb_0p0`; its canonical placement is S2E28 after CB35, but it is not published.
-- **Pending before publication:** the 35.5 local media passed read-only inspection. Deterministic torrent creation, verified-media evidence, cache/seeding confirmation, and playback/navigation testing are still pending.
+- **Resolved next entry:** the project owner resolved the Watch Guide's guided CB35.5 to spreadsheet record `concentrated:0.0` (`the rotator / the sand`). Its permanent internal ID remains `cb_0p0`; its canonical placement is S2E28 after CB35. It remains unpublished, registry-reserved, and `locked:false`.
+- **Technical evidence:** the 35.5 local media passed inspection. Its exact deterministic trackerless torrent now exists in the ignored local workspace, all 51 pieces verified against the payload, the acquisition manifest includes `cb_0p0`, and `evidence/media/cb_0p0.json` records the resulting verified-media facts.
+- **Pending before publication:** user-side seeding and TorBox cache confirmation, followed by Nuvio playback/navigation testing. No permanent public availability claim is made.
 - **Canonical prefix stop:** CB36+ remain unpublished because the primary prefix must publish `cb_0p0` before CB36, not because the 35.5 identity remains unresolved.
-- **Out of scope:** publishing 35.5, publishing CB36 or later, media/torrent/evidence creation, a full-catalog import, deployment, and changes to the established addon architecture.
+- **Out of scope:** publishing 35.5, publishing CB36 or later, TorBox access, compatibility locking, a full-catalog import, deployment, and changes to the established addon architecture.
 - **Still unresolved:** permanent public swarm availability, availability after all seeds disappear, arbitrary third-party discovery, future cache persistence, artwork, and exact Nuvio stream-presentation UI parity.
 
 ## Architecture
@@ -71,7 +72,7 @@ That operational precondition supported controlled publication for compatibility
 
 The source spreadsheet identity remains `concentrated:0.0`, displayed identifier `0.0`, title `the rotator / the sand`. The separate Watch Guide identity remains guided `35.5`. The project-owner resolution `editorial-resolution:concentrated-35.5-to-0.0` links those facts for the default watch order without rewriting either source. The record keeps permanent ID `cb_0p0`, is projected as S2E28/global index 37, and remains blocked and unpublished. CB36 is S3E1/global index 38 and remains unpublished because prefix closure requires `cb_0p0` first.
 
-Read-only inspection found the local 35.5 media suitable for this unambiguous mapping. No 35.5 torrent or verified-media evidence exists yet, no cache or playback claim has been made, and no production stream or provenance for `cb_0p0` is generated in this checkpoint.
+Inspection found the local 35.5 media suitable for this unambiguous mapping. Its exact deterministic trackerless torrent now exists in the ignored local workspace, all 51 pieces verified against the payload, the acquisition manifest includes `cb_0p0`, and verified-media evidence exists at `evidence/media/cb_0p0.json`. TorBox cache confirmation and Nuvio playback/navigation testing remain pending; no permanent public availability claim has been made, and no production stream or provenance for `cb_0p0` is generated in this checkpoint.
 
 ## Locked CB1–CB3 compatibility contract
 

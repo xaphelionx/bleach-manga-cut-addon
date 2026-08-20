@@ -66,12 +66,13 @@ const PRODUCTION_SELECTION_ENTRIES = [
   { recordId: 'concentrated:32', videoId: 'cb_32' },
   { recordId: 'concentrated:33', videoId: 'cb_33' },
   { recordId: 'concentrated:34', videoId: 'cb_34' },
-  { recordId: 'concentrated:35', videoId: 'cb_35' }
+  { recordId: 'concentrated:35', videoId: 'cb_35' },
+  { recordId: 'concentrated:0.0', videoId: 'cb_0p0' }
 ]
 const LOCKED_PRODUCTION_EVIDENCE_INDEX_SHA256 =
-  '4773820e6d90af5a9a36c6224f5027ca21c4f7302ef58f183e28e46c9910f72b'
-const LOCKED_PRODUCTION_EVIDENCE_INDEX_BYTE_SIZE = 6829
-const LOCKED_PRODUCTION_EVIDENCE_TOTAL_BYTE_SIZE = 128371
+  '071d4059c9711768f95ef14da8c3a558bb69ae99fa682ecc7aab01d05e6a1841'
+const LOCKED_PRODUCTION_EVIDENCE_INDEX_BYTE_SIZE = 7033
+const LOCKED_PRODUCTION_EVIDENCE_TOTAL_BYTE_SIZE = 132181
 
 function identity(pairs = PAIRS) {
   return {
@@ -653,8 +654,12 @@ test('acquisition raw values are not modified in memory', () => {
 test('committed preboundary evidence is byte-identical to the approved production generation batch', () => {
   const { acquisitionManifest, candidates } = productionCandidates()
   const expectedVideoIds = PRODUCTION_SELECTION_ENTRIES.map(({ videoId }) => videoId)
-  assert.equal(candidates.length, 34)
+  assert.equal(candidates.length, 35)
   assert.deepEqual(candidates.map(({ videoId }) => videoId), expectedVideoIds)
+  assert.deepEqual(PRODUCTION_SELECTION_ENTRIES.at(-1), {
+    recordId: 'concentrated:0.0',
+    videoId: 'cb_0p0'
+  })
   assert.equal(expectedVideoIds.includes('cb_1'), false)
   assert.equal(expectedVideoIds.includes('cb_2'), false)
 

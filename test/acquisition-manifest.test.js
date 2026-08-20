@@ -19,8 +19,8 @@ const {
 const repositoryRoot = path.resolve(__dirname, '..')
 const PRODUCTION_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/concentrated-preboundary.json'
 const PRODUCTION_MANIFEST_PATH = path.join(repositoryRoot, PRODUCTION_MANIFEST_RELATIVE_PATH)
-const LOCKED_PRODUCTION_MANIFEST_SHA256 = '63ad4e09183e19ba1a4c36601cb2f5ee5181e6973c056b385579b5a13b0567fd'
-const LOCKED_PRODUCTION_MANIFEST_BYTE_SIZE = 94826
+const LOCKED_PRODUCTION_MANIFEST_SHA256 = '9b7a8c1009998862ed412554db3ff372994189fd255509ff767356d96b4803db'
+const LOCKED_PRODUCTION_MANIFEST_BYTE_SIZE = 97436
 
 const PAIRS = [
   ['concentrated:03', 'cb_3', '03 - Three.mkv'],
@@ -704,7 +704,7 @@ test('durable production acquisition manifest satisfies the runtime contract', (
   assert.equal(validateAcquisitionManifest(manifest), manifest)
   assert.equal(manifest.schemaVersion, 1)
   assert.equal(manifest.authorityDomain, 'technical-acquisition')
-  assert.equal(manifest.entries.length, 34)
+  assert.equal(manifest.entries.length, 35)
 })
 
 test('durable production entries retain permanent registry order and exact scope', () => {
@@ -714,18 +714,28 @@ test('durable production entries retain permanent registry order and exact scope
   const videoIds = manifest.entries.map(({ videoId }) => videoId)
 
   assert.equal(videoIds[0], 'cb_3')
-  assert.equal(videoIds.at(-1), 'cb_35')
+  assert.equal(videoIds.at(-1), 'cb_0p0')
   assert.equal(videoIds.includes('cb_27p5'), true)
+  assert.equal(videoIds.includes('cb_0p0'), true)
   assert.equal(videoIds.includes('cb_1'), false)
   assert.equal(videoIds.includes('cb_2'), false)
-  assert.equal(videoIds.includes('cb_0p0'), false)
   assert.equal(videoIds.some((videoId) => {
     const match = /^cb_(\d+)$/u.exec(videoId)
     return match && Number(match[1]) >= 36
   }), false)
-  assert.equal(manifest.entries.some((entry) => (
-    entry.recordId.includes('35.5') || entry.media.relativePath.includes('35.5 (0)')
-  )), false)
+  assert.deepEqual(manifest.entries.filter((entry) => (
+    entry.recordId === 'concentrated:0.0' ||
+    entry.videoId === 'cb_0p0' ||
+    entry.media.relativePath.includes('35.5 (0)')
+  )).map((entry) => ({
+    recordId: entry.recordId,
+    videoId: entry.videoId,
+    mediaRelativePath: entry.media.relativePath
+  })), [{
+    recordId: 'concentrated:0.0',
+    videoId: 'cb_0p0',
+    mediaRelativePath: 'sources/02 - Soul Society/35.5 (0) - the rotator_ the sand.mkv'
+  }])
   for (let index = 1; index < videoIds.length; index += 1) {
     assert.ok(registryIndex.get(videoIds[index - 1]) < registryIndex.get(videoIds[index]))
   }
@@ -733,12 +743,12 @@ test('durable production entries retain permanent registry order and exact scope
 
 test('durable production identities and verified torrent totals remain exact', () => {
   const entries = readProductionManifest().entries
-  assert.equal(new Set(entries.map(({ videoId }) => videoId)).size, 34)
-  assert.equal(new Set(entries.map(({ recordId }) => recordId)).size, 34)
-  assert.equal(new Set(entries.map(({ media }) => media.relativePath)).size, 34)
-  assert.equal(new Set(entries.map(({ torrent }) => torrent.relativePath)).size, 34)
-  assert.equal(new Set(entries.map(({ torrent }) => torrent.infoHash)).size, 34)
-  assert.equal(entries.reduce((total, entry) => total + entry.torrent.verifiedPieces, 0), 10891)
+  assert.equal(new Set(entries.map(({ videoId }) => videoId)).size, 35)
+  assert.equal(new Set(entries.map(({ recordId }) => recordId)).size, 35)
+  assert.equal(new Set(entries.map(({ media }) => media.relativePath)).size, 35)
+  assert.equal(new Set(entries.map(({ torrent }) => torrent.relativePath)).size, 35)
+  assert.equal(new Set(entries.map(({ torrent }) => torrent.infoHash)).size, 35)
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.verifiedPieces, 0), 10942)
   assert.equal(entries.reduce((total, entry) => total + entry.torrent.mismatchedPieces, 0), 0)
 
   for (const { torrent } of entries) {
@@ -763,7 +773,7 @@ test('durable production raw media vocabulary and stream totals remain exact', (
   assert.deepEqual(distinct(entries.flatMap(({ media }) => media.audioStreams.map(({ language }) => language))), ['jpn', 'eng'])
   assert.deepEqual(distinct(entries.flatMap(({ media }) => media.subtitleStreams.map(({ codecName }) => codecName))), ['ass'])
   assert.deepEqual(distinct(entries.flatMap(({ media }) => media.subtitleStreams.map(({ language }) => language))), ['eng', null])
-  assert.equal(entries.reduce((total, entry) => total + entry.media.attachmentCount, 0), 175)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.attachmentCount, 0), 177)
   assert.equal(entries.filter((entry) => entry.media.videoStreams.some(({ attachedPic }) => attachedPic === 1)).length, 23)
   assert.equal(entries.reduce((total, entry) => total + entry.media.otherStreamCount, 0), 0)
 })
@@ -857,5 +867,111 @@ test('durable production CB32 acquisition and torrent identity remain locked', (
     pieceCount: 309,
     verifiedPieces: 309,
     mismatchedPieces: 0
+  })
+})
+
+test('durable production cb_0p0 acquisition and torrent identity remain locked', () => {
+  const cb0p0 = readProductionManifest().entries.find(({ videoId }) => videoId === 'cb_0p0')
+  assert.ok(cb0p0)
+  assert.deepEqual({
+    videoId: cb0p0.videoId,
+    recordId: cb0p0.recordId,
+    mediaRelativePath: cb0p0.media.relativePath,
+    mediaByteSize: cb0p0.media.byteSize,
+    formatName: cb0p0.media.container.formatName,
+    durationSeconds: cb0p0.media.container.durationSeconds,
+    videoStreams: cb0p0.media.videoStreams,
+    audioStreams: cb0p0.media.audioStreams,
+    subtitleStreams: cb0p0.media.subtitleStreams,
+    attachmentCount: cb0p0.media.attachmentCount,
+    otherStreamCount: cb0p0.media.otherStreamCount,
+    warnings: cb0p0.media.warnings,
+    torrentRelativePath: cb0p0.torrent.relativePath,
+    torrentByteSize: cb0p0.torrent.torrentByteSize,
+    torrentSha256: cb0p0.torrent.torrentSha256,
+    infoHash: cb0p0.torrent.infoHash,
+    fileIdx: cb0p0.torrent.fileIdx,
+    payloadFilename: cb0p0.torrent.payloadFilename,
+    payloadByteSize: cb0p0.torrent.payloadByteSize,
+    pieceLength: cb0p0.torrent.pieceLength,
+    pieceCount: cb0p0.torrent.pieceCount,
+    verifiedPieces: cb0p0.torrent.verifiedPieces,
+    mismatchedPieces: cb0p0.torrent.mismatchedPieces,
+    mismatchPieceIndexes: cb0p0.torrent.mismatchPieceIndexes,
+    rawInfoMatchesCanonicalEncoding: cb0p0.torrent.rawInfoMatchesCanonicalEncoding,
+    payloadFilenameMatchesLocalMedia: cb0p0.torrent.payloadFilenameMatchesLocalMedia,
+    payloadByteSizeMatchesLocalMedia: cb0p0.torrent.payloadByteSizeMatchesLocalMedia
+  }, {
+    videoId: 'cb_0p0',
+    recordId: 'concentrated:0.0',
+    mediaRelativePath: 'sources/02 - Soul Society/35.5 (0) - the rotator_ the sand.mkv',
+    mediaByteSize: 53091320,
+    formatName: 'matroska,webm',
+    durationSeconds: 452.181,
+    videoStreams: [{
+      index: 0,
+      codecName: 'hevc',
+      profile: 'Main',
+      width: 768,
+      height: 576,
+      pixelFormat: 'yuv420p',
+      attachedPic: 0,
+      default: 1,
+      forced: null
+    }],
+    audioStreams: [{
+      index: 1,
+      codecName: 'aac',
+      profile: 'LC',
+      channels: 2,
+      channelLayout: 'stereo',
+      language: 'jpn',
+      title: 'Japanese [ASC]',
+      default: 1,
+      forced: 0
+    }, {
+      index: 2,
+      codecName: 'aac',
+      profile: 'LC',
+      channels: 2,
+      channelLayout: 'stereo',
+      language: 'eng',
+      title: 'English [ASC]',
+      default: 0,
+      forced: 0
+    }],
+    subtitleStreams: [{
+      index: 3,
+      codecName: 'ass',
+      language: 'eng',
+      title: 'Full Subtitles [Edited ParanDark]',
+      default: 1,
+      forced: 0
+    }, {
+      index: 4,
+      codecName: 'ass',
+      language: 'eng',
+      title: 'Signs and Songs [Edited ParanDark]',
+      default: 0,
+      forced: 1
+    }],
+    attachmentCount: 2,
+    otherStreamCount: 0,
+    warnings: [],
+    torrentRelativePath: 'sources/torrents/concentrated-preboundary/35.5 (0) - the rotator_ the sand.mkv.torrent',
+    torrentByteSize: 1130,
+    torrentSha256: '9b2c22ecf5efb2bc846e10428d6d0d5f4d1809d657e79087538a24e295824ebc',
+    infoHash: 'cbdfdf3949a8f8c2d470dfc4f1d1a21571dca7bc',
+    fileIdx: 0,
+    payloadFilename: '35.5 (0) - the rotator_ the sand.mkv',
+    payloadByteSize: 53091320,
+    pieceLength: 1048576,
+    pieceCount: 51,
+    verifiedPieces: 51,
+    mismatchedPieces: 0,
+    mismatchPieceIndexes: [],
+    rawInfoMatchesCanonicalEncoding: true,
+    payloadFilenameMatchesLocalMedia: true,
+    payloadByteSizeMatchesLocalMedia: true
   })
 })

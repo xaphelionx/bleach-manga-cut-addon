@@ -3217,6 +3217,93 @@
         "payloadFilenameMatchesLocalMedia": true,
         "payloadByteSizeMatchesLocalMedia": true
       }
+    },
+    {
+      "recordId": "concentrated:0.0",
+      "videoId": "cb_0p0",
+      "media": {
+        "relativePath": "sources/02 - Soul Society/35.5 (0) - the rotator_ the sand.mkv",
+        "byteSize": 53091320,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 452.181
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 2,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-preboundary/35.5 (0) - the rotator_ the sand.mkv.torrent",
+        "torrentByteSize": 1130,
+        "torrentSha256": "9b2c22ecf5efb2bc846e10428d6d0d5f4d1809d657e79087538a24e295824ebc",
+        "infoHash": "cbdfdf3949a8f8c2d470dfc4f1d1a21571dca7bc",
+        "fileIdx": 0,
+        "payloadFilename": "35.5 (0) - the rotator_ the sand.mkv",
+        "payloadByteSize": 53091320,
+        "pieceLength": 1048576,
+        "pieceCount": 51,
+        "verifiedPieces": 51,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
     }
   ]
 }

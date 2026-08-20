@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_0p0",
+  "recordId": "concentrated:0.0",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "cbdfdf3949a8f8c2d470dfc4f1d1a21571dca7bc",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "35.5 (0) - the rotator_ the sand.mkv",
+      "byteSize": 53091320
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 452.181
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb0p0-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-preboundary/35.5 (0) - the rotator_ the sand.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "9b2c22ecf5efb2bc846e10428d6d0d5f4d1809d657e79087538a24e295824ebc"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 51,
+        "verifiedPieces": 51,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb0p0-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/02 - Soul Society/35.5 (0) - the rotator_ the sand.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 53091320
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb0p0-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb0p0-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb0p0-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb0p0-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb0p0-local-media-ffprobe-inspection"
+    ]
+  }
+}

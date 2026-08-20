@@ -75,14 +75,22 @@ after(() => {
 })
 
 test('processing remains exactly projection-controlled at the current canonical prefix', () => {
+  const generatedMeta = result.candidates['data/meta/bleach-manga-cut.json'].meta
   assert.deepEqual(inputs.projection.publicationPolicy.currentPublishedVideoIds, EXPECTED_PUBLISHED_PREFIX)
+  assert.equal(inputs.evidenceRecords.some(({ value }) => (
+    value.recordId === 'concentrated:0.0' && value.videoId === 'cb_0p0'
+  )), true)
+  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_0p0'), false)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
   assert.equal(result.processedVideoIds.includes('cb_0p0'), false)
   assert.equal('data/stream/cb_0p0.json' in result.candidates, false)
   assert.equal('data/provenance/cb_0p0.json' in result.candidates, false)
+  assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_0p0'), false)
+  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_36'), false)
   assert.equal(result.processedVideoIds.includes('cb_36'), false)
   assert.equal('data/stream/cb_36.json' in result.candidates, false)
   assert.equal('data/provenance/cb_36.json' in result.candidates, false)
+  assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_36'), false)
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 
