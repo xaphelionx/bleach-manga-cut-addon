@@ -22,7 +22,13 @@ const LOCKED_HASHES = Object.freeze({
   'evidence/media/cb_3.json': 'b3604ed951e34e211003da1adc08acaefe7082b70ad0c972fb76a6ef78438526',
   'editorial/unresolved.json': '7697d76e1fc3c54d04d3ebb19c7ff8f827132f96df09769bce80f339bda6085e'
 })
-const LOCKED_VALIDATED_VIDEO_IDS = new Set(['cb_1', 'cb_2', 'cb_3'])
+const LOCKED_VALIDATED_VIDEO_IDS = new Set([
+  'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
+  'cb_10', 'cb_11', 'cb_12', 'cb_13', 'cb_14', 'cb_15', 'cb_16', 'cb_17',
+  'cb_18', 'cb_19', 'cb_20', 'cb_21', 'cb_22', 'cb_23', 'cb_24', 'cb_25',
+  'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
+  'cb_33', 'cb_34', 'cb_35', 'cb_0p0'
+])
 
 function load(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), 'utf8'))
@@ -373,6 +379,12 @@ function validate() {
   }
 
   const registryByVideoId = new Map(registry.entries.map((entry) => [entry.videoId, entry]))
+  const lockedValidatedVideoIds = [...LOCKED_VALIDATED_VIDEO_IDS]
+  assert.deepEqual(
+    lockedValidatedVideoIds,
+    projection.publicationPolicy.currentPublishedVideoIds,
+    'Compatibility-locked IDs must remain the exact explicitly approved 37-entry baseline'
+  )
   for (const videoId of approvedVideoIds) {
     const registered = registryByVideoId.get(videoId)
     assert.ok(registered, `Approved video ${videoId} is missing from the registry`)
@@ -383,7 +395,14 @@ function validate() {
       `${videoId} compatibility lock does not match its validated state`
     )
   }
-  for (const videoId of LOCKED_VALIDATED_VIDEO_IDS) assert.ok(approvedVideoIds.has(videoId))
+  assert.deepEqual(
+    registry.entries.filter((entry) => entry.status === 'published' && entry.locked).map((entry) => entry.videoId),
+    lockedValidatedVideoIds,
+    'Registry published/locked IDs must exactly match the validated compatibility baseline'
+  )
+  for (const entry of registry.entries.filter((candidate) => candidate.status === 'reserved')) {
+    assert.equal(entry.locked, false, `${entry.videoId} is reserved and must remain unlocked`)
+  }
   assert.deepEqual(registryByVideoId.get('cb_0p0'), {
     recordType: 'normalized-record',
     recordId: 'concentrated:0.0',
@@ -391,7 +410,7 @@ function validate() {
     sourceIdentifier: '0.0',
     videoId: 'cb_0p0',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.deepEqual(registryByVideoId.get('cb_36'), {
     recordType: 'normalized-record',
@@ -494,6 +513,7 @@ function validate() {
     eligibilityCounts,
     eligibleVideoIds: publication.eligibleIds,
     publishedVideoIds: publication.publishedIds,
+    lockedValidatedVideoIds,
     registryEntries: registry.entries.length,
     optionalEntries: optional.entries.length,
     unresolvedIssues: unresolved.issues.length
@@ -510,7 +530,8 @@ if (require.main === module) {
     `season counts: ${JSON.stringify(result.seasonCounts)}\n` +
     `eligibility counts: ${JSON.stringify(result.eligibilityCounts)}\n` +
     `eligible primary IDs: ${JSON.stringify(result.eligibleVideoIds)}\n` +
-    `published registry IDs: ${JSON.stringify(result.publishedVideoIds)}\n`
+    `published registry IDs: ${JSON.stringify(result.publishedVideoIds)}\n` +
+    `locked validated IDs: ${JSON.stringify(result.lockedValidatedVideoIds)}\n`
   )
 }
 

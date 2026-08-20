@@ -50,7 +50,7 @@ guided 35.5 / cb_0p0 → S2E28 → global index 37
 CB36       → S3E1  → global index 38
 ```
 
-All 103 projected entries have resolved global indexes. `cb_0p0` is published at S2E28/global index 37 and remains `locked:false`. Verified-media evidence exists, and the project owner confirmed the exact torrent is seeded and acquired/cached in the user's TorBox environment. Nuvio playback validation remains pending; this does not establish permanent public availability or future cache persistence.
+All 103 projected entries have resolved global indexes. `cb_0p0` is published and compatibility-locked at S2E28/global index 37. Verified-media evidence exists, the project owner confirmed the exact torrent is seeded and acquired/cached in the user's TorBox environment, and the corrected real-device terminal path was validated on 2026-08-20. This does not establish permanent public availability or future cache persistence.
 
 ## Stable video IDs
 
@@ -67,7 +67,15 @@ IDs encode only source project and exact displayed identifier syntax:
 
 Decimals are encoded lexically and never parsed as floating-point positions. Decimal syntax does not imply any editorial `kind`. Unknown identifier syntax is a validation error. IDs do not depend on title, season, episode, array order, or watch-order position.
 
-The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The 37 current prefix IDs through `cb_0p0` are published; CB1–CB3 are locked, while CB4–CB35 and `cb_0p0` remain unlocked. CB36+ and all other unpublished assignments remain reserved.
+The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The 37 current prefix IDs through `cb_0p0` are both published and compatibility-locked. CB36+ and all other unpublished assignments remain reserved and unlocked.
+
+## Compatibility-lock baseline
+
+The current published prefix and current compatibility-locked prefix are the same explicit 37 IDs: CB1 through CB35 including CB27.5, followed by guided 35.5 / `cb_0p0`. This is a batch lock, not a claim of per-entry direct playback. CB1–CB3 retain stronger individually established historical fixtures. CB4–CB35 are supported by deterministic technical evidence plus representative real-device sampling: CB4 playback/progress, CB9→CB10 season transition, CB27→CB27.5→CB28 ordering/playback, CB32 playback/subtitles, and CB35 playback. The corrected CB35→CB35.5 terminal sequence received the complete functional test.
+
+Here, `locked:true` means the addon-facing identity, order, torrent, and stream compatibility contract is accepted as the stable baseline and any future change requires deliberate revalidation. It does not mean every episode was manually played, every client behavior is bug-free, permanent public availability is proven, or future cache persistence is guaranteed.
+
+The 2026-08-20 Nuvio 0.8.4-beta/native-TorBox test passed visibility at S2E28, CB35→CB35.5 navigation, playback, Japanese audio, embedded subtitles, seek, resume, Continue Watching, natural completion, both backing-out focus checks, and the correct absence of CB36. Natural terminal completion of `cb_0p0` reproduced a Details-screen focus trap. This is a known, accepted, non-blocking client/UI limitation with unresolved attribution; it is not classified as a proven Nuvio, Bleach-addon, TorBox, or torrent defect. Backing out to Nuvio Home and re-entering Bleach Details restores normal navigation. A terminal One Pace Premium A/B control was unavailable because its final listed episode is unreleased and has no playable stream.
 
 ## Titles
 
@@ -118,7 +126,7 @@ The projection validator enforces:
 - Identifier encoding is lexical, unique, append-only, and independent of presentation.
 - Projected titles equal normalized titles exactly.
 - Source identifier `0.0`, guided identifier `35.5`, and permanent ID `cb_0p0` remain distinct and traceable through the owner resolution.
-- `cb_0p0` is the only projection entry with `resolutionRef`; it is published at S2E28/global index 37 and remains `locked:false`.
+- `cb_0p0` is the only projection entry with `resolutionRef`; it is published and compatibility-locked at S2E28/global index 37.
 - CB36 is S3E1/global index 38, and every one of the 103 global indexes is resolved.
 - The projection contains 37 eligible and 66 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at CB36.
 - Globally sorted eligible primary videos form exactly the approved contiguous prefix.
@@ -131,4 +139,4 @@ The projection validator enforces:
 
 ## Artifact boundaries
 
-The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. Future media acquisition, optional-content runtime experiments, or publication beyond CB35.5 require separate approval.
+The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted focus observation is documentation of client/UI behavior, not torrent or network evidence. Future media acquisition, optional-content runtime experiments, or publication beyond CB35.5 require separate approval.

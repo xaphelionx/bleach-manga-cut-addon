@@ -517,16 +517,36 @@ test('optional IDs cannot enter the primary default timeline', () => {
   assert.equal(optional.primarySeriesPublicationAllowed, false)
 })
 
-test('registry reservation never implies publication', () => {
+test('published prefix is the exact compatibility-locked prefix and reservation never implies publication', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   const published = registry.entries.filter((entry) => entry.status === 'published')
   assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
-  assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), [
-    'cb_1',
-    'cb_2',
-    'cb_3'
-  ])
-  assert.ok(published.slice(3).every((entry) => entry.locked === false))
+  assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
+  assert.ok(published.every((entry) => entry.locked === true))
+  assert.deepEqual(
+    registry.entries.find((entry) => entry.videoId === 'cb_4'),
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:04',
+      projectId: 'concentrated',
+      sourceIdentifier: '04',
+      videoId: 'cb_4',
+      status: 'published',
+      locked: true
+    }
+  )
+  assert.deepEqual(
+    registry.entries.find((entry) => entry.videoId === 'cb_35'),
+    {
+      recordType: 'normalized-record',
+      recordId: 'concentrated:35',
+      projectId: 'concentrated',
+      sourceIdentifier: '35',
+      videoId: 'cb_35',
+      status: 'published',
+      locked: true
+    }
+  )
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_0p0'),
     {
@@ -536,7 +556,7 @@ test('registry reservation never implies publication', () => {
       sourceIdentifier: '0.0',
       videoId: 'cb_0p0',
       status: 'published',
-      locked: false
+      locked: true
     }
   )
   assert.deepEqual(
@@ -551,6 +571,7 @@ test('registry reservation never implies publication', () => {
       locked: false
     }
   )
+  assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').every((entry) => entry.locked === false))
   assert.ok(registry.entries.some((entry) => entry.status === 'reserved' && projectedById.has(entry.recordId)))
 })
 
@@ -590,6 +611,7 @@ test('complete projection validator accepts the artifacts', () => {
     eligibilityCounts: { eligible: 37, blocked: 66 },
     eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
+    lockedValidatedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 5

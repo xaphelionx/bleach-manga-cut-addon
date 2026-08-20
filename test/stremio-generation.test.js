@@ -407,14 +407,14 @@ test('every current generated production candidate satisfies its exact derivatio
   assert.equal(exactResults, 76)
 })
 
-test('the pre-existing 36 stream and provenance artifacts retain their regression contracts', () => {
-  for (const videoId of EXPECTED_PUBLISHED_PREFIX.slice(0, -1)) {
+test('the current 37 stream and provenance artifacts retain their regression contracts', () => {
+  for (const videoId of EXPECTED_PUBLISHED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
     assert.ok(read(streamPath, outputRoot).equals(read(streamPath)), streamPath)
     assert.equal(
       Object.hasOwn(result.candidates[provenancePath].sourceInputs.projection, 'resolutionRef'),
-      false,
+      videoId === 'cb_0p0',
       provenancePath
     )
     if (provenancePath === CB1_REGRESSION_FILES.provenance) {
