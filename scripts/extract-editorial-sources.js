@@ -1308,9 +1308,21 @@ function buildUnresolved(watchGuide, exInfo, workbooks, resolutionDocument) {
   const watchPage5 = watchGuide.pages.find((page) => page.locator.page === 5)
   const exPage = exInfo.pages[0]
   const resolvedIssueIds = new Set(resolutionDocument.resolutions.map((resolution) => resolution.originalIssueId))
+  const hollowedMembershipResolutions = resolutionDocument.resolutions.filter(
+    (resolution) => resolution.originalIssueId === 'hollowed-v3-membership'
+  )
+  assert.ok(hollowedMembershipResolutions.length <= 1, 'Hollowed current membership has multiple owner resolutions')
+  const hollowedMembershipResolution = hollowedMembershipResolutions[0]
+  if (hollowedMembershipResolution) {
+    assert.equal(
+      hollowedMembershipResolution.resolutionId,
+      'editorial-resolution:hollowed-current-raw-membership',
+      'Hollowed membership must use the approved project-owner resolution'
+    )
+  }
   const issueOrder = [
     'concentrated-35.5-vs-0.0',
-    'hollowed-v3-membership',
+    hollowedMembershipResolution ? 'hollowed-v3-future-migration' : 'hollowed-v3-membership',
     'chipped-first-4.5-media-mapping',
     'ex-current-legacy-and-media-status',
     'cross-project-0.8-relationship',
@@ -1338,6 +1350,28 @@ function buildUnresolved(watchGuide, exInfo, workbooks, resolutionDocument) {
         ],
         prohibitedResolution: 'Do not mark source rows as aliases or obsolete until explicitly approved.',
         blocks: ['hollowed version-specific sequence expansion']
+      }
+    ],
+    [
+      'hollowed-v3-future-migration',
+      {
+        issueId: 'hollowed-v3-future-migration',
+        status: 'unresolved',
+        kind: 'future-version-migration',
+        claims: [
+          {
+            sourceClaim: 'The Hollowed source contains combined/reworked v3 notes, but exact future v3 record/media correspondence is not fully represented by the currently available authoritative source set.',
+            value: 'future v3 migration requires unavailable assets/mapping and a new owner-reviewed decision',
+            evidenceRefs: evidenceRefs(
+              getCell(hollowedCells, 'I', 18),
+              getCell(hollowedCells, 'I', 22),
+              getCell(hollowedCells, 'I', 26),
+              getCell(hollowedCells, 'I', 38)
+            )
+          }
+        ],
+        prohibitedResolution: 'Do not merge, renumber, alias, obsolete, or replace the current selected raw-record membership with future v3 units unless the v3 assets and mapping are available and a new deliberate owner-reviewed migration occurs.',
+        blocks: ['future Hollowed v3 migration/adoption']
       }
     ],
     [
@@ -1473,8 +1507,12 @@ function buildOutputs() {
   const extracted = new Map()
   const resolutionDocument = JSON.parse(fs.readFileSync(path.join(root, 'editorial', 'resolutions.json'), 'utf8'))
   assert.equal(resolutionDocument.artifactType, 'editorial-resolutions')
-  assert.equal(resolutionDocument.resolutions.length, 1, 'Expected exactly one editorial resolution')
-  const resolution = resolutionDocument.resolutions[0]
+  const resolutionIds = resolutionDocument.resolutions.map((resolution) => resolution.resolutionId)
+  assert.equal(new Set(resolutionIds).size, resolutionIds.length, 'Editorial resolution IDs must be unique')
+  const resolution = resolutionDocument.resolutions.find(
+    (candidate) => candidate.resolutionId === 'editorial-resolution:concentrated-35.5-to-0.0'
+  )
+  assert.ok(resolution, 'Concentrated guided-placement resolution is missing')
 
   for (const config of SOURCES) {
     const filename = path.join(sourceRoot, config.filename)

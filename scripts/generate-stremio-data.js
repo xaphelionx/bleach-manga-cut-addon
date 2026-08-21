@@ -525,7 +525,7 @@ function loadAndValidateSourceInputs() {
     projects: 3,
     records: 166,
     variants: 3,
-    resolutions: 1,
+    resolutions: 2,
     unresolvedIssues: 5
   })
   const schema = loadJson('schemas/media/verified-media.schema.json')

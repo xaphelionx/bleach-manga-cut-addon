@@ -27,9 +27,15 @@ The source-normalization workspace separates lossless extracted evidence from se
 
 - `editorial/extracted/*` is the lossless audit layer. It may retain every substantive/non-empty source cell, including helper, statistical, and formula cells, so the committed extraction remains faithful to the five authoritative source files. Formatting-only and empty cells are excluded. Extracted evidence may remain unreferenced downstream; that is not an error.
 - `editorial/normalized/*`, `editorial/variants/*`, `editorial/watch-orders/*`, and `editorial/unresolved.json` contain selected editorial interpretations. A helper, statistical, or formula cell may influence one of these outputs only when that output explicitly cites the cell's `evidenceId` through `fieldEvidence` or `evidenceRefs`.
-- `editorial/resolutions.json` is a separately maintained project-owner decision artifact. It keeps the direct Watch Guide claim (`35.5`), the direct spreadsheet claim (`concentrated:0.0` / `0.0`), and the owner-resolved relationship distinct.
+- `editorial/resolutions.json` is a separately maintained project-owner decision artifact. It keeps the direct Watch Guide claim (`35.5`), the direct spreadsheet claim (`concentrated:0.0` / `0.0`), and the owner-resolved relationship distinct. It also records the current-version Hollowed membership decision without rewriting the spreadsheet's unresolved v3 claims.
 
 Downstream reference state is deterministically derivable rather than stored as a mutable flag: an extracted evidence record is selected when its exact `evidenceId` appears in a downstream `fieldEvidence` or `evidenceRefs` collection. The editorial validator requires every such downstream reference to resolve to extracted evidence. The absence of a downstream reference means only that the evidence remains available in the lossless audit layer; it does not invalidate the extraction.
+
+## Current Hollowed membership decision
+
+On 2026-08-21, the project owner explicitly selected the existing raw-record membership for the current default Hollowed path: Hollowed 14–29, Hollowed 0.8, then Hollowed 30–50, for 38 records in source order. This resolves current acquisition planning without merging, aliasing, obsoleting, rekeying, or renumbering the raw records described by the unfinished v3 combination/rework notes.
+
+The spreadsheet v3 notes remain preserved as unresolved source claims. Usable v3 media and a sufficiently authoritative mapping are not currently available to this project, so future v3 adoption is not automatic and requires a fresh audit plus an explicit owner-reviewed migration decision. The 38 ignored local MP4s are technical acquisition candidates, not authoritative editorial sources. No Hollowed torrent, acquisition manifest, verified-media evidence, playback validation, or publication exists yet; `hb_14` remains the first unpublished default entry.
 
 ## Manual experiment / user-confirmed Nuvio validation
 

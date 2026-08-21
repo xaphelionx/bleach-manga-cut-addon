@@ -19,6 +19,7 @@ const chipped = require('../editorial/normalized/chipped.json')
 const watchOrder = require('../editorial/watch-orders/source-guide-v2.json')
 const variants = require('../editorial/variants/ex.json')
 const resolutionDocument = require('../editorial/resolutions.json')
+const resolutionSchema = require('../schemas/editorial/resolutions.schema.json')
 const unresolved = require('../editorial/unresolved.json')
 const projection = require('../projection/stremio/public-projection.json')
 const { validate } = require('../scripts/validate-editorial')
@@ -44,6 +45,17 @@ const lockedRepositoryHashes = {
   'package.json': 'fafb31cdfca781af226a2fa99def0b52c5dbbbc2d187118c1271cf334e104c23',
   'package-lock.json': 'a1e290dec14dd2257ae8f6cb0d5d04a384c1acf0605aeb756ae85483027c8ec9'
 }
+const currentRawHollowedRecordIds = [
+  ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
+  'hollowed:0.8',
+  ...Array.from({ length: 21 }, (_, index) => `hollowed:${index + 30}`)
+]
+const hollowedV3EvidenceRefs = [
+  'hollowed-xlsx:episode-list:I18',
+  'hollowed-xlsx:episode-list:I22',
+  'hollowed-xlsx:episode-list:I26',
+  'hollowed-xlsx:episode-list:I38'
+]
 
 function hashFile(relativePath) {
   return crypto.createHash('sha256').update(fs.readFileSync(path.join(root, relativePath))).digest('hex')
@@ -262,7 +274,10 @@ test('the owner resolution links guided 35.5 to source record 0.0 without alteri
   assert.deepEqual(sourceRecord.sourceIdentifier, { raw: '0.0', displayed: '0.0' })
   assert.equal(sourceRecord.title, 'the rotator / the sand')
 
-  const resolution = resolutionDocument.resolutions[0]
+  const resolution = resolutionDocument.resolutions.find(
+    (candidate) => candidate.resolutionId === 'editorial-resolution:concentrated-35.5-to-0.0'
+  )
+  assert.ok(resolution)
   assert.equal(resolutionDocument.authorityDomain, 'project-owner-editorial-decision')
   assert.equal(resolution.decisionAuthority, 'project-owner')
   assert.equal(resolution.decisionDate, '2026-08-17')
@@ -279,12 +294,83 @@ test('the owner resolution links guided 35.5 to source record 0.0 without alteri
     }
   })
   assert.deepEqual(unresolved.issues.map((issue) => issue.issueId), [
-    'hollowed-v3-membership',
+    'hollowed-v3-future-migration',
     'chipped-first-4.5-media-mapping',
     'ex-current-legacy-and-media-status',
     'cross-project-0.8-relationship',
     'chipped-03-04-time-saved'
   ])
+})
+
+test('the owner resolution selects current raw Hollowed membership without rewriting v3 source claims', () => {
+  assert.equal(resolutionDocument.resolutions.length, 2)
+  const resolution = resolutionDocument.resolutions.find(
+    (candidate) => candidate.resolutionId === 'editorial-resolution:hollowed-current-raw-membership'
+  )
+  assert.ok(resolution)
+  assert.equal(resolution.originalIssueId, 'hollowed-v3-membership')
+  assert.equal(resolution.resolutionType, 'version-membership-selection')
+  assert.equal(resolution.projectId, 'hollowed')
+  assert.equal(resolution.selectedMembership, 'current-raw-records')
+  assert.deepEqual(resolution.activeRecordIds, currentRawHollowedRecordIds)
+  assert.deepEqual(resolution.sourceClaims.versionMembershipNotes.evidenceRefs, hollowedV3EvidenceRefs)
+  assert.deepEqual(resolution.futureVersionPolicy, {
+    automaticSupersession: false,
+    revalidationRequired: true,
+    revalidationTrigger: 'v3 media and sufficiently authoritative mapping become available'
+  })
+
+  const sourceClaim = hollowed.project.claims.find(
+    (candidate) => candidate.claimId === 'hollowed-v3-membership'
+  )
+  assert.deepEqual(sourceClaim, {
+    claimId: 'hollowed-v3-membership',
+    kind: 'version-membership',
+    raw: 'The spreadsheet contains v3 combination/rework notes whose active membership is unresolved.',
+    interpretationState: 'unresolved',
+    evidenceRefs: hollowedV3EvidenceRefs
+  })
+  assert.deepEqual(
+    [18, 22, 26, 38].map((sourceRow) => {
+      const record = hollowed.records.find((candidate) => candidate.sourceRow === sourceRow)
+      return record.notes[0]
+    }),
+    [
+      { text: 'Combined in v3 (Now 16)', evidenceRefs: ['hollowed-xlsx:episode-list:I18'] },
+      { text: 'Combined in v3 (Now 19)', evidenceRefs: ['hollowed-xlsx:episode-list:I22'] },
+      { text: 'Pacing Reworked in v3                     (Now 22 - 25)', evidenceRefs: ['hollowed-xlsx:episode-list:I26'] },
+      { text: 'Combined in v3 (Now 34)', evidenceRefs: ['hollowed-xlsx:episode-list:I38'] }
+    ]
+  )
+
+  assert.equal(unresolved.issues.some((issue) => issue.issueId === 'hollowed-v3-membership'), false)
+  const futureMigration = unresolved.issues.find(
+    (issue) => issue.issueId === 'hollowed-v3-future-migration'
+  )
+  assert.ok(futureMigration)
+  assert.equal(futureMigration.kind, 'future-version-migration')
+  assert.deepEqual(futureMigration.blocks, ['future Hollowed v3 migration/adoption'])
+  assert.equal(futureMigration.blocks.some((block) => /current raw|technical acquisition/i.test(block)), false)
+})
+
+test('the editorial resolution schema is a closed union of placement and membership decisions', () => {
+  assert.deepEqual(resolutionSchema.$defs.resolution.oneOf, [
+    { $ref: '#/$defs/guidedPlacementResolution' },
+    { $ref: '#/$defs/versionMembershipSelectionResolution' }
+  ])
+  assert.equal(resolutionSchema.$defs.guidedPlacementResolution.additionalProperties, false)
+  assert.equal(resolutionSchema.$defs.versionMembershipSelectionResolution.additionalProperties, false)
+  assert.equal(
+    resolutionSchema.$defs.versionMembershipSelectionResolution.properties.resolutionType.const,
+    'version-membership-selection'
+  )
+  assert.equal(
+    resolutionSchema.$defs.versionMembershipSelectionResolution.properties.selectedMembership.const,
+    'current-raw-records'
+  )
+  assert.equal(resolutionSchema.$defs.futureVersionPolicy.additionalProperties, false)
+  assert.equal(resolutionSchema.$defs.futureVersionPolicy.properties.automaticSupersession.const, false)
+  assert.equal(resolutionSchema.$defs.futureVersionPolicy.properties.revalidationRequired.const, true)
 })
 
 test('Chipped uncertainty and raw first-4.5 update claim are preserved', () => {
@@ -312,7 +398,7 @@ test('editorial records and relationships satisfy the local schemas and invarian
     projects: 3,
     records: 166,
     variants: 3,
-    resolutions: 1,
+    resolutions: 2,
     unresolvedIssues: 5
   })
 })

@@ -23,14 +23,61 @@ const VALID_RUNTIME_STATES = new Set([
 ])
 const VALID_KINDS = new Set(['base', 'special'])
 const KNOWN_RESOLVED_ISSUE_IDS = [
-  'concentrated-35.5-vs-0.0'
+  'concentrated-35.5-vs-0.0',
+  'hollowed-v3-membership'
 ]
 const EXPECTED_STILL_UNRESOLVED_ISSUE_IDS = [
-  'hollowed-v3-membership',
+  'hollowed-v3-future-migration',
   'chipped-first-4.5-media-mapping',
   'ex-current-legacy-and-media-status',
   'cross-project-0.8-relationship',
   'chipped-03-04-time-saved'
+]
+const CURRENT_RAW_HOLLOWED_RECORD_IDS = [
+  'hollowed:14',
+  'hollowed:15',
+  'hollowed:16',
+  'hollowed:17',
+  'hollowed:18',
+  'hollowed:19',
+  'hollowed:20',
+  'hollowed:21',
+  'hollowed:22',
+  'hollowed:23',
+  'hollowed:24',
+  'hollowed:25',
+  'hollowed:26',
+  'hollowed:27',
+  'hollowed:28',
+  'hollowed:29',
+  'hollowed:0.8',
+  'hollowed:30',
+  'hollowed:31',
+  'hollowed:32',
+  'hollowed:33',
+  'hollowed:34',
+  'hollowed:35',
+  'hollowed:36',
+  'hollowed:37',
+  'hollowed:38',
+  'hollowed:39',
+  'hollowed:40',
+  'hollowed:41',
+  'hollowed:42',
+  'hollowed:43',
+  'hollowed:44',
+  'hollowed:45',
+  'hollowed:46',
+  'hollowed:47',
+  'hollowed:48',
+  'hollowed:49',
+  'hollowed:50'
+]
+const HOLLOWED_V3_EVIDENCE_REFS = [
+  'hollowed-xlsx:episode-list:I18',
+  'hollowed-xlsx:episode-list:I22',
+  'hollowed-xlsx:episode-list:I26',
+  'hollowed-xlsx:episode-list:I38'
 ]
 
 function load(relativePath) {
@@ -272,16 +319,39 @@ function validateUnresolved(unresolved, evidenceIds) {
   for (const issueId of KNOWN_RESOLVED_ISSUE_IDS) {
     assert.ok(!issueIds.has(issueId), `Resolved issue remains unresolved: ${issueId}`)
   }
+
+  assert.deepEqual(unresolved.issues[0], {
+    issueId: 'hollowed-v3-future-migration',
+    status: 'unresolved',
+    kind: 'future-version-migration',
+    claims: [
+      {
+        sourceClaim: 'The Hollowed source contains combined/reworked v3 notes, but exact future v3 record/media correspondence is not fully represented by the currently available authoritative source set.',
+        value: 'future v3 migration requires unavailable assets/mapping and a new owner-reviewed decision',
+        evidenceRefs: HOLLOWED_V3_EVIDENCE_REFS
+      }
+    ],
+    prohibitedResolution: 'Do not merge, renumber, alias, obsolete, or replace the current selected raw-record membership with future v3 units unless the v3 assets and mapping are available and a new deliberate owner-reviewed migration occurs.',
+    blocks: ['future Hollowed v3 migration/adoption']
+  })
 }
 
 function validateResolutions(resolutionDocument, recordsById, evidenceIds, watchOrder) {
   assert.equal(resolutionDocument.schemaVersion, 1)
   assert.equal(resolutionDocument.artifactType, 'editorial-resolutions')
   assert.equal(resolutionDocument.authorityDomain, 'project-owner-editorial-decision')
-  assert.equal(resolutionDocument.resolutions.length, 1, 'Expected exactly one current editorial resolution')
+  assert.equal(resolutionDocument.resolutions.length, 2, 'Expected exactly two current editorial resolutions')
+  assert.equal(
+    new Set(resolutionDocument.resolutions.map((item) => item.resolutionId)).size,
+    resolutionDocument.resolutions.length,
+    'Editorial resolution IDs must be unique'
+  )
 
-  const resolution = resolutionDocument.resolutions[0]
-  assert.deepEqual(resolution, {
+  const guidedResolution = resolutionDocument.resolutions.find(
+    (item) => item.resolutionId === 'editorial-resolution:concentrated-35.5-to-0.0'
+  )
+  assert.ok(guidedResolution, 'Concentrated guided-placement resolution is missing')
+  assert.deepEqual(guidedResolution, {
     resolutionId: 'editorial-resolution:concentrated-35.5-to-0.0',
     originalIssueId: 'concentrated-35.5-vs-0.0',
     resolutionState: 'resolved',
@@ -320,11 +390,43 @@ function validateResolutions(resolutionDocument, recordsById, evidenceIds, watch
       text: "The Concentrated spreadsheet identifies this record as 0.0. The project owner resolves it as the Watch Guide's guided 35.5 endpoint and places it after Concentrated 35 and before Concentrated 36."
     }
   })
-  assert.deepEqual(resolutionDocument.resolutions.map((item) => item.originalIssueId), KNOWN_RESOLVED_ISSUE_IDS)
-  assertEvidenceRefsResolve(resolution, evidenceIds, resolution.resolutionId)
 
-  const target = recordsById.get(resolution.resolvedTarget.recordId)
-  assert.ok(target, `Resolution target does not exist: ${resolution.resolvedTarget.recordId}`)
+  const hollowedResolution = resolutionDocument.resolutions.find(
+    (item) => item.resolutionId === 'editorial-resolution:hollowed-current-raw-membership'
+  )
+  assert.ok(hollowedResolution, 'Hollowed current raw-membership resolution is missing')
+  assert.deepEqual(hollowedResolution, {
+    resolutionId: 'editorial-resolution:hollowed-current-raw-membership',
+    originalIssueId: 'hollowed-v3-membership',
+    resolutionState: 'resolved',
+    decisionAuthority: 'project-owner',
+    decisionDate: '2026-08-21',
+    resolutionType: 'version-membership-selection',
+    projectId: 'hollowed',
+    selectedMembership: 'current-raw-records',
+    activeRecordIds: CURRENT_RAW_HOLLOWED_RECORD_IDS,
+    sourceClaims: {
+      versionMembershipNotes: {
+        evidenceRefs: HOLLOWED_V3_EVIDENCE_REFS
+      }
+    },
+    futureVersionPolicy: {
+      automaticSupersession: false,
+      revalidationRequired: true,
+      revalidationTrigger: 'v3 media and sufficiently authoritative mapping become available'
+    },
+    rationale: {
+      classification: 'project-owner-decision',
+      text: 'The Hollowed source contains unfinished and ambiguous v3 combination/rework notes. The project owner confirms that usable v3 material is not currently available to this project, so the current addon retains the existing raw-record Hollowed membership. Future v3 adoption requires a separate explicit review, and the source notes remain preserved.'
+    }
+  })
+  assert.deepEqual(resolutionDocument.resolutions.map((item) => item.originalIssueId), KNOWN_RESOLVED_ISSUE_IDS)
+  for (const resolution of resolutionDocument.resolutions) {
+    assertEvidenceRefsResolve(resolution, evidenceIds, resolution.resolutionId)
+  }
+
+  const target = recordsById.get(guidedResolution.resolvedTarget.recordId)
+  assert.ok(target, `Resolution target does not exist: ${guidedResolution.resolvedTarget.recordId}`)
   assert.equal(target.recordId, 'concentrated:0.0')
   assert.equal(target.sourceIdentifier.raw, '0.0')
   assert.equal(target.sourceIdentifier.displayed, '0.0')
@@ -346,8 +448,25 @@ function validateResolutions(resolutionDocument, recordsById, evidenceIds, watch
   assert.equal(watchOrder.fieldEvidence['/segments/1/end/recordId'], undefined)
   assert.equal(watchOrder.fieldEvidence['/segments/1/end/resolutionRef'], undefined)
   assert.equal(watchOrder.fieldEvidence['/unresolvedEndpointReferences/0'], undefined)
-  assert.equal(Object.hasOwn(resolution, 'fieldEvidence'), false)
-  assert.equal(Object.hasOwn(resolution.rationale, 'evidenceRefs'), false)
+  assert.equal(Object.hasOwn(guidedResolution, 'fieldEvidence'), false)
+  assert.equal(Object.hasOwn(guidedResolution.rationale, 'evidenceRefs'), false)
+
+  assert.equal(new Set(hollowedResolution.activeRecordIds).size, 38)
+  assert.deepEqual(
+    hollowedResolution.activeRecordIds.map((recordId) => {
+      const record = recordsById.get(recordId)
+      assert.ok(record, `Hollowed membership resolution references unknown record ${recordId}`)
+      assert.equal(record.projectId, 'hollowed', `${recordId} must belong to Hollowed`)
+      assert.equal(record.availability, 'released', `${recordId} must be released`)
+      assert.equal(record.generatable, true, `${recordId} must be generatable`)
+      return record.sourceRow
+    }),
+    Array.from({ length: 38 }, (_, index) => index + 16),
+    'Hollowed current raw membership must match source rows 16 through 53 in source order'
+  )
+  assert.ok(!hollowedResolution.activeRecordIds.includes('hollowed:11.5'))
+  assert.ok(!hollowedResolution.activeRecordIds.some((recordId) => recordId.startsWith('hollowed:ex:')))
+  assert.ok(!hollowedResolution.activeRecordIds.includes('hollowed:51'))
 }
 
 function assertEvidenceRefsResolve(value, evidenceIds, label) {
@@ -452,7 +571,7 @@ function validate() {
 
 function main() {
   const summary = validate()
-  process.stdout.write(`validated ${summary.sources} sources, ${summary.projects} projects, ${summary.records} records, ${summary.variants} variants, ${summary.resolutions} resolution, and ${summary.unresolvedIssues} unresolved issues\n`)
+  process.stdout.write(`validated ${summary.sources} sources, ${summary.projects} projects, ${summary.records} records, ${summary.variants} variants, ${summary.resolutions} resolutions, and ${summary.unresolvedIssues} unresolved issues\n`)
 }
 
 if (require.main === module) main()

@@ -56,6 +56,11 @@ const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
   ...EXPECTED_PREBOUNDARY_PREFIX,
   ...EXPECTED_ARRANCAR_BATCH
 ])
+const CURRENT_RAW_HOLLOWED_RECORD_IDS = Object.freeze([
+  ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
+  'hollowed:0.8',
+  ...Array.from({ length: 21 }, (_, index) => `hollowed:${index + 30}`)
+])
 const evidenceRecords = EXPECTED_PUBLISHED_PREFIX.map((videoId) => ({
   relativePath: `evidence/media/${videoId}.json`,
   value: read(`evidence/media/${videoId}.json`)
@@ -270,7 +275,10 @@ test('projected public titles equal authoritative normalized titles exactly', ()
 })
 
 test('owner resolution maps guided 35.5 to source record 0.0 with one projection reference', () => {
-  const resolution = resolutionDocument.resolutions[0]
+  const resolution = resolutionDocument.resolutions.find(
+    (candidate) => candidate.resolutionId === 'editorial-resolution:concentrated-35.5-to-0.0'
+  )
+  assert.ok(resolution)
   const cb0 = projectedById.get('concentrated:0.0')
   assert.equal(resolution.resolutionId, 'editorial-resolution:concentrated-35.5-to-0.0')
   assert.equal(resolution.guidedIdentity.rawIdentifier, '35.5')
@@ -282,6 +290,43 @@ test('owner resolution maps guided 35.5 to source record 0.0 with one projection
     projection.entries.filter((entry) => entry.resolutionRef).map((entry) => entry.videoId),
     ['cb_0p0']
   )
+})
+
+test('two owner resolutions coexist without turning Hollowed membership into publication approval', () => {
+  assert.equal(resolutionDocument.resolutions.length, 2)
+  const guidedResolution = resolutionDocument.resolutions.find(
+    (candidate) => candidate.resolutionId === 'editorial-resolution:concentrated-35.5-to-0.0'
+  )
+  const membershipResolution = resolutionDocument.resolutions.find(
+    (candidate) => candidate.resolutionId === 'editorial-resolution:hollowed-current-raw-membership'
+  )
+  assert.ok(guidedResolution)
+  assert.ok(membershipResolution)
+  assert.deepEqual(membershipResolution.activeRecordIds, CURRENT_RAW_HOLLOWED_RECORD_IDS)
+  assert.deepEqual(
+    projection.entries.filter((entry) => entry.projectId === 'hollowed').map((entry) => entry.recordId),
+    membershipResolution.activeRecordIds
+  )
+  assert.deepEqual(
+    projection.entries.filter((entry) => entry.resolutionRef).map((entry) => entry.resolutionRef),
+    [guidedResolution.resolutionId]
+  )
+  assert.equal(
+    projection.entries
+      .filter((entry) => membershipResolution.activeRecordIds.includes(entry.recordId))
+      .every((entry) => entry.publicationEligibility.state === 'blocked'),
+    true
+  )
+  assert.deepEqual(registry.entries.find((entry) => entry.videoId === 'hb_14'), {
+    recordType: 'normalized-record',
+    recordId: 'hollowed:14',
+    projectId: 'hollowed',
+    sourceIdentifier: '14',
+    videoId: 'hb_14',
+    status: 'reserved',
+    locked: false
+  })
+  assert.equal(hash('projection/stremio/public-projection.json'), '119b9063242cb40b14df83f14c9511fab11e9ce8d252840db641ba75e6fee4e4')
 })
 
 test('all 103 default timeline positions are resolved and monotonic', () => {
@@ -627,7 +672,7 @@ test('projection artifacts contain no stream or media claims', () => {
 
 test('the five remaining unresolved editorial issues match the locked lifecycle', () => {
   assert.deepEqual(unresolved.issues.map((issue) => issue.issueId), [
-    'hollowed-v3-membership',
+    'hollowed-v3-future-migration',
     'chipped-first-4.5-media-mapping',
     'ex-current-legacy-and-media-status',
     'cross-project-0.8-relationship',

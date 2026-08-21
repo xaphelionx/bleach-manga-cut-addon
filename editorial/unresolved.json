@@ -3,13 +3,13 @@
   "policy": "Conflicting or incomplete source claims remain explicit and block only the affected relationship or field; no document-date precedence is applied.",
   "issues": [
     {
-      "issueId": "hollowed-v3-membership",
+      "issueId": "hollowed-v3-future-migration",
       "status": "unresolved",
-      "kind": "version-membership",
+      "kind": "future-version-migration",
       "claims": [
         {
-          "sourceClaim": "Hollowed rows contain combined/reworked v3 notes but retain the raw source rows.",
-          "value": "active and obsolete row membership is not selected",
+          "sourceClaim": "The Hollowed source contains combined/reworked v3 notes, but exact future v3 record/media correspondence is not fully represented by the currently available authoritative source set.",
+          "value": "future v3 migration requires unavailable assets/mapping and a new owner-reviewed decision",
           "evidenceRefs": [
             "hollowed-xlsx:episode-list:I18",
             "hollowed-xlsx:episode-list:I22",
@@ -18,9 +18,9 @@
           ]
         }
       ],
-      "prohibitedResolution": "Do not mark source rows as aliases or obsolete until explicitly approved.",
+      "prohibitedResolution": "Do not merge, renumber, alias, obsolete, or replace the current selected raw-record membership with future v3 units unless the v3 assets and mapping are available and a new deliberate owner-reviewed migration occurs.",
       "blocks": [
-        "hollowed version-specific sequence expansion"
+        "future Hollowed v3 migration/adoption"
       ]
     },
     {

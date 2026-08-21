@@ -43,6 +43,75 @@
         "classification": "project-owner-decision",
         "text": "The Concentrated spreadsheet identifies this record as 0.0. The project owner resolves it as the Watch Guide's guided 35.5 endpoint and places it after Concentrated 35 and before Concentrated 36."
       }
+    },
+    {
+      "resolutionId": "editorial-resolution:hollowed-current-raw-membership",
+      "originalIssueId": "hollowed-v3-membership",
+      "resolutionState": "resolved",
+      "decisionAuthority": "project-owner",
+      "decisionDate": "2026-08-21",
+      "resolutionType": "version-membership-selection",
+      "projectId": "hollowed",
+      "selectedMembership": "current-raw-records",
+      "activeRecordIds": [
+        "hollowed:14",
+        "hollowed:15",
+        "hollowed:16",
+        "hollowed:17",
+        "hollowed:18",
+        "hollowed:19",
+        "hollowed:20",
+        "hollowed:21",
+        "hollowed:22",
+        "hollowed:23",
+        "hollowed:24",
+        "hollowed:25",
+        "hollowed:26",
+        "hollowed:27",
+        "hollowed:28",
+        "hollowed:29",
+        "hollowed:0.8",
+        "hollowed:30",
+        "hollowed:31",
+        "hollowed:32",
+        "hollowed:33",
+        "hollowed:34",
+        "hollowed:35",
+        "hollowed:36",
+        "hollowed:37",
+        "hollowed:38",
+        "hollowed:39",
+        "hollowed:40",
+        "hollowed:41",
+        "hollowed:42",
+        "hollowed:43",
+        "hollowed:44",
+        "hollowed:45",
+        "hollowed:46",
+        "hollowed:47",
+        "hollowed:48",
+        "hollowed:49",
+        "hollowed:50"
+      ],
+      "sourceClaims": {
+        "versionMembershipNotes": {
+          "evidenceRefs": [
+            "hollowed-xlsx:episode-list:I18",
+            "hollowed-xlsx:episode-list:I22",
+            "hollowed-xlsx:episode-list:I26",
+            "hollowed-xlsx:episode-list:I38"
+          ]
+        }
+      },
+      "futureVersionPolicy": {
+        "automaticSupersession": false,
+        "revalidationRequired": true,
+        "revalidationTrigger": "v3 media and sufficiently authoritative mapping become available"
+      },
+      "rationale": {
+        "classification": "project-owner-decision",
+        "text": "The Hollowed source contains unfinished and ambiguous v3 combination/rework notes. The project owner confirms that usable v3 material is not currently available to this project, so the current addon retains the existing raw-record Hollowed membership. Future v3 adoption requires a separate explicit review, and the source notes remain preserved."
+      }
     }
   ]
 }

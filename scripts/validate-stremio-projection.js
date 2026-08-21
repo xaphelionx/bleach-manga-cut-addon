@@ -20,7 +20,7 @@ const LOCKED_HASHES = Object.freeze({
   'evidence/media/cb_1.json': '7b84d24d4186163f39e3622a496c244dc3c5f5d5144d9513d6fb41e3be60f80f',
   'evidence/media/cb_2.json': '4a68bbc82f83e845c2e8ec02d36061796d1876ff95e4eb4a2fe7e6707bba30f2',
   'evidence/media/cb_3.json': 'b3604ed951e34e211003da1adc08acaefe7082b70ad0c972fb76a6ef78438526',
-  'editorial/unresolved.json': '7697d76e1fc3c54d04d3ebb19c7ff8f827132f96df09769bce80f339bda6085e'
+  'editorial/unresolved.json': 'ea4f1dbf2ba1b96596264f741590c4b5078e3f56b92067c2befb8d15a5c14092'
 })
 const LOCKED_VALIDATED_VIDEO_IDS = new Set([
   'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
@@ -31,6 +31,19 @@ const LOCKED_VALIDATED_VIDEO_IDS = new Set([
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
 ])
+const CURRENT_RAW_HOLLOWED_RECORD_IDS = [
+  'hollowed:14', 'hollowed:15', 'hollowed:16', 'hollowed:17',
+  'hollowed:18', 'hollowed:19', 'hollowed:20', 'hollowed:21',
+  'hollowed:22', 'hollowed:23', 'hollowed:24', 'hollowed:25',
+  'hollowed:26', 'hollowed:27', 'hollowed:28', 'hollowed:29',
+  'hollowed:0.8',
+  'hollowed:30', 'hollowed:31', 'hollowed:32', 'hollowed:33',
+  'hollowed:34', 'hollowed:35', 'hollowed:36', 'hollowed:37',
+  'hollowed:38', 'hollowed:39', 'hollowed:40', 'hollowed:41',
+  'hollowed:42', 'hollowed:43', 'hollowed:44', 'hollowed:45',
+  'hollowed:46', 'hollowed:47', 'hollowed:48', 'hollowed:49',
+  'hollowed:50'
+]
 
 function load(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), 'utf8'))
@@ -258,9 +271,17 @@ function validate() {
 
   assert.equal(unresolved.issues.length, 5)
   assert.equal(unresolved.issues.some((issue) => issue.issueId === 'concentrated-35.5-vs-0.0'), false)
-  assert.equal(resolutionDocument.resolutions.length, 1, 'Expected exactly one editorial resolution')
-  const resolution = resolutionDocument.resolutions[0]
-  assert.equal(resolution.resolutionId, 'editorial-resolution:concentrated-35.5-to-0.0')
+  assert.equal(unresolved.issues.some((issue) => issue.issueId === 'hollowed-v3-membership'), false)
+  assert.equal(unresolved.issues.some((issue) => issue.issueId === 'hollowed-v3-future-migration'), true)
+  assert.equal(resolutionDocument.resolutions.length, 2, 'Expected exactly two editorial resolutions')
+  const resolution = resolutionDocument.resolutions.find(
+    (item) => item.resolutionId === 'editorial-resolution:concentrated-35.5-to-0.0'
+  )
+  assert.ok(resolution, 'Concentrated guided-placement resolution is missing')
+  const hollowedMembershipResolution = resolutionDocument.resolutions.find(
+    (item) => item.resolutionId === 'editorial-resolution:hollowed-current-raw-membership'
+  )
+  assert.ok(hollowedMembershipResolution, 'Hollowed current raw-membership resolution is missing')
   assert.equal(resolution.resolvedTarget.recordId, 'concentrated:0.0')
   assert.equal(resolution.resolvedTarget.sourceIdentifier, '0.0')
   assert.deepEqual(resolution.guidedPlacement, {
@@ -288,6 +309,18 @@ function validate() {
   const expectedIds = expected.map((entry) => entry.recordId)
   const projectedIds = projection.entries.map((entry) => entry.recordId)
   assert.deepEqual(projectedIds, expectedIds)
+  assert.equal(hollowedMembershipResolution.originalIssueId, 'hollowed-v3-membership')
+  assert.equal(hollowedMembershipResolution.resolutionType, 'version-membership-selection')
+  assert.equal(hollowedMembershipResolution.projectId, 'hollowed')
+  assert.equal(hollowedMembershipResolution.selectedMembership, 'current-raw-records')
+  assert.deepEqual(hollowedMembershipResolution.activeRecordIds, CURRENT_RAW_HOLLOWED_RECORD_IDS)
+  assert.deepEqual(
+    projection.entries
+      .filter((entry) => entry.projectId === 'hollowed')
+      .map((entry) => entry.recordId),
+    hollowedMembershipResolution.activeRecordIds,
+    'Projected Hollowed defaults must exactly match the owner-selected current raw membership'
+  )
   const resolvedTargetIndex = projectedIds.indexOf(resolution.resolvedTarget.recordId)
   assert.equal(projectedIds[resolvedTargetIndex - 1], resolution.relativePlacement.afterRecordId)
   assert.equal(projectedIds[resolvedTargetIndex + 1], resolution.relativePlacement.beforeRecordId)

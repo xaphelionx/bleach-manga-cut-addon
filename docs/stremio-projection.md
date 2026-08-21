@@ -52,6 +52,14 @@ CB36       → S3E1  → global index 38
 
 All 103 projected entries have resolved global indexes. `cb_0p0` is published and compatibility-locked at S2E28/global index 37. Verified-media evidence exists, the project owner confirmed the exact torrent is seeded and acquired/cached in the user's TorBox environment, and the corrected real-device terminal path was validated on 2026-08-20. This does not establish permanent public availability or future cache persistence.
 
+## Current Hollowed membership resolution
+
+The project-owner decision `editorial-resolution:hollowed-current-raw-membership`, dated 2026-08-21, selects the existing raw-record default membership for current Hollowed acquisition planning: Hollowed 14–29, Hollowed 0.8, then Hollowed 30–50. These exact 38 records already form the projected Hollowed default span at S3E17–S3E54/global indexes 54–91.
+
+This is a current-version membership selection, not a placement resolution or publication approval. The spreadsheet's combined/reworked v3 notes remain preserved as unresolved source claims. Usable v3 media and sufficiently authoritative future-v3 correspondence are not currently available to the project; therefore no future asset automatically supersedes, merges, aliases, obsoletes, rekeys, or renumbers the selected raw records. Any v3 adoption requires a fresh audit and explicit owner-reviewed migration decision.
+
+The 38 ignored local MP4s are technical candidates rather than editorial authority. No Hollowed torrents, acquisition manifest, verified-media evidence, runtime serving, playback validation, or publication exist yet, and `hb_14` remains reserved, unlocked, blocked, and first in the unpublished default suffix.
+
 ## Stable video IDs
 
 IDs encode only source project and exact displayed identifier syntax:
@@ -133,6 +141,7 @@ The projection validator enforces:
 - Projected titles equal normalized titles exactly.
 - Source identifier `0.0`, guided identifier `35.5`, and permanent ID `cb_0p0` remain distinct and traceable through the owner resolution.
 - `cb_0p0` is the only projection entry with `resolutionRef`; it is published and compatibility-locked at S2E28/global index 37.
+- The owner-selected 38-record current raw Hollowed membership exactly matches the existing projected Hollowed default span without adding per-entry `resolutionRef` values or authorizing publication.
 - CB36 is S3E1/global index 38, and every one of the 103 global indexes is resolved.
 - The projection contains 53 eligible and 50 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at Hollowed 14.
 - The current 53-entry published prefix and explicit 53-entry compatibility-locked prefix contain the same IDs, while remaining separately modeled; publication never grants a lock automatically, and future publication may extend beyond the lock set.
@@ -142,7 +151,7 @@ The projection validator enforces:
 - Registry reservation does not imply publication.
 - Planned, deferred, explicitly-not-planned, or non-generatable records cannot become eligible.
 - Editorial projection cannot create torrent, stream, or technical-media claims.
-- The resolved 35.5/0.0 issue is absent from the unresolved ledger; the five remaining issue IDs remain exact.
+- The resolved 35.5/0.0 and current Hollowed-membership issues are absent from the unresolved ledger; the future-only Hollowed v3 migration issue and the other four remaining issue IDs remain exact.
 
 ## Artifact boundaries
 
