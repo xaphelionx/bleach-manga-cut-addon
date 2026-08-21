@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_21",
+  "recordId": "hollowed:21",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "25ae44c7681b4e4ccb19cf17c2b9147525038f83",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 21 - Howling (sub).mp4",
+      "byteSize": 791622022
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1661.451458
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1440,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb21-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 21 - Howling (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "710a187bcfd870470012779080bce9d40562ecabbcec0abee9bbc366efb44c3f"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 755,
+        "verifiedPieces": 755,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb21-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 21 - Howling (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 791622022
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb21-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb21-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb21-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb21-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb21-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb21-local-media-ffprobe-inspection"
+    ]
+  }
+}

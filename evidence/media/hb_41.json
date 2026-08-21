@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_41",
+  "recordId": "hollowed:41",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "124fd405a3099f07c86c47a450a17521e3870e7b",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4",
+      "byteSize": 914847432
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1911.701458
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb41-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "39aeb63e1ad473bc5982dde8ead99847246e47661ed74e6ff0ea7aacc2eef91c"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 873,
+        "verifiedPieces": 873,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb41-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 914847432
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb41-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb41-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb41-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb41-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb41-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb41-local-media-ffprobe-inspection"
+    ]
+  }
+}

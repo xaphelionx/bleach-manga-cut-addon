@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_46",
+  "recordId": "hollowed:46",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "ae58c5906eca24ad7837fc44ccbc5898db2b90d8",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4",
+      "byteSize": 1168513671
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1897.937708
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb46-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "7d69136e369d8dccfd4d8add6df3a1cfd7c7acb0ac70636432865cbf9393cb1c"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1115,
+        "verifiedPieces": 1115,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb46-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1168513671
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb46-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb46-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb46-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb46-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb46-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb46-local-media-ffprobe-inspection"
+    ]
+  }
+}

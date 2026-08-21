@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_15",
+  "recordId": "hollowed:15",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "81c455e0687ff84734af6725b2a54911e1e47fa4",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
+      "byteSize": 656753518
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1379.378
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1440,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb15-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "230455bbd82d6c2174aab7483a92dc218a7644bcc55aad41641e1c32ddd0418d"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 627,
+        "verifiedPieces": 627,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb15-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 656753518
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb15-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb15-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb15-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb15-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb15-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb15-local-media-ffprobe-inspection"
+    ]
+  }
+}

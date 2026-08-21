@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_40",
+  "recordId": "hollowed:40",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "6c0b6aa30b5438d1940252243e5a98272c70245d",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4",
+      "byteSize": 742630399
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1554.469583
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb40-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "f3b6b130ceecaa3c6e5402179686c84279add0bef4c4651ed90e40841f37e6e0"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 709,
+        "verifiedPieces": 709,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb40-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 742630399
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb40-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb40-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb40-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb40-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb40-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb40-local-media-ffprobe-inspection"
+    ]
+  }
+}

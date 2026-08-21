@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_23",
+  "recordId": "hollowed:23",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "5a5e9030f34de1e57581cea2d5c0a080eff380db",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 23 - King of the Kill (sub).mp4",
+      "byteSize": 1648524670
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2683.889542
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb23-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 23 - King of the Kill (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "a5a0499fc7172169090d04a7ad9ed1afc90512c2b6ae7d2dc16541b9751e0ab2"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1573,
+        "verifiedPieces": 1573,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb23-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 23 - King of the Kill (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1648524670
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb23-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb23-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb23-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb23-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb23-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb23-local-media-ffprobe-inspection"
+    ]
+  }
+}

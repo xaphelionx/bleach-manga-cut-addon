@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_39",
+  "recordId": "hollowed:39",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "9c7056fbb10da613406963ff715e5b54a6b6adf3",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 39 - Spit On Your Own God (sub).mp4",
+      "byteSize": 1212188315
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2540.871667
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb39-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 39 - Spit On Your Own God (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "3d9afb9601cc6281c24e259bd66afbbed0360246b421f935755b8743e351dd27"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1157,
+        "verifiedPieces": 1157,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb39-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 39 - Spit On Your Own God (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1212188315
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb39-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb39-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb39-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb39-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb39-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb39-local-media-ffprobe-inspection"
+    ]
+  }
+}

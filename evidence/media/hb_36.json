@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_36",
+  "recordId": "hollowed:36",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "411225b5b5c2e3a58e6c7f7173553d48d58077c6",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 36 - heart (sub).mp4",
+      "byteSize": 1267992742
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2657.529875
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb36-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 36 - heart (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "170d67d74617014acfd9c9acf917890bdc12f3a9908d381e80971e79b701728b"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1210,
+        "verifiedPieces": 1210,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb36-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 36 - heart (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1267992742
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb36-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb36-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb36-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb36-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb36-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb36-local-media-ffprobe-inspection"
+    ]
+  }
+}

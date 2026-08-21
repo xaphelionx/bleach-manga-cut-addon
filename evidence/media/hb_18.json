@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_18",
+  "recordId": "hollowed:18",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "4fd87601e714c30d26f974b429070870319ea7d6",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4",
+      "byteSize": 790059844
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1660.200208
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1440,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb18-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "95335c963846ce4b29ba803591448b6084c14f9b2dec046ef8977cae06542ff4"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 754,
+        "verifiedPieces": 754,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb18-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 790059844
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb18-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb18-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb18-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb18-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb18-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb18-local-media-ffprobe-inspection"
+    ]
+  }
+}

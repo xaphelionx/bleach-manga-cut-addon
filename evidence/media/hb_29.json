@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_29",
+  "recordId": "hollowed:29",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "ebd08752abd5c9a9601474551978128a42f25e1d",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4",
+      "byteSize": 856133115
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1796.878417
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb29-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "8dbdb89951c1ac44c23702f879155ec5527669f3af317cd6fa348b234b43a0b2"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 817,
+        "verifiedPieces": 817,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb29-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 856133115
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb29-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb29-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb29-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb29-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb29-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb29-local-media-ffprobe-inspection"
+    ]
+  }
+}

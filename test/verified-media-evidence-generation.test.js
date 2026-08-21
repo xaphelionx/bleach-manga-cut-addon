@@ -38,6 +38,12 @@ const ARRANCAR_ACQUISITION_PATH = path.join(
   'acquisition',
   'concentrated-arrancar.json'
 )
+const HOLLOWED_ACQUISITION_PATH = path.join(
+  REPOSITORY_ROOT,
+  'evidence',
+  'acquisition',
+  'hollowed-current-raw.json'
+)
 const PRODUCTION_EVIDENCE_DIRECTORY = path.join(REPOSITORY_ROOT, 'evidence', 'media')
 const PRODUCTION_SELECTION_ENTRIES = [
   { recordId: 'concentrated:03', videoId: 'cb_3' },
@@ -88,6 +94,21 @@ const LOCKED_ARRANCAR_EVIDENCE_INDEX_SHA256 =
   'deb13c1351260e6a8f125d8adacb56c1963885a95b601d0ed3f0763d0c2eea2c'
 const LOCKED_ARRANCAR_EVIDENCE_INDEX_BYTE_SIZE = 3219
 const LOCKED_ARRANCAR_EVIDENCE_TOTAL_BYTE_SIZE = 60357
+const HOLLOWED_SELECTION_ENTRIES = [
+  ...Array.from({ length: 16 }, (_, index) => ({
+    recordId: `hollowed:${index + 14}`,
+    videoId: `hb_${index + 14}`
+  })),
+  { recordId: 'hollowed:0.8', videoId: 'hb_0p8' },
+  ...Array.from({ length: 21 }, (_, index) => ({
+    recordId: `hollowed:${index + 30}`,
+    videoId: `hb_${index + 30}`
+  }))
+]
+const LOCKED_HOLLOWED_EVIDENCE_INDEX_SHA256 =
+  '931e48c3ad58c6783e529b685778441c43635dba1023e5142e0cef43adacbf04'
+const LOCKED_HOLLOWED_EVIDENCE_INDEX_BYTE_SIZE = 7492
+const LOCKED_HOLLOWED_EVIDENCE_TOTAL_BYTE_SIZE = 130226
 
 function projectIdFor(recordId) {
   return recordId.split(':', 1)[0]
@@ -292,6 +313,10 @@ function productionCandidates() {
 
 function arrancarProductionCandidates() {
   return productionCandidatesFor(ARRANCAR_ACQUISITION_PATH, ARRANCAR_SELECTION_ENTRIES)
+}
+
+function hollowedProductionCandidates() {
+  return productionCandidatesFor(HOLLOWED_ACQUISITION_PATH, HOLLOWED_SELECTION_ENTRIES)
 }
 
 test('valid one-entry generation succeeds', () => {
@@ -854,4 +879,90 @@ test('committed Arrancar evidence set matches its separate aggregate index lock'
     crypto.createHash('sha256').update(indexBytes).digest('hex'),
     LOCKED_ARRANCAR_EVIDENCE_INDEX_SHA256
   )
+})
+
+test('committed Hollowed evidence is byte-identical to its separate production generation batch', () => {
+  const { acquisitionManifest, candidates } = hollowedProductionCandidates()
+  const expectedVideoIds = HOLLOWED_SELECTION_ENTRIES.map(({ videoId }) => videoId)
+  assert.equal(candidates.length, 38)
+  assert.deepEqual(candidates.map(({ videoId }) => videoId), expectedVideoIds)
+  assert.deepEqual(HOLLOWED_SELECTION_ENTRIES[0], { recordId: 'hollowed:14', videoId: 'hb_14' })
+  assert.deepEqual(HOLLOWED_SELECTION_ENTRIES[16], { recordId: 'hollowed:0.8', videoId: 'hb_0p8' })
+  assert.deepEqual(HOLLOWED_SELECTION_ENTRIES.at(-1), { recordId: 'hollowed:50', videoId: 'hb_50' })
+
+  for (const candidate of candidates) {
+    const acquisitionEntry = acquisitionManifest.entries.find(({ videoId }) => videoId === candidate.videoId)
+    assert.ok(acquisitionEntry)
+    assert.equal(acquisitionEntry.recordId, candidate.recordId)
+    const filename = path.join(PRODUCTION_EVIDENCE_DIRECTORY, candidate.filename)
+    assert.equal(fs.existsSync(filename), true)
+    const committedBytes = fs.readFileSync(filename)
+    assert.ok(committedBytes.equals(candidate.bytes))
+    assert.equal(crypto.createHash('sha256').update(committedBytes).digest('hex'), candidate.sha256)
+    assert.equal(committedBytes.length, candidate.byteSize)
+    const committed = JSON.parse(committedBytes)
+    assert.doesNotThrow(() => validateVerifiedMedia(committed))
+    assert.deepEqual(committed.media.audioTracks, [{
+      language: 'English',
+      codec: 'AAC',
+      profile: 'LC',
+      channels: 2,
+      channelLayout: 'stereo'
+    }])
+    assert.deepEqual(committed.media.subtitleTracks, [])
+    assert.deepEqual(committed.torrent.networkEvidence, {
+      trackers: { state: 'unresolved' },
+      announceUrls: { state: 'unresolved' },
+      webSeeds: { state: 'unresolved' }
+    })
+  }
+})
+
+test('committed Hollowed evidence set matches its separate aggregate index lock', () => {
+  let totalByteSize = 0
+  const index = HOLLOWED_SELECTION_ENTRIES.map(({ recordId, videoId }) => {
+    const filename = `${videoId}.json`
+    const bytes = fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, filename))
+    const committed = JSON.parse(bytes)
+    assert.equal(committed.recordId, recordId)
+    assert.equal(committed.videoId, videoId)
+    assert.deepEqual(committed.media.subtitleTracks, [])
+    totalByteSize += bytes.length
+    return {
+      recordId: committed.recordId,
+      videoId: committed.videoId,
+      filename,
+      sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+      byteSize: bytes.length
+    }
+  })
+  const indexBytes = Buffer.from(`${JSON.stringify(index, null, 2)}\n`)
+  assert.equal(indexBytes.length, LOCKED_HOLLOWED_EVIDENCE_INDEX_BYTE_SIZE)
+  assert.equal(totalByteSize, LOCKED_HOLLOWED_EVIDENCE_TOTAL_BYTE_SIZE)
+  assert.equal(
+    crypto.createHash('sha256').update(indexBytes).digest('hex'),
+    LOCKED_HOLLOWED_EVIDENCE_INDEX_SHA256
+  )
+})
+
+test('representative Hollowed verified-media facts retain exact physical observations', () => {
+  const expected = {
+    hb_14: ['hollowed:14', 'Hollowed Bleach 14 - The Slashing Opera (sub).mp4', 910624738, 1912.535625],
+    hb_0p8: ['hollowed:0.8', 'Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4', 188759844, 377.610567],
+    hb_34: ['hollowed:34', 'Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4', 1001959714, 2074.864458],
+    hb_36: ['hollowed:36', 'Hollowed Bleach 36 - heart (sub).mp4', 1267992742, 2657.529875],
+    hb_50: ['hollowed:50', 'Hollowed Bleach 50 - Bleach My Soul (sub).mp4', 788212493, 1650.649]
+  }
+  for (const [videoId, [recordId, filename, byteSize, durationSeconds]] of Object.entries(expected)) {
+    const evidence = readJsonFile(path.join(PRODUCTION_EVIDENCE_DIRECTORY, `${videoId}.json`))
+    assert.equal(evidence.recordId, recordId)
+    assert.equal(evidence.torrent.fileSelection.filename, filename)
+    assert.equal(evidence.torrent.fileSelection.byteSize, byteSize)
+    assert.deepEqual(evidence.media.duration, {
+      state: 'verified',
+      measurement: 'container',
+      seconds: durationSeconds
+    })
+    assert.deepEqual(evidence.media.subtitleTracks, [])
+  }
 })

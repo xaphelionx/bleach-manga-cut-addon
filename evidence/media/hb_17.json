@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_17",
+  "recordId": "hollowed:17",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "b1b6bd89d310a2e82d4325f3a84b89d9420e63cc",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 17 - There Is No Heart WIthout You (sub).mp4",
+      "byteSize": 770196167
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1616.86525
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1440,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb17-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 17 - There Is No Heart WIthout You (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "ae8ff1e3bb48fc0878a0d1bf3b175c2d9da68353231f9caf00ef5ff706f3fc6f"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 735,
+        "verifiedPieces": 735,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb17-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 17 - There Is No Heart WIthout You (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 770196167
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb17-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb17-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb17-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb17-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb17-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb17-local-media-ffprobe-inspection"
+    ]
+  }
+}

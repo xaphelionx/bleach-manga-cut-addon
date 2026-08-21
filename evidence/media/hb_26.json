@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_26",
+  "recordId": "hollowed:26",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "01083b811990109b7faa52a6f4fc4c34984f86d5",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 26 - TO CLOSE YOUR WORLD (sub).mp4",
+      "byteSize": 1239614338
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2601.599
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb26-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 26 - TO CLOSE YOUR WORLD (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "df17e08759cd0a2e15d212357db72e295eac147bd564aa7aacdc525bd0e72a3b"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1183,
+        "verifiedPieces": 1183,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb26-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 26 - TO CLOSE YOUR WORLD (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1239614338
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb26-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb26-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb26-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb26-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb26-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb26-local-media-ffprobe-inspection"
+    ]
+  }
+}

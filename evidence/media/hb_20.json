@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_20",
+  "recordId": "hollowed:20",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "69dcb0a8d052969f3deee424ee820062fd240daa",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 20 - Jugulators (sub).mp4",
+      "byteSize": 692048268
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1410.492417
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1440,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb20-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 20 - Jugulators (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "3ad8df757ad912e1fe374a4abdcc9104643cc3167c18e28798fdf7046ea2803d"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 660,
+        "verifiedPieces": 660,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb20-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 20 - Jugulators (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 692048268
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb20-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb20-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb20-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb20-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb20-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb20-local-media-ffprobe-inspection"
+    ]
+  }
+}

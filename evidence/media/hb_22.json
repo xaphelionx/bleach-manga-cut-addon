@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_22",
+  "recordId": "hollowed:22",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "d051ebe180fc2a664a070021e97b8f26da7ce7a7",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 22 - THE BAD JOKE (sub).mp4",
+      "byteSize": 956604902
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2007.171833
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb22-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 22 - THE BAD JOKE (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "9db31389da2b25375a3c287c402e9a797ad09106ac11e5a6b3dd38899fb0b749"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 913,
+        "verifiedPieces": 913,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb22-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 22 - THE BAD JOKE (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 956604902
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb22-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb22-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb22-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb22-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb22-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb22-local-media-ffprobe-inspection"
+    ]
+  }
+}

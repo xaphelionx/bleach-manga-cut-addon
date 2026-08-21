@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_37",
+  "recordId": "hollowed:37",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "5ede6438933f55d6e4a0d41f22c8529bd54516e6",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4",
+      "byteSize": 978066732
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2040.28825
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb37-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "63ab79756f0a17bace7467384ad17b9e0c47ae946d6af67207863a999b8bab7e"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 933,
+        "verifiedPieces": 933,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb37-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 978066732
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb37-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb37-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb37-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb37-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb37-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb37-local-media-ffprobe-inspection"
+    ]
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_44",
+  "recordId": "hollowed:44",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "677653944a944306cc1b5ab59fe9c98d5cbfc8d9",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 44 - The Burnout Inferno (sub).mp4",
+      "byteSize": 1227036244
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2485.524708
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb44-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 44 - The Burnout Inferno (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "86ffb82284348e40ce594182ee6b4a5de9fed7addcdb032c49257901751ab478"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1171,
+        "verifiedPieces": 1171,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb44-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 44 - The Burnout Inferno (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1227036244
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb44-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb44-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb44-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb44-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb44-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb44-local-media-ffprobe-inspection"
+    ]
+  }
+}

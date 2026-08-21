@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_31",
+  "recordId": "hollowed:31",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "68885993dd91b5f883a27ff786225a83dbb768d3",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 31 - Ants & Dragons (sub).mp4",
+      "byteSize": 863306564
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1809.3075
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb31-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 31 - Ants & Dragons (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "49a73d2f33d370af88800acc0b85f8f01b82e2390c6301d77b706a9c8d2d8094"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 824,
+        "verifiedPieces": 824,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb31-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 31 - Ants & Dragons (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 863306564
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb31-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb31-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb31-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb31-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb31-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb31-local-media-ffprobe-inspection"
+    ]
+  }
+}

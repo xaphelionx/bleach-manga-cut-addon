@@ -58,7 +58,9 @@ The project-owner decision `editorial-resolution:hollowed-current-raw-membership
 
 This is a current-version membership selection, not a placement resolution or publication approval. The spreadsheet's combined/reworked v3 notes remain preserved as unresolved source claims. Usable v3 media and sufficiently authoritative future-v3 correspondence are not currently available to the project; therefore no future asset automatically supersedes, merges, aliases, obsoletes, rekeys, or renumbers the selected raw records. Any v3 adoption requires a fresh audit and explicit owner-reviewed migration decision.
 
-The 38 ignored local MP4s are technical candidates rather than editorial authority. No Hollowed torrents, acquisition manifest, verified-media evidence, runtime serving, playback validation, or publication exist yet, and `hb_14` remains reserved, unlocked, blocked, and first in the unpublished default suffix.
+The 38 ignored local MP4s are acquisition payloads rather than editorial authority. A separate 38-entry technical-acquisition manifest and 38 verified-media records now preserve their exact deterministic trackerless torrent identities and observed media facts. All 33,764 pieces verified, and a second complete torrent creation was byte-identical. Inspection observed one HEVC video and one English AAC LC stereo track per MP4, with no embedded subtitle streams, attachments, or warnings; `(sub)` in a payload filename is not treated as subtitle evidence.
+
+HB34 and HB36 retain their measured-duration discrepancies as technical provenance without replacing normalized editorial runtime. The local torrent files remain ignored. No user-side qBittorrent/TorBox acquisition, Nuvio playback validation, permanent availability, `hb_` runtime serving, or publication is established. Every Hollowed entry remains reserved, `locked:false`, blocked, and unpublished; `hb_14` remains first in the unpublished default suffix. Future v3 migration remains a separate owner-reviewed decision.
 
 ## Stable video IDs
 
@@ -108,6 +110,8 @@ Current publication is the first 53 canonical entries through CB51. Hollowed 14 
 
 The default Concentrated Arrancar span CB36–CB51 has a separate 16-entry technical-acquisition manifest and verified-media evidence. Its trackerless local torrents were independently recreated byte-for-byte and all 4,771 pieces were verified against the unchanged payloads. Those torrent artifacts remain in the ignored local workspace. The project owner confirmed the exact 16 torrents are user-seeded and acquired/cached in the user's TorBox environment. Following representative real-device validation, CB36–CB51 are published and `locked:true` as a batch. This does not claim that every entry was individually played or establish permanent availability or future cache persistence.
 
+The owner-selected default Hollowed span has separate technical evidence at `evidence/acquisition/hollowed-current-raw.json` and in 38 `evidence/media/hb_*.json` records. This evidence does not advance the publication prefix: all Hollowed projection entries remain blocked, and no `hb_` meta video, stream, or provenance candidate is generated. Technical evidence and publication authorization remain separate gates.
+
 ## Optional content
 
 HB11.5, EX1, EX27, and EX50 have no primary-series season or episode placement. They cannot enter primary `meta.videos` under the current design, and no runtime representation is selected.
@@ -155,4 +159,4 @@ The projection validator enforces:
 
 ## Artifact boundaries
 
-The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted terminal focus observations are documentation of client/UI behavior, not torrent or network evidence. CB36–CB51 production artifacts trace their ordinary normalized records, projection entries, and verified-media records without inventing resolution references. Optional-content runtime experiments and publication beyond CB51 each require separate approval.
+The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted terminal focus observations are documentation of client/UI behavior, not torrent or network evidence. CB36–CB51 production artifacts trace their ordinary normalized records, projection entries, and verified-media records without inventing resolution references. Hollowed verified-media records remain outside production until separately approved publication and runtime-serving work occurs. Optional-content runtime experiments and publication beyond CB51 each require separate approval.

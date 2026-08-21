@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_25",
+  "recordId": "hollowed:25",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "319d778a609ded04b11e207559e7c3d481f632f5",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 25 - Not Perfect is GOoD (sub).mp4",
+      "byteSize": 1100173470
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2302.842208
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb25-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 25 - Not Perfect is GOoD (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "e44272ef3734a0a9813e84986ee65064a8abcd70b2b1c608a5179288a2468711"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1050,
+        "verifiedPieces": 1050,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb25-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 25 - Not Perfect is GOoD (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1100173470
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb25-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb25-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb25-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb25-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb25-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb25-local-media-ffprobe-inspection"
+    ]
+  }
+}

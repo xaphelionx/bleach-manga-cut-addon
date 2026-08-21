@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_32",
+  "recordId": "hollowed:32",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "d48a8becd15c0afd1716ae0a0290a5c4eb5a13cd",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 32 - Knockdown Monsters (sub).mp4",
+      "byteSize": 1031905998
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2154.527375
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb32-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 32 - Knockdown Monsters (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "f0a9c894d581c84ff3a1232a233e5c4d41b936e85a71a244f8b94a1dbf088fdb"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 985,
+        "verifiedPieces": 985,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb32-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 32 - Knockdown Monsters (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1031905998
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb32-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb32-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb32-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb32-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb32-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb32-local-media-ffprobe-inspection"
+    ]
+  }
+}

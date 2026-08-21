@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_33",
+  "recordId": "hollowed:33",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "2f87c239b545105c3f1a2e4cd1ecd838d3302fd0",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 33 - Stingy Stinger (sub).mp4",
+      "byteSize": 687010169
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1436.268167
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb33-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 33 - Stingy Stinger (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "037b240c5b5e6a8dbf04db57ca60e3e76761de845176e454859268c370159945"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 656,
+        "verifiedPieces": 656,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb33-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 33 - Stingy Stinger (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 687010169
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb33-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb33-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb33-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb33-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb33-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb33-local-media-ffprobe-inspection"
+    ]
+  }
+}

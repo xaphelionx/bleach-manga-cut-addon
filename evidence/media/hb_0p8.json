@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_0p8",
+  "recordId": "hollowed:0.8",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "64474aae2149070929ec03de50e28d4d0902a61f",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4",
+      "byteSize": 188759844
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 377.610567
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1280,
+      "height": 720,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb0p8-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "7485d2b4fafcb5ba1825090874c64eee4fdc2aa758df4921336d59d3f177efa0"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 181,
+        "verifiedPieces": 181,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb0p8-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 188759844
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb0p8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb0p8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb0p8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb0p8-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb0p8-local-media-ffprobe-inspection"
+    ]
+  }
+}

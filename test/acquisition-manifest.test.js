@@ -25,6 +25,12 @@ const ARRANCAR_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/concentrated-arran
 const ARRANCAR_MANIFEST_PATH = path.join(repositoryRoot, ARRANCAR_MANIFEST_RELATIVE_PATH)
 const LOCKED_ARRANCAR_MANIFEST_SHA256 = '7db2e19dca971507686132091faac781abf42da35a8868044dc0fc12b3deef4a'
 const LOCKED_ARRANCAR_MANIFEST_BYTE_SIZE = 46013
+const HOLLOWED_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/hollowed-current-raw.json'
+const HOLLOWED_MANIFEST_PATH = path.join(repositoryRoot, HOLLOWED_MANIFEST_RELATIVE_PATH)
+const LOCKED_HOLLOWED_MANIFEST_SHA256 = 'd0b7c3c67fd103078183f0332926c8c8d62b99843d381983fb5a2f93b4f84c18'
+const LOCKED_HOLLOWED_MANIFEST_BYTE_SIZE = 72844
+const LOCKED_HOLLOWED_MEDIA_BYTE_SIZE = 35383015693
+const LOCKED_HOLLOWED_PIECE_COUNT = 33764
 
 const PAIRS = [
   ['concentrated:03', 'cb_3', '03 - Three.mkv'],
@@ -734,6 +740,14 @@ function readArrancarManifest() {
   return JSON.parse(readArrancarManifestBytes().toString('utf8'))
 }
 
+function readHollowedManifestBytes() {
+  return fs.readFileSync(HOLLOWED_MANIFEST_PATH)
+}
+
+function readHollowedManifest() {
+  return JSON.parse(readHollowedManifestBytes().toString('utf8'))
+}
+
 test('durable production acquisition manifest has the exact locked bytes', () => {
   assert.equal(fs.existsSync(PRODUCTION_MANIFEST_PATH), true)
   const bytes = readProductionManifestBytes()
@@ -1089,4 +1103,123 @@ test('durable Arrancar acquisition torrent and media aggregates remain exact', (
     assert.equal(torrent.payloadFilenameMatchesLocalMedia, true)
     assert.equal(torrent.payloadByteSizeMatchesLocalMedia, true)
   }
+})
+
+test('durable Hollowed current-raw acquisition manifest has the exact locked bytes', () => {
+  assert.equal(fs.existsSync(HOLLOWED_MANIFEST_PATH), true)
+  const bytes = readHollowedManifestBytes()
+  assert.equal(bytes.length, LOCKED_HOLLOWED_MANIFEST_BYTE_SIZE)
+  assert.equal(
+    crypto.createHash('sha256').update(bytes).digest('hex'),
+    LOCKED_HOLLOWED_MANIFEST_SHA256
+  )
+})
+
+test('durable Hollowed current-raw manifest preserves exact scope and registry order', () => {
+  const manifest = readHollowedManifest()
+  const registry = require('../projection/stremio/video-id-registry.json')
+  const registryIndex = new Map(registry.entries.map((entry, index) => [entry.videoId, index]))
+  const expectedRecordIds = [
+    ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
+    'hollowed:0.8',
+    ...Array.from({ length: 21 }, (_, index) => `hollowed:${index + 30}`)
+  ]
+  const expectedVideoIds = [
+    ...Array.from({ length: 16 }, (_, index) => `hb_${index + 14}`),
+    'hb_0p8',
+    ...Array.from({ length: 21 }, (_, index) => `hb_${index + 30}`)
+  ]
+
+  assert.equal(validateAcquisitionManifest(manifest), manifest)
+  assert.equal(manifest.schemaVersion, 1)
+  assert.equal(manifest.authorityDomain, 'technical-acquisition')
+  assert.equal(manifest.entries.length, 38)
+  assert.deepEqual(manifest.entries.map(({ recordId }) => recordId), expectedRecordIds)
+  assert.deepEqual(manifest.entries.map(({ videoId }) => videoId), expectedVideoIds)
+  for (let index = 1; index < expectedVideoIds.length; index += 1) {
+    assert.ok(registryIndex.get(expectedVideoIds[index - 1]) < registryIndex.get(expectedVideoIds[index]))
+  }
+  for (const excluded of ['hb_11p5', 'hb_ex_1', 'hb_ex_27', 'hb_ex_50', 'hb_13', 'hb_51']) {
+    assert.equal(expectedVideoIds.includes(excluded), false)
+  }
+  for (const selector of [
+    ({ recordId }) => recordId,
+    ({ videoId }) => videoId,
+    ({ media }) => media.relativePath,
+    ({ torrent }) => torrent.relativePath,
+    ({ torrent }) => torrent.infoHash
+  ]) {
+    assert.equal(new Set(manifest.entries.map(selector)).size, 38)
+  }
+})
+
+test('durable Hollowed current-raw torrent and media aggregates remain exact', () => {
+  const entries = readHollowedManifest().entries
+  assert.equal(entries.reduce((total, entry) => total + entry.media.byteSize, 0), LOCKED_HOLLOWED_MEDIA_BYTE_SIZE)
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.pieceCount, 0), LOCKED_HOLLOWED_PIECE_COUNT)
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.verifiedPieces, 0), LOCKED_HOLLOWED_PIECE_COUNT)
+  assert.equal(entries.reduce((total, entry) => total + entry.torrent.mismatchedPieces, 0), 0)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.videoStreams.filter(({ attachedPic }) => attachedPic === 0).length, 0), 38)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.audioStreams.length, 0), 38)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.subtitleStreams.length, 0), 0)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.attachmentCount, 0), 0)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.otherStreamCount, 0), 0)
+  assert.equal(entries.reduce((total, entry) => total + entry.media.warnings.length, 0), 0)
+
+  for (const { media, torrent } of entries) {
+    assert.equal(media.videoStreams.length, 1)
+    assert.equal(media.videoStreams[0].codecName, 'hevc')
+    assert.equal(media.audioStreams.length, 1)
+    assert.equal(media.audioStreams[0].codecName, 'aac')
+    assert.equal(media.audioStreams[0].language, 'eng')
+    assert.equal(torrent.fileIdx, 0)
+    assert.equal(torrent.pieceLength, 1048576)
+    assert.equal(torrent.verifiedPieces, torrent.pieceCount)
+    assert.equal(torrent.mismatchedPieces, 0)
+    assert.deepEqual(torrent.mismatchPieceIndexes, [])
+    assert.equal(torrent.rawInfoMatchesCanonicalEncoding, true)
+    assert.equal(torrent.payloadFilenameMatchesLocalMedia, true)
+    assert.equal(torrent.payloadByteSizeMatchesLocalMedia, true)
+  }
+})
+
+test('durable Hollowed current-raw witnesses preserve physical duration evidence', () => {
+  const byVideoId = new Map(readHollowedManifest().entries.map((entry) => [entry.videoId, entry]))
+  assert.deepEqual(
+    ['hb_14', 'hb_0p8', 'hb_34', 'hb_36', 'hb_50'].map((videoId) => {
+      const entry = byVideoId.get(videoId)
+      return {
+        recordId: entry.recordId,
+        videoId,
+        filename: entry.torrent.payloadFilename,
+        durationSeconds: entry.media.container.durationSeconds
+      }
+    }),
+    [{
+      recordId: 'hollowed:14',
+      videoId: 'hb_14',
+      filename: 'Hollowed Bleach 14 - The Slashing Opera (sub).mp4',
+      durationSeconds: 1912.535625
+    }, {
+      recordId: 'hollowed:0.8',
+      videoId: 'hb_0p8',
+      filename: 'Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4',
+      durationSeconds: 377.610567
+    }, {
+      recordId: 'hollowed:34',
+      videoId: 'hb_34',
+      filename: 'Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4',
+      durationSeconds: 2074.864458
+    }, {
+      recordId: 'hollowed:36',
+      videoId: 'hb_36',
+      filename: 'Hollowed Bleach 36 - heart (sub).mp4',
+      durationSeconds: 2657.529875
+    }, {
+      recordId: 'hollowed:50',
+      videoId: 'hb_50',
+      filename: 'Hollowed Bleach 50 - Bleach My Soul (sub).mp4',
+      durationSeconds: 1650.649
+    }]
+  )
 })

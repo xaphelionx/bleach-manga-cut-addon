@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_24",
+  "recordId": "hollowed:24",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "1e75bb5dfe1d2733c2fb6f7d4c3adc953ff2a307",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 24 - INTRUDERZ (sub).mp4",
+      "byteSize": 1166972592
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2446.110333
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb24-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 24 - INTRUDERZ (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "94c3b7b9758b8c25ebf2986d7a29406f214dfd83c1857a822dd1f04fb9c1b6f0"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 1113,
+        "verifiedPieces": 1113,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb24-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 24 - INTRUDERZ (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1166972592
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb24-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb24-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb24-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb24-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb24-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb24-local-media-ffprobe-inspection"
+    ]
+  }
+}

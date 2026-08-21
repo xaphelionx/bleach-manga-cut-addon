@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_49",
+  "recordId": "hollowed:49",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "0d84a6d0e1099bd329241f7295889c30de5be19d",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 49 - DEICIDE 5 [GOD IS DEAD] (sub).mp4",
+      "byteSize": 945016380
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1983.439792
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb49-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 49 - DEICIDE 5 [GOD IS DEAD] (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "588a3af9507558c2bdbb3f63fca9987e946a7df8ff2a530d402417fbe45f5f4a"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 902,
+        "verifiedPieces": 902,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb49-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 49 - DEICIDE 5 [GOD IS DEAD] (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 945016380
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb49-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb49-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb49-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb49-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb49-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb49-local-media-ffprobe-inspection"
+    ]
+  }
+}

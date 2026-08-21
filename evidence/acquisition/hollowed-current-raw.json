@@ -1,0 +1,2248 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "technical-acquisition",
+  "entries": [
+    {
+      "recordId": "hollowed:14",
+      "videoId": "hb_14",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 14 - The Slashing Opera (sub).mp4",
+        "byteSize": 910624738,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1912.535625
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 14 - The Slashing Opera (sub).mp4.torrent",
+        "torrentByteSize": 17505,
+        "torrentSha256": "81fe7297bcc56ee11d7e23519fd42fe51e91465c10eca5f3fb559054e40e60e2",
+        "infoHash": "e0cf2b306e8f803ae01219e443d050fb831a712b",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 14 - The Slashing Opera (sub).mp4",
+        "payloadByteSize": 910624738,
+        "pieceLength": 1048576,
+        "pieceCount": 869,
+        "verifiedPieces": 869,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:15",
+      "videoId": "hb_15",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
+        "byteSize": 656753518,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1379.378
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4.torrent",
+        "torrentByteSize": 12668,
+        "torrentSha256": "230455bbd82d6c2174aab7483a92dc218a7644bcc55aad41641e1c32ddd0418d",
+        "infoHash": "81c455e0687ff84734af6725b2a54911e1e47fa4",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
+        "payloadByteSize": 656753518,
+        "pieceLength": 1048576,
+        "pieceCount": 627,
+        "verifiedPieces": 627,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:16",
+      "videoId": "hb_16",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 16 - Hide Away From the Sun (sub).mp4",
+        "byteSize": 640837134,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1336.418417
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 16 - Hide Away From the Sun (sub).mp4.torrent",
+        "torrentByteSize": 12369,
+        "torrentSha256": "e792e1ddf360baaa6dd11b22028fe081bcc30062b59a0620742d0b9364d94d3b",
+        "infoHash": "b725b3ea3249eb712e9aa084e32fbdbb44fbe3ed",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 16 - Hide Away From the Sun (sub).mp4",
+        "payloadByteSize": 640837134,
+        "pieceLength": 1048576,
+        "pieceCount": 612,
+        "verifiedPieces": 612,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:17",
+      "videoId": "hb_17",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 17 - There Is No Heart WIthout You (sub).mp4",
+        "byteSize": 770196167,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1616.86525
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 17 - There Is No Heart WIthout You (sub).mp4.torrent",
+        "torrentByteSize": 14836,
+        "torrentSha256": "ae8ff1e3bb48fc0878a0d1bf3b175c2d9da68353231f9caf00ef5ff706f3fc6f",
+        "infoHash": "b1b6bd89d310a2e82d4325f3a84b89d9420e63cc",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 17 - There Is No Heart WIthout You (sub).mp4",
+        "payloadByteSize": 770196167,
+        "pieceLength": 1048576,
+        "pieceCount": 735,
+        "verifiedPieces": 735,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:18",
+      "videoId": "hb_18",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4",
+        "byteSize": 790059844,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1660.200208
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4.torrent",
+        "torrentByteSize": 15210,
+        "torrentSha256": "95335c963846ce4b29ba803591448b6084c14f9b2dec046ef8977cae06542ff4",
+        "infoHash": "4fd87601e714c30d26f974b429070870319ea7d6",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4",
+        "payloadByteSize": 790059844,
+        "pieceLength": 1048576,
+        "pieceCount": 754,
+        "verifiedPieces": 754,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:19",
+      "videoId": "hb_19",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 19 - The Monster (sub).mp4",
+        "byteSize": 960310318,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2018.891875
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 19 - The Monster (sub).mp4.torrent",
+        "torrentByteSize": 18438,
+        "torrentSha256": "56b78e2a1dd7d21c1d5f9f020b26e18981a67b8498051a64bd3a0845fedf3366",
+        "infoHash": "bf3a7a543f3abd12db86f6d7519cc6d95a4a1569",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 19 - The Monster (sub).mp4",
+        "payloadByteSize": 960310318,
+        "pieceLength": 1048576,
+        "pieceCount": 916,
+        "verifiedPieces": 916,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:20",
+      "videoId": "hb_20",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 20 - Jugulators (sub).mp4",
+        "byteSize": 692048268,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1410.492417
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 20 - Jugulators (sub).mp4.torrent",
+        "torrentByteSize": 13317,
+        "torrentSha256": "3ad8df757ad912e1fe374a4abdcc9104643cc3167c18e28798fdf7046ea2803d",
+        "infoHash": "69dcb0a8d052969f3deee424ee820062fd240daa",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 20 - Jugulators (sub).mp4",
+        "payloadByteSize": 692048268,
+        "pieceLength": 1048576,
+        "pieceCount": 660,
+        "verifiedPieces": 660,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:21",
+      "videoId": "hb_21",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 21 - Howling (sub).mp4",
+        "byteSize": 791622022,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1661.451458
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1440,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 21 - Howling (sub).mp4.torrent",
+        "torrentByteSize": 15214,
+        "torrentSha256": "710a187bcfd870470012779080bce9d40562ecabbcec0abee9bbc366efb44c3f",
+        "infoHash": "25ae44c7681b4e4ccb19cf17c2b9147525038f83",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 21 - Howling (sub).mp4",
+        "payloadByteSize": 791622022,
+        "pieceLength": 1048576,
+        "pieceCount": 755,
+        "verifiedPieces": 755,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:22",
+      "videoId": "hb_22",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 22 - THE BAD JOKE (sub).mp4",
+        "byteSize": 956604902,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2007.171833
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 22 - THE BAD JOKE (sub).mp4.torrent",
+        "torrentByteSize": 18379,
+        "torrentSha256": "9db31389da2b25375a3c287c402e9a797ad09106ac11e5a6b3dd38899fb0b749",
+        "infoHash": "d051ebe180fc2a664a070021e97b8f26da7ce7a7",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 22 - THE BAD JOKE (sub).mp4",
+        "payloadByteSize": 956604902,
+        "pieceLength": 1048576,
+        "pieceCount": 913,
+        "verifiedPieces": 913,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:23",
+      "videoId": "hb_23",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 23 - King of the Kill (sub).mp4",
+        "byteSize": 1648524670,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2683.889542
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 23 - King of the Kill (sub).mp4.torrent",
+        "torrentByteSize": 31584,
+        "torrentSha256": "a5a0499fc7172169090d04a7ad9ed1afc90512c2b6ae7d2dc16541b9751e0ab2",
+        "infoHash": "5a5e9030f34de1e57581cea2d5c0a080eff380db",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 23 - King of the Kill (sub).mp4",
+        "payloadByteSize": 1648524670,
+        "pieceLength": 1048576,
+        "pieceCount": 1573,
+        "verifiedPieces": 1573,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:24",
+      "videoId": "hb_24",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 24 - INTRUDERZ (sub).mp4",
+        "byteSize": 1166972592,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2446.110333
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 24 - INTRUDERZ (sub).mp4.torrent",
+        "torrentByteSize": 22377,
+        "torrentSha256": "94c3b7b9758b8c25ebf2986d7a29406f214dfd83c1857a822dd1f04fb9c1b6f0",
+        "infoHash": "1e75bb5dfe1d2733c2fb6f7d4c3adc953ff2a307",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 24 - INTRUDERZ (sub).mp4",
+        "payloadByteSize": 1166972592,
+        "pieceLength": 1048576,
+        "pieceCount": 1113,
+        "verifiedPieces": 1113,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:25",
+      "videoId": "hb_25",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 25 - Not Perfect is GOoD (sub).mp4",
+        "byteSize": 1100173470,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2302.842208
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 25 - Not Perfect is GOoD (sub).mp4.torrent",
+        "torrentByteSize": 21127,
+        "torrentSha256": "e44272ef3734a0a9813e84986ee65064a8abcd70b2b1c608a5179288a2468711",
+        "infoHash": "319d778a609ded04b11e207559e7c3d481f632f5",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 25 - Not Perfect is GOoD (sub).mp4",
+        "payloadByteSize": 1100173470,
+        "pieceLength": 1048576,
+        "pieceCount": 1050,
+        "verifiedPieces": 1050,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:26",
+      "videoId": "hb_26",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 26 - TO CLOSE YOUR WORLD (sub).mp4",
+        "byteSize": 1239614338,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2601.599
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 26 - TO CLOSE YOUR WORLD (sub).mp4.torrent",
+        "torrentByteSize": 23787,
+        "torrentSha256": "df17e08759cd0a2e15d212357db72e295eac147bd564aa7aacdc525bd0e72a3b",
+        "infoHash": "01083b811990109b7faa52a6f4fc4c34984f86d5",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 26 - TO CLOSE YOUR WORLD (sub).mp4",
+        "payloadByteSize": 1239614338,
+        "pieceLength": 1048576,
+        "pieceCount": 1183,
+        "verifiedPieces": 1183,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:27",
+      "videoId": "hb_27",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 27 - Turn Back the Pendulum (sub).mp4",
+        "byteSize": 1012658254,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2126.916458
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 27 - Turn Back the Pendulum (sub).mp4.torrent",
+        "torrentByteSize": 19450,
+        "torrentSha256": "baebf29e3ae58a0a3b259c7754859abfe656e60c6e9364722a999e5aa534cc49",
+        "infoHash": "2e52ed897c3e171bb32ad8c142cfd7e60b5d297a",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 27 - Turn Back the Pendulum (sub).mp4",
+        "payloadByteSize": 1012658254,
+        "pieceLength": 1048576,
+        "pieceCount": 966,
+        "verifiedPieces": 966,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:28",
+      "videoId": "hb_28",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 28 - The Pendulum Keeps Swinging (sub).mp4",
+        "byteSize": 987184248,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2072.528792
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 28 - The Pendulum Keeps Swinging (sub).mp4.torrent",
+        "torrentByteSize": 18974,
+        "torrentSha256": "596439400f26e9f9802eb18ad4a3c1d4ca3142eeb816b57cc1efb23e4ca140c6",
+        "infoHash": "5dadd569df49eb25e19938fea8705789d34d2b48",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 28 - The Pendulum Keeps Swinging (sub).mp4",
+        "payloadByteSize": 987184248,
+        "pieceLength": 1048576,
+        "pieceCount": 942,
+        "verifiedPieces": 942,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:29",
+      "videoId": "hb_29",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4",
+        "byteSize": 856133115,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1796.878417
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4.torrent",
+        "torrentByteSize": 16468,
+        "torrentSha256": "8dbdb89951c1ac44c23702f879155ec5527669f3af317cd6fa348b234b43a0b2",
+        "infoHash": "ebd08752abd5c9a9601474551978128a42f25e1d",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4",
+        "payloadByteSize": 856133115,
+        "pieceLength": 1048576,
+        "pieceCount": 817,
+        "verifiedPieces": 817,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:0.8",
+      "videoId": "hb_0p8",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4",
+        "byteSize": 188759844,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 377.610567
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1280,
+            "height": 720,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4.torrent",
+        "torrentByteSize": 3751,
+        "torrentSha256": "7485d2b4fafcb5ba1825090874c64eee4fdc2aa758df4921336d59d3f177efa0",
+        "infoHash": "64474aae2149070929ec03de50e28d4d0902a61f",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4",
+        "payloadByteSize": 188759844,
+        "pieceLength": 1048576,
+        "pieceCount": 181,
+        "verifiedPieces": 181,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:30",
+      "videoId": "hb_30",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 30 - Six Hearts Will Beat As One (sub).mp4",
+        "byteSize": 822055174,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1719.426042
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 30 - Six Hearts Will Beat As One (sub).mp4.torrent",
+        "torrentByteSize": 15814,
+        "torrentSha256": "4851d485742cffd92858c99ea4635fef49a895c4c60515de3447fb4ea2508bf1",
+        "infoHash": "d8e6ecb71f02dfaab4b0e6476f0b2649a9af4990",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 30 - Six Hearts Will Beat As One (sub).mp4",
+        "payloadByteSize": 822055174,
+        "pieceLength": 1048576,
+        "pieceCount": 784,
+        "verifiedPieces": 784,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:31",
+      "videoId": "hb_31",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 31 - Ants & Dragons (sub).mp4",
+        "byteSize": 863306564,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1809.3075
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 31 - Ants & Dragons (sub).mp4.torrent",
+        "torrentByteSize": 16601,
+        "torrentSha256": "49a73d2f33d370af88800acc0b85f8f01b82e2390c6301d77b706a9c8d2d8094",
+        "infoHash": "68885993dd91b5f883a27ff786225a83dbb768d3",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 31 - Ants & Dragons (sub).mp4",
+        "payloadByteSize": 863306564,
+        "pieceLength": 1048576,
+        "pieceCount": 824,
+        "verifiedPieces": 824,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:32",
+      "videoId": "hb_32",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 32 - Knockdown Monsters (sub).mp4",
+        "byteSize": 1031905998,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2154.527375
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 32 - Knockdown Monsters (sub).mp4.torrent",
+        "torrentByteSize": 19826,
+        "torrentSha256": "f0a9c894d581c84ff3a1232a233e5c4d41b936e85a71a244f8b94a1dbf088fdb",
+        "infoHash": "d48a8becd15c0afd1716ae0a0290a5c4eb5a13cd",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 32 - Knockdown Monsters (sub).mp4",
+        "payloadByteSize": 1031905998,
+        "pieceLength": 1048576,
+        "pieceCount": 985,
+        "verifiedPieces": 985,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:33",
+      "videoId": "hb_33",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 33 - Stingy Stinger (sub).mp4",
+        "byteSize": 687010169,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1436.268167
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 33 - Stingy Stinger (sub).mp4.torrent",
+        "torrentByteSize": 13241,
+        "torrentSha256": "037b240c5b5e6a8dbf04db57ca60e3e76761de845176e454859268c370159945",
+        "infoHash": "2f87c239b545105c3f1a2e4cd1ecd838d3302fd0",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 33 - Stingy Stinger (sub).mp4",
+        "payloadByteSize": 687010169,
+        "pieceLength": 1048576,
+        "pieceCount": 656,
+        "verifiedPieces": 656,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:34",
+      "videoId": "hb_34",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4",
+        "byteSize": 1001959714,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2074.864458
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4.torrent",
+        "torrentByteSize": 19252,
+        "torrentSha256": "a3e7c5cec70a2a3c7321e83aa54b96191f6698a91a35d4f8e53bc7bc7ea3dcf7",
+        "infoHash": "6257091039fe6e718d6da7425dffb0c7a57897f9",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4",
+        "payloadByteSize": 1001959714,
+        "pieceLength": 1048576,
+        "pieceCount": 956,
+        "verifiedPieces": 956,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:35",
+      "videoId": "hb_35",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 35 - The Sin (sub).mp4",
+        "byteSize": 844370369,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1769.142375
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 35 - The Sin (sub).mp4.torrent",
+        "torrentByteSize": 16234,
+        "torrentSha256": "479ed82c263da1bee18375058d05dfa8628cf104c19b5ccd281fabad7bf8c66d",
+        "infoHash": "4891d28f43a207ef7d5b2e7d40bef4786ea825ef",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 35 - The Sin (sub).mp4",
+        "payloadByteSize": 844370369,
+        "pieceLength": 1048576,
+        "pieceCount": 806,
+        "verifiedPieces": 806,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:36",
+      "videoId": "hb_36",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 36 - heart (sub).mp4",
+        "byteSize": 1267992742,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2657.529875
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 36 - heart (sub).mp4.torrent",
+        "torrentByteSize": 24313,
+        "torrentSha256": "170d67d74617014acfd9c9acf917890bdc12f3a9908d381e80971e79b701728b",
+        "infoHash": "411225b5b5c2e3a58e6c7f7173553d48d58077c6",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 36 - heart (sub).mp4",
+        "payloadByteSize": 1267992742,
+        "pieceLength": 1048576,
+        "pieceCount": 1210,
+        "verifiedPieces": 1210,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:37",
+      "videoId": "hb_37",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4",
+        "byteSize": 978066732,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2040.28825
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4.torrent",
+        "torrentByteSize": 18783,
+        "torrentSha256": "63ab79756f0a17bace7467384ad17b9e0c47ae946d6af67207863a999b8bab7e",
+        "infoHash": "5ede6438933f55d6e4a0d41f22c8529bd54516e6",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4",
+        "payloadByteSize": 978066732,
+        "pieceLength": 1048576,
+        "pieceCount": 933,
+        "verifiedPieces": 933,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:38",
+      "videoId": "hb_38",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 38 - Grinning Revengers (sub).mp4",
+        "byteSize": 850042934,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1754.544458
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 38 - Grinning Revengers (sub).mp4.torrent",
+        "torrentByteSize": 16345,
+        "torrentSha256": "81138c95560d8bb5b4203c6171ae63eac5f6f5bcb934e81ec5a224fa7948a0fe",
+        "infoHash": "22da1890dbcfd11f153d2c03ac214562129702f1",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 38 - Grinning Revengers (sub).mp4",
+        "payloadByteSize": 850042934,
+        "pieceLength": 1048576,
+        "pieceCount": 811,
+        "verifiedPieces": 811,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:39",
+      "videoId": "hb_39",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 39 - Spit On Your Own God (sub).mp4",
+        "byteSize": 1212188315,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2540.871667
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 39 - Spit On Your Own God (sub).mp4.torrent",
+        "torrentByteSize": 23268,
+        "torrentSha256": "3d9afb9601cc6281c24e259bd66afbbed0360246b421f935755b8743e351dd27",
+        "infoHash": "9c7056fbb10da613406963ff715e5b54a6b6adf3",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 39 - Spit On Your Own God (sub).mp4",
+        "payloadByteSize": 1212188315,
+        "pieceLength": 1048576,
+        "pieceCount": 1157,
+        "verifiedPieces": 1157,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:40",
+      "videoId": "hb_40",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4",
+        "byteSize": 742630399,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1554.469583
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4.torrent",
+        "torrentByteSize": 14310,
+        "torrentSha256": "f3b6b130ceecaa3c6e5402179686c84279add0bef4c4651ed90e40841f37e6e0",
+        "infoHash": "6c0b6aa30b5438d1940252243e5a98272c70245d",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4",
+        "payloadByteSize": 742630399,
+        "pieceLength": 1048576,
+        "pieceCount": 709,
+        "verifiedPieces": 709,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:41",
+      "videoId": "hb_41",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4",
+        "byteSize": 914847432,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1911.701458
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4.torrent",
+        "torrentByteSize": 17588,
+        "torrentSha256": "39aeb63e1ad473bc5982dde8ead99847246e47661ed74e6ff0ea7aacc2eef91c",
+        "infoHash": "124fd405a3099f07c86c47a450a17521e3870e7b",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4",
+        "payloadByteSize": 914847432,
+        "pieceLength": 1048576,
+        "pieceCount": 873,
+        "verifiedPieces": 873,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:42",
+      "videoId": "hb_42",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 42 - Devil, Devil, Devil, Devil (sub).mp4",
+        "byteSize": 1065283482,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2207.288417
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 42 - Devil, Devil, Devil, Devil (sub).mp4.torrent",
+        "torrentByteSize": 20454,
+        "torrentSha256": "c8e7441e4d64a0457998d0cdf9568fa937236557861bb209ad1fef001cddc4dd",
+        "infoHash": "92180148226bcf00db6e097c1792036b98728315",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 42 - Devil, Devil, Devil, Devil (sub).mp4",
+        "payloadByteSize": 1065283482,
+        "pieceLength": 1048576,
+        "pieceCount": 1016,
+        "verifiedPieces": 1016,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:43",
+      "videoId": "hb_43",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 43 - Vice It (sub).mp4",
+        "byteSize": 1085627223,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2271.143875
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 43 - Vice It (sub).mp4.torrent",
+        "torrentByteSize": 20835,
+        "torrentSha256": "261c7817603acfabfd9119793e45371c0db45f1b2459f19769f801d2d7775074",
+        "infoHash": "d6591fba47197d6f3d1c17b3d854cb1db8ca781a",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 43 - Vice It (sub).mp4",
+        "payloadByteSize": 1085627223,
+        "pieceLength": 1048576,
+        "pieceCount": 1036,
+        "verifiedPieces": 1036,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:44",
+      "videoId": "hb_44",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 44 - The Burnout Inferno (sub).mp4",
+        "byteSize": 1227036244,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 2485.524708
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 44 - The Burnout Inferno (sub).mp4.torrent",
+        "torrentByteSize": 23547,
+        "torrentSha256": "86ffb82284348e40ce594182ee6b4a5de9fed7addcdb032c49257901751ab478",
+        "infoHash": "677653944a944306cc1b5ab59fe9c98d5cbfc8d9",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 44 - The Burnout Inferno (sub).mp4",
+        "payloadByteSize": 1227036244,
+        "pieceLength": 1048576,
+        "pieceCount": 1171,
+        "verifiedPieces": 1171,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:45",
+      "videoId": "hb_45",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 45 - DEICIDE (sub).mp4",
+        "byteSize": 938328365,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1967.674042
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 45 - DEICIDE (sub).mp4.torrent",
+        "torrentByteSize": 18014,
+        "torrentSha256": "9659d0599f8d093d0994b085d1e1a960c22f1a3e64fb084dfc68462d9a4342b0",
+        "infoHash": "54466f99eebd1ee2fdb5035a89a95729f74b575e",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 45 - DEICIDE (sub).mp4",
+        "payloadByteSize": 938328365,
+        "pieceLength": 1048576,
+        "pieceCount": 895,
+        "verifiedPieces": 895,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:46",
+      "videoId": "hb_46",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4",
+        "byteSize": 1168513671,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1897.937708
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4.torrent",
+        "torrentByteSize": 22444,
+        "torrentSha256": "7d69136e369d8dccfd4d8add6df3a1cfd7c7acb0ac70636432865cbf9393cb1c",
+        "infoHash": "ae58c5906eca24ad7837fc44ccbc5898db2b90d8",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4",
+        "payloadByteSize": 1168513671,
+        "pieceLength": 1048576,
+        "pieceCount": 1115,
+        "verifiedPieces": 1115,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:47",
+      "videoId": "hb_47",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4",
+        "byteSize": 735833572,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1538.0365
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4.torrent",
+        "torrentByteSize": 14172,
+        "torrentSha256": "a0b7360b4cf578555de6f41a238848121d46b50a0b0cc1e6ef8c6a49fff56333",
+        "infoHash": "58e736683832829fd77e12e2eb2400f06c04b6a7",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4",
+        "payloadByteSize": 735833572,
+        "pieceLength": 1048576,
+        "pieceCount": 702,
+        "verifiedPieces": 702,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:48",
+      "videoId": "hb_48",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 48 - DEICIDE 4 [THE END] (sub).mp4",
+        "byteSize": 843710279,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1767.849417
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 48 - DEICIDE 4 [THE END] (sub).mp4.torrent",
+        "torrentByteSize": 16226,
+        "torrentSha256": "7c77501458aa75ce43ef3996c5fa52a7a0bf6844a19056ab9471f1eeab048092",
+        "infoHash": "9a1632831b4fdbcb2d35e5197d18f13ca3be8e19",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 48 - DEICIDE 4 [THE END] (sub).mp4",
+        "payloadByteSize": 843710279,
+        "pieceLength": 1048576,
+        "pieceCount": 805,
+        "verifiedPieces": 805,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:49",
+      "videoId": "hb_49",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 49 - DEICIDE 5 [GOD IS DEAD] (sub).mp4",
+        "byteSize": 945016380,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1983.439792
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 49 - DEICIDE 5 [GOD IS DEAD] (sub).mp4.torrent",
+        "torrentByteSize": 18170,
+        "torrentSha256": "588a3af9507558c2bdbb3f63fca9987e946a7df8ff2a530d402417fbe45f5f4a",
+        "infoHash": "0d84a6d0e1099bd329241f7295889c30de5be19d",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 49 - DEICIDE 5 [GOD IS DEAD] (sub).mp4",
+        "payloadByteSize": 945016380,
+        "pieceLength": 1048576,
+        "pieceCount": 902,
+        "verifiedPieces": 902,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "hollowed:50",
+      "videoId": "hb_50",
+      "media": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 50 - Bleach My Soul (sub).mp4",
+        "byteSize": 788212493,
+        "container": {
+          "formatName": "mov,mp4,m4a,3gp,3g2,mj2",
+          "durationSeconds": 1650.649
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 1920,
+            "height": 1080,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": null,
+            "default": 1,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [],
+        "attachmentCount": 0,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 50 - Bleach My Soul (sub).mp4.torrent",
+        "torrentByteSize": 15161,
+        "torrentSha256": "e541c4246c0bab350e7fdb0dd709a33ee08302f77eccab25081221dc8f381819",
+        "infoHash": "ac56dd62c22dc2ab385e3563e129fd6db6465f57",
+        "fileIdx": 0,
+        "payloadFilename": "Hollowed Bleach 50 - Bleach My Soul (sub).mp4",
+        "payloadByteSize": 788212493,
+        "pieceLength": 1048576,
+        "pieceCount": 752,
+        "verifiedPieces": 752,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    }
+  ]
+}

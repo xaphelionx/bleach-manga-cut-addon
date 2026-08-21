@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_16",
+  "recordId": "hollowed:16",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "b725b3ea3249eb712e9aa084e32fbdbb44fbe3ed",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 16 - Hide Away From the Sun (sub).mp4",
+      "byteSize": 640837134
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1336.418417
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1440,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb16-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 16 - Hide Away From the Sun (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "e792e1ddf360baaa6dd11b22028fe081bcc30062b59a0620742d0b9364d94d3b"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 612,
+        "verifiedPieces": 612,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb16-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 16 - Hide Away From the Sun (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 640837134
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb16-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb16-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb16-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb16-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb16-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb16-local-media-ffprobe-inspection"
+    ]
+  }
+}

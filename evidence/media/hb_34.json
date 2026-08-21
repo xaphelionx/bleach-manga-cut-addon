@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_34",
+  "recordId": "hollowed:34",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "6257091039fe6e718d6da7425dffb0c7a57897f9",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4",
+      "byteSize": 1001959714
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2074.864458
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb34-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "a3e7c5cec70a2a3c7321e83aa54b96191f6698a91a35d4f8e53bc7bc7ea3dcf7"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 956,
+        "verifiedPieces": 956,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb34-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 1001959714
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb34-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb34-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb34-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb34-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb34-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb34-local-media-ffprobe-inspection"
+    ]
+  }
+}

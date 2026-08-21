@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_47",
+  "recordId": "hollowed:47",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "58e736683832829fd77e12e2eb2400f06c04b6a7",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4",
+      "byteSize": 735833572
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1538.0365
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb47-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "a0b7360b4cf578555de6f41a238848121d46b50a0b0cc1e6ef8c6a49fff56333"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 702,
+        "verifiedPieces": 702,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb47-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 735833572
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb47-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb47-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb47-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb47-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb47-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb47-local-media-ffprobe-inspection"
+    ]
+  }
+}

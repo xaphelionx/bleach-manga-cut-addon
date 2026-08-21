@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "hb_45",
+  "recordId": "hollowed:45",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "54466f99eebd1ee2fdb5035a89a95729f74b575e",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "Hollowed Bleach 45 - DEICIDE (sub).mp4",
+      "byteSize": 938328365
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1967.674042
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": []
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "hb45-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 45 - DEICIDE (sub).mp4.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "9659d0599f8d093d0994b085d1e1a960c22f1a3e64fb084dfc68462d9a4342b0"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 895,
+        "verifiedPieces": 895,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "hb45-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/04 - Hollowed Bleach [WIP]/Hollowed Bleach 45 - DEICIDE (sub).mp4",
+        "retention": "ignored-local-workspace",
+        "byteSize": 938328365
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "hb45-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "hb45-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "hb45-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "hb45-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "hb45-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "hb45-local-media-ffprobe-inspection"
+    ]
+  }
+}
