@@ -117,13 +117,20 @@ function assignment(fixture, recordId = 'concentrated:02', videoId = 'cb_2') {
   };
 }
 
+function projectIdFor(recordId) {
+  return recordId.split(':', 1)[0];
+}
+
 function identity(pairs = [['concentrated:02', 'cb_2']]) {
   return {
-    concentrated: {
-      records: pairs.map(([recordId]) => ({ recordId, projectId: 'concentrated' })),
-    },
+    normalizedRecords: pairs.map(([recordId]) => ({ recordId, projectId: projectIdFor(recordId) })),
     registry: {
-      entries: pairs.map(([recordId, videoId]) => ({ recordId, videoId, projectId: 'concentrated' })),
+      entries: pairs.map(([recordId, videoId]) => ({
+        recordType: 'normalized-record',
+        recordId,
+        videoId,
+        projectId: projectIdFor(recordId),
+      })),
     },
   };
 }
@@ -132,7 +139,7 @@ function reportFor(root, assignments, pairs) {
   const inputs = identity(pairs);
   return createVerificationReport({
     mapping: { schemaVersion: 1, assignments },
-    concentrated: inputs.concentrated,
+    normalizedRecords: inputs.normalizedRecords,
     registry: inputs.registry,
     rootDir: root,
   });
@@ -151,6 +158,43 @@ test('valid v1 single-file torrent verifies', (t) => {
   assert.equal(first(report).state, 'verified');
   assert.equal(first(report).pieces.verifiedPieces, 3);
   assert.deepEqual(first(report).pieces.mismatchPieceIndexes, []);
+});
+
+test('synthetic Hollowed MP4 torrent verifies all canonical identity and payload facts', (t) => {
+  const root = temporaryRoot(t);
+  const fixture = writeCase(root, {
+    mediaFilename: '14 - The Slashing Opera (sub).mp4',
+    payload: Buffer.from('synthetic-hollowed-media'),
+    torrentOptions: { pieceLength: 7 },
+  });
+  const result = first(reportFor(
+    root,
+    [assignment(fixture, 'hollowed:14', 'hb_14')],
+    [['hollowed:14', 'hb_14']],
+  ));
+  assert.equal(result.state, 'verified');
+  assert.equal(result.pieces.verifiedPieces, result.pieces.pieceCount);
+  assert.equal(result.pieces.mismatchedPieces, 0);
+  assert.deepEqual(result.pieces.mismatchPieceIndexes, []);
+  assert.equal(result.torrent.rawInfoMatchesCanonicalEncoding, true);
+  assert.equal(result.comparisons.payloadFilenameMatchesLocalMedia, true);
+  assert.equal(result.comparisons.payloadByteSizeMatchesLocalMedia, true);
+  assert.equal(result.torrent.payloadFilename, '14 - The Slashing Opera (sub).mp4');
+});
+
+test('torrent verification rejects a cross-project record/video pairing', (t) => {
+  const root = temporaryRoot(t);
+  const fixture = writeCase(root, { mediaFilename: 'hollowed.mp4' });
+  const result = first(reportFor(
+    root,
+    [assignment(fixture, 'hollowed:14', 'cb_14')],
+    [
+      ['hollowed:14', 'hb_14'],
+      ['concentrated:14', 'cb_14'],
+    ],
+  ));
+  assert.equal(result.state, 'failed');
+  assert.equal(result.error.code, 'record-video-mismatch');
 });
 
 test('infoHash is computed from the exact raw info bytes', (t) => {

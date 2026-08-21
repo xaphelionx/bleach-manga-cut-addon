@@ -42,13 +42,20 @@ function assignment(media, recordId = 'concentrated:02', videoId = 'cb_2') {
   return { recordId, videoId, mediaRelativePath: media.relativePath };
 }
 
+function projectIdFor(recordId) {
+  return recordId.split(':', 1)[0];
+}
+
 function identity(pairs = [['concentrated:02', 'cb_2']]) {
   return {
-    concentrated: {
-      records: pairs.map(([recordId]) => ({ recordId, projectId: 'concentrated' })),
-    },
+    normalizedRecords: pairs.map(([recordId]) => ({ recordId, projectId: projectIdFor(recordId) })),
     registry: {
-      entries: pairs.map(([recordId, videoId]) => ({ recordId, videoId, projectId: 'concentrated' })),
+      entries: pairs.map(([recordId, videoId]) => ({
+        recordType: 'normalized-record',
+        recordId,
+        videoId,
+        projectId: projectIdFor(recordId),
+      })),
     },
   };
 }
@@ -57,7 +64,7 @@ function reportFor({ root, outputDirectory, assignments, pairs }) {
   const inputs = identity(pairs);
   return createCreationReport({
     mapping: { schemaVersion: 1, assignments },
-    concentrated: inputs.concentrated,
+    normalizedRecords: inputs.normalizedRecords,
     registry: inputs.registry,
     rootDir: root,
     outputDirectory,
@@ -91,6 +98,55 @@ test('valid v1 single-file torrent creation succeeds', (t) => {
   assert.deepEqual(report.creationSummary, { total: 1, created: 1, alreadyIdentical: 0, failed: 0 });
   assert.equal(first(report).state, 'created');
   assert.ok(fs.statSync(path.join(fixture.outputDirectory, '02 - Starter.mkv.torrent')).isFile());
+});
+
+test('synthetic Hollowed MP4 torrent creation is trackerless and byte-deterministic', (t) => {
+  const fixture = temporaryCase(t);
+  const secondOutputDirectory = path.join(fixture.root, 'second-torrents');
+  fs.mkdirSync(secondOutputDirectory);
+  const filename = '14 - The Slashing Opera (sub).mp4';
+  const media = writeMedia(
+    fixture.root,
+    `media/${filename}`,
+    Buffer.concat([Buffer.alloc(PIECE_LENGTH, 0x68), Buffer.from('hollowed-tail')]),
+  );
+  const pairs = [['hollowed:14', 'hb_14']];
+  const firstReport = reportFor({
+    ...fixture,
+    assignments: [assignment(media, 'hollowed:14', 'hb_14')],
+    pairs,
+  });
+  const secondReport = reportFor({
+    root: fixture.root,
+    outputDirectory: secondOutputDirectory,
+    assignments: [assignment(media, 'hollowed:14', 'hb_14')],
+    pairs,
+  });
+  const firstResult = first(firstReport);
+  const secondResult = first(secondReport);
+  const firstBytes = torrentBytes(fixture.outputDirectory, firstResult);
+  const secondBytes = torrentBytes(secondOutputDirectory, secondResult);
+  assert.equal(firstResult.payloadFilename, filename);
+  assert.equal(firstResult.pieceLength, 1048576);
+  assert.deepEqual(dictionaryKeys(parseBencode(firstBytes)), ['info']);
+  assert.ok(firstBytes.equals(secondBytes));
+  assert.equal(firstResult.torrentSha256, secondResult.torrentSha256);
+  assert.equal(firstResult.infoHash, secondResult.infoHash);
+});
+
+test('torrent creation rejects a cross-project record/video pairing', (t) => {
+  const fixture = temporaryCase(t);
+  const media = writeMedia(fixture.root, 'media/hollowed.mp4');
+  const report = reportFor({
+    ...fixture,
+    assignments: [assignment(media, 'hollowed:14', 'cb_14')],
+    pairs: [
+      ['hollowed:14', 'hb_14'],
+      ['concentrated:14', 'cb_14'],
+    ],
+  });
+  assert.equal(first(report).state, 'failed');
+  assert.equal(first(report).error.code, 'record-video-mismatch');
 });
 
 test('top-level dictionary contains only info', (t) => {
@@ -475,7 +531,7 @@ test('generated piece hashes independently verify against synthetic media', (t) 
         torrentRelativePath: path.posix.join('torrents', created.torrentFilename),
       }],
     },
-    concentrated: inputs.concentrated,
+    normalizedRecords: inputs.normalizedRecords,
     registry: inputs.registry,
     rootDir: fixture.root,
   });

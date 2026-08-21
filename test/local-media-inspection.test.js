@@ -7,6 +7,8 @@ const path = require('node:path');
 const { after, before, test } = require('node:test');
 
 const concentrated = require('../editorial/normalized/concentrated.json');
+const hollowed = require('../editorial/normalized/hollowed.json');
+const chipped = require('../editorial/normalized/chipped.json');
 const registry = require('../projection/stremio/video-id-registry.json');
 const {
   FFPROBE_ARGUMENTS,
@@ -19,6 +21,11 @@ const {
 } = require('../scripts/inspect-local-media');
 
 const repositoryRoot = path.resolve(__dirname, '..');
+const normalizedRecords = [
+  ...concentrated.records,
+  ...hollowed.records,
+  ...chipped.records,
+];
 let temporaryRepositoryRoot;
 
 function assignment(recordId, videoId, relativePath) {
@@ -77,7 +84,7 @@ function inspectWith(probe) {
 function createReport(localMapping, probe = standardProbe()) {
   return createInspectionReport({
     mapping: localMapping,
-    concentrated,
+    normalizedRecords,
     registry,
     rootDir: temporaryRepositoryRoot,
     inspectFile: inspectWith(probe),
@@ -94,6 +101,8 @@ before(() => {
   fs.writeFileSync(path.join(temporaryRepositoryRoot, 'sources', 'four.mkv'), 'four!');
   fs.writeFileSync(path.join(temporaryRepositoryRoot, 'sources', 'five.mkv'), 'five!!');
   fs.writeFileSync(path.join(temporaryRepositoryRoot, 'sources', 'decimal.mkv'), 'decimal');
+  fs.writeFileSync(path.join(temporaryRepositoryRoot, 'sources', 'hollowed-14.mp4'), 'hollowed');
+  fs.writeFileSync(path.join(temporaryRepositoryRoot, 'sources', 'chipped-01.mp4'), 'chipped');
 });
 
 after(() => {
@@ -122,11 +131,60 @@ test('accepts an explicit Concentrated record/video assignment without filename 
   assert.equal(JSON.stringify(report).includes(temporaryRepositoryRoot), false);
 });
 
+test('accepts Hollowed normalized identity and retains its editorial runtime', () => {
+  const probe = standardProbe();
+  probe.streams = [
+    probe.streams[0],
+    {
+      ...probe.streams[1],
+      tags: { language: 'eng', title: 'English Audio' },
+    },
+  ];
+  const report = createReport(
+    mapping(assignment('hollowed:14', 'hb_14', 'sources/hollowed-14.mp4')),
+    probe,
+  );
+  assert.deepEqual(report.inspectionSummary, { total: 1, succeeded: 1, failed: 0 });
+  assert.deepEqual(report.assignments[0].editorialRuntime, {
+    state: 'known',
+    displayed: '31:52',
+    seconds: 1912,
+  });
+  assert.equal(report.assignments[0].streams.audio[0].tags.language, 'eng');
+  assert.deepEqual(report.assignments[0].streams.subtitles, []);
+});
+
+test('normalized-project identity remains registry ordered across Hollowed and Chipped', () => {
+  const validated = validateAssignments({
+    mapping: mapping(
+      assignment('chipped:#01', 'ch_1', 'sources/chipped-01.mp4'),
+      assignment('hollowed:14', 'hb_14', 'sources/hollowed-14.mp4'),
+    ),
+    normalizedRecords,
+    registry,
+    rootDir: temporaryRepositoryRoot,
+  });
+  assert.deepEqual(validated.map(({ assignment: item }) => item.videoId), ['hb_14', 'ch_1']);
+});
+
+test('rejects cross-project, unknown, and EX acquisition identities', () => {
+  const validate = (recordId, videoId) => validateAssignments({
+    mapping: mapping(assignment(recordId, videoId, 'sources/hollowed-14.mp4')),
+    normalizedRecords,
+    registry,
+    rootDir: temporaryRepositoryRoot,
+  });
+  assert.throws(() => validate('hollowed:14', 'cb_14'), /registered to concentrated:14/);
+  assert.throws(() => validate('concentrated:14', 'hb_14'), /registered to hollowed:14/);
+  assert.throws(() => validate('hollowed:14', 'hb_999'), /videoId must resolve to one registry entry/);
+  assert.throws(() => validate('hollowed:27', 'hb_ex_27'), /not a normalized default-record video ID/);
+});
+
 test('rejects a mismatched recordId/videoId pair', () => {
   assert.throws(
     () => validateAssignments({
       mapping: mapping(assignment('concentrated:03', 'cb_4', 'sources/three.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
@@ -138,11 +196,11 @@ test('rejects an unknown recordId', () => {
   assert.throws(
     () => validateAssignments({
       mapping: mapping(assignment('concentrated:999', 'cb_3', 'sources/three.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
-    /unknown Concentrated recordId/,
+    /recordId must resolve to one normalized default record/,
   );
 });
 
@@ -150,11 +208,11 @@ test('rejects an unknown videoId', () => {
   assert.throws(
     () => validateAssignments({
       mapping: mapping(assignment('concentrated:03', 'cb_999', 'sources/three.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
-    /unknown videoId/,
+    /videoId must resolve to one registry entry/,
   );
 });
 
@@ -165,7 +223,7 @@ test('rejects a duplicate recordId', () => {
         assignment('concentrated:03', 'cb_3', 'sources/three.mkv'),
         assignment('concentrated:03', 'cb_4', 'sources/four.mkv'),
       ),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
@@ -180,7 +238,7 @@ test('rejects a duplicate videoId', () => {
         assignment('concentrated:03', 'cb_3', 'sources/three.mkv'),
         assignment('concentrated:04', 'cb_3', 'sources/four.mkv'),
       ),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
@@ -195,7 +253,7 @@ test('rejects a duplicate relativePath', () => {
         assignment('concentrated:03', 'cb_3', 'sources/three.mkv'),
         assignment('concentrated:04', 'cb_4', 'sources/three.mkv'),
       ),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
@@ -207,7 +265,7 @@ test('rejects absolute media paths', () => {
   assert.throws(
     () => validateAssignments({
       mapping: mapping(assignment('concentrated:03', 'cb_3', '/tmp/three.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
@@ -220,7 +278,7 @@ test('rejects POSIX and Windows-style path traversal', () => {
     assert.throws(
       () => validateAssignments({
         mapping: mapping(assignment('concentrated:03', 'cb_3', relativePath)),
-        concentrated,
+        normalizedRecords,
         registry,
         rootDir: temporaryRepositoryRoot,
       }),
@@ -233,7 +291,7 @@ test('rejects a missing local media file', () => {
   assert.throws(
     () => validateAssignments({
       mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/missing.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
@@ -245,7 +303,7 @@ test('rejects a directory where a media file is expected', () => {
   assert.throws(
     () => validateAssignments({
       mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/directory.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
     }),
@@ -425,7 +483,7 @@ test('uses the default inspector with an injected ffprobe process runner', () =>
   let invocation;
   const report = createInspectionReport({
     mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/three.mkv')),
-    concentrated,
+    normalizedRecords,
     registry,
     rootDir: temporaryRepositoryRoot,
     spawnSync(command, args, options) {
@@ -463,7 +521,7 @@ test('uses the default inspector with an injected ffprobe process runner', () =>
 test('preserves a default-inspector ffprobe failure without leaking private paths', () => {
   const report = createInspectionReport({
     mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/three.mkv')),
-    concentrated,
+    normalizedRecords,
     registry,
     rootDir: temporaryRepositoryRoot,
     spawnSync: () => ({
@@ -493,7 +551,7 @@ test('passes the assignment as the custom inspector second argument', () => {
   let callbackArguments;
   const report = createInspectionReport({
     mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/three.mkv')),
-    concentrated,
+    normalizedRecords,
     registry,
     rootDir: temporaryRepositoryRoot,
     inspectFile(...args) {
@@ -535,7 +593,7 @@ test('retains successes and continues after a failed assignment', () => {
 
   const report = createInspectionReport({
     mapping: localMapping,
-    concentrated,
+    normalizedRecords,
     registry,
     rootDir: temporaryRepositoryRoot,
     inspectFile,
@@ -574,7 +632,7 @@ test('retains successes and continues after a failed assignment', () => {
 
   const secondReport = createInspectionReport({
     mapping: mapping(...[...localMapping.assignments].reverse()),
-    concentrated,
+    normalizedRecords,
     registry,
     rootDir: temporaryRepositoryRoot,
     inspectFile: (_, explicitAssignment) => {
@@ -616,7 +674,7 @@ test('sanitizes every supported ffprobe failure class into a failed result', () 
   for (const { expectedCode, spawn } of cases) {
     const report = createInspectionReport({
       mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/three.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
       inspectFile: (resolvedPath) => runFfprobe(resolvedPath, spawn),
@@ -632,7 +690,7 @@ test('mapping and path validation remain fatal before inspection starts', () => 
   assert.throws(
     () => createInspectionReport({
       mapping: mapping(assignment('concentrated:03', 'cb_3', 'sources/missing.mkv')),
-      concentrated,
+      normalizedRecords,
       registry,
       rootDir: temporaryRepositoryRoot,
       inspectFile: () => {

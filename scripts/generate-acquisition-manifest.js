@@ -6,6 +6,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const repositoryRoot = path.resolve(__dirname, '..')
+const NORMALIZED_PROJECT_IDS = Object.freeze(['concentrated', 'hollowed', 'chipped'])
 
 class AcquisitionManifestError extends Error {
   constructor(code, message) {
@@ -87,15 +88,14 @@ function validateRelativeArtifactPath(value, label, code = 'invalid-artifact-pat
   return value
 }
 
-function validateMapping(mapping, concentrated, registry) {
+function validateMapping(mapping, normalizedRecords, registry) {
   assertExactKeys(mapping, ['schemaVersion', 'assignments'], 'mapping', 'invalid-mapping')
   if (mapping.schemaVersion !== 1) fail('invalid-mapping', 'unsupported mapping schemaVersion')
   if (!Array.isArray(mapping.assignments) || mapping.assignments.length === 0) {
     fail('invalid-mapping', 'mapping.assignments must be a non-empty array')
   }
-  assertObject(concentrated, 'normalized Concentrated records', 'invalid-identity-source')
   assertObject(registry, 'video-ID registry', 'invalid-identity-source')
-  if (!Array.isArray(concentrated.records) || !Array.isArray(registry.entries)) {
+  if (!Array.isArray(normalizedRecords) || !Array.isArray(registry.entries)) {
     fail('invalid-identity-source', 'identity sources must contain record and registry arrays')
   }
 
@@ -126,21 +126,26 @@ function validateMapping(mapping, concentrated, registry) {
     mediaPaths.add(assignment.mediaRelativePath)
     torrentPaths.add(assignment.torrentRelativePath)
 
-    const records = concentrated.records.filter((record) => record.recordId === assignment.recordId)
-    if (records.length !== 1 || records[0].projectId !== 'concentrated') {
-      fail('unknown-record-id', 'recordId is not one unique normalized Concentrated record')
+    const records = normalizedRecords.filter((record) => record.recordId === assignment.recordId)
+    if (records.length !== 1) {
+      fail('unknown-record-id', 'recordId is not one unique normalized default record')
     }
     const videoMatches = registry.entries.filter((entry) => entry.videoId === assignment.videoId)
-    if (videoMatches.length !== 1 || videoMatches[0].projectId !== 'concentrated') {
-      fail('unknown-video-id', 'videoId is not one unique permanent Concentrated registry identity')
+    if (videoMatches.length !== 1 || videoMatches[0].recordType !== 'normalized-record') {
+      fail('unknown-video-id', 'videoId is not one unique normalized default-record registry identity')
     }
     const recordMatches = registry.entries.filter((entry) => (
-      entry.recordId === assignment.recordId && entry.projectId === 'concentrated'
+      entry.recordId === assignment.recordId && entry.recordType === 'normalized-record'
     ))
     if (recordMatches.length !== 1) {
-      fail('unknown-record-id', 'recordId does not have one unique permanent Concentrated registry identity')
+      fail('unknown-record-id', 'recordId does not have one unique normalized default-record registry identity')
     }
-    if (videoMatches[0].recordId !== assignment.recordId || recordMatches[0].videoId !== assignment.videoId) {
+    if (
+      videoMatches[0].recordId !== assignment.recordId ||
+      recordMatches[0].videoId !== assignment.videoId ||
+      videoMatches[0].projectId !== records[0].projectId ||
+      recordMatches[0].projectId !== records[0].projectId
+    ) {
       fail('record-video-mismatch', 'recordId and videoId disagree with the permanent registry')
     }
 
@@ -602,8 +607,8 @@ function validateAcquisitionManifest(manifest) {
   return manifest
 }
 
-function buildAcquisitionManifest({ mapping, inspectionReport, verificationReport, concentrated, registry }) {
-  const assignments = validateMapping(mapping, concentrated, registry)
+function buildAcquisitionManifest({ mapping, inspectionReport, verificationReport, normalizedRecords, registry }) {
+  const assignments = validateMapping(mapping, normalizedRecords, registry)
   const inspections = indexInspectionResults(inspectionReport)
   const verifications = indexVerificationResults(verificationReport)
   const entries = []
@@ -731,6 +736,13 @@ function readJson(filename, label) {
   }
 }
 
+function readNormalizedRecords() {
+  return NORMALIZED_PROJECT_IDS.flatMap((projectId) => readJson(
+    path.join(repositoryRoot, 'editorial', 'normalized', `${projectId}.json`),
+    `normalized ${projectId} records`
+  ).records)
+}
+
 function emitStatus(report, output = process.stdout) {
   output.write(`${JSON.stringify(report, null, 2)}\n`)
 }
@@ -742,10 +754,7 @@ function main() {
       mapping: readJson(path.resolve(process.cwd(), args.mappingPath), 'mapping'),
       inspectionReport: readJson(path.resolve(process.cwd(), args.inspectionReportPath), 'inspection report'),
       verificationReport: readJson(path.resolve(process.cwd(), args.verificationReportPath), 'verification report'),
-      concentrated: readJson(
-        path.join(repositoryRoot, 'editorial', 'normalized', 'concentrated.json'),
-        'normalized Concentrated records'
-      ),
+      normalizedRecords: readNormalizedRecords(),
       registry: readJson(
         path.join(repositoryRoot, 'projection', 'stremio', 'video-id-registry.json'),
         'video-ID registry'

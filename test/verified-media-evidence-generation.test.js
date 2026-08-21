@@ -25,6 +25,7 @@ const PAIRS = [
 ]
 
 const REPOSITORY_ROOT = path.resolve(__dirname, '..')
+const NORMALIZED_PROJECT_IDS = ['concentrated', 'hollowed', 'chipped']
 const PRODUCTION_ACQUISITION_PATH = path.join(
   REPOSITORY_ROOT,
   'evidence',
@@ -88,16 +89,19 @@ const LOCKED_ARRANCAR_EVIDENCE_INDEX_SHA256 =
 const LOCKED_ARRANCAR_EVIDENCE_INDEX_BYTE_SIZE = 3219
 const LOCKED_ARRANCAR_EVIDENCE_TOTAL_BYTE_SIZE = 60357
 
+function projectIdFor(recordId) {
+  return recordId.split(':', 1)[0]
+}
+
 function identity(pairs = PAIRS) {
   return {
-    concentrated: {
-      records: pairs.map(([recordId]) => ({ recordId, projectId: 'concentrated' }))
-    },
+    normalizedRecords: pairs.map(([recordId]) => ({ recordId, projectId: projectIdFor(recordId) })),
     registry: {
       entries: pairs.map(([recordId, videoId]) => ({
+        recordType: 'normalized-record',
         recordId,
         videoId,
-        projectId: 'concentrated'
+        projectId: projectIdFor(recordId)
       }))
     }
   }
@@ -105,8 +109,9 @@ function identity(pairs = PAIRS) {
 
 function acquisitionEntry(pair = PAIRS[0]) {
   const [recordId, videoId] = pair
-  const marker = videoId === 'cb_2' ? '02' : '27.5'
-  const filename = `${marker} - Synthetic.mkv`
+  const filename = videoId === 'hb_14'
+    ? '14 - The Slashing Opera (sub).mp4'
+    : `${videoId === 'cb_2' ? '02' : '27.5'} - Synthetic.mkv`
   return {
     recordId,
     videoId,
@@ -266,13 +271,16 @@ function readJsonFile(filename) {
 
 function productionCandidatesFor(acquisitionPath, selectionEntries) {
   const acquisitionManifest = readJsonFile(acquisitionPath)
+  const normalizedRecords = NORMALIZED_PROJECT_IDS.flatMap((projectId) => (
+    readJsonFile(path.join(REPOSITORY_ROOT, 'editorial', 'normalized', `${projectId}.json`)).records
+  ))
   const candidates = generateEvidenceCandidates({
     acquisitionManifest,
     selection: {
       schemaVersion: 1,
       entries: selectionEntries.map((entry) => ({ ...entry }))
     },
-    concentrated: readJsonFile(path.join(REPOSITORY_ROOT, 'editorial', 'normalized', 'concentrated.json')),
+    normalizedRecords,
     registry: readJsonFile(path.join(REPOSITORY_ROOT, 'projection', 'stremio', 'video-id-registry.json'))
   })
   return { acquisitionManifest, candidates }
@@ -325,6 +333,19 @@ test('selection unknown record is rejected', () => {
 test('selection record and video mismatch is rejected', () => {
   const inputs = validInputs()
   inputs.selection.entries[0].videoId = 'cb_27p5'
+  expectCode('record-video-mismatch', () => generate(inputs))
+})
+
+test('cross-project selection identity is rejected', () => {
+  const hollowedPair = ['hollowed:14', 'hb_14']
+  const inputs = {
+    acquisitionManifest: acquisitionManifest([acquisitionEntry(hollowedPair)]),
+    selection: selection([{ recordId: 'hollowed:14', videoId: 'cb_14' }]),
+    ...identity([
+      hollowedPair,
+      ['concentrated:14', 'cb_14']
+    ])
+  }
   expectCode('record-video-mismatch', () => generate(inputs))
 })
 
@@ -569,6 +590,62 @@ test('fieldEvidence references exact generated basis IDs', () => {
 
 test('generated candidate passes operative validateVerifiedMedia', () => {
   assert.doesNotThrow(() => validateVerifiedMedia(candidate()))
+})
+
+test('Hollowed English-only media with zero subtitles produces valid evidence', () => {
+  const pair = ['hollowed:14', 'hb_14']
+  const entry = acquisitionEntry(pair)
+  entry.media.videoStreams = [entry.media.videoStreams[0]]
+  entry.media.audioStreams = [{
+    index: 1,
+    codecName: 'aac',
+    profile: 'LC',
+    channels: 2,
+    channelLayout: 'stereo',
+    language: 'eng',
+    title: 'English Audio',
+    default: 1,
+    forced: 0
+  }]
+  entry.media.subtitleStreams = []
+  entry.media.attachmentCount = 0
+  entry.media.warnings = []
+
+  const value = candidate({
+    acquisitionManifest: acquisitionManifest([entry]),
+    selection: selection([{ recordId: pair[0], videoId: pair[1] }]),
+    ...identity([pair])
+  })
+
+  assert.equal(value.recordId, 'hollowed:14')
+  assert.equal(value.videoId, 'hb_14')
+  assert.deepEqual(value.media.video, {
+    codec: 'HEVC',
+    standard: 'H.265',
+    profile: 'Main',
+    width: 768,
+    height: 576,
+    pixelFormat: 'yuv420p'
+  })
+  assert.deepEqual(value.media.audioTracks, [{
+    language: 'English',
+    codec: 'AAC',
+    profile: 'LC',
+    channels: 2,
+    channelLayout: 'stereo'
+  }])
+  assert.deepEqual(value.media.subtitleTracks, [])
+  assert.equal(value.torrent.fileSelection.fileIdx, 0)
+  assert.deepEqual(value.torrent.networkEvidence, {
+    trackers: { state: 'unresolved' },
+    announceUrls: { state: 'unresolved' },
+    webSeeds: { state: 'unresolved' }
+  })
+  assert.deepEqual(value.verificationBases.map(({ evidenceId }) => evidenceId), [
+    'hb14-local-torrent-verification',
+    'hb14-local-media-ffprobe-inspection'
+  ])
+  assert.doesNotThrow(() => validateVerifiedMedia(value))
 })
 
 test('first output is created', (t) => {

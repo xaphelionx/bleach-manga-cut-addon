@@ -12,6 +12,7 @@ const {
 } = require('./generate-stremio-data')
 
 const repositoryRoot = path.resolve(__dirname, '..')
+const NORMALIZED_PROJECT_IDS = Object.freeze(['concentrated', 'hollowed', 'chipped'])
 const TORRENT_METHOD = 'canonical-bencode-v1-creation-and-independent-piece-verification'
 const LOCAL_RETENTION = 'ignored-local-workspace'
 
@@ -55,15 +56,14 @@ function evidencePrefix(videoId) {
   return prefix
 }
 
-function validateSelection({ selection, acquisitionManifest, concentrated, registry }) {
+function validateSelection({ selection, acquisitionManifest, normalizedRecords, registry }) {
   assertExactKeys(selection, ['schemaVersion', 'entries'], 'selection', 'invalid-selection')
   if (selection.schemaVersion !== 1) fail('invalid-selection', 'unsupported selection schemaVersion')
   if (!Array.isArray(selection.entries) || selection.entries.length === 0) {
     fail('selection-required', 'selection.entries must explicitly authorize at least one identity')
   }
-  assertObject(concentrated, 'normalized Concentrated records', 'invalid-identity-source')
   assertObject(registry, 'video-ID registry', 'invalid-identity-source')
-  if (!Array.isArray(concentrated.records) || !Array.isArray(registry.entries)) {
+  if (!Array.isArray(normalizedRecords) || !Array.isArray(registry.entries)) {
     fail('invalid-identity-source', 'identity sources must contain record and registry arrays')
   }
 
@@ -80,21 +80,23 @@ function validateSelection({ selection, acquisitionManifest, concentrated, regis
     recordIds.add(entry.recordId)
     videoIds.add(entry.videoId)
 
-    const records = concentrated.records.filter((record) => record.recordId === entry.recordId)
-    if (records.length !== 1 || records[0].projectId !== 'concentrated') {
-      fail('unknown-record-id', 'selection recordId is not one unique normalized Concentrated record')
+    const records = normalizedRecords.filter((record) => record.recordId === entry.recordId)
+    if (records.length !== 1) {
+      fail('unknown-record-id', 'selection recordId is not one unique normalized default record')
     }
     const videoMatches = registry.entries.filter((candidate) => candidate.videoId === entry.videoId)
-    if (videoMatches.length !== 1 || videoMatches[0].projectId !== 'concentrated') {
-      fail('unknown-video-id', 'selection videoId is not one unique permanent Concentrated identity')
+    if (videoMatches.length !== 1 || videoMatches[0].recordType !== 'normalized-record') {
+      fail('unknown-video-id', 'selection videoId is not one unique normalized default-record identity')
     }
     const recordMatches = registry.entries.filter((candidate) => (
-      candidate.recordId === entry.recordId && candidate.projectId === 'concentrated'
+      candidate.recordId === entry.recordId && candidate.recordType === 'normalized-record'
     ))
     if (
       recordMatches.length !== 1 ||
       videoMatches[0].recordId !== entry.recordId ||
-      recordMatches[0].videoId !== entry.videoId
+      recordMatches[0].videoId !== entry.videoId ||
+      videoMatches[0].projectId !== records[0].projectId ||
+      recordMatches[0].projectId !== records[0].projectId
     ) {
       fail('record-video-mismatch', 'selection recordId and videoId disagree with the permanent registry')
     }
@@ -285,9 +287,9 @@ function buildVerifiedMediaEvidence(acquisitionEntry) {
   return candidate
 }
 
-function generateEvidenceCandidates({ acquisitionManifest, selection, concentrated, registry }) {
+function generateEvidenceCandidates({ acquisitionManifest, selection, normalizedRecords, registry }) {
   validateAcquisitionManifest(acquisitionManifest)
-  const selected = validateSelection({ selection, acquisitionManifest, concentrated, registry })
+  const selected = validateSelection({ selection, acquisitionManifest, normalizedRecords, registry })
   const evidenceIds = new Set()
   const candidates = selected.map(({ recordId, videoId, acquisitionEntry }) => {
     const value = buildVerifiedMediaEvidence(acquisitionEntry)
@@ -442,6 +444,13 @@ function readJson(filename, label) {
   }
 }
 
+function readNormalizedRecords() {
+  return NORMALIZED_PROJECT_IDS.flatMap((projectId) => readJson(
+    path.join(repositoryRoot, 'editorial', 'normalized', `${projectId}.json`),
+    `normalized ${projectId} records`
+  ).records)
+}
+
 function emitReport(report, output = process.stdout) {
   output.write(`${JSON.stringify(report, null, 2)}\n`)
 }
@@ -452,10 +461,7 @@ function main() {
     const candidates = generateEvidenceCandidates({
       acquisitionManifest: readJson(path.resolve(process.cwd(), args.acquisitionManifestPath), 'acquisition manifest'),
       selection: readJson(path.resolve(process.cwd(), args.selectionPath), 'selection'),
-      concentrated: readJson(
-        path.join(repositoryRoot, 'editorial', 'normalized', 'concentrated.json'),
-        'normalized Concentrated records'
-      ),
+      normalizedRecords: readNormalizedRecords(),
       registry: readJson(
         path.join(repositoryRoot, 'projection', 'stremio', 'video-id-registry.json'),
         'video-ID registry'

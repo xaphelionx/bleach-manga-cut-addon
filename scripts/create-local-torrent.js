@@ -11,6 +11,7 @@ const {
 } = require('./verify-local-torrent')
 
 const repositoryRoot = path.resolve(__dirname, '..')
+const NORMALIZED_PROJECT_IDS = Object.freeze(['concentrated', 'hollowed', 'chipped'])
 const PIECE_LENGTH = 1024 * 1024
 const PIECE_READ_BUFFER_SIZE = 64 * 1024
 
@@ -333,17 +334,20 @@ function validateMapping(mapping) {
   })
 }
 
-function validateIdentity(assignment, concentrated, registry) {
-  const record = concentrated.records.find((candidate) => candidate.recordId === assignment.recordId)
-  if (!record || record.projectId !== 'concentrated') {
-    fail('unknown-record-id', 'recordId is not a normalized Concentrated record')
+function validateIdentity(assignment, normalizedRecords, registry) {
+  const records = normalizedRecords.filter((candidate) => candidate.recordId === assignment.recordId)
+  if (records.length !== 1) {
+    fail('unknown-record-id', 'recordId is not one unique normalized default record')
   }
   const matches = registry.entries.filter((candidate) => candidate.videoId === assignment.videoId)
-  if (matches.length !== 1 || matches[0].projectId !== 'concentrated') {
-    fail('unknown-video-id', 'videoId is not a unique Concentrated registry entry')
+  if (matches.length !== 1 || matches[0].recordType !== 'normalized-record') {
+    fail('unknown-video-id', 'videoId is not one unique normalized default-record registry entry')
   }
   if (matches[0].recordId !== assignment.recordId) {
     fail('record-video-mismatch', 'recordId and videoId do not match the permanent registry')
+  }
+  if (matches[0].projectId !== records[0].projectId) {
+    fail('record-video-mismatch', 'normalized record projectId and registry projectId do not match')
   }
 }
 
@@ -367,9 +371,9 @@ function failureResult(assignment, error) {
   }
 }
 
-function createAssignment({ assignment, concentrated, registry, rootDir, outputDirectory }) {
+function createAssignment({ assignment, normalizedRecords, registry, rootDir, outputDirectory }) {
   try {
-    validateIdentity(assignment, concentrated, registry)
+    validateIdentity(assignment, normalizedRecords, registry)
     const media = resolveMediaFile(rootDir, assignment.mediaRelativePath)
     const torrentFilename = torrentFilenameForPayload(media.filename)
     const pieceHashes = generatePieceHashes(media.realPath, media.byteSize)
@@ -396,12 +400,15 @@ function createAssignment({ assignment, concentrated, registry, rootDir, outputD
 
 function createCreationReport({
   mapping,
-  concentrated,
+  normalizedRecords,
   registry,
   rootDir = repositoryRoot,
   outputDirectory
 }) {
   const assignments = validateMapping(mapping)
+  if (!Array.isArray(normalizedRecords) || !registry || !Array.isArray(registry.entries)) {
+    fail('invalid-mapping', 'identity sources must contain normalized records and registry entries')
+  }
   const resolvedOutputDirectory = resolveOutputDirectory(outputDirectory)
   const registryIndex = new Map(registry.entries.map((entry, index) => [entry.videoId, index]))
   assignments.sort((left, right) => {
@@ -414,7 +421,7 @@ function createCreationReport({
   })
   const results = assignments.map((assignment) => createAssignment({
     assignment,
-    concentrated,
+    normalizedRecords,
     registry,
     rootDir,
     outputDirectory: resolvedOutputDirectory
@@ -465,15 +472,19 @@ function readJson(filename, label) {
   }
 }
 
+function readNormalizedRecords() {
+  return NORMALIZED_PROJECT_IDS.flatMap((projectId) => readJson(
+    path.join(repositoryRoot, 'editorial', 'normalized', `${projectId}.json`),
+    `normalized ${projectId} records`
+  ).records)
+}
+
 function main() {
   try {
     const args = parseArguments(process.argv.slice(2))
     const report = createCreationReport({
       mapping: readJson(path.resolve(process.cwd(), args.mappingPath), 'mapping file'),
-      concentrated: readJson(
-        path.join(repositoryRoot, 'editorial', 'normalized', 'concentrated.json'),
-        'normalized Concentrated records'
-      ),
+      normalizedRecords: readNormalizedRecords(),
       registry: readJson(
         path.join(repositoryRoot, 'projection', 'stremio', 'video-id-registry.json'),
         'video-ID registry'

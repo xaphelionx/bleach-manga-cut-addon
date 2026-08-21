@@ -7,6 +7,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 
 const repositoryRoot = path.resolve(__dirname, '..')
+const NORMALIZED_PROJECT_IDS = Object.freeze(['concentrated', 'hollowed', 'chipped'])
 const FFPROBE_ARGUMENTS = Object.freeze([
   '-v', 'error',
   '-show_format',
@@ -74,17 +75,14 @@ function editorialRuntime(record) {
   }
 }
 
-function validateAssignments({ mapping, concentrated, registry, rootDir = repositoryRoot }) {
+function validateAssignments({ mapping, normalizedRecords, registry, rootDir = repositoryRoot }) {
   assertExactKeys(mapping, ['schemaVersion', 'assignments'], 'mapping')
   assert.equal(mapping.schemaVersion, 1, 'unsupported mapping schemaVersion')
   assert.ok(Array.isArray(mapping.assignments), 'mapping.assignments must be an array')
   assert.ok(mapping.assignments.length > 0, 'mapping.assignments must not be empty')
+  assert.ok(Array.isArray(normalizedRecords), 'normalized project records must be an array')
+  assert.ok(registry && Array.isArray(registry.entries), 'video-ID registry must contain an entries array')
 
-  const recordById = new Map(concentrated.records.map((record) => [record.recordId, record]))
-  const registryByVideoId = new Map(registry.entries.map((entry, index) => [
-    entry.videoId,
-    { entry, registryIndex: index }
-  ]))
   const recordIds = new Set()
   const videoIds = new Set()
   const relativePaths = new Set()
@@ -101,17 +99,29 @@ function validateAssignments({ mapping, concentrated, registry, rootDir = reposi
     recordIds.add(assignment.recordId)
     videoIds.add(assignment.videoId)
 
-    const record = recordById.get(assignment.recordId)
-    assert.ok(record, `unknown Concentrated recordId ${assignment.recordId}`)
-    assert.equal(record.projectId, 'concentrated', `${assignment.recordId} is not a Concentrated record`)
+    const records = normalizedRecords.filter((record) => record.recordId === assignment.recordId)
+    assert.equal(records.length, 1, `recordId must resolve to one normalized default record: ${assignment.recordId}`)
+    const record = records[0]
 
-    const registered = registryByVideoId.get(assignment.videoId)
-    assert.ok(registered, `unknown videoId ${assignment.videoId}`)
-    assert.equal(registered.entry.projectId, 'concentrated', `${assignment.videoId} is not a Concentrated video ID`)
+    const registeredMatches = registry.entries
+      .map((entry, registryIndex) => ({ entry, registryIndex }))
+      .filter(({ entry }) => entry.videoId === assignment.videoId)
+    assert.equal(registeredMatches.length, 1, `videoId must resolve to one registry entry: ${assignment.videoId}`)
+    const registered = registeredMatches[0]
+    assert.equal(
+      registered.entry.recordType,
+      'normalized-record',
+      `${assignment.videoId} is not a normalized default-record video ID`
+    )
     assert.equal(
       registered.entry.recordId,
       assignment.recordId,
       `${assignment.videoId} is registered to ${registered.entry.recordId}, not ${assignment.recordId}`
+    )
+    assert.equal(
+      registered.entry.projectId,
+      record.projectId,
+      `${assignment.videoId} project ${registered.entry.projectId} does not match ${assignment.recordId} project ${record.projectId}`
     )
 
     const localPath = resolveRepositoryRelativePath(rootDir, assignment.relativePath)
@@ -399,13 +409,13 @@ function failedInspection(inspection, error) {
 
 function createInspectionReport({
   mapping,
-  concentrated,
+  normalizedRecords,
   registry,
   rootDir = repositoryRoot,
   inspectFile,
   spawnSync = childProcess.spawnSync
 }) {
-  const assignments = validateAssignments({ mapping, concentrated, registry, rootDir })
+  const assignments = validateAssignments({ mapping, normalizedRecords, registry, rootDir })
   const batchInspectFile = inspectFile === undefined
     ? createDefaultInspectFile(spawnSync)
     : inspectFile
@@ -461,15 +471,19 @@ function readJson(filename, label) {
   return value
 }
 
+function readNormalizedRecords() {
+  return NORMALIZED_PROJECT_IDS.flatMap((projectId) => readJson(
+    path.join(repositoryRoot, 'editorial', 'normalized', `${projectId}.json`),
+    `normalized ${projectId} records`
+  ).records)
+}
+
 function main() {
   try {
     const { mappingPath } = parseArguments(process.argv.slice(2))
     const report = createInspectionReport({
       mapping: readJson(path.resolve(process.cwd(), mappingPath), 'mapping file'),
-      concentrated: readJson(
-        path.join(repositoryRoot, 'editorial', 'normalized', 'concentrated.json'),
-        'normalized Concentrated records'
-      ),
+      normalizedRecords: readNormalizedRecords(),
       registry: readJson(
         path.join(repositoryRoot, 'projection', 'stremio', 'video-id-registry.json'),
         'video-ID registry'

@@ -31,16 +31,19 @@ const PAIRS = [
   ['concentrated:04', 'cb_4', '04 - Four.mkv']
 ]
 
+function projectIdFor(recordId) {
+  return recordId.split(':', 1)[0]
+}
+
 function identity(pairs = PAIRS) {
   return {
-    concentrated: {
-      records: pairs.map(([recordId]) => ({ recordId, projectId: 'concentrated' }))
-    },
+    normalizedRecords: pairs.map(([recordId]) => ({ recordId, projectId: projectIdFor(recordId) })),
     registry: {
       entries: pairs.map(([recordId, videoId]) => ({
+        recordType: 'normalized-record',
         recordId,
         videoId,
-        projectId: 'concentrated'
+        projectId: projectIdFor(recordId)
       }))
     }
   }
@@ -309,6 +312,36 @@ test('one valid entry builds', () => {
   assert.equal(manifest.schemaVersion, 1)
   assert.equal(manifest.authorityDomain, 'technical-acquisition')
   assert.equal(manifest.entries.length, 1)
+})
+
+test('synthetic Hollowed identity flows through a technical-acquisition manifest', () => {
+  const pair = ['hollowed:14', 'hb_14', '14 - The Slashing Opera (sub).mp4']
+  const manifest = build({
+    mapping: mapping([mappingAssignment(pair)]),
+    inspectionReport: inspectionReport([inspectionResult(pair)]),
+    verificationReport: verificationReport([verificationResult(pair)]),
+    ...identity([pair])
+  })
+  assert.equal(manifest.schemaVersion, 1)
+  assert.equal(manifest.authorityDomain, 'technical-acquisition')
+  assert.equal(manifest.entries.length, 1)
+  assert.equal(manifest.entries[0].recordId, 'hollowed:14')
+  assert.equal(manifest.entries[0].videoId, 'hb_14')
+  assert.equal(manifest.entries[0].media.relativePath, 'sources/media/14 - The Slashing Opera (sub).mp4')
+})
+
+test('acquisition manifest generation rejects a cross-project identity', () => {
+  const invalidPair = ['hollowed:14', 'cb_14', 'hollowed.mp4']
+  const inputs = {
+    mapping: mapping([mappingAssignment(invalidPair)]),
+    inspectionReport: inspectionReport([inspectionResult(invalidPair)]),
+    verificationReport: verificationReport([verificationResult(invalidPair)]),
+    ...identity([
+      ['hollowed:14', 'hb_14', 'hollowed.mp4'],
+      ['concentrated:14', 'cb_14', 'concentrated.mkv']
+    ])
+  }
+  expectCode('record-video-mismatch', () => build(inputs))
 })
 
 test('entry contains exactly identity, media, and torrent', () => {
