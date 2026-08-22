@@ -379,6 +379,13 @@
         "episode": 16,
         "title": "Baron's Lecture Full-Course",
         "runtime": "24"
+      },
+      {
+        "id": "hb_14",
+        "season": 3,
+        "episode": 17,
+        "title": "The Slashing Opera",
+        "runtime": "31"
       }
     ]
   }

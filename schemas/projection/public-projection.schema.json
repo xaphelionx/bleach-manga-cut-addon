@@ -72,7 +72,7 @@
           ],
           "items": {
             "type": "string",
-            "pattern": "^cb_[0-9]+(?:p[0-9]+)?$"
+            "pattern": "^(?:cb|hb)_[0-9]+(?:p[0-9]+)?$"
           }
         },
         "playableOnly": { "const": true }
@@ -224,7 +224,7 @@
               "maxItems": 2,
               "prefixItems": [
                 { "const": "media-evidence-not-approved" },
-                { "pattern": "^primary-publication-prefix-after-cb_[0-9]+(?:p[0-9]+)?$" }
+                { "pattern": "^primary-publication-prefix-after-(?:cb|hb)_[0-9]+(?:p[0-9]+)?$" }
               ]
             }
           }

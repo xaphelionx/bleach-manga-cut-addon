@@ -453,8 +453,8 @@ function validate() {
     index: 54
   })
   assert.deepEqual(hb14.publicationEligibility, {
-    state: 'blocked',
-    gateSet: 'unpublished-primary'
+    state: 'eligible',
+    gateSet: 'verified-primary'
   })
 
   assert.equal(registry.schemaVersion, 1)
@@ -490,7 +490,7 @@ function validate() {
   }
 
   const registryByVideoId = new Map(registry.entries.map((entry) => [entry.videoId, entry]))
-  const { lockedValidatedVideoIds } = validateCompatibilityLockPrefix({
+  const { lockedValidatedVideoIds, publishedUnlockedVideoIds } = validateCompatibilityLockPrefix({
     publishedVideoIds: projection.publicationPolicy.currentPublishedVideoIds,
     registryEntries: registry.entries,
     lockedValidatedVideoIds: LOCKED_VALIDATED_VIDEO_IDS
@@ -528,6 +528,15 @@ function validate() {
     projectId: 'hollowed',
     sourceIdentifier: '14',
     videoId: 'hb_14',
+    status: 'published',
+    locked: false
+  })
+  assert.deepEqual(registryByVideoId.get('hb_15'), {
+    recordType: 'normalized-record',
+    recordId: 'hollowed:15',
+    projectId: 'hollowed',
+    sourceIdentifier: '15',
+    videoId: 'hb_15',
     status: 'reserved',
     locked: false
   })
@@ -614,7 +623,7 @@ function validate() {
   }, {})
   assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
   assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
-  assert.deepEqual(eligibilityCounts, { eligible: 53, blocked: 50 })
+  assert.deepEqual(eligibilityCounts, { eligible: 54, blocked: 49 })
 
   return {
     projectedEntries: projection.entries.length,
@@ -624,6 +633,7 @@ function validate() {
     eligibleVideoIds: publication.eligibleIds,
     publishedVideoIds: publication.publishedIds,
     lockedValidatedVideoIds,
+    publishedUnlockedVideoIds,
     registryEntries: registry.entries.length,
     optionalEntries: optional.entries.length,
     unresolvedIssues: unresolved.issues.length
@@ -641,7 +651,8 @@ if (require.main === module) {
     `eligibility counts: ${JSON.stringify(result.eligibilityCounts)}\n` +
     `eligible primary IDs: ${JSON.stringify(result.eligibleVideoIds)}\n` +
     `published registry IDs: ${JSON.stringify(result.publishedVideoIds)}\n` +
-    `locked validated IDs: ${JSON.stringify(result.lockedValidatedVideoIds)}\n`
+    `locked validated IDs: ${JSON.stringify(result.lockedValidatedVideoIds)}\n` +
+    `published unlocked IDs: ${JSON.stringify(result.publishedUnlockedVideoIds)}\n`
   )
 }
 

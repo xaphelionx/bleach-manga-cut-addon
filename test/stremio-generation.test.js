@@ -54,12 +54,12 @@ const EXPECTED_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_ARRANCAR_BATCH
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_PREBOUNDARY_PREFIX,
-  ...EXPECTED_ARRANCAR_BATCH
+  ...EXPECTED_LOCKED_PREFIX,
+  'hb_14'
 ])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '22f1d839f5a7682098d893a3452956ac66e2f8774e3fa76932c6930a5287148b'
+  'data/meta/bleach-manga-cut.json': '5215f9bd0f3b08fdfbc8973721ee654e48b62d92d60099f5e8c346ecedcd4a96'
 })
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
@@ -94,7 +94,7 @@ test('processing remains exactly projection-controlled at the current canonical 
   )), true)
   assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_0p0'), true)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.equal(result.processedVideoIds.at(-1), 'cb_51')
+  assert.equal(result.processedVideoIds.at(-1), 'hb_14')
   assert.equal('data/stream/cb_0p0.json' in result.candidates, true)
   assert.equal('data/provenance/cb_0p0.json' in result.candidates, true)
   assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_0p0'), true)
@@ -106,7 +106,13 @@ test('processing remains exactly projection-controlled at the current canonical 
     assert.equal(`data/provenance/${videoId}.json` in result.candidates, true)
     assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), true)
   }
-  for (const videoId of ['hb_14', 'hb_0p8', 'hb_50']) {
+  assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === 'hb_14'), true)
+  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('hb_14'), true)
+  assert.equal(result.processedVideoIds.includes('hb_14'), true)
+  assert.equal('data/stream/hb_14.json' in result.candidates, true)
+  assert.equal('data/provenance/hb_14.json' in result.candidates, true)
+  assert.equal(generatedMeta.videos.some(({ id }) => id === 'hb_14'), true)
+  for (const videoId of ['hb_15', 'hb_0p8', 'hb_50']) {
     assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), false)
     assert.equal(result.processedVideoIds.includes(videoId), false)
@@ -255,7 +261,7 @@ test('current checkpoint candidate paths are exact and closed', () => {
       `data/provenance/${videoId}.json`
     ])
   ]
-  assert.equal(expectedPaths.length, 108)
+  assert.equal(expectedPaths.length, 110)
   assert.deepEqual(Object.keys(result.candidates), expectedPaths)
 })
 
@@ -385,14 +391,14 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   )
 
   const videos = result.candidates[CB1_REGRESSION_FILES.meta].meta.videos
-  assert.equal(videos.length, 53)
+  assert.equal(videos.length, 54)
   assert.deepEqual(videos.map((video) => video.id), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(
     videos.reduce((counts, video) => {
       counts[video.season] = (counts[video.season] || 0) + 1
       return counts
     }, {}),
-    { 1: 9, 2: 28, 3: 16 }
+    { 1: 9, 2: 28, 3: 17 }
   )
   const placement = (videoId) => {
     const { season, episode } = videos.find((video) => video.id === videoId)
@@ -409,7 +415,8 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   assert.deepEqual(placement('cb_0p0'), { season: 2, episode: 28 })
   assert.deepEqual(placement('cb_36'), { season: 3, episode: 1 })
   assert.deepEqual(placement('cb_51'), { season: 3, episode: 16 })
-  assert.equal(videos.some((video) => video.id === 'hb_14' || video.id === 'cb_52'), false)
+  assert.deepEqual(placement('hb_14'), { season: 3, episode: 17 })
+  assert.equal(videos.some((video) => video.id === 'hb_15' || video.id === 'cb_52'), false)
   for (const resolved of inputs.resolvedRecords) {
     const video = videos.find((item) => item.id === resolved.projectionEntry.videoId)
     assert.equal(
@@ -422,7 +429,7 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
 
 test('every current generated production candidate satisfies its exact derivation contract', () => {
   const relativePaths = Object.keys(result.candidates)
-  assert.equal(relativePaths.length, 108)
+  assert.equal(relativePaths.length, 110)
   let exactResults = 0
   for (const relativePath of relativePaths) {
     assert.ok(read(relativePath, outputRoot).equals(jsonBytes(result.candidates[relativePath])), relativePath)
@@ -434,7 +441,7 @@ test('every current generated production candidate satisfies its exact derivatio
     }
     exactResults += 1
   }
-  assert.equal(exactResults, 108)
+  assert.equal(exactResults, 110)
 })
 
 test('the current 53 locked stream and provenance artifacts retain their regression contracts', () => {
@@ -470,6 +477,68 @@ test('CB36-CB51 candidates derive exact verified evidence without invented resol
     assert.equal(provenance.sourceInputs.verifiedMedia.evidenceRecord, `evidence/media/${videoId}.json`)
     assert.equal(Object.hasOwn(provenance.sourceInputs.projection, 'resolutionRef'), false, videoId)
   }
+})
+
+test('HB14 is generated through the ordinary evidence path without invented audio or subtitles', () => {
+  const resolved = inputs.resolvedRecords.find(
+    ({ projectionEntry }) => projectionEntry.videoId === 'hb_14'
+  )
+  const video = result.candidates['data/meta/bleach-manga-cut.json'].meta.videos.at(-1)
+  const stream = result.candidates['data/stream/hb_14.json'].streams[0]
+  const provenance = result.candidates['data/provenance/hb_14.json']
+
+  assert.equal(resolved.editorialRecord.recordId, 'hollowed:14')
+  assert.deepEqual(resolved.editorialRecord.runtime, {
+    state: 'known',
+    raw: '0.5221296296296296',
+    displayed: '31:52',
+    seconds: 1912
+  })
+  assert.deepEqual(video, {
+    id: 'hb_14',
+    season: 3,
+    episode: 17,
+    title: 'The Slashing Opera',
+    runtime: '31'
+  })
+  assert.deepEqual({
+    infoHash: stream.infoHash,
+    sources: stream.sources,
+    fileIdx: stream.fileIdx,
+    behaviorHints: stream.behaviorHints
+  }, {
+    infoHash: 'e0cf2b306e8f803ae01219e443d050fb831a712b',
+    sources: [],
+    fileIdx: 0,
+    behaviorHints: {
+      bingeGroup: 'bleach-manga-cut|p2p|standard',
+      videoSize: 910624738,
+      filename: 'Hollowed Bleach 14 - The Slashing Opera (sub).mp4'
+    }
+  })
+  assert.equal('subtitles' in stream, false)
+  assert.deepEqual(provenance.sourceInputs.verifiedMedia, {
+    evidenceRecord: 'evidence/media/hb_14.json',
+    videoId: 'hb_14',
+    recordId: 'hollowed:14',
+    verificationState: 'verified',
+    verificationBases: [
+      'hb14-local-torrent-verification',
+      'hb14-local-media-ffprobe-inspection'
+    ]
+  })
+  assert.deepEqual(provenance.localMediaInspection.audio, [
+    { language: 'English', codec: 'AAC LC', channels: 'stereo / 2.0' }
+  ])
+  assert.deepEqual(provenance.localMediaInspection.embeddedSubtitles, [])
+  assert.equal(provenance.presentation.stremioVideoRuntime, '31')
+  assert.equal(provenance.transformations.stremioRuntime, '31:52 (1912 seconds) -> floor whole minutes -> 31')
+  assert.equal(hash('evidence/media/hb_14.json'), '2b8914c71410d436f3aaa325ee5eea883058c2491e6f3db21ceaca94e6f03848')
+  assert.equal(hash('evidence/media/hb_36.json'), 'ae082da0fc86c9911d94a659a644ee401837f843070212f865b90669692dcb9f')
+  assert.equal(resolved.mediaEvidence.media.subtitleTracks.length, 0)
+  assert.deepEqual(resolved.mediaEvidence.media.audioTracks, [
+    { language: 'English', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' }
+  ])
 })
 
 for (const relativePath of BYTE_IDENTICAL_REGRESSION_FILES) {

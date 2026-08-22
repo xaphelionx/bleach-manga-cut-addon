@@ -28,7 +28,7 @@ Nuvio 0.8.4-beta determines a series' next episode by globally sorting all video
 
 Publication gates cover `editorialAvailability`, `resolvedPlacement`, `mediaEvidence`, and `defaultTimelineContiguity`. Projection never constitutes evidence that media or a stream exists.
 
-The current eligible and published prefix contains all 53 default Concentrated entries through CB51, including CB27.5 and guided 35.5 / `cb_0p0`. The projection has 53 eligible and 50 blocked entries. Every remaining primary entry, beginning with Hollowed 14, uses the generic `unpublished-primary` gate until publication is explicitly approved and the contiguous prefix advances. CB36–CB51 were advanced only after durable technical-acquisition evidence and project-owner confirmation that the exact torrents were seeded and acquired/cached; their representative Nuvio compatibility validation is now recorded separately from projection eligibility.
+The current eligible and published prefix contains 54 entries: all 53 default Concentrated entries through CB51, including CB27.5 and guided 35.5 / `cb_0p0`, followed by Hollowed 14. The projection has 54 eligible and 49 blocked entries. Every remaining primary entry, beginning with Hollowed 15, uses the generic `unpublished-primary` gate until publication is explicitly approved and the contiguous prefix advances. The compatibility-locked prefix remains exactly the first 53 Concentrated IDs through CB51; HB14 remains unlocked pending separate real-device validation.
 
 ## Resolved guided 35.5 relationship
 
@@ -60,7 +60,7 @@ This is a current-version membership selection, not a placement resolution or pu
 
 The 38 ignored local MP4s are acquisition payloads rather than editorial authority. A separate 38-entry technical-acquisition manifest and 38 verified-media records now preserve their exact deterministic trackerless torrent identities and observed media facts. All 33,764 pieces verified, and a second complete torrent creation was byte-identical. Inspection observed one HEVC video and one English AAC LC stereo track per MP4, with no embedded subtitle streams, attachments, or warnings; `(sub)` in a payload filename is not treated as subtitle evidence.
 
-HB34 and HB36 retain their measured-duration discrepancies as technical provenance without replacing normalized editorial runtime. The local torrent files remain ignored. No user-side qBittorrent/TorBox acquisition, Nuvio playback validation, permanent availability, `hb_` runtime serving, or publication is established. Every Hollowed entry remains reserved, `locked:false`, blocked, and unpublished; `hb_14` remains first in the unpublished default suffix. Future v3 migration remains a separate owner-reviewed decision.
+HB34 and HB36 retain their measured-duration discrepancies as technical provenance without replacing normalized editorial runtime. The local torrent files remain ignored. The project owner confirmed the 38/38 qBittorrent seeding and TorBox Download Ready availability gate; no private integration material is recorded. HB14 alone is published through ordinary `hb_` runtime serving and remains `locked:false` pending Nuvio validation. The other 37 Hollowed entries remain reserved, unlocked, blocked, and unpublished; `hb_15` begins the unpublished default suffix. Future v3 migration remains a separate owner-reviewed decision.
 
 ## Stable video IDs
 
@@ -77,7 +77,7 @@ IDs encode only source project and exact displayed identifier syntax:
 
 Decimals are encoded lexically and never parsed as floating-point positions. Decimal syntax does not imply any editorial `kind`. Unknown identifier syntax is a validation error. IDs do not depend on title, season, episode, array order, or watch-order position.
 
-The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. All 53 published IDs through CB51 are now compatibility-locked. Hollowed 14 and all other unpublished assignments remain reserved and unlocked.
+The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. The 53 IDs through CB51 remain published and compatibility-locked. Hollowed 14 is published and unlocked; all later unpublished assignments remain reserved and unlocked.
 
 ## Compatibility-lock baseline
 
@@ -106,11 +106,11 @@ The projection contains the Watch Guide's currently selected default ranges:
 
 The projection has 103 entries: 9 in S1, 28 in S2, 54 in S3, and 12 in S4. Global positions are resolved monotonically from 1 through 103.
 
-Current publication is the first 53 canonical entries through CB51. Hollowed 14 is the first unpublished canonical suffix entry at S3E17/global index 54; Concentrated CB52+ are not the next selected default Watch Guide entries. The generic suffix blocker is now `primary-publication-prefix-after-cb_51`; prefix closure continues to prevent gaps without a special Hollowed barrier.
+Current publication is the first 54 canonical entries through Hollowed 14 at S3E17/global index 54. Hollowed 15 is the first unpublished canonical suffix entry at S3E18/global index 55; Concentrated CB52+ are not the next selected default Watch Guide entries. The generic suffix blocker is now `primary-publication-prefix-after-hb_14`; prefix closure continues to prevent gaps without a special Hollowed barrier.
 
 The default Concentrated Arrancar span CB36–CB51 has a separate 16-entry technical-acquisition manifest and verified-media evidence. Its trackerless local torrents were independently recreated byte-for-byte and all 4,771 pieces were verified against the unchanged payloads. Those torrent artifacts remain in the ignored local workspace. The project owner confirmed the exact 16 torrents are user-seeded and acquired/cached in the user's TorBox environment. Following representative real-device validation, CB36–CB51 are published and `locked:true` as a batch. This does not claim that every entry was individually played or establish permanent availability or future cache persistence.
 
-The owner-selected default Hollowed span has separate technical evidence at `evidence/acquisition/hollowed-current-raw.json` and in 38 `evidence/media/hb_*.json` records. This evidence does not advance the publication prefix: all Hollowed projection entries remain blocked, and no `hb_` meta video, stream, or provenance candidate is generated. Technical evidence and publication authorization remain separate gates.
+The owner-selected default Hollowed span has separate technical evidence at `evidence/acquisition/hollowed-current-raw.json` and in 38 `evidence/media/hb_*.json` records. HB14 is the sole explicitly approved Hollowed publication and generates ordinary meta, stream, and provenance output from that evidence. The other 37 Hollowed projection entries remain blocked and generate no production artifacts. Technical evidence and publication authorization remain separate gates.
 
 ## Optional content
 
@@ -145,10 +145,10 @@ The projection validator enforces:
 - Projected titles equal normalized titles exactly.
 - Source identifier `0.0`, guided identifier `35.5`, and permanent ID `cb_0p0` remain distinct and traceable through the owner resolution.
 - `cb_0p0` is the only projection entry with `resolutionRef`; it is published and compatibility-locked at S2E28/global index 37.
-- The owner-selected 38-record current raw Hollowed membership exactly matches the existing projected Hollowed default span without adding per-entry `resolutionRef` values or authorizing publication.
+- The owner-selected 38-record current raw Hollowed membership exactly matches the existing projected Hollowed default span without adding per-entry `resolutionRef` values; publication authorization remains separate and currently selects only HB14.
 - CB36 is S3E1/global index 38, and every one of the 103 global indexes is resolved.
-- The projection contains 53 eligible and 50 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at Hollowed 14.
-- The current 53-entry published prefix and explicit 53-entry compatibility-locked prefix contain the same IDs, while remaining separately modeled; publication never grants a lock automatically, and future publication may extend beyond the lock set.
+- The projection contains 54 eligible and 49 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at Hollowed 15.
+- The current 54-entry published prefix extends the explicit 53-entry compatibility-locked prefix by exactly unlocked HB14; publication never grants a lock automatically.
 - Globally sorted eligible primary videos form exactly the approved contiguous prefix.
 - Optional and EX IDs cannot enter the primary default timeline.
 - HB11.5 and EX27 relationships remain exact.
@@ -159,4 +159,4 @@ The projection validator enforces:
 
 ## Artifact boundaries
 
-The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted terminal focus observations are documentation of client/UI behavior, not torrent or network evidence. CB36–CB51 production artifacts trace their ordinary normalized records, projection entries, and verified-media records without inventing resolution references. Hollowed verified-media records remain outside production until separately approved publication and runtime-serving work occurs. Optional-content runtime experiments and publication beyond CB51 each require separate approval.
+The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted terminal focus observations are documentation of client/UI behavior, not torrent or network evidence. CB36–CB51 and HB14 production artifacts trace their ordinary normalized records, projection entries, and verified-media records without inventing resolution references. The other 37 Hollowed verified-media records remain outside production until separately approved publication work occurs. Optional-content runtime experiments and publication beyond HB14 each require separate approval.
