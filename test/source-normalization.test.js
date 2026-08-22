@@ -429,7 +429,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('current published prefix preserves CB1 behavior and adds only unlocked HB14', () => {
+test('current published prefix preserves CB1 behavior and includes validated HB14', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }

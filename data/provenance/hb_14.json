@@ -121,7 +121,7 @@
     "resolutionLabel": "verified height 1080 -> 1080p",
     "sizePresentation": "910624738 bytes / 1000000, fixed to two decimals -> 910.62 MB",
     "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
-    "languagePresentation": "English -> ENG",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
     "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
     "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
   }

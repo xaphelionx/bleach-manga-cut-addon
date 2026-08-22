@@ -50,11 +50,11 @@ const EXPECTED_ARRANCAR_BATCH = Object.freeze([
 ])
 const EXPECTED_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_PREBOUNDARY_PREFIX,
-  ...EXPECTED_ARRANCAR_BATCH
+  ...EXPECTED_ARRANCAR_BATCH,
+  'hb_14'
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
-  'hb_14'
+  ...EXPECTED_LOCKED_PREFIX
 ])
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = Object.freeze([
   ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
@@ -325,7 +325,7 @@ test('owner-selected Hollowed membership remains distinct from the single HB14 p
     sourceIdentifier: '14',
     videoId: 'hb_14',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.equal(hash('projection/stremio/public-projection.json'), 'aeecfa0d3e767a2de7b4e4e27f9dda7881e7925a1a0a7eb8c340b1a0e6b39105')
 })
@@ -555,13 +555,13 @@ test('optional IDs cannot enter the primary default timeline', () => {
   assert.equal(optional.primarySeriesPublicationAllowed, false)
 })
 
-test('54 published IDs remain distinct from the 53-ID compatibility lock', () => {
+test('all 54 published IDs form the explicit compatibility-locked prefix', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   const published = registry.entries.filter((entry) => entry.status === 'published')
   assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), EXPECTED_LOCKED_PREFIX)
   assert.equal(published.length, 54)
-  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), ['hb_14'])
+  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), [])
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_4'),
     {
@@ -631,7 +631,7 @@ test('54 published IDs remain distinct from the 53-ID compatibility lock', () =>
       sourceIdentifier: '14',
       videoId: 'hb_14',
       status: 'published',
-      locked: false
+      locked: true
     }
   )
   assert.deepEqual(
@@ -661,7 +661,7 @@ test('a synthetic future publication extension remains unlocked until explicitly
     lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
   })
   assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
-  assert.deepEqual(result.publishedUnlockedVideoIds, ['hb_14', 'hb_15'])
+  assert.deepEqual(result.publishedUnlockedVideoIds, ['hb_15'])
 
   hb15.locked = true
   assert.throws(
@@ -711,7 +711,7 @@ test('complete projection validator accepts the artifacts', () => {
     eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     lockedValidatedVideoIds: EXPECTED_LOCKED_PREFIX,
-    publishedUnlockedVideoIds: ['hb_14'],
+    publishedUnlockedVideoIds: [],
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 5

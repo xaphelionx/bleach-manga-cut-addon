@@ -115,7 +115,7 @@
     {"recordType":"normalized-record","recordId":"hollowed:11.5","projectId":"hollowed","sourceIdentifier":"11.5","videoId":"hb_11p5","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"hollowed:12","projectId":"hollowed","sourceIdentifier":"12","videoId":"hb_12","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"hollowed:13","projectId":"hollowed","sourceIdentifier":"13","videoId":"hb_13","status":"reserved","locked":false},
-    {"recordType":"normalized-record","recordId":"hollowed:14","projectId":"hollowed","sourceIdentifier":"14","videoId":"hb_14","status":"published","locked":false},
+    {"recordType":"normalized-record","recordId":"hollowed:14","projectId":"hollowed","sourceIdentifier":"14","videoId":"hb_14","status":"published","locked":true},
     {"recordType":"normalized-record","recordId":"hollowed:15","projectId":"hollowed","sourceIdentifier":"15","videoId":"hb_15","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"hollowed:16","projectId":"hollowed","sourceIdentifier":"16","videoId":"hb_16","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"hollowed:17","projectId":"hollowed","sourceIdentifier":"17","videoId":"hb_17","status":"reserved","locked":false},

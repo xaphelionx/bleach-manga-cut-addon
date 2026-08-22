@@ -14,12 +14,15 @@ const LOCKED_HASHES = Object.freeze({
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/provenance/cb_3.json': '2ca7db7f246fef357afc252a40ab51fcdc2ba2ca4cf0c8e3212b7ebada7fd242',
+  'data/provenance/hb_14.json': '204798b2b001689aaa7c463cce3592b579c29501f05ebe1992f8a084a886f223',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
   'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
   'data/stream/cb_3.json': 'ff1003ee7661fa3e601fac8f083b878334528ec0498f6b4403442061f56b7b8d',
+  'data/stream/hb_14.json': '0ec6425d64c083e0681b03cc49e350343693455f45f0d61dc759279c1934eac8',
   'evidence/media/cb_1.json': '7b84d24d4186163f39e3622a496c244dc3c5f5d5144d9513d6fb41e3be60f80f',
   'evidence/media/cb_2.json': '4a68bbc82f83e845c2e8ec02d36061796d1876ff95e4eb4a2fe7e6707bba30f2',
   'evidence/media/cb_3.json': 'b3604ed951e34e211003da1adc08acaefe7082b70ad0c972fb76a6ef78438526',
+  'evidence/media/hb_14.json': '2b8914c71410d436f3aaa325ee5eea883058c2491e6f3db21ceaca94e6f03848',
   'editorial/unresolved.json': 'ea4f1dbf2ba1b96596264f741590c4b5078e3f56b92067c2befb8d15a5c14092'
 })
 const LOCKED_VALIDATED_VIDEO_IDS = new Set([
@@ -29,7 +32,8 @@ const LOCKED_VALIDATED_VIDEO_IDS = new Set([
   'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
   'cb_33', 'cb_34', 'cb_35', 'cb_0p0',
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
-  'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
+  'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51',
+  'hb_14'
 ])
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = [
   'hollowed:14', 'hollowed:15', 'hollowed:16', 'hollowed:17',
@@ -529,7 +533,7 @@ function validate() {
     sourceIdentifier: '14',
     videoId: 'hb_14',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.deepEqual(registryByVideoId.get('hb_15'), {
     recordType: 'normalized-record',

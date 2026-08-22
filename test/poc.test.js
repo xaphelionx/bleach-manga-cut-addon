@@ -186,9 +186,12 @@ test('all published streams present their verified local media metadata', () => 
     assert.match(torrent.name, /(?:576|1080)p/, videoId)
     assert.match(torrent.title, /HEVC/, videoId)
     assert.match(torrent.title, /AAC 2\.0/, videoId)
-    assert.match(torrent.title, /ENG/, videoId)
-    if (videoId === 'hb_14') assert.doesNotMatch(torrent.title, /JPN/, videoId)
-    else assert.match(torrent.title, /JPN/, videoId)
+    if (videoId === 'hb_14') {
+      assert.doesNotMatch(torrent.title, /\b(?:ENG|JPN)\b/, videoId)
+    } else {
+      assert.match(torrent.title, /ENG/, videoId)
+      assert.match(torrent.title, /JPN/, videoId)
+    }
     assert.match(torrent.infoHash, /^[0-9a-f]{40}$/, videoId)
     assert.equal(torrent.fileIdx, 0, videoId)
     assert.deepEqual(torrent.sources, [], videoId)

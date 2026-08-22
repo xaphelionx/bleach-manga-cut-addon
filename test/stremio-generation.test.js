@@ -12,6 +12,7 @@ const {
   CB1_REGRESSION_FILES,
   CB2_REGRESSION_FILES,
   CB3_REGRESSION_FILES,
+  HB14_REGRESSION_FILES,
   EXPECTED_PROVENANCE_DIFF_CONTRACT,
   PROJECT_INPUTS,
   SERIES_POLICY,
@@ -51,11 +52,11 @@ const EXPECTED_ARRANCAR_BATCH = Object.freeze([
 ])
 const EXPECTED_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_PREBOUNDARY_PREFIX,
-  ...EXPECTED_ARRANCAR_BATCH
+  ...EXPECTED_ARRANCAR_BATCH,
+  'hb_14'
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
-  'hb_14'
+  ...EXPECTED_LOCKED_PREFIX
 ])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
@@ -444,7 +445,7 @@ test('every current generated production candidate satisfies its exact derivatio
   assert.equal(exactResults, 110)
 })
 
-test('the current 53 locked stream and provenance artifacts retain their regression contracts', () => {
+test('the current 54 locked stream and provenance artifacts retain their regression contracts', () => {
   for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
@@ -516,6 +517,9 @@ test('HB14 is generated through the ordinary evidence path without invented audi
       filename: 'Hollowed Bleach 14 - The Slashing Opera (sub).mp4'
     }
   })
+  assert.equal(stream.title, '🎬 The Slashing Opera\n📖 [254-259] 🕒 31:52\n💾 910.62 MB\n🎞️ HEVC 🔊 AAC 2.0')
+  assert.doesNotMatch(stream.title, /\bENG\b/)
+  assert.doesNotMatch(stream.title, /\bJPN\b/)
   assert.equal('subtitles' in stream, false)
   assert.deepEqual(provenance.sourceInputs.verifiedMedia, {
     evidenceRecord: 'evidence/media/hb_14.json',
@@ -533,12 +537,37 @@ test('HB14 is generated through the ordinary evidence path without invented audi
   assert.deepEqual(provenance.localMediaInspection.embeddedSubtitles, [])
   assert.equal(provenance.presentation.stremioVideoRuntime, '31')
   assert.equal(provenance.transformations.stremioRuntime, '31:52 (1912 seconds) -> floor whole minutes -> 31')
+  assert.equal(
+    provenance.transformations.languagePresentation,
+    'English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.'
+  )
   assert.equal(hash('evidence/media/hb_14.json'), '2b8914c71410d436f3aaa325ee5eea883058c2491e6f3db21ceaca94e6f03848')
   assert.equal(hash('evidence/media/hb_36.json'), 'ae082da0fc86c9911d94a659a644ee401837f843070212f865b90669692dcb9f')
   assert.equal(resolved.mediaEvidence.media.subtitleTracks.length, 0)
   assert.deepEqual(resolved.mediaEvidence.media.audioTracks, [
     { language: 'English', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' }
   ])
+})
+
+test('HB14 owner validation is recorded without rewriting raw technical evidence', () => {
+  const readme = read('README.md').toString('utf8')
+  const projectionContract = read('docs/stremio-projection.md').toString('utf8')
+
+  for (const document of [readme, projectionContract]) {
+    assert.match(document, /On \*\*2026-08-22\*\*|On 2026-08-22/)
+    assert.match(document, /actual spoken audio was (?:observed as )?Japanese/)
+    assert.match(document, /Nuvio exposed and selected (?:the track as )?Japanese/)
+    assert.match(document, /raw\/container language tag `eng`/)
+    assert.match(document, /zero embedded subtitle streams/)
+    assert.match(document, /focus trap reproduced/)
+    assert.match(document, /accepted(?:,| and) non-blocking client\/UI limitation with unresolved attribution/)
+  }
+
+  assert.match(readme, /Seek forward, seek backward, resume preservation, Continue Watching visibility/)
+  assert.match(readme, /Natural completion recognition: \*\*PASS\*\*/)
+  assert.match(readme, /does not claim that ffprobe or the container identified Japanese/)
+  assert.match(projectionContract, /not ffprobe\/container observations/)
+  assert.doesNotMatch(projectionContract, /container (?:tag|identified|observation(?:s)?) (?:was|as) Japanese/i)
 })
 
 for (const relativePath of BYTE_IDENTICAL_REGRESSION_FILES) {
@@ -559,7 +588,9 @@ test('current aggregate fixtures and permanent per-video fixtures match their ch
     CB2_REGRESSION_FILES.stream,
     CB2_REGRESSION_FILES.provenance,
     CB3_REGRESSION_FILES.stream,
-    CB3_REGRESSION_FILES.provenance
+    CB3_REGRESSION_FILES.provenance,
+    HB14_REGRESSION_FILES.stream,
+    HB14_REGRESSION_FILES.provenance
   ]) {
     assert.equal(hash(relativePath), LOCKED_HASHES[relativePath], relativePath)
   }

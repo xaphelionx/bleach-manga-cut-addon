@@ -28,6 +28,10 @@ const SERIES_POLICY = Object.freeze({
     resolutionLabelFormat: 'verified-height-p',
     megabyteDivisor: 1000000,
     megabyteDigits: 2,
+    // HB14 retains its inspected raw/container `eng` tag, normalized to English
+    // in verified evidence, but owner-confirmed playback found that tag misleading
+    // as spoken-language presentation. Suppression changes only the user-facing token.
+    languageTokenSuppressedVideoIds: Object.freeze(['hb_14']),
     languageCodes: Object.freeze({
       Japanese: 'JPN',
       English: 'ENG',
@@ -72,12 +76,18 @@ const CB3_REGRESSION_FILES = Object.freeze({
   stream: 'data/stream/cb_3.json',
   provenance: 'data/provenance/cb_3.json'
 })
+const HB14_REGRESSION_FILES = Object.freeze({
+  stream: 'data/stream/hb_14.json',
+  provenance: 'data/provenance/hb_14.json'
+})
 const BYTE_IDENTICAL_REGRESSION_FILES = Object.freeze([
   CB1_REGRESSION_FILES.stream,
   CB2_REGRESSION_FILES.stream,
   CB2_REGRESSION_FILES.provenance,
   CB3_REGRESSION_FILES.stream,
-  CB3_REGRESSION_FILES.provenance
+  CB3_REGRESSION_FILES.provenance,
+  HB14_REGRESSION_FILES.stream,
+  HB14_REGRESSION_FILES.provenance
 ])
 
 const missing = () => ({ state: 'missing' })
@@ -607,6 +617,8 @@ function derivePresentation(editorialRecord, mediaEvidence) {
   const runtime = parseNormalizedRuntime(editorialRecord.runtime)
   const video = mediaEvidence.media.video
   const audioTracks = mediaEvidence.media.audioTracks
+  const languageTokenSuppressed = SERIES_POLICY.presentation.languageTokenSuppressedVideoIds
+    .includes(mediaEvidence.videoId)
   return {
     runtime,
     resolutionLabel: `${video.height}p`,
@@ -616,7 +628,7 @@ function derivePresentation(editorialRecord, mediaEvidence) {
     codecPresentation: video.codec,
     codecInspectionPresentation: `${video.codec} / ${video.standard}`,
     audioPresentation: formatAudioPresentation(audioTracks),
-    languagePresentation: formatLanguagePresentation(audioTracks)
+    languagePresentation: languageTokenSuppressed ? null : formatLanguagePresentation(audioTracks)
   }
 }
 
@@ -626,7 +638,10 @@ function formatStreamName(presentation) {
 
 function formatStreamTitle(resolved, presentation) {
   const record = resolved.editorialRecord
-  return `🎬 ${record.title}\n📖 [${record.mangaMapping.raw}] 🕒 ${presentation.runtime.displayed}\n💾 ${presentation.sizePresentation}\n🎞️ ${presentation.codecPresentation} 🔊 ${presentation.audioPresentation} • ${presentation.languagePresentation}`
+  const languageSuffix = presentation.languagePresentation === null
+    ? ''
+    : ` • ${presentation.languagePresentation}`
+  return `🎬 ${record.title}\n📖 [${record.mangaMapping.raw}] 🕒 ${presentation.runtime.displayed}\n💾 ${presentation.sizePresentation}\n🎞️ ${presentation.codecPresentation} 🔊 ${presentation.audioPresentation}${languageSuffix}`
 }
 
 function deriveEditorialSourceSummary(record, evidenceItems) {
@@ -845,7 +860,9 @@ function buildProvenance(resolved, presentation) {
       resolutionLabel: `verified height ${media.media.video.height} -> ${presentation.resolutionLabel}`,
       sizePresentation: `${selection.byteSize} bytes / ${SERIES_POLICY.presentation.megabyteDivisor}, fixed to two decimals -> ${presentation.sizePresentation}`,
       audioPresentation: `verified ${describeAudioFormats(media.media.audioTracks)} -> ${presentation.audioPresentation}`,
-      languagePresentation: `${media.media.audioTracks.map((track) => track.language).join(' + ')} -> ${presentation.languagePresentation}`,
+      languagePresentation: presentation.languagePresentation === null
+        ? `${media.media.audioTracks.map((track) => track.language).join(' + ')} normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.`
+        : `${media.media.audioTracks.map((track) => track.language).join(' + ')} -> ${presentation.languagePresentation}`,
       streamSources: '[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.',
       embeddedSubtitlePolicy: 'Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated.'
     }
@@ -1053,6 +1070,7 @@ module.exports = {
   CB1_REGRESSION_FILES,
   CB2_REGRESSION_FILES,
   CB3_REGRESSION_FILES,
+  HB14_REGRESSION_FILES,
   EXPECTED_PROVENANCE_DIFF_CONTRACT,
   PROJECT_INPUTS,
   SERIES_POLICY,
