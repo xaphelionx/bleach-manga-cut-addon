@@ -1403,8 +1403,8 @@
       "torrent": {
         "relativePath": "sources/torrents/hollowed-current-raw/Hollowed Bleach 36 - heart (sub).mp4.torrent",
         "torrentByteSize": 24313,
-        "torrentSha256": "170d67d74617014acfd9c9acf917890bdc12f3a9908d381e80971e79b701728b",
-        "infoHash": "411225b5b5c2e3a58e6c7f7173553d48d58077c6",
+        "torrentSha256": "d65739b85beeed44f51a1275c1093df01f2cd127fd3eb8a09e71dfac4c223885",
+        "infoHash": "185043ce9aa3d58d81493140d44496a1f22dc83e",
         "fileIdx": 0,
         "payloadFilename": "Hollowed Bleach 36 - heart (sub).mp4",
         "payloadByteSize": 1267992742,

@@ -106,9 +106,13 @@ const HOLLOWED_SELECTION_ENTRIES = [
   }))
 ]
 const LOCKED_HOLLOWED_EVIDENCE_INDEX_SHA256 =
-  '931e48c3ad58c6783e529b685778441c43635dba1023e5142e0cef43adacbf04'
+  'edec0dd57d92eac449b6013dc0d661f782b1e3905f66a0fe1a30e6077d09b462'
 const LOCKED_HOLLOWED_EVIDENCE_INDEX_BYTE_SIZE = 7492
 const LOCKED_HOLLOWED_EVIDENCE_TOTAL_BYTE_SIZE = 130226
+const LOCKED_HOLLOWED_OTHER_EVIDENCE_INDEX_SHA256 =
+  'ae64a7986125170f601a5bba0ca4a75a66cdff078295ab2c84364152e3633216'
+const LOCKED_HB36_EVIDENCE_SHA256 =
+  'ae082da0fc86c9911d94a659a644ee401837f843070212f865b90669692dcb9f'
 
 function projectIdFor(recordId) {
   return recordId.split(':', 1)[0]
@@ -918,6 +922,29 @@ test('committed Hollowed evidence is byte-identical to its separate production g
   }
 })
 
+test('committed HB36 evidence locks the corrected torrent identity', () => {
+  const acquisitionManifest = readJsonFile(HOLLOWED_ACQUISITION_PATH)
+  const acquisition = acquisitionManifest.entries.find(({ videoId }) => videoId === 'hb_36')
+  const evidenceBytes = fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, 'hb_36.json'))
+  const evidence = JSON.parse(evidenceBytes)
+  const torrentBasis = evidence.verificationBases.find(({ kind }) => kind === 'local-torrent-verification')
+
+  assert.ok(acquisition)
+  assert.ok(torrentBasis)
+  assert.equal(crypto.createHash('sha256').update(evidenceBytes).digest('hex'), LOCKED_HB36_EVIDENCE_SHA256)
+  assert.equal(evidence.torrent.infoHash, acquisition.torrent.infoHash)
+  assert.equal(torrentBasis.artifact.sha256, acquisition.torrent.torrentSha256)
+  assert.deepEqual(torrentBasis.verification, {
+    pieceLength: 1048576,
+    pieceCount: 1210,
+    verifiedPieces: 1210,
+    mismatches: 0,
+    rawInfoMatchesCanonicalEncoding: true,
+    payloadFilenameMatchesLocalMedia: true,
+    payloadByteSizeMatchesLocalMedia: true
+  })
+})
+
 test('committed Hollowed evidence set matches its separate aggregate index lock', () => {
   let totalByteSize = 0
   const index = HOLLOWED_SELECTION_ENTRIES.map(({ recordId, videoId }) => {
@@ -937,11 +964,18 @@ test('committed Hollowed evidence set matches its separate aggregate index lock'
     }
   })
   const indexBytes = Buffer.from(`${JSON.stringify(index, null, 2)}\n`)
+  const otherEvidenceIndexBytes = Buffer.from(JSON.stringify(
+    index.filter(({ videoId }) => videoId !== 'hb_36')
+  ))
   assert.equal(indexBytes.length, LOCKED_HOLLOWED_EVIDENCE_INDEX_BYTE_SIZE)
   assert.equal(totalByteSize, LOCKED_HOLLOWED_EVIDENCE_TOTAL_BYTE_SIZE)
   assert.equal(
     crypto.createHash('sha256').update(indexBytes).digest('hex'),
     LOCKED_HOLLOWED_EVIDENCE_INDEX_SHA256
+  )
+  assert.equal(
+    crypto.createHash('sha256').update(otherEvidenceIndexBytes).digest('hex'),
+    LOCKED_HOLLOWED_OTHER_EVIDENCE_INDEX_SHA256
   )
 })
 

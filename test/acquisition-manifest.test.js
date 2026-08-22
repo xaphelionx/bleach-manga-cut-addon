@@ -15,6 +15,7 @@ const {
   validateAcquisitionManifest,
   writeAcquisitionManifest
 } = require('../scripts/generate-acquisition-manifest')
+const { inspectTorrentBytes, verifyPieces } = require('../scripts/verify-local-torrent')
 
 const repositoryRoot = path.resolve(__dirname, '..')
 const PRODUCTION_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/concentrated-preboundary.json'
@@ -27,10 +28,15 @@ const LOCKED_ARRANCAR_MANIFEST_SHA256 = '7db2e19dca971507686132091faac781abf42da
 const LOCKED_ARRANCAR_MANIFEST_BYTE_SIZE = 46013
 const HOLLOWED_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/hollowed-current-raw.json'
 const HOLLOWED_MANIFEST_PATH = path.join(repositoryRoot, HOLLOWED_MANIFEST_RELATIVE_PATH)
-const LOCKED_HOLLOWED_MANIFEST_SHA256 = 'd0b7c3c67fd103078183f0332926c8c8d62b99843d381983fb5a2f93b4f84c18'
+const LOCKED_HOLLOWED_MANIFEST_SHA256 = '1314e4c004b45e8ae2144331a12114f6626bf66f8c494d4a36febdc9038278f8'
 const LOCKED_HOLLOWED_MANIFEST_BYTE_SIZE = 72844
 const LOCKED_HOLLOWED_MEDIA_BYTE_SIZE = 35383015693
 const LOCKED_HOLLOWED_PIECE_COUNT = 33764
+const LOCKED_HOLLOWED_OTHER_TORRENT_IDENTITIES_SHA256 =
+  '6acd3773c4379351ee5256a59bd6b89d31098c3d471b73c8fad64f5af8173a8b'
+const LOCKED_HB36_TORRENT_SHA256 = 'd65739b85beeed44f51a1275c1093df01f2cd127fd3eb8a09e71dfac4c223885'
+const LOCKED_HB36_INFO_HASH = '185043ce9aa3d58d81493140d44496a1f22dc83e'
+const LOCKED_HB36_PIECE_441_SHA1 = '4d50eb21bad6dbf98c686007e22f652d6d620685'
 
 const PAIRS = [
   ['concentrated:03', 'cb_3', '03 - Three.mkv'],
@@ -1112,6 +1118,91 @@ test('durable Hollowed current-raw acquisition manifest has the exact locked byt
   assert.equal(
     crypto.createHash('sha256').update(bytes).digest('hex'),
     LOCKED_HOLLOWED_MANIFEST_SHA256
+  )
+})
+
+test('HB36 locks the corrected current-payload torrent identity', () => {
+  const manifest = readHollowedManifest()
+  const hb36 = manifest.entries.find(({ videoId }) => videoId === 'hb_36')
+  assert.ok(hb36)
+  assert.deepEqual({
+    recordId: hb36.recordId,
+    torrentSha256: hb36.torrent.torrentSha256,
+    infoHash: hb36.torrent.infoHash,
+    fileIdx: hb36.torrent.fileIdx,
+    payloadFilename: hb36.torrent.payloadFilename,
+    payloadByteSize: hb36.torrent.payloadByteSize,
+    pieceLength: hb36.torrent.pieceLength,
+    pieceCount: hb36.torrent.pieceCount,
+    verifiedPieces: hb36.torrent.verifiedPieces,
+    mismatchedPieces: hb36.torrent.mismatchedPieces,
+    mismatchPieceIndexes: hb36.torrent.mismatchPieceIndexes,
+    rawInfoMatchesCanonicalEncoding: hb36.torrent.rawInfoMatchesCanonicalEncoding
+  }, {
+    recordId: 'hollowed:36',
+    torrentSha256: LOCKED_HB36_TORRENT_SHA256,
+    infoHash: LOCKED_HB36_INFO_HASH,
+    fileIdx: 0,
+    payloadFilename: 'Hollowed Bleach 36 - heart (sub).mp4',
+    payloadByteSize: 1267992742,
+    pieceLength: 1048576,
+    pieceCount: 1210,
+    verifiedPieces: 1210,
+    mismatchedPieces: 0,
+    mismatchPieceIndexes: [],
+    rawInfoMatchesCanonicalEncoding: true
+  })
+
+  const otherIdentities = manifest.entries
+    .filter(({ videoId }) => videoId !== 'hb_36')
+    .map(({ videoId, torrent }) => ({
+      videoId,
+      torrentSha256: torrent.torrentSha256,
+      infoHash: torrent.infoHash
+    }))
+  assert.equal(
+    crypto.createHash('sha256').update(JSON.stringify(otherIdentities)).digest('hex'),
+    LOCKED_HOLLOWED_OTHER_TORRENT_IDENTITIES_SHA256
+  )
+
+  const mediaPath = path.join(repositoryRoot, hb36.media.relativePath)
+  const torrentPath = path.join(repositoryRoot, hb36.torrent.relativePath)
+  const mediaPresent = fs.existsSync(mediaPath)
+  const torrentPresent = fs.existsSync(torrentPath)
+  assert.equal(mediaPresent, torrentPresent, 'local HB36 media and torrent must be present together')
+  if (!mediaPresent) return
+
+  const torrentBytes = fs.readFileSync(torrentPath)
+  const inspected = inspectTorrentBytes(torrentBytes)
+  assert.equal(crypto.createHash('sha256').update(torrentBytes).digest('hex'), hb36.torrent.torrentSha256)
+  assert.equal(inspected.infoHash, hb36.torrent.infoHash)
+  assert.equal(inspected.payloadFilename, hb36.torrent.payloadFilename)
+  assert.equal(inspected.declaredPayloadByteSize, hb36.torrent.payloadByteSize)
+  assert.equal(inspected.pieceLength, 1048576)
+  assert.equal(inspected.pieceCount, 1210)
+  assert.equal(inspected.rawInfoMatchesCanonicalEncoding, true)
+  assert.equal(
+    inspected.pieceHashes.subarray(441 * 20, 442 * 20).toString('hex'),
+    LOCKED_HB36_PIECE_441_SHA1
+  )
+
+  const piece = Buffer.alloc(1048576)
+  const descriptor = fs.openSync(mediaPath, 'r')
+  const bytesRead = fs.readSync(descriptor, piece, 0, piece.length, 441 * piece.length)
+  fs.closeSync(descriptor)
+  assert.equal(bytesRead, piece.length)
+  assert.equal(
+    crypto.createHash('sha1').update(piece).digest('hex'),
+    LOCKED_HB36_PIECE_441_SHA1
+  )
+  assert.deepEqual(
+    verifyPieces(mediaPath, inspected.declaredPayloadByteSize, inspected.pieceLength, inspected.pieceHashes),
+    {
+      pieceCount: 1210,
+      verifiedPieces: 1210,
+      mismatchedPieces: 0,
+      mismatchPieceIndexes: []
+    }
   )
 })
 
