@@ -33,7 +33,12 @@ const LOCKED_VALIDATED_VIDEO_IDS = new Set([
   'cb_33', 'cb_34', 'cb_35', 'cb_0p0',
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51',
-  'hb_14'
+  'hb_14', 'hb_15', 'hb_16', 'hb_17', 'hb_18', 'hb_19', 'hb_20', 'hb_21',
+  'hb_22', 'hb_23', 'hb_24', 'hb_25', 'hb_26', 'hb_27', 'hb_28', 'hb_29',
+  'hb_0p8',
+  'hb_30', 'hb_31', 'hb_32', 'hb_33', 'hb_34', 'hb_35', 'hb_36', 'hb_37',
+  'hb_38', 'hb_39', 'hb_40', 'hb_41', 'hb_42', 'hb_43', 'hb_44', 'hb_45',
+  'hb_46', 'hb_47', 'hb_48', 'hb_49', 'hb_50'
 ])
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = [
   'hollowed:14', 'hollowed:15', 'hollowed:16', 'hollowed:17',
@@ -574,7 +579,7 @@ function validate() {
     sourceIdentifier: '15',
     videoId: 'hb_15',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.deepEqual(registryByVideoId.get('hb_50'), {
     recordType: 'normalized-record',
@@ -583,7 +588,7 @@ function validate() {
     sourceIdentifier: '50',
     videoId: 'hb_50',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.deepEqual(registryByVideoId.get('ch_1'), {
     recordType: 'normalized-record',

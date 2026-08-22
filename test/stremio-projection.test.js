@@ -48,7 +48,7 @@ const EXPECTED_ARRANCAR_BATCH = Object.freeze([
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
 ])
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
+const EXPECTED_PREVIOUS_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_PREBOUNDARY_PREFIX,
   ...EXPECTED_ARRANCAR_BATCH,
   'hb_14'
@@ -59,8 +59,11 @@ const EXPECTED_NEW_HOLLOWED_BATCH = Object.freeze([
   ...Array.from({ length: 21 }, (_, index) => `hb_${index + 30}`)
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
+  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
   ...EXPECTED_NEW_HOLLOWED_BATCH
+])
+const EXPECTED_LOCKED_PREFIX = Object.freeze([
+  ...EXPECTED_PUBLISHED_PREFIX
 ])
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = Object.freeze([
   ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
@@ -517,7 +520,7 @@ test('cross-file publication contract rejects optional or EX IDs in the primary 
 test('cross-file publication contract rejects publishing HB14 across a CB51 gap', () => {
   const input = publicationInputs()
   input.projection.publicationPolicy.currentPublishedVideoIds = [
-    ...EXPECTED_LOCKED_PREFIX.slice(0, -1),
+    ...EXPECTED_PREVIOUS_LOCKED_PREFIX.slice(0, -1),
     'hb_14'
   ]
   input.projection.entries.find((entry) => entry.videoId === 'cb_51').publicationEligibility = {
@@ -573,16 +576,13 @@ test('optional IDs cannot enter the primary default timeline', () => {
   assert.equal(optional.primarySeriesPublicationAllowed, false)
 })
 
-test('91 published IDs retain the explicit 54-ID compatibility-locked prefix', () => {
+test('all 91 published IDs form the explicit compatibility-locked prefix', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   const published = registry.entries.filter((entry) => entry.status === 'published')
   assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), EXPECTED_LOCKED_PREFIX)
   assert.equal(published.length, 91)
-  assert.deepEqual(
-    published.filter((entry) => !entry.locked).map((entry) => entry.videoId),
-    EXPECTED_NEW_HOLLOWED_BATCH
-  )
+  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), [])
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_4'),
     {
@@ -664,7 +664,7 @@ test('91 published IDs retain the explicit 54-ID compatibility-locked prefix', (
       sourceIdentifier: '15',
       videoId: 'hb_15',
       status: 'published',
-      locked: false
+      locked: true
     }
   )
   assert.deepEqual(
@@ -676,7 +676,7 @@ test('91 published IDs retain the explicit 54-ID compatibility-locked prefix', (
       sourceIdentifier: '50',
       videoId: 'hb_50',
       status: 'published',
-      locked: false
+      locked: true
     }
   )
   assert.deepEqual(
@@ -706,7 +706,7 @@ test('a synthetic future publication extension remains unlocked until explicitly
     lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
   })
   assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
-  assert.deepEqual(result.publishedUnlockedVideoIds, [...EXPECTED_NEW_HOLLOWED_BATCH, 'ch_1'])
+  assert.deepEqual(result.publishedUnlockedVideoIds, ['ch_1'])
 
   ch1.locked = true
   assert.throws(
@@ -756,7 +756,7 @@ test('complete projection validator accepts the artifacts', () => {
     eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     lockedValidatedVideoIds: EXPECTED_LOCKED_PREFIX,
-    publishedUnlockedVideoIds: EXPECTED_NEW_HOLLOWED_BATCH,
+    publishedUnlockedVideoIds: [],
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 5

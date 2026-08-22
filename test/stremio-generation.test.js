@@ -50,7 +50,7 @@ const EXPECTED_ARRANCAR_BATCH = Object.freeze([
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
 ])
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
+const EXPECTED_PREVIOUS_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_PREBOUNDARY_PREFIX,
   ...EXPECTED_ARRANCAR_BATCH,
   'hb_14'
@@ -61,13 +61,20 @@ const EXPECTED_NEW_HOLLOWED_BATCH = Object.freeze([
   ...Array.from({ length: 21 }, (_, index) => `hb_${index + 30}`)
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
+  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
   ...EXPECTED_NEW_HOLLOWED_BATCH
+])
+const EXPECTED_LOCKED_PREFIX = Object.freeze([
+  ...EXPECTED_PUBLISHED_PREFIX
 ])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
   'data/meta/bleach-manga-cut.json': '016cb57b391258e1e8733baf240c936f1e1c6b33c42632e59450a517637a6061'
 })
+const LOCKED_STREAM_VECTOR_SHA256 =
+  'f40b242bb47c2e0946f7b6d893b31ed75196d34eb9db1289ee9e9a55d02bfc37'
+const LOCKED_CONCENTRATED_PRODUCTION_VECTOR_SHA256 =
+  'ff8ba0f7a1f1ed3297272c7f1dfb99e89f4c49a8bfa598403aa31a3d8e5af802'
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
 const readJson = (relativePath, base = root) => JSON.parse(read(relativePath, base).toString('utf8'))
@@ -457,7 +464,7 @@ test('every current generated production candidate satisfies its exact derivatio
   assert.equal(exactResults, 184)
 })
 
-test('the current 54 locked stream and provenance artifacts retain their regression contracts', () => {
+test('all 91 locked stream and provenance artifacts retain their regression contracts', () => {
   for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
@@ -473,6 +480,20 @@ test('the current 54 locked stream and provenance artifacts retain their regress
       assert.ok(read(provenancePath, outputRoot).equals(read(provenancePath)), provenancePath)
     }
   }
+})
+
+test('all 91 streams and all 53 Concentrated production pairs retain starting bytes', () => {
+  const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
+    relativePaths.map((relativePath) => `${relativePath}\0${hash(relativePath)}\n`).join('')
+  )).digest('hex')
+  const streamPaths = EXPECTED_PUBLISHED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const concentratedPaths = EXPECTED_PUBLISHED_PREFIX
+    .filter((videoId) => videoId.startsWith('cb_'))
+    .flatMap((videoId) => [`data/stream/${videoId}.json`, `data/provenance/${videoId}.json`])
+    .sort()
+
+  assert.equal(vectorHash(streamPaths), LOCKED_STREAM_VECTOR_SHA256)
+  assert.equal(vectorHash(concentratedPaths), LOCKED_CONCENTRATED_PRODUCTION_VECTOR_SHA256)
 })
 
 test('CB36-CB51 candidates derive exact verified evidence without invented resolution references', () => {
@@ -611,6 +632,36 @@ test('HB14 owner validation is recorded without rewriting raw technical evidence
   assert.match(readme, /does not claim that ffprobe or the container identified Japanese/)
   assert.match(projectionContract, /not ffprobe\/container observations/)
   assert.doesNotMatch(projectionContract, /container (?:tag|identified|observation(?:s)?) (?:was|as) Japanese/i)
+})
+
+test('Hollowed batch validation is representative, scoped, and attribution-neutral', () => {
+  const readme = read('README.md').toString('utf8')
+  const projectionContract = read('docs/stremio-projection.md').toString('utf8')
+
+  for (const document of [readme, projectionContract]) {
+    assert.match(document, /91-entry/)
+    assert.match(document, /HB29(?:→|->)HB0\.8(?:→|->)HB30/)
+    assert.match(document, /HB34/)
+    assert.match(document, /corrected[- ]HB36|HB36 corrected-torrent/)
+    assert.match(document, /HB50/)
+    assert.match(document, /did (?:\*\*)?not(?:\*\*)? manually play all 37/)
+    assert.match(document, /33,764\/33,764 pieces|all 33,764 pieces/)
+    assert.match(document, /38\/38 qBittorrent/)
+    assert.match(document, /38\/38 TorBox Download Ready/)
+    assert.match(document, /raw(?:\/container)? `eng`/)
+    assert.match(document, /not generalized to (?:the other Hollowed files|untested files)/)
+    assert.match(document, /terminal (?:Details-screen )?focus trap/)
+    assert.match(document, /intermittent persistent audio|Intermittent Bleach audio/)
+    assert.match(document, /transient all-video playback-unavailable incident/i)
+    assert.match(document, /attribution remains unresolved|unresolved attribution/)
+  }
+
+  assert.match(readme, /Spoken audio was observed as Japanese/)
+  assert.match(readme, /HB15, HB0\.8, HB34, HB36, and HB50/)
+  assert.match(readme, /did not reproduce during the later HB34, HB36, or HB50 samples/)
+  assert.match(readme, /manifest plus CB1, HB14, and HB15 stream endpoints each returned HTTP 200 with valid data/)
+  assert.match(readme, /self-resolved without a repository or data fix/)
+  assert.match(readme, /no Nuvio, addon, or TorBox cause is inferred/)
 })
 
 for (const relativePath of BYTE_IDENTICAL_REGRESSION_FILES) {
