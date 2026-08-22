@@ -1,0 +1,129 @@
+{
+  "id": "hb_24",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:24",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A26",
+        "hollowed-xlsx:episode-list:B26",
+        "hollowed-xlsx:episode-list:C26",
+        "hollowed-xlsx:episode-list:D26",
+        "hollowed-xlsx:episode-list:E26",
+        "hollowed-xlsx:episode-list:G26",
+        "hollowed-xlsx:episode-list:H26",
+        "hollowed-xlsx:episode-list:I26"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_24",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 27
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_24.json",
+      "videoId": "hb_24",
+      "recordId": "hollowed:24",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb24-local-torrent-verification",
+        "hb24-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "24",
+    "title": "INTRUDERZ",
+    "mangaChapters": "298-303",
+    "sourceAnimeEpisodes": "196-198",
+    "exactEditRuntime": "00:40:46",
+    "normalizedExactRuntime": "40:46",
+    "timeSaved": null,
+    "releaseDate": "2025-10-14",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 26,
+      "cells": "A26:E26,G26:I26"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "40",
+    "runtimeTransformation": "The exact 40:46 source runtime is presented as 40 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "1e75bb5dfe1d2733c2fb6f7d4c3adc953ff2a307",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 24 - INTRUDERZ (sub).mp4",
+    "videoSize": 1166972592,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 24 - INTRUDERZ (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2446.110333
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "40:46 (2446 seconds) -> floor whole minutes -> 40",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1166972592 bytes / 1000000, fixed to two decimals -> 1166.97 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

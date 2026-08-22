@@ -35,7 +35,7 @@ const expectedSourceHashes = {
 
 const lockedRepositoryHashes = {
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '5215f9bd0f3b08fdfbc8973721ee654e48b62d92d60099f5e8c346ecedcd4a96',
+  'data/meta/bleach-manga-cut.json': '016cb57b391258e1e8733baf240c936f1e1c6b33c42632e59450a517637a6061',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
@@ -429,7 +429,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('current published prefix preserves CB1 behavior and includes validated HB14', () => {
+test('current 91-entry prefix preserves CB1 and the locked HB14 boundary', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }
@@ -440,15 +440,15 @@ test('current published prefix preserves CB1 behavior and includes validated HB1
   const torrent = stream.streams[0]
   assert.equal(catalog.metas[0].id, 'bleach-manga-cut')
   assert.equal(meta.meta.id, 'bleach-manga-cut')
-  assert.equal(meta.meta.videos.length, 54)
+  assert.equal(meta.meta.videos.length, 91)
   assert.deepEqual(
     meta.meta.videos.map((video) => video.id),
     projection.publicationPolicy.currentPublishedVideoIds
   )
   assert.equal(meta.meta.videos.filter((video) => video.season === 1).length, 9)
   assert.equal(meta.meta.videos.filter((video) => video.season === 2).length, 28)
-  assert.equal(meta.meta.videos.filter((video) => video.season === 3).length, 17)
-  assert.equal(meta.meta.videos.some((video) => video.id === 'hb_15' || video.id === 'cb_52'), false)
+  assert.equal(meta.meta.videos.filter((video) => video.season === 3).length, 54)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'ch_1' || video.id === 'cb_52'), false)
   const video = (videoId) => meta.meta.videos.find((candidate) => candidate.id === videoId)
   assert.deepEqual(video('cb_1'), {
     id: 'cb_1',
@@ -524,6 +524,10 @@ test('current published prefix preserves CB1 behavior and includes validated HB1
     title: 'The Slashing Opera',
     runtime: '31'
   })
+  assert.equal(video('hb_0p8').season, 3)
+  assert.equal(video('hb_0p8').episode, 33)
+  assert.equal(video('hb_50').season, 3)
+  assert.equal(video('hb_50').episode, 54)
   assert.equal(torrent.name, '[P2P🧲] 576p')
   assert.equal(torrent.title, '🎬 Death and Strawberry\n📖 [001] 🕒 18:15\n💾 186.52 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG')
   assert.equal(torrent.infoHash, 'd0cb7e0c8bad014c055bf2becf2694dcfde2b8e8')

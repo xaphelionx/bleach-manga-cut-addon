@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 TO CLOSE YOUR WORLD\n📖 [309-315] 🕒 43:21\n💾 1239.61 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "01083b811990109b7faa52a6f4fc4c34984f86d5",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1239614338,
+        "filename": "Hollowed Bleach 26 - TO CLOSE YOUR WORLD (sub).mp4"
+      }
+    }
+  ]
+}

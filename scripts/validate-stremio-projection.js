@@ -461,6 +461,38 @@ function validate() {
     gateSet: 'verified-primary'
   })
 
+  const hb50 = projection.entries.find((entry) => entry.recordId === 'hollowed:50')
+  assert.ok(hb50)
+  assert.deepEqual(hb50.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 3,
+    episode: 54
+  })
+  assert.deepEqual(hb50.defaultTimelinePosition, {
+    state: 'resolved',
+    index: 91
+  })
+  assert.deepEqual(hb50.publicationEligibility, {
+    state: 'eligible',
+    gateSet: 'verified-primary'
+  })
+
+  const ch1 = projection.entries.find((entry) => entry.recordId === 'chipped:#01')
+  assert.ok(ch1)
+  assert.deepEqual(ch1.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 4,
+    episode: 1
+  })
+  assert.deepEqual(ch1.defaultTimelinePosition, {
+    state: 'resolved',
+    index: 92
+  })
+  assert.deepEqual(ch1.publicationEligibility, {
+    state: 'blocked',
+    gateSet: 'unpublished-primary'
+  })
+
   assert.equal(registry.schemaVersion, 1)
   assert.equal(registry.seriesId, projection.series.id)
   assert.equal(registry.policy.appendOnly, true)
@@ -541,6 +573,24 @@ function validate() {
     projectId: 'hollowed',
     sourceIdentifier: '15',
     videoId: 'hb_15',
+    status: 'published',
+    locked: false
+  })
+  assert.deepEqual(registryByVideoId.get('hb_50'), {
+    recordType: 'normalized-record',
+    recordId: 'hollowed:50',
+    projectId: 'hollowed',
+    sourceIdentifier: '50',
+    videoId: 'hb_50',
+    status: 'published',
+    locked: false
+  })
+  assert.deepEqual(registryByVideoId.get('ch_1'), {
+    recordType: 'normalized-record',
+    recordId: 'chipped:#01',
+    projectId: 'chipped',
+    sourceIdentifier: '#01',
+    videoId: 'ch_1',
     status: 'reserved',
     locked: false
   })
@@ -627,7 +677,7 @@ function validate() {
   }, {})
   assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
   assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
-  assert.deepEqual(eligibilityCounts, { eligible: 54, blocked: 49 })
+  assert.deepEqual(eligibilityCounts, { eligible: 91, blocked: 12 })
 
   return {
     projectedEntries: projection.entries.length,

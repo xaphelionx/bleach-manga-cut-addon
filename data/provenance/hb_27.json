@@ -1,0 +1,129 @@
+{
+  "id": "hb_27",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:27",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A29",
+        "hollowed-xlsx:episode-list:B29",
+        "hollowed-xlsx:episode-list:C29",
+        "hollowed-xlsx:episode-list:D29",
+        "hollowed-xlsx:episode-list:E29",
+        "hollowed-xlsx:episode-list:G29",
+        "hollowed-xlsx:episode-list:H29",
+        "hollowed-xlsx:episode-list:I29"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_27",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 30
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_27.json",
+      "videoId": "hb_27",
+      "recordId": "hollowed:27",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb27-local-torrent-verification",
+        "hb27-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "27",
+    "title": "Turn Back the Pendulum",
+    "mangaChapters": "-108 to -104",
+    "sourceAnimeEpisodes": "206-208",
+    "exactEditRuntime": "00:35:26",
+    "normalizedExactRuntime": "35:26",
+    "timeSaved": null,
+    "releaseDate": "2025-10-24",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 29,
+      "cells": "A29:E29,G29:I29"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "35",
+    "runtimeTransformation": "The exact 35:26 source runtime is presented as 35 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "2e52ed897c3e171bb32ad8c142cfd7e60b5d297a",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 27 - Turn Back the Pendulum (sub).mp4",
+    "videoSize": 1012658254,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 27 - Turn Back the Pendulum (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2126.916458
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "35:26 (2126 seconds) -> floor whole minutes -> 35",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1012658254 bytes / 1000000, fixed to two decimals -> 1012.66 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Don't Kill My Volupture\n📖 [264-265, 270-272] 🕒 27:40\n💾 790.06 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "4fd87601e714c30d26f974b429070870319ea7d6",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 790059844,
+        "filename": "Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4"
+      }
+    }
+  ]
+}

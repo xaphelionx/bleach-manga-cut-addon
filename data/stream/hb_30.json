@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Six Hearts Will Beat As One\n📖 [316-319] 🕒 28:39\n💾 822.06 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "d8e6ecb71f02dfaab4b0e6476f0b2649a9af4990",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 822055174,
+        "filename": "Hollowed Bleach 30 - Six Hearts Will Beat As One (sub).mp4"
+      }
+    }
+  ]
+}

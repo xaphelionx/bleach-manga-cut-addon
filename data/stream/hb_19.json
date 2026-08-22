@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Monster\n📖 [272-278] 🕒 33:38\n💾 960.31 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "bf3a7a543f3abd12db86f6d7519cc6d95a4a1569",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 960310318,
+        "filename": "Hollowed Bleach 19 - The Monster (sub).mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Ants & Dragons\n📖 [320-324] 🕒 30:10\n💾 863.31 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "68885993dd91b5f883a27ff786225a83dbb768d3",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 863306564,
+        "filename": "Hollowed Bleach 31 - Ants & Dragons (sub).mp4"
+      }
+    }
+  ]
+}

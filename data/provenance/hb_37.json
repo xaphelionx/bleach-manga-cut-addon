@@ -1,0 +1,128 @@
+{
+  "id": "hb_37",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:37",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A40",
+        "hollowed-xlsx:episode-list:B40",
+        "hollowed-xlsx:episode-list:C40",
+        "hollowed-xlsx:episode-list:D40",
+        "hollowed-xlsx:episode-list:E40",
+        "hollowed-xlsx:episode-list:G40",
+        "hollowed-xlsx:episode-list:H40"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_37",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 41
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_37.json",
+      "videoId": "hb_37",
+      "recordId": "hollowed:37",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb37-local-torrent-verification",
+        "hb37-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "37",
+    "title": "Tyrant of Skulls",
+    "mangaChapters": "354-359, -16",
+    "sourceAnimeEpisodes": "273-277, 239",
+    "exactEditRuntime": "00:34:00",
+    "normalizedExactRuntime": "34:00",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 40,
+      "cells": "A40:E40,G40:H40"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "34",
+    "runtimeTransformation": "The exact 34:00 source runtime is presented as 34 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "5ede6438933f55d6e4a0d41f22c8529bd54516e6",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4",
+    "videoSize": 978066732,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2040.28825
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "34:00 (2040 seconds) -> floor whole minutes -> 34",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "978066732 bytes / 1000000, fixed to two decimals -> 978.07 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

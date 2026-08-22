@@ -386,6 +386,265 @@
         "episode": 17,
         "title": "The Slashing Opera",
         "runtime": "31"
+      },
+      {
+        "id": "hb_15",
+        "season": 3,
+        "episode": 18,
+        "title": "Left Arm of the Devil",
+        "runtime": "22"
+      },
+      {
+        "id": "hb_16",
+        "season": 3,
+        "episode": 19,
+        "title": "Hide Away From the Sun",
+        "runtime": "22"
+      },
+      {
+        "id": "hb_17",
+        "season": 3,
+        "episode": 20,
+        "title": "There Is No Heart Without You",
+        "runtime": "26"
+      },
+      {
+        "id": "hb_18",
+        "season": 3,
+        "episode": 21,
+        "title": "Don't Kill My Volupture",
+        "runtime": "27"
+      },
+      {
+        "id": "hb_19",
+        "season": 3,
+        "episode": 22,
+        "title": "The Monster",
+        "runtime": "33"
+      },
+      {
+        "id": "hb_20",
+        "season": 3,
+        "episode": 23,
+        "title": "Jugulators",
+        "runtime": "23"
+      },
+      {
+        "id": "hb_21",
+        "season": 3,
+        "episode": 24,
+        "title": "Howling",
+        "runtime": "27"
+      },
+      {
+        "id": "hb_22",
+        "season": 3,
+        "episode": 25,
+        "title": "THE BAD JOKE",
+        "runtime": "33"
+      },
+      {
+        "id": "hb_23",
+        "season": 3,
+        "episode": 26,
+        "title": "King of the Kill",
+        "runtime": "44"
+      },
+      {
+        "id": "hb_24",
+        "season": 3,
+        "episode": 27,
+        "title": "INTRUDERZ",
+        "runtime": "40"
+      },
+      {
+        "id": "hb_25",
+        "season": 3,
+        "episode": 28,
+        "title": "Not Perfect is GOoD",
+        "runtime": "38"
+      },
+      {
+        "id": "hb_26",
+        "season": 3,
+        "episode": 29,
+        "title": "TO CLOSE YOUR WORLD",
+        "runtime": "43"
+      },
+      {
+        "id": "hb_27",
+        "season": 3,
+        "episode": 30,
+        "title": "Turn Back the Pendulum",
+        "runtime": "35"
+      },
+      {
+        "id": "hb_28",
+        "season": 3,
+        "episode": 31,
+        "title": "The Pendulum Keeps Swinging",
+        "runtime": "34"
+      },
+      {
+        "id": "hb_29",
+        "season": 3,
+        "episode": 32,
+        "title": "Let Stop the Pendulum",
+        "runtime": "29"
+      },
+      {
+        "id": "hb_0p8",
+        "season": 3,
+        "episode": 33,
+        "title": "a wonderful error",
+        "runtime": "6"
+      },
+      {
+        "id": "hb_30",
+        "season": 3,
+        "episode": 34,
+        "title": "Six Hearts Will Beat As One",
+        "runtime": "28"
+      },
+      {
+        "id": "hb_31",
+        "season": 3,
+        "episode": 35,
+        "title": "Ants & Dragons",
+        "runtime": "30"
+      },
+      {
+        "id": "hb_32",
+        "season": 3,
+        "episode": 36,
+        "title": "Knockdown Monsters",
+        "runtime": "35"
+      },
+      {
+        "id": "hb_33",
+        "season": 3,
+        "episode": 37,
+        "title": "Stingy Stinger",
+        "runtime": "23"
+      },
+      {
+        "id": "hb_34",
+        "season": 3,
+        "episode": 38,
+        "title": "The Deathbringer Numbers",
+        "runtime": "35"
+      },
+      {
+        "id": "hb_35",
+        "season": 3,
+        "episode": 39,
+        "title": "The Sin",
+        "runtime": "29"
+      },
+      {
+        "id": "hb_36",
+        "season": 3,
+        "episode": 40,
+        "title": "heart",
+        "runtime": "42"
+      },
+      {
+        "id": "hb_37",
+        "season": 3,
+        "episode": 41,
+        "title": "Tyrant of Skulls",
+        "runtime": "34"
+      },
+      {
+        "id": "hb_38",
+        "season": 3,
+        "episode": 42,
+        "title": "Grinning Revengers",
+        "runtime": "29"
+      },
+      {
+        "id": "hb_39",
+        "season": 3,
+        "episode": 43,
+        "title": "Spit On Your Own God",
+        "runtime": "42"
+      },
+      {
+        "id": "hb_40",
+        "season": 3,
+        "episode": 44,
+        "title": "Wolves Ain't Howl Alone",
+        "runtime": "25"
+      },
+      {
+        "id": "hb_41",
+        "season": 3,
+        "episode": 45,
+        "title": "EXecution, EXtinction",
+        "runtime": "31"
+      },
+      {
+        "id": "hb_42",
+        "season": 3,
+        "episode": 46,
+        "title": "Devil, Devil, Devil, Devil",
+        "runtime": "36"
+      },
+      {
+        "id": "hb_43",
+        "season": 3,
+        "episode": 47,
+        "title": "Vice It",
+        "runtime": "37"
+      },
+      {
+        "id": "hb_44",
+        "season": 3,
+        "episode": 48,
+        "title": "The Burnout Inferno",
+        "runtime": "41"
+      },
+      {
+        "id": "hb_45",
+        "season": 3,
+        "episode": 49,
+        "title": "DEICIDE",
+        "runtime": "32"
+      },
+      {
+        "id": "hb_46",
+        "season": 3,
+        "episode": 50,
+        "title": "DEICIDE 2 [End of the Chrysalis Age]",
+        "runtime": "31"
+      },
+      {
+        "id": "hb_47",
+        "season": 3,
+        "episode": 51,
+        "title": "DEICIDE 3 [Black + White]",
+        "runtime": "25"
+      },
+      {
+        "id": "hb_48",
+        "season": 3,
+        "episode": 52,
+        "title": "DEICIDE 4 [THE END]",
+        "runtime": "29"
+      },
+      {
+        "id": "hb_49",
+        "season": 3,
+        "episode": 53,
+        "title": "DEICIDE 5 [GOD IS DEAD]",
+        "runtime": "33"
+      },
+      {
+        "id": "hb_50",
+        "season": 3,
+        "episode": 54,
+        "title": "Bleach My Soul",
+        "runtime": "27"
       }
     ]
   }

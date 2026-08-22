@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Knockdown Monsters\n📖 [324-329] 🕒 35:54\n💾 1031.91 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "d48a8becd15c0afd1716ae0a0290a5c4eb5a13cd",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1031905998,
+        "filename": "Hollowed Bleach 32 - Knockdown Monsters (sub).mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Devil, Devil, Devil, Devil\n📖 [378-383] 🕒 36:47\n💾 1065.28 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "92180148226bcf00db6e097c1792036b98728315",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1065283482,
+        "filename": "Hollowed Bleach 42 - Devil, Devil, Devil, Devil (sub).mp4"
+      }
+    }
+  ]
+}

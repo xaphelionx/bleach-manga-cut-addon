@@ -28,10 +28,11 @@ const SERIES_POLICY = Object.freeze({
     resolutionLabelFormat: 'verified-height-p',
     megabyteDivisor: 1000000,
     megabyteDigits: 2,
-    // HB14 retains its inspected raw/container `eng` tag, normalized to English
-    // in verified evidence, but owner-confirmed playback found that tag misleading
-    // as spoken-language presentation. Suppression changes only the user-facing token.
-    languageTokenSuppressedVideoIds: Object.freeze(['hb_14']),
+    // Hollowed retains inspected raw/container `eng` tags, normalized to English
+    // in verified evidence. HB14 playback proved that using the raw tag as semantic
+    // spoken-language presentation can mislead, so Hollowed omits that token unless
+    // a future evidence model explicitly authorizes independently validated speech.
+    languageTokenSuppressedProjectIds: Object.freeze(['hollowed']),
     languageCodes: Object.freeze({
       Japanese: 'JPN',
       English: 'ENG',
@@ -617,8 +618,8 @@ function derivePresentation(editorialRecord, mediaEvidence) {
   const runtime = parseNormalizedRuntime(editorialRecord.runtime)
   const video = mediaEvidence.media.video
   const audioTracks = mediaEvidence.media.audioTracks
-  const languageTokenSuppressed = SERIES_POLICY.presentation.languageTokenSuppressedVideoIds
-    .includes(mediaEvidence.videoId)
+  const languageTokenSuppressed = SERIES_POLICY.presentation.languageTokenSuppressedProjectIds
+    .includes(editorialRecord.projectId)
   return {
     runtime,
     resolutionLabel: `${video.height}p`,

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 EXecution, EXtinction\n📖 [375-377] 🕒 31:51\n💾 914.85 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "124fd405a3099f07c86c47a450a17521e3870e7b",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 914847432,
+        "filename": "Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Deathbringer Numbers\n📖 [333-339] 🕒 35:33\n💾 1001.96 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "6257091039fe6e718d6da7425dffb0c7a57897f9",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1001959714,
+        "filename": "Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4"
+      }
+    }
+  ]
+}

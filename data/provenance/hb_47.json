@@ -1,0 +1,128 @@
+{
+  "id": "hb_47",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:47",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A50",
+        "hollowed-xlsx:episode-list:B50",
+        "hollowed-xlsx:episode-list:C50",
+        "hollowed-xlsx:episode-list:D50",
+        "hollowed-xlsx:episode-list:E50",
+        "hollowed-xlsx:episode-list:G50",
+        "hollowed-xlsx:episode-list:H50"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_47",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 51
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_47.json",
+      "videoId": "hb_47",
+      "recordId": "hollowed:47",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb47-local-torrent-verification",
+        "hb47-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "47",
+    "title": "DEICIDE 3 [Black + White]",
+    "mangaChapters": "408-411",
+    "sourceAnimeEpisodes": "302, 306",
+    "exactEditRuntime": "00:25:38",
+    "normalizedExactRuntime": "25:38",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 50,
+      "cells": "A50:E50,G50:H50"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "25",
+    "runtimeTransformation": "The exact 25:38 source runtime is presented as 25 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "58e736683832829fd77e12e2eb2400f06c04b6a7",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4",
+    "videoSize": 735833572,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1538.0365
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "25:38 (1538 seconds) -> floor whole minutes -> 25",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "735833572 bytes / 1000000, fixed to two decimals -> 735.83 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

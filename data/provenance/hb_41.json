@@ -1,0 +1,129 @@
+{
+  "id": "hb_41",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:41",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A44",
+        "hollowed-xlsx:episode-list:B44",
+        "hollowed-xlsx:episode-list:C44",
+        "hollowed-xlsx:episode-list:D44",
+        "hollowed-xlsx:episode-list:E44",
+        "hollowed-xlsx:episode-list:G44",
+        "hollowed-xlsx:episode-list:H44",
+        "hollowed-xlsx:episode-list:I44"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_41",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 45
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_41.json",
+      "videoId": "hb_41",
+      "recordId": "hollowed:41",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb41-local-torrent-verification",
+        "hb41-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "41",
+    "title": "EXecution, EXtinction",
+    "mangaChapters": "375-377",
+    "sourceAnimeEpisodes": "283-285",
+    "exactEditRuntime": "00:31:51",
+    "normalizedExactRuntime": "31:51",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 44,
+      "cells": "A44:E44,G44:I44"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "31",
+    "runtimeTransformation": "The exact 31:51 source runtime is presented as 31 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "124fd405a3099f07c86c47a450a17521e3870e7b",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4",
+    "videoSize": 914847432,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 41 - EXecution, EXtinction (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1911.701458
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "31:51 (1911 seconds) -> floor whole minutes -> 31",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "914847432 bytes / 1000000, fixed to two decimals -> 914.85 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

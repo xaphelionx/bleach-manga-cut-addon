@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 King of the Kill\n📖 [292-297] 🕒 44:43\n💾 1648.52 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "5a5e9030f34de1e57581cea2d5c0a080eff380db",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1648524670,
+        "filename": "Hollowed Bleach 23 - King of the Kill (sub).mp4"
+      }
+    }
+  ]
+}

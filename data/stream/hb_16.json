@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Hide Away From the Sun\n📖 [262-266] 🕒 22:16\n💾 640.84 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "b725b3ea3249eb712e9aa084e32fbdbb44fbe3ed",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 640837134,
+        "filename": "Hollowed Bleach 16 - Hide Away From the Sun (sub).mp4"
+      }
+    }
+  ]
+}

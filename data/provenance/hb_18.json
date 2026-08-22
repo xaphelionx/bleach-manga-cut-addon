@@ -1,0 +1,128 @@
+{
+  "id": "hb_18",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:18",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A20",
+        "hollowed-xlsx:episode-list:B20",
+        "hollowed-xlsx:episode-list:C20",
+        "hollowed-xlsx:episode-list:D20",
+        "hollowed-xlsx:episode-list:E20",
+        "hollowed-xlsx:episode-list:G20",
+        "hollowed-xlsx:episode-list:H20"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_18",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 21
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_18.json",
+      "videoId": "hb_18",
+      "recordId": "hollowed:18",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb18-local-torrent-verification",
+        "hb18-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "18",
+    "title": "Don't Kill My Volupture",
+    "mangaChapters": "264-265, 270-272",
+    "sourceAnimeEpisodes": "159, 161-162",
+    "exactEditRuntime": "00:27:40",
+    "normalizedExactRuntime": "27:40",
+    "timeSaved": null,
+    "releaseDate": "2025-10-14",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 20,
+      "cells": "A20:E20,G20:H20"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "27",
+    "runtimeTransformation": "The exact 27:40 source runtime is presented as 27 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "4fd87601e714c30d26f974b429070870319ea7d6",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4",
+    "videoSize": 790059844,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4",
+    "video": {
+      "width": 1440,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1660.200208
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "27:40 (1660 seconds) -> floor whole minutes -> 27",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "790059844 bytes / 1000000, fixed to two decimals -> 790.06 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

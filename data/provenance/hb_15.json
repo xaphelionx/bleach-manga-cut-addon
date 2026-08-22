@@ -1,0 +1,128 @@
+{
+  "id": "hb_15",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:15",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A17",
+        "hollowed-xlsx:episode-list:B17",
+        "hollowed-xlsx:episode-list:C17",
+        "hollowed-xlsx:episode-list:D17",
+        "hollowed-xlsx:episode-list:E17",
+        "hollowed-xlsx:episode-list:G17",
+        "hollowed-xlsx:episode-list:H17"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_15",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 18
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_15.json",
+      "videoId": "hb_15",
+      "recordId": "hollowed:15",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb15-local-torrent-verification",
+        "hb15-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "15",
+    "title": "Left Arm of the Devil",
+    "mangaChapters": "259-262",
+    "sourceAnimeEpisodes": "157-159",
+    "exactEditRuntime": "00:22:59",
+    "normalizedExactRuntime": "22:59",
+    "timeSaved": null,
+    "releaseDate": "2025-10-14",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 17,
+      "cells": "A17:E17,G17:H17"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "22",
+    "runtimeTransformation": "The exact 22:59 source runtime is presented as 22 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "81c455e0687ff84734af6725b2a54911e1e47fa4",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
+    "videoSize": 656753518,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
+    "video": {
+      "width": 1440,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1379.378
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "22:59 (1379 seconds) -> floor whole minutes -> 22",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "656753518 bytes / 1000000, fixed to two decimals -> 656.75 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

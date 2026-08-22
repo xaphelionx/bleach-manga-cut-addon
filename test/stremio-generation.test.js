@@ -55,12 +55,18 @@ const EXPECTED_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_ARRANCAR_BATCH,
   'hb_14'
 ])
+const EXPECTED_NEW_HOLLOWED_BATCH = Object.freeze([
+  ...Array.from({ length: 15 }, (_, index) => `hb_${index + 15}`),
+  'hb_0p8',
+  ...Array.from({ length: 21 }, (_, index) => `hb_${index + 30}`)
+])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX
+  ...EXPECTED_LOCKED_PREFIX,
+  ...EXPECTED_NEW_HOLLOWED_BATCH
 ])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '5215f9bd0f3b08fdfbc8973721ee654e48b62d92d60099f5e8c346ecedcd4a96'
+  'data/meta/bleach-manga-cut.json': '016cb57b391258e1e8733baf240c936f1e1c6b33c42632e59450a517637a6061'
 })
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
@@ -95,7 +101,7 @@ test('processing remains exactly projection-controlled at the current canonical 
   )), true)
   assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_0p0'), true)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.equal(result.processedVideoIds.at(-1), 'hb_14')
+  assert.equal(result.processedVideoIds.at(-1), 'hb_50')
   assert.equal('data/stream/cb_0p0.json' in result.candidates, true)
   assert.equal('data/provenance/cb_0p0.json' in result.candidates, true)
   assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_0p0'), true)
@@ -115,11 +121,11 @@ test('processing remains exactly projection-controlled at the current canonical 
   assert.equal(generatedMeta.videos.some(({ id }) => id === 'hb_14'), true)
   for (const videoId of ['hb_15', 'hb_0p8', 'hb_50']) {
     assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
-    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), false)
-    assert.equal(result.processedVideoIds.includes(videoId), false)
-    assert.equal(`data/stream/${videoId}.json` in result.candidates, false)
-    assert.equal(`data/provenance/${videoId}.json` in result.candidates, false)
-    assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), false)
+    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), true)
+    assert.equal(result.processedVideoIds.includes(videoId), true)
+    assert.equal(`data/stream/${videoId}.json` in result.candidates, true)
+    assert.equal(`data/provenance/${videoId}.json` in result.candidates, true)
+    assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), true)
   }
   assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_52'), false)
   assert.equal(result.processedVideoIds.includes('cb_52'), false)
@@ -262,7 +268,7 @@ test('current checkpoint candidate paths are exact and closed', () => {
       `data/provenance/${videoId}.json`
     ])
   ]
-  assert.equal(expectedPaths.length, 110)
+  assert.equal(expectedPaths.length, 184)
   assert.deepEqual(Object.keys(result.candidates), expectedPaths)
 })
 
@@ -392,14 +398,14 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   )
 
   const videos = result.candidates[CB1_REGRESSION_FILES.meta].meta.videos
-  assert.equal(videos.length, 54)
+  assert.equal(videos.length, 91)
   assert.deepEqual(videos.map((video) => video.id), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(
     videos.reduce((counts, video) => {
       counts[video.season] = (counts[video.season] || 0) + 1
       return counts
     }, {}),
-    { 1: 9, 2: 28, 3: 17 }
+    { 1: 9, 2: 28, 3: 54 }
   )
   const placement = (videoId) => {
     const { season, episode } = videos.find((video) => video.id === videoId)
@@ -417,7 +423,13 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   assert.deepEqual(placement('cb_36'), { season: 3, episode: 1 })
   assert.deepEqual(placement('cb_51'), { season: 3, episode: 16 })
   assert.deepEqual(placement('hb_14'), { season: 3, episode: 17 })
-  assert.equal(videos.some((video) => video.id === 'hb_15' || video.id === 'cb_52'), false)
+  assert.deepEqual(placement('hb_0p8'), { season: 3, episode: 33 })
+  assert.deepEqual(placement('hb_50'), { season: 3, episode: 54 })
+  assert.deepEqual(videos.slice(67, 72).map((video) => video.id), [
+    'hb_28', 'hb_29', 'hb_0p8', 'hb_30', 'hb_31'
+  ])
+  assert.deepEqual(videos.slice(-3).map((video) => video.id), ['hb_48', 'hb_49', 'hb_50'])
+  assert.equal(videos.some((video) => video.id === 'ch_1' || video.id === 'cb_52'), false)
   for (const resolved of inputs.resolvedRecords) {
     const video = videos.find((item) => item.id === resolved.projectionEntry.videoId)
     assert.equal(
@@ -430,7 +442,7 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
 
 test('every current generated production candidate satisfies its exact derivation contract', () => {
   const relativePaths = Object.keys(result.candidates)
-  assert.equal(relativePaths.length, 110)
+  assert.equal(relativePaths.length, 184)
   let exactResults = 0
   for (const relativePath of relativePaths) {
     assert.ok(read(relativePath, outputRoot).equals(jsonBytes(result.candidates[relativePath])), relativePath)
@@ -442,7 +454,7 @@ test('every current generated production candidate satisfies its exact derivatio
     }
     exactResults += 1
   }
-  assert.equal(exactResults, 110)
+  assert.equal(exactResults, 184)
 })
 
 test('the current 54 locked stream and provenance artifacts retain their regression contracts', () => {
@@ -484,7 +496,8 @@ test('HB14 is generated through the ordinary evidence path without invented audi
   const resolved = inputs.resolvedRecords.find(
     ({ projectionEntry }) => projectionEntry.videoId === 'hb_14'
   )
-  const video = result.candidates['data/meta/bleach-manga-cut.json'].meta.videos.at(-1)
+  const video = result.candidates['data/meta/bleach-manga-cut.json'].meta.videos
+    .find((candidate) => candidate.id === 'hb_14')
   const stream = result.candidates['data/stream/hb_14.json'].streams[0]
   const provenance = result.candidates['data/provenance/hb_14.json']
 
@@ -547,6 +560,36 @@ test('HB14 is generated through the ordinary evidence path without invented audi
   assert.deepEqual(resolved.mediaEvidence.media.audioTracks, [
     { language: 'English', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' }
   ])
+})
+
+test('all 38 current-raw Hollowed candidates derive exact evidence and omit semantic language tokens', () => {
+  const resolvedByVideoId = new Map(
+    inputs.resolvedRecords.map((resolved) => [resolved.projectionEntry.videoId, resolved])
+  )
+  const hollowedVideoIds = ['hb_14', ...EXPECTED_NEW_HOLLOWED_BATCH]
+  assert.deepEqual(SERIES_POLICY.presentation.languageTokenSuppressedProjectIds, ['hollowed'])
+
+  for (const videoId of hollowedVideoIds) {
+    const resolved = resolvedByVideoId.get(videoId)
+    const stream = result.candidates[`data/stream/${videoId}.json`].streams[0]
+    const provenance = result.candidates[`data/provenance/${videoId}.json`]
+    assert.equal(resolved.editorialRecord.projectId, 'hollowed', videoId)
+    assert.equal(stream.infoHash, resolved.mediaEvidence.torrent.infoHash, videoId)
+    assert.equal(stream.fileIdx, resolved.mediaEvidence.torrent.fileSelection.fileIdx, videoId)
+    assert.equal(stream.behaviorHints.filename, resolved.mediaEvidence.torrent.fileSelection.filename, videoId)
+    assert.equal(stream.behaviorHints.videoSize, resolved.mediaEvidence.torrent.fileSelection.byteSize, videoId)
+    assert.match(stream.title, /🎞️ HEVC 🔊 AAC 2\.0$/u, videoId)
+    assert.doesNotMatch(stream.title, /\b(?:ENG|JPN)\b/u, videoId)
+    assert.equal('subtitles' in stream, false, videoId)
+    assert.equal(provenance.sourceInputs.verifiedMedia.evidenceRecord, `evidence/media/${videoId}.json`)
+    assert.equal(provenance.sourceInputs.verifiedMedia.videoId, videoId)
+    assert.equal(provenance.sourceInputs.verifiedMedia.recordId, resolved.editorialRecord.recordId)
+    assert.equal(provenance.sourceInputs.verifiedMedia.verificationState, 'verified')
+    assert.deepEqual(provenance.localMediaInspection.embeddedSubtitles, [], videoId)
+    assert.deepEqual(resolved.mediaEvidence.media.audioTracks, [
+      { language: 'English', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' }
+    ], videoId)
+  }
 })
 
 test('HB14 owner validation is recorded without rewriting raw technical evidence', () => {

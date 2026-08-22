@@ -1,0 +1,128 @@
+{
+  "id": "hb_39",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:39",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A42",
+        "hollowed-xlsx:episode-list:B42",
+        "hollowed-xlsx:episode-list:C42",
+        "hollowed-xlsx:episode-list:D42",
+        "hollowed-xlsx:episode-list:E42",
+        "hollowed-xlsx:episode-list:G42",
+        "hollowed-xlsx:episode-list:H42"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_39",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 43
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_39.json",
+      "videoId": "hb_39",
+      "recordId": "hollowed:39",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb39-local-torrent-verification",
+        "hb39-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "39",
+    "title": "Spit On Your Own God",
+    "mangaChapters": "365-371",
+    "sourceAnimeEpisodes": "279-281",
+    "exactEditRuntime": "00:42:20",
+    "normalizedExactRuntime": "42:20",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 42,
+      "cells": "A42:E42,G42:H42"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "42",
+    "runtimeTransformation": "The exact 42:20 source runtime is presented as 42 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "9c7056fbb10da613406963ff715e5b54a6b6adf3",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 39 - Spit On Your Own God (sub).mp4",
+    "videoSize": 1212188315,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 39 - Spit On Your Own God (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2540.871667
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "42:20 (2540 seconds) -> floor whole minutes -> 42",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1212188315 bytes / 1000000, fixed to two decimals -> 1212.19 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

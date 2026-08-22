@@ -1,0 +1,128 @@
+{
+  "id": "hb_48",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:48",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A51",
+        "hollowed-xlsx:episode-list:B51",
+        "hollowed-xlsx:episode-list:C51",
+        "hollowed-xlsx:episode-list:D51",
+        "hollowed-xlsx:episode-list:E51",
+        "hollowed-xlsx:episode-list:G51",
+        "hollowed-xlsx:episode-list:H51"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_48",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 52
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_48.json",
+      "videoId": "hb_48",
+      "recordId": "hollowed:48",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb48-local-torrent-verification",
+        "hb48-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "48",
+    "title": "DEICIDE 4 [THE END]",
+    "mangaChapters": "412-416",
+    "sourceAnimeEpisodes": "306-308",
+    "exactEditRuntime": "00:29:27",
+    "normalizedExactRuntime": "29:27",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 51,
+      "cells": "A51:E51,G51:H51"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "29",
+    "runtimeTransformation": "The exact 29:27 source runtime is presented as 29 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "9a1632831b4fdbcb2d35e5197d18f13ca3be8e19",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 48 - DEICIDE 4 [THE END] (sub).mp4",
+    "videoSize": 843710279,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 48 - DEICIDE 4 [THE END] (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1767.849417
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "29:27 (1767 seconds) -> floor whole minutes -> 29",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "843710279 bytes / 1000000, fixed to two decimals -> 843.71 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

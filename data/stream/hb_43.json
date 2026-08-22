@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Vice It\n📖 [383-387] 🕒 37:51\n💾 1085.63 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "d6591fba47197d6f3d1c17b3d854cb1db8ca781a",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1085627223,
+        "filename": "Hollowed Bleach 43 - Vice It (sub).mp4"
+      }
+    }
+  ]
+}

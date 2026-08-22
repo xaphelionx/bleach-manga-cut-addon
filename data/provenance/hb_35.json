@@ -1,0 +1,129 @@
+{
+  "id": "hb_35",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:35",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A38",
+        "hollowed-xlsx:episode-list:B38",
+        "hollowed-xlsx:episode-list:C38",
+        "hollowed-xlsx:episode-list:D38",
+        "hollowed-xlsx:episode-list:E38",
+        "hollowed-xlsx:episode-list:G38",
+        "hollowed-xlsx:episode-list:H38",
+        "hollowed-xlsx:episode-list:I38"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_35",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 39
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_35.json",
+      "videoId": "hb_35",
+      "recordId": "hollowed:35",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb35-local-torrent-verification",
+        "hb35-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "35",
+    "title": "The Sin",
+    "mangaChapters": "340-345",
+    "sourceAnimeEpisodes": "267-269",
+    "exactEditRuntime": "00:29:29",
+    "normalizedExactRuntime": "29:29",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 38,
+      "cells": "A38:E38,G38:I38"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "29",
+    "runtimeTransformation": "The exact 29:29 source runtime is presented as 29 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "4891d28f43a207ef7d5b2e7d40bef4786ea825ef",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 35 - The Sin (sub).mp4",
+    "videoSize": 844370369,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 35 - The Sin (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1769.142375
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "29:29 (1769 seconds) -> floor whole minutes -> 29",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "844370369 bytes / 1000000, fixed to two decimals -> 844.37 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

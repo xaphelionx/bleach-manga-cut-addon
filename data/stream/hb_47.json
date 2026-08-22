@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 DEICIDE 3 [Black + White]\n📖 [408-411] 🕒 25:38\n💾 735.83 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "58e736683832829fd77e12e2eb2400f06c04b6a7",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 735833572,
+        "filename": "Hollowed Bleach 47 - DEICIDE 3 [Black + White] (sub).mp4"
+      }
+    }
+  ]
+}

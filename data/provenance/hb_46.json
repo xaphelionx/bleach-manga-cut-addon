@@ -1,0 +1,128 @@
+{
+  "id": "hb_46",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:46",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A49",
+        "hollowed-xlsx:episode-list:B49",
+        "hollowed-xlsx:episode-list:C49",
+        "hollowed-xlsx:episode-list:D49",
+        "hollowed-xlsx:episode-list:E49",
+        "hollowed-xlsx:episode-list:G49",
+        "hollowed-xlsx:episode-list:H49"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_46",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 50
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_46.json",
+      "videoId": "hb_46",
+      "recordId": "hollowed:46",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb46-local-torrent-verification",
+        "hb46-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "46",
+    "title": "DEICIDE 2 [End of the Chrysalis Age]",
+    "mangaChapters": "402-407",
+    "sourceAnimeEpisodes": "300-301",
+    "exactEditRuntime": "00:31:37",
+    "normalizedExactRuntime": "31:37",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 49,
+      "cells": "A49:E49,G49:H49"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "31",
+    "runtimeTransformation": "The exact 31:37 source runtime is presented as 31 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "ae58c5906eca24ad7837fc44ccbc5898db2b90d8",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4",
+    "videoSize": 1168513671,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1897.937708
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "31:37 (1897 seconds) -> floor whole minutes -> 31",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1168513671 bytes / 1000000, fixed to two decimals -> 1168.51 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

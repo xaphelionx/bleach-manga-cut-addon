@@ -1,0 +1,128 @@
+{
+  "id": "hb_36",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:36",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A39",
+        "hollowed-xlsx:episode-list:B39",
+        "hollowed-xlsx:episode-list:C39",
+        "hollowed-xlsx:episode-list:D39",
+        "hollowed-xlsx:episode-list:E39",
+        "hollowed-xlsx:episode-list:G39",
+        "hollowed-xlsx:episode-list:H39"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_36",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 40
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_36.json",
+      "videoId": "hb_36",
+      "recordId": "hollowed:36",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb36-local-torrent-verification",
+        "hb36-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "36",
+    "title": "heart",
+    "mangaChapters": "346-354",
+    "sourceAnimeEpisodes": "270-272",
+    "exactEditRuntime": "00:42:48",
+    "normalizedExactRuntime": "42:48",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 39,
+      "cells": "A39:E39,G39:H39"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "42",
+    "runtimeTransformation": "The exact 42:48 source runtime is presented as 42 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "185043ce9aa3d58d81493140d44496a1f22dc83e",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 36 - heart (sub).mp4",
+    "videoSize": 1267992742,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 36 - heart (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2657.529875
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "42:48 (2568 seconds) -> floor whole minutes -> 42",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1267992742 bytes / 1000000, fixed to two decimals -> 1267.99 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

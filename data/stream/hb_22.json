@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 THE BAD JOKE\n📖 [286-292] 🕒 33:27\n💾 956.60 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "d051ebe180fc2a664a070021e97b8f26da7ce7a7",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 956604902,
+        "filename": "Hollowed Bleach 22 - THE BAD JOKE (sub).mp4"
+      }
+    }
+  ]
+}

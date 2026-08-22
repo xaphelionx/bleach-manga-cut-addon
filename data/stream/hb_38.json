@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Grinning Revengers\n📖 [359-364] 🕒 29:14\n💾 850.04 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "22da1890dbcfd11f153d2c03ac214562129702f1",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 850042934,
+        "filename": "Hollowed Bleach 38 - Grinning Revengers (sub).mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "id": "hb_44",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:44",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A47",
+        "hollowed-xlsx:episode-list:B47",
+        "hollowed-xlsx:episode-list:C47",
+        "hollowed-xlsx:episode-list:D47",
+        "hollowed-xlsx:episode-list:E47",
+        "hollowed-xlsx:episode-list:G47",
+        "hollowed-xlsx:episode-list:H47"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_44",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 48
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_44.json",
+      "videoId": "hb_44",
+      "recordId": "hollowed:44",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb44-local-torrent-verification",
+        "hb44-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "44",
+    "title": "The Burnout Inferno",
+    "mangaChapters": "388-395",
+    "sourceAnimeEpisodes": "292-294",
+    "exactEditRuntime": "00:41:25",
+    "normalizedExactRuntime": "41:25",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 47,
+      "cells": "A47:E47,G47:H47"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "41",
+    "runtimeTransformation": "The exact 41:25 source runtime is presented as 41 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "677653944a944306cc1b5ab59fe9c98d5cbfc8d9",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 44 - The Burnout Inferno (sub).mp4",
+    "videoSize": 1227036244,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 44 - The Burnout Inferno (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2485.524708
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "41:25 (2485 seconds) -> floor whole minutes -> 41",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1227036244 bytes / 1000000, fixed to two decimals -> 1227.04 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

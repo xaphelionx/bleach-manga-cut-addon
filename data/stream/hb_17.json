@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 There Is No Heart Without You\n📖 [266-269] 🕒 26:56\n💾 770.20 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "b1b6bd89d310a2e82d4325f3a84b89d9420e63cc",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 770196167,
+        "filename": "Hollowed Bleach 17 - There Is No Heart WIthout You (sub).mp4"
+      }
+    }
+  ]
+}

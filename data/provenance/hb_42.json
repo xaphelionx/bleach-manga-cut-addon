@@ -1,0 +1,128 @@
+{
+  "id": "hb_42",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:42",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A45",
+        "hollowed-xlsx:episode-list:B45",
+        "hollowed-xlsx:episode-list:C45",
+        "hollowed-xlsx:episode-list:D45",
+        "hollowed-xlsx:episode-list:E45",
+        "hollowed-xlsx:episode-list:G45",
+        "hollowed-xlsx:episode-list:H45"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_42",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 46
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_42.json",
+      "videoId": "hb_42",
+      "recordId": "hollowed:42",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb42-local-torrent-verification",
+        "hb42-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "42",
+    "title": "Devil, Devil, Devil, Devil",
+    "mangaChapters": "378-383",
+    "sourceAnimeEpisodes": "286, 288-289",
+    "exactEditRuntime": "00:36:47",
+    "normalizedExactRuntime": "36:47",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-03-01",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 45,
+      "cells": "A45:E45,G45:H45"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "36",
+    "runtimeTransformation": "The exact 36:47 source runtime is presented as 36 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "92180148226bcf00db6e097c1792036b98728315",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 42 - Devil, Devil, Devil, Devil (sub).mp4",
+    "videoSize": 1065283482,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 42 - Devil, Devil, Devil, Devil (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2207.288417
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "36:47 (2207 seconds) -> floor whole minutes -> 36",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1065283482 bytes / 1000000, fixed to two decimals -> 1065.28 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Spit On Your Own God\n📖 [365-371] 🕒 42:20\n💾 1212.19 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "9c7056fbb10da613406963ff715e5b54a6b6adf3",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1212188315,
+        "filename": "Hollowed Bleach 39 - Spit On Your Own God (sub).mp4"
+      }
+    }
+  ]
+}

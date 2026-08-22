@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Turn Back the Pendulum\n📖 [-108 to -104] 🕒 35:26\n💾 1012.66 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "2e52ed897c3e171bb32ad8c142cfd7e60b5d297a",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1012658254,
+        "filename": "Hollowed Bleach 27 - Turn Back the Pendulum (sub).mp4"
+      }
+    }
+  ]
+}

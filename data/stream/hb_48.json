@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 DEICIDE 4 [THE END]\n📖 [412-416] 🕒 29:27\n💾 843.71 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "9a1632831b4fdbcb2d35e5197d18f13ca3be8e19",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 843710279,
+        "filename": "Hollowed Bleach 48 - DEICIDE 4 [THE END] (sub).mp4"
+      }
+    }
+  ]
+}

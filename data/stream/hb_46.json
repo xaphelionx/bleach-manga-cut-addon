@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 DEICIDE 2 [End of the Chrysalis Age]\n📖 [402-407] 🕒 31:37\n💾 1168.51 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "ae58c5906eca24ad7837fc44ccbc5898db2b90d8",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1168513671,
+        "filename": "Hollowed Bleach 46 - DEICIDE 2 [End of the Chrysalis Age] (sub).mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "id": "hb_50",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:50",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A53",
+        "hollowed-xlsx:episode-list:B53",
+        "hollowed-xlsx:episode-list:C53",
+        "hollowed-xlsx:episode-list:D53",
+        "hollowed-xlsx:episode-list:E53",
+        "hollowed-xlsx:episode-list:G53",
+        "hollowed-xlsx:episode-list:H53"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_50",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 54
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_50.json",
+      "videoId": "hb_50",
+      "recordId": "hollowed:50",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb50-local-torrent-verification",
+        "hb50-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "50",
+    "title": "Bleach My Soul",
+    "mangaChapters": "422-423",
+    "sourceAnimeEpisodes": "310, 342",
+    "exactEditRuntime": "00:27:30",
+    "normalizedExactRuntime": "27:30",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-03-01",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 53,
+      "cells": "A53:E53,G53:H53"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "27",
+    "runtimeTransformation": "The exact 27:30 source runtime is presented as 27 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "ac56dd62c22dc2ab385e3563e129fd6db6465f57",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 50 - Bleach My Soul (sub).mp4",
+    "videoSize": 788212493,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 50 - Bleach My Soul (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1650.649
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "27:30 (1650 seconds) -> floor whole minutes -> 27",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "788212493 bytes / 1000000, fixed to two decimals -> 788.21 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

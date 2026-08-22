@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Jugulators\n📖 [279-282] 🕒 23:30\n💾 692.05 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "69dcb0a8d052969f3deee424ee820062fd240daa",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 692048268,
+        "filename": "Hollowed Bleach 20 - Jugulators (sub).mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "id": "hb_29",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:29",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A31",
+        "hollowed-xlsx:episode-list:B31",
+        "hollowed-xlsx:episode-list:C31",
+        "hollowed-xlsx:episode-list:D31",
+        "hollowed-xlsx:episode-list:E31",
+        "hollowed-xlsx:episode-list:G31",
+        "hollowed-xlsx:episode-list:H31"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_29",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 32
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_29.json",
+      "videoId": "hb_29",
+      "recordId": "hollowed:29",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb29-local-torrent-verification",
+        "hb29-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "29",
+    "title": "Let Stop the Pendulum",
+    "mangaChapters": "-100 to -97",
+    "sourceAnimeEpisodes": "211-212",
+    "exactEditRuntime": "00:29:56",
+    "normalizedExactRuntime": "29:56",
+    "timeSaved": null,
+    "releaseDate": "2025-10-24",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 31,
+      "cells": "A31:E31,G31:H31"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "29",
+    "runtimeTransformation": "The exact 29:56 source runtime is presented as 29 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "ebd08752abd5c9a9601474551978128a42f25e1d",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4",
+    "videoSize": 856133115,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1796.878417
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "29:56 (1796 seconds) -> floor whole minutes -> 29",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "856133115 bytes / 1000000, fixed to two decimals -> 856.13 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

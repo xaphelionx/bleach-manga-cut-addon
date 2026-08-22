@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Tyrant of Skulls\n📖 [354-359, -16] 🕒 34:00\n💾 978.07 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "5ede6438933f55d6e4a0d41f22c8529bd54516e6",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 978066732,
+        "filename": "Hollowed Bleach 37 - Tyrant of Skulls (sub).mp4"
+      }
+    }
+  ]
+}

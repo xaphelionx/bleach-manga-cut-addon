@@ -1,0 +1,128 @@
+{
+  "id": "hb_28",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:28",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A30",
+        "hollowed-xlsx:episode-list:B30",
+        "hollowed-xlsx:episode-list:C30",
+        "hollowed-xlsx:episode-list:D30",
+        "hollowed-xlsx:episode-list:E30",
+        "hollowed-xlsx:episode-list:G30",
+        "hollowed-xlsx:episode-list:H30"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_28",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 31
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_28.json",
+      "videoId": "hb_28",
+      "recordId": "hollowed:28",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb28-local-torrent-verification",
+        "hb28-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "28",
+    "title": "The Pendulum Keeps Swinging",
+    "mangaChapters": "-104 to -101",
+    "sourceAnimeEpisodes": "209-210",
+    "exactEditRuntime": "00:34:32",
+    "normalizedExactRuntime": "34:32",
+    "timeSaved": null,
+    "releaseDate": "2025-10-24",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 30,
+      "cells": "A30:E30,G30:H30"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "34",
+    "runtimeTransformation": "The exact 34:32 source runtime is presented as 34 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "5dadd569df49eb25e19938fea8705789d34d2b48",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 28 - The Pendulum Keeps Swinging (sub).mp4",
+    "videoSize": 987184248,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 28 - The Pendulum Keeps Swinging (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2072.528792
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "34:32 (2072 seconds) -> floor whole minutes -> 34",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "987184248 bytes / 1000000, fixed to two decimals -> 987.18 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

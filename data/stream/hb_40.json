@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Wolves Ain't Howl Alone\n📖 [372-375] 🕒 25:54\n💾 742.63 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "6c0b6aa30b5438d1940252243e5a98272c70245d",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 742630399,
+        "filename": "Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4"
+      }
+    }
+  ]
+}

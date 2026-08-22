@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Not Perfect is GOoD\n📖 [304-308] 🕒 38:22\n💾 1100.17 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "319d778a609ded04b11e207559e7c3d481f632f5",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1100173470,
+        "filename": "Hollowed Bleach 25 - Not Perfect is GOoD (sub).mp4"
+      }
+    }
+  ]
+}

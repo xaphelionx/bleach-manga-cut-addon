@@ -1,0 +1,128 @@
+{
+  "id": "hb_23",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:23",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A25",
+        "hollowed-xlsx:episode-list:B25",
+        "hollowed-xlsx:episode-list:C25",
+        "hollowed-xlsx:episode-list:D25",
+        "hollowed-xlsx:episode-list:E25",
+        "hollowed-xlsx:episode-list:G25",
+        "hollowed-xlsx:episode-list:H25"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_23",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 26
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_23.json",
+      "videoId": "hb_23",
+      "recordId": "hollowed:23",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb23-local-torrent-verification",
+        "hb23-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "23",
+    "title": "King of the Kill",
+    "mangaChapters": "292-297",
+    "sourceAnimeEpisodes": "193-195",
+    "exactEditRuntime": "00:44:43",
+    "normalizedExactRuntime": "44:43",
+    "timeSaved": null,
+    "releaseDate": "2025-10-14",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 25,
+      "cells": "A25:E25,G25:H25"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "44",
+    "runtimeTransformation": "The exact 44:43 source runtime is presented as 44 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "5a5e9030f34de1e57581cea2d5c0a080eff380db",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 23 - King of the Kill (sub).mp4",
+    "videoSize": 1648524670,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 23 - King of the Kill (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2683.889542
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "44:43 (2683 seconds) -> floor whole minutes -> 44",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1648524670 bytes / 1000000, fixed to two decimals -> 1648.52 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

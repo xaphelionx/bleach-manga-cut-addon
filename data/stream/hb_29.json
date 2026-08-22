@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Let Stop the Pendulum\n📖 [-100 to -97] 🕒 29:56\n💾 856.13 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "ebd08752abd5c9a9601474551978128a42f25e1d",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 856133115,
+        "filename": "Hollowed Bleach 29 - Let Stop the Pendulum (sub).mp4"
+      }
+    }
+  ]
+}

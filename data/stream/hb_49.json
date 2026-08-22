@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 DEICIDE 5 [GOD IS DEAD]\n📖 [417-421] 🕒 33:03\n💾 945.02 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "0d84a6d0e1099bd329241f7295889c30de5be19d",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 945016380,
+        "filename": "Hollowed Bleach 49 - DEICIDE 5 [GOD IS DEAD] (sub).mp4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Pendulum Keeps Swinging\n📖 [-104 to -101] 🕒 34:32\n💾 987.18 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "5dadd569df49eb25e19938fea8705789d34d2b48",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 987184248,
+        "filename": "Hollowed Bleach 28 - The Pendulum Keeps Swinging (sub).mp4"
+      }
+    }
+  ]
+}

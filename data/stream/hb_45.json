@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 DEICIDE\n📖 [396-401] 🕒 32:47\n💾 938.33 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "54466f99eebd1ee2fdb5035a89a95729f74b575e",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 938328365,
+        "filename": "Hollowed Bleach 45 - DEICIDE (sub).mp4"
+      }
+    }
+  ]
+}

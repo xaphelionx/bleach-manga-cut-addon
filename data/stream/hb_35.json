@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Sin\n📖 [340-345] 🕒 29:29\n💾 844.37 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "4891d28f43a207ef7d5b2e7d40bef4786ea825ef",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 844370369,
+        "filename": "Hollowed Bleach 35 - The Sin (sub).mp4"
+      }
+    }
+  ]
+}

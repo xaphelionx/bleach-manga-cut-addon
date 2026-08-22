@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 720p",
+      "title": "🎬 a wonderful error\n📖 [0.8] 🕒 06:17\n💾 188.76 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "64474aae2149070929ec03de50e28d4d0902a61f",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 188759844,
+        "filename": "Hollowed Bleach 29.5 (0.8) - a wonderful error (sub).mp4"
+      }
+    }
+  ]
+}

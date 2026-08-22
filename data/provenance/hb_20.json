@@ -1,0 +1,129 @@
+{
+  "id": "hb_20",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:20",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A22",
+        "hollowed-xlsx:episode-list:B22",
+        "hollowed-xlsx:episode-list:C22",
+        "hollowed-xlsx:episode-list:D22",
+        "hollowed-xlsx:episode-list:E22",
+        "hollowed-xlsx:episode-list:G22",
+        "hollowed-xlsx:episode-list:H22",
+        "hollowed-xlsx:episode-list:I22"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_20",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 23
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_20.json",
+      "videoId": "hb_20",
+      "recordId": "hollowed:20",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb20-local-torrent-verification",
+        "hb20-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "20",
+    "title": "Jugulators",
+    "mangaChapters": "279-282",
+    "sourceAnimeEpisodes": "165-166",
+    "exactEditRuntime": "00:23:30",
+    "normalizedExactRuntime": "23:30",
+    "timeSaved": null,
+    "releaseDate": "2025-10-14",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 22,
+      "cells": "A22:E22,G22:I22"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "23",
+    "runtimeTransformation": "The exact 23:30 source runtime is presented as 23 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "69dcb0a8d052969f3deee424ee820062fd240daa",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 20 - Jugulators (sub).mp4",
+    "videoSize": 692048268,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 20 - Jugulators (sub).mp4",
+    "video": {
+      "width": 1440,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1410.492417
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "23:30 (1410 seconds) -> floor whole minutes -> 23",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "692048268 bytes / 1000000, fixed to two decimals -> 692.05 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

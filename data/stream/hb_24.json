@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 INTRUDERZ\n📖 [298-303] 🕒 40:46\n💾 1166.97 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "1e75bb5dfe1d2733c2fb6f7d4c3adc953ff2a307",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1166972592,
+        "filename": "Hollowed Bleach 24 - INTRUDERZ (sub).mp4"
+      }
+    }
+  ]
+}

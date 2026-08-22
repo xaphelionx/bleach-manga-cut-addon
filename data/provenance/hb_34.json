@@ -1,0 +1,128 @@
+{
+  "id": "hb_34",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:34",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A37",
+        "hollowed-xlsx:episode-list:B37",
+        "hollowed-xlsx:episode-list:C37",
+        "hollowed-xlsx:episode-list:D37",
+        "hollowed-xlsx:episode-list:E37",
+        "hollowed-xlsx:episode-list:G37",
+        "hollowed-xlsx:episode-list:H37"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_34",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 38
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_34.json",
+      "videoId": "hb_34",
+      "recordId": "hollowed:34",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb34-local-torrent-verification",
+        "hb34-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "34",
+    "title": "The Deathbringer Numbers",
+    "mangaChapters": "333-339",
+    "sourceAnimeEpisodes": "224-226",
+    "exactEditRuntime": "00:35:33",
+    "normalizedExactRuntime": "35:33",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 37,
+      "cells": "A37:E37,G37:H37"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "35",
+    "runtimeTransformation": "The exact 35:33 source runtime is presented as 35 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "6257091039fe6e718d6da7425dffb0c7a57897f9",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4",
+    "videoSize": 1001959714,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 34 - The Deathbringer Numbers (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2074.864458
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "35:33 (2133 seconds) -> floor whole minutes -> 35",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1001959714 bytes / 1000000, fixed to two decimals -> 1001.96 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Left Arm of the Devil\n📖 [259-262] 🕒 22:59\n💾 656.75 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "81c455e0687ff84734af6725b2a54911e1e47fa4",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 656753518,
+        "filename": "Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4"
+      }
+    }
+  ]
+}

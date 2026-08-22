@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Bleach My Soul\n📖 [422-423] 🕒 27:30\n💾 788.21 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "ac56dd62c22dc2ab385e3563e129fd6db6465f57",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 788212493,
+        "filename": "Hollowed Bleach 50 - Bleach My Soul (sub).mp4"
+      }
+    }
+  ]
+}

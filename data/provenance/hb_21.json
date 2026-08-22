@@ -1,0 +1,128 @@
+{
+  "id": "hb_21",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:21",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A23",
+        "hollowed-xlsx:episode-list:B23",
+        "hollowed-xlsx:episode-list:C23",
+        "hollowed-xlsx:episode-list:D23",
+        "hollowed-xlsx:episode-list:E23",
+        "hollowed-xlsx:episode-list:G23",
+        "hollowed-xlsx:episode-list:H23"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_21",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 24
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_21.json",
+      "videoId": "hb_21",
+      "recordId": "hollowed:21",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb21-local-torrent-verification",
+        "hb21-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "21",
+    "title": "Howling",
+    "mangaChapters": "282-286",
+    "sourceAnimeEpisodes": "166-167",
+    "exactEditRuntime": "00:27:41",
+    "normalizedExactRuntime": "27:41",
+    "timeSaved": null,
+    "releaseDate": "2025-10-14",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 23,
+      "cells": "A23:E23,G23:H23"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "27",
+    "runtimeTransformation": "The exact 27:41 source runtime is presented as 27 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "25ae44c7681b4e4ccb19cf17c2b9147525038f83",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 21 - Howling (sub).mp4",
+    "videoSize": 791622022,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 21 - Howling (sub).mp4",
+    "video": {
+      "width": 1440,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1661.451458
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "27:41 (1661 seconds) -> floor whole minutes -> 27",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "791622022 bytes / 1000000, fixed to two decimals -> 791.62 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

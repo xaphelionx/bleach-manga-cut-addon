@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 heart\n📖 [346-354] 🕒 42:48\n💾 1267.99 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "185043ce9aa3d58d81493140d44496a1f22dc83e",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1267992742,
+        "filename": "Hollowed Bleach 36 - heart (sub).mp4"
+      }
+    }
+  ]
+}

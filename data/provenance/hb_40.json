@@ -1,0 +1,128 @@
+{
+  "id": "hb_40",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "hollowed:40",
+      "evidenceRefs": [
+        "hollowed-xlsx:episode-list:A43",
+        "hollowed-xlsx:episode-list:B43",
+        "hollowed-xlsx:episode-list:C43",
+        "hollowed-xlsx:episode-list:D43",
+        "hollowed-xlsx:episode-list:E43",
+        "hollowed-xlsx:episode-list:G43",
+        "hollowed-xlsx:episode-list:H43"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "hb_40",
+      "projectedPlacement": {
+        "season": 3,
+        "episode": 44
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/hb_40.json",
+      "videoId": "hb_40",
+      "recordId": "hollowed:40",
+      "verificationState": "verified",
+      "verificationBases": [
+        "hb40-local-torrent-verification",
+        "hb40-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Hollowed Bleach",
+    "episode": "40",
+    "title": "Wolves Ain't Howl Alone",
+    "mangaChapters": "372-375",
+    "sourceAnimeEpisodes": "282-283",
+    "exactEditRuntime": "00:25:54",
+    "normalizedExactRuntime": "25:54",
+    "timeSaved": null,
+    "releaseDate": "2025-11-08",
+    "lastUpdate": "2026-02-27",
+    "source": {
+      "document": "Hollowed Bleach Info.xlsx",
+      "sheet": "Episode List",
+      "row": 43,
+      "cells": "A43:E43,G43:H43"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "25",
+    "runtimeTransformation": "The exact 25:54 source runtime is presented as 25 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "English AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "6c0b6aa30b5438d1940252243e5a98272c70245d",
+    "fileIdx": 0,
+    "filename": "Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4",
+    "videoSize": 742630399,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "Hollowed Bleach 40 - Wolves Ain_t Howl Alone (sub).mp4",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "English",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1554.469583
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "25:54 (1554 seconds) -> floor whole minutes -> 25",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "742630399 bytes / 1000000, fixed to two decimals -> 742.63 MB",
+    "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
+    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

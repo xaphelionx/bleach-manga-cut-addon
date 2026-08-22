@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Stingy Stinger\n📖 [330-333] 🕒 23:56\n💾 687.01 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "2f87c239b545105c3f1a2e4cd1ecd838d3302fd0",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 687010169,
+        "filename": "Hollowed Bleach 33 - Stingy Stinger (sub).mp4"
+      }
+    }
+  ]
+}

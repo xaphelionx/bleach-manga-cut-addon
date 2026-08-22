@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Howling\n📖 [282-286] 🕒 27:41\n💾 791.62 MB\n🎞️ HEVC 🔊 AAC 2.0",
+      "infoHash": "25ae44c7681b4e4ccb19cf17c2b9147525038f83",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 791622022,
+        "filename": "Hollowed Bleach 21 - Howling (sub).mp4"
+      }
+    }
+  ]
+}
