@@ -142,6 +142,31 @@ test('processing remains exactly projection-controlled at the current canonical 
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 
+test('Chipped verified-media validates but remains outside publication and presentation generation', () => {
+  const chippedEvidence = inputs.evidenceRecords.filter(({ value }) => value.videoId.startsWith('ch_'))
+  assert.equal(chippedEvidence.length, 12)
+  assert.deepEqual(
+    chippedEvidence.map(({ value }) => value.videoId).sort((left, right) => (
+      Number(left.slice(3)) - Number(right.slice(3))
+    )),
+    Array.from({ length: 12 }, (_, index) => `ch_${index + 1}`)
+  )
+  for (const { value } of chippedEvidence) assert.doesNotThrow(() => validateVerifiedMedia(value))
+
+  const registryEntries = inputs.registry.entries.filter(({ videoId }) => videoId.startsWith('ch_'))
+  assert.equal(registryEntries.length, 12)
+  for (const entry of registryEntries) {
+    assert.equal(entry.status, 'reserved')
+    assert.equal(entry.locked, false)
+    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(entry.videoId), false)
+    assert.equal(result.processedVideoIds.includes(entry.videoId), false)
+    assert.equal(`data/stream/${entry.videoId}.json` in result.candidates, false)
+    assert.equal(`data/provenance/${entry.videoId}.json` in result.candidates, false)
+  }
+  assert.equal(result.processedVideoIds.length, 91)
+  assert.equal(result.processedVideoIds.at(-1), 'hb_50')
+})
+
 test('resolutionRef provenance propagation is generic, optional, and exact', () => {
   const resolutionRef = 'editorial-resolution:concentrated-35.5-to-0.0'
   const ordinary = inputs.resolvedRecords.find(({ projectionEntry }) => projectionEntry.videoId === 'cb_35')
@@ -808,7 +833,7 @@ test('schema version 1 accepts unresolved or verified container duration and all
   validateVerifiedMedia(cb2Evidence)
 })
 
-test('subtitle language schema permits only non-empty strings or the exact unresolved state', () => {
+test('audio and subtitle language schemas permit only non-empty strings or the exact unresolved state', () => {
   assert.deepEqual(verifiedMediaSchema.$defs.subtitleTrack.properties.language, {
     oneOf: [
       { type: 'string', minLength: 1 },
@@ -816,8 +841,10 @@ test('subtitle language schema permits only non-empty strings or the exact unres
     ]
   })
   assert.deepEqual(verifiedMediaSchema.$defs.audioTrack.properties.language, {
-    type: 'string',
-    minLength: 1
+    oneOf: [
+      { type: 'string', minLength: 1 },
+      { $ref: '#/$defs/unresolved' }
+    ]
   })
 
   const known = structuredClone(cb2Evidence)
@@ -846,7 +873,50 @@ test('subtitle language schema permits only non-empty strings or the exact unres
 
   const unresolvedAudio = structuredClone(cb2Evidence)
   unresolvedAudio.media.audioTracks[0].language = { state: 'unresolved' }
-  assert.throws(() => validateVerifiedMedia(unresolvedAudio), /audioTracks\[0\]\.language must be a string/)
+  validateVerifiedMedia(unresolvedAudio)
+
+  for (const invalidLanguage of [
+    null,
+    '',
+    { arbitrary: true },
+    { state: 'unknown' },
+    { state: 'unresolved', extra: true }
+  ]) {
+    const invalid = structuredClone(cb2Evidence)
+    invalid.media.audioTracks[0].language = invalidLanguage
+    assert.throws(() => validateVerifiedMedia(invalid))
+  }
+})
+
+test('audio profile and channel layout accept observed strings or null only', () => {
+  assert.deepEqual(verifiedMediaSchema.$defs.audioTrack.properties.profile, {
+    oneOf: [
+      { type: 'string', minLength: 1 },
+      { type: 'null' }
+    ]
+  })
+  assert.deepEqual(verifiedMediaSchema.$defs.audioTrack.properties.channelLayout, {
+    oneOf: [
+      { type: 'string', minLength: 1 },
+      { type: 'null' }
+    ]
+  })
+
+  const nullable = structuredClone(cb2Evidence)
+  nullable.media.audioTracks[0].profile = null
+  nullable.media.audioTracks[0].channelLayout = null
+  validateVerifiedMedia(nullable)
+
+  for (const [key, invalidValue] of [
+    ['profile', ''],
+    ['profile', { state: 'unresolved' }],
+    ['channelLayout', ''],
+    ['channelLayout', { state: 'unresolved' }]
+  ]) {
+    const invalid = structuredClone(cb2Evidence)
+    invalid.media.audioTracks[0][key] = invalidValue
+    assert.throws(() => validateVerifiedMedia(invalid))
+  }
 })
 
 test('CB32-like unresolved subtitle language validates and is preserved in provenance only', () => {

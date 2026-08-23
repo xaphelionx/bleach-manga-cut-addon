@@ -44,6 +44,12 @@ const HOLLOWED_ACQUISITION_PATH = path.join(
   'acquisition',
   'hollowed-current-raw.json'
 )
+const CHIPPED_ACQUISITION_PATH = path.join(
+  REPOSITORY_ROOT,
+  'evidence',
+  'acquisition',
+  'chipped-selected.json'
+)
 const PRODUCTION_EVIDENCE_DIRECTORY = path.join(REPOSITORY_ROOT, 'evidence', 'media')
 const PRODUCTION_SELECTION_ENTRIES = [
   { recordId: 'concentrated:03', videoId: 'cb_3' },
@@ -113,6 +119,40 @@ const LOCKED_HOLLOWED_OTHER_EVIDENCE_INDEX_SHA256 =
   'ae64a7986125170f601a5bba0ca4a75a66cdff078295ab2c84364152e3633216'
 const LOCKED_HB36_EVIDENCE_SHA256 =
   'ae082da0fc86c9911d94a659a644ee401837f843070212f865b90669692dcb9f'
+const CHIPPED_SELECTION_ENTRIES = Array.from({ length: 12 }, (_, index) => ({
+  recordId: `chipped:#${String(index + 1).padStart(2, '0')}`,
+  videoId: `ch_${index + 1}`
+}))
+const LOCKED_CHIPPED_EVIDENCE_SHA256 = Object.freeze({
+  ch_1: '3d655c38412cdb57a12cd3141119a4f045dcb48861d4e433a2481e45866ce5e2',
+  ch_2: 'd1fe1f667425abd2321322b10e31ec9cf0d5032742a482a4ebc3a290ac2cefa1',
+  ch_3: 'beb02b9a5dfdc4a27a7b7bdd2e9cb8cf674a67dbd73168bd608c2ff5c3d612ad',
+  ch_4: '0b33257696c646dce79fc485572cc48ad57cf3c3972be33ab4f3fbcda9da8f47',
+  ch_5: '5f8ce1d4f694bb5a908bb72694f7a3dce232758a88eddc6eddc15bd891f51aef',
+  ch_6: '8806c583f5342fa38c5f5208ce81aff360d3f3ebe6c9d769db5a111397d24abe',
+  ch_7: 'ee795fbe8259d3e1c628b95a809689d8611628da0e3bced787e4188157161f5a',
+  ch_8: '365e094cb67ded53484b94951fa6aa52ebb31c4d79e5a23c2297d8702293dbc8',
+  ch_9: 'cc6ec67b6a54443d1a3b236ef53d55ee77f33bf02f3180c5748af135a264a97a',
+  ch_10: '75bbb7dddc1575ab8af8a9f314a618bb5a189813b9200b685eb8e597ddc5d828',
+  ch_11: '8baaa0b1b976751be33f48f1c626a5e4be1ced1587c1ae0efc03f640bf02f4f7',
+  ch_12: '23c73a4c37eb7bab302e9a965024ec4755d31181a1eb8303be1d0f77ace8e8ff'
+})
+const LOCKED_CHIPPED_INFO_HASHES = Object.freeze({
+  ch_1: '1a89d1f240600c70b0f4de4d32aeef9507e9385e',
+  ch_2: '146c5e97d71459f7d6042b5dc60e374c87b326a3',
+  ch_3: '9c5bbf5012611b8e82776e2af764476d69c8eefd',
+  ch_4: '7a88ab6286e2d8645e78cffc13b589563f6b2ed2',
+  ch_5: 'da7ac70cbadce11e3348197a5b2cdb4ec130edf0',
+  ch_6: '178fe19d7b001c7de12985648d07ccbc67a6c7bc',
+  ch_7: 'b4f16d928997a8daa39b4883302ccbd67654bd09',
+  ch_8: '8229743318150b709664e7b41b33ea3482873052',
+  ch_9: '3b5a11911b84787deb2c449f573bd98bb52d1ef4',
+  ch_10: 'a2b55d1f5617b9854397488fd2c53df3983294c2',
+  ch_11: '490d4cc3df4595c1cef84190478526cd65483352',
+  ch_12: 'dbf72d88935f333fe7a6d3f4d9cb2fd0a34faa3f'
+})
+const LOCKED_CHIPPED_EVIDENCE_VECTOR_SHA256 =
+  '75e3a0162f9d33181b30464802390661c9bab8ab7b70d3b465ed35bc76733506'
 
 function projectIdFor(recordId) {
   return recordId.split(':', 1)[0]
@@ -323,6 +363,10 @@ function hollowedProductionCandidates() {
   return productionCandidatesFor(HOLLOWED_ACQUISITION_PATH, HOLLOWED_SELECTION_ENTRIES)
 }
 
+function chippedProductionCandidates() {
+  return productionCandidatesFor(CHIPPED_ACQUISITION_PATH, CHIPPED_SELECTION_ENTRIES)
+}
+
 test('valid one-entry generation succeeds', () => {
   const result = generate()[0]
   assert.equal(result.videoId, 'cb_2')
@@ -454,6 +498,21 @@ test('aac normalizes to AAC', () => {
   assert.deepEqual(candidate().media.audioTracks.map(({ codec }) => codec), ['AAC', 'AAC'])
 })
 
+test('pcm_s16le normalizes to PCM without fabricating profile or channel layout', () => {
+  const inputs = validInputs()
+  const stream = inputs.acquisitionManifest.entries[0].media.audioStreams[0]
+  stream.codecName = 'pcm_s16le'
+  stream.profile = null
+  stream.channelLayout = null
+  assert.deepEqual(candidate(inputs).media.audioTracks[0], {
+    language: 'Japanese',
+    codec: 'PCM',
+    profile: null,
+    channels: 2,
+    channelLayout: null
+  })
+})
+
 test('jpn audio normalizes to Japanese', () => {
   assert.equal(candidate().media.audioTracks[0].language, 'Japanese')
 })
@@ -474,10 +533,10 @@ test('unknown audio language is rejected', () => {
   expectCode('unknown-audio-language', () => generate(inputs))
 })
 
-test('null audio language is rejected', () => {
+test('null audio language normalizes to the exact unresolved object', () => {
   const inputs = validInputs()
   inputs.acquisitionManifest.entries[0].media.audioStreams[0].language = null
-  expectCode('unresolved-audio-language', () => generate(inputs))
+  assert.deepEqual(candidate(inputs).media.audioTracks[0].language, { state: 'unresolved' })
 })
 
 test('audio stream order is preserved', () => {
@@ -758,10 +817,10 @@ test('verified-media schemaVersion remains one', () => {
   assert.equal(candidate().schemaVersion, 1)
 })
 
-test('audio language unresolved object is never generated', () => {
+test('audio language unresolved object is generated only from a raw null tag', () => {
   const inputs = validInputs()
   inputs.acquisitionManifest.entries[0].media.audioStreams[0].language = null
-  expectCode('unresolved-audio-language', () => generate(inputs))
+  assert.deepEqual(candidate(inputs).media.audioTracks[0].language, { state: 'unresolved' })
 })
 
 test('CB32-like raw null becomes unresolved exactly', () => {
@@ -999,4 +1058,79 @@ test('representative Hollowed verified-media facts retain exact physical observa
     })
     assert.deepEqual(evidence.media.subtitleTracks, [])
   }
+})
+
+test('committed Chipped evidence is byte-identical to deterministic acquisition generation', () => {
+  const { acquisitionManifest, candidates } = chippedProductionCandidates()
+  assert.equal(candidates.length, 12)
+  assert.deepEqual(candidates.map(({ videoId }) => videoId), CHIPPED_SELECTION_ENTRIES.map(({ videoId }) => videoId))
+
+  for (const candidate of candidates) {
+    const acquisitionEntry = acquisitionManifest.entries.find(({ videoId }) => videoId === candidate.videoId)
+    const committedBytes = fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, candidate.filename))
+    const committed = JSON.parse(committedBytes)
+    assert.ok(acquisitionEntry)
+    assert.ok(committedBytes.equals(candidate.bytes), candidate.videoId)
+    assert.equal(candidate.sha256, LOCKED_CHIPPED_EVIDENCE_SHA256[candidate.videoId])
+    assert.equal(crypto.createHash('sha256').update(committedBytes).digest('hex'), candidate.sha256)
+    assert.doesNotThrow(() => validateVerifiedMedia(committed))
+    assert.equal(committed.recordId, acquisitionEntry.recordId)
+    assert.equal(committed.torrent.infoHash, acquisitionEntry.torrent.infoHash)
+    assert.equal(committed.torrent.infoHash, LOCKED_CHIPPED_INFO_HASHES[candidate.videoId])
+    assert.equal(committed.torrent.fileSelection.fileIdx, 0)
+    assert.equal(committed.torrent.fileSelection.filename, acquisitionEntry.torrent.payloadFilename)
+    assert.equal(committed.torrent.fileSelection.byteSize, acquisitionEntry.torrent.payloadByteSize)
+  }
+})
+
+test('Chipped evidence has a stable sorted combined identity vector', () => {
+  const vector = Object.keys(LOCKED_CHIPPED_EVIDENCE_SHA256).sort().map((videoId) => ({
+    videoId,
+    sha256: crypto.createHash('sha256')
+      .update(fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, `${videoId}.json`)))
+      .digest('hex')
+  }))
+  const vectorBytes = Buffer.from(`${JSON.stringify(vector, null, 2)}\n`)
+  assert.equal(vectorBytes.length, 1362)
+  assert.equal(
+    crypto.createHash('sha256').update(vectorBytes).digest('hex'),
+    LOCKED_CHIPPED_EVIDENCE_VECTOR_SHA256
+  )
+})
+
+test('Chipped PCM tracks preserve stream order and nullable observations without inference', () => {
+  for (const { videoId } of CHIPPED_SELECTION_ENTRIES.filter(({ videoId }) => videoId !== 'ch_10')) {
+    const evidence = readJsonFile(path.join(PRODUCTION_EVIDENCE_DIRECTORY, `${videoId}.json`))
+    assert.deepEqual(evidence.media.audioTracks, [
+      { language: 'Japanese', codec: 'PCM', profile: null, channels: 2, channelLayout: null },
+      { language: 'English', codec: 'PCM', profile: null, channels: 2, channelLayout: null }
+    ])
+  }
+})
+
+test('ch_10 preserves all three audio tracks and leaves its untagged AAC language unresolved', () => {
+  const evidence = readJsonFile(path.join(PRODUCTION_EVIDENCE_DIRECTORY, 'ch_10.json'))
+  assert.deepEqual(evidence.media.audioTracks, [
+    { language: 'Japanese', codec: 'PCM', profile: null, channels: 2, channelLayout: null },
+    { language: 'English', codec: 'PCM', profile: null, channels: 2, channelLayout: null },
+    {
+      language: { state: 'unresolved' },
+      codec: 'AAC',
+      profile: 'LC',
+      channels: 2,
+      channelLayout: 'stereo'
+    }
+  ])
+})
+
+test('ch_6 preserves measured container duration independently of editorial runtime', () => {
+  const evidence = readJsonFile(path.join(PRODUCTION_EVIDENCE_DIRECTORY, 'ch_6.json'))
+  const editorial = readJsonFile(path.join(REPOSITORY_ROOT, 'editorial', 'normalized', 'chipped.json'))
+    .records.find(({ recordId }) => recordId === 'chipped:#06')
+  assert.deepEqual(evidence.media.duration, {
+    state: 'verified',
+    measurement: 'container',
+    seconds: 1504.128
+  })
+  assert.equal(editorial.runtime.seconds, 1534)
 })

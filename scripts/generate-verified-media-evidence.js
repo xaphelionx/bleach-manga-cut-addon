@@ -154,19 +154,28 @@ function normalizeVideo(media) {
 
 function normalizeAudioTrack(stream, index) {
   const label = `audio stream[${index}]`
-  if (stream.codecName !== 'aac') fail('unknown-audio-codec', `${label} codec is unsupported`)
-  if (stream.language === null) fail('unresolved-audio-language', `${label} language must be known`)
+  const codecs = { aac: 'AAC', pcm_s16le: 'PCM' }
+  const codec = codecs[stream.codecName]
+  if (!codec) fail('unknown-audio-codec', `${label} codec is unsupported`)
   const languages = { jpn: 'Japanese', eng: 'English' }
-  const language = languages[stream.language]
-  if (!language) fail('unknown-audio-language', `${label} language is unsupported`)
-  assertNonEmptyString(stream.profile, `${label} profile`, 'missing-audio-observation')
-  assertNonEmptyString(stream.channelLayout, `${label} channel layout`, 'missing-audio-observation')
+  const language = stream.language === null
+    ? { state: 'unresolved' }
+    : languages[stream.language]
+  if (stream.language !== null && !language) {
+    fail('unknown-audio-language', `${label} language is unsupported`)
+  }
+  if (stream.profile !== null) {
+    assertNonEmptyString(stream.profile, `${label} profile`, 'missing-audio-observation')
+  }
+  if (stream.channelLayout !== null) {
+    assertNonEmptyString(stream.channelLayout, `${label} channel layout`, 'missing-audio-observation')
+  }
   if (!Number.isSafeInteger(stream.channels) || stream.channels <= 0) {
     fail('missing-audio-observation', `${label} channels must be known`)
   }
   return {
     language,
-    codec: 'AAC',
+    codec,
     profile: stream.profile,
     channels: stream.channels,
     channelLayout: stream.channelLayout

@@ -258,24 +258,45 @@
       ],
       "properties": {
         "language": {
-          "type": "string",
-          "minLength": 1
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "$ref": "#/$defs/unresolved"
+            }
+          ]
         },
         "codec": {
           "type": "string",
           "minLength": 1
         },
         "profile": {
-          "type": "string",
-          "minLength": 1
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "channels": {
           "type": "integer",
           "minimum": 1
         },
         "channelLayout": {
-          "type": "string",
-          "minLength": 1
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       }
     },

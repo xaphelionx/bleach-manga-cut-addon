@@ -330,8 +330,17 @@ function validateVerifiedMedia(evidence) {
   assert.ok(Array.isArray(evidence.media.audioTracks) && evidence.media.audioTracks.length > 0, 'audio tracks must be known')
   for (const [index, track] of evidence.media.audioTracks.entries()) {
     assertExactKeys(track, ['language', 'codec', 'profile', 'channels', 'channelLayout'], `audioTracks[${index}]`)
-    for (const key of ['language', 'codec', 'profile', 'channelLayout']) {
-      assertNonEmptyString(track[key], `audioTracks[${index}].${key}`)
+    if (typeof track.language === 'string') {
+      assertNonEmptyString(track.language, `audioTracks[${index}].language`)
+    } else {
+      assertUnresolved(track.language, `audioTracks[${index}].language`)
+    }
+    assertNonEmptyString(track.codec, `audioTracks[${index}].codec`)
+    if (track.profile !== null) {
+      assertNonEmptyString(track.profile, `audioTracks[${index}].profile`)
+    }
+    if (track.channelLayout !== null) {
+      assertNonEmptyString(track.channelLayout, `audioTracks[${index}].channelLayout`)
     }
     assert.ok(Number.isInteger(track.channels) && track.channels > 0, `audioTracks[${index}].channels must be known`)
   }

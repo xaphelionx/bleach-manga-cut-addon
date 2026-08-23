@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "ch_8",
+  "recordId": "chipped:#08",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "8229743318150b709664e7b41b33ea3482873052",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "[452-453] Chipped Bleach 08.mkv",
+      "byteSize": 636420115
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1093.801
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 1920,
+      "height": 1080,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "PCM",
+        "profile": null,
+        "channels": 2,
+        "channelLayout": null
+      },
+      {
+        "language": "English",
+        "codec": "PCM",
+        "profile": null,
+        "channels": 2,
+        "channelLayout": null
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Englisg"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "ch8-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/chipped-selected/[452-453] Chipped Bleach 08.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "115f4db6b9db14d37eeaab270dff8d6aa606ff8d2e55b99b835e0ddffd2c47e0"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 607,
+        "verifiedPieces": 607,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "ch8-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/05 - Chipped Bleach/[452-453] Chipped Bleach 08.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 636420115
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "ch8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "ch8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "ch8-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "ch8-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "ch8-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "ch8-local-media-ffprobe-inspection"
+    ]
+  }
+}
