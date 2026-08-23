@@ -2,7 +2,7 @@
 
 const assert = require('node:assert/strict')
 
-const PRIMARY_VIDEO_ID = /^(?:cb|hb)_[0-9]+(?:p[0-9]+)?$/
+const PRIMARY_VIDEO_ID = /^(?:(?:cb|hb)_[0-9]+(?:p[0-9]+)?|ch_[0-9]+)$/
 const VERIFIED_GATE = Object.freeze({
   editorialAvailability: 'passed',
   resolvedPlacement: 'passed',

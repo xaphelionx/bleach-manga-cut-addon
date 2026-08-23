@@ -72,7 +72,7 @@
           ],
           "items": {
             "type": "string",
-            "pattern": "^(?:cb|hb)_[0-9]+(?:p[0-9]+)?$"
+            "pattern": "^(?:(?:cb|hb)_[0-9]+(?:p[0-9]+)?|ch_[0-9]+)$"
           }
         },
         "playableOnly": { "const": true }

@@ -125,7 +125,8 @@
       "hb_47",
       "hb_48",
       "hb_49",
-      "hb_50"
+      "hb_50",
+      "ch_1"
     ],
     "playableOnly": true
   },
@@ -151,7 +152,7 @@
       "defaultTimelineContiguity": "blocked",
       "blockedBy": [
         "media-evidence-not-approved",
-        "primary-publication-prefix-after-hb_50"
+        "primary-publication-prefix-after-ch_1"
       ]
     }
   },
@@ -247,7 +248,7 @@
     {"recordId":"hollowed:48","projectId":"hollowed","sourceIdentifier":{"raw":"48.0","displayed":"48"},"videoId":"hb_48","title":"DEICIDE 4 [THE END]","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":3,"episode":52},"defaultTimelinePosition":{"state":"resolved","index":89},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"hollowed:49","projectId":"hollowed","sourceIdentifier":{"raw":"49.0","displayed":"49"},"videoId":"hb_49","title":"DEICIDE 5 [GOD IS DEAD]","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":3,"episode":53},"defaultTimelinePosition":{"state":"resolved","index":90},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"hollowed:50","projectId":"hollowed","sourceIdentifier":{"raw":"50.0","displayed":"50"},"videoId":"hb_50","title":"Bleach My Soul","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":3,"episode":54},"defaultTimelinePosition":{"state":"resolved","index":91},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
-    {"recordId":"chipped:#01","projectId":"chipped","sourceIdentifier":{"raw":"#01","displayed":"#01"},"videoId":"ch_1","title":"The Lost Agent","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":1},"defaultTimelinePosition":{"state":"resolved","index":92},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
+    {"recordId":"chipped:#01","projectId":"chipped","sourceIdentifier":{"raw":"#01","displayed":"#01"},"videoId":"ch_1","title":"The Lost Agent","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":1},"defaultTimelinePosition":{"state":"resolved","index":92},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"chipped:#02","projectId":"chipped","sourceIdentifier":{"raw":"#02","displayed":"#02"},"videoId":"ch_2","title":"Welcome to our EXECUTION","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":2},"defaultTimelinePosition":{"state":"resolved","index":93},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
     {"recordId":"chipped:#03","projectId":"chipped","sourceIdentifier":{"raw":"#03","displayed":"#03"},"videoId":"ch_3","title":"The Six Fullbringers","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":3},"defaultTimelinePosition":{"state":"resolved","index":94},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
     {"recordId":"chipped:#04","projectId":"chipped","sourceIdentifier":{"raw":"#04","displayed":"#04"},"videoId":"ch_4","title":"Berry in the Box","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":4},"defaultTimelinePosition":{"state":"resolved","index":95},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},

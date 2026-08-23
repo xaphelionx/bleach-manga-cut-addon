@@ -165,7 +165,7 @@
     {"recordType":"normalized-record","recordId":"hollowed:60","projectId":"hollowed","sourceIdentifier":"60","videoId":"hb_60","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"hollowed:61","projectId":"hollowed","sourceIdentifier":"61","videoId":"hb_61","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"hollowed:62","projectId":"hollowed","sourceIdentifier":"62","videoId":"hb_62","status":"reserved","locked":false},
-    {"recordType":"normalized-record","recordId":"chipped:#01","projectId":"chipped","sourceIdentifier":"#01","videoId":"ch_1","status":"reserved","locked":false},
+    {"recordType":"normalized-record","recordId":"chipped:#01","projectId":"chipped","sourceIdentifier":"#01","videoId":"ch_1","status":"published","locked":false},
     {"recordType":"normalized-record","recordId":"chipped:#02","projectId":"chipped","sourceIdentifier":"#02","videoId":"ch_2","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"chipped:#03","projectId":"chipped","sourceIdentifier":"#03","videoId":"ch_3","status":"reserved","locked":false},
     {"recordType":"normalized-record","recordId":"chipped:#04","projectId":"chipped","sourceIdentifier":"#04","videoId":"ch_4","status":"reserved","locked":false},

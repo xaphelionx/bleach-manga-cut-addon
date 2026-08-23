@@ -34,7 +34,7 @@ const manifest = {
     {
       name: 'stream',
       types: ['series'],
-      idPrefixes: ['cb_', 'hb_']
+      idPrefixes: ['cb_', 'hb_', 'ch_']
     }
   ],
   types: ['series'],

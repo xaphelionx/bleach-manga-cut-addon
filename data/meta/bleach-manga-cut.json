@@ -645,6 +645,13 @@
         "episode": 54,
         "title": "Bleach My Soul",
         "runtime": "27"
+      },
+      {
+        "id": "ch_1",
+        "season": 4,
+        "episode": 1,
+        "title": "The Lost Agent",
+        "runtime": "32"
       }
     ]
   }

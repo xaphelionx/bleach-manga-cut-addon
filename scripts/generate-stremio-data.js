@@ -607,10 +607,32 @@ function formatAudioPresentation(audioTracks) {
 function describeAudioFormats(audioTracks) {
   const descriptions = []
   for (const track of audioTracks) {
-    const description = `${track.codec} ${track.profile}, ${track.channels} channels/${track.channelLayout}`
+    const codec = track.profile === null ? track.codec : `${track.codec} ${track.profile}`
+    const channels = track.channelLayout === null
+      ? `${track.channels} channels`
+      : `${track.channels} channels/${track.channelLayout}`
+    const description = `${codec}, ${channels}`
     if (!descriptions.includes(description)) descriptions.push(description)
   }
   return descriptions.join(' + ')
+}
+
+function formatAudioInspection(track) {
+  return {
+    language: track.language,
+    codec: track.profile === null ? track.codec : `${track.codec} ${track.profile}`,
+    channels: track.channelLayout === null
+      ? `${track.channels} channels`
+      : `${track.channelLayout} / ${track.channels.toFixed(1)}`
+  }
+}
+
+function describeInspectedAudioTrack(track) {
+  const codec = track.profile === null ? track.codec : `${track.codec} ${track.profile}`
+  const channels = track.channelLayout === null
+    ? `${track.channels} channels`
+    : `${track.channelLayout} / ${track.channels.toFixed(1)}`
+  return `${track.language} ${codec}, ${channels}`
 }
 
 function formatLanguagePresentation(audioTracks) {
@@ -765,11 +787,7 @@ function buildProvenance(resolved, presentation) {
       profile: media.media.video.profile,
       pixelFormat: media.media.video.pixelFormat
     },
-    audio: media.media.audioTracks.map((track) => ({
-      language: track.language,
-      codec: `${track.codec} ${track.profile}`,
-      channels: `${track.channelLayout} / ${track.channels.toFixed(1)}`
-    })),
+    audio: media.media.audioTracks.map(formatAudioInspection),
     embeddedSubtitles: media.media.subtitleTracks.map((track) => ({
       language: track.language,
       title: track.title
@@ -843,9 +861,7 @@ function buildProvenance(resolved, presentation) {
       },
       originalContentLanguage: {
         language: SERIES_POLICY.originalLanguage,
-        inspectedAudioTracks: media.media.audioTracks.map((track) =>
-          `${track.language} ${track.codec} ${track.profile}, ${track.channelLayout} / ${track.channels.toFixed(1)}`
-        ),
+        inspectedAudioTracks: media.media.audioTracks.map(describeInspectedAudioTrack),
         intent: `${SERIES_POLICY.originalLanguage} is the intended original-language track for Nuvio Original Audio behavior.`
       }
     },

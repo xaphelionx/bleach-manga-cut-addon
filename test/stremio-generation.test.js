@@ -62,19 +62,29 @@ const EXPECTED_NEW_HOLLOWED_BATCH = Object.freeze([
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
   ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
-  ...EXPECTED_NEW_HOLLOWED_BATCH
+  ...EXPECTED_NEW_HOLLOWED_BATCH,
+  'ch_1'
 ])
 const EXPECTED_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_PUBLISHED_PREFIX
+  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
+  ...EXPECTED_NEW_HOLLOWED_BATCH
 ])
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '016cb57b391258e1e8733baf240c936f1e1c6b33c42632e59450a517637a6061'
+  'data/meta/bleach-manga-cut.json': '74875b8d3c69736e2229b65cf267bbe655326816868daa30a0afb92874f42c88'
 })
 const LOCKED_STREAM_VECTOR_SHA256 =
   'f40b242bb47c2e0946f7b6d893b31ed75196d34eb9db1289ee9e9a55d02bfc37'
 const LOCKED_CONCENTRATED_PRODUCTION_VECTOR_SHA256 =
   'ff8ba0f7a1f1ed3297272c7f1dfb99e89f4c49a8bfa598403aa31a3d8e5af802'
+const LOCKED_ORIGINAL_STREAM_FILE_VECTOR_SHA256 =
+  '919353b8063ea592b30082d3e755f7da4b487b56e0463c1d326b230b20d3e924'
+const LOCKED_ORIGINAL_PROVENANCE_FILE_VECTOR_SHA256 =
+  '553964547e62faed187cfeda82a24c11245d25c1f941ab7facedca93e948846a'
+const CURRENT_STREAM_FILE_VECTOR_SHA256 =
+  '5068fabfd4f6a2416c970e2401f8087124ec2a4936e24eeb473c69b9a30c7f48'
+const CURRENT_PROVENANCE_FILE_VECTOR_SHA256 =
+  'de30108db947d232b8634a5c2a77b3cfa6ec0b88863bb21e424df74f7cfd7e9e'
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
 const readJson = (relativePath, base = root) => JSON.parse(read(relativePath, base).toString('utf8'))
@@ -108,7 +118,7 @@ test('processing remains exactly projection-controlled at the current canonical 
   )), true)
   assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_0p0'), true)
   assert.deepEqual(result.processedVideoIds, EXPECTED_PUBLISHED_PREFIX)
-  assert.equal(result.processedVideoIds.at(-1), 'hb_50')
+  assert.equal(result.processedVideoIds.at(-1), 'ch_1')
   assert.equal('data/stream/cb_0p0.json' in result.candidates, true)
   assert.equal('data/provenance/cb_0p0.json' in result.candidates, true)
   assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_0p0'), true)
@@ -134,6 +144,12 @@ test('processing remains exactly projection-controlled at the current canonical 
     assert.equal(`data/provenance/${videoId}.json` in result.candidates, true)
     assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), true)
   }
+  assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === 'ch_1'), true)
+  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('ch_1'), true)
+  assert.equal(result.processedVideoIds.includes('ch_1'), true)
+  assert.equal('data/stream/ch_1.json' in result.candidates, true)
+  assert.equal('data/provenance/ch_1.json' in result.candidates, true)
+  assert.equal(generatedMeta.videos.some(({ id }) => id === 'ch_1'), true)
   assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_52'), false)
   assert.equal(result.processedVideoIds.includes('cb_52'), false)
   assert.equal('data/stream/cb_52.json' in result.candidates, false)
@@ -142,7 +158,7 @@ test('processing remains exactly projection-controlled at the current canonical 
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 
-test('Chipped verified-media validates but remains outside publication and presentation generation', () => {
+test('only Chipped 01 enters publication and presentation generation', () => {
   const chippedEvidence = inputs.evidenceRecords.filter(({ value }) => value.videoId.startsWith('ch_'))
   assert.equal(chippedEvidence.length, 12)
   assert.deepEqual(
@@ -156,15 +172,16 @@ test('Chipped verified-media validates but remains outside publication and prese
   const registryEntries = inputs.registry.entries.filter(({ videoId }) => videoId.startsWith('ch_'))
   assert.equal(registryEntries.length, 12)
   for (const entry of registryEntries) {
-    assert.equal(entry.status, 'reserved')
     assert.equal(entry.locked, false)
-    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(entry.videoId), false)
-    assert.equal(result.processedVideoIds.includes(entry.videoId), false)
-    assert.equal(`data/stream/${entry.videoId}.json` in result.candidates, false)
-    assert.equal(`data/provenance/${entry.videoId}.json` in result.candidates, false)
+    const published = entry.videoId === 'ch_1'
+    assert.equal(entry.status, published ? 'published' : 'reserved')
+    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(entry.videoId), published)
+    assert.equal(result.processedVideoIds.includes(entry.videoId), published)
+    assert.equal(`data/stream/${entry.videoId}.json` in result.candidates, published)
+    assert.equal(`data/provenance/${entry.videoId}.json` in result.candidates, published)
   }
-  assert.equal(result.processedVideoIds.length, 91)
-  assert.equal(result.processedVideoIds.at(-1), 'hb_50')
+  assert.equal(result.processedVideoIds.length, 92)
+  assert.equal(result.processedVideoIds.at(-1), 'ch_1')
 })
 
 test('resolutionRef provenance propagation is generic, optional, and exact', () => {
@@ -300,7 +317,7 @@ test('current checkpoint candidate paths are exact and closed', () => {
       `data/provenance/${videoId}.json`
     ])
   ]
-  assert.equal(expectedPaths.length, 184)
+  assert.equal(expectedPaths.length, 186)
   assert.deepEqual(Object.keys(result.candidates), expectedPaths)
 })
 
@@ -430,14 +447,14 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   )
 
   const videos = result.candidates[CB1_REGRESSION_FILES.meta].meta.videos
-  assert.equal(videos.length, 91)
+  assert.equal(videos.length, 92)
   assert.deepEqual(videos.map((video) => video.id), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(
     videos.reduce((counts, video) => {
       counts[video.season] = (counts[video.season] || 0) + 1
       return counts
     }, {}),
-    { 1: 9, 2: 28, 3: 54 }
+    { 1: 9, 2: 28, 3: 54, 4: 1 }
   )
   const placement = (videoId) => {
     const { season, episode } = videos.find((video) => video.id === videoId)
@@ -457,11 +474,12 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   assert.deepEqual(placement('hb_14'), { season: 3, episode: 17 })
   assert.deepEqual(placement('hb_0p8'), { season: 3, episode: 33 })
   assert.deepEqual(placement('hb_50'), { season: 3, episode: 54 })
+  assert.deepEqual(placement('ch_1'), { season: 4, episode: 1 })
   assert.deepEqual(videos.slice(67, 72).map((video) => video.id), [
     'hb_28', 'hb_29', 'hb_0p8', 'hb_30', 'hb_31'
   ])
-  assert.deepEqual(videos.slice(-3).map((video) => video.id), ['hb_48', 'hb_49', 'hb_50'])
-  assert.equal(videos.some((video) => video.id === 'ch_1' || video.id === 'cb_52'), false)
+  assert.deepEqual(videos.slice(-3).map((video) => video.id), ['hb_49', 'hb_50', 'ch_1'])
+  assert.equal(videos.some((video) => video.id === 'cb_52'), false)
   for (const resolved of inputs.resolvedRecords) {
     const video = videos.find((item) => item.id === resolved.projectionEntry.videoId)
     assert.equal(
@@ -474,7 +492,7 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
 
 test('every current generated production candidate satisfies its exact derivation contract', () => {
   const relativePaths = Object.keys(result.candidates)
-  assert.equal(relativePaths.length, 184)
+  assert.equal(relativePaths.length, 186)
   let exactResults = 0
   for (const relativePath of relativePaths) {
     assert.ok(read(relativePath, outputRoot).equals(jsonBytes(result.candidates[relativePath])), relativePath)
@@ -486,7 +504,7 @@ test('every current generated production candidate satisfies its exact derivatio
     }
     exactResults += 1
   }
-  assert.equal(exactResults, 184)
+  assert.equal(exactResults, 186)
 })
 
 test('all 91 locked stream and provenance artifacts retain their regression contracts', () => {
@@ -507,11 +525,11 @@ test('all 91 locked stream and provenance artifacts retain their regression cont
   }
 })
 
-test('all 91 streams and all 53 Concentrated production pairs retain starting bytes', () => {
+test('the original 91 streams and all 53 Concentrated production pairs retain starting bytes', () => {
   const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
     relativePaths.map((relativePath) => `${relativePath}\0${hash(relativePath)}\n`).join('')
   )).digest('hex')
-  const streamPaths = EXPECTED_PUBLISHED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const streamPaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
   const concentratedPaths = EXPECTED_PUBLISHED_PREFIX
     .filter((videoId) => videoId.startsWith('cb_'))
     .flatMap((videoId) => [`data/stream/${videoId}.json`, `data/provenance/${videoId}.json`])
@@ -519,6 +537,26 @@ test('all 91 streams and all 53 Concentrated production pairs retain starting by
 
   assert.equal(vectorHash(streamPaths), LOCKED_STREAM_VECTOR_SHA256)
   assert.equal(vectorHash(concentratedPaths), LOCKED_CONCENTRATED_PRODUCTION_VECTOR_SHA256)
+})
+
+test('the original 91 stream and provenance file vectors retain starting bytes', () => {
+  const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
+    [...relativePaths].sort().map((relativePath) => `${hash(relativePath)}  ${relativePath}`).join('\n') + '\n'
+  )).digest('hex')
+  const streamPaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const provenancePaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/provenance/${videoId}.json`)
+  assert.equal(vectorHash(streamPaths), LOCKED_ORIGINAL_STREAM_FILE_VECTOR_SHA256)
+  assert.equal(vectorHash(provenancePaths), LOCKED_ORIGINAL_PROVENANCE_FILE_VECTOR_SHA256)
+})
+
+test('the current 92 stream and provenance file vectors lock the one-entry extension', () => {
+  const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
+    [...relativePaths].sort().map((relativePath) => `${hash(relativePath)}  ${relativePath}`).join('\n') + '\n'
+  )).digest('hex')
+  const streamPaths = EXPECTED_PUBLISHED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const provenancePaths = EXPECTED_PUBLISHED_PREFIX.map((videoId) => `data/provenance/${videoId}.json`)
+  assert.equal(vectorHash(streamPaths), CURRENT_STREAM_FILE_VECTOR_SHA256)
+  assert.equal(vectorHash(provenancePaths), CURRENT_PROVENANCE_FILE_VECTOR_SHA256)
 })
 
 test('CB36-CB51 candidates derive exact verified evidence without invented resolution references', () => {
@@ -606,6 +644,52 @@ test('HB14 is generated through the ordinary evidence path without invented audi
   assert.deepEqual(resolved.mediaEvidence.media.audioTracks, [
     { language: 'English', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' }
   ])
+})
+
+test('Chipped 01 derives its exact stream and null-safe provenance from separate evidence domains', () => {
+  const resolved = inputs.resolvedRecords.find(
+    ({ projectionEntry }) => projectionEntry.videoId === 'ch_1'
+  )
+  const stream = result.candidates['data/stream/ch_1.json']
+  const provenance = result.candidates['data/provenance/ch_1.json']
+
+  assert.ok(resolved)
+  assert.deepEqual(stream, {
+    streams: [{
+      name: '[P2P🧲] 1080p',
+      title: '🎬 The Lost Agent\n📖 [424-428] 🕒 32:04\n💾 1162.27 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG',
+      infoHash: '1a89d1f240600c70b0f4de4d32aeef9507e9385e',
+      sources: [],
+      fileIdx: 0,
+      behaviorHints: {
+        bingeGroup: 'bleach-manga-cut|p2p|standard',
+        videoSize: 1162267608,
+        filename: '[424-427] Chipped Bleach 01.mkv'
+      }
+    }]
+  })
+  assert.equal('subtitles' in stream.streams[0], false)
+  assert.match(stream.streams[0].title, /\[424-428\]/u)
+  assert.doesNotMatch(stream.streams[0].title, /\[424-427\]|stereo|null|undefined/u)
+  assert.equal(provenance.editorial.mangaChapters, '424-428')
+  assert.equal(provenance.torrentEvidence.filename, '[424-427] Chipped Bleach 01.mkv')
+  assert.deepEqual(provenance.localMediaInspection.audio, [
+    { language: 'Japanese', codec: 'PCM', channels: '2 channels' },
+    { language: 'English', codec: 'PCM', channels: '2 channels' }
+  ])
+  assert.deepEqual(provenance.compatibilityMetadata.originalContentLanguage.inspectedAudioTracks, [
+    'Japanese PCM, 2 channels',
+    'English PCM, 2 channels'
+  ])
+  assert.deepEqual(provenance.localMediaInspection.embeddedSubtitles, [
+    { language: 'English', title: 'English' },
+    { language: 'English', title: 'Signs & Songs' }
+  ])
+  assert.equal(provenance.transformations.audioPresentation, 'verified PCM, 2 channels -> PCM 2.0')
+  assert.equal(provenance.transformations.languagePresentation, 'Japanese + English -> JPN + ENG')
+  assert.doesNotMatch(JSON.stringify(provenance), /PCM null|null \/ 2\.0|undefined|stereo/u)
+  assert.equal(hash('evidence/media/ch_1.json'), '3d655c38412cdb57a12cd3141119a4f045dcb48861d4e433a2481e45866ce5e2')
+  assert.equal(hash('evidence/acquisition/chipped-selected.json'), '50d208399da70ac461f786f929eb30432edbdce1e9156a3e8992882fa5984de7')
 })
 
 test('all 38 current-raw Hollowed candidates derive exact evidence and omit semantic language tokens', () => {

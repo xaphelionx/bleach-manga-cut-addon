@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Lost Agent\n📖 [424-428] 🕒 32:04\n💾 1162.27 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "1a89d1f240600c70b0f4de4d32aeef9507e9385e",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1162267608,
+        "filename": "[424-427] Chipped Bleach 01.mkv"
+      }
+    }
+  ]
+}

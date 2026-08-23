@@ -28,7 +28,7 @@ Nuvio 0.8.4-beta determines a series' next episode by globally sorting all video
 
 Publication gates cover `editorialAvailability`, `resolvedPlacement`, `mediaEvidence`, and `defaultTimelineContiguity`. Projection never constitutes evidence that media or a stream exists.
 
-The current eligible, published, and compatibility-locked prefix contains 91 entries: all 53 default Concentrated entries through CB51, including CB27.5 and guided 35.5 / `cb_0p0`, followed by all 38 owner-selected current-raw Hollowed entries through HB50. The projection has 91 eligible and 12 blocked entries. Every remaining primary entry, beginning with Chipped #01, uses the generic `unpublished-primary` gate until publication is explicitly approved and the contiguous prefix advances. The final 37 Hollowed locks record a separate representative validation decision rather than following automatically from publication.
+The current eligible and published prefix contains 92 entries: all 53 default Concentrated entries through CB51, including CB27.5 and guided 35.5 / `cb_0p0`, followed by all 38 owner-selected current-raw Hollowed entries through HB50, then Chipped #01 / `ch_1` as a one-episode compatibility POC. The separate compatibility-locked prefix remains the first 91 entries through HB50; Chipped #01 is published and `locked:false` pending real-device validation. The projection has 92 eligible and 11 blocked entries. Every remaining primary entry, beginning with Chipped #02, uses the generic `unpublished-primary` gate until publication is explicitly approved and the contiguous prefix advances. The final 37 Hollowed locks record a separate representative validation decision rather than following automatically from publication.
 
 ## Resolved guided 35.5 relationship
 
@@ -77,7 +77,7 @@ IDs encode only source project and exact displayed identifier syntax:
 
 Decimals are encoded lexically and never parsed as floating-point positions. Decimal syntax does not imply any editorial `kind`. Unknown identifier syntax is a validation error. IDs do not depend on title, season, episode, array order, or watch-order position.
 
-The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. All 91 IDs through Hollowed 50 are published and compatibility-locked after explicit validation decisions. All later assignments remain reserved and unlocked.
+The registry is append-only. `published` means an ID belongs to a currently published entry; `reserved` means only that the assignment cannot be reused. Registry presence never implies publication. All 91 IDs through Hollowed 50 are published and compatibility-locked after explicit validation decisions. Chipped #01 is the only later published assignment and remains unlocked; all assignments from Chipped #02 onward remain reserved and unlocked.
 
 ## Compatibility-lock baseline
 
@@ -118,7 +118,7 @@ The projection contains the Watch Guide's currently selected default ranges:
 
 The projection has 103 entries: 9 in S1, 28 in S2, 54 in S3, and 12 in S4. Global positions are resolved monotonically from 1 through 103.
 
-Current publication is the first 91 canonical entries through Hollowed 50 at S3E54/global index 91. Chipped #01 is the first unpublished canonical suffix entry at S4E1/global index 92; Concentrated CB52+ and Hollowed 51–62 are not the next selected default Watch Guide entries. The generic suffix blocker is now `primary-publication-prefix-after-hb_50`; prefix closure continues to prevent gaps without a special project barrier.
+Current publication is the first 92 canonical entries through Chipped #01 at S4E1/global index 92. Chipped #01 is an unlocked one-episode compatibility POC; Chipped #02 is the first unpublished canonical suffix entry at S4E2/global index 93. Concentrated CB52+ and Hollowed 51–62 are not the next selected default Watch Guide entries. The generic suffix blocker is now `primary-publication-prefix-after-ch_1`; prefix closure continues to prevent gaps without a special project barrier.
 
 The default Concentrated Arrancar span CB36–CB51 has a separate 16-entry technical-acquisition manifest and verified-media evidence. Its trackerless local torrents were independently recreated byte-for-byte and all 4,771 pieces were verified against the unchanged payloads. Those torrent artifacts remain in the ignored local workspace. The project owner confirmed the exact 16 torrents are user-seeded and acquired/cached in the user's TorBox environment. Following representative real-device validation, CB36–CB51 are published and `locked:true` as a batch. This does not claim that every entry was individually played or establish permanent availability or future cache persistence.
 
@@ -159,8 +159,8 @@ The projection validator enforces:
 - `cb_0p0` is the only projection entry with `resolutionRef`; it is published and compatibility-locked at S2E28/global index 37.
 - The owner-selected 38-record current raw Hollowed membership exactly matches the existing projected and published Hollowed default span without adding per-entry `resolutionRef` values.
 - CB36 is S3E1/global index 38, and every one of the 103 global indexes is resolved.
-- The projection contains 91 eligible and 12 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at Chipped #01.
-- The current 91-entry published prefix is also the explicit 91-entry compatibility-locked prefix after the separate Hollowed batch-validation decision; publication never grants a lock automatically.
+- The projection contains 92 eligible and 11 blocked entries, and every unpublished primary entry uses the one generic `unpublished-primary` suffix gate beginning at Chipped #02.
+- The current 92-entry published prefix extends one entry past the explicit 91-entry compatibility-locked prefix: Chipped #01 remains unlocked pending separate validation, demonstrating that publication never grants a lock automatically.
 - Globally sorted eligible primary videos form exactly the approved contiguous prefix.
 - Optional and EX IDs cannot enter the primary default timeline.
 - HB11.5 and EX27 relationships remain exact.
@@ -171,4 +171,4 @@ The projection validator enforces:
 
 ## Artifact boundaries
 
-The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted focus/persistent-audio/playback-availability observations and sampled spoken-language results are documentation of client/UI behavior, not torrent, container, or network evidence. CB36–CB51 and all 38 current-raw Hollowed production artifacts trace their ordinary normalized records, projection entries, and verified-media records without inventing resolution references. Hollowed raw `eng` observations remain in technical evidence while a project-level presentation policy suppresses unvalidated semantic language tokens; Japanese speech is claimed only for the six manually sampled Hollowed episodes. Optional-content runtime experiments and Chipped publication each require separate approval.
+The files under `projection/stremio` and `schemas/projection`, plus the projection validator and tests, remain the publication model rather than media evidence. The generated `cb_0p0` production provenance retains `editorial-resolution:concentrated-35.5-to-0.0` as `sourceInputs.projection.resolutionRef`; it does not duplicate or reattribute the owner decision. The accepted focus/persistent-audio/playback-availability observations and sampled spoken-language results are documentation of client/UI behavior, not torrent, container, or network evidence. CB36–CB51 and all 38 current-raw Hollowed production artifacts trace their ordinary normalized records, projection entries, and verified-media records without inventing resolution references. Hollowed raw `eng` observations remain in technical evidence while a project-level presentation policy suppresses unvalidated semantic language tokens; Japanese speech is claimed only for the six manually sampled Hollowed episodes. Chipped #01 now traces its existing editorial, acquisition, and verified-media evidence through the ordinary production path, but has no real-device compatibility claim and remains unlocked. Chipped #02–#12 and optional-content runtime experiments require separate publication approval.

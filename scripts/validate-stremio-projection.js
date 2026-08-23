@@ -494,8 +494,8 @@ function validate() {
     index: 92
   })
   assert.deepEqual(ch1.publicationEligibility, {
-    state: 'blocked',
-    gateSet: 'unpublished-primary'
+    state: 'eligible',
+    gateSet: 'verified-primary'
   })
 
   assert.equal(registry.schemaVersion, 1)
@@ -596,7 +596,7 @@ function validate() {
     projectId: 'chipped',
     sourceIdentifier: '#01',
     videoId: 'ch_1',
-    status: 'reserved',
+    status: 'published',
     locked: false
   })
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').length > 0)
@@ -682,7 +682,7 @@ function validate() {
   }, {})
   assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
   assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
-  assert.deepEqual(eligibilityCounts, { eligible: 91, blocked: 12 })
+  assert.deepEqual(eligibilityCounts, { eligible: 92, blocked: 11 })
 
   return {
     projectedEntries: projection.entries.length,

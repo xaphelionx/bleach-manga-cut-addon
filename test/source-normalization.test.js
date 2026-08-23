@@ -35,13 +35,13 @@ const expectedSourceHashes = {
 
 const lockedRepositoryHashes = {
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '016cb57b391258e1e8733baf240c936f1e1c6b33c42632e59450a517637a6061',
+  'data/meta/bleach-manga-cut.json': '74875b8d3c69736e2229b65cf267bbe655326816868daa30a0afb92874f42c88',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
   'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
-  'src/addon.js': '8c739381e35da8100727ccbf9b64d14068e05cd2576ecea8c254aa01513b1af5',
-  'src/video-id.js': '504d10f1e05363973698a3c0eb1cb393a770d006fde8e69980ad18605fc411fd',
+  'src/addon.js': '70b67804c90ac29d4b59a2421eff24597b91114e124a10db652a86de38e00893',
+  'src/video-id.js': '1de90e19e744b13e2d84c9851730972a25333ac0d853092c96e80b9cf70f7a36',
   'package.json': 'fafb31cdfca781af226a2fa99def0b52c5dbbbc2d187118c1271cf334e104c23',
   'package-lock.json': 'a1e290dec14dd2257ae8f6cb0d5d04a384c1acf0605aeb756ae85483027c8ec9'
 }
@@ -429,7 +429,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('current 91-entry prefix preserves CB1 and the locked HB14 boundary', () => {
+test('current 92-entry prefix preserves the original locked prefix and Chipped 01 boundary', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }
@@ -440,7 +440,7 @@ test('current 91-entry prefix preserves CB1 and the locked HB14 boundary', () =>
   const torrent = stream.streams[0]
   assert.equal(catalog.metas[0].id, 'bleach-manga-cut')
   assert.equal(meta.meta.id, 'bleach-manga-cut')
-  assert.equal(meta.meta.videos.length, 91)
+  assert.equal(meta.meta.videos.length, 92)
   assert.deepEqual(
     meta.meta.videos.map((video) => video.id),
     projection.publicationPolicy.currentPublishedVideoIds
@@ -448,7 +448,8 @@ test('current 91-entry prefix preserves CB1 and the locked HB14 boundary', () =>
   assert.equal(meta.meta.videos.filter((video) => video.season === 1).length, 9)
   assert.equal(meta.meta.videos.filter((video) => video.season === 2).length, 28)
   assert.equal(meta.meta.videos.filter((video) => video.season === 3).length, 54)
-  assert.equal(meta.meta.videos.some((video) => video.id === 'ch_1' || video.id === 'cb_52'), false)
+  assert.equal(meta.meta.videos.filter((video) => video.season === 4).length, 1)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'ch_2' || video.id === 'cb_52'), false)
   const video = (videoId) => meta.meta.videos.find((candidate) => candidate.id === videoId)
   assert.deepEqual(video('cb_1'), {
     id: 'cb_1',
@@ -528,6 +529,13 @@ test('current 91-entry prefix preserves CB1 and the locked HB14 boundary', () =>
   assert.equal(video('hb_0p8').episode, 33)
   assert.equal(video('hb_50').season, 3)
   assert.equal(video('hb_50').episode, 54)
+  assert.deepEqual(video('ch_1'), {
+    id: 'ch_1',
+    season: 4,
+    episode: 1,
+    title: 'The Lost Agent',
+    runtime: '32'
+  })
   assert.equal(torrent.name, '[P2P🧲] 576p')
   assert.equal(torrent.title, '🎬 Death and Strawberry\n📖 [001] 🕒 18:15\n💾 186.52 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG')
   assert.equal(torrent.infoHash, 'd0cb7e0c8bad014c055bf2becf2694dcfde2b8e8')
