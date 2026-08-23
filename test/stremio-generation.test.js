@@ -65,10 +65,11 @@ const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
   ...EXPECTED_NEW_HOLLOWED_BATCH,
   'ch_1'
 ])
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
+const EXPECTED_ORIGINAL_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
   ...EXPECTED_NEW_HOLLOWED_BATCH
 ])
+const EXPECTED_LOCKED_PREFIX = EXPECTED_PUBLISHED_PREFIX
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
   'data/meta/bleach-manga-cut.json': '74875b8d3c69736e2229b65cf267bbe655326816868daa30a0afb92874f42c88'
@@ -172,8 +173,8 @@ test('only Chipped 01 enters publication and presentation generation', () => {
   const registryEntries = inputs.registry.entries.filter(({ videoId }) => videoId.startsWith('ch_'))
   assert.equal(registryEntries.length, 12)
   for (const entry of registryEntries) {
-    assert.equal(entry.locked, false)
     const published = entry.videoId === 'ch_1'
+    assert.equal(entry.locked, published)
     assert.equal(entry.status, published ? 'published' : 'reserved')
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(entry.videoId), published)
     assert.equal(result.processedVideoIds.includes(entry.videoId), published)
@@ -507,7 +508,7 @@ test('every current generated production candidate satisfies its exact derivatio
   assert.equal(exactResults, 186)
 })
 
-test('all 91 locked stream and provenance artifacts retain their regression contracts', () => {
+test('all 92 locked stream and provenance artifacts retain their regression contracts', () => {
   for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
@@ -529,7 +530,7 @@ test('the original 91 streams and all 53 Concentrated production pairs retain st
   const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
     relativePaths.map((relativePath) => `${relativePath}\0${hash(relativePath)}\n`).join('')
   )).digest('hex')
-  const streamPaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const streamPaths = EXPECTED_ORIGINAL_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
   const concentratedPaths = EXPECTED_PUBLISHED_PREFIX
     .filter((videoId) => videoId.startsWith('cb_'))
     .flatMap((videoId) => [`data/stream/${videoId}.json`, `data/provenance/${videoId}.json`])
@@ -543,8 +544,8 @@ test('the original 91 stream and provenance file vectors retain starting bytes',
   const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
     [...relativePaths].sort().map((relativePath) => `${hash(relativePath)}  ${relativePath}`).join('\n') + '\n'
   )).digest('hex')
-  const streamPaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
-  const provenancePaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/provenance/${videoId}.json`)
+  const streamPaths = EXPECTED_ORIGINAL_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const provenancePaths = EXPECTED_ORIGINAL_LOCKED_PREFIX.map((videoId) => `data/provenance/${videoId}.json`)
   assert.equal(vectorHash(streamPaths), LOCKED_ORIGINAL_STREAM_FILE_VECTOR_SHA256)
   assert.equal(vectorHash(provenancePaths), LOCKED_ORIGINAL_PROVENANCE_FILE_VECTOR_SHA256)
 })

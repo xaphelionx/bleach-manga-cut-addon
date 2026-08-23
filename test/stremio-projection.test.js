@@ -63,10 +63,7 @@ const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
   ...EXPECTED_NEW_HOLLOWED_BATCH,
   'ch_1'
 ])
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
-  ...EXPECTED_NEW_HOLLOWED_BATCH
-])
+const EXPECTED_LOCKED_PREFIX = EXPECTED_PUBLISHED_PREFIX
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = Object.freeze([
   ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
   'hollowed:0.8',
@@ -588,13 +585,13 @@ test('optional IDs cannot enter the primary default timeline', () => {
   assert.equal(optional.primarySeriesPublicationAllowed, false)
 })
 
-test('92 published IDs retain an explicit 91-ID compatibility-locked prefix', () => {
+test('all 92 published IDs form the explicit compatibility-locked prefix', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   const published = registry.entries.filter((entry) => entry.status === 'published')
   assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), EXPECTED_LOCKED_PREFIX)
   assert.equal(published.length, 92)
-  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), ['ch_1'])
+  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), [])
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_4'),
     {
@@ -700,7 +697,7 @@ test('92 published IDs retain an explicit 91-ID compatibility-locked prefix', ()
       sourceIdentifier: '#01',
       videoId: 'ch_1',
       status: 'published',
-      locked: false
+      locked: true
     }
   )
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').every((entry) => entry.locked === false))
@@ -718,7 +715,7 @@ test('a synthetic future Chipped 02 publication extension remains unlocked until
     lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
   })
   assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
-  assert.deepEqual(result.publishedUnlockedVideoIds, ['ch_1', 'ch_2'])
+  assert.deepEqual(result.publishedUnlockedVideoIds, ['ch_2'])
 
   ch2.locked = true
   assert.throws(
@@ -768,7 +765,7 @@ test('complete projection validator accepts the artifacts', () => {
     eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     lockedValidatedVideoIds: EXPECTED_LOCKED_PREFIX,
-    publishedUnlockedVideoIds: ['ch_1'],
+    publishedUnlockedVideoIds: [],
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 5

@@ -38,7 +38,8 @@ const LOCKED_VALIDATED_VIDEO_IDS = new Set([
   'hb_0p8',
   'hb_30', 'hb_31', 'hb_32', 'hb_33', 'hb_34', 'hb_35', 'hb_36', 'hb_37',
   'hb_38', 'hb_39', 'hb_40', 'hb_41', 'hb_42', 'hb_43', 'hb_44', 'hb_45',
-  'hb_46', 'hb_47', 'hb_48', 'hb_49', 'hb_50'
+  'hb_46', 'hb_47', 'hb_48', 'hb_49', 'hb_50',
+  'ch_1'
 ])
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = [
   'hollowed:14', 'hollowed:15', 'hollowed:16', 'hollowed:17',
@@ -597,7 +598,7 @@ function validate() {
     sourceIdentifier: '#01',
     videoId: 'ch_1',
     status: 'published',
-    locked: false
+    locked: true
   })
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').length > 0)
 
