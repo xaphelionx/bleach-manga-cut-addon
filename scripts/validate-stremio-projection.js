@@ -499,6 +499,22 @@ function validate() {
     gateSet: 'verified-primary'
   })
 
+  const ch2 = projection.entries.find((entry) => entry.recordId === 'chipped:#02')
+  assert.ok(ch2)
+  assert.deepEqual(ch2.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 4,
+    episode: 2
+  })
+  assert.deepEqual(ch2.defaultTimelinePosition, {
+    state: 'resolved',
+    index: 93
+  })
+  assert.deepEqual(ch2.publicationEligibility, {
+    state: 'eligible',
+    gateSet: 'verified-primary'
+  })
+
   assert.equal(registry.schemaVersion, 1)
   assert.equal(registry.seriesId, projection.series.id)
   assert.equal(registry.policy.appendOnly, true)
@@ -683,7 +699,7 @@ function validate() {
   }, {})
   assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
   assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
-  assert.deepEqual(eligibilityCounts, { eligible: 92, blocked: 11 })
+  assert.deepEqual(eligibilityCounts, { eligible: 93, blocked: 10 })
 
   return {
     projectedEntries: projection.entries.length,
