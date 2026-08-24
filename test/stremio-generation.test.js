@@ -70,11 +70,7 @@ const EXPECTED_ORIGINAL_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
   ...EXPECTED_NEW_HOLLOWED_BATCH
 ])
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
-  ...EXPECTED_NEW_HOLLOWED_BATCH,
-  'ch_1'
-])
+const EXPECTED_LOCKED_PREFIX = EXPECTED_PUBLISHED_PREFIX
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
   'data/meta/bleach-manga-cut.json': '0b0bd72c267b6a270a69c9c0f5507a623fbd338020c7a899ff280d7be1d6da00'
@@ -181,8 +177,7 @@ test('only Chipped 01-02 enter publication and presentation generation', () => {
   assert.equal(registryEntries.length, 12)
   for (const entry of registryEntries) {
     const published = entry.videoId === 'ch_1' || entry.videoId === 'ch_2'
-    const locked = entry.videoId === 'ch_1'
-    assert.equal(entry.locked, locked)
+    assert.equal(entry.locked, published)
     assert.equal(entry.status, published ? 'published' : 'reserved')
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(entry.videoId), published)
     assert.equal(result.processedVideoIds.includes(entry.videoId), published)
@@ -517,7 +512,7 @@ test('every current generated production candidate satisfies its exact derivatio
   assert.equal(exactResults, 188)
 })
 
-test('all 92 locked stream and provenance artifacts retain their regression contracts', () => {
+test('all 93 locked stream and provenance artifacts retain their regression contracts', () => {
   for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
