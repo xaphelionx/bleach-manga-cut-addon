@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Dark Beat\n📖 [445-447] 🕒 25:34\n💾 888.13 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "178fe19d7b001c7de12985648d07ccbc67a6c7bc",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 888133187,
+        "filename": "[445-447] Chipped Bleach 06.mkv"
+      }
+    }
+  ]
+}

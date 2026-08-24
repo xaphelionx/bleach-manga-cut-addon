@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Goodbye to our XCution\n📖 [470, 473-479] 🕒 41:28\n💾 1466.15 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "dbf72d88935f333fe7a6d3f4d9cb2fd0a34faa3f",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1466151144,
+        "filename": "[470, 473-479] Chipped Bleach 12.mkv"
+      }
+    }
+  ]
+}

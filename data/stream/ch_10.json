@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Deathberry Returns 2\n📖 [459-463] 🕒 35:17\n💾 1230.10 MB\n🎞️ HEVC 🔊 PCM 2.0 + AAC 2.0 • JPN + ENG",
+      "infoHash": "a2b55d1f5617b9854397488fd2c53df3983294c2",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1230095929,
+        "filename": "[459-463] Chipped Bleach 10.mkv"
+      }
+    }
+  ]
+}

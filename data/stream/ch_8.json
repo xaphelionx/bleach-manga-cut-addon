@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 erosion/implosion\n📖 [452-453] 🕒 18:13\n💾 636.42 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "8229743318150b709664e7b41b33ea3482873052",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 636420115,
+        "filename": "[452-453] Chipped Bleach 08.mkv"
+      }
+    }
+  ]
+}

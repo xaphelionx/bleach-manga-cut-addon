@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Raid as a Blade\n📖 [464-472] 🕒 42:34\n💾 1516.46 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "490d4cc3df4595c1cef84190478526cd65483352",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1516462353,
+        "filename": "[464-472] Chipped Bleach 11.mkv"
+      }
+    }
+  ]
+}

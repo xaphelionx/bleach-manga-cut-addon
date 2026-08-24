@@ -44,7 +44,7 @@ function validatePublicationPrefix({ projection, registry, optional, evidenceRec
   }
 
   const sorted = [...projection.entries].sort(compareProjectedEntries)
-  assert.ok(sorted.length > approvedIds.length, 'primary projection must retain a blocked suffix')
+  assert.ok(sorted.length >= approvedIds.length, 'approved primary IDs cannot exceed the primary projection')
   assert.deepEqual(
     sorted.slice(0, 2).map((entry) => entry.videoId),
     ['cb_1', 'cb_2'],

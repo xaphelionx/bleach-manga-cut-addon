@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Welcome to our EXECUTION 2\n📖 [447-451] 🕒 29:50\n💾 1019.63 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "b4f16d928997a8daa39b4883302ccbd67654bd09",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1019628206,
+        "filename": "[447-451] Chipped Bleach 07.mkv"
+      }
+    }
+  ]
+}

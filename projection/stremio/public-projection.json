@@ -127,7 +127,17 @@
       "hb_49",
       "hb_50",
       "ch_1",
-      "ch_2"
+      "ch_2",
+      "ch_3",
+      "ch_4",
+      "ch_5",
+      "ch_6",
+      "ch_7",
+      "ch_8",
+      "ch_9",
+      "ch_10",
+      "ch_11",
+      "ch_12"
     ],
     "playableOnly": true
   },
@@ -153,7 +163,7 @@
       "defaultTimelineContiguity": "blocked",
       "blockedBy": [
         "media-evidence-not-approved",
-        "primary-publication-prefix-after-ch_2"
+        "primary-publication-prefix-after-ch_12"
       ]
     }
   },
@@ -251,15 +261,15 @@
     {"recordId":"hollowed:50","projectId":"hollowed","sourceIdentifier":{"raw":"50.0","displayed":"50"},"videoId":"hb_50","title":"Bleach My Soul","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":3,"episode":54},"defaultTimelinePosition":{"state":"resolved","index":91},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"chipped:#01","projectId":"chipped","sourceIdentifier":{"raw":"#01","displayed":"#01"},"videoId":"ch_1","title":"The Lost Agent","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":1},"defaultTimelinePosition":{"state":"resolved","index":92},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
     {"recordId":"chipped:#02","projectId":"chipped","sourceIdentifier":{"raw":"#02","displayed":"#02"},"videoId":"ch_2","title":"Welcome to our EXECUTION","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":2},"defaultTimelinePosition":{"state":"resolved","index":93},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
-    {"recordId":"chipped:#03","projectId":"chipped","sourceIdentifier":{"raw":"#03","displayed":"#03"},"videoId":"ch_3","title":"The Six Fullbringers","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":3},"defaultTimelinePosition":{"state":"resolved","index":94},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#04","projectId":"chipped","sourceIdentifier":{"raw":"#04","displayed":"#04"},"videoId":"ch_4","title":"Berry in the Box","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":4},"defaultTimelinePosition":{"state":"resolved","index":95},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#05","projectId":"chipped","sourceIdentifier":{"raw":"#05","displayed":"#05"},"videoId":"ch_5","title":"The Rising","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":5},"defaultTimelinePosition":{"state":"resolved","index":96},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#06","projectId":"chipped","sourceIdentifier":{"raw":"#06","displayed":"#06"},"videoId":"ch_6","title":"The Dark Beat","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":6},"defaultTimelinePosition":{"state":"resolved","index":97},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#07","projectId":"chipped","sourceIdentifier":{"raw":"#07","displayed":"#07"},"videoId":"ch_7","title":"Welcome to our EXECUTION 2","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":7},"defaultTimelinePosition":{"state":"resolved","index":98},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#08","projectId":"chipped","sourceIdentifier":{"raw":"#08","displayed":"#08"},"videoId":"ch_8","title":"erosion/implosion","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":8},"defaultTimelinePosition":{"state":"resolved","index":99},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#09","projectId":"chipped","sourceIdentifier":{"raw":"#09","displayed":"#09"},"videoId":"ch_9","title":"End of All Bonds","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":9},"defaultTimelinePosition":{"state":"resolved","index":100},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#10","projectId":"chipped","sourceIdentifier":{"raw":"#10","displayed":"#10"},"videoId":"ch_10","title":"The Deathberry Returns 2","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":10},"defaultTimelinePosition":{"state":"resolved","index":101},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#11","projectId":"chipped","sourceIdentifier":{"raw":"#11","displayed":"#11"},"videoId":"ch_11","title":"Raid as a Blade","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":11},"defaultTimelinePosition":{"state":"resolved","index":102},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}},
-    {"recordId":"chipped:#12","projectId":"chipped","sourceIdentifier":{"raw":"#12","displayed":"#12"},"videoId":"ch_12","title":"Goodbye to our XCution","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":12},"defaultTimelinePosition":{"state":"resolved","index":103},"publicationEligibility":{"state":"blocked","gateSet":"unpublished-primary"}}
+    {"recordId":"chipped:#03","projectId":"chipped","sourceIdentifier":{"raw":"#03","displayed":"#03"},"videoId":"ch_3","title":"The Six Fullbringers","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":3},"defaultTimelinePosition":{"state":"resolved","index":94},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#04","projectId":"chipped","sourceIdentifier":{"raw":"#04","displayed":"#04"},"videoId":"ch_4","title":"Berry in the Box","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":4},"defaultTimelinePosition":{"state":"resolved","index":95},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#05","projectId":"chipped","sourceIdentifier":{"raw":"#05","displayed":"#05"},"videoId":"ch_5","title":"The Rising","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":5},"defaultTimelinePosition":{"state":"resolved","index":96},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#06","projectId":"chipped","sourceIdentifier":{"raw":"#06","displayed":"#06"},"videoId":"ch_6","title":"The Dark Beat","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":6},"defaultTimelinePosition":{"state":"resolved","index":97},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#07","projectId":"chipped","sourceIdentifier":{"raw":"#07","displayed":"#07"},"videoId":"ch_7","title":"Welcome to our EXECUTION 2","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":7},"defaultTimelinePosition":{"state":"resolved","index":98},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#08","projectId":"chipped","sourceIdentifier":{"raw":"#08","displayed":"#08"},"videoId":"ch_8","title":"erosion/implosion","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":8},"defaultTimelinePosition":{"state":"resolved","index":99},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#09","projectId":"chipped","sourceIdentifier":{"raw":"#09","displayed":"#09"},"videoId":"ch_9","title":"End of All Bonds","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":9},"defaultTimelinePosition":{"state":"resolved","index":100},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#10","projectId":"chipped","sourceIdentifier":{"raw":"#10","displayed":"#10"},"videoId":"ch_10","title":"The Deathberry Returns 2","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":10},"defaultTimelinePosition":{"state":"resolved","index":101},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#11","projectId":"chipped","sourceIdentifier":{"raw":"#11","displayed":"#11"},"videoId":"ch_11","title":"Raid as a Blade","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":11},"defaultTimelinePosition":{"state":"resolved","index":102},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}},
+    {"recordId":"chipped:#12","projectId":"chipped","sourceIdentifier":{"raw":"#12","displayed":"#12"},"videoId":"ch_12","title":"Goodbye to our XCution","timelineMembership":"default","projectedPlacement":{"seriesId":"bleach-manga-cut","season":4,"episode":12},"defaultTimelinePosition":{"state":"resolved","index":103},"publicationEligibility":{"state":"eligible","gateSet":"verified-primary"}}
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 Berry in the Box\n📖 [434-439] 🕒 39:52\n💾 1240.18 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "7a88ab6286e2d8645e78cffc13b589563f6b2ed2",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1240179027,
+        "filename": "[434-439] Chipped Bleach 04.mkv"
+      }
+    }
+  ]
+}

@@ -659,6 +659,76 @@
         "episode": 2,
         "title": "Welcome to our EXECUTION",
         "runtime": "21"
+      },
+      {
+        "id": "ch_3",
+        "season": 4,
+        "episode": 3,
+        "title": "The Six Fullbringers",
+        "runtime": "24"
+      },
+      {
+        "id": "ch_4",
+        "season": 4,
+        "episode": 4,
+        "title": "Berry in the Box",
+        "runtime": "39"
+      },
+      {
+        "id": "ch_5",
+        "season": 4,
+        "episode": 5,
+        "title": "The Rising",
+        "runtime": "39"
+      },
+      {
+        "id": "ch_6",
+        "season": 4,
+        "episode": 6,
+        "title": "The Dark Beat",
+        "runtime": "25"
+      },
+      {
+        "id": "ch_7",
+        "season": 4,
+        "episode": 7,
+        "title": "Welcome to our EXECUTION 2",
+        "runtime": "29"
+      },
+      {
+        "id": "ch_8",
+        "season": 4,
+        "episode": 8,
+        "title": "erosion/implosion",
+        "runtime": "18"
+      },
+      {
+        "id": "ch_9",
+        "season": 4,
+        "episode": 9,
+        "title": "End of All Bonds",
+        "runtime": "33"
+      },
+      {
+        "id": "ch_10",
+        "season": 4,
+        "episode": 10,
+        "title": "The Deathberry Returns 2",
+        "runtime": "35"
+      },
+      {
+        "id": "ch_11",
+        "season": 4,
+        "episode": 11,
+        "title": "Raid as a Blade",
+        "runtime": "42"
+      },
+      {
+        "id": "ch_12",
+        "season": 4,
+        "episode": 12,
+        "title": "Goodbye to our XCution",
+        "runtime": "41"
       }
     ]
   }

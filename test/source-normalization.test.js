@@ -35,7 +35,7 @@ const expectedSourceHashes = {
 
 const lockedRepositoryHashes = {
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '0b0bd72c267b6a270a69c9c0f5507a623fbd338020c7a899ff280d7be1d6da00',
+  'data/meta/bleach-manga-cut.json': '5ecaf85355cece7496a3d620bbb3f1974532c7840a103cafb6ac33c24da42ae7',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
@@ -429,7 +429,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('current 93-entry prefix preserves the original locked prefix and Chipped 02 boundary', () => {
+test('current 103-entry prefix preserves the original locked prefix and Chipped 12 boundary', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }
@@ -440,7 +440,7 @@ test('current 93-entry prefix preserves the original locked prefix and Chipped 0
   const torrent = stream.streams[0]
   assert.equal(catalog.metas[0].id, 'bleach-manga-cut')
   assert.equal(meta.meta.id, 'bleach-manga-cut')
-  assert.equal(meta.meta.videos.length, 93)
+  assert.equal(meta.meta.videos.length, 103)
   assert.deepEqual(
     meta.meta.videos.map((video) => video.id),
     projection.publicationPolicy.currentPublishedVideoIds
@@ -448,8 +448,8 @@ test('current 93-entry prefix preserves the original locked prefix and Chipped 0
   assert.equal(meta.meta.videos.filter((video) => video.season === 1).length, 9)
   assert.equal(meta.meta.videos.filter((video) => video.season === 2).length, 28)
   assert.equal(meta.meta.videos.filter((video) => video.season === 3).length, 54)
-  assert.equal(meta.meta.videos.filter((video) => video.season === 4).length, 2)
-  assert.equal(meta.meta.videos.some((video) => video.id === 'ch_3' || video.id === 'cb_52'), false)
+  assert.equal(meta.meta.videos.filter((video) => video.season === 4).length, 12)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'ch_13' || video.id === 'cb_52'), false)
   const video = (videoId) => meta.meta.videos.find((candidate) => candidate.id === videoId)
   assert.deepEqual(video('cb_1'), {
     id: 'cb_1',
@@ -542,6 +542,34 @@ test('current 93-entry prefix preserves the original locked prefix and Chipped 0
     episode: 2,
     title: 'Welcome to our EXECUTION',
     runtime: '21'
+  })
+  assert.deepEqual(video('ch_3'), {
+    id: 'ch_3',
+    season: 4,
+    episode: 3,
+    title: 'The Six Fullbringers',
+    runtime: '24'
+  })
+  assert.deepEqual(video('ch_6'), {
+    id: 'ch_6',
+    season: 4,
+    episode: 6,
+    title: 'The Dark Beat',
+    runtime: '25'
+  })
+  assert.deepEqual(video('ch_10'), {
+    id: 'ch_10',
+    season: 4,
+    episode: 10,
+    title: 'The Deathberry Returns 2',
+    runtime: '35'
+  })
+  assert.deepEqual(video('ch_12'), {
+    id: 'ch_12',
+    season: 4,
+    episode: 12,
+    title: 'Goodbye to our XCution',
+    runtime: '41'
   })
   assert.equal(torrent.name, '[P2P🧲] 576p')
   assert.equal(torrent.title, '🎬 Death and Strawberry\n📖 [001] 🕒 18:15\n💾 186.52 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG')

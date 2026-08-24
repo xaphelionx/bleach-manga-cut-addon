@@ -1,0 +1,153 @@
+{
+  "id": "ch_10",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "chipped:#10",
+      "evidenceRefs": [
+        "chipped-xlsx:chipped-bleach-info:A11",
+        "chipped-xlsx:chipped-bleach-info:B11",
+        "chipped-xlsx:chipped-bleach-info:C11",
+        "chipped-xlsx:chipped-bleach-info:D11",
+        "chipped-xlsx:chipped-bleach-info:E11",
+        "chipped-xlsx:chipped-bleach-info:F11",
+        "chipped-xlsx:chipped-bleach-info:G11",
+        "chipped-xlsx:chipped-bleach-info:H11",
+        "chipped-xlsx:chipped-bleach-info:I11"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "ch_10",
+      "projectedPlacement": {
+        "season": 4,
+        "episode": 10
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/ch_10.json",
+      "videoId": "ch_10",
+      "recordId": "chipped:#10",
+      "verificationState": "verified",
+      "verificationBases": [
+        "ch10-local-torrent-verification",
+        "ch10-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Chipped Bleach",
+    "episode": "#10",
+    "title": "The Deathberry Returns 2",
+    "mangaChapters": "459-463",
+    "sourceAnimeEpisodes": "361-362",
+    "exactEditRuntime": "00:35:17",
+    "normalizedExactRuntime": "35:17",
+    "timeSaved": "12m53s (27%)",
+    "releaseDate": "2025-02-16",
+    "lastUpdate": "2025-02-16",
+    "source": {
+      "document": "Chipped Bleach Info.xlsx",
+      "sheet": "Chipped Bleach Info",
+      "row": 11,
+      "cells": "A11:I11"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "35",
+    "runtimeTransformation": "The exact 35:17 source runtime is presented as 35 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese PCM, 2 channels",
+        "English PCM, 2 channels",
+        "unresolved AAC LC, stereo / 2.0"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "a2b55d1f5617b9854397488fd2c53df3983294c2",
+    "fileIdx": 0,
+    "filename": "[459-463] Chipped Bleach 10.mkv",
+    "videoSize": 1230095929,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "[459-463] Chipped Bleach 10.mkv",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "PCM",
+        "channels": "2 channels"
+      },
+      {
+        "language": "English",
+        "codec": "PCM",
+        "channels": "2 channels"
+      },
+      {
+        "language": {
+          "state": "unresolved"
+        },
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "English"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2116.821
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "35:17 (2117 seconds) -> floor whole minutes -> 35",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1230095929 bytes / 1000000, fixed to two decimals -> 1230.10 MB",
+    "audioPresentation": "verified PCM, 2 channels + AAC LC, 2 channels/stereo -> PCM 2.0 + AAC 2.0",
+    "languagePresentation": "Japanese + English + unresolved -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

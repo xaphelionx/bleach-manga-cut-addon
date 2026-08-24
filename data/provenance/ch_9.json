@@ -1,0 +1,145 @@
+{
+  "id": "ch_9",
+  "sourceInputs": {
+    "editorial": {
+      "recordId": "chipped:#09",
+      "evidenceRefs": [
+        "chipped-xlsx:chipped-bleach-info:A10",
+        "chipped-xlsx:chipped-bleach-info:B10",
+        "chipped-xlsx:chipped-bleach-info:C10",
+        "chipped-xlsx:chipped-bleach-info:D10",
+        "chipped-xlsx:chipped-bleach-info:E10",
+        "chipped-xlsx:chipped-bleach-info:F10",
+        "chipped-xlsx:chipped-bleach-info:G10",
+        "chipped-xlsx:chipped-bleach-info:H10",
+        "chipped-xlsx:chipped-bleach-info:I10"
+      ]
+    },
+    "projection": {
+      "seriesId": "bleach-manga-cut",
+      "videoId": "ch_9",
+      "projectedPlacement": {
+        "season": 4,
+        "episode": 9
+      },
+      "publicationEligibility": {
+        "state": "eligible",
+        "gateSet": "verified-primary"
+      }
+    },
+    "verifiedMedia": {
+      "evidenceRecord": "evidence/media/ch_9.json",
+      "videoId": "ch_9",
+      "recordId": "chipped:#09",
+      "verificationState": "verified",
+      "verificationBases": [
+        "ch9-local-torrent-verification",
+        "ch9-local-media-ffprobe-inspection"
+      ]
+    }
+  },
+  "editorial": {
+    "edit": "Chipped Bleach",
+    "episode": "#09",
+    "title": "End of All Bonds",
+    "mangaChapters": "454-458",
+    "sourceAnimeEpisodes": "359-360",
+    "exactEditRuntime": "00:33:25",
+    "normalizedExactRuntime": "33:25",
+    "timeSaved": "14m45s (31%)",
+    "releaseDate": "2025-02-06",
+    "lastUpdate": "2025-02-06",
+    "source": {
+      "document": "Chipped Bleach Info.xlsx",
+      "sheet": "Chipped Bleach Info",
+      "row": 10,
+      "cells": "A10:I10"
+    }
+  },
+  "presentation": {
+    "stremioVideoRuntime": "33",
+    "runtimeTransformation": "The exact 33:25 source runtime is presented as 33 minutes, matching the observed One Pace convention."
+  },
+  "compatibilityMetadata": {
+    "animeClassification": {
+      "genres": [
+        "Animation",
+        "Anime"
+      ],
+      "intent": "Anime classification is intentional compatibility metadata for this Bleach anime edit."
+    },
+    "originalContentLanguage": {
+      "language": "Japanese",
+      "inspectedAudioTracks": [
+        "Japanese PCM, 2 channels",
+        "English PCM, 2 channels"
+      ],
+      "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
+    }
+  },
+  "torrentEvidence": {
+    "infoHash": "3b5a11911b84787deb2c449f573bd98bb52d1ef4",
+    "fileIdx": 0,
+    "filename": "[454-458] Chipped Bleach 09.mkv",
+    "videoSize": 1124128478,
+    "trackerEvidence": {
+      "state": "unresolved"
+    },
+    "announceEvidence": {
+      "state": "unresolved"
+    },
+    "webSeedEvidence": {
+      "state": "unresolved"
+    }
+  },
+  "localMediaInspection": {
+    "classification": "verified local media inspection",
+    "method": "ffprobe",
+    "inspectedFile": "[454-458] Chipped Bleach 09.mkv",
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "resolutionLabel": "1080p",
+      "codec": "HEVC / H.265",
+      "profile": "Main",
+      "pixelFormat": "yuv420p"
+    },
+    "audio": [
+      {
+        "language": "Japanese",
+        "codec": "PCM",
+        "channels": "2 channels"
+      },
+      {
+        "language": "English",
+        "codec": "PCM",
+        "channels": "2 channels"
+      }
+    ],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "English"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs"
+      }
+    ],
+    "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2005.17
+    }
+  },
+  "transformations": {
+    "stremioRuntime": "33:25 (2005 seconds) -> floor whole minutes -> 33",
+    "resolutionLabel": "verified height 1080 -> 1080p",
+    "sizePresentation": "1124128478 bytes / 1000000, fixed to two decimals -> 1124.13 MB",
+    "audioPresentation": "verified PCM, 2 channels -> PCM 2.0",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
+    "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
+    "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
+  }
+}

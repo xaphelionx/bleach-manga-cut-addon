@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Six Fullbringers\n📖 [431-433] 🕒 24:27\n💾 797.48 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "9c5bbf5012611b8e82776e2af764476d69c8eefd",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 797475141,
+        "filename": "[431-433] Chipped Bleach 03.mkv"
+      }
+    }
+  ]
+}

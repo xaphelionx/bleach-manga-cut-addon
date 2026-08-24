@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 1080p",
+      "title": "🎬 The Rising\n📖 [440-444] 🕒 39:48\n💾 1338.73 MB\n🎞️ HEVC 🔊 PCM 2.0 • JPN + ENG",
+      "infoHash": "da7ac70cbadce11e3348197a5b2cdb4ec130edf0",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 1338728378,
+        "filename": "[440-444] Chipped Bleach 05.mkv"
+      }
+    }
+  ]
+}

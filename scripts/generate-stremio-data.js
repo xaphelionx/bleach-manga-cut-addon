@@ -627,17 +627,29 @@ function formatAudioInspection(track) {
   }
 }
 
+function isExactUnresolvedLanguageState(value) {
+  return typeof value === 'object' && value !== null && !Array.isArray(value) &&
+    Object.keys(value).length === 1 && value.state === 'unresolved'
+}
+
+function languageDisplayValue(language) {
+  if (typeof language === 'string') return language
+  if (isExactUnresolvedLanguageState(language)) return 'unresolved'
+  assert.fail(`unsupported language value: ${JSON.stringify(language)}`)
+}
+
 function describeInspectedAudioTrack(track) {
   const codec = track.profile === null ? track.codec : `${track.codec} ${track.profile}`
   const channels = track.channelLayout === null
     ? `${track.channels} channels`
     : `${track.channelLayout} / ${track.channels.toFixed(1)}`
-  return `${track.language} ${codec}, ${channels}`
+  return `${languageDisplayValue(track.language)} ${codec}, ${channels}`
 }
 
 function formatLanguagePresentation(audioTracks) {
   const languages = []
   for (const track of audioTracks) {
+    if (isExactUnresolvedLanguageState(track.language)) continue
     const code = SERIES_POLICY.presentation.languageCodes[track.language]
     assertNonEmptyString(code, `approved abbreviation for ${track.language}`)
     if (!languages.includes(code)) languages.push(code)
@@ -887,8 +899,8 @@ function buildProvenance(resolved, presentation) {
       sizePresentation: `${selection.byteSize} bytes / ${SERIES_POLICY.presentation.megabyteDivisor}, fixed to two decimals -> ${presentation.sizePresentation}`,
       audioPresentation: `verified ${describeAudioFormats(media.media.audioTracks)} -> ${presentation.audioPresentation}`,
       languagePresentation: presentation.languagePresentation === null
-        ? `${media.media.audioTracks.map((track) => track.language).join(' + ')} normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.`
-        : `${media.media.audioTracks.map((track) => track.language).join(' + ')} -> ${presentation.languagePresentation}`,
+        ? `${media.media.audioTracks.map((track) => languageDisplayValue(track.language)).join(' + ')} normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.`
+        : `${media.media.audioTracks.map((track) => languageDisplayValue(track.language)).join(' + ')} -> ${presentation.languagePresentation}`,
       streamSources: '[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.',
       embeddedSubtitlePolicy: 'Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated.'
     }
