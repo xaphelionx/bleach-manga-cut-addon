@@ -23,7 +23,7 @@ const manifest = {
   id: 'community.xaphelionx.bleach-manga-cut',
   version: '0.0.1',
   name: 'Bleach Manga Cut',
-  description: 'Two-episode Bleach Manga Cut proof of concept.',
+  description: 'Bleach Manga Cut — a guided Concentrated Bleach, Hollowed Bleach, and Chipped Bleach viewing experience.',
   resources: [
     'catalog',
     {

@@ -40,9 +40,9 @@ const lockedRepositoryHashes = {
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
   'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
-  'src/addon.js': '70b67804c90ac29d4b59a2421eff24597b91114e124a10db652a86de38e00893',
+  'src/addon.js': '94db073f885ebb808923e291abed337d7f8869b497ea40f64cd04d5ce7c72a06',
   'src/video-id.js': '1de90e19e744b13e2d84c9851730972a25333ac0d853092c96e80b9cf70f7a36',
-  'package.json': 'fafb31cdfca781af226a2fa99def0b52c5dbbbc2d187118c1271cf334e104c23',
+  'package.json': '42d9a076b845955205d309d99a2e6d0cb45dc4f28849ab710b68b9423a46f20e',
   'package-lock.json': 'a1e290dec14dd2257ae8f6cb0d5d04a384c1acf0605aeb756ae85483027c8ec9'
 }
 const currentRawHollowedRecordIds = [

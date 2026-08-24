@@ -2,7 +2,7 @@
   "name": "bleach-manga-cut-addon",
   "version": "0.0.1",
   "private": true,
-  "description": "Two-episode Bleach Manga Cut proof of concept for Stremio and Nuvio testing.",
+  "description": "Stremio-compatible Bleach Manga Cut addon for the Concentrated Bleach, Hollowed Bleach, and Chipped Bleach viewing progression.",
   "main": "src/addon.js",
   "scripts": {
     "start": "node src/addon.js",
