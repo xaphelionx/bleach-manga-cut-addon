@@ -64,18 +64,16 @@ const EXPECTED_ORIGINAL_LOCKED_PREFIX = Object.freeze([
   ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
   ...EXPECTED_NEW_HOLLOWED_BATCH
 ])
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_ORIGINAL_LOCKED_PREFIX,
-  'ch_1',
-  'ch_2'
-])
 const EXPECTED_NEW_CHIPPED_BATCH = Object.freeze([
   'ch_3', 'ch_4', 'ch_5', 'ch_6', 'ch_7', 'ch_8', 'ch_9', 'ch_10', 'ch_11', 'ch_12'
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
+  ...EXPECTED_ORIGINAL_LOCKED_PREFIX,
+  'ch_1',
+  'ch_2',
   ...EXPECTED_NEW_CHIPPED_BATCH
 ])
+const EXPECTED_LOCKED_PREFIX = EXPECTED_PUBLISHED_PREFIX
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
   'data/meta/bleach-manga-cut.json': '5ecaf85355cece7496a3d620bbb3f1974532c7840a103cafb6ac33c24da42ae7'
@@ -167,7 +165,7 @@ test('processing remains exactly projection-controlled at the current canonical 
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 
-test('all Chipped 01-12 enter publication and presentation generation, only 01-02 are locked', () => {
+test('all Chipped 01-12 enter publication and presentation generation and are all locked', () => {
   const chippedEvidence = inputs.evidenceRecords.filter(({ value }) => value.videoId.startsWith('ch_'))
   assert.equal(chippedEvidence.length, 12)
   assert.deepEqual(
@@ -181,8 +179,7 @@ test('all Chipped 01-12 enter publication and presentation generation, only 01-0
   const registryEntries = inputs.registry.entries.filter(({ videoId }) => videoId.startsWith('ch_'))
   assert.equal(registryEntries.length, 12)
   for (const entry of registryEntries) {
-    const locked = entry.videoId === 'ch_1' || entry.videoId === 'ch_2'
-    assert.equal(entry.locked, locked)
+    assert.equal(entry.locked, true)
     assert.equal(entry.status, 'published')
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(entry.videoId), true)
     assert.equal(result.processedVideoIds.includes(entry.videoId), true)
@@ -521,7 +518,7 @@ test('every current generated production candidate satisfies its exact derivatio
   assert.equal(exactResults, 208)
 })
 
-test('all 93 locked stream and provenance artifacts retain their regression contracts', () => {
+test('all 103 locked stream and provenance artifacts retain their regression contracts', () => {
   for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`

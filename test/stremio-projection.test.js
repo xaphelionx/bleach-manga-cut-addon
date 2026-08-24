@@ -58,19 +58,17 @@ const EXPECTED_NEW_HOLLOWED_BATCH = Object.freeze([
   'hb_0p8',
   ...Array.from({ length: 21 }, (_, index) => `hb_${index + 30}`)
 ])
-const EXPECTED_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
-  ...EXPECTED_NEW_HOLLOWED_BATCH,
-  'ch_1',
-  'ch_2'
-])
 const EXPECTED_NEW_CHIPPED_BATCH = Object.freeze([
   'ch_3', 'ch_4', 'ch_5', 'ch_6', 'ch_7', 'ch_8', 'ch_9', 'ch_10', 'ch_11', 'ch_12'
 ])
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_LOCKED_PREFIX,
+  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
+  ...EXPECTED_NEW_HOLLOWED_BATCH,
+  'ch_1',
+  'ch_2',
   ...EXPECTED_NEW_CHIPPED_BATCH
 ])
+const EXPECTED_LOCKED_PREFIX = EXPECTED_PUBLISHED_PREFIX
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = Object.freeze([
   ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
   'hollowed:0.8',
@@ -615,13 +613,13 @@ test('optional IDs cannot enter the primary default timeline', () => {
   assert.equal(optional.primarySeriesPublicationAllowed, false)
 })
 
-test('all 103 published IDs retain a 93-ID compatibility-locked prefix', () => {
+test('all 103 published IDs are now fully compatibility-locked', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   const published = registry.entries.filter((entry) => entry.status === 'published')
   assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), EXPECTED_LOCKED_PREFIX)
   assert.equal(published.length, 103)
-  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), EXPECTED_NEW_CHIPPED_BATCH)
+  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), [])
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_4'),
     {
@@ -751,14 +749,14 @@ test('all 103 published IDs retain a 93-ID compatibility-locked prefix', () => {
   )
 })
 
-test('the current publication checkpoint reports Chipped 03-12 as published but unlocked', () => {
+test('the current publication checkpoint reports no published-but-unlocked default entries', () => {
   const result = validateCompatibilityLockPrefix({
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     registryEntries: registry.entries,
     lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
   })
   assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
-  assert.deepEqual(result.publishedUnlockedVideoIds, EXPECTED_NEW_CHIPPED_BATCH)
+  assert.deepEqual(result.publishedUnlockedVideoIds, [])
 })
 
 test('a synthetic future registry extension remains unlocked until explicitly validated', () => {
@@ -772,7 +770,7 @@ test('a synthetic future registry extension remains unlocked until explicitly va
     lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
   })
   assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
-  assert.deepEqual(result.publishedUnlockedVideoIds, [...EXPECTED_NEW_CHIPPED_BATCH, 'hb_ex_1'])
+  assert.deepEqual(result.publishedUnlockedVideoIds, ['hb_ex_1'])
 
   next.locked = true
   assert.throws(
@@ -822,7 +820,7 @@ test('complete projection validator accepts the artifacts', () => {
     eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     lockedValidatedVideoIds: EXPECTED_LOCKED_PREFIX,
-    publishedUnlockedVideoIds: EXPECTED_NEW_CHIPPED_BATCH,
+    publishedUnlockedVideoIds: [],
     registryEntries: 169,
     optionalEntries: 4,
     unresolvedIssues: 5
