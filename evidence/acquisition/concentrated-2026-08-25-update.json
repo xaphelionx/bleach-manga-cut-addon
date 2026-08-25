@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "technical-acquisition",
+  "entries": [
+    {
+      "recordId": "concentrated:27",
+      "videoId": "cb_27",
+      "media": {
+        "relativePath": "sources/concentrated-2026-08-25-update/27 - memories in the rain2.mkv",
+        "byteSize": 330517264,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1886.593
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 11,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 6,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/27 - memories in the rain2.mkv.torrent",
+        "torrentByteSize": 6425,
+        "torrentSha256": "3c544563c79d799e5d362116554f39302ef2f72d884cb2bec73d6cd6483eb997",
+        "infoHash": "5fe5242a34e76d24c012c4982caa19c41f1d40ff",
+        "fileIdx": 0,
+        "payloadFilename": "27 - memories in the rain2.mkv",
+        "payloadByteSize": 330517264,
+        "pieceLength": 1048576,
+        "pieceCount": 316,
+        "verifiedPieces": 316,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:52",
+      "videoId": "cb_52",
+      "media": {
+        "relativePath": "sources/concentrated-2026-08-25-update/52 - The Slashing Opera.mkv",
+        "byteSize": 311810978,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1764.631
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 10,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDakr]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 5,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/52 - The Slashing Opera.mkv.torrent",
+        "torrentByteSize": 6062,
+        "torrentSha256": "ecd3aaaa3fa1d975690cddf1aa3af84c67cc3f666254708b17d2ab526370773a",
+        "infoHash": "ec126810f736f38c9ca44d263e7b1bc07e036a09",
+        "fileIdx": 0,
+        "payloadFilename": "52 - The Slashing Opera.mkv",
+        "payloadByteSize": 311810978,
+        "pieceLength": 1048576,
+        "pieceCount": 298,
+        "verifiedPieces": 298,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:53",
+      "videoId": "cb_53",
+      "media": {
+        "relativePath": "sources/concentrated-2026-08-25-update/53 - Arms of the Giant.mkv",
+        "byteSize": 262188363,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 1446.316
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/53 - Arms of the Giant.mkv.torrent",
+        "torrentByteSize": 5121,
+        "torrentSha256": "7ff1ccbb6efd6388a8cb8dc26ed4ad8a6133b801d23b47d060a82ab3f45a80fa",
+        "infoHash": "13853da46d60ab2441f1d0dee2354343f2000f0c",
+        "fileIdx": 0,
+        "payloadFilename": "53 - Arms of the Giant.mkv",
+        "payloadByteSize": 262188363,
+        "pieceLength": 1048576,
+        "pieceCount": 251,
+        "verifiedPieces": 251,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "recordId": "concentrated:54",
+      "videoId": "cb_54",
+      "media": {
+        "relativePath": "sources/concentrated-2026-08-25-update/54 - There is No Heart Without You.mkv",
+        "byteSize": 416711305,
+        "container": {
+          "formatName": "matroska,webm",
+          "durationSeconds": 2457.002
+        },
+        "videoStreams": [
+          {
+            "index": 0,
+            "codecName": "hevc",
+            "profile": "Main",
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "yuv420p",
+            "attachedPic": 0,
+            "default": 1,
+            "forced": null
+          },
+          {
+            "index": 9,
+            "codecName": "png",
+            "profile": null,
+            "width": 768,
+            "height": 576,
+            "pixelFormat": "rgb24",
+            "attachedPic": 1,
+            "default": 0,
+            "forced": null
+          }
+        ],
+        "audioStreams": [
+          {
+            "index": 1,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "jpn",
+            "title": "Japanese [ASC]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 2,
+            "codecName": "aac",
+            "profile": "LC",
+            "channels": 2,
+            "channelLayout": "stereo",
+            "language": "eng",
+            "title": "English [ASC]",
+            "default": 0,
+            "forced": 0
+          }
+        ],
+        "subtitleStreams": [
+          {
+            "index": 3,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Full Subtitles [Edited ParanDark]",
+            "default": 1,
+            "forced": 0
+          },
+          {
+            "index": 4,
+            "codecName": "ass",
+            "language": "eng",
+            "title": "Signs and Songs [Edited ParanDark]",
+            "default": 0,
+            "forced": 1
+          }
+        ],
+        "attachmentCount": 4,
+        "otherStreamCount": 0,
+        "warnings": []
+      },
+      "torrent": {
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/54 - There is No Heart Without You.mkv.torrent",
+        "torrentByteSize": 8073,
+        "torrentSha256": "a9becfae8375319ef8b8b835694fd0de3dd3ab92ae59665226cf987145701085",
+        "infoHash": "e5c8fb3f5247e890b5ca092aa6b7787abab9df41",
+        "fileIdx": 0,
+        "payloadFilename": "54 - There is No Heart Without You.mkv",
+        "payloadByteSize": 416711305,
+        "pieceLength": 1048576,
+        "pieceCount": 398,
+        "verifiedPieces": 398,
+        "mismatchedPieces": 0,
+        "mismatchPieceIndexes": [],
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_52",
+  "recordId": "concentrated:52",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "ec126810f736f38c9ca44d263e7b1bc07e036a09",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "52 - The Slashing Opera.mkv",
+      "byteSize": 311810978
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1764.631
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDakr]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb52-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/52 - The Slashing Opera.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "ecd3aaaa3fa1d975690cddf1aa3af84c67cc3f666254708b17d2ab526370773a"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 298,
+        "verifiedPieces": 298,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb52-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/concentrated-2026-08-25-update/52 - The Slashing Opera.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 311810978
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb52-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb52-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb52-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb52-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb52-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb52-local-media-ffprobe-inspection"
+    ]
+  }
+}

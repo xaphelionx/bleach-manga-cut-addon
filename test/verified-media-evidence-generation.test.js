@@ -38,6 +38,12 @@ const ARRANCAR_ACQUISITION_PATH = path.join(
   'acquisition',
   'concentrated-arrancar.json'
 )
+const CONCENTRATED_AUGUST_UPDATE_ACQUISITION_PATH = path.join(
+  REPOSITORY_ROOT,
+  'evidence',
+  'acquisition',
+  'concentrated-2026-08-25-update.json'
+)
 const HOLLOWED_ACQUISITION_PATH = path.join(
   REPOSITORY_ROOT,
   'evidence',
@@ -100,6 +106,20 @@ const LOCKED_ARRANCAR_EVIDENCE_INDEX_SHA256 =
   'deb13c1351260e6a8f125d8adacb56c1963885a95b601d0ed3f0763d0c2eea2c'
 const LOCKED_ARRANCAR_EVIDENCE_INDEX_BYTE_SIZE = 3219
 const LOCKED_ARRANCAR_EVIDENCE_TOTAL_BYTE_SIZE = 60357
+const CONCENTRATED_AUGUST_UPDATE_CURRENT_SELECTION_ENTRIES = [
+  { recordId: 'concentrated:52', videoId: 'cb_52' },
+  { recordId: 'concentrated:53', videoId: 'cb_53' },
+  { recordId: 'concentrated:54', videoId: 'cb_54' }
+]
+const LOCKED_CONCENTRATED_AUGUST_UPDATE_EVIDENCE_SHA256 = Object.freeze({
+  cb_52: '8416f7b5528f20e57421231c96995164678c1d05e9d21fcbcf55460a46297da9',
+  cb_53: 'ae5dbebcea5f11cce204afd1db062ce5c66c448da0dcda6d14f843fc5e742a40',
+  cb_54: 'eef49c9e873e0b5497aa5793e8f634b7c51e20e44f49ae104c5e8737dbbce134'
+})
+const LOCKED_CURRENT_CB27_EVIDENCE_SHA256 =
+  'b4ebb06ca53645a8831c2383fe8267bd57a549a8bff1a51f774db6514cef553f'
+const LOCKED_CORRECTED_CB27_CANDIDATE_EVIDENCE_SHA256 =
+  '1ec3b5182e20a5e10b4445c4d555924c195b39265811ce2cee82fe5958030906'
 const HOLLOWED_SELECTION_ENTRIES = [
   ...Array.from({ length: 16 }, (_, index) => ({
     recordId: `hollowed:${index + 14}`,
@@ -357,6 +377,10 @@ function productionCandidates() {
 
 function arrancarProductionCandidates() {
   return productionCandidatesFor(ARRANCAR_ACQUISITION_PATH, ARRANCAR_SELECTION_ENTRIES)
+}
+
+function concentratedAugustUpdateCandidates(selectionEntries = CONCENTRATED_AUGUST_UPDATE_CURRENT_SELECTION_ENTRIES) {
+  return productionCandidatesFor(CONCENTRATED_AUGUST_UPDATE_ACQUISITION_PATH, selectionEntries)
 }
 
 function hollowedProductionCandidates() {
@@ -942,6 +966,73 @@ test('committed Arrancar evidence set matches its separate aggregate index lock'
     crypto.createHash('sha256').update(indexBytes).digest('hex'),
     LOCKED_ARRANCAR_EVIDENCE_INDEX_SHA256
   )
+})
+
+test('committed Concentrated August update evidence is byte-identical to selected acquisition generation', () => {
+  const { acquisitionManifest, candidates } = concentratedAugustUpdateCandidates()
+  assert.equal(acquisitionManifest.entries.length, 4)
+  assert.deepEqual(candidates.map(({ videoId }) => videoId), ['cb_52', 'cb_53', 'cb_54'])
+  assert.equal(candidates.some(({ videoId }) => videoId === 'cb_27'), false)
+
+  for (const candidate of candidates) {
+    const acquisitionEntry = acquisitionManifest.entries.find(({ videoId }) => videoId === candidate.videoId)
+    assert.ok(acquisitionEntry)
+    assert.equal(acquisitionEntry.recordId, candidate.recordId)
+    const filename = path.join(PRODUCTION_EVIDENCE_DIRECTORY, candidate.filename)
+    assert.equal(fs.existsSync(filename), true)
+    const committedBytes = fs.readFileSync(filename)
+    const committed = JSON.parse(committedBytes)
+    assert.ok(committedBytes.equals(candidate.bytes), candidate.videoId)
+    assert.equal(candidate.sha256, LOCKED_CONCENTRATED_AUGUST_UPDATE_EVIDENCE_SHA256[candidate.videoId])
+    assert.equal(crypto.createHash('sha256').update(committedBytes).digest('hex'), candidate.sha256)
+    assert.doesNotThrow(() => validateVerifiedMedia(committed))
+    assert.equal(committed.recordId, acquisitionEntry.recordId)
+    assert.equal(committed.videoId, acquisitionEntry.videoId)
+    assert.equal(committed.torrent.infoHash, acquisitionEntry.torrent.infoHash)
+    assert.equal(committed.torrent.fileSelection.filename, acquisitionEntry.torrent.payloadFilename)
+    assert.equal(committed.torrent.fileSelection.byteSize, acquisitionEntry.torrent.payloadByteSize)
+    assert.deepEqual(committed.media.audioTracks.map(({ language, codec, profile, channels, channelLayout }) => (
+      { language, codec, profile, channels, channelLayout }
+    )), [
+      { language: 'Japanese', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' },
+      { language: 'English', codec: 'AAC', profile: 'LC', channels: 2, channelLayout: 'stereo' }
+    ])
+    assert.deepEqual(committed.media.subtitleTracks.map(({ language, title }) => ({ language, title })), [
+      { language: 'English', title: candidate.videoId === 'cb_52' ? 'Full Subtitles [Edited ParanDakr]' : 'Full Subtitles [Edited ParanDark]' },
+      { language: 'English', title: 'Signs and Songs [Edited ParanDark]' }
+    ])
+  }
+})
+
+test('corrected CB27 candidate can be generated while current CB27 evidence remains old', () => {
+  const currentBytes = fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, 'cb_27.json'))
+  const current = JSON.parse(currentBytes)
+  assert.equal(
+    crypto.createHash('sha256').update(currentBytes).digest('hex'),
+    LOCKED_CURRENT_CB27_EVIDENCE_SHA256
+  )
+  assert.equal(current.torrent.infoHash, '9054e185c9d61ad0d9e8795e45029d83b7ebd4ab')
+  assert.equal(current.torrent.fileSelection.byteSize, 330517255)
+
+  const { acquisitionManifest, candidates } = concentratedAugustUpdateCandidates([
+    { recordId: 'concentrated:27', videoId: 'cb_27' }
+  ])
+  assert.equal(candidates.length, 1)
+  const acquisition = acquisitionManifest.entries.find(({ videoId }) => videoId === 'cb_27')
+  const candidate = candidates[0]
+  assert.ok(acquisition)
+  assert.equal(candidate.sha256, LOCKED_CORRECTED_CB27_CANDIDATE_EVIDENCE_SHA256)
+  assert.equal(candidate.value.torrent.infoHash, acquisition.torrent.infoHash)
+  assert.equal(candidate.value.torrent.infoHash, '5fe5242a34e76d24c012c4982caa19c41f1d40ff')
+  assert.equal(candidate.value.torrent.fileSelection.filename, '27 - memories in the rain2.mkv')
+  assert.equal(candidate.value.torrent.fileSelection.byteSize, 330517264)
+  assert.deepEqual(candidate.value.media.duration, {
+    state: 'verified',
+    measurement: 'container',
+    seconds: 1886.593
+  })
+  assert.doesNotThrow(() => validateVerifiedMedia(candidate.value))
+  assert.equal(candidate.bytes.equals(currentBytes), false)
 })
 
 test('committed Hollowed evidence is byte-identical to its separate production generation batch', () => {

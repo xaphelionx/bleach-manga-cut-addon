@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_54",
+  "recordId": "concentrated:54",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "e5c8fb3f5247e890b5ca092aa6b7787abab9df41",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "54 - There is No Heart Without You.mkv",
+      "byteSize": 416711305
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 2457.002
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb54-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/54 - There is No Heart Without You.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "a9becfae8375319ef8b8b835694fd0de3dd3ab92ae59665226cf987145701085"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 398,
+        "verifiedPieces": 398,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb54-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/concentrated-2026-08-25-update/54 - There is No Heart Without You.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 416711305
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb54-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb54-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb54-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb54-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb54-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb54-local-media-ffprobe-inspection"
+    ]
+  }
+}

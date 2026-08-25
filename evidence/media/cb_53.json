@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "authorityDomain": "verified-media",
+  "videoId": "cb_53",
+  "recordId": "concentrated:53",
+  "verificationState": "verified",
+  "torrent": {
+    "infoHash": "13853da46d60ab2441f1d0dee2354343f2000f0c",
+    "fileSelection": {
+      "fileIdx": 0,
+      "filename": "53 - Arms of the Giant.mkv",
+      "byteSize": 262188363
+    },
+    "networkEvidence": {
+      "trackers": {
+        "state": "unresolved"
+      },
+      "announceUrls": {
+        "state": "unresolved"
+      },
+      "webSeeds": {
+        "state": "unresolved"
+      }
+    }
+  },
+  "media": {
+    "duration": {
+      "state": "verified",
+      "measurement": "container",
+      "seconds": 1446.316
+    },
+    "video": {
+      "codec": "HEVC",
+      "standard": "H.265",
+      "profile": "Main",
+      "width": 768,
+      "height": 576,
+      "pixelFormat": "yuv420p"
+    },
+    "audioTracks": [
+      {
+        "language": "Japanese",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      },
+      {
+        "language": "English",
+        "codec": "AAC",
+        "profile": "LC",
+        "channels": 2,
+        "channelLayout": "stereo"
+      }
+    ],
+    "subtitleTracks": [
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "kind": "embedded",
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ]
+  },
+  "verificationBases": [
+    {
+      "evidenceId": "cb53-local-torrent-verification",
+      "kind": "local-torrent-verification",
+      "verificationState": "verified",
+      "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
+      "artifact": {
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/53 - Arms of the Giant.mkv.torrent",
+        "retention": "ignored-local-workspace",
+        "sha256": "7ff1ccbb6efd6388a8cb8dc26ed4ad8a6133b801d23b47d060a82ab3f45a80fa"
+      },
+      "verification": {
+        "pieceLength": 1048576,
+        "pieceCount": 251,
+        "verifiedPieces": 251,
+        "mismatches": 0,
+        "rawInfoMatchesCanonicalEncoding": true,
+        "payloadFilenameMatchesLocalMedia": true,
+        "payloadByteSizeMatchesLocalMedia": true
+      }
+    },
+    {
+      "evidenceId": "cb53-local-media-ffprobe-inspection",
+      "kind": "local-media-inspection",
+      "method": "ffprobe",
+      "verificationState": "verified",
+      "artifact": {
+        "relativePath": "sources/concentrated-2026-08-25-update/53 - Arms of the Giant.mkv",
+        "retention": "ignored-local-workspace",
+        "byteSize": 262188363
+      }
+    }
+  ],
+  "fieldEvidence": {
+    "/torrent/infoHash": [
+      "cb53-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/fileIdx": [
+      "cb53-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/filename": [
+      "cb53-local-torrent-verification"
+    ],
+    "/torrent/fileSelection/byteSize": [
+      "cb53-local-torrent-verification"
+    ],
+    "/media/duration": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/video/codec": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/video/standard": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/video/profile": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/video/width": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/video/height": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/video/pixelFormat": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/audioTracks": [
+      "cb53-local-media-ffprobe-inspection"
+    ],
+    "/media/subtitleTracks": [
+      "cb53-local-media-ffprobe-inspection"
+    ]
+  }
+}

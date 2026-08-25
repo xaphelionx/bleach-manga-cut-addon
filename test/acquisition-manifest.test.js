@@ -26,6 +26,13 @@ const ARRANCAR_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/concentrated-arran
 const ARRANCAR_MANIFEST_PATH = path.join(repositoryRoot, ARRANCAR_MANIFEST_RELATIVE_PATH)
 const LOCKED_ARRANCAR_MANIFEST_SHA256 = '7db2e19dca971507686132091faac781abf42da35a8868044dc0fc12b3deef4a'
 const LOCKED_ARRANCAR_MANIFEST_BYTE_SIZE = 46013
+const CONCENTRATED_AUGUST_UPDATE_MANIFEST_RELATIVE_PATH =
+  'evidence/acquisition/concentrated-2026-08-25-update.json'
+const CONCENTRATED_AUGUST_UPDATE_MANIFEST_PATH =
+  path.join(repositoryRoot, CONCENTRATED_AUGUST_UPDATE_MANIFEST_RELATIVE_PATH)
+const LOCKED_CONCENTRATED_AUGUST_UPDATE_MANIFEST_SHA256 =
+  '328c27d857861b1f2248d84a902f3d20dd7a4a4c9b978332d6286924e3b9718d'
+const LOCKED_CONCENTRATED_AUGUST_UPDATE_MANIFEST_BYTE_SIZE = 11679
 const HOLLOWED_MANIFEST_RELATIVE_PATH = 'evidence/acquisition/hollowed-current-raw.json'
 const HOLLOWED_MANIFEST_PATH = path.join(repositoryRoot, HOLLOWED_MANIFEST_RELATIVE_PATH)
 const LOCKED_HOLLOWED_MANIFEST_SHA256 = '1314e4c004b45e8ae2144331a12114f6626bf66f8c494d4a36febdc9038278f8'
@@ -37,6 +44,48 @@ const LOCKED_HOLLOWED_OTHER_TORRENT_IDENTITIES_SHA256 =
 const LOCKED_HB36_TORRENT_SHA256 = 'd65739b85beeed44f51a1275c1093df01f2cd127fd3eb8a09e71dfac4c223885'
 const LOCKED_HB36_INFO_HASH = '185043ce9aa3d58d81493140d44496a1f22dc83e'
 const LOCKED_HB36_PIECE_441_SHA1 = '4d50eb21bad6dbf98c686007e22f652d6d620685'
+const CONCENTRATED_AUGUST_UPDATE_EXPECTED = Object.freeze({
+  cb_27: Object.freeze({
+    recordId: 'concentrated:27',
+    filename: '27 - memories in the rain2.mkv',
+    payloadByteSize: 330517264,
+    durationSeconds: 1886.593,
+    torrentByteSize: 6425,
+    torrentSha256: '3c544563c79d799e5d362116554f39302ef2f72d884cb2bec73d6cd6483eb997',
+    infoHash: '5fe5242a34e76d24c012c4982caa19c41f1d40ff',
+    pieceCount: 316
+  }),
+  cb_52: Object.freeze({
+    recordId: 'concentrated:52',
+    filename: '52 - The Slashing Opera.mkv',
+    payloadByteSize: 311810978,
+    durationSeconds: 1764.631,
+    torrentByteSize: 6062,
+    torrentSha256: 'ecd3aaaa3fa1d975690cddf1aa3af84c67cc3f666254708b17d2ab526370773a',
+    infoHash: 'ec126810f736f38c9ca44d263e7b1bc07e036a09',
+    pieceCount: 298
+  }),
+  cb_53: Object.freeze({
+    recordId: 'concentrated:53',
+    filename: '53 - Arms of the Giant.mkv',
+    payloadByteSize: 262188363,
+    durationSeconds: 1446.316,
+    torrentByteSize: 5121,
+    torrentSha256: '7ff1ccbb6efd6388a8cb8dc26ed4ad8a6133b801d23b47d060a82ab3f45a80fa',
+    infoHash: '13853da46d60ab2441f1d0dee2354343f2000f0c',
+    pieceCount: 251
+  }),
+  cb_54: Object.freeze({
+    recordId: 'concentrated:54',
+    filename: '54 - There is No Heart Without You.mkv',
+    payloadByteSize: 416711305,
+    durationSeconds: 2457.002,
+    torrentByteSize: 8073,
+    torrentSha256: 'a9becfae8375319ef8b8b835694fd0de3dd3ab92ae59665226cf987145701085',
+    infoHash: 'e5c8fb3f5247e890b5ca092aa6b7787abab9df41',
+    pieceCount: 398
+  })
+})
 
 const PAIRS = [
   ['concentrated:03', 'cb_3', '03 - Three.mkv'],
@@ -746,6 +795,14 @@ function readArrancarManifest() {
   return JSON.parse(readArrancarManifestBytes().toString('utf8'))
 }
 
+function readConcentratedAugustUpdateManifestBytes() {
+  return fs.readFileSync(CONCENTRATED_AUGUST_UPDATE_MANIFEST_PATH)
+}
+
+function readConcentratedAugustUpdateManifest() {
+  return JSON.parse(readConcentratedAugustUpdateManifestBytes().toString('utf8'))
+}
+
 function readHollowedManifestBytes() {
   return fs.readFileSync(HOLLOWED_MANIFEST_PATH)
 }
@@ -1108,6 +1165,152 @@ test('durable Arrancar acquisition torrent and media aggregates remain exact', (
     assert.equal(torrent.rawInfoMatchesCanonicalEncoding, true)
     assert.equal(torrent.payloadFilenameMatchesLocalMedia, true)
     assert.equal(torrent.payloadByteSizeMatchesLocalMedia, true)
+  }
+})
+
+test('durable Concentrated August update manifest has exact locked bytes and scope', () => {
+  assert.equal(fs.existsSync(CONCENTRATED_AUGUST_UPDATE_MANIFEST_PATH), true)
+  const bytes = readConcentratedAugustUpdateManifestBytes()
+  assert.equal(bytes.length, LOCKED_CONCENTRATED_AUGUST_UPDATE_MANIFEST_BYTE_SIZE)
+  assert.equal(
+    crypto.createHash('sha256').update(bytes).digest('hex'),
+    LOCKED_CONCENTRATED_AUGUST_UPDATE_MANIFEST_SHA256
+  )
+
+  const manifest = readConcentratedAugustUpdateManifest()
+  assert.equal(validateAcquisitionManifest(manifest), manifest)
+  assert.equal(manifest.schemaVersion, 1)
+  assert.equal(manifest.authorityDomain, 'technical-acquisition')
+  assert.deepEqual(manifest.entries.map(({ recordId, videoId }) => ({ recordId, videoId })), [
+    { recordId: 'concentrated:27', videoId: 'cb_27' },
+    { recordId: 'concentrated:52', videoId: 'cb_52' },
+    { recordId: 'concentrated:53', videoId: 'cb_53' },
+    { recordId: 'concentrated:54', videoId: 'cb_54' }
+  ])
+})
+
+test('Concentrated August update acquisition locks all four verified torrent observations', () => {
+  const byVideoId = new Map(readConcentratedAugustUpdateManifest().entries.map((entry) => [entry.videoId, entry]))
+  for (const [videoId, expected] of Object.entries(CONCENTRATED_AUGUST_UPDATE_EXPECTED)) {
+    const entry = byVideoId.get(videoId)
+    assert.ok(entry, videoId)
+    assert.deepEqual({
+      recordId: entry.recordId,
+      filename: entry.torrent.payloadFilename,
+      mediaRelativePath: entry.media.relativePath,
+      torrentRelativePath: entry.torrent.relativePath,
+      payloadByteSize: entry.torrent.payloadByteSize,
+      mediaByteSize: entry.media.byteSize,
+      durationSeconds: entry.media.container.durationSeconds,
+      torrentByteSize: entry.torrent.torrentByteSize,
+      torrentSha256: entry.torrent.torrentSha256,
+      infoHash: entry.torrent.infoHash,
+      fileIdx: entry.torrent.fileIdx,
+      pieceLength: entry.torrent.pieceLength,
+      pieceCount: entry.torrent.pieceCount,
+      verifiedPieces: entry.torrent.verifiedPieces,
+      mismatchedPieces: entry.torrent.mismatchedPieces,
+      mismatchPieceIndexes: entry.torrent.mismatchPieceIndexes,
+      rawInfoMatchesCanonicalEncoding: entry.torrent.rawInfoMatchesCanonicalEncoding,
+      payloadFilenameMatchesLocalMedia: entry.torrent.payloadFilenameMatchesLocalMedia,
+      payloadByteSizeMatchesLocalMedia: entry.torrent.payloadByteSizeMatchesLocalMedia
+    }, {
+      recordId: expected.recordId,
+      filename: expected.filename,
+      mediaRelativePath: `sources/concentrated-2026-08-25-update/${expected.filename}`,
+      torrentRelativePath: `sources/torrents/concentrated-2026-08-25-update/${expected.filename}.torrent`,
+      payloadByteSize: expected.payloadByteSize,
+      mediaByteSize: expected.payloadByteSize,
+      durationSeconds: expected.durationSeconds,
+      torrentByteSize: expected.torrentByteSize,
+      torrentSha256: expected.torrentSha256,
+      infoHash: expected.infoHash,
+      fileIdx: 0,
+      pieceLength: 1048576,
+      pieceCount: expected.pieceCount,
+      verifiedPieces: expected.pieceCount,
+      mismatchedPieces: 0,
+      mismatchPieceIndexes: [],
+      rawInfoMatchesCanonicalEncoding: true,
+      payloadFilenameMatchesLocalMedia: true,
+      payloadByteSizeMatchesLocalMedia: true
+    })
+
+    const ordinaryVideo = entry.media.videoStreams.filter(({ attachedPic }) => attachedPic === 0)
+    assert.equal(ordinaryVideo.length, 1, videoId)
+    assert.deepEqual(ordinaryVideo[0], {
+      index: 0,
+      codecName: 'hevc',
+      profile: 'Main',
+      width: 768,
+      height: 576,
+      pixelFormat: 'yuv420p',
+      attachedPic: 0,
+      default: 1,
+      forced: null
+    })
+    assert.deepEqual(entry.media.audioStreams.map(({ codecName, profile, channels, channelLayout, language }) => (
+      { codecName, profile, channels, channelLayout, language }
+    )), [
+      { codecName: 'aac', profile: 'LC', channels: 2, channelLayout: 'stereo', language: 'jpn' },
+      { codecName: 'aac', profile: 'LC', channels: 2, channelLayout: 'stereo', language: 'eng' }
+    ])
+    assert.deepEqual(entry.media.subtitleStreams.map(({ codecName, language }) => ({ codecName, language })), [
+      { codecName: 'ass', language: 'eng' },
+      { codecName: 'ass', language: 'eng' }
+    ])
+    assert.equal(entry.media.otherStreamCount, 0)
+    assert.deepEqual(entry.media.warnings, [])
+  }
+})
+
+test('corrected CB27 acquisition coexists with the historical current CB27 manifest entry', () => {
+  const historicalManifest = readProductionManifest()
+  const correctedManifest = readConcentratedAugustUpdateManifest()
+  const historical = historicalManifest.entries.find(({ videoId }) => videoId === 'cb_27')
+  const corrected = correctedManifest.entries.find(({ videoId }) => videoId === 'cb_27')
+  assert.ok(historical)
+  assert.ok(corrected)
+  assert.equal(validateAcquisitionManifest(historicalManifest), historicalManifest)
+  assert.equal(validateAcquisitionManifest(correctedManifest), correctedManifest)
+  assert.equal(historical.recordId, 'concentrated:27')
+  assert.equal(corrected.recordId, 'concentrated:27')
+  assert.equal(historical.torrent.infoHash, '9054e185c9d61ad0d9e8795e45029d83b7ebd4ab')
+  assert.equal(historical.torrent.payloadByteSize, 330517255)
+  assert.equal(corrected.torrent.infoHash, '5fe5242a34e76d24c012c4982caa19c41f1d40ff')
+  assert.equal(corrected.torrent.payloadByteSize, 330517264)
+  assert.notEqual(corrected.torrent.infoHash, historical.torrent.infoHash)
+  assert.equal(corrected.torrent.payloadByteSize - historical.torrent.payloadByteSize, 9)
+})
+
+test('local Concentrated August update torrents independently verify when local payloads are present', () => {
+  const entries = readConcentratedAugustUpdateManifest().entries
+  for (const entry of entries) {
+    const mediaPath = path.join(repositoryRoot, entry.media.relativePath)
+    const torrentPath = path.join(repositoryRoot, entry.torrent.relativePath)
+    const mediaPresent = fs.existsSync(mediaPath)
+    const torrentPresent = fs.existsSync(torrentPath)
+    assert.equal(mediaPresent, torrentPresent, `${entry.videoId} local media and torrent must be present together`)
+    if (!mediaPresent) continue
+
+    const torrentBytes = fs.readFileSync(torrentPath)
+    const inspected = inspectTorrentBytes(torrentBytes)
+    assert.equal(crypto.createHash('sha256').update(torrentBytes).digest('hex'), entry.torrent.torrentSha256)
+    assert.equal(inspected.infoHash, entry.torrent.infoHash)
+    assert.equal(inspected.payloadFilename, entry.torrent.payloadFilename)
+    assert.equal(inspected.declaredPayloadByteSize, entry.torrent.payloadByteSize)
+    assert.equal(inspected.pieceLength, 1048576)
+    assert.equal(inspected.pieceCount, entry.torrent.pieceCount)
+    assert.equal(inspected.rawInfoMatchesCanonicalEncoding, true)
+    assert.deepEqual(
+      verifyPieces(mediaPath, inspected.declaredPayloadByteSize, inspected.pieceLength, inspected.pieceHashes),
+      {
+        pieceCount: entry.torrent.pieceCount,
+        verifiedPieces: entry.torrent.pieceCount,
+        mismatchedPieces: 0,
+        mismatchPieceIndexes: []
+      }
+    )
   }
 })
 
