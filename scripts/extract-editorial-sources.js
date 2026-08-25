@@ -31,7 +31,7 @@ const SOURCES = [
   {
     sourceId: 'concentrated-xlsx',
     filename: '!Concentrated Bleach Info.xlsx',
-    sha256: 'f3eb61d7415800dcd105a3aea029b8cdd28c25e489874e6001f46106844660e2',
+    sha256: '18dc2a904c5806364a43981f65e516ec8dc3478543385a2db6ae15d3b8713411',
     kind: 'xlsx',
     role: 'project-editorial-authority',
     projectId: 'concentrated',
@@ -47,12 +47,12 @@ const SOURCES = [
       lastUpdate: 'H',
       noteStart: 'I',
       noteEnd: 'P',
-      noteRows: [49, 55, 77]
+      noteRows: [49, 55, 78]
     },
     sheetRoles: {
       'Episode List': {
         role: 'episode-data',
-        primaryDataRange: 'A1:H91'
+        primaryDataRange: 'A1:H92'
       },
       'Arc List': {
         role: 'project-summary',
@@ -954,7 +954,7 @@ function normalizeProject(config, extractedWorkbook, watchGuide) {
         kind: 'planning-status',
         raw: '(episode plans are subject to change (and definitely will))',
         interpretationState: 'direct',
-        evidenceRefs: [getCell(cells, 'B', 92).evidenceId]
+        evidenceRefs: [getCell(cells, 'B', 93).evidenceId]
       }
     ]
   } else if (config.projectId === 'hollowed') {
@@ -1418,7 +1418,7 @@ function buildUnresolved(watchGuide, exInfo, workbooks, resolutionDocument) {
           {
             sourceClaim: 'Concentrated has its own 0.8 record.',
             value: 'concentrated:0.8',
-            evidenceRefs: evidenceRefs(getCell(concentratedCells, 'A', 68), getCell(concentratedCells, 'B', 68))
+            evidenceRefs: evidenceRefs(getCell(concentratedCells, 'A', 69), getCell(concentratedCells, 'B', 69))
           },
           {
             sourceClaim: 'Hollowed has its own 0.8 record.',

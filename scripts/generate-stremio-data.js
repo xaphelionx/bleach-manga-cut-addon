@@ -543,7 +543,7 @@ function loadAndValidateSourceInputs() {
   assert.deepEqual(editorialSummary, {
     sources: 5,
     projects: 3,
-    records: 166,
+    records: 167,
     variants: 3,
     resolutions: 2,
     unresolvedIssues: 5

@@ -26,7 +26,7 @@ const { validate } = require('../scripts/validate-editorial')
 const { buildOutputs } = require('../scripts/extract-editorial-sources')
 
 const expectedSourceHashes = {
-  '!Concentrated Bleach Info.xlsx': 'f3eb61d7415800dcd105a3aea029b8cdd28c25e489874e6001f46106844660e2',
+  '!Concentrated Bleach Info.xlsx': '18dc2a904c5806364a43981f65e516ec8dc3478543385a2db6ae15d3b8713411',
   'Bleach Watch Guide V2.pdf': 'd5eca40c6983542c7e4a7753f0ce42e996ef7b1b466c606c1e1557bb5837a351',
   'Chipped Bleach Info.xlsx': 'a13495e4ebb2b731b9e033c489136eb2bf2e9ae1ad26e84fa47f4cc155ea13f6',
   'EX Episodes Info.pdf': 'bbffbfcc0e8ee175530be3692175cc0674dfa34df33992f07a71a89931dc9f81',
@@ -117,10 +117,10 @@ test('sheet inventory is complete and has no hidden-sheet surprises', () => {
 })
 
 test('primary record counts exclude formatting-only and helper rows', () => {
-  assert.equal(extractedConcentrated.episodeRows.length, 90)
+  assert.equal(extractedConcentrated.episodeRows.length, 91)
   assert.equal(extractedHollowed.episodeRows.length, 64)
   assert.equal(extractedChipped.episodeRows.length, 12)
-  assert.equal(concentrated.records.length, 90)
+  assert.equal(concentrated.records.length, 91)
   assert.equal(hollowed.records.length, 64)
   assert.equal(chipped.records.length, 12)
 })
@@ -163,10 +163,10 @@ test('runtime display parsing preserves Hollowed mm:ss semantics', () => {
 
 test('availability and generatable classifications match approved decisions', () => {
   assert.deepEqual(availabilityCounts(concentrated), {
-    released: 53,
+    released: 56,
     deferred: 1,
     'explicitly-not-planned': 1,
-    planned: 35
+    planned: 33
   })
   assert.deepEqual(availabilityCounts(hollowed), {
     released: 52,
@@ -182,6 +182,113 @@ test('availability and generatable classifications match approved decisions', ()
     assert.equal(record.availability, 'planned')
     assert.equal(record.generatable, false)
   }
+})
+
+test('Concentrated 2026-08-25 source update is normalized without media assumptions', () => {
+  const cb27 = findRecord(concentrated, '27')
+  assert.equal(cb27.sourceRow, 28)
+  assert.equal(cb27.title, 'memories in the rain2')
+  assert.equal(cb27.mangaMapping.raw, '128, 133-136')
+  assert.equal(cb27.animeMapping.raw, '045, 048-049')
+  assert.deepEqual(cb27.runtime, {
+    state: 'known',
+    raw: '0.021840277777777778',
+    displayed: '31:27',
+    seconds: 1887
+  })
+  assert.deepEqual(cb27.releaseDate, {
+    raw: '45608.0',
+    displayed: '11/12/24',
+    iso: '2024-11-12'
+  })
+  assert.deepEqual(cb27.lastUpdate, {
+    raw: '46259.0',
+    displayed: '08/25/26',
+    iso: '2026-08-25'
+  })
+
+  const releasedRecords = [
+    {
+      identifier: '52',
+      sourceRow: 57,
+      title: 'The Slashing Opera',
+      manga: '254-259',
+      anime: '153, 156-157',
+      runtime: { state: 'known', raw: '0.020416666666666666', displayed: '29:24', seconds: 1764 },
+      timeSaved: { raw: '20m49s (41%)', seconds: 1249, percent: 41, uncertain: false }
+    },
+    {
+      identifier: '53',
+      sourceRow: 58,
+      title: 'Arms of the Giant',
+      manga: '259-263',
+      anime: '157-159',
+      runtime: { state: 'known', raw: '0.01673611111111111', displayed: '24:06', seconds: 1446 },
+      timeSaved: { raw: '20m14s (46%)', seconds: 1214, percent: 46, uncertain: false }
+    },
+    {
+      identifier: '54',
+      sourceRow: 59,
+      title: 'There is No Heart Without You',
+      manga: '262-269',
+      anime: '153-155, 160',
+      runtime: { state: 'known', raw: '0.0284375', displayed: '40:57', seconds: 2457 },
+      timeSaved: { raw: '41m31s (50%)', seconds: 2491, percent: 50, uncertain: false }
+    }
+  ]
+  for (const expected of releasedRecords) {
+    const record = findRecord(concentrated, expected.identifier)
+    assert.equal(record.sourceRow, expected.sourceRow)
+    assert.equal(record.availability, 'released')
+    assert.equal(record.generatable, true)
+    assert.equal(record.title, expected.title)
+    assert.equal(record.mangaMapping.raw, expected.manga)
+    assert.equal(record.animeMapping.raw, expected.anime)
+    assert.deepEqual(record.runtime, expected.runtime)
+    assert.deepEqual(record.timeSaved, expected.timeSaved)
+    assert.deepEqual(record.releaseDate, {
+      raw: '08/25/26',
+      displayed: '08/25/26',
+      iso: '2026-08-25'
+    })
+    assert.deepEqual(record.lastUpdate, {
+      raw: '46259.0',
+      displayed: '08/25/26',
+      iso: '2026-08-25'
+    })
+  }
+
+  const cb55 = findRecord(concentrated, '55')
+  assert.equal(cb55.sourceRow, 60)
+  assert.equal(cb55.availability, 'planned')
+  assert.equal(cb55.generatable, false)
+  assert.equal(cb55.title, "Don't Kill My Volupture")
+  assert.equal(cb55.mangaMapping.raw, '264-265, 269-272')
+  assert.equal(cb55.animeMapping.raw, '159, 161-162')
+
+  assert.equal(concentrated.records.some((record) => record.sourceIdentifier.displayed === '70.5'), false)
+  const shiftedSpecial = findRecord(concentrated, '71.5')
+  assert.equal(shiftedSpecial.sourceRow, 78)
+  assert.equal(shiftedSpecial.availability, 'planned')
+  assert.deepEqual(shiftedSpecial.notes, [
+    {
+      text: "   this'll be merged into a cold open it's like a minute",
+      evidenceRefs: ['concentrated-xlsx:episode-list:I78']
+    }
+  ])
+
+  const cb85 = findRecord(concentrated, '85')
+  assert.equal(cb85.sourceRow, 92)
+  assert.equal(cb85.availability, 'planned')
+  assert.equal(cb85.generatable, false)
+  assert.equal(cb85.title, 'Goodbye to our Xcution')
+  assert.equal(cb85.mangaMapping.raw, '470-479')
+  assert.equal(cb85.animeMapping.raw, '364-366')
+
+  const planningStatus = concentrated.project.claims.find(
+    (candidate) => candidate.claimId === 'concentrated-plans-subject-to-change'
+  )
+  assert.deepEqual(planningStatus.evidenceRefs, ['concentrated-xlsx:episode-list:B93'])
 })
 
 test('Concentrated 45.5 and 50.5 preserve directive semantics', () => {
@@ -212,6 +319,10 @@ test('Concentrated and Hollowed 0.8 remain distinct records', () => {
   const issue = unresolved.issues.find((candidate) => candidate.issueId === 'cross-project-0.8-relationship')
   assert.ok(issue)
   assert.equal(issue.status, 'unresolved')
+  assert.deepEqual(issue.claims[0].evidenceRefs, [
+    'concentrated-xlsx:episode-list:A69',
+    'concentrated-xlsx:episode-list:B69'
+  ])
 })
 
 test('HB11.5 is a nested mid-episode insertion around CB50', () => {
@@ -396,7 +507,7 @@ test('editorial records and relationships satisfy the local schemas and invarian
   assert.deepEqual(validate(), {
     sources: 5,
     projects: 3,
-    records: 166,
+    records: 167,
     variants: 3,
     resolutions: 2,
     unresolvedIssues: 5

@@ -20,7 +20,7 @@
         "raw": "(episode plans are subject to change (and definitely will))",
         "interpretationState": "direct",
         "evidenceRefs": [
-          "concentrated-xlsx:episode-list:B92"
+          "concentrated-xlsx:episode-list:B93"
         ]
       }
     ],
@@ -36,7 +36,7 @@
       ],
       "/claims": [
         "watch-guide-pdf:page:3:concentrated-bleach-breakdown",
-        "concentrated-xlsx:episode-list:B92"
+        "concentrated-xlsx:episode-list:B93"
       ]
     }
   },
@@ -3531,9 +3531,9 @@
         "iso": "2024-11-12"
       },
       "lastUpdate": {
-        "raw": "46113.0",
-        "displayed": "04/01/26",
-        "iso": "2026-04-01"
+        "raw": "46259.0",
+        "displayed": "08/25/26",
+        "iso": "2026-08-25"
       },
       "timeSaved": {
         "raw": "11m56s (28%)",
@@ -7345,8 +7345,8 @@
       },
       "sourceRow": 57,
       "kind": "base",
-      "availability": "planned",
-      "generatable": false,
+      "availability": "released",
+      "generatable": true,
       "title": "The Slashing Opera",
       "mangaMapping": {
         "raw": "254-259",
@@ -7376,25 +7376,25 @@
         ]
       },
       "runtime": {
-        "state": "missing",
-        "raw": null,
-        "displayed": null,
-        "seconds": null
+        "state": "known",
+        "raw": "0.020416666666666666",
+        "displayed": "29:24",
+        "seconds": 1764
       },
       "releaseDate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
+        "raw": "08/25/26",
+        "displayed": "08/25/26",
+        "iso": "2026-08-25"
       },
       "lastUpdate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
+        "raw": "46259.0",
+        "displayed": "08/25/26",
+        "iso": "2026-08-25"
       },
       "timeSaved": {
-        "raw": null,
-        "seconds": null,
-        "percent": null,
+        "raw": "20m49s (41%)",
+        "seconds": 1249,
+        "percent": 41,
         "uncertain": false
       },
       "notes": [],
@@ -7418,10 +7418,14 @@
           "concentrated-xlsx:episode-list:A57"
         ],
         "/availability": [
-          "concentrated-xlsx:episode-list:A57"
+          "concentrated-xlsx:episode-list:A57",
+          "concentrated-xlsx:episode-list:E57",
+          "concentrated-xlsx:episode-list:G57"
         ],
         "/generatable": [
-          "concentrated-xlsx:episode-list:A57"
+          "concentrated-xlsx:episode-list:A57",
+          "concentrated-xlsx:episode-list:E57",
+          "concentrated-xlsx:episode-list:G57"
         ],
         "/title": [
           "concentrated-xlsx:episode-list:B57"
@@ -7439,20 +7443,16 @@
           "concentrated-xlsx:episode-list:D57"
         ],
         "/runtime": [
-          "concentrated-xlsx:episode-list:A57",
-          "concentrated-xlsx:episode-list:E1"
+          "concentrated-xlsx:episode-list:E57"
         ],
         "/releaseDate": [
-          "concentrated-xlsx:episode-list:A57",
-          "concentrated-xlsx:episode-list:G1"
+          "concentrated-xlsx:episode-list:G57"
         ],
         "/lastUpdate": [
-          "concentrated-xlsx:episode-list:A57",
-          "concentrated-xlsx:episode-list:B57"
+          "concentrated-xlsx:episode-list:H57"
         ],
         "/timeSaved": [
-          "concentrated-xlsx:episode-list:A57",
-          "concentrated-xlsx:episode-list:B57"
+          "concentrated-xlsx:episode-list:F57"
         ],
         "/notes": [
           "concentrated-xlsx:episode-list:A57",
@@ -7466,7 +7466,7 @@
         "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
         "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
         "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
-        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
         "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
         "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
         "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
@@ -7481,8 +7481,8 @@
       },
       "sourceRow": 58,
       "kind": "base",
-      "availability": "planned",
-      "generatable": false,
+      "availability": "released",
+      "generatable": true,
       "title": "Arms of the Giant",
       "mangaMapping": {
         "raw": "259-263",
@@ -7496,14 +7496,8 @@
         ]
       },
       "animeMapping": {
-        "raw": "153-154, 157-159",
+        "raw": "157-159",
         "tokens": [
-          {
-            "kind": "range",
-            "raw": "153-154",
-            "start": "153",
-            "end": "154"
-          },
           {
             "kind": "range",
             "raw": "157-159",
@@ -7513,25 +7507,25 @@
         ]
       },
       "runtime": {
-        "state": "missing",
-        "raw": null,
-        "displayed": null,
-        "seconds": null
+        "state": "known",
+        "raw": "0.01673611111111111",
+        "displayed": "24:06",
+        "seconds": 1446
       },
       "releaseDate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
+        "raw": "08/25/26",
+        "displayed": "08/25/26",
+        "iso": "2026-08-25"
       },
       "lastUpdate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
+        "raw": "46259.0",
+        "displayed": "08/25/26",
+        "iso": "2026-08-25"
       },
       "timeSaved": {
-        "raw": null,
-        "seconds": null,
-        "percent": null,
+        "raw": "20m14s (46%)",
+        "seconds": 1214,
+        "percent": 46,
         "uncertain": false
       },
       "notes": [],
@@ -7555,10 +7549,14 @@
           "concentrated-xlsx:episode-list:A58"
         ],
         "/availability": [
-          "concentrated-xlsx:episode-list:A58"
+          "concentrated-xlsx:episode-list:A58",
+          "concentrated-xlsx:episode-list:E58",
+          "concentrated-xlsx:episode-list:G58"
         ],
         "/generatable": [
-          "concentrated-xlsx:episode-list:A58"
+          "concentrated-xlsx:episode-list:A58",
+          "concentrated-xlsx:episode-list:E58",
+          "concentrated-xlsx:episode-list:G58"
         ],
         "/title": [
           "concentrated-xlsx:episode-list:B58"
@@ -7576,20 +7574,16 @@
           "concentrated-xlsx:episode-list:D58"
         ],
         "/runtime": [
-          "concentrated-xlsx:episode-list:A58",
-          "concentrated-xlsx:episode-list:E1"
+          "concentrated-xlsx:episode-list:E58"
         ],
         "/releaseDate": [
-          "concentrated-xlsx:episode-list:A58",
-          "concentrated-xlsx:episode-list:G1"
+          "concentrated-xlsx:episode-list:G58"
         ],
         "/lastUpdate": [
-          "concentrated-xlsx:episode-list:A58",
-          "concentrated-xlsx:episode-list:B58"
+          "concentrated-xlsx:episode-list:H58"
         ],
         "/timeSaved": [
-          "concentrated-xlsx:episode-list:A58",
-          "concentrated-xlsx:episode-list:B58"
+          "concentrated-xlsx:episode-list:F58"
         ],
         "/notes": [
           "concentrated-xlsx:episode-list:A58",
@@ -7603,7 +7597,7 @@
         "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
         "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
         "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
-        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
         "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
         "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
         "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
@@ -7618,27 +7612,27 @@
       },
       "sourceRow": 59,
       "kind": "base",
-      "availability": "planned",
-      "generatable": false,
+      "availability": "released",
+      "generatable": true,
       "title": "There is No Heart Without You",
       "mangaMapping": {
-        "raw": "264-269",
+        "raw": "262-269",
         "tokens": [
           {
             "kind": "range",
-            "raw": "264-269",
-            "start": "264",
+            "raw": "262-269",
+            "start": "262",
             "end": "269"
           }
         ]
       },
       "animeMapping": {
-        "raw": "154-155, 160",
+        "raw": "153-155, 160",
         "tokens": [
           {
             "kind": "range",
-            "raw": "154-155",
-            "start": "154",
+            "raw": "153-155",
+            "start": "153",
             "end": "155"
           },
           {
@@ -7649,25 +7643,25 @@
         ]
       },
       "runtime": {
-        "state": "missing",
-        "raw": null,
-        "displayed": null,
-        "seconds": null
+        "state": "known",
+        "raw": "0.0284375",
+        "displayed": "40:57",
+        "seconds": 2457
       },
       "releaseDate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
+        "raw": "08/25/26",
+        "displayed": "08/25/26",
+        "iso": "2026-08-25"
       },
       "lastUpdate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
+        "raw": "46259.0",
+        "displayed": "08/25/26",
+        "iso": "2026-08-25"
       },
       "timeSaved": {
-        "raw": null,
-        "seconds": null,
-        "percent": null,
+        "raw": "41m31s (50%)",
+        "seconds": 2491,
+        "percent": 50,
         "uncertain": false
       },
       "notes": [],
@@ -7691,10 +7685,14 @@
           "concentrated-xlsx:episode-list:A59"
         ],
         "/availability": [
-          "concentrated-xlsx:episode-list:A59"
+          "concentrated-xlsx:episode-list:A59",
+          "concentrated-xlsx:episode-list:E59",
+          "concentrated-xlsx:episode-list:G59"
         ],
         "/generatable": [
-          "concentrated-xlsx:episode-list:A59"
+          "concentrated-xlsx:episode-list:A59",
+          "concentrated-xlsx:episode-list:E59",
+          "concentrated-xlsx:episode-list:G59"
         ],
         "/title": [
           "concentrated-xlsx:episode-list:B59"
@@ -7712,20 +7710,16 @@
           "concentrated-xlsx:episode-list:D59"
         ],
         "/runtime": [
-          "concentrated-xlsx:episode-list:A59",
-          "concentrated-xlsx:episode-list:E1"
+          "concentrated-xlsx:episode-list:E59"
         ],
         "/releaseDate": [
-          "concentrated-xlsx:episode-list:A59",
-          "concentrated-xlsx:episode-list:G1"
+          "concentrated-xlsx:episode-list:G59"
         ],
         "/lastUpdate": [
-          "concentrated-xlsx:episode-list:A59",
-          "concentrated-xlsx:episode-list:B59"
+          "concentrated-xlsx:episode-list:H59"
         ],
         "/timeSaved": [
-          "concentrated-xlsx:episode-list:A59",
-          "concentrated-xlsx:episode-list:B59"
+          "concentrated-xlsx:episode-list:F59"
         ],
         "/notes": [
           "concentrated-xlsx:episode-list:A59",
@@ -7739,7 +7733,7 @@
         "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
         "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
         "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
-        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
+        "/runtime": "Apply the source cell display semantics, then parse mm:ss or h:mm:ss to seconds; do not interpret Hollowed cached serials as elapsed multi-hour runtimes.",
         "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
         "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
         "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
@@ -7756,9 +7750,9 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Monster",
+      "title": "Don't Kill My Volupture",
       "mangaMapping": {
-        "raw": "264-265, 269-276",
+        "raw": "264-265, 269-272",
         "tokens": [
           {
             "kind": "range",
@@ -7768,14 +7762,14 @@
           },
           {
             "kind": "range",
-            "raw": "269-276",
+            "raw": "269-272",
             "start": "269",
-            "end": "276"
+            "end": "272"
           }
         ]
       },
       "animeMapping": {
-        "raw": "159, 161-164",
+        "raw": "159, 161-162",
         "tokens": [
           {
             "kind": "number",
@@ -7784,9 +7778,9 @@
           },
           {
             "kind": "range",
-            "raw": "161-164",
+            "raw": "161-162",
             "start": "161",
-            "end": "164"
+            "end": "162"
           }
         ]
       },
@@ -7898,26 +7892,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Devour the Flesh, Alone",
+      "title": "The Monster",
       "mangaMapping": {
-        "raw": "277-285",
+        "raw": "272-278",
         "tokens": [
           {
             "kind": "range",
-            "raw": "277-285",
-            "start": "277",
-            "end": "285"
+            "raw": "272-278",
+            "start": "272",
+            "end": "278"
           }
         ]
       },
       "animeMapping": {
-        "raw": "164-167",
+        "raw": "162-165",
         "tokens": [
           {
             "kind": "range",
-            "raw": "164-167",
-            "start": "164",
-            "end": "167"
+            "raw": "162-165",
+            "start": "162",
+            "end": "165"
           }
         ]
       },
@@ -8029,26 +8023,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "The Bad Joke",
+      "title": "Devour the Flesh, Alone",
       "mangaMapping": {
-        "raw": "286-297",
+        "raw": "279-285",
         "tokens": [
           {
             "kind": "range",
-            "raw": "286-297",
-            "start": "286",
-            "end": "297"
+            "raw": "279-285",
+            "start": "279",
+            "end": "285"
           }
         ]
       },
       "animeMapping": {
-        "raw": "190-195",
+        "raw": "165-167",
         "tokens": [
           {
             "kind": "range",
-            "raw": "190-195",
-            "start": "190",
-            "end": "195"
+            "raw": "165-167",
+            "start": "165",
+            "end": "167"
           }
         ]
       },
@@ -8160,26 +8154,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "INTRUDERZ 2",
+      "title": "The Bad Joke",
       "mangaMapping": {
-        "raw": "298-306",
+        "raw": "286-297",
         "tokens": [
           {
             "kind": "range",
-            "raw": "298-306",
-            "start": "298",
-            "end": "306"
+            "raw": "286-297",
+            "start": "286",
+            "end": "297"
           }
         ]
       },
       "animeMapping": {
-        "raw": "196-200",
+        "raw": "190-195",
         "tokens": [
           {
             "kind": "range",
-            "raw": "196-200",
-            "start": "196",
-            "end": "200"
+            "raw": "190-195",
+            "start": "190",
+            "end": "195"
           }
         ]
       },
@@ -8291,26 +8285,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "To Close Your World",
+      "title": "INTRUDERZ 2",
       "mangaMapping": {
-        "raw": "307-315",
+        "raw": "298-306",
         "tokens": [
           {
             "kind": "range",
-            "raw": "307-315",
-            "start": "307",
-            "end": "315"
+            "raw": "298-306",
+            "start": "298",
+            "end": "306"
           }
         ]
       },
       "animeMapping": {
-        "raw": "200-203",
+        "raw": "196-200",
         "tokens": [
           {
             "kind": "range",
-            "raw": "200-203",
-            "start": "200",
-            "end": "203"
+            "raw": "196-200",
+            "start": "196",
+            "end": "200"
           }
         ]
       },
@@ -8422,26 +8416,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Turn Back the Pendulum",
+      "title": "To Close Your World",
       "mangaMapping": {
-        "raw": "-108 to -105",
+        "raw": "307-315",
         "tokens": [
           {
             "kind": "range",
-            "raw": "-108 to -105",
-            "start": "-108",
-            "end": "-105"
+            "raw": "307-315",
+            "start": "307",
+            "end": "315"
           }
         ]
       },
       "animeMapping": {
-        "raw": "206-208",
+        "raw": "200-203",
         "tokens": [
           {
             "kind": "range",
-            "raw": "206-208",
-            "start": "206",
-            "end": "208"
+            "raw": "200-203",
+            "start": "200",
+            "end": "203"
           }
         ]
       },
@@ -8553,26 +8547,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "The Pendulum Keeps Swinging",
+      "title": "Turn Back the Pendulum",
       "mangaMapping": {
-        "raw": "-104 to -100",
+        "raw": "-108 to -105",
         "tokens": [
           {
             "kind": "range",
-            "raw": "-104 to -100",
-            "start": "-104",
-            "end": "-100"
+            "raw": "-108 to -105",
+            "start": "-108",
+            "end": "-105"
           }
         ]
       },
       "animeMapping": {
-        "raw": "208-211",
+        "raw": "206-208",
         "tokens": [
           {
             "kind": "range",
-            "raw": "208-211",
-            "start": "208",
-            "end": "211"
+            "raw": "206-208",
+            "start": "206",
+            "end": "208"
           }
         ]
       },
@@ -8684,6 +8678,137 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
+      "title": "The Pendulum Keeps Swinging",
+      "mangaMapping": {
+        "raw": "-104 to -100",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "-104 to -100",
+            "start": "-104",
+            "end": "-100"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "208-211",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "208-211",
+            "start": "208",
+            "end": "211"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "missing",
+        "raw": null,
+        "displayed": null,
+        "seconds": null
+      },
+      "releaseDate": {
+        "raw": null,
+        "displayed": null,
+        "iso": null
+      },
+      "lastUpdate": {
+        "raw": null,
+        "displayed": null,
+        "iso": null
+      },
+      "timeSaved": {
+        "raw": null,
+        "seconds": null,
+        "percent": null,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/projectId": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/sourceIdentifier/raw": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/sourceIdentifier/displayed": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/sourceRow": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/kind": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/availability": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/generatable": [
+          "concentrated-xlsx:episode-list:A67"
+        ],
+        "/title": [
+          "concentrated-xlsx:episode-list:B67"
+        ],
+        "/mangaMapping/raw": [
+          "concentrated-xlsx:episode-list:C67"
+        ],
+        "/mangaMapping/tokens": [
+          "concentrated-xlsx:episode-list:C67"
+        ],
+        "/animeMapping/raw": [
+          "concentrated-xlsx:episode-list:D67"
+        ],
+        "/animeMapping/tokens": [
+          "concentrated-xlsx:episode-list:D67"
+        ],
+        "/runtime": [
+          "concentrated-xlsx:episode-list:A67",
+          "concentrated-xlsx:episode-list:E1"
+        ],
+        "/releaseDate": [
+          "concentrated-xlsx:episode-list:A67",
+          "concentrated-xlsx:episode-list:G1"
+        ],
+        "/lastUpdate": [
+          "concentrated-xlsx:episode-list:A67",
+          "concentrated-xlsx:episode-list:B67"
+        ],
+        "/timeSaved": [
+          "concentrated-xlsx:episode-list:A67",
+          "concentrated-xlsx:episode-list:B67"
+        ],
+        "/notes": [
+          "concentrated-xlsx:episode-list:A67",
+          "concentrated-xlsx:episode-list:B67"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "concentrated:63",
+      "projectId": "concentrated",
+      "sourceIdentifier": {
+        "raw": "63",
+        "displayed": "63"
+      },
+      "sourceRow": 68,
+      "kind": "base",
+      "availability": "planned",
+      "generatable": false,
       "title": "Let Stop the Pendulum",
       "mangaMapping": {
         "raw": "-99 to -97",
@@ -8732,63 +8857,63 @@
       "notes": [],
       "fieldEvidence": {
         "/recordId": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/projectId": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/sourceIdentifier/raw": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/sourceIdentifier/displayed": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/sourceRow": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/kind": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/availability": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/generatable": [
-          "concentrated-xlsx:episode-list:A67"
+          "concentrated-xlsx:episode-list:A68"
         ],
         "/title": [
-          "concentrated-xlsx:episode-list:B67"
+          "concentrated-xlsx:episode-list:B68"
         ],
         "/mangaMapping/raw": [
-          "concentrated-xlsx:episode-list:C67"
+          "concentrated-xlsx:episode-list:C68"
         ],
         "/mangaMapping/tokens": [
-          "concentrated-xlsx:episode-list:C67"
+          "concentrated-xlsx:episode-list:C68"
         ],
         "/animeMapping/raw": [
-          "concentrated-xlsx:episode-list:D67"
+          "concentrated-xlsx:episode-list:D68"
         ],
         "/animeMapping/tokens": [
-          "concentrated-xlsx:episode-list:D67"
+          "concentrated-xlsx:episode-list:D68"
         ],
         "/runtime": [
-          "concentrated-xlsx:episode-list:A67",
+          "concentrated-xlsx:episode-list:A68",
           "concentrated-xlsx:episode-list:E1"
         ],
         "/releaseDate": [
-          "concentrated-xlsx:episode-list:A67",
+          "concentrated-xlsx:episode-list:A68",
           "concentrated-xlsx:episode-list:G1"
         ],
         "/lastUpdate": [
-          "concentrated-xlsx:episode-list:A67",
-          "concentrated-xlsx:episode-list:B67"
+          "concentrated-xlsx:episode-list:A68",
+          "concentrated-xlsx:episode-list:B68"
         ],
         "/timeSaved": [
-          "concentrated-xlsx:episode-list:A67",
-          "concentrated-xlsx:episode-list:B67"
+          "concentrated-xlsx:episode-list:A68",
+          "concentrated-xlsx:episode-list:B68"
         ],
         "/notes": [
-          "concentrated-xlsx:episode-list:A67",
-          "concentrated-xlsx:episode-list:B67"
+          "concentrated-xlsx:episode-list:A68",
+          "concentrated-xlsx:episode-list:B68"
         ]
       },
       "fieldTransformations": {
@@ -8811,7 +8936,7 @@
         "raw": "0.8",
         "displayed": "0.8"
       },
-      "sourceRow": 68,
+      "sourceRow": 69,
       "kind": "special",
       "availability": "planned",
       "generatable": false,
@@ -8833,137 +8958,6 @@
             "kind": "number",
             "raw": "227",
             "value": "227"
-          }
-        ]
-      },
-      "runtime": {
-        "state": "missing",
-        "raw": null,
-        "displayed": null,
-        "seconds": null
-      },
-      "releaseDate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
-      },
-      "lastUpdate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
-      },
-      "timeSaved": {
-        "raw": null,
-        "seconds": null,
-        "percent": null,
-        "uncertain": false
-      },
-      "notes": [],
-      "fieldEvidence": {
-        "/recordId": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/projectId": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/sourceIdentifier/raw": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/sourceIdentifier/displayed": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/sourceRow": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/kind": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/availability": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/generatable": [
-          "concentrated-xlsx:episode-list:A68"
-        ],
-        "/title": [
-          "concentrated-xlsx:episode-list:B68"
-        ],
-        "/mangaMapping/raw": [
-          "concentrated-xlsx:episode-list:C68"
-        ],
-        "/mangaMapping/tokens": [
-          "concentrated-xlsx:episode-list:C68"
-        ],
-        "/animeMapping/raw": [
-          "concentrated-xlsx:episode-list:D68"
-        ],
-        "/animeMapping/tokens": [
-          "concentrated-xlsx:episode-list:D68"
-        ],
-        "/runtime": [
-          "concentrated-xlsx:episode-list:A68",
-          "concentrated-xlsx:episode-list:E1"
-        ],
-        "/releaseDate": [
-          "concentrated-xlsx:episode-list:A68",
-          "concentrated-xlsx:episode-list:G1"
-        ],
-        "/lastUpdate": [
-          "concentrated-xlsx:episode-list:A68",
-          "concentrated-xlsx:episode-list:B68"
-        ],
-        "/timeSaved": [
-          "concentrated-xlsx:episode-list:A68",
-          "concentrated-xlsx:episode-list:B68"
-        ],
-        "/notes": [
-          "concentrated-xlsx:episode-list:A68",
-          "concentrated-xlsx:episode-list:B68"
-        ]
-      },
-      "fieldTransformations": {
-        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
-        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
-        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
-        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
-        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
-        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
-        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
-        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
-        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
-        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
-      }
-    },
-    {
-      "recordId": "concentrated:63",
-      "projectId": "concentrated",
-      "sourceIdentifier": {
-        "raw": "63",
-        "displayed": "63"
-      },
-      "sourceRow": 69,
-      "kind": "base",
-      "availability": "planned",
-      "generatable": false,
-      "title": "Six Hearts Will Beat as One",
-      "mangaMapping": {
-        "raw": "316-319",
-        "tokens": [
-          {
-            "kind": "range",
-            "raw": "316-319",
-            "start": "316",
-            "end": "319"
-          }
-        ]
-      },
-      "animeMapping": {
-        "raw": "215-216",
-        "tokens": [
-          {
-            "kind": "range",
-            "raw": "215-216",
-            "start": "215",
-            "end": "216"
           }
         ]
       },
@@ -9075,26 +9069,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Ants and Dragons",
+      "title": "Six Hearts Will Beat as One",
       "mangaMapping": {
-        "raw": "320-328",
+        "raw": "316-319",
         "tokens": [
           {
             "kind": "range",
-            "raw": "320-328",
-            "start": "320",
-            "end": "328"
+            "raw": "316-319",
+            "start": "316",
+            "end": "319"
           }
         ]
       },
       "animeMapping": {
-        "raw": "217-221",
+        "raw": "215-216",
         "tokens": [
           {
             "kind": "range",
-            "raw": "217-221",
-            "start": "217",
-            "end": "221"
+            "raw": "215-216",
+            "start": "215",
+            "end": "216"
           }
         ]
       },
@@ -9206,26 +9200,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Raging Rampage",
+      "title": "Ants and Dragons",
       "mangaMapping": {
-        "raw": "329-339",
+        "raw": "320-328",
         "tokens": [
           {
             "kind": "range",
-            "raw": "329-339",
-            "start": "329",
-            "end": "339"
+            "raw": "320-328",
+            "start": "320",
+            "end": "328"
           }
         ]
       },
       "animeMapping": {
-        "raw": "221-226",
+        "raw": "217-221",
         "tokens": [
           {
             "kind": "range",
-            "raw": "221-226",
-            "start": "221",
-            "end": "226"
+            "raw": "217-221",
+            "start": "217",
+            "end": "221"
           }
         ]
       },
@@ -9337,26 +9331,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "heart",
+      "title": "Raging Rampage",
       "mangaMapping": {
-        "raw": "340-354",
+        "raw": "329-339",
         "tokens": [
           {
             "kind": "range",
-            "raw": "340-354",
-            "start": "340",
-            "end": "354"
+            "raw": "329-339",
+            "start": "329",
+            "end": "339"
           }
         ]
       },
       "animeMapping": {
-        "raw": "267-272",
+        "raw": "221-226",
         "tokens": [
           {
             "kind": "range",
-            "raw": "267-272",
-            "start": "267",
-            "end": "272"
+            "raw": "221-226",
+            "start": "221",
+            "end": "226"
           }
         ]
       },
@@ -9468,36 +9462,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Tyrant of Skulls",
+      "title": "heart",
       "mangaMapping": {
-        "raw": "354-364, -16",
+        "raw": "340-354",
         "tokens": [
           {
             "kind": "range",
-            "raw": "354-364",
-            "start": "354",
-            "end": "364"
-          },
-          {
-            "kind": "number",
-            "raw": "-16",
-            "value": "-16"
+            "raw": "340-354",
+            "start": "340",
+            "end": "354"
           }
         ]
       },
       "animeMapping": {
-        "raw": "273-278, 239",
+        "raw": "267-272",
         "tokens": [
           {
             "kind": "range",
-            "raw": "273-278",
-            "start": "273",
-            "end": "278"
-          },
-          {
-            "kind": "number",
-            "raw": "239",
-            "value": "239"
+            "raw": "267-272",
+            "start": "267",
+            "end": "272"
           }
         ]
       },
@@ -9609,26 +9593,36 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Spit on Your Own God",
+      "title": "Tyrant of Skulls",
       "mangaMapping": {
-        "raw": "365-371",
+        "raw": "354-364, -16",
         "tokens": [
           {
             "kind": "range",
-            "raw": "365-371",
-            "start": "365",
-            "end": "371"
+            "raw": "354-364",
+            "start": "354",
+            "end": "364"
+          },
+          {
+            "kind": "number",
+            "raw": "-16",
+            "value": "-16"
           }
         ]
       },
       "animeMapping": {
-        "raw": "279-281",
+        "raw": "273-278, 239",
         "tokens": [
           {
             "kind": "range",
-            "raw": "279-281",
-            "start": "279",
-            "end": "281"
+            "raw": "273-278",
+            "start": "273",
+            "end": "278"
+          },
+          {
+            "kind": "number",
+            "raw": "239",
+            "value": "239"
           }
         ]
       },
@@ -9740,26 +9734,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Wolves Ain't Howl Alone",
+      "title": "Spit on Your Own God",
       "mangaMapping": {
-        "raw": "372-377",
+        "raw": "365-371",
         "tokens": [
           {
             "kind": "range",
-            "raw": "372-377",
-            "start": "372",
-            "end": "377"
+            "raw": "365-371",
+            "start": "365",
+            "end": "371"
           }
         ]
       },
       "animeMapping": {
-        "raw": "282-285",
+        "raw": "279-281",
         "tokens": [
           {
             "kind": "range",
-            "raw": "282-285",
-            "start": "282",
-            "end": "285"
+            "raw": "279-281",
+            "start": "279",
+            "end": "281"
           }
         ]
       },
@@ -9871,6 +9865,137 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
+      "title": "Wolves Ain't Howl Alone",
+      "mangaMapping": {
+        "raw": "372-377",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "372-377",
+            "start": "372",
+            "end": "377"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "282-285",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "282-285",
+            "start": "282",
+            "end": "285"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "missing",
+        "raw": null,
+        "displayed": null,
+        "seconds": null
+      },
+      "releaseDate": {
+        "raw": null,
+        "displayed": null,
+        "iso": null
+      },
+      "lastUpdate": {
+        "raw": null,
+        "displayed": null,
+        "iso": null
+      },
+      "timeSaved": {
+        "raw": null,
+        "seconds": null,
+        "percent": null,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/projectId": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/sourceIdentifier/raw": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/sourceIdentifier/displayed": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/sourceRow": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/kind": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/availability": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/generatable": [
+          "concentrated-xlsx:episode-list:A76"
+        ],
+        "/title": [
+          "concentrated-xlsx:episode-list:B76"
+        ],
+        "/mangaMapping/raw": [
+          "concentrated-xlsx:episode-list:C76"
+        ],
+        "/mangaMapping/tokens": [
+          "concentrated-xlsx:episode-list:C76"
+        ],
+        "/animeMapping/raw": [
+          "concentrated-xlsx:episode-list:D76"
+        ],
+        "/animeMapping/tokens": [
+          "concentrated-xlsx:episode-list:D76"
+        ],
+        "/runtime": [
+          "concentrated-xlsx:episode-list:A76",
+          "concentrated-xlsx:episode-list:E1"
+        ],
+        "/releaseDate": [
+          "concentrated-xlsx:episode-list:A76",
+          "concentrated-xlsx:episode-list:G1"
+        ],
+        "/lastUpdate": [
+          "concentrated-xlsx:episode-list:A76",
+          "concentrated-xlsx:episode-list:B76"
+        ],
+        "/timeSaved": [
+          "concentrated-xlsx:episode-list:A76",
+          "concentrated-xlsx:episode-list:B76"
+        ],
+        "/notes": [
+          "concentrated-xlsx:episode-list:A76",
+          "concentrated-xlsx:episode-list:B76"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "concentrated:71",
+      "projectId": "concentrated",
+      "sourceIdentifier": {
+        "raw": "71",
+        "displayed": "71"
+      },
+      "sourceRow": 77,
+      "kind": "base",
+      "availability": "planned",
+      "generatable": false,
       "title": "Devil, Devil, Devil, Devil",
       "mangaMapping": {
         "raw": "378-383",
@@ -9925,63 +10050,63 @@
       "notes": [],
       "fieldEvidence": {
         "/recordId": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/projectId": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/sourceIdentifier/raw": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/sourceIdentifier/displayed": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/sourceRow": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/kind": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/availability": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/generatable": [
-          "concentrated-xlsx:episode-list:A76"
+          "concentrated-xlsx:episode-list:A77"
         ],
         "/title": [
-          "concentrated-xlsx:episode-list:B76"
+          "concentrated-xlsx:episode-list:B77"
         ],
         "/mangaMapping/raw": [
-          "concentrated-xlsx:episode-list:C76"
+          "concentrated-xlsx:episode-list:C77"
         ],
         "/mangaMapping/tokens": [
-          "concentrated-xlsx:episode-list:C76"
+          "concentrated-xlsx:episode-list:C77"
         ],
         "/animeMapping/raw": [
-          "concentrated-xlsx:episode-list:D76"
+          "concentrated-xlsx:episode-list:D77"
         ],
         "/animeMapping/tokens": [
-          "concentrated-xlsx:episode-list:D76"
+          "concentrated-xlsx:episode-list:D77"
         ],
         "/runtime": [
-          "concentrated-xlsx:episode-list:A76",
+          "concentrated-xlsx:episode-list:A77",
           "concentrated-xlsx:episode-list:E1"
         ],
         "/releaseDate": [
-          "concentrated-xlsx:episode-list:A76",
+          "concentrated-xlsx:episode-list:A77",
           "concentrated-xlsx:episode-list:G1"
         ],
         "/lastUpdate": [
-          "concentrated-xlsx:episode-list:A76",
-          "concentrated-xlsx:episode-list:B76"
+          "concentrated-xlsx:episode-list:A77",
+          "concentrated-xlsx:episode-list:B77"
         ],
         "/timeSaved": [
-          "concentrated-xlsx:episode-list:A76",
-          "concentrated-xlsx:episode-list:B76"
+          "concentrated-xlsx:episode-list:A77",
+          "concentrated-xlsx:episode-list:B77"
         ],
         "/notes": [
-          "concentrated-xlsx:episode-list:A76",
-          "concentrated-xlsx:episode-list:B76"
+          "concentrated-xlsx:episode-list:A77",
+          "concentrated-xlsx:episode-list:B77"
         ]
       },
       "fieldTransformations": {
@@ -9998,13 +10123,13 @@
       }
     },
     {
-      "recordId": "concentrated:70.5",
+      "recordId": "concentrated:71.5",
       "projectId": "concentrated",
       "sourceIdentifier": {
-        "raw": "70.5",
-        "displayed": "70.5"
+        "raw": "71.5",
+        "displayed": "71.5"
       },
-      "sourceRow": 77,
+      "sourceRow": 78,
       "kind": "special",
       "availability": "planned",
       "generatable": false,
@@ -10057,142 +10182,12 @@
         {
           "text": "   this'll be merged into a cold open it's like a minute",
           "evidenceRefs": [
-            "concentrated-xlsx:episode-list:I77"
+            "concentrated-xlsx:episode-list:I78"
           ]
         }
       ],
       "fieldEvidence": {
         "/recordId": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/projectId": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/sourceIdentifier/raw": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/sourceIdentifier/displayed": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/sourceRow": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/kind": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/availability": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/generatable": [
-          "concentrated-xlsx:episode-list:A77"
-        ],
-        "/title": [
-          "concentrated-xlsx:episode-list:B77"
-        ],
-        "/mangaMapping/raw": [
-          "concentrated-xlsx:episode-list:C77"
-        ],
-        "/mangaMapping/tokens": [
-          "concentrated-xlsx:episode-list:C77"
-        ],
-        "/animeMapping/raw": [
-          "concentrated-xlsx:episode-list:D77"
-        ],
-        "/animeMapping/tokens": [
-          "concentrated-xlsx:episode-list:D77"
-        ],
-        "/runtime": [
-          "concentrated-xlsx:episode-list:A77",
-          "concentrated-xlsx:episode-list:E1"
-        ],
-        "/releaseDate": [
-          "concentrated-xlsx:episode-list:A77",
-          "concentrated-xlsx:episode-list:G1"
-        ],
-        "/lastUpdate": [
-          "concentrated-xlsx:episode-list:A77",
-          "concentrated-xlsx:episode-list:B77"
-        ],
-        "/timeSaved": [
-          "concentrated-xlsx:episode-list:A77",
-          "concentrated-xlsx:episode-list:B77"
-        ],
-        "/notes": [
-          "concentrated-xlsx:episode-list:I77"
-        ]
-      },
-      "fieldTransformations": {
-        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
-        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
-        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
-        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
-        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
-        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
-        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
-        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
-        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
-        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
-      }
-    },
-    {
-      "recordId": "concentrated:71",
-      "projectId": "concentrated",
-      "sourceIdentifier": {
-        "raw": "71",
-        "displayed": "71"
-      },
-      "sourceRow": 78,
-      "kind": "base",
-      "availability": "planned",
-      "generatable": false,
-      "title": "Vice It",
-      "mangaMapping": {
-        "raw": "383-388",
-        "tokens": [
-          {
-            "kind": "range",
-            "raw": "383-388",
-            "start": "383",
-            "end": "388"
-          }
-        ]
-      },
-      "animeMapping": {
-        "raw": "289-292",
-        "tokens": [
-          {
-            "kind": "range",
-            "raw": "289-292",
-            "start": "289",
-            "end": "292"
-          }
-        ]
-      },
-      "runtime": {
-        "state": "missing",
-        "raw": null,
-        "displayed": null,
-        "seconds": null
-      },
-      "releaseDate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
-      },
-      "lastUpdate": {
-        "raw": null,
-        "displayed": null,
-        "iso": null
-      },
-      "timeSaved": {
-        "raw": null,
-        "seconds": null,
-        "percent": null,
-        "uncertain": false
-      },
-      "notes": [],
-      "fieldEvidence": {
-        "/recordId": [
           "concentrated-xlsx:episode-list:A78"
         ],
         "/projectId": [
@@ -10248,8 +10243,7 @@
           "concentrated-xlsx:episode-list:B78"
         ],
         "/notes": [
-          "concentrated-xlsx:episode-list:A78",
-          "concentrated-xlsx:episode-list:B78"
+          "concentrated-xlsx:episode-list:I78"
         ]
       },
       "fieldTransformations": {
@@ -10276,26 +10270,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "The Burnout Inferno",
+      "title": "Vice It",
       "mangaMapping": {
-        "raw": "389-398",
+        "raw": "383-388",
         "tokens": [
           {
             "kind": "range",
-            "raw": "389-398",
-            "start": "389",
-            "end": "398"
+            "raw": "383-388",
+            "start": "383",
+            "end": "388"
           }
         ]
       },
       "animeMapping": {
-        "raw": "292-297",
+        "raw": "289-292",
         "tokens": [
           {
             "kind": "range",
-            "raw": "292-297",
-            "start": "292",
-            "end": "297"
+            "raw": "289-292",
+            "start": "289",
+            "end": "292"
           }
         ]
       },
@@ -10407,31 +10401,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "DEICIDE (end of the chrysalis age)",
+      "title": "The Burnout Inferno",
       "mangaMapping": {
-        "raw": "399-406",
+        "raw": "389-398",
         "tokens": [
           {
             "kind": "range",
-            "raw": "399-406",
-            "start": "399",
-            "end": "406"
+            "raw": "389-398",
+            "start": "389",
+            "end": "398"
           }
         ]
       },
       "animeMapping": {
-        "raw": "297, 300-301",
+        "raw": "292-297",
         "tokens": [
           {
-            "kind": "number",
-            "raw": "297",
-            "value": "297"
-          },
-          {
             "kind": "range",
-            "raw": "300-301",
-            "start": "300",
-            "end": "301"
+            "raw": "292-297",
+            "start": "292",
+            "end": "297"
           }
         ]
       },
@@ -10543,32 +10532,31 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "DEICIDE 2 (Black + White)",
+      "title": "DEICIDE (end of the chrysalis age)",
       "mangaMapping": {
-        "raw": "407-416",
+        "raw": "399-406",
         "tokens": [
           {
             "kind": "range",
-            "raw": "407-416",
-            "start": "407",
-            "end": "416"
+            "raw": "399-406",
+            "start": "399",
+            "end": "406"
           }
         ]
       },
       "animeMapping": {
-        "raw": "301-302, 306-308",
+        "raw": "297, 300-301",
         "tokens": [
           {
-            "kind": "range",
-            "raw": "301-302",
-            "start": "301",
-            "end": "302"
+            "kind": "number",
+            "raw": "297",
+            "value": "297"
           },
           {
             "kind": "range",
-            "raw": "306-308",
-            "start": "306",
-            "end": "308"
+            "raw": "300-301",
+            "start": "300",
+            "end": "301"
           }
         ]
       },
@@ -10680,26 +10668,32 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "DEICIDE 3 (GOD IS DEAD)",
+      "title": "DEICIDE 2 (Black + White)",
       "mangaMapping": {
-        "raw": "417-422",
+        "raw": "407-416",
         "tokens": [
           {
             "kind": "range",
-            "raw": "417-422",
-            "start": "417",
-            "end": "422"
+            "raw": "407-416",
+            "start": "407",
+            "end": "416"
           }
         ]
       },
       "animeMapping": {
-        "raw": "308-310",
+        "raw": "301-302, 306-308",
         "tokens": [
           {
             "kind": "range",
-            "raw": "308-310",
-            "start": "308",
-            "end": "310"
+            "raw": "301-302",
+            "start": "301",
+            "end": "302"
+          },
+          {
+            "kind": "range",
+            "raw": "306-308",
+            "start": "306",
+            "end": "308"
           }
         ]
       },
@@ -10811,24 +10805,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Bleach my Soul",
+      "title": "DEICIDE 3 (GOD IS DEAD)",
       "mangaMapping": {
-        "raw": "423",
+        "raw": "417-422",
         "tokens": [
           {
-            "kind": "number",
-            "raw": "423",
-            "value": "423"
+            "kind": "range",
+            "raw": "417-422",
+            "start": "417",
+            "end": "422"
           }
         ]
       },
       "animeMapping": {
-        "raw": "342",
+        "raw": "308-310",
         "tokens": [
           {
-            "kind": "number",
-            "raw": "342",
-            "value": "342"
+            "kind": "range",
+            "raw": "308-310",
+            "start": "308",
+            "end": "310"
           }
         ]
       },
@@ -10940,26 +10936,24 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "The Lost Agent",
+      "title": "Bleach my Soul",
       "mangaMapping": {
-        "raw": "424-427",
+        "raw": "423",
         "tokens": [
           {
-            "kind": "range",
-            "raw": "424-427",
-            "start": "424",
-            "end": "427"
+            "kind": "number",
+            "raw": "423",
+            "value": "423"
           }
         ]
       },
       "animeMapping": {
-        "raw": "343-344",
+        "raw": "342",
         "tokens": [
           {
-            "kind": "range",
-            "raw": "343-344",
-            "start": "343",
-            "end": "344"
+            "kind": "number",
+            "raw": "342",
+            "value": "342"
           }
         ]
       },
@@ -11071,26 +11065,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Welcome to our EXECUTION",
+      "title": "The Lost Agent",
       "mangaMapping": {
-        "raw": "428-434",
+        "raw": "424-427",
         "tokens": [
           {
             "kind": "range",
-            "raw": "428-434",
-            "start": "428",
-            "end": "434"
+            "raw": "424-427",
+            "start": "424",
+            "end": "427"
           }
         ]
       },
       "animeMapping": {
-        "raw": "344-348",
+        "raw": "343-344",
         "tokens": [
           {
             "kind": "range",
-            "raw": "344-348",
-            "start": "344",
-            "end": "348"
+            "raw": "343-344",
+            "start": "343",
+            "end": "344"
           }
         ]
       },
@@ -11202,26 +11196,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Berry in the Box",
+      "title": "Welcome to our EXECUTION",
       "mangaMapping": {
-        "raw": "434-440",
+        "raw": "428-434",
         "tokens": [
           {
             "kind": "range",
-            "raw": "434-440",
-            "start": "434",
-            "end": "440"
+            "raw": "428-434",
+            "start": "428",
+            "end": "434"
           }
         ]
       },
       "animeMapping": {
-        "raw": "348-350",
+        "raw": "344-348",
         "tokens": [
           {
             "kind": "range",
-            "raw": "348-350",
-            "start": "348",
-            "end": "350"
+            "raw": "344-348",
+            "start": "344",
+            "end": "348"
           }
         ]
       },
@@ -11333,26 +11327,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "The Dark Beat",
+      "title": "Berry in the Box",
       "mangaMapping": {
-        "raw": "441-447",
+        "raw": "434-440",
         "tokens": [
           {
             "kind": "range",
-            "raw": "441-447",
-            "start": "441",
-            "end": "447"
+            "raw": "434-440",
+            "start": "434",
+            "end": "440"
           }
         ]
       },
       "animeMapping": {
-        "raw": "350-354",
+        "raw": "348-350",
         "tokens": [
           {
             "kind": "range",
-            "raw": "350-354",
-            "start": "350",
-            "end": "354"
+            "raw": "348-350",
+            "start": "348",
+            "end": "350"
           }
         ]
       },
@@ -11464,31 +11458,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Welcome to our Xcution",
+      "title": "The Dark Beat",
       "mangaMapping": {
-        "raw": "448-452",
+        "raw": "441-447",
         "tokens": [
           {
             "kind": "range",
-            "raw": "448-452",
-            "start": "448",
-            "end": "452"
+            "raw": "441-447",
+            "start": "441",
+            "end": "447"
           }
         ]
       },
       "animeMapping": {
-        "raw": "354, 356-358",
+        "raw": "350-354",
         "tokens": [
           {
-            "kind": "number",
-            "raw": "354",
-            "value": "354"
-          },
-          {
             "kind": "range",
-            "raw": "356-358",
-            "start": "356",
-            "end": "358"
+            "raw": "350-354",
+            "start": "350",
+            "end": "354"
           }
         ]
       },
@@ -11600,26 +11589,31 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "End of Bond",
+      "title": "Welcome to our Xcution",
       "mangaMapping": {
-        "raw": "453-459",
+        "raw": "448-452",
         "tokens": [
           {
             "kind": "range",
-            "raw": "453-459",
-            "start": "453",
-            "end": "459"
+            "raw": "448-452",
+            "start": "448",
+            "end": "452"
           }
         ]
       },
       "animeMapping": {
-        "raw": "358-361",
+        "raw": "354, 356-358",
         "tokens": [
           {
+            "kind": "number",
+            "raw": "354",
+            "value": "354"
+          },
+          {
             "kind": "range",
-            "raw": "358-361",
-            "start": "358",
-            "end": "361"
+            "raw": "356-358",
+            "start": "356",
+            "end": "358"
           }
         ]
       },
@@ -11731,26 +11725,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "The Deathberry Returns 2",
+      "title": "End of Bond",
       "mangaMapping": {
-        "raw": "460-469",
+        "raw": "453-459",
         "tokens": [
           {
             "kind": "range",
-            "raw": "460-469",
-            "start": "460",
-            "end": "469"
+            "raw": "453-459",
+            "start": "453",
+            "end": "459"
           }
         ]
       },
       "animeMapping": {
-        "raw": "361-364",
+        "raw": "358-361",
         "tokens": [
           {
             "kind": "range",
-            "raw": "361-364",
-            "start": "361",
-            "end": "364"
+            "raw": "358-361",
+            "start": "358",
+            "end": "361"
           }
         ]
       },
@@ -11862,26 +11856,26 @@
       "kind": "base",
       "availability": "planned",
       "generatable": false,
-      "title": "Goodbye to our Xcution",
+      "title": "The Deathberry Returns 2",
       "mangaMapping": {
-        "raw": "470-479",
+        "raw": "460-469",
         "tokens": [
           {
             "kind": "range",
-            "raw": "470-479",
-            "start": "470",
-            "end": "479"
+            "raw": "460-469",
+            "start": "460",
+            "end": "469"
           }
         ]
       },
       "animeMapping": {
-        "raw": "364-366",
+        "raw": "361-364",
         "tokens": [
           {
             "kind": "range",
-            "raw": "364-366",
-            "start": "364",
-            "end": "366"
+            "raw": "361-364",
+            "start": "361",
+            "end": "364"
           }
         ]
       },
@@ -11967,6 +11961,137 @@
         "/notes": [
           "concentrated-xlsx:episode-list:A91",
           "concentrated-xlsx:episode-list:B91"
+        ]
+      },
+      "fieldTransformations": {
+        "/recordId": "Prefix the exact displayed source identifier with the project namespace; preserve all identifier characters.",
+        "/kind": "Classify identifiers containing a decimal point as special; availability remains independent.",
+        "/availability": "Apply the approved project-specific release/planning/directive rules without date precedence.",
+        "/generatable": "True only when editorial availability is released and runtime state is known; media evidence is still separately required.",
+        "/mangaMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/animeMapping/tokens": "Conservatively tokenize numeric items/ranges while retaining the complete raw mapping.",
+        "/runtime": "Represent the absent runtime as state=missing without fabricating a value.",
+        "/releaseDate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/lastUpdate": "Parse unambiguous displayed M/D/YY or M/D/YYYY values to ISO while preserving raw and displayed values.",
+        "/timeSaved": "Parse exact m/s and percent only when the source supplies a matching unstarred value."
+      }
+    },
+    {
+      "recordId": "concentrated:85",
+      "projectId": "concentrated",
+      "sourceIdentifier": {
+        "raw": "85",
+        "displayed": "85"
+      },
+      "sourceRow": 92,
+      "kind": "base",
+      "availability": "planned",
+      "generatable": false,
+      "title": "Goodbye to our Xcution",
+      "mangaMapping": {
+        "raw": "470-479",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "470-479",
+            "start": "470",
+            "end": "479"
+          }
+        ]
+      },
+      "animeMapping": {
+        "raw": "364-366",
+        "tokens": [
+          {
+            "kind": "range",
+            "raw": "364-366",
+            "start": "364",
+            "end": "366"
+          }
+        ]
+      },
+      "runtime": {
+        "state": "missing",
+        "raw": null,
+        "displayed": null,
+        "seconds": null
+      },
+      "releaseDate": {
+        "raw": null,
+        "displayed": null,
+        "iso": null
+      },
+      "lastUpdate": {
+        "raw": null,
+        "displayed": null,
+        "iso": null
+      },
+      "timeSaved": {
+        "raw": null,
+        "seconds": null,
+        "percent": null,
+        "uncertain": false
+      },
+      "notes": [],
+      "fieldEvidence": {
+        "/recordId": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/projectId": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/sourceIdentifier/raw": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/sourceIdentifier/displayed": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/sourceRow": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/kind": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/availability": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/generatable": [
+          "concentrated-xlsx:episode-list:A92"
+        ],
+        "/title": [
+          "concentrated-xlsx:episode-list:B92"
+        ],
+        "/mangaMapping/raw": [
+          "concentrated-xlsx:episode-list:C92"
+        ],
+        "/mangaMapping/tokens": [
+          "concentrated-xlsx:episode-list:C92"
+        ],
+        "/animeMapping/raw": [
+          "concentrated-xlsx:episode-list:D92"
+        ],
+        "/animeMapping/tokens": [
+          "concentrated-xlsx:episode-list:D92"
+        ],
+        "/runtime": [
+          "concentrated-xlsx:episode-list:A92",
+          "concentrated-xlsx:episode-list:E1"
+        ],
+        "/releaseDate": [
+          "concentrated-xlsx:episode-list:A92",
+          "concentrated-xlsx:episode-list:G1"
+        ],
+        "/lastUpdate": [
+          "concentrated-xlsx:episode-list:A92",
+          "concentrated-xlsx:episode-list:B92"
+        ],
+        "/timeSaved": [
+          "concentrated-xlsx:episode-list:A92",
+          "concentrated-xlsx:episode-list:B92"
+        ],
+        "/notes": [
+          "concentrated-xlsx:episode-list:A92",
+          "concentrated-xlsx:episode-list:B92"
         ]
       },
       "fieldTransformations": {

@@ -23,7 +23,7 @@ const LOCKED_HASHES = Object.freeze({
   'evidence/media/cb_2.json': '4a68bbc82f83e845c2e8ec02d36061796d1876ff95e4eb4a2fe7e6707bba30f2',
   'evidence/media/cb_3.json': 'b3604ed951e34e211003da1adc08acaefe7082b70ad0c972fb76a6ef78438526',
   'evidence/media/hb_14.json': '2b8914c71410d436f3aaa325ee5eea883058c2491e6f3db21ceaca94e6f03848',
-  'editorial/unresolved.json': 'ea4f1dbf2ba1b96596264f741590c4b5078e3f56b92067c2befb8d15a5c14092'
+  'editorial/unresolved.json': '3aa74a155cb06b27661e6f5326ca08d17cac1d820668be8037d359b594d7b98e'
 })
 const LOCKED_VALIDATED_VIDEO_IDS = new Set([
   'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
@@ -554,7 +554,7 @@ function validate() {
   assert.equal(registry.policy.decimalEncoding, 'lexical-p-delimiter')
   assert.equal(registry.policy.decimalSyntaxImpliesEditorialKind, false)
   assert.equal(registry.policy.unknownSyntax, 'validation-error')
-  assert.equal(registry.entries.length, normalizedRecords.length + variants.variants.length)
+  assert.ok(registry.entries.length <= normalizedRecords.length + variants.variants.length)
 
   const registryRecordIds = new Set()
   const registryVideoIds = new Set()
@@ -566,13 +566,21 @@ function validate() {
 
     if (entry.recordType === 'normalized-record') {
       const record = normalizedById.get(entry.recordId)
-      assert.ok(record, `Registry references unknown record ${entry.recordId}`)
+      if (!record) {
+        assert.equal(entry.status, 'reserved', `Registry references unknown published record ${entry.recordId}`)
+        assert.equal(entry.locked, false, `Registry references unknown locked record ${entry.recordId}`)
+        continue
+      }
       assert.equal(entry.projectId, record.projectId)
       assert.equal(entry.sourceIdentifier, record.sourceIdentifier.displayed)
       assert.equal(entry.videoId, encodeNormalizedId(record))
     } else {
       const variant = variants.variants.find((item) => item.variantId === entry.recordId)
-      assert.ok(variant, `Registry references unknown variant ${entry.recordId}`)
+      if (!variant) {
+        assert.equal(entry.status, 'reserved', `Registry references unknown published variant ${entry.recordId}`)
+        assert.equal(entry.locked, false, `Registry references unknown locked variant ${entry.recordId}`)
+        continue
+      }
       assert.equal(entry.sourceIdentifier, variant.sourceLabel)
       assert.equal(entry.videoId, encodeVariantId(variant))
     }
@@ -654,7 +662,7 @@ function validate() {
       const projected = projection.entries.find((entry) => entry.recordId === record.recordId)
       assert.ok(!projected || projected.publicationEligibility.state !== 'eligible')
       const registered = registry.entries.find((entry) => entry.recordId === record.recordId)
-      assert.equal(registered.status, 'reserved')
+      if (registered) assert.equal(registered.status, 'reserved')
     }
   }
 

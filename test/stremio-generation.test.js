@@ -90,12 +90,22 @@ const CURRENT_STREAM_FILE_VECTOR_SHA256 =
   '9190a3b0e82c3fec8a877b3571932c8a7dd449b39cabf74dc9eaea3f723cd834'
 const CURRENT_PROVENANCE_FILE_VECTOR_SHA256 =
   'df4e222db5bc90fc58bbd51151ee2bb63ecd18443bde48a6101800f86ea36e35'
+const CB27_PROVENANCE_PATH = 'data/provenance/cb_27.json'
+const CB27_PRODUCTION_PROVENANCE_SHA256 =
+  'ca86baecc7eed3b76ad1d19ddde156b73c7c37169cd27059d8443bf88c6a35cf'
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
 const readJson = (relativePath, base = root) => JSON.parse(read(relativePath, base).toString('utf8'))
 const hash = (relativePath, base = root) => crypto.createHash('sha256')
   .update(read(relativePath, base))
   .digest('hex')
+
+function assertCb27SourceOnlyProvenanceDelta(locked, candidate) {
+  assert.equal(locked.editorial.lastUpdate, '2026-04-01')
+  const expected = structuredClone(locked)
+  expected.editorial.lastUpdate = '2026-08-25'
+  assert.deepEqual(candidate, expected)
+}
 
 let outputRoot
 let result
@@ -510,6 +520,9 @@ test('every current generated production candidate satisfies its exact derivatio
     if (relativePath === CB1_REGRESSION_FILES.provenance) {
       assertExpectedProvenanceDiff(lockedProvenance, result.candidates[relativePath])
       assert.equal(result.comparisons[relativePath].byteIdentical, false)
+    } else if (relativePath === CB27_PROVENANCE_PATH) {
+      assertCb27SourceOnlyProvenanceDelta(readJson(relativePath), result.candidates[relativePath])
+      assert.equal(read(relativePath, outputRoot).equals(read(relativePath)), false)
     } else {
       assert.ok(read(relativePath, outputRoot).equals(read(relativePath)), relativePath)
     }
@@ -530,6 +543,9 @@ test('all 103 locked stream and provenance artifacts retain their regression con
     )
     if (provenancePath === CB1_REGRESSION_FILES.provenance) {
       assertExpectedProvenanceDiff(lockedProvenance, result.candidates[provenancePath])
+    } else if (provenancePath === CB27_PROVENANCE_PATH) {
+      assertCb27SourceOnlyProvenanceDelta(readJson(provenancePath), result.candidates[provenancePath])
+      assert.equal(hash(provenancePath), CB27_PRODUCTION_PROVENANCE_SHA256)
     } else {
       assert.ok(read(provenancePath, outputRoot).equals(read(provenancePath)), provenancePath)
     }

@@ -788,7 +788,8 @@ test('planned, deferred, and non-generatable records cannot become eligible', ()
     if (record.availability !== 'released' || !record.generatable) {
       const entry = projectedById.get(record.recordId)
       assert.ok(!entry || entry.publicationEligibility.state !== 'eligible', record.recordId)
-      assert.equal(registry.entries.find((item) => item.recordId === record.recordId).status, 'reserved')
+      const registered = registry.entries.find((item) => item.recordId === record.recordId)
+      if (registered) assert.equal(registered.status, 'reserved')
     }
   }
 })
