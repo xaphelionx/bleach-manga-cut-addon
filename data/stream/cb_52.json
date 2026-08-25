@@ -1,0 +1,16 @@
+{
+  "streams": [
+    {
+      "name": "[P2P🧲] 576p",
+      "title": "🎬 The Slashing Opera\n📖 [254-259] 🕒 29:24\n💾 311.81 MB\n🎞️ HEVC 🔊 AAC 2.0 • JPN + ENG",
+      "infoHash": "ec126810f736f38c9ca44d263e7b1bc07e036a09",
+      "sources": [],
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "bleach-manga-cut|p2p|standard",
+        "videoSize": 311810978,
+        "filename": "52 - The Slashing Opera.mkv"
+      }
+    }
+  ]
+}

@@ -95,9 +95,9 @@ const PRODUCTION_SELECTION_ENTRIES = [
   { recordId: 'concentrated:0.0', videoId: 'cb_0p0' }
 ]
 const LOCKED_PRODUCTION_EVIDENCE_INDEX_SHA256 =
-  '071d4059c9711768f95ef14da8c3a558bb69ae99fa682ecc7aab01d05e6a1841'
+  'c8ea5145bf862dfc0fd51085bd297e7c8f2fed11135675b9704a345b7aab9026'
 const LOCKED_PRODUCTION_EVIDENCE_INDEX_BYTE_SIZE = 7033
-const LOCKED_PRODUCTION_EVIDENCE_TOTAL_BYTE_SIZE = 132181
+const LOCKED_PRODUCTION_EVIDENCE_TOTAL_BYTE_SIZE = 132200
 const ARRANCAR_SELECTION_ENTRIES = Array.from({ length: 16 }, (_, index) => ({
   recordId: `concentrated:${index + 36}`,
   videoId: `cb_${index + 36}`
@@ -116,9 +116,9 @@ const LOCKED_CONCENTRATED_AUGUST_UPDATE_EVIDENCE_SHA256 = Object.freeze({
   cb_53: 'ae5dbebcea5f11cce204afd1db062ce5c66c448da0dcda6d14f843fc5e742a40',
   cb_54: 'eef49c9e873e0b5497aa5793e8f634b7c51e20e44f49ae104c5e8737dbbce134'
 })
-const LOCKED_CURRENT_CB27_EVIDENCE_SHA256 =
+const LOCKED_OLD_CB27_EVIDENCE_SHA256 =
   'b4ebb06ca53645a8831c2383fe8267bd57a549a8bff1a51f774db6514cef553f'
-const LOCKED_CORRECTED_CB27_CANDIDATE_EVIDENCE_SHA256 =
+const LOCKED_CORRECTED_CB27_EVIDENCE_SHA256 =
   '1ec3b5182e20a5e10b4445c4d555924c195b39265811ce2cee82fe5958030906'
 const HOLLOWED_SELECTION_ENTRIES = [
   ...Array.from({ length: 16 }, (_, index) => ({
@@ -862,7 +862,7 @@ test('acquisition raw values are not modified in memory', () => {
   assert.equal(JSON.stringify(inputs.acquisitionManifest), before)
 })
 
-test('committed preboundary evidence is byte-identical to the approved production generation batch', () => {
+test('committed preboundary evidence matches the historical generation batch except superseded CB27', () => {
   const { acquisitionManifest, candidates } = productionCandidates()
   const expectedVideoIds = PRODUCTION_SELECTION_ENTRIES.map(({ videoId }) => videoId)
   assert.equal(candidates.length, 35)
@@ -881,13 +881,24 @@ test('committed preboundary evidence is byte-identical to the approved productio
     const filename = path.join(PRODUCTION_EVIDENCE_DIRECTORY, candidate.filename)
     assert.equal(fs.existsSync(filename), true)
     const committedBytes = fs.readFileSync(filename)
-    assert.ok(committedBytes.equals(candidate.bytes))
-    assert.equal(crypto.createHash('sha256').update(committedBytes).digest('hex'), candidate.sha256)
-    assert.equal(committedBytes.length, candidate.byteSize)
     const committed = JSON.parse(committedBytes)
     assert.doesNotThrow(() => validateVerifiedMedia(committed))
     assert.equal(committed.recordId, acquisitionEntry.recordId)
     assert.equal(committed.videoId, acquisitionEntry.videoId)
+    if (candidate.videoId === 'cb_27') {
+      assert.equal(candidate.sha256, LOCKED_OLD_CB27_EVIDENCE_SHA256)
+      assert.equal(committed.torrent.infoHash, '5fe5242a34e76d24c012c4982caa19c41f1d40ff')
+      assert.equal(committed.torrent.fileSelection.byteSize, 330517264)
+      assert.equal(
+        crypto.createHash('sha256').update(committedBytes).digest('hex'),
+        LOCKED_CORRECTED_CB27_EVIDENCE_SHA256
+      )
+      assert.equal(committedBytes.equals(candidate.bytes), false)
+    } else {
+      assert.ok(committedBytes.equals(candidate.bytes), candidate.videoId)
+      assert.equal(crypto.createHash('sha256').update(committedBytes).digest('hex'), candidate.sha256)
+      assert.equal(committedBytes.length, candidate.byteSize)
+    }
   }
 })
 
@@ -1004,15 +1015,15 @@ test('committed Concentrated August update evidence is byte-identical to selecte
   }
 })
 
-test('corrected CB27 candidate can be generated while current CB27 evidence remains old', () => {
+test('corrected CB27 candidate is now the committed current evidence while old generation remains historical', () => {
   const currentBytes = fs.readFileSync(path.join(PRODUCTION_EVIDENCE_DIRECTORY, 'cb_27.json'))
   const current = JSON.parse(currentBytes)
   assert.equal(
     crypto.createHash('sha256').update(currentBytes).digest('hex'),
-    LOCKED_CURRENT_CB27_EVIDENCE_SHA256
+    LOCKED_CORRECTED_CB27_EVIDENCE_SHA256
   )
-  assert.equal(current.torrent.infoHash, '9054e185c9d61ad0d9e8795e45029d83b7ebd4ab')
-  assert.equal(current.torrent.fileSelection.byteSize, 330517255)
+  assert.equal(current.torrent.infoHash, '5fe5242a34e76d24c012c4982caa19c41f1d40ff')
+  assert.equal(current.torrent.fileSelection.byteSize, 330517264)
 
   const { acquisitionManifest, candidates } = concentratedAugustUpdateCandidates([
     { recordId: 'concentrated:27', videoId: 'cb_27' }
@@ -1021,7 +1032,7 @@ test('corrected CB27 candidate can be generated while current CB27 evidence rema
   const acquisition = acquisitionManifest.entries.find(({ videoId }) => videoId === 'cb_27')
   const candidate = candidates[0]
   assert.ok(acquisition)
-  assert.equal(candidate.sha256, LOCKED_CORRECTED_CB27_CANDIDATE_EVIDENCE_SHA256)
+  assert.equal(candidate.sha256, LOCKED_CORRECTED_CB27_EVIDENCE_SHA256)
   assert.equal(candidate.value.torrent.infoHash, acquisition.torrent.infoHash)
   assert.equal(candidate.value.torrent.infoHash, '5fe5242a34e76d24c012c4982caa19c41f1d40ff')
   assert.equal(candidate.value.torrent.fileSelection.filename, '27 - memories in the rain2.mkv')
@@ -1032,7 +1043,14 @@ test('corrected CB27 candidate can be generated while current CB27 evidence rema
     seconds: 1886.593
   })
   assert.doesNotThrow(() => validateVerifiedMedia(candidate.value))
-  assert.equal(candidate.bytes.equals(currentBytes), false)
+  assert.ok(candidate.bytes.equals(currentBytes))
+
+  const historical = productionCandidates().candidates.find(({ videoId }) => videoId === 'cb_27')
+  assert.ok(historical)
+  assert.equal(historical.sha256, LOCKED_OLD_CB27_EVIDENCE_SHA256)
+  assert.equal(historical.value.torrent.infoHash, '9054e185c9d61ad0d9e8795e45029d83b7ebd4ab')
+  assert.equal(historical.value.torrent.fileSelection.byteSize, 330517255)
+  assert.equal(historical.bytes.equals(currentBytes), false)
 })
 
 test('committed Hollowed evidence is byte-identical to its separate production generation batch', () => {

@@ -86,9 +86,7 @@ const BYTE_IDENTICAL_REGRESSION_FILES = Object.freeze([
   CB2_REGRESSION_FILES.stream,
   CB2_REGRESSION_FILES.provenance,
   CB3_REGRESSION_FILES.stream,
-  CB3_REGRESSION_FILES.provenance,
-  HB14_REGRESSION_FILES.stream,
-  HB14_REGRESSION_FILES.provenance
+  CB3_REGRESSION_FILES.provenance
 ])
 
 const missing = () => ({ state: 'missing' })

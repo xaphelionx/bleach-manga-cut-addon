@@ -35,7 +35,7 @@ const expectedSourceHashes = {
 
 const lockedRepositoryHashes = {
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '5ecaf85355cece7496a3d620bbb3f1974532c7840a103cafb6ac33c24da42ae7',
+  'data/meta/bleach-manga-cut.json': '925142463d0c65396253a1f5acb1b62f395292212a44de7fdbe1106111eaa3c8',
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
@@ -540,7 +540,7 @@ test('re-extraction is byte-stable against unchanged source hashes', () => {
   }
 })
 
-test('current 103-entry prefix preserves the original locked prefix and Chipped 12 boundary', () => {
+test('current 102-entry publication candidate preserves the locked prefix and Chipped 12 boundary', () => {
   for (const [relativePath, expectedHash] of Object.entries(lockedRepositoryHashes)) {
     assert.equal(hashFile(relativePath), expectedHash, relativePath)
   }
@@ -551,16 +551,16 @@ test('current 103-entry prefix preserves the original locked prefix and Chipped 
   const torrent = stream.streams[0]
   assert.equal(catalog.metas[0].id, 'bleach-manga-cut')
   assert.equal(meta.meta.id, 'bleach-manga-cut')
-  assert.equal(meta.meta.videos.length, 103)
+  assert.equal(meta.meta.videos.length, 102)
   assert.deepEqual(
     meta.meta.videos.map((video) => video.id),
     projection.publicationPolicy.currentPublishedVideoIds
   )
   assert.equal(meta.meta.videos.filter((video) => video.season === 1).length, 9)
   assert.equal(meta.meta.videos.filter((video) => video.season === 2).length, 28)
-  assert.equal(meta.meta.videos.filter((video) => video.season === 3).length, 54)
+  assert.equal(meta.meta.videos.filter((video) => video.season === 3).length, 53)
   assert.equal(meta.meta.videos.filter((video) => video.season === 4).length, 12)
-  assert.equal(meta.meta.videos.some((video) => video.id === 'ch_13' || video.id === 'cb_52'), false)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'ch_13' || video.id === 'cb_55'), false)
   const video = (videoId) => meta.meta.videos.find((candidate) => candidate.id === videoId)
   assert.deepEqual(video('cb_1'), {
     id: 'cb_1',
@@ -629,17 +629,39 @@ test('current 103-entry prefix preserves the original locked prefix and Chipped 
   assert.equal(video('cb_36').episode, 1)
   assert.equal(video('cb_51').season, 3)
   assert.equal(video('cb_51').episode, 16)
-  assert.deepEqual(video('hb_14'), {
-    id: 'hb_14',
+  assert.deepEqual(video('cb_52'), {
+    id: 'cb_52',
     season: 3,
     episode: 17,
     title: 'The Slashing Opera',
-    runtime: '31'
+    runtime: '29'
+  })
+  assert.deepEqual(video('cb_53'), {
+    id: 'cb_53',
+    season: 3,
+    episode: 18,
+    title: 'Arms of the Giant',
+    runtime: '24'
+  })
+  assert.deepEqual(video('cb_54'), {
+    id: 'cb_54',
+    season: 3,
+    episode: 19,
+    title: 'There is No Heart Without You',
+    runtime: '40'
+  })
+  assert.equal(video('hb_14'), undefined)
+  assert.deepEqual(video('hb_18'), {
+    id: 'hb_18',
+    season: 3,
+    episode: 20,
+    title: "Don't Kill My Volupture",
+    runtime: '27'
   })
   assert.equal(video('hb_0p8').season, 3)
-  assert.equal(video('hb_0p8').episode, 33)
+  assert.equal(video('hb_0p8').episode, 32)
   assert.equal(video('hb_50').season, 3)
-  assert.equal(video('hb_50').episode, 54)
+  assert.equal(video('hb_50').episode, 53)
   assert.deepEqual(video('ch_1'), {
     id: 'ch_1',
     season: 4,

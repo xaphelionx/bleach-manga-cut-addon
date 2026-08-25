@@ -1,25 +1,25 @@
 {
-  "id": "cb_27",
+  "id": "cb_54",
   "sourceInputs": {
     "editorial": {
-      "recordId": "concentrated:27",
+      "recordId": "concentrated:54",
       "evidenceRefs": [
-        "concentrated-xlsx:episode-list:A28",
-        "concentrated-xlsx:episode-list:B28",
-        "concentrated-xlsx:episode-list:C28",
-        "concentrated-xlsx:episode-list:D28",
-        "concentrated-xlsx:episode-list:E28",
-        "concentrated-xlsx:episode-list:F28",
-        "concentrated-xlsx:episode-list:G28",
-        "concentrated-xlsx:episode-list:H28"
+        "concentrated-xlsx:episode-list:A59",
+        "concentrated-xlsx:episode-list:B59",
+        "concentrated-xlsx:episode-list:C59",
+        "concentrated-xlsx:episode-list:D59",
+        "concentrated-xlsx:episode-list:E59",
+        "concentrated-xlsx:episode-list:F59",
+        "concentrated-xlsx:episode-list:G59",
+        "concentrated-xlsx:episode-list:H59"
       ]
     },
     "projection": {
       "seriesId": "bleach-manga-cut",
-      "videoId": "cb_27",
+      "videoId": "cb_54",
       "projectedPlacement": {
-        "season": 2,
-        "episode": 18
+        "season": 3,
+        "episode": 19
       },
       "publicationEligibility": {
         "state": "eligible",
@@ -27,37 +27,37 @@
       }
     },
     "verifiedMedia": {
-      "evidenceRecord": "evidence/media/cb_27.json",
-      "videoId": "cb_27",
-      "recordId": "concentrated:27",
+      "evidenceRecord": "evidence/media/cb_54.json",
+      "videoId": "cb_54",
+      "recordId": "concentrated:54",
       "verificationState": "verified",
       "verificationBases": [
-        "cb27-local-torrent-verification",
-        "cb27-local-media-ffprobe-inspection"
+        "cb54-local-torrent-verification",
+        "cb54-local-media-ffprobe-inspection"
       ]
     }
   },
   "editorial": {
     "edit": "Concentrated Bleach",
-    "episode": "27",
-    "title": "memories in the rain2",
-    "mangaChapters": "128, 133-136",
-    "sourceAnimeEpisodes": "045, 048-049",
-    "exactEditRuntime": "00:31:27",
-    "normalizedExactRuntime": "31:27",
-    "timeSaved": "11m56s (28%)",
-    "releaseDate": "2024-11-12",
+    "episode": "54",
+    "title": "There is No Heart Without You",
+    "mangaChapters": "262-269",
+    "sourceAnimeEpisodes": "153-155, 160",
+    "exactEditRuntime": "00:40:57",
+    "normalizedExactRuntime": "40:57",
+    "timeSaved": "41m31s (50%)",
+    "releaseDate": "2026-08-25",
     "lastUpdate": "2026-08-25",
     "source": {
       "document": "!Concentrated Bleach Info.xlsx",
       "sheet": "Episode List",
-      "row": 28,
-      "cells": "A28:H28"
+      "row": 59,
+      "cells": "A59:H59"
     }
   },
   "presentation": {
-    "stremioVideoRuntime": "31",
-    "runtimeTransformation": "The exact 31:27 source runtime is presented as 31 minutes, matching the observed One Pace convention."
+    "stremioVideoRuntime": "40",
+    "runtimeTransformation": "The exact 40:57 source runtime is presented as 40 minutes, matching the observed One Pace convention."
   },
   "compatibilityMetadata": {
     "animeClassification": {
@@ -77,10 +77,10 @@
     }
   },
   "torrentEvidence": {
-    "infoHash": "5fe5242a34e76d24c012c4982caa19c41f1d40ff",
+    "infoHash": "e5c8fb3f5247e890b5ca092aa6b7787abab9df41",
     "fileIdx": 0,
-    "filename": "27 - memories in the rain2.mkv",
-    "videoSize": 330517264,
+    "filename": "54 - There is No Heart Without You.mkv",
+    "videoSize": 416711305,
     "trackerEvidence": {
       "state": "unresolved"
     },
@@ -94,7 +94,7 @@
   "localMediaInspection": {
     "classification": "verified local media inspection",
     "method": "ffprobe",
-    "inspectedFile": "27 - memories in the rain2.mkv",
+    "inspectedFile": "54 - There is No Heart Without You.mkv",
     "video": {
       "width": 768,
       "height": 576,
@@ -129,13 +129,13 @@
     "duration": {
       "state": "verified",
       "measurement": "container",
-      "seconds": 1886.593
+      "seconds": 2457.002
     }
   },
   "transformations": {
-    "stremioRuntime": "31:27 (1887 seconds) -> floor whole minutes -> 31",
+    "stremioRuntime": "40:57 (2457 seconds) -> floor whole minutes -> 40",
     "resolutionLabel": "verified height 576 -> 576p",
-    "sizePresentation": "330517264 bytes / 1000000, fixed to two decimals -> 330.52 MB",
+    "sizePresentation": "416711305 bytes / 1000000, fixed to two decimals -> 416.71 MB",
     "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
     "languagePresentation": "Japanese + English -> JPN + ENG",
     "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",

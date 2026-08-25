@@ -5,11 +5,11 @@
   "recordId": "concentrated:27",
   "verificationState": "verified",
   "torrent": {
-    "infoHash": "9054e185c9d61ad0d9e8795e45029d83b7ebd4ab",
+    "infoHash": "5fe5242a34e76d24c012c4982caa19c41f1d40ff",
     "fileSelection": {
       "fileIdx": 0,
       "filename": "27 - memories in the rain2.mkv",
-      "byteSize": 330517255
+      "byteSize": 330517264
     },
     "networkEvidence": {
       "trackers": {
@@ -73,9 +73,9 @@
       "verificationState": "verified",
       "method": "canonical-bencode-v1-creation-and-independent-piece-verification",
       "artifact": {
-        "relativePath": "sources/torrents/concentrated-preboundary/27 - memories in the rain2.mkv.torrent",
+        "relativePath": "sources/torrents/concentrated-2026-08-25-update/27 - memories in the rain2.mkv.torrent",
         "retention": "ignored-local-workspace",
-        "sha256": "9db2983ffbbaf698f8d55ef55e207cd928ce2b19d60df09bc738b7abfe7ef675"
+        "sha256": "3c544563c79d799e5d362116554f39302ef2f72d884cb2bec73d6cd6483eb997"
       },
       "verification": {
         "pieceLength": 1048576,
@@ -93,9 +93,9 @@
       "method": "ffprobe",
       "verificationState": "verified",
       "artifact": {
-        "relativePath": "sources/02 - Soul Society/27 - memories in the rain2.mkv",
+        "relativePath": "sources/concentrated-2026-08-25-update/27 - memories in the rain2.mkv",
         "retention": "ignored-local-workspace",
-        "byteSize": 330517255
+        "byteSize": 330517264
       }
     }
   ],

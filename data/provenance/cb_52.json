@@ -1,21 +1,22 @@
 {
-  "id": "hb_14",
+  "id": "cb_52",
   "sourceInputs": {
     "editorial": {
-      "recordId": "hollowed:14",
+      "recordId": "concentrated:52",
       "evidenceRefs": [
-        "hollowed-xlsx:episode-list:A16",
-        "hollowed-xlsx:episode-list:B16",
-        "hollowed-xlsx:episode-list:C16",
-        "hollowed-xlsx:episode-list:D16",
-        "hollowed-xlsx:episode-list:E16",
-        "hollowed-xlsx:episode-list:G16",
-        "hollowed-xlsx:episode-list:H16"
+        "concentrated-xlsx:episode-list:A57",
+        "concentrated-xlsx:episode-list:B57",
+        "concentrated-xlsx:episode-list:C57",
+        "concentrated-xlsx:episode-list:D57",
+        "concentrated-xlsx:episode-list:E57",
+        "concentrated-xlsx:episode-list:F57",
+        "concentrated-xlsx:episode-list:G57",
+        "concentrated-xlsx:episode-list:H57"
       ]
     },
     "projection": {
       "seriesId": "bleach-manga-cut",
-      "videoId": "hb_14",
+      "videoId": "cb_52",
       "projectedPlacement": {
         "season": 3,
         "episode": 17
@@ -26,37 +27,37 @@
       }
     },
     "verifiedMedia": {
-      "evidenceRecord": "evidence/media/hb_14.json",
-      "videoId": "hb_14",
-      "recordId": "hollowed:14",
+      "evidenceRecord": "evidence/media/cb_52.json",
+      "videoId": "cb_52",
+      "recordId": "concentrated:52",
       "verificationState": "verified",
       "verificationBases": [
-        "hb14-local-torrent-verification",
-        "hb14-local-media-ffprobe-inspection"
+        "cb52-local-torrent-verification",
+        "cb52-local-media-ffprobe-inspection"
       ]
     }
   },
   "editorial": {
-    "edit": "Hollowed Bleach",
-    "episode": "14",
+    "edit": "Concentrated Bleach",
+    "episode": "52",
     "title": "The Slashing Opera",
     "mangaChapters": "254-259",
     "sourceAnimeEpisodes": "153, 156-157",
-    "exactEditRuntime": "00:31:52",
-    "normalizedExactRuntime": "31:52",
-    "timeSaved": null,
-    "releaseDate": "2025-10-14",
-    "lastUpdate": "2026-02-27",
+    "exactEditRuntime": "00:29:24",
+    "normalizedExactRuntime": "29:24",
+    "timeSaved": "20m49s (41%)",
+    "releaseDate": "2026-08-25",
+    "lastUpdate": "2026-08-25",
     "source": {
-      "document": "Hollowed Bleach Info.xlsx",
+      "document": "!Concentrated Bleach Info.xlsx",
       "sheet": "Episode List",
-      "row": 16,
-      "cells": "A16:E16,G16:H16"
+      "row": 57,
+      "cells": "A57:H57"
     }
   },
   "presentation": {
-    "stremioVideoRuntime": "31",
-    "runtimeTransformation": "The exact 31:52 source runtime is presented as 31 minutes, matching the observed One Pace convention."
+    "stremioVideoRuntime": "29",
+    "runtimeTransformation": "The exact 29:24 source runtime is presented as 29 minutes, matching the observed One Pace convention."
   },
   "compatibilityMetadata": {
     "animeClassification": {
@@ -69,16 +70,17 @@
     "originalContentLanguage": {
       "language": "Japanese",
       "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
         "English AAC LC, stereo / 2.0"
       ],
       "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
     }
   },
   "torrentEvidence": {
-    "infoHash": "e0cf2b306e8f803ae01219e443d050fb831a712b",
+    "infoHash": "ec126810f736f38c9ca44d263e7b1bc07e036a09",
     "fileIdx": 0,
-    "filename": "Hollowed Bleach 14 - The Slashing Opera (sub).mp4",
-    "videoSize": 910624738,
+    "filename": "52 - The Slashing Opera.mkv",
+    "videoSize": 311810978,
     "trackerEvidence": {
       "state": "unresolved"
     },
@@ -92,36 +94,50 @@
   "localMediaInspection": {
     "classification": "verified local media inspection",
     "method": "ffprobe",
-    "inspectedFile": "Hollowed Bleach 14 - The Slashing Opera (sub).mp4",
+    "inspectedFile": "52 - The Slashing Opera.mkv",
     "video": {
-      "width": 1440,
-      "height": 1080,
-      "resolutionLabel": "1080p",
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
       "codec": "HEVC / H.265",
       "profile": "Main",
       "pixelFormat": "yuv420p"
     },
     "audio": [
       {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
         "language": "English",
         "codec": "AAC LC",
         "channels": "stereo / 2.0"
       }
     ],
-    "embeddedSubtitles": [],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDakr]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
     "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
     "duration": {
       "state": "verified",
       "measurement": "container",
-      "seconds": 1912.535625
+      "seconds": 1764.631
     }
   },
   "transformations": {
-    "stremioRuntime": "31:52 (1912 seconds) -> floor whole minutes -> 31",
-    "resolutionLabel": "verified height 1080 -> 1080p",
-    "sizePresentation": "910624738 bytes / 1000000, fixed to two decimals -> 910.62 MB",
+    "stremioRuntime": "29:24 (1764 seconds) -> floor whole minutes -> 29",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "311810978 bytes / 1000000, fixed to two decimals -> 311.81 MB",
     "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
-    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
     "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
     "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
   }

@@ -49,29 +49,28 @@ const EXPECTED_ARRANCAR_BATCH = Object.freeze([
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
 ])
-const EXPECTED_PREVIOUS_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_PREBOUNDARY_PREFIX,
-  ...EXPECTED_ARRANCAR_BATCH,
-  'hb_14'
-])
+const EXPECTED_AUGUST_CONCENTRATED_BATCH = Object.freeze(['cb_52', 'cb_53', 'cb_54'])
 const EXPECTED_NEW_HOLLOWED_BATCH = Object.freeze([
-  ...Array.from({ length: 15 }, (_, index) => `hb_${index + 15}`),
+  ...Array.from({ length: 12 }, (_, index) => `hb_${index + 18}`),
   'hb_0p8',
   ...Array.from({ length: 21 }, (_, index) => `hb_${index + 30}`)
 ])
-const EXPECTED_NEW_CHIPPED_BATCH = Object.freeze([
-  'ch_3', 'ch_4', 'ch_5', 'ch_6', 'ch_7', 'ch_8', 'ch_9', 'ch_10', 'ch_11', 'ch_12'
-])
+const EXPECTED_CHIPPED_BATCH = Object.freeze(Array.from({ length: 12 }, (_, index) => `ch_${index + 1}`))
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
+  ...EXPECTED_PREBOUNDARY_PREFIX,
+  ...EXPECTED_ARRANCAR_BATCH,
+  ...EXPECTED_AUGUST_CONCENTRATED_BATCH,
   ...EXPECTED_NEW_HOLLOWED_BATCH,
-  'ch_1',
-  'ch_2',
-  ...EXPECTED_NEW_CHIPPED_BATCH
+  ...EXPECTED_CHIPPED_BATCH
 ])
-const EXPECTED_LOCKED_PREFIX = EXPECTED_PUBLISHED_PREFIX
+const EXPECTED_LOCKED_PREFIX = Object.freeze(Array.from({ length: 26 }, (_, index) => `cb_${index + 1}`))
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = Object.freeze([
   ...Array.from({ length: 16 }, (_, index) => `hollowed:${index + 14}`),
+  'hollowed:0.8',
+  ...Array.from({ length: 21 }, (_, index) => `hollowed:${index + 30}`)
+])
+const DEFAULT_HOLLOWED_RECORD_IDS = Object.freeze([
+  ...Array.from({ length: 12 }, (_, index) => `hollowed:${index + 18}`),
   'hollowed:0.8',
   ...Array.from({ length: 21 }, (_, index) => `hollowed:${index + 30}`)
 ])
@@ -310,6 +309,10 @@ test('registry preserves source-update reservations and historical tombstones', 
   })
   assert.notEqual(byVideoId.get('cb_70p5').recordId, byVideoId.get('cb_71p5').recordId)
   for (const videoId of ['cb_52', 'cb_53', 'cb_54']) {
+    assert.equal(byVideoId.get(videoId).status, 'published', videoId)
+    assert.equal(byVideoId.get(videoId).locked, false, videoId)
+  }
+  for (const videoId of ['hb_14', 'hb_15', 'hb_16', 'hb_17']) {
     assert.equal(byVideoId.get(videoId).status, 'reserved', videoId)
     assert.equal(byVideoId.get(videoId).locked, false, videoId)
   }
@@ -398,7 +401,7 @@ test('owner resolution maps guided 35.5 to source record 0.0 with one projection
   )
 })
 
-test('owner-selected Hollowed membership remains exact through the batch publication approval', () => {
+test('owner-selected Hollowed membership remains exact while default publication starts at HB18', () => {
   assert.equal(resolutionDocument.resolutions.length, 2)
   const guidedResolution = resolutionDocument.resolutions.find(
     (candidate) => candidate.resolutionId === 'editorial-resolution:concentrated-35.5-to-0.0'
@@ -411,7 +414,7 @@ test('owner-selected Hollowed membership remains exact through the batch publica
   assert.deepEqual(membershipResolution.activeRecordIds, CURRENT_RAW_HOLLOWED_RECORD_IDS)
   assert.deepEqual(
     projection.entries.filter((entry) => entry.projectId === 'hollowed').map((entry) => entry.recordId),
-    membershipResolution.activeRecordIds
+    DEFAULT_HOLLOWED_RECORD_IDS
   )
   assert.deepEqual(
     projection.entries.filter((entry) => entry.resolutionRef).map((entry) => entry.resolutionRef),
@@ -421,23 +424,29 @@ test('owner-selected Hollowed membership remains exact through the batch publica
     .filter((entry) => membershipResolution.activeRecordIds.includes(entry.recordId))
   assert.deepEqual(
     hollowedEntries.filter((entry) => entry.publicationEligibility.state === 'eligible').map((entry) => entry.videoId),
-    ['hb_14', ...EXPECTED_NEW_HOLLOWED_BATCH]
+    EXPECTED_NEW_HOLLOWED_BATCH
   )
   assert.ok(hollowedEntries.every((entry) => entry.publicationEligibility.state === 'eligible'))
-  assert.deepEqual(registry.entries.find((entry) => entry.videoId === 'hb_14'), {
-    recordType: 'normalized-record',
-    recordId: 'hollowed:14',
-    projectId: 'hollowed',
-    sourceIdentifier: '14',
-    videoId: 'hb_14',
-    status: 'published',
-    locked: true
-  })
-  assert.equal(hash('projection/stremio/public-projection.json'), '228ae93e9e24e78e111cb87668fb741e65bcd3978ffbbd4e0ebe63e2933a562e')
+  for (const [videoId, recordId, sourceIdentifier] of [
+    ['hb_14', 'hollowed:14', '14'],
+    ['hb_15', 'hollowed:15', '15'],
+    ['hb_16', 'hollowed:16', '16'],
+    ['hb_17', 'hollowed:17', '17']
+  ]) {
+    assert.deepEqual(registry.entries.find((entry) => entry.videoId === videoId), {
+      recordType: 'normalized-record',
+      recordId,
+      projectId: 'hollowed',
+      sourceIdentifier,
+      videoId,
+      status: 'reserved',
+      locked: false
+    })
+  }
 })
 
-test('all 103 default timeline positions are resolved and monotonic', () => {
-  assert.equal(projection.entries.length, 103)
+test('all 102 default timeline positions are resolved and monotonic', () => {
+  assert.equal(projection.entries.length, 102)
   for (const [index, entry] of projection.entries.entries()) {
     assert.deepEqual(entry.defaultTimelinePosition, { state: 'resolved', index: index + 1 })
   }
@@ -484,26 +493,26 @@ test('CB35 remains the published S2E27 entry immediately before guided 35.5', ()
   assert.deepEqual(cb35.publicationEligibility, { state: 'eligible', gateSet: 'verified-primary' })
 })
 
-test('all Concentrated, selected Hollowed, and all Chipped 01-12 are eligible', () => {
+test('all selected Concentrated, default Hollowed, and Chipped 01-12 are eligible', () => {
   const concentrated = projection.entries.filter((entry) => entry.projectId === 'concentrated')
   const hollowed = projection.entries.filter((entry) => entry.projectId === 'hollowed')
   const chipped = projection.entries.filter((entry) => entry.projectId === 'chipped')
-  assert.equal(concentrated.length, 53)
+  assert.equal(concentrated.length, 56)
   assert.ok(concentrated.every((entry) => entry.publicationEligibility.state === 'eligible'))
   assert.deepEqual(
     hollowed.map((entry) => entry.videoId),
-    ['hb_14', ...EXPECTED_NEW_HOLLOWED_BATCH]
+    EXPECTED_NEW_HOLLOWED_BATCH
   )
   assert.ok(hollowed.every((entry) => entry.publicationEligibility.state === 'eligible'))
   assert.deepEqual(
     chipped.map((entry) => entry.videoId),
-    ['ch_1', 'ch_2', ...EXPECTED_NEW_CHIPPED_BATCH]
+    EXPECTED_CHIPPED_BATCH
   )
   assert.ok(chipped.every((entry) => entry.publicationEligibility.state === 'eligible'))
   assert.ok(chipped.every((entry) => entry.publicationEligibility.gateSet === 'verified-primary'))
 })
 
-test('current publication checkpoint is exactly 103 entries ending with Chipped 12', () => {
+test('current publication candidate is exactly 102 entries ending with Chipped 12', () => {
   const sorted = [...projection.entries].sort((left, right) =>
     left.projectedPlacement.season - right.projectedPlacement.season ||
     left.projectedPlacement.episode - right.projectedPlacement.episode
@@ -516,60 +525,63 @@ test('current publication checkpoint is exactly 103 entries ending with Chipped 
   )
   assert.equal(eligibility.indexOf(false), -1)
   assert.ok(eligibility.every((state) => state === true))
-  assert.equal(sorted.length, 103)
+  assert.equal(sorted.length, 102)
   assert.equal(sorted[52].videoId, 'cb_51')
   assert.deepEqual(sorted[52].publicationEligibility, {
     state: 'eligible',
     gateSet: 'verified-primary'
   })
-  assert.equal(sorted[53].videoId, 'hb_14')
+  assert.equal(sorted[53].videoId, 'cb_52')
   assert.deepEqual(sorted[53].publicationEligibility, {
     state: 'eligible',
     gateSet: 'verified-primary'
   })
-  assert.deepEqual(sorted.slice(67, 72).map((entry) => entry.videoId), [
-    'hb_28', 'hb_29', 'hb_0p8', 'hb_30', 'hb_31'
+  assert.deepEqual(sorted.slice(52, 57).map((entry) => entry.videoId), [
+    'cb_51', 'cb_52', 'cb_53', 'cb_54', 'hb_18'
   ])
-  assert.equal(sorted[69].projectedPlacement.episode, 33)
-  assert.deepEqual(sorted[69].defaultTimelinePosition, { state: 'resolved', index: 70 })
-  assert.deepEqual(sorted.slice(88, 91).map((entry) => entry.videoId), ['hb_48', 'hb_49', 'hb_50'])
+  assert.deepEqual(sorted.slice(67, 72).map((entry) => entry.videoId), [
+    'hb_29', 'hb_0p8', 'hb_30', 'hb_31', 'hb_32'
+  ])
+  assert.equal(sorted[68].projectedPlacement.episode, 32)
+  assert.deepEqual(sorted[68].defaultTimelinePosition, { state: 'resolved', index: 69 })
+  assert.deepEqual(sorted.slice(87, 90).map((entry) => entry.videoId), ['hb_48', 'hb_49', 'hb_50'])
+  assert.deepEqual(sorted[89].projectedPlacement, {
+    seriesId: 'bleach-manga-cut', season: 3, episode: 53
+  })
+  assert.deepEqual(sorted[89].defaultTimelinePosition, { state: 'resolved', index: 90 })
+  assert.equal(sorted[90].videoId, 'ch_1')
+  assert.deepEqual(sorted[90].publicationEligibility, {
+    state: 'eligible',
+    gateSet: 'verified-primary'
+  })
   assert.deepEqual(sorted[90].projectedPlacement, {
-    seriesId: 'bleach-manga-cut', season: 3, episode: 54
+    seriesId: 'bleach-manga-cut', season: 4, episode: 1
   })
   assert.deepEqual(sorted[90].defaultTimelinePosition, { state: 'resolved', index: 91 })
-  assert.equal(sorted[91].videoId, 'ch_1')
+  assert.equal(sorted[91].videoId, 'ch_2')
   assert.deepEqual(sorted[91].publicationEligibility, {
     state: 'eligible',
     gateSet: 'verified-primary'
   })
   assert.deepEqual(sorted[91].projectedPlacement, {
-    seriesId: 'bleach-manga-cut', season: 4, episode: 1
+    seriesId: 'bleach-manga-cut', season: 4, episode: 2
   })
   assert.deepEqual(sorted[91].defaultTimelinePosition, { state: 'resolved', index: 92 })
-  assert.equal(sorted[92].videoId, 'ch_2')
+  assert.equal(sorted[92].videoId, 'ch_3')
   assert.deepEqual(sorted[92].publicationEligibility, {
     state: 'eligible',
     gateSet: 'verified-primary'
   })
-  assert.deepEqual(sorted[92].projectedPlacement, {
-    seriesId: 'bleach-manga-cut', season: 4, episode: 2
-  })
   assert.deepEqual(sorted[92].defaultTimelinePosition, { state: 'resolved', index: 93 })
-  assert.equal(sorted[93].videoId, 'ch_3')
-  assert.deepEqual(sorted[93].publicationEligibility, {
+  assert.equal(sorted[101].videoId, 'ch_12')
+  assert.deepEqual(sorted[101].publicationEligibility, {
     state: 'eligible',
     gateSet: 'verified-primary'
   })
-  assert.deepEqual(sorted[93].defaultTimelinePosition, { state: 'resolved', index: 94 })
-  assert.equal(sorted[102].videoId, 'ch_12')
-  assert.deepEqual(sorted[102].publicationEligibility, {
-    state: 'eligible',
-    gateSet: 'verified-primary'
-  })
-  assert.deepEqual(sorted[102].projectedPlacement, {
+  assert.deepEqual(sorted[101].projectedPlacement, {
     seriesId: 'bleach-manga-cut', season: 4, episode: 12
   })
-  assert.deepEqual(sorted[102].defaultTimelinePosition, { state: 'resolved', index: 103 })
+  assert.deepEqual(sorted[101].defaultTimelinePosition, { state: 'resolved', index: 102 })
   assert.deepEqual(projection.publicationGateSets['unpublished-primary'].blockedBy, [
     'media-evidence-not-approved',
     'primary-publication-prefix-after-ch_12'
@@ -647,22 +659,22 @@ test('cross-file publication contract rejects optional or EX IDs in the primary 
   )
 })
 
-test('cross-file publication contract rejects publishing HB14 across a CB51 gap', () => {
+test('cross-file publication contract rejects publishing HB18 across a CB54 gap', () => {
   const input = publicationInputs()
   input.projection.publicationPolicy.currentPublishedVideoIds = [
-    ...EXPECTED_PREVIOUS_LOCKED_PREFIX.slice(0, -1),
-    'hb_14'
+    ...EXPECTED_PUBLISHED_PREFIX.slice(0, EXPECTED_PUBLISHED_PREFIX.indexOf('cb_54')),
+    'hb_18'
   ]
-  input.projection.entries.find((entry) => entry.videoId === 'cb_51').publicationEligibility = {
+  input.projection.entries.find((entry) => entry.videoId === 'cb_54').publicationEligibility = {
     state: 'blocked',
     gateSet: 'unpublished-primary'
   }
-  input.registry.entries.find((entry) => entry.videoId === 'cb_51').status = 'reserved'
-  input.projection.entries.find((entry) => entry.videoId === 'hb_14').publicationEligibility = {
+  input.registry.entries.find((entry) => entry.videoId === 'cb_54').status = 'reserved'
+  input.projection.entries.find((entry) => entry.videoId === 'hb_18').publicationEligibility = {
     state: 'eligible',
     gateSet: 'verified-primary'
   }
-  input.registry.entries.find((entry) => entry.videoId === 'hb_14').status = 'published'
+  input.registry.entries.find((entry) => entry.videoId === 'hb_18').status = 'published'
   assert.throws(() => validatePublicationPrefix(input))
 })
 
@@ -706,13 +718,14 @@ test('optional IDs cannot enter the primary default timeline', () => {
   assert.equal(optional.primarySeriesPublicationAllowed, false)
 })
 
-test('all 103 published IDs are now fully compatibility-locked', () => {
+test('current publication candidate has 102 published IDs and a 26-entry lock prefix', () => {
   assert.equal(registry.policy.registryPresenceImpliesPublication, false)
   const published = registry.entries.filter((entry) => entry.status === 'published')
   assert.deepEqual(published.map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(published.filter((entry) => entry.locked).map((entry) => entry.videoId), EXPECTED_LOCKED_PREFIX)
-  assert.equal(published.length, 103)
-  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), [])
+  assert.equal(published.length, 102)
+  assert.equal(published.filter((entry) => !entry.locked).length, 76)
+  assert.deepEqual(published.filter((entry) => !entry.locked).map((entry) => entry.videoId), EXPECTED_PUBLISHED_PREFIX.slice(26))
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'cb_4'),
     {
@@ -726,15 +739,15 @@ test('all 103 published IDs are now fully compatibility-locked', () => {
     }
   )
   assert.deepEqual(
-    registry.entries.find((entry) => entry.videoId === 'cb_35'),
+    registry.entries.find((entry) => entry.videoId === 'cb_27'),
     {
       recordType: 'normalized-record',
-      recordId: 'concentrated:35',
+      recordId: 'concentrated:27',
       projectId: 'concentrated',
-      sourceIdentifier: '35',
-      videoId: 'cb_35',
+      sourceIdentifier: '27',
+      videoId: 'cb_27',
       status: 'published',
-      locked: true
+      locked: false
     }
   )
   assert.deepEqual(
@@ -746,7 +759,7 @@ test('all 103 published IDs are now fully compatibility-locked', () => {
       sourceIdentifier: '0.0',
       videoId: 'cb_0p0',
       status: 'published',
-      locked: true
+      locked: false
     }
   )
   assert.deepEqual(
@@ -758,7 +771,7 @@ test('all 103 published IDs are now fully compatibility-locked', () => {
       sourceIdentifier: '36',
       videoId: 'cb_36',
       status: 'published',
-      locked: true
+      locked: false
     }
   )
   assert.deepEqual(
@@ -770,33 +783,40 @@ test('all 103 published IDs are now fully compatibility-locked', () => {
       sourceIdentifier: '51',
       videoId: 'cb_51',
       status: 'published',
-      locked: true
+      locked: false
     }
   )
-  assert.deepEqual(
-    registry.entries.find((entry) => entry.videoId === 'hb_14'),
-    {
+  for (const [videoId, recordId, sourceIdentifier] of [
+    ['cb_52', 'concentrated:52', '52'],
+    ['cb_53', 'concentrated:53', '53'],
+    ['cb_54', 'concentrated:54', '54']
+  ]) {
+    assert.deepEqual(registry.entries.find((entry) => entry.videoId === videoId), {
       recordType: 'normalized-record',
-      recordId: 'hollowed:14',
-      projectId: 'hollowed',
-      sourceIdentifier: '14',
-      videoId: 'hb_14',
+      recordId,
+      projectId: 'concentrated',
+      sourceIdentifier,
+      videoId,
       status: 'published',
-      locked: true
-    }
-  )
-  assert.deepEqual(
-    registry.entries.find((entry) => entry.videoId === 'hb_15'),
-    {
+      locked: false
+    })
+  }
+  for (const [videoId, recordId, sourceIdentifier] of [
+    ['hb_14', 'hollowed:14', '14'],
+    ['hb_15', 'hollowed:15', '15'],
+    ['hb_16', 'hollowed:16', '16'],
+    ['hb_17', 'hollowed:17', '17']
+  ]) {
+    assert.deepEqual(registry.entries.find((entry) => entry.videoId === videoId), {
       recordType: 'normalized-record',
-      recordId: 'hollowed:15',
+      recordId,
       projectId: 'hollowed',
-      sourceIdentifier: '15',
-      videoId: 'hb_15',
-      status: 'published',
-      locked: true
-    }
-  )
+      sourceIdentifier,
+      videoId,
+      status: 'reserved',
+      locked: false
+    })
+  }
   assert.deepEqual(
     registry.entries.find((entry) => entry.videoId === 'hb_50'),
     {
@@ -806,7 +826,7 @@ test('all 103 published IDs are now fully compatibility-locked', () => {
       sourceIdentifier: '50',
       videoId: 'hb_50',
       status: 'published',
-      locked: true
+      locked: false
     }
   )
   assert.deepEqual(
@@ -818,7 +838,7 @@ test('all 103 published IDs are now fully compatibility-locked', () => {
       sourceIdentifier: '#01',
       videoId: 'ch_1',
       status: 'published',
-      locked: true
+      locked: false
     }
   )
   assert.deepEqual(
@@ -830,26 +850,28 @@ test('all 103 published IDs are now fully compatibility-locked', () => {
       sourceIdentifier: '#02',
       videoId: 'ch_2',
       status: 'published',
-      locked: true
+      locked: false
     }
   )
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').every((entry) => entry.locked === false))
   assert.ok(registry.entries.some((entry) => entry.status === 'reserved'))
-  assert.equal(
-    registry.entries.filter((entry) => entry.status === 'reserved' && projectedById.has(entry.recordId)).length,
-    0,
-    'the complete default primary projection is now published, leaving no reserved-but-projected entry'
+  assert.deepEqual(
+    registry.entries
+      .filter((entry) => entry.status === 'reserved' && projectedById.has(entry.recordId))
+      .map((entry) => entry.videoId),
+    [],
+    'reserved entries must not remain in the default primary projection'
   )
 })
 
-test('the current publication checkpoint reports no published-but-unlocked default entries', () => {
+test('the current publication candidate reports 76 published-but-unlocked default entries', () => {
   const result = validateCompatibilityLockPrefix({
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     registryEntries: registry.entries,
     lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
   })
   assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
-  assert.deepEqual(result.publishedUnlockedVideoIds, [])
+  assert.deepEqual(result.publishedUnlockedVideoIds, EXPECTED_PUBLISHED_PREFIX.slice(26))
 })
 
 test('a synthetic future registry extension remains unlocked until explicitly validated', () => {
@@ -863,7 +885,7 @@ test('a synthetic future registry extension remains unlocked until explicitly va
     lockedValidatedVideoIds: new Set(EXPECTED_LOCKED_PREFIX)
   })
   assert.deepEqual(result.lockedValidatedVideoIds, EXPECTED_LOCKED_PREFIX)
-  assert.deepEqual(result.publishedUnlockedVideoIds, ['hb_ex_1'])
+  assert.deepEqual(result.publishedUnlockedVideoIds, [...EXPECTED_PUBLISHED_PREFIX.slice(26), 'hb_ex_1'])
 
   next.locked = true
   assert.throws(
@@ -907,14 +929,14 @@ test('the five remaining unresolved editorial issues match the locked lifecycle'
 
 test('complete projection validator accepts the artifacts', () => {
   assert.deepEqual(validate(), {
-    projectedEntries: 103,
-    projectCounts: { concentrated: 53, hollowed: 38, chipped: 12 },
-    seasonCounts: { 1: 9, 2: 28, 3: 54, 4: 12 },
-    eligibilityCounts: { eligible: 103 },
+    projectedEntries: 102,
+    projectCounts: { concentrated: 56, hollowed: 34, chipped: 12 },
+    seasonCounts: { 1: 9, 2: 28, 3: 53, 4: 12 },
+    eligibilityCounts: { eligible: 102 },
     eligibleVideoIds: EXPECTED_PUBLISHED_PREFIX,
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     lockedValidatedVideoIds: EXPECTED_LOCKED_PREFIX,
-    publishedUnlockedVideoIds: [],
+    publishedUnlockedVideoIds: EXPECTED_PUBLISHED_PREFIX.slice(26),
     registryEntries: 171,
     optionalEntries: 4,
     unresolvedIssues: 5

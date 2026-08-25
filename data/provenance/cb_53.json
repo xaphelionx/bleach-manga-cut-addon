@@ -1,21 +1,22 @@
 {
-  "id": "hb_15",
+  "id": "cb_53",
   "sourceInputs": {
     "editorial": {
-      "recordId": "hollowed:15",
+      "recordId": "concentrated:53",
       "evidenceRefs": [
-        "hollowed-xlsx:episode-list:A17",
-        "hollowed-xlsx:episode-list:B17",
-        "hollowed-xlsx:episode-list:C17",
-        "hollowed-xlsx:episode-list:D17",
-        "hollowed-xlsx:episode-list:E17",
-        "hollowed-xlsx:episode-list:G17",
-        "hollowed-xlsx:episode-list:H17"
+        "concentrated-xlsx:episode-list:A58",
+        "concentrated-xlsx:episode-list:B58",
+        "concentrated-xlsx:episode-list:C58",
+        "concentrated-xlsx:episode-list:D58",
+        "concentrated-xlsx:episode-list:E58",
+        "concentrated-xlsx:episode-list:F58",
+        "concentrated-xlsx:episode-list:G58",
+        "concentrated-xlsx:episode-list:H58"
       ]
     },
     "projection": {
       "seriesId": "bleach-manga-cut",
-      "videoId": "hb_15",
+      "videoId": "cb_53",
       "projectedPlacement": {
         "season": 3,
         "episode": 18
@@ -26,37 +27,37 @@
       }
     },
     "verifiedMedia": {
-      "evidenceRecord": "evidence/media/hb_15.json",
-      "videoId": "hb_15",
-      "recordId": "hollowed:15",
+      "evidenceRecord": "evidence/media/cb_53.json",
+      "videoId": "cb_53",
+      "recordId": "concentrated:53",
       "verificationState": "verified",
       "verificationBases": [
-        "hb15-local-torrent-verification",
-        "hb15-local-media-ffprobe-inspection"
+        "cb53-local-torrent-verification",
+        "cb53-local-media-ffprobe-inspection"
       ]
     }
   },
   "editorial": {
-    "edit": "Hollowed Bleach",
-    "episode": "15",
-    "title": "Left Arm of the Devil",
-    "mangaChapters": "259-262",
+    "edit": "Concentrated Bleach",
+    "episode": "53",
+    "title": "Arms of the Giant",
+    "mangaChapters": "259-263",
     "sourceAnimeEpisodes": "157-159",
-    "exactEditRuntime": "00:22:59",
-    "normalizedExactRuntime": "22:59",
-    "timeSaved": null,
-    "releaseDate": "2025-10-14",
-    "lastUpdate": "2026-02-27",
+    "exactEditRuntime": "00:24:06",
+    "normalizedExactRuntime": "24:06",
+    "timeSaved": "20m14s (46%)",
+    "releaseDate": "2026-08-25",
+    "lastUpdate": "2026-08-25",
     "source": {
-      "document": "Hollowed Bleach Info.xlsx",
+      "document": "!Concentrated Bleach Info.xlsx",
       "sheet": "Episode List",
-      "row": 17,
-      "cells": "A17:E17,G17:H17"
+      "row": 58,
+      "cells": "A58:H58"
     }
   },
   "presentation": {
-    "stremioVideoRuntime": "22",
-    "runtimeTransformation": "The exact 22:59 source runtime is presented as 22 minutes, matching the observed One Pace convention."
+    "stremioVideoRuntime": "24",
+    "runtimeTransformation": "The exact 24:06 source runtime is presented as 24 minutes, matching the observed One Pace convention."
   },
   "compatibilityMetadata": {
     "animeClassification": {
@@ -69,16 +70,17 @@
     "originalContentLanguage": {
       "language": "Japanese",
       "inspectedAudioTracks": [
+        "Japanese AAC LC, stereo / 2.0",
         "English AAC LC, stereo / 2.0"
       ],
       "intent": "Japanese is the intended original-language track for Nuvio Original Audio behavior."
     }
   },
   "torrentEvidence": {
-    "infoHash": "81c455e0687ff84734af6725b2a54911e1e47fa4",
+    "infoHash": "13853da46d60ab2441f1d0dee2354343f2000f0c",
     "fileIdx": 0,
-    "filename": "Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
-    "videoSize": 656753518,
+    "filename": "53 - Arms of the Giant.mkv",
+    "videoSize": 262188363,
     "trackerEvidence": {
       "state": "unresolved"
     },
@@ -92,36 +94,50 @@
   "localMediaInspection": {
     "classification": "verified local media inspection",
     "method": "ffprobe",
-    "inspectedFile": "Hollowed Bleach 15 - Left Arm of the Devil (sub).mp4",
+    "inspectedFile": "53 - Arms of the Giant.mkv",
     "video": {
-      "width": 1440,
-      "height": 1080,
-      "resolutionLabel": "1080p",
+      "width": 768,
+      "height": 576,
+      "resolutionLabel": "576p",
       "codec": "HEVC / H.265",
       "profile": "Main",
       "pixelFormat": "yuv420p"
     },
     "audio": [
       {
+        "language": "Japanese",
+        "codec": "AAC LC",
+        "channels": "stereo / 2.0"
+      },
+      {
         "language": "English",
         "codec": "AAC LC",
         "channels": "stereo / 2.0"
       }
     ],
-    "embeddedSubtitles": [],
+    "embeddedSubtitles": [
+      {
+        "language": "English",
+        "title": "Full Subtitles [Edited ParanDark]"
+      },
+      {
+        "language": "English",
+        "title": "Signs and Songs [Edited ParanDark]"
+      }
+    ],
     "subtitlePresentation": "Embedded subtitle evidence is recorded for provenance only and is not converted into Stremio external subtitle URLs.",
     "duration": {
       "state": "verified",
       "measurement": "container",
-      "seconds": 1379.378
+      "seconds": 1446.316
     }
   },
   "transformations": {
-    "stremioRuntime": "22:59 (1379 seconds) -> floor whole minutes -> 22",
-    "resolutionLabel": "verified height 1080 -> 1080p",
-    "sizePresentation": "656753518 bytes / 1000000, fixed to two decimals -> 656.75 MB",
+    "stremioRuntime": "24:06 (1446 seconds) -> floor whole minutes -> 24",
+    "resolutionLabel": "verified height 576 -> 576p",
+    "sizePresentation": "262188363 bytes / 1000000, fixed to two decimals -> 262.19 MB",
     "audioPresentation": "verified AAC LC, 2 channels/stereo -> AAC 2.0",
-    "languagePresentation": "English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.",
+    "languagePresentation": "Japanese + English -> JPN + ENG",
     "streamSources": "[] is emitted by locked series presentation policy and is not a torrent tracker/announce/web-seed evidence claim.",
     "embeddedSubtitlePolicy": "Verified embedded subtitle tracks remain provenance only; no external subtitle URLs are generated."
   }

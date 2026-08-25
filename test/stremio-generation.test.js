@@ -50,49 +50,40 @@ const EXPECTED_ARRANCAR_BATCH = Object.freeze([
   'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
   'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51'
 ])
-const EXPECTED_PREVIOUS_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_PREBOUNDARY_PREFIX,
-  ...EXPECTED_ARRANCAR_BATCH,
-  'hb_14'
-])
+const EXPECTED_AUGUST_CONCENTRATED_BATCH = Object.freeze(['cb_52', 'cb_53', 'cb_54'])
 const EXPECTED_NEW_HOLLOWED_BATCH = Object.freeze([
-  ...Array.from({ length: 15 }, (_, index) => `hb_${index + 15}`),
+  ...Array.from({ length: 12 }, (_, index) => `hb_${index + 18}`),
   'hb_0p8',
   ...Array.from({ length: 21 }, (_, index) => `hb_${index + 30}`)
 ])
-const EXPECTED_ORIGINAL_LOCKED_PREFIX = Object.freeze([
-  ...EXPECTED_PREVIOUS_LOCKED_PREFIX,
-  ...EXPECTED_NEW_HOLLOWED_BATCH
-])
-const EXPECTED_NEW_CHIPPED_BATCH = Object.freeze([
-  'ch_3', 'ch_4', 'ch_5', 'ch_6', 'ch_7', 'ch_8', 'ch_9', 'ch_10', 'ch_11', 'ch_12'
-])
+const EXPECTED_CHIPPED_BATCH = Object.freeze(Array.from({ length: 12 }, (_, index) => `ch_${index + 1}`))
 const EXPECTED_PUBLISHED_PREFIX = Object.freeze([
-  ...EXPECTED_ORIGINAL_LOCKED_PREFIX,
-  'ch_1',
-  'ch_2',
-  ...EXPECTED_NEW_CHIPPED_BATCH
+  ...EXPECTED_PREBOUNDARY_PREFIX,
+  ...EXPECTED_ARRANCAR_BATCH,
+  ...EXPECTED_AUGUST_CONCENTRATED_BATCH,
+  ...EXPECTED_NEW_HOLLOWED_BATCH,
+  ...EXPECTED_CHIPPED_BATCH
 ])
-const EXPECTED_LOCKED_PREFIX = EXPECTED_PUBLISHED_PREFIX
+const EXPECTED_LOCKED_PREFIX = Object.freeze(Array.from({ length: 26 }, (_, index) => `cb_${index + 1}`))
 const CURRENT_AGGREGATE_HASHES = Object.freeze({
   'data/catalog/bleach-manga-cut.json': '279dd68b24cee6e1613f1081b4ff7ae69ade2b177d2f27fa73b8e425542c58c2',
-  'data/meta/bleach-manga-cut.json': '5ecaf85355cece7496a3d620bbb3f1974532c7840a103cafb6ac33c24da42ae7'
+  'data/meta/bleach-manga-cut.json': '925142463d0c65396253a1f5acb1b62f395292212a44de7fdbe1106111eaa3c8'
 })
 const LOCKED_STREAM_VECTOR_SHA256 =
-  'f40b242bb47c2e0946f7b6d893b31ed75196d34eb9db1289ee9e9a55d02bfc37'
+  '68e070a8e3b1307c5b4dea455cfe3a752e4419adc770e7a1f05a6d10a499d7e3'
 const LOCKED_CONCENTRATED_PRODUCTION_VECTOR_SHA256 =
-  'ff8ba0f7a1f1ed3297272c7f1dfb99e89f4c49a8bfa598403aa31a3d8e5af802'
+  'a86bc432c26fd8a7585c9b2a168a559a529dab387720f43efb2059745345fb1c'
 const LOCKED_ORIGINAL_STREAM_FILE_VECTOR_SHA256 =
-  '919353b8063ea592b30082d3e755f7da4b487b56e0463c1d326b230b20d3e924'
+  '3c9470f30a03dd989542402dc1df0755fe5993b41734798f8f70262984ae2132'
 const LOCKED_ORIGINAL_PROVENANCE_FILE_VECTOR_SHA256 =
-  '553964547e62faed187cfeda82a24c11245d25c1f941ab7facedca93e948846a'
+  'c37c9edd6f4dfc9b7ebdfc941955f51aa4f7237819fd2d617c57134664888717'
 const CURRENT_STREAM_FILE_VECTOR_SHA256 =
-  '9190a3b0e82c3fec8a877b3571932c8a7dd449b39cabf74dc9eaea3f723cd834'
+  '0b181c06ec2f5919d832b95248fa14a3e926a7f07229a87ec68262351e3189d5'
 const CURRENT_PROVENANCE_FILE_VECTOR_SHA256 =
-  'df4e222db5bc90fc58bbd51151ee2bb63ecd18443bde48a6101800f86ea36e35'
+  '57d20c3922de7531e01bf6570aeab252e266be7c8368164424460e4474dbcd93'
 const CB27_PROVENANCE_PATH = 'data/provenance/cb_27.json'
 const CB27_PRODUCTION_PROVENANCE_SHA256 =
-  'ca86baecc7eed3b76ad1d19ddde156b73c7c37169cd27059d8443bf88c6a35cf'
+  'aac4b4ebda76fcc17e9382603d9c0420f8c43da7fb411d51c52508c9f1c3707e'
 
 const read = (relativePath, base = root) => fs.readFileSync(path.join(base, relativePath))
 const readJson = (relativePath, base = root) => JSON.parse(read(relativePath, base).toString('utf8'))
@@ -137,7 +128,7 @@ test('processing remains exactly projection-controlled at the current canonical 
   assert.equal('data/stream/cb_0p0.json' in result.candidates, true)
   assert.equal('data/provenance/cb_0p0.json' in result.candidates, true)
   assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_0p0'), true)
-  for (const videoId of ['cb_36', 'cb_51']) {
+  for (const videoId of ['cb_36', 'cb_51', 'cb_52', 'cb_53', 'cb_54']) {
     assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), true)
     assert.equal(result.processedVideoIds.includes(videoId), true)
@@ -145,13 +136,15 @@ test('processing remains exactly projection-controlled at the current canonical 
     assert.equal(`data/provenance/${videoId}.json` in result.candidates, true)
     assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), true)
   }
-  assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === 'hb_14'), true)
-  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('hb_14'), true)
-  assert.equal(result.processedVideoIds.includes('hb_14'), true)
-  assert.equal('data/stream/hb_14.json' in result.candidates, true)
-  assert.equal('data/provenance/hb_14.json' in result.candidates, true)
-  assert.equal(generatedMeta.videos.some(({ id }) => id === 'hb_14'), true)
-  for (const videoId of ['hb_15', 'hb_0p8', 'hb_50']) {
+  for (const videoId of ['hb_14', 'hb_15', 'hb_16', 'hb_17']) {
+    assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
+    assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), false)
+    assert.equal(result.processedVideoIds.includes(videoId), false)
+    assert.equal(`data/stream/${videoId}.json` in result.candidates, false)
+    assert.equal(`data/provenance/${videoId}.json` in result.candidates, false)
+    assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), false)
+  }
+  for (const videoId of ['hb_18', 'hb_0p8', 'hb_50']) {
     assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), true)
     assert.equal(result.processedVideoIds.includes(videoId), true)
@@ -159,7 +152,7 @@ test('processing remains exactly projection-controlled at the current canonical 
     assert.equal(`data/provenance/${videoId}.json` in result.candidates, true)
     assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), true)
   }
-  for (const videoId of ['ch_1', 'ch_2', ...EXPECTED_NEW_CHIPPED_BATCH]) {
+  for (const videoId of EXPECTED_CHIPPED_BATCH) {
     assert.equal(inputs.evidenceRecords.some(({ value }) => value.videoId === videoId), true)
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(videoId), true)
     assert.equal(result.processedVideoIds.includes(videoId), true)
@@ -167,15 +160,15 @@ test('processing remains exactly projection-controlled at the current canonical 
     assert.equal(`data/provenance/${videoId}.json` in result.candidates, true)
     assert.equal(generatedMeta.videos.some(({ id }) => id === videoId), true)
   }
-  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_52'), false)
-  assert.equal(result.processedVideoIds.includes('cb_52'), false)
-  assert.equal('data/stream/cb_52.json' in result.candidates, false)
-  assert.equal('data/provenance/cb_52.json' in result.candidates, false)
-  assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_52'), false)
+  assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes('cb_55'), false)
+  assert.equal(result.processedVideoIds.includes('cb_55'), false)
+  assert.equal('data/stream/cb_55.json' in result.candidates, false)
+  assert.equal('data/provenance/cb_55.json' in result.candidates, false)
+  assert.equal(generatedMeta.videos.some(({ id }) => id === 'cb_55'), false)
   assert.doesNotMatch(generatorSource, /INITIAL_ELIGIBLE_VIDEO_IDS/)
 })
 
-test('all Chipped 01-12 enter publication and presentation generation and are all locked', () => {
+test('all Chipped 01-12 enter publication and presentation generation and remain unlocked pending validation', () => {
   const chippedEvidence = inputs.evidenceRecords.filter(({ value }) => value.videoId.startsWith('ch_'))
   assert.equal(chippedEvidence.length, 12)
   assert.deepEqual(
@@ -189,14 +182,14 @@ test('all Chipped 01-12 enter publication and presentation generation and are al
   const registryEntries = inputs.registry.entries.filter(({ videoId }) => videoId.startsWith('ch_'))
   assert.equal(registryEntries.length, 12)
   for (const entry of registryEntries) {
-    assert.equal(entry.locked, true)
+    assert.equal(entry.locked, false)
     assert.equal(entry.status, 'published')
     assert.equal(inputs.projection.publicationPolicy.currentPublishedVideoIds.includes(entry.videoId), true)
     assert.equal(result.processedVideoIds.includes(entry.videoId), true)
     assert.equal(`data/stream/${entry.videoId}.json` in result.candidates, true)
     assert.equal(`data/provenance/${entry.videoId}.json` in result.candidates, true)
   }
-  assert.equal(result.processedVideoIds.length, 103)
+  assert.equal(result.processedVideoIds.length, 102)
   assert.equal(result.processedVideoIds.at(-1), 'ch_12')
 })
 
@@ -333,7 +326,7 @@ test('current checkpoint candidate paths are exact and closed', () => {
       `data/provenance/${videoId}.json`
     ])
   ]
-  assert.equal(expectedPaths.length, 208)
+  assert.equal(expectedPaths.length, 206)
   assert.deepEqual(Object.keys(result.candidates), expectedPaths)
 })
 
@@ -463,14 +456,14 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   )
 
   const videos = result.candidates[CB1_REGRESSION_FILES.meta].meta.videos
-  assert.equal(videos.length, 103)
+  assert.equal(videos.length, 102)
   assert.deepEqual(videos.map((video) => video.id), EXPECTED_PUBLISHED_PREFIX)
   assert.deepEqual(
     videos.reduce((counts, video) => {
       counts[video.season] = (counts[video.season] || 0) + 1
       return counts
     }, {}),
-    { 1: 9, 2: 28, 3: 54, 4: 12 }
+    { 1: 9, 2: 28, 3: 53, 4: 12 }
   )
   const placement = (videoId) => {
     const { season, episode } = videos.find((video) => video.id === videoId)
@@ -487,9 +480,13 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   assert.deepEqual(placement('cb_0p0'), { season: 2, episode: 28 })
   assert.deepEqual(placement('cb_36'), { season: 3, episode: 1 })
   assert.deepEqual(placement('cb_51'), { season: 3, episode: 16 })
-  assert.deepEqual(placement('hb_14'), { season: 3, episode: 17 })
-  assert.deepEqual(placement('hb_0p8'), { season: 3, episode: 33 })
-  assert.deepEqual(placement('hb_50'), { season: 3, episode: 54 })
+  assert.deepEqual(placement('cb_52'), { season: 3, episode: 17 })
+  assert.deepEqual(placement('cb_53'), { season: 3, episode: 18 })
+  assert.deepEqual(placement('cb_54'), { season: 3, episode: 19 })
+  assert.equal(videos.some((video) => video.id === 'hb_14'), false)
+  assert.deepEqual(placement('hb_18'), { season: 3, episode: 20 })
+  assert.deepEqual(placement('hb_0p8'), { season: 3, episode: 32 })
+  assert.deepEqual(placement('hb_50'), { season: 3, episode: 53 })
   assert.deepEqual(placement('ch_1'), { season: 4, episode: 1 })
   assert.deepEqual(placement('ch_2'), { season: 4, episode: 2 })
   assert.deepEqual(placement('ch_3'), { season: 4, episode: 3 })
@@ -497,10 +494,10 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
   assert.deepEqual(placement('ch_10'), { season: 4, episode: 10 })
   assert.deepEqual(placement('ch_12'), { season: 4, episode: 12 })
   assert.deepEqual(videos.slice(67, 72).map((video) => video.id), [
-    'hb_28', 'hb_29', 'hb_0p8', 'hb_30', 'hb_31'
+    'hb_29', 'hb_0p8', 'hb_30', 'hb_31', 'hb_32'
   ])
   assert.deepEqual(videos.slice(-3).map((video) => video.id), ['ch_10', 'ch_11', 'ch_12'])
-  assert.equal(videos.some((video) => video.id === 'cb_52'), false)
+  assert.equal(videos.some((video) => video.id === 'cb_55'), false)
   for (const resolved of inputs.resolvedRecords) {
     const video = videos.find((item) => item.id === resolved.projectionEntry.videoId)
     assert.equal(
@@ -513,25 +510,22 @@ test('editorial runtimes produce ordered whole-minute Stremio runtimes', () => {
 
 test('every current generated production candidate satisfies its exact derivation contract', () => {
   const relativePaths = Object.keys(result.candidates)
-  assert.equal(relativePaths.length, 208)
+  assert.equal(relativePaths.length, 206)
   let exactResults = 0
   for (const relativePath of relativePaths) {
     assert.ok(read(relativePath, outputRoot).equals(jsonBytes(result.candidates[relativePath])), relativePath)
     if (relativePath === CB1_REGRESSION_FILES.provenance) {
       assertExpectedProvenanceDiff(lockedProvenance, result.candidates[relativePath])
       assert.equal(result.comparisons[relativePath].byteIdentical, false)
-    } else if (relativePath === CB27_PROVENANCE_PATH) {
-      assertCb27SourceOnlyProvenanceDelta(readJson(relativePath), result.candidates[relativePath])
-      assert.equal(read(relativePath, outputRoot).equals(read(relativePath)), false)
     } else {
       assert.ok(read(relativePath, outputRoot).equals(read(relativePath)), relativePath)
     }
     exactResults += 1
   }
-  assert.equal(exactResults, 208)
+  assert.equal(exactResults, 206)
 })
 
-test('all 103 locked stream and provenance artifacts retain their regression contracts', () => {
+test('the 26 locked stream and provenance artifacts retain their regression contracts', () => {
   for (const videoId of EXPECTED_LOCKED_PREFIX) {
     const streamPath = `data/stream/${videoId}.json`
     const provenancePath = `data/provenance/${videoId}.json`
@@ -543,20 +537,17 @@ test('all 103 locked stream and provenance artifacts retain their regression con
     )
     if (provenancePath === CB1_REGRESSION_FILES.provenance) {
       assertExpectedProvenanceDiff(lockedProvenance, result.candidates[provenancePath])
-    } else if (provenancePath === CB27_PROVENANCE_PATH) {
-      assertCb27SourceOnlyProvenanceDelta(readJson(provenancePath), result.candidates[provenancePath])
-      assert.equal(hash(provenancePath), CB27_PRODUCTION_PROVENANCE_SHA256)
     } else {
       assert.ok(read(provenancePath, outputRoot).equals(read(provenancePath)), provenancePath)
     }
   }
 })
 
-test('the original 91 streams and all 53 Concentrated production pairs retain starting bytes', () => {
+test('the locked prefix streams and current Concentrated production pairs retain exact vectors', () => {
   const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
     relativePaths.map((relativePath) => `${relativePath}\0${hash(relativePath)}\n`).join('')
   )).digest('hex')
-  const streamPaths = EXPECTED_ORIGINAL_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const streamPaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
   const concentratedPaths = EXPECTED_PUBLISHED_PREFIX
     .filter((videoId) => videoId.startsWith('cb_'))
     .flatMap((videoId) => [`data/stream/${videoId}.json`, `data/provenance/${videoId}.json`])
@@ -566,17 +557,17 @@ test('the original 91 streams and all 53 Concentrated production pairs retain st
   assert.equal(vectorHash(concentratedPaths), LOCKED_CONCENTRATED_PRODUCTION_VECTOR_SHA256)
 })
 
-test('the original 91 stream and provenance file vectors retain starting bytes', () => {
+test('the locked prefix stream and provenance file vectors retain exact bytes', () => {
   const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
     [...relativePaths].sort().map((relativePath) => `${hash(relativePath)}  ${relativePath}`).join('\n') + '\n'
   )).digest('hex')
-  const streamPaths = EXPECTED_ORIGINAL_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
-  const provenancePaths = EXPECTED_ORIGINAL_LOCKED_PREFIX.map((videoId) => `data/provenance/${videoId}.json`)
+  const streamPaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/stream/${videoId}.json`)
+  const provenancePaths = EXPECTED_LOCKED_PREFIX.map((videoId) => `data/provenance/${videoId}.json`)
   assert.equal(vectorHash(streamPaths), LOCKED_ORIGINAL_STREAM_FILE_VECTOR_SHA256)
   assert.equal(vectorHash(provenancePaths), LOCKED_ORIGINAL_PROVENANCE_FILE_VECTOR_SHA256)
 })
 
-test('the current 103 stream and provenance file vectors lock the ten-entry Chipped batch extension', () => {
+test('the current 102 stream and provenance file vectors lock the publication candidate output', () => {
   const vectorHash = (relativePaths) => crypto.createHash('sha256').update(Buffer.from(
     [...relativePaths].sort().map((relativePath) => `${hash(relativePath)}  ${relativePath}`).join('\n') + '\n'
   )).digest('hex')
@@ -603,28 +594,34 @@ test('CB36-CB51 candidates derive exact verified evidence without invented resol
   }
 })
 
-test('HB14 is generated through the ordinary evidence path without invented audio or subtitles', () => {
+test('HB14-HB17 evidence is retained while HB18 is generated through the ordinary evidence path', () => {
+  for (const videoId of ['hb_14', 'hb_15', 'hb_16', 'hb_17']) {
+    assert.equal(`data/stream/${videoId}.json` in result.candidates, false, videoId)
+    assert.equal(`data/provenance/${videoId}.json` in result.candidates, false, videoId)
+    assert.equal(fs.existsSync(path.join(root, `evidence/media/${videoId}.json`)), true, videoId)
+  }
+
   const resolved = inputs.resolvedRecords.find(
-    ({ projectionEntry }) => projectionEntry.videoId === 'hb_14'
+    ({ projectionEntry }) => projectionEntry.videoId === 'hb_18'
   )
   const video = result.candidates['data/meta/bleach-manga-cut.json'].meta.videos
-    .find((candidate) => candidate.id === 'hb_14')
-  const stream = result.candidates['data/stream/hb_14.json'].streams[0]
-  const provenance = result.candidates['data/provenance/hb_14.json']
+    .find((candidate) => candidate.id === 'hb_18')
+  const stream = result.candidates['data/stream/hb_18.json'].streams[0]
+  const provenance = result.candidates['data/provenance/hb_18.json']
 
-  assert.equal(resolved.editorialRecord.recordId, 'hollowed:14')
+  assert.equal(resolved.editorialRecord.recordId, 'hollowed:18')
   assert.deepEqual(resolved.editorialRecord.runtime, {
     state: 'known',
-    raw: '0.5221296296296296',
-    displayed: '31:52',
-    seconds: 1912
+    raw: '0.5192129629629629',
+    displayed: '27:40',
+    seconds: 1660
   })
   assert.deepEqual(video, {
-    id: 'hb_14',
+    id: 'hb_18',
     season: 3,
-    episode: 17,
-    title: 'The Slashing Opera',
-    runtime: '31'
+    episode: 20,
+    title: "Don't Kill My Volupture",
+    runtime: '27'
   })
   assert.deepEqual({
     infoHash: stream.infoHash,
@@ -632,40 +629,41 @@ test('HB14 is generated through the ordinary evidence path without invented audi
     fileIdx: stream.fileIdx,
     behaviorHints: stream.behaviorHints
   }, {
-    infoHash: 'e0cf2b306e8f803ae01219e443d050fb831a712b',
+    infoHash: '4fd87601e714c30d26f974b429070870319ea7d6',
     sources: [],
     fileIdx: 0,
     behaviorHints: {
       bingeGroup: 'bleach-manga-cut|p2p|standard',
-      videoSize: 910624738,
-      filename: 'Hollowed Bleach 14 - The Slashing Opera (sub).mp4'
+      videoSize: 790059844,
+      filename: 'Hollowed Bleach 18 - Don_t Kill My Volupture (sub).mp4'
     }
   })
-  assert.equal(stream.title, '🎬 The Slashing Opera\n📖 [254-259] 🕒 31:52\n💾 910.62 MB\n🎞️ HEVC 🔊 AAC 2.0')
+  assert.equal(stream.title, "🎬 Don't Kill My Volupture\n📖 [264-265, 270-272] 🕒 27:40\n💾 790.06 MB\n🎞️ HEVC 🔊 AAC 2.0")
   assert.doesNotMatch(stream.title, /\bENG\b/)
   assert.doesNotMatch(stream.title, /\bJPN\b/)
   assert.equal('subtitles' in stream, false)
   assert.deepEqual(provenance.sourceInputs.verifiedMedia, {
-    evidenceRecord: 'evidence/media/hb_14.json',
-    videoId: 'hb_14',
-    recordId: 'hollowed:14',
+    evidenceRecord: 'evidence/media/hb_18.json',
+    videoId: 'hb_18',
+    recordId: 'hollowed:18',
     verificationState: 'verified',
     verificationBases: [
-      'hb14-local-torrent-verification',
-      'hb14-local-media-ffprobe-inspection'
+      'hb18-local-torrent-verification',
+      'hb18-local-media-ffprobe-inspection'
     ]
   })
   assert.deepEqual(provenance.localMediaInspection.audio, [
     { language: 'English', codec: 'AAC LC', channels: 'stereo / 2.0' }
   ])
   assert.deepEqual(provenance.localMediaInspection.embeddedSubtitles, [])
-  assert.equal(provenance.presentation.stremioVideoRuntime, '31')
-  assert.equal(provenance.transformations.stremioRuntime, '31:52 (1912 seconds) -> floor whole minutes -> 31')
+  assert.equal(provenance.presentation.stremioVideoRuntime, '27')
+  assert.equal(provenance.transformations.stremioRuntime, '27:40 (1660 seconds) -> floor whole minutes -> 27')
   assert.equal(
     provenance.transformations.languagePresentation,
     'English normalization of raw/container tag eng retained in verified evidence; user-facing language token omitted because owner-confirmed spoken-language validation found it misleading.'
   )
   assert.equal(hash('evidence/media/hb_14.json'), '2b8914c71410d436f3aaa325ee5eea883058c2491e6f3db21ceaca94e6f03848')
+  assert.equal(hash('evidence/media/hb_18.json'), '8ff0a4041675e8188f83ed8029c3e635feb61578c7372966a988a13cc64bb379')
   assert.equal(hash('evidence/media/hb_36.json'), 'ae082da0fc86c9911d94a659a644ee401837f843070212f865b90669692dcb9f')
   assert.equal(resolved.mediaEvidence.media.subtitleTracks.length, 0)
   assert.deepEqual(resolved.mediaEvidence.media.audioTracks, [
@@ -719,12 +717,19 @@ test('Chipped 01 derives its exact stream and null-safe provenance from separate
   assert.equal(hash('evidence/acquisition/chipped-selected.json'), '50d208399da70ac461f786f929eb30432edbdce1e9156a3e8992882fa5984de7')
 })
 
-test('all 38 current-raw Hollowed candidates derive exact evidence and omit semantic language tokens', () => {
+test('all 34 default Hollowed candidates derive exact evidence and omit semantic language tokens', () => {
   const resolvedByVideoId = new Map(
     inputs.resolvedRecords.map((resolved) => [resolved.projectionEntry.videoId, resolved])
   )
-  const hollowedVideoIds = ['hb_14', ...EXPECTED_NEW_HOLLOWED_BATCH]
+  const hollowedVideoIds = EXPECTED_NEW_HOLLOWED_BATCH
   assert.deepEqual(SERIES_POLICY.presentation.languageTokenSuppressedProjectIds, ['hollowed'])
+
+  for (const videoId of ['hb_14', 'hb_15', 'hb_16', 'hb_17']) {
+    assert.equal(resolvedByVideoId.has(videoId), false, videoId)
+    assert.equal(`data/stream/${videoId}.json` in result.candidates, false, videoId)
+    assert.equal(`data/provenance/${videoId}.json` in result.candidates, false, videoId)
+    assert.equal(fs.existsSync(path.join(root, `evidence/media/${videoId}.json`)), true, videoId)
+  }
 
   for (const videoId of hollowedVideoIds) {
     const resolved = resolvedByVideoId.get(videoId)
@@ -819,8 +824,7 @@ test('current aggregate fixtures and permanent per-video fixtures match their ch
     CB2_REGRESSION_FILES.provenance,
     CB3_REGRESSION_FILES.stream,
     CB3_REGRESSION_FILES.provenance,
-    HB14_REGRESSION_FILES.stream,
-    HB14_REGRESSION_FILES.provenance
+    'evidence/media/hb_14.json'
   ]) {
     assert.equal(hash(relativePath), LOCKED_HASHES[relativePath], relativePath)
   }

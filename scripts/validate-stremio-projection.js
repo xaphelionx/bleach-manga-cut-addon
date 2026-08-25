@@ -14,34 +14,16 @@ const LOCKED_HASHES = Object.freeze({
   'data/provenance/cb_1.json': '991843abb80a3c34d6646676cb9f9659dc3080ee7ba87ea38bfd9ad19985753b',
   'data/provenance/cb_2.json': '0202e5ec71962e05f872768e066f78f5083e454b8459b465b7ef2eda31e402bf',
   'data/provenance/cb_3.json': '2ca7db7f246fef357afc252a40ab51fcdc2ba2ca4cf0c8e3212b7ebada7fd242',
-  'data/provenance/hb_14.json': '204798b2b001689aaa7c463cce3592b579c29501f05ebe1992f8a084a886f223',
   'data/stream/cb_1.json': '83dd2675d23da8fc557b327010e52c56c34c78f30f26c61cf18a6f6b2729da6b',
   'data/stream/cb_2.json': 'ce3df66c03ce61997e6913e32b21dd5c756e41e55a2ebb6c6a1681a6ba0b56c1',
   'data/stream/cb_3.json': 'ff1003ee7661fa3e601fac8f083b878334528ec0498f6b4403442061f56b7b8d',
-  'data/stream/hb_14.json': '0ec6425d64c083e0681b03cc49e350343693455f45f0d61dc759279c1934eac8',
   'evidence/media/cb_1.json': '7b84d24d4186163f39e3622a496c244dc3c5f5d5144d9513d6fb41e3be60f80f',
   'evidence/media/cb_2.json': '4a68bbc82f83e845c2e8ec02d36061796d1876ff95e4eb4a2fe7e6707bba30f2',
   'evidence/media/cb_3.json': 'b3604ed951e34e211003da1adc08acaefe7082b70ad0c972fb76a6ef78438526',
   'evidence/media/hb_14.json': '2b8914c71410d436f3aaa325ee5eea883058c2491e6f3db21ceaca94e6f03848',
   'editorial/unresolved.json': '3aa74a155cb06b27661e6f5326ca08d17cac1d820668be8037d359b594d7b98e'
 })
-const LOCKED_VALIDATED_VIDEO_IDS = new Set([
-  'cb_1', 'cb_2', 'cb_3', 'cb_4', 'cb_5', 'cb_6', 'cb_7', 'cb_8', 'cb_9',
-  'cb_10', 'cb_11', 'cb_12', 'cb_13', 'cb_14', 'cb_15', 'cb_16', 'cb_17',
-  'cb_18', 'cb_19', 'cb_20', 'cb_21', 'cb_22', 'cb_23', 'cb_24', 'cb_25',
-  'cb_26', 'cb_27', 'cb_27p5', 'cb_28', 'cb_29', 'cb_30', 'cb_31', 'cb_32',
-  'cb_33', 'cb_34', 'cb_35', 'cb_0p0',
-  'cb_36', 'cb_37', 'cb_38', 'cb_39', 'cb_40', 'cb_41', 'cb_42', 'cb_43',
-  'cb_44', 'cb_45', 'cb_46', 'cb_47', 'cb_48', 'cb_49', 'cb_50', 'cb_51',
-  'hb_14', 'hb_15', 'hb_16', 'hb_17', 'hb_18', 'hb_19', 'hb_20', 'hb_21',
-  'hb_22', 'hb_23', 'hb_24', 'hb_25', 'hb_26', 'hb_27', 'hb_28', 'hb_29',
-  'hb_0p8',
-  'hb_30', 'hb_31', 'hb_32', 'hb_33', 'hb_34', 'hb_35', 'hb_36', 'hb_37',
-  'hb_38', 'hb_39', 'hb_40', 'hb_41', 'hb_42', 'hb_43', 'hb_44', 'hb_45',
-  'hb_46', 'hb_47', 'hb_48', 'hb_49', 'hb_50',
-  'ch_1', 'ch_2', 'ch_3', 'ch_4', 'ch_5', 'ch_6', 'ch_7', 'ch_8', 'ch_9',
-  'ch_10', 'ch_11', 'ch_12'
-])
+const LOCKED_VALIDATED_VIDEO_IDS = new Set(Array.from({ length: 26 }, (_, index) => `cb_${index + 1}`))
 const CURRENT_RAW_HOLLOWED_RECORD_IDS = [
   'hollowed:14', 'hollowed:15', 'hollowed:16', 'hollowed:17',
   'hollowed:18', 'hollowed:19', 'hollowed:20', 'hollowed:21',
@@ -55,6 +37,9 @@ const CURRENT_RAW_HOLLOWED_RECORD_IDS = [
   'hollowed:46', 'hollowed:47', 'hollowed:48', 'hollowed:49',
   'hollowed:50'
 ]
+const DEFAULT_HOLLOWED_RECORD_IDS = CURRENT_RAW_HOLLOWED_RECORD_IDS.filter(
+  (recordId) => !['hollowed:14', 'hollowed:15', 'hollowed:16', 'hollowed:17'].includes(recordId)
+)
 
 function load(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), 'utf8'))
@@ -131,16 +116,14 @@ function expectedDefaultProjection(recordsByProject, resolution) {
     resolution.guidedPlacement.episode
   )
   add(
-    Array.from({ length: 16 }, (_, index) => `concentrated:${index + 36}`),
+    Array.from({ length: 19 }, (_, index) => `concentrated:${index + 36}`),
     3,
     1
   )
   add(
-    recordsByProject.hollowed
-      .filter((record) => record.sourceRow >= 16 && record.sourceRow <= 53)
-      .map((record) => record.recordId),
+    DEFAULT_HOLLOWED_RECORD_IDS,
     3,
-    17
+    20
   )
   add(recordsByProject.chipped.map((record) => record.recordId), 4, 1)
 
@@ -355,7 +338,7 @@ function validate() {
   assert.equal(zero.title, 'the rotator / the sand')
 
   const expected = expectedDefaultProjection(recordsByProject, resolution)
-  assert.equal(expected.length, 103)
+  assert.equal(expected.length, 102)
   assert.equal(projection.entries.length, expected.length)
   const expectedIds = expected.map((entry) => entry.recordId)
   const projectedIds = projection.entries.map((entry) => entry.recordId)
@@ -369,9 +352,17 @@ function validate() {
     projection.entries
       .filter((entry) => entry.projectId === 'hollowed')
       .map((entry) => entry.recordId),
-    hollowedMembershipResolution.activeRecordIds,
-    'Projected Hollowed defaults must exactly match the owner-selected current raw membership'
+    DEFAULT_HOLLOWED_RECORD_IDS,
+    'Projected Hollowed defaults must follow the CB54 -> HB18 default handoff'
   )
+  assert.deepEqual(
+    CURRENT_RAW_HOLLOWED_RECORD_IDS.slice(0, 4),
+    ['hollowed:14', 'hollowed:15', 'hollowed:16', 'hollowed:17'],
+    'HB14-HB17 must remain source/version membership records'
+  )
+  for (const supersededRecordId of CURRENT_RAW_HOLLOWED_RECORD_IDS.slice(0, 4)) {
+    assert.equal(projectedIds.includes(supersededRecordId), false, `${supersededRecordId} must not be in the default projection`)
+  }
   const resolvedTargetIndex = projectedIds.indexOf(resolution.resolvedTarget.recordId)
   assert.equal(projectedIds[resolvedTargetIndex - 1], resolution.relativePlacement.afterRecordId)
   assert.equal(projectedIds[resolvedTargetIndex + 1], resolution.relativePlacement.beforeRecordId)
@@ -492,20 +483,72 @@ function validate() {
     gateSet: 'verified-primary'
   })
 
-  const hb14 = projection.entries.find((entry) => entry.recordId === 'hollowed:14')
-  assert.ok(hb14)
-  assert.deepEqual(hb14.projectedPlacement, {
+  const EXPECTED_CONCENTRATED_AUGUST_PLACEMENTS = [
+    ['concentrated:52', 'cb_52', 17, 54],
+    ['concentrated:53', 'cb_53', 18, 55],
+    ['concentrated:54', 'cb_54', 19, 56]
+  ]
+  for (const [recordId, videoId, episode, index] of EXPECTED_CONCENTRATED_AUGUST_PLACEMENTS) {
+    const entry = projection.entries.find((candidate) => candidate.recordId === recordId)
+    assert.ok(entry, recordId)
+    assert.equal(entry.videoId, videoId, recordId)
+    assert.deepEqual(entry.projectedPlacement, {
+      seriesId: 'bleach-manga-cut',
+      season: 3,
+      episode
+    }, recordId)
+    assert.deepEqual(entry.defaultTimelinePosition, {
+      state: 'resolved',
+      index
+    }, recordId)
+    assert.deepEqual(entry.publicationEligibility, {
+      state: 'eligible',
+      gateSet: 'verified-primary'
+    }, recordId)
+  }
+
+  const hb18 = projection.entries.find((entry) => entry.recordId === 'hollowed:18')
+  assert.ok(hb18)
+  assert.deepEqual(hb18.projectedPlacement, {
     seriesId: 'bleach-manga-cut',
     season: 3,
-    episode: 17
+    episode: 20
   })
-  assert.deepEqual(hb14.defaultTimelinePosition, {
+  assert.deepEqual(hb18.defaultTimelinePosition, {
     state: 'resolved',
-    index: 54
+    index: 57
   })
-  assert.deepEqual(hb14.publicationEligibility, {
+  assert.deepEqual(hb18.publicationEligibility, {
     state: 'eligible',
     gateSet: 'verified-primary'
+  })
+
+  assert.deepEqual(
+    projectedIds.slice(projectedIds.indexOf('concentrated:51'), projectedIds.indexOf('hollowed:18') + 1),
+    ['concentrated:51', 'concentrated:52', 'concentrated:53', 'concentrated:54', 'hollowed:18'],
+    'Default handoff must be CB51 -> CB52 -> CB53 -> CB54 -> HB18'
+  )
+
+  const hb29 = projection.entries.find((entry) => entry.recordId === 'hollowed:29')
+  assert.ok(hb29)
+  assert.deepEqual(hb29.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 3,
+    episode: 31
+  })
+  const hb0p8 = projection.entries.find((entry) => entry.recordId === 'hollowed:0.8')
+  assert.ok(hb0p8)
+  assert.deepEqual(hb0p8.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 3,
+    episode: 32
+  })
+  const hb30 = projection.entries.find((entry) => entry.recordId === 'hollowed:30')
+  assert.ok(hb30)
+  assert.deepEqual(hb30.projectedPlacement, {
+    seriesId: 'bleach-manga-cut',
+    season: 3,
+    episode: 33
   })
 
   const hb50 = projection.entries.find((entry) => entry.recordId === 'hollowed:50')
@@ -513,11 +556,11 @@ function validate() {
   assert.deepEqual(hb50.projectedPlacement, {
     seriesId: 'bleach-manga-cut',
     season: 3,
-    episode: 54
+    episode: 53
   })
   assert.deepEqual(hb50.defaultTimelinePosition, {
     state: 'resolved',
-    index: 91
+    index: 90
   })
   assert.deepEqual(hb50.publicationEligibility, {
     state: 'eligible',
@@ -533,7 +576,7 @@ function validate() {
   })
   assert.deepEqual(ch1.defaultTimelinePosition, {
     state: 'resolved',
-    index: 92
+    index: 91
   })
   assert.deepEqual(ch1.publicationEligibility, {
     state: 'eligible',
@@ -549,7 +592,7 @@ function validate() {
   })
   assert.deepEqual(ch2.defaultTimelinePosition, {
     state: 'resolved',
-    index: 93
+    index: 92
   })
   assert.deepEqual(ch2.publicationEligibility, {
     state: 'eligible',
@@ -557,16 +600,16 @@ function validate() {
   })
 
   const EXPECTED_CHIPPED_03_12 = [
-    ['chipped:#03', 3, 94],
-    ['chipped:#04', 4, 95],
-    ['chipped:#05', 5, 96],
-    ['chipped:#06', 6, 97],
-    ['chipped:#07', 7, 98],
-    ['chipped:#08', 8, 99],
-    ['chipped:#09', 9, 100],
-    ['chipped:#10', 10, 101],
-    ['chipped:#11', 11, 102],
-    ['chipped:#12', 12, 103]
+    ['chipped:#03', 3, 93],
+    ['chipped:#04', 4, 94],
+    ['chipped:#05', 5, 95],
+    ['chipped:#06', 6, 96],
+    ['chipped:#07', 7, 97],
+    ['chipped:#08', 8, 98],
+    ['chipped:#09', 9, 99],
+    ['chipped:#10', 10, 100],
+    ['chipped:#11', 11, 101],
+    ['chipped:#12', 12, 102]
   ]
   for (const [recordId, episode, index] of EXPECTED_CHIPPED_03_12) {
     const entry = projection.entries.find((candidate) => candidate.recordId === recordId)
@@ -609,7 +652,7 @@ function validate() {
     sourceIdentifier: '0.0',
     videoId: 'cb_0p0',
     status: 'published',
-    locked: true
+    locked: false
   })
   assert.deepEqual(registryByVideoId.get('cb_36'), {
     recordType: 'normalized-record',
@@ -618,7 +661,7 @@ function validate() {
     sourceIdentifier: '36',
     videoId: 'cb_36',
     status: 'published',
-    locked: true
+    locked: false
   })
   assert.deepEqual(registryByVideoId.get('cb_51'), {
     recordType: 'normalized-record',
@@ -627,26 +670,39 @@ function validate() {
     sourceIdentifier: '51',
     videoId: 'cb_51',
     status: 'published',
-    locked: true
+    locked: false
   })
-  assert.deepEqual(registryByVideoId.get('hb_14'), {
-    recordType: 'normalized-record',
-    recordId: 'hollowed:14',
-    projectId: 'hollowed',
-    sourceIdentifier: '14',
-    videoId: 'hb_14',
-    status: 'published',
-    locked: true
-  })
-  assert.deepEqual(registryByVideoId.get('hb_15'), {
-    recordType: 'normalized-record',
-    recordId: 'hollowed:15',
-    projectId: 'hollowed',
-    sourceIdentifier: '15',
-    videoId: 'hb_15',
-    status: 'published',
-    locked: true
-  })
+  for (const [videoId, recordId, sourceIdentifier] of [
+    ['cb_52', 'concentrated:52', '52'],
+    ['cb_53', 'concentrated:53', '53'],
+    ['cb_54', 'concentrated:54', '54']
+  ]) {
+    assert.deepEqual(registryByVideoId.get(videoId), {
+      recordType: 'normalized-record',
+      recordId,
+      projectId: 'concentrated',
+      sourceIdentifier,
+      videoId,
+      status: 'published',
+      locked: false
+    })
+  }
+  for (const [videoId, recordId, sourceIdentifier] of [
+    ['hb_14', 'hollowed:14', '14'],
+    ['hb_15', 'hollowed:15', '15'],
+    ['hb_16', 'hollowed:16', '16'],
+    ['hb_17', 'hollowed:17', '17']
+  ]) {
+    assert.deepEqual(registryByVideoId.get(videoId), {
+      recordType: 'normalized-record',
+      recordId,
+      projectId: 'hollowed',
+      sourceIdentifier,
+      videoId,
+      status: 'reserved',
+      locked: false
+    })
+  }
   assert.deepEqual(registryByVideoId.get('hb_50'), {
     recordType: 'normalized-record',
     recordId: 'hollowed:50',
@@ -654,7 +710,7 @@ function validate() {
     sourceIdentifier: '50',
     videoId: 'hb_50',
     status: 'published',
-    locked: true
+    locked: false
   })
   assert.deepEqual(registryByVideoId.get('ch_1'), {
     recordType: 'normalized-record',
@@ -663,7 +719,7 @@ function validate() {
     sourceIdentifier: '#01',
     videoId: 'ch_1',
     status: 'published',
-    locked: true
+    locked: false
   })
   assert.ok(registry.entries.filter((entry) => entry.status === 'reserved').length > 0)
 
@@ -746,9 +802,9 @@ function validate() {
     counts[season] = (counts[season] || 0) + 1
     return counts
   }, {})
-  assert.deepEqual(projectCounts, { concentrated: 53, hollowed: 38, chipped: 12 })
-  assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 54, 4: 12 })
-  assert.deepEqual(eligibilityCounts, { eligible: 103 })
+  assert.deepEqual(projectCounts, { concentrated: 56, hollowed: 34, chipped: 12 })
+  assert.deepEqual(seasonCounts, { 1: 9, 2: 28, 3: 53, 4: 12 })
+  assert.deepEqual(eligibilityCounts, { eligible: 102 })
 
   return {
     projectedEntries: projection.entries.length,

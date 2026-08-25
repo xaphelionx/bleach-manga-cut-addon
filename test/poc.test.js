@@ -124,9 +124,12 @@ test('stream fixture ID safety accepts ordinary normalized Concentrated, Hollowe
 })
 
 test('safe stream fixture syntax does not grant publication permission', async () => {
-  assert.equal(isSafeStreamFileVideoId('cb_52'), true)
-  assert.equal(meta.meta.videos.some((video) => video.id === 'cb_52'), false)
-  assert.deepEqual(await addon.get('stream', 'series', 'cb_52'), { streams: [] })
+  assert.equal(isSafeStreamFileVideoId('cb_55'), true)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'cb_55'), false)
+  assert.deepEqual(await addon.get('stream', 'series', 'cb_55'), { streams: [] })
+  assert.equal(isSafeStreamFileVideoId('hb_14'), true)
+  assert.equal(meta.meta.videos.some((video) => video.id === 'hb_14'), false)
+  assert.deepEqual(await addon.get('stream', 'series', 'hb_14'), { streams: [] })
   assert.equal(isSafeStreamFileVideoId('hb_51'), true)
   assert.equal(meta.meta.videos.some((video) => video.id === 'hb_51'), false)
   assert.deepEqual(await addon.get('stream', 'series', 'hb_51'), { streams: [] })
@@ -135,9 +138,9 @@ test('safe stream fixture syntax does not grant publication permission', async (
   assert.deepEqual(await addon.get('stream', 'series', 'ch_13'), { streams: [] })
 })
 
-test('catalog and meta contain the exact ordered 103-entry prefix ending Chipped 12', () => {
+test('catalog and meta contain the exact ordered 102-entry publication candidate ending Chipped 12', () => {
   assert.equal(catalog.metas.length, 1)
-  assert.equal(meta.meta.videos.length, 103)
+  assert.equal(meta.meta.videos.length, 102)
 
   const catalogItem = catalog.metas[0]
   const series = meta.meta
@@ -149,7 +152,7 @@ test('catalog and meta contain the exact ordered 103-entry prefix ending Chipped
   assert.deepEqual(series.videos.map((video) => video.id), publishedVideoIds)
   assert.equal(series.videos.filter((video) => video.season === 1).length, 9)
   assert.equal(series.videos.filter((video) => video.season === 2).length, 28)
-  assert.equal(series.videos.filter((video) => video.season === 3).length, 54)
+  assert.equal(series.videos.filter((video) => video.season === 3).length, 53)
   assert.equal(series.videos.filter((video) => video.season === 4).length, 12)
   const placement = (videoId) => {
     const { season, episode } = series.videos.find((video) => video.id === videoId)
@@ -166,9 +169,13 @@ test('catalog and meta contain the exact ordered 103-entry prefix ending Chipped
   assert.deepEqual(placement('cb_0p0'), { season: 2, episode: 28 })
   assert.deepEqual(placement('cb_36'), { season: 3, episode: 1 })
   assert.deepEqual(placement('cb_51'), { season: 3, episode: 16 })
-  assert.deepEqual(placement('hb_14'), { season: 3, episode: 17 })
-  assert.deepEqual(placement('hb_0p8'), { season: 3, episode: 33 })
-  assert.deepEqual(placement('hb_50'), { season: 3, episode: 54 })
+  assert.deepEqual(placement('cb_52'), { season: 3, episode: 17 })
+  assert.deepEqual(placement('cb_53'), { season: 3, episode: 18 })
+  assert.deepEqual(placement('cb_54'), { season: 3, episode: 19 })
+  assert.equal(series.videos.some((video) => video.id === 'hb_14'), false)
+  assert.deepEqual(placement('hb_18'), { season: 3, episode: 20 })
+  assert.deepEqual(placement('hb_0p8'), { season: 3, episode: 32 })
+  assert.deepEqual(placement('hb_50'), { season: 3, episode: 53 })
   assert.deepEqual(placement('ch_1'), { season: 4, episode: 1 })
   assert.deepEqual(placement('ch_2'), { season: 4, episode: 2 })
   assert.deepEqual(placement('ch_3'), { season: 4, episode: 3 })
@@ -176,7 +183,7 @@ test('catalog and meta contain the exact ordered 103-entry prefix ending Chipped
   assert.deepEqual(placement('ch_10'), { season: 4, episode: 10 })
   assert.deepEqual(placement('ch_12'), { season: 4, episode: 12 })
   assert.deepEqual(series.videos.slice(67, 72).map((video) => video.id), [
-    'hb_28', 'hb_29', 'hb_0p8', 'hb_30', 'hb_31'
+    'hb_29', 'hb_0p8', 'hb_30', 'hb_31', 'hb_32'
   ])
   assert.deepEqual(series.videos.at(-1), {
     id: 'ch_12',
@@ -185,7 +192,7 @@ test('catalog and meta contain the exact ordered 103-entry prefix ending Chipped
     title: 'Goodbye to our XCution',
     runtime: '41'
   })
-  assert.equal(series.videos.some((video) => video.id === 'ch_13' || video.id === 'cb_52'), false)
+  assert.equal(series.videos.some((video) => video.id === 'ch_13' || video.id === 'cb_55'), false)
   assert.equal(cb1Provenance.id, series.videos[0].id)
   assert.equal(cb1Provenance.editorial.exactEditRuntime, '00:18:15')
   assert.equal(cb1Provenance.editorial.normalizedExactRuntime, '18:15')
@@ -294,7 +301,7 @@ test('CB1 provenance records intentional anime and original-language compatibili
   })
 })
 
-test('generated content contains exactly the 103 published stream and provenance pairs', () => {
+test('generated content contains exactly the 102 published stream and provenance pairs', () => {
   const generatedFiles = [
     ...fs.readdirSync(path.join(root, 'data', 'catalog')).map((name) => `catalog/${name}`),
     ...fs.readdirSync(path.join(root, 'data', 'meta')).map((name) => `meta/${name}`),
@@ -308,7 +315,7 @@ test('generated content contains exactly the 103 published stream and provenance
     ...publishedVideoIds.map((videoId) => `provenance/${videoId}.json`),
     ...publishedVideoIds.map((videoId) => `stream/${videoId}.json`)
   ].sort()
-  assert.equal(expectedFiles.length, 208)
+  assert.equal(expectedFiles.length, 206)
   assert.deepEqual(generatedFiles, expectedFiles)
 
   const generatedDocuments = [
@@ -324,6 +331,13 @@ test('generated content contains exactly the 103 published stream and provenance
 test('no production artifacts exist beyond the selected 12 Chipped records', () => {
   assert.equal(fs.existsSync(path.join(root, 'data', 'stream', 'ch_13.json')), false)
   assert.equal(fs.existsSync(path.join(root, 'data', 'provenance', 'ch_13.json')), false)
+  assert.equal(fs.existsSync(path.join(root, 'data', 'stream', 'cb_55.json')), false)
+  assert.equal(fs.existsSync(path.join(root, 'data', 'provenance', 'cb_55.json')), false)
+  for (const videoId of ['hb_14', 'hb_15', 'hb_16', 'hb_17']) {
+    assert.equal(fs.existsSync(path.join(root, 'data', 'stream', `${videoId}.json`)), false)
+    assert.equal(fs.existsSync(path.join(root, 'data', 'provenance', `${videoId}.json`)), false)
+    assert.equal(fs.existsSync(path.join(root, 'evidence', 'media', `${videoId}.json`)), true)
+  }
 })
 
 test('content has no credential or resolved playback fields', () => {
@@ -365,7 +379,7 @@ test('handlers return empty protocol responses for unknown IDs', async () => {
     await addon.get('stream', 'series', 'cb_999'),
     { streams: [] }
   )
-  for (const videoId of ['cb_52', 'hb_51', 'hb_ex_27', '../data/stream/cb_1', 'cb_1/../../cb_2']) {
+  for (const videoId of ['cb_55', 'hb_14', 'hb_51', 'hb_ex_27', '../data/stream/cb_1', 'cb_1/../../cb_2']) {
     assert.deepEqual(await addon.get('stream', 'series', videoId), { streams: [] }, videoId)
   }
   assert.deepEqual(await addon.get('stream', 'movie', 'cb_1'), { streams: [] })
@@ -388,8 +402,12 @@ test('normal Stremio HTTP endpoints return the deterministic JSON', async () => 
     ['/stream/series/cb_0p0.json', publishedStreams.get('cb_0p0')],
     ['/stream/series/cb_36.json', publishedStreams.get('cb_36')],
     ['/stream/series/cb_51.json', publishedStreams.get('cb_51')],
-    ['/stream/series/hb_14.json', publishedStreams.get('hb_14')],
-    ['/stream/series/hb_15.json', publishedStreams.get('hb_15')],
+    ['/stream/series/cb_52.json', publishedStreams.get('cb_52')],
+    ['/stream/series/cb_53.json', publishedStreams.get('cb_53')],
+    ['/stream/series/cb_54.json', publishedStreams.get('cb_54')],
+    ['/stream/series/hb_14.json', { streams: [] }],
+    ['/stream/series/hb_15.json', { streams: [] }],
+    ['/stream/series/hb_18.json', publishedStreams.get('hb_18')],
     ['/stream/series/hb_0p8.json', publishedStreams.get('hb_0p8')],
     ['/stream/series/hb_50.json', publishedStreams.get('hb_50')],
     ['/stream/series/ch_1.json', ch1Stream],
@@ -400,7 +418,7 @@ test('normal Stremio HTTP endpoints return the deterministic JSON', async () => 
     ['/stream/series/ch_12.json', publishedStreams.get('ch_12')],
     ['/stream/series/ch_13.json', { streams: [] }],
     ['/stream/series/hb_51.json', { streams: [] }],
-    ['/stream/series/cb_52.json', { streams: [] }],
+    ['/stream/series/cb_55.json', { streams: [] }],
     ['/stream/series/hb_ex_27.json', { streams: [] }],
     ['/meta/series/unknown-series.json', { meta: {} }],
     ['/stream/series/cb_999.json', { streams: [] }]
