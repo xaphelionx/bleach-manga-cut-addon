@@ -11,6 +11,7 @@ const {
   encodeNormalizedId,
   encodeVariantId,
   validateCompatibilityLockPrefix,
+  validateRegistryCoverage,
   validatePublicationPrefix,
   validate
 } = require('../scripts/validate-stremio-projection')
@@ -276,6 +277,98 @@ test('registry never reuses one assignment for another record', () => {
   const recordIds = registry.entries.map((entry) => entry.recordId)
   assert.equal(new Set(recordIds).size, recordIds.length)
   assert.equal(registry.policy.appendOnly, true)
+})
+
+test('registry preserves source-update reservations and historical tombstones', () => {
+  const byVideoId = new Map(registry.entries.map((entry) => [entry.videoId, entry]))
+  assert.deepEqual(byVideoId.get('cb_71p5'), {
+    recordType: 'normalized-record',
+    recordId: 'concentrated:71.5',
+    projectId: 'concentrated',
+    sourceIdentifier: '71.5',
+    videoId: 'cb_71p5',
+    status: 'reserved',
+    locked: false
+  })
+  assert.deepEqual(byVideoId.get('cb_85'), {
+    recordType: 'normalized-record',
+    recordId: 'concentrated:85',
+    projectId: 'concentrated',
+    sourceIdentifier: '85',
+    videoId: 'cb_85',
+    status: 'reserved',
+    locked: false
+  })
+  assert.deepEqual(byVideoId.get('cb_70p5'), {
+    recordType: 'normalized-record',
+    recordId: 'concentrated:70.5',
+    projectId: 'concentrated',
+    sourceIdentifier: '70.5',
+    videoId: 'cb_70p5',
+    status: 'reserved',
+    locked: false
+  })
+  assert.notEqual(byVideoId.get('cb_70p5').recordId, byVideoId.get('cb_71p5').recordId)
+  for (const videoId of ['cb_52', 'cb_53', 'cb_54']) {
+    assert.equal(byVideoId.get(videoId).status, 'reserved', videoId)
+    assert.equal(byVideoId.get(videoId).locked, false, videoId)
+  }
+})
+
+test('registry coverage includes every current normalized record and variant', () => {
+  const registryRecordIds = new Set(registry.entries.map((entry) => entry.recordId))
+  assert.deepEqual(normalized.filter((record) => !registryRecordIds.has(record.recordId)), [])
+  assert.deepEqual(variants.filter((variant) => !registryRecordIds.has(variant.variantId)), [])
+  assert.doesNotThrow(() => validateRegistryCoverage({
+    registryEntries: registry.entries,
+    normalizedRecords: normalized,
+    variants
+  }))
+})
+
+test('historical registry entries are allowed only while reserved and unlocked', () => {
+  const historicalReservation = {
+    recordType: 'normalized-record',
+    recordId: 'concentrated:999.5',
+    projectId: 'concentrated',
+    sourceIdentifier: '999.5',
+    videoId: 'cb_999p5',
+    status: 'reserved',
+    locked: false
+  }
+  assert.doesNotThrow(() => validateRegistryCoverage({
+    registryEntries: [...registry.entries, historicalReservation],
+    normalizedRecords: normalized,
+    variants
+  }))
+
+  assert.throws(
+    () => validateRegistryCoverage({
+      registryEntries: [...registry.entries, { ...historicalReservation, status: 'published' }],
+      normalizedRecords: normalized,
+      variants
+    }),
+    /unknown published record concentrated:999\.5/i
+  )
+  assert.throws(
+    () => validateRegistryCoverage({
+      registryEntries: [...registry.entries, { ...historicalReservation, locked: true }],
+      normalizedRecords: normalized,
+      variants
+    }),
+    /unknown locked record concentrated:999\.5/i
+  )
+})
+
+test('removing registry coverage for a current normalized record fails validation', () => {
+  assert.throws(
+    () => validateRegistryCoverage({
+      registryEntries: registry.entries.filter((entry) => entry.recordId !== 'concentrated:85'),
+      normalizedRecords: normalized,
+      variants
+    }),
+    /exactly one entry for concentrated:85/
+  )
 })
 
 test('projected public titles equal authoritative normalized titles exactly', () => {
@@ -822,7 +915,7 @@ test('complete projection validator accepts the artifacts', () => {
     publishedVideoIds: EXPECTED_PUBLISHED_PREFIX,
     lockedValidatedVideoIds: EXPECTED_LOCKED_PREFIX,
     publishedUnlockedVideoIds: [],
-    registryEntries: 169,
+    registryEntries: 171,
     optionalEntries: 4,
     unresolvedIssues: 5
   })

@@ -234,6 +234,46 @@ function validateCompatibilityLockPrefix({ publishedVideoIds, registryEntries, l
   }
 }
 
+function validateRegistryCoverage({ registryEntries, normalizedRecords, variants }) {
+  const registryRecordIds = new Set()
+  const registryVideoIds = new Set()
+  for (const entry of registryEntries) {
+    assert.ok(!registryRecordIds.has(entry.recordId), `Registry reuses record ${entry.recordId}`)
+    assert.ok(!registryVideoIds.has(entry.videoId), `Registry reuses ID ${entry.videoId}`)
+    registryRecordIds.add(entry.recordId)
+    registryVideoIds.add(entry.videoId)
+  }
+
+  const normalizedById = new Map(normalizedRecords.map((record) => [record.recordId, record]))
+  const variantsById = new Map(variants.map((variant) => [variant.variantId, variant]))
+
+  for (const record of normalizedRecords) {
+    const matches = registryEntries.filter((entry) => entry.recordId === record.recordId)
+    assert.equal(matches.length, 1, `Registry must contain exactly one entry for ${record.recordId}`)
+    const entry = matches[0]
+    assert.equal(entry.recordType, 'normalized-record', `${record.recordId} registry recordType mismatch`)
+    assert.equal(entry.projectId, record.projectId, `${record.recordId} registry projectId mismatch`)
+    assert.equal(entry.sourceIdentifier, record.sourceIdentifier.displayed, `${record.recordId} registry sourceIdentifier mismatch`)
+    assert.equal(entry.videoId, encodeNormalizedId(record), `${record.recordId} registry videoId mismatch`)
+  }
+
+  for (const variant of variants) {
+    const matches = registryEntries.filter((entry) => entry.recordId === variant.variantId)
+    assert.equal(matches.length, 1, `Registry must contain exactly one entry for ${variant.variantId}`)
+    const entry = matches[0]
+    assert.equal(entry.recordType, 'variant', `${variant.variantId} registry recordType mismatch`)
+    assert.equal(entry.projectId, 'hollowed', `${variant.variantId} registry projectId mismatch`)
+    assert.equal(entry.sourceIdentifier, variant.sourceLabel, `${variant.variantId} registry sourceIdentifier mismatch`)
+    assert.equal(entry.videoId, encodeVariantId(variant), `${variant.variantId} registry videoId mismatch`)
+  }
+
+  for (const entry of registryEntries) {
+    if (normalizedById.has(entry.recordId) || variantsById.has(entry.recordId)) continue
+    assert.equal(entry.status, 'reserved', `Registry references unknown published record ${entry.recordId}`)
+    assert.equal(entry.locked, false, `Registry references unknown locked record ${entry.recordId}`)
+  }
+}
+
 function validate() {
   assertSchemaHeaders()
   for (const [relativePath, expectedHash] of Object.entries(LOCKED_HASHES)) {
@@ -554,37 +594,7 @@ function validate() {
   assert.equal(registry.policy.decimalEncoding, 'lexical-p-delimiter')
   assert.equal(registry.policy.decimalSyntaxImpliesEditorialKind, false)
   assert.equal(registry.policy.unknownSyntax, 'validation-error')
-  assert.ok(registry.entries.length <= normalizedRecords.length + variants.variants.length)
-
-  const registryRecordIds = new Set()
-  const registryVideoIds = new Set()
-  for (const entry of registry.entries) {
-    assert.ok(!registryRecordIds.has(entry.recordId), `Registry reuses record ${entry.recordId}`)
-    assert.ok(!registryVideoIds.has(entry.videoId), `Registry reuses ID ${entry.videoId}`)
-    registryRecordIds.add(entry.recordId)
-    registryVideoIds.add(entry.videoId)
-
-    if (entry.recordType === 'normalized-record') {
-      const record = normalizedById.get(entry.recordId)
-      if (!record) {
-        assert.equal(entry.status, 'reserved', `Registry references unknown published record ${entry.recordId}`)
-        assert.equal(entry.locked, false, `Registry references unknown locked record ${entry.recordId}`)
-        continue
-      }
-      assert.equal(entry.projectId, record.projectId)
-      assert.equal(entry.sourceIdentifier, record.sourceIdentifier.displayed)
-      assert.equal(entry.videoId, encodeNormalizedId(record))
-    } else {
-      const variant = variants.variants.find((item) => item.variantId === entry.recordId)
-      if (!variant) {
-        assert.equal(entry.status, 'reserved', `Registry references unknown published variant ${entry.recordId}`)
-        assert.equal(entry.locked, false, `Registry references unknown locked variant ${entry.recordId}`)
-        continue
-      }
-      assert.equal(entry.sourceIdentifier, variant.sourceLabel)
-      assert.equal(entry.videoId, encodeVariantId(variant))
-    }
-  }
+  validateRegistryCoverage({ registryEntries: registry.entries, normalizedRecords, variants: variants.variants })
 
   const registryByVideoId = new Map(registry.entries.map((entry) => [entry.videoId, entry]))
   const { lockedValidatedVideoIds, publishedUnlockedVideoIds } = validateCompatibilityLockPrefix({
@@ -662,7 +672,7 @@ function validate() {
       const projected = projection.entries.find((entry) => entry.recordId === record.recordId)
       assert.ok(!projected || projected.publicationEligibility.state !== 'eligible')
       const registered = registry.entries.find((entry) => entry.recordId === record.recordId)
-      if (registered) assert.equal(registered.status, 'reserved')
+      assert.equal(registered.status, 'reserved')
     }
   }
 
@@ -777,6 +787,7 @@ module.exports = {
   encodeVariantId,
   expectedDefaultProjection,
   validateCompatibilityLockPrefix,
+  validateRegistryCoverage,
   validatePublicationPrefix,
   validate
 }

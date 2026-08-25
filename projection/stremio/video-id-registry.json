@@ -179,6 +179,8 @@
     {"recordType":"normalized-record","recordId":"chipped:#12","projectId":"chipped","sourceIdentifier":"#12","videoId":"ch_12","status":"published","locked":true},
     {"recordType":"variant","recordId":"hollowed:ex:01","projectId":"hollowed","sourceIdentifier":"EX 1","videoId":"hb_ex_1","status":"reserved","locked":false},
     {"recordType":"variant","recordId":"hollowed:ex:27","projectId":"hollowed","sourceIdentifier":"EX 27","videoId":"hb_ex_27","status":"reserved","locked":false},
-    {"recordType":"variant","recordId":"hollowed:ex:50","projectId":"hollowed","sourceIdentifier":"EX 50","videoId":"hb_ex_50","status":"reserved","locked":false}
+    {"recordType":"variant","recordId":"hollowed:ex:50","projectId":"hollowed","sourceIdentifier":"EX 50","videoId":"hb_ex_50","status":"reserved","locked":false},
+    {"recordType":"normalized-record","recordId":"concentrated:71.5","projectId":"concentrated","sourceIdentifier":"71.5","videoId":"cb_71p5","status":"reserved","locked":false},
+    {"recordType":"normalized-record","recordId":"concentrated:85","projectId":"concentrated","sourceIdentifier":"85","videoId":"cb_85","status":"reserved","locked":false}
   ]
 }
